@@ -145,54 +145,19 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/UVA-10480/">
-        <p class="h4 index-header">UVA-10480</p>
+      <a href="/2020/02/07/luogu-2764/">
+        <p class="h4 index-header">luogu-2764</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：UVA - 10480 Sabotage
-题目链接：https://vjudge.net/problem/UVA-10480
-题目大意：有n个点，m条无向边，权值为wi。问从1到2，要割断的最小代价。
-题解：1–&gt;2要进行割断并且要消耗最小，显然这是最小割问题。建边的时候要注意是双向边，起点s=1，终点t=2，跑dinic，最小割=最大流。然后从s开始dfs，要edge[i].w&gt;0才开始继续，即s可到达的为一个集合，其余则为t可到达的。然后对于所有正向边，看是否u为s集合，v为t集合，如果是就输出。一开始想着这题和HDU - 4289 Control差不多，以为要拆点，结果就WA了。HDU - 4289 Control这道题由于是点权，将点转换成边，所以需要拆点连边，而这道题说明了m条边的边权，所以不必拆点！为什么割边的判断条件不是edge[i].w==0呢？原因是可能流量流过该边，并且最后该边edge[i].w==0但是实际上并没有割去这条边，只是由于前面的流量影响了这条边！
-代码：#include&lt;cstdio&gt;
-#include&lt;cstr</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2">最小割</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3436/">
-        <p class="h4 index-header">POJ-3436</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3436 ACM Computer Factory
-题目链接：https://vjudge.net/problem/POJ-3436#author=yupengju
-题目大意：有p种零件，n个工厂加工，第i个工厂一小时可以加工Qi个电脑，对于每一个工厂第一个数字表示一小时加工数量Qi，然后有p个数字，若为0则表示不能有这个零件，1则表示必须有这个零件，2表示有没有都无所谓。最后p个数字，表示加工后电脑零件的存在情况，只有p个零件都为1才表示电脑加工完成。问一小时最多生产多少电脑？生产线有几条？如何设计？（special judge）（1 ≤ P ≤ 10, 1 ≤ N ≤ 50, 1 ≤ Qi ≤ 10000）
-题解：如果一开始直接想以零件为个体来建图就相当复杂，感觉无从下手，于是就从略大一点的个体出发，从工厂出发，s为起点，t为终点，如果一开始工厂要求的零件都没有，即p个数字都是0或者2，则s–&gt;i，边权为工厂容量或者无穷大。由于工厂自身一小时生产力有限，因此要对工厂进行拆点，i–&gt;i+N，边权为工厂容量。如果一个工厂生产后电脑的零件情况与另一个工厂</div>
+          <div class="index-text mb-1">题目名称：luogu2764-最小路径覆盖问题
+题目大意： 给定有向图 G=(V,E)G=(V,E) 。设 P是 G 的一个简单路(顶点不相交)的集合。如果 V 中每个定点恰好在PP的一条路上，则称 P 是 G的一个路径覆盖。PP中路径可以从 V 的任何一个定点开始，长度也是任意的，特别地，可以为 0 。G 的最小路径覆盖是 G所含路径条数最少的路径覆盖。设计一个有效算法求一个 GAP (有向无环图) G的最小路径覆盖 
+ 从第1 行开始，每行输出一条路径。文件的最后一行是最少路径数。 
+题解：要求的是最少路径数将所有的点都覆盖掉。
+由konig定理知：最小点覆盖=最大匹配数；而该题抽出模型就成了：最小路径覆盖；最小路径覆盖=点数-最大匹配数；
+如何理解这个结论呢？(这个解释并不严谨，只是为了帮助理解，请勿喷)    加入1–&gt;2–&gt;3;    可以转化为1–&gt;2’;2–&gt;3’;    1,2,3在X中，1’,2’,3’在Y中；路径数=3-2；符合结论；    再举例1–&gt;2,1–&gt;3,2–&gt;4,3–&gt;4;    可以转化为1–&gt;2</div>
         </div>
       </a>
 
@@ -215,94 +180,26 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3281/">
-        <p class="h4 index-header">POJ-3281</p>
+      <a href="/2020/02/07/HDU-3336/">
+        <p class="h4 index-header">HDU-3336</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3281 Dining or  P2891 [USACO07OPEN]吃饭Dining
-题目链接：https://vjudge.net/problem/POJ-3281
-题目大意：有F种食物和D种饮料，每种食物或饮料只能供一头牛享用，且每头牛只享用一种食物和一种饮料。现在有n头牛，每头牛都有自己喜欢的食物种类列表和饮料种类列表，问最多能使几头牛同时享用到自己喜欢的食物和饮料。（1 &lt;= f &lt;= 100, 1 &lt;= d &lt;= 100, 1 &lt;= n &lt;= 100）
-题解：我一开始想到的办法稍微有点复杂。首先着很明显是最大流问题，难点就只有建图，最开始我想到的建图是一个超级源点，指向牛，然后牛指向食物，由于食物只有一次使用机会，所以食物–&gt;食物’（流量为1）表示的是，该食物的数量为1，然后食物’指向牛’，牛’指向饮料，饮料–&gt;饮料’（流量为1），然后饮料’指向超级汇点。但是这种方法有问题。至于问题，我现在没找到，之后再想想。
-ps:后面想通了，由于牛–&gt;食物，食物–&gt;食物’，食物’–&gt;牛’；这样单次经</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2516/">
-        <p class="h4 index-header">POJ-2516</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2516 Minimum Cost
-题目链接：https://vjudge.net/problem/POJ-2516
-题目大意：有 n 个商店，k种物品和 m 个供货商，让你求进满足商店需求的货物的最小花费？有必要说一下输入数据。首先n ，k ，m。然后是一个n*m的矩阵，n个商店对每种货物的需求，表示第 i 个商店需要第 j 种货物 x个?然后是m * k 的矩阵，m个供货商可以供k种货物的数量，表示第 i 个供货商 提供第 j 中货物 x 个接下来是 k 个 n * m 的矩阵，表示第 i 个货物，由 k 供应商发货给 j 商店的价格x（注意如果供不应求的或输出-1）
-题解：一开始将商店分成很多，对于商品1有1-n商店，对于商品2有n+1-2n商店，对于商品k有n（k-1）-nk商店。对于供货商也是同理，s为起点，与商店连接，边权为商店对该物品的需求，费用为0，t为终点，供货商与t连接，边权为供货商能提供的量，费用为0，然后有后面k个矩阵可以建图，商店与供货商连接，注意要一一对应，因为商店和供货商相当于拆了点了，边权为无穷大，费用为价格。但是最后跑费用流就凉了</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81">费用流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2195/">
-        <p class="h4 index-header">POJ-2195</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2195 Going Home
-题目链接：https://vjudge.net/problem/POJ-2195#author=hrbustacm
-题目大意：免费送房子，m表示人，H表示房子，每个房子只能进一个人，房子数等于人数。黄弘毅为了方便起见决定要让所有人到自己的房子的距离和最小，请问这个距离和是多少？
-题解：距离和，这个问题一看显然就是费用流问题，而此题就是最小费用流的裸题，将人和房子统计出来，然后s与人连边，边权为1，费用dis为0，房子与t连边，边权为0，费用dis为0，人与房子连边，边权为1，费用dis为曼哈顿距离。然后跑MCMF就可以了。
-ps：我麻烦了一点，对房子进行了拆点，其实可以不拆，毕竟与t相连，流量固定了。
+          <div class="index-text mb-1">题目名称：HDU - 3336 Count the string
+题目链接：https://vjudge.net/problem/HDU-3336#author=cust_acm
+题目大意：给一个字符串，求它所有子串(包括自身)出现的总次数之
+题解：该题目需要比较完善地理解Next数组地含义与作用。当匹配到i失败时，就会返回到Next[i]。则匹配到i时，应该记录了子串s[0…i]，以及与子串s[0…Next[i]]。于是就可以得到动态转移方程dp[i]=dp[Next[i]]+1.然后求和dp数组，同时取模。
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
-#include&lt;queue&gt;
 using namespace std;
-const int maxn=200000+5;</div>
+const int maxn=200000+5;
+const int Mod=10007;
+int T,len1,len2,Next[maxn],dp[maxn];char s1[maxn],s2[maxn];
+void next_pre</div>
         </div>
       </a>
 
@@ -314,9 +211,7 @@ const int maxn=200000+5;</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81">费用流</a>&nbsp;
+            <a href="/tags/kmp">kmp</a>&nbsp;
           
         
       </div>
@@ -327,166 +222,63 @@ const int maxn=200000+5;</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1459/">
-        <p class="h4 index-header">POJ-1459</p>
+      <a href="/2020/02/07/HDU-4300/">
+        <p class="h4 index-header">HDU-4300</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1459 Power Network
-题目链接：https://vjudge.net/problem/POJ-1459#author=alexandleo
-题目大意：每组测试数据给出N，Np，Nc，M。N代表结点数量，M代表边的数量，Np代表结点中电站的数量（只产电，不耗电），Nc代表消费者数量（只耗电，不产电），其他结点代表中转站（不产电，不耗电）。接着M组（u，v）w数据，代表u到v容量为w，接着Np组（u）w，代表结点u产电w，接着Nc组（u）w，代表结点u耗电w。求电网中能消耗的最大电能值。
-题解：求最大电能，显然这是最大流问题，s与所有的电站连接，边权为产电量，t与所有的消费者连接，边权为耗电量，然后根据m条边的信息，如果u，v属于电站，则值不变，如果不是电站，那么需要+N，成为另一个集合，再建边，边权为容量w，然后跑网络流dinic。
+          <div class="index-text mb-1">题目名称：HDU-4300 Clairewd’s message
+题目链接：https://vjudge.net/problem/HDU-4300
+题目大意：第一行给的是26个字母对应的翻译密码，而第二行给的是文本串，该文本串前面部分为加密后的内容，而后部分(可能不完整)为未加密的内容。求：一行字符串前一半为加密后的内容，后一半为未加密的内容。一一对应的关系。
+题解：由题意可知，文本串前一部分是加密过后的内容，后一部分是未加密的内容，而这一部分可能是不完整的。则可理解为s=stringA+stringB。可以根据第一行给的加密方式将s整体当作加密内容，将其转化为整体未加密的内容，即字符串s转化成了t。这时候将原s的所有后缀与t匹配，这个过程实际上就是ex-kmp，将t作为子串，s作为母串，求t与s的所有后缀的公共前缀的长度extend[]。如果extend[i]+i==len(s)&amp;&amp;i&gt;=extend[i].即以i为分界点，s[0…i-1]作为stringA，s[i…len-1]作为stringB，即stringB就是原文本内容。(i&gt;=extend[i]</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-1238/">
+        <p class="h4 index-header">HDU-1238</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-1238 Substrings
+题目链接：https://vjudge.net/problem/HDU-1238#author=organicsalt
+题目大意：给n个字符串，问是否存在一个子串(或将该子串reverse)为所有字符串的子串。
+题解：将第一个字符串的所有子串与其余子串匹配一遍，如果有一个匹配失败，就将该子串reverse再匹配。这里使用reverse会更快，用kmp加速。
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
-#include&</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1087/">
-        <p class="h4 index-header">POJ-1087</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1087 A Plug for UNIX
-题目链接：https://vjudge.net/problem/POJ-1087#author=cjyl
-题目大意：宾馆里有几种插座，分别有其对应型号，你携带了几种用电器（手机，电脑一类的），也有其对应型号；可是不一定用电器就能和插座匹配上，于是宾馆的商店里提供了一些转换器，这些转换器可以将某一型号电源转换成另一型号的。问，你的用电器最少会有多少种无法充电 。注意插座型号是字符串形式，长度小于24，用电器名称也是字符串。
-题解：这是最大流问题。先说一下细节，插座和用电器的数量肯定都只有一个，但是转换器的数量是无限的。建图：设起点为s，终点为t，首先s与所有的用电器相连，边权为1，（一开始还想着拆点，我怕是个哈批啊，对于两边的点，边权就是容量，不需要去拆点！），t与所有的插座相连。如果型号相同，就可以二者之间进行连边。然后对于转换器，转换器之间可以相连，并且转换可以实现A–&gt;B，也可以实现B–&gt;A。所以，对于用电器型号=A||B的都可以连边，对于插座型号=A||B的都可以连边，边权为1，对于转换器之间可以相连的，</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4292/">
-        <p class="h4 index-header">HDU-4292</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4292 Food
-题目链接：https://vjudge.net/problem/HDU-4292#author=yupengju
-题目大意：昊妈决定只给每个人一种食物和一种饮料，而且每种饮料和食物都只能提供有限次。现在给出每个人喜欢的食物种类和饮料种类，昊妈可以最多让多少人得到满足呢？第一行给出N F D表示人数，食物种类数，饮料种类数第二行给出F个数字表示第i种食物有几个第三行给出D个数字表示第i种饮料有几个接下来N行分别给出第i个人对第j种食物的喜爱情况，Y是喜欢N是不喜欢，再来N行对饮料的
-题解：这道题是最大流问题，重点自然就是建图，一个人要满足，必须同时拥有食物和饮料。而一个人也最多可以满足一次，而且饮料和食物的容量也是有限的。最简单的自然是食物连向起点，边权为食物的容量；饮料连向中点，边权为饮料的容量；如果某人i喜欢食物j，那么二者就要连边，即j–&gt;i+N，边权为1，并且人位于中间必须拆点，即i+N–&gt;i+2N,边权为1。如果某人i喜欢饮料j，那么i+2N–&gt;j+3*N，边权为1建好后跑dinic。
-代码：#include&lt;c</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4289/">
-        <p class="h4 index-header">HDU-4289</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4289 Control
-题目链接：https://vjudge.net/problem/HDU-4289
-题目大意：给一个无向图，有些不法分子要从S点T点，现在要抓住所有的不法分子阻止他们去T，那么就要控制某一些城市等待他们，控制每个城市花费不同，问最少花费是多少。第一行是两个整数N，M（2&lt;=N&lt;=200，1&lt;=M&lt;=20000）,分别表示城市数量和道路数量，城市的编号为1到N。 第二行是两个整数S，T（1&lt;=S,T&lt;=N）,分别表示起点和终点的位置。 接下来以下N行，分别表示控制第每一个城市的成本costi（cost&lt;10^7）。 接下来M行，每行有两个整数A，B表示城市A和B之间存在一条双向道路。
-题解：根据题意，要设法将S，T分割开，求最小花费，显然是求图的最小割，即求最大流。一开始想着单独将S，T隔开，无向边u，v建边：u+N–&gt;v,边权0x3f3f3f3f，v+N-&gt;u，边权0x3f3f3f3f，当然回路也要建立。然后跑dinic，然后将跑出来的最大流和单独隔离s、单独隔离t三者取最小。但是这样跑</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2">最小割</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4280/">
-        <p class="h4 index-header">HDU-4280</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4280 Island Transport
-题目链接：https://vjudge.net/problem/HDU-4280#author=smilestruggler
-题目大意：在n个岛屿中，有m条双向航线，航线有单位时间内的运输上限，现在求从最左侧到最右侧的最大运输
-题解：题意含明显它是最大流的模板题，直接建边，然后找到起点s和终点t就可以了，然后直接跑dinic。但是n=100000，m=100000，数据规模大，dinic容易超时，但是我们可以做优化。
-优化1：bfs只要跑到t就返回1，开始dfs。
-优化2；dfs内每次min(F-f,edge[i].w），f表示之前已经流过的流量，F-f表示剩余可流的流量，一旦F==f就break，表示满流了！
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
 using namespace std;
-const int max</div>
+const int maxn=1005;
+int n,T,Next[maxn],len1,len2;string s[105],s2;
+void next_pre(int len)
+{
+    int i=0,j=1;Next[0]=-1;
+    while(j&lt;len)
+    {
+        while(Next[i]!=-1&</div>
         </div>
       </a>
 
@@ -498,7 +290,244 @@ const int max</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-2328/">
+        <p class="h4 index-header">HDU-2328</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 2328 Corporate Identity
+题目链接：https://vjudge.net/problem/HDU-2328
+题目大意：求n个字符串的最长公共子串，若有多个则输出字典序最小的，若没有就输出“IDENTITY LOST”。
+题解：这道题就相当简单了，直接暴力枚举第一个字符串的所有子串，用kmp与所有别的字符串匹配，看它们是否都包含了这个子串，将符合条件的子串存进数组，在排序sort一下，输出第一个字符串即可。用到substr函数。不过数据可能比较水，理论上时间复杂度是不够的，以为会TLE，结果可以过，甚至暴力都可以过。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=4000+5;
+int len1,len2,Next[maxn],n,ans;string s1[maxn],s2,Ans[maxn];
+void next_p</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3374/">
+        <p class="h4 index-header">HDU-3374</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 3374 String Problem
+题目链接：https://vjudge.net/problem/HDU-3374
+题目大意：对于一个字符串，它可以每次左移一次，得到一个新的字符串，因此一个长度为n的字符串，可以得到n个字符串。问，字典序最小的字符串排第几位，一共有多少个，字典序最大的字符串排第几位，一共有多少个ps:如果最大和最小的有多个，输出最先出现的那个。
+题解：求有多少个相同的字符串相对简单，并且运用到了kmp的知识，只有内部循环的字符串才可能会重复，对于这种字符串来讲它的循环节T= n-Next[n]，出现次数times=n/T。如何求最大字符串和最小字符串呢？这个就需要用到字符串的最小表示法和最大表示法。这里简单描述一下字符串的最小表示法，至于字符串的最大表示法，可以将最小表示法照搬修改即可。字符串的最小表示法：设定一个opt1和一个opt2与k。初始opt1=0，opt2=1，k=0，一开始指向s[0],s[1]如果s[opt1+k]==s[opt2+k]，则k++.注意opt2+k可能越界，所以要对len取模。当k==len时，说明每一个字符</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E8%A1%A8%E7%A4%BA%E6%B3%95">字符串的最小(大)表示法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-2609/">
+        <p class="h4 index-header">HDU-2609</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 2609 How many
+题目链接：https://vjudge.net/problem/HDU-2609
+题目大意：给n个字符串，每个字符串可以滑动形成新的字符串，问有多少个不同的字符串。ps：若一个字符串滑动后与另一个字符串相同，则这两个字符串相同。
+题解：先将每个字符串的最小表示法找到，然后用string数组储存字符串的最小表示法，然后sort排序，匹配找到总数
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+5;
+const int maxm=100+5;
+int len2,Next[maxn],len1,n;string s[maxn];char a[maxn][maxm];
+int cmp(string x,string y)
+{
+    return x&lt;y;
+}
+int get_min(int opt)
+{</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E8%A1%A8%E7%A4%BA%E6%B3%95">字符串的最小(大)表示法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/FZU-1901/">
+        <p class="h4 index-header">FZU-1901</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：FZU - 1901 Period II
+题目链接：https://vjudge.net/problem/FZU-1901
+题目大意：对于一个正整数p，p&lt;=字符串的长度，使得任意的s[i]==s[i+p]，求出所有符合要求的p。
+题解：这个题和之前的某个题意很迷的密码题有点相似，那个题当时就是用的ex-kmp，做这个题开始时题意不理解，百度了一下题意。一开始想的就是用kmp，似乎网上用kmp的很多，但我一下子不知道如何运行Next，不过，我突然发现，令s2=s1，用s1的所有后缀匹配s2的结果让我意外，所有符合Extend[i]+i&gt;=len的都是p，当然len本身也是。很显然这个题可以用ex-kmp来做。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000000+5;
+int T,len1,len2,Next[maxn],Exten</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3068/">
+        <p class="h4 index-header">HDU-3068</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 3068 最长回文
+题目链接：https://vjudge.net/problem/HDU-3068
+题目大意：求多组数据的最长回文的长度，就是Manacher的模板题
+题解：讲解一下Manacher算法首先该算法的时间复杂度为O(N)，一个长度为len的字符串，len可能为奇数，也可能是偶数，那么中间点就不一样了，那对于长度L=2len+1呢？显然它一定是奇数。具体操作为：t[0]=’$’;for(int i=1;i&lt;=len;i++)t[++len]=’#’,t[++len]=s[i-1];t[++len]=’#’;比如字符串 abccba 就转换成了 $#a#b#c#c#b#a#;
+以上是初始化的过程，接下来是具体的操作过程：对于p[i]，如果i&lt;mx，设j是i关于id对称点，如图所示，则基于以下三种情况，可以求出p[i]的值：
+（1）以j为中心的回文串有一部分在以id为中心的回文串之外。因为mx是以id为中心的最长回文的右边界，所以以i为中心的回文串不可能会有字符在以id为中心的回文串之外；否则mx就不是以id为中心的最长回文的右边界。所以，在</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Manacher">Manacher</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4513/">
+        <p class="h4 index-header">HDU-4513</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 4513 吉哥系列故事——完美队形II
+题目链接：https://vjudge.net/problem/HDU-4513#author=hzoi2017_wty
+题目大意：假设有n个人按顺序的身高分别是h[1], h[2] … h[n]，从中挑出一些人形成一个新的队形，新的队形若满足以下要求，则就是新的完美队形：　　1、连续的　　2、形成回文串　　3、从左到中间那个人，身高需保证不下降
+　　　问有组成完美队形的最多人数
+题解：要求连续的并且是回文串，这很明显就是回文串的题，应该用Manacher算法，但是又要求从左到中间，身高不下降，就需要修改一下判定条件：    while(t[i+p[i]]==t[i-p[i]]&amp;&amp;(t[i-p[i]]==0||t[i-p[i]]&lt;=t[i-p[i]+2]))p[i]++;
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Manacher">Manacher</a>&nbsp;
           
         
       </div>
@@ -509,7 +538,7 @@ const int max</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

@@ -145,20 +145,24 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3605/">
-        <p class="h4 index-header">HDU-3605</p>
+      <a href="/2020/02/07/HDU-3294/">
+        <p class="h4 index-header">HDU-3294</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3605 Escape
-题目链接：https://vjudge.net/problem/HDU-3605
-题目大意：有n个人，m个星球，前n行，每一行有m个数字，分别表示第i个星球是否适合这个人。最后一行有m个，表示每个星球的最多居住人数。n (1 &lt;= n &lt;= 100000), m (1 &lt;= m &lt;= 10)
-题解：一开始想多没想就开始建裸图，心里想：别看着图稠密，边多，实际上一跑就出结果了。事实证明自己太天真，nnm的数据量早就TLE！正确做法有点意思：由于m很小，就可以考虑状态压缩。对于第i个人，m个星球的居住情况已知，转换为二进制储存，所有的状态也不过才2^10而已，起点s连向状态，边权为这种状态的总人数，然后10个星球与这种状态匹配，若星球属于这个状态，则状态连向星球，边权为无穷大，然后星球与终点t连接，边权为星球的最大居住人数。然后就可以跑dinic了，若ans==n，就YES，否则就NO。
+          <div class="index-text mb-1">题目名称：HDU - 3294 Girls’ research
+题目链接：https://vjudge.net/problem/HDU-3294#author=asasas5d
+题目大意：先给一个字符x，然后给一个 字符串，表示字符串中所有字符x变成’a’，其余的字符依次往前变换。例如b babad就转换成azazc。让寻找第一个最长回文串，长度若小于2，则输出No solution!，否则输出起点，终点和转换后的最长回文串。
+题解：最长回文串问题，当然就是用Manacher，先计算出字符x与‘a’的差值，然后将字符串进行转换。然后直接跑Manacher，更新ans时注意更新储存一下终点和起点
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
-#include&lt;iostr</div>
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200000*2+105;
+int p[maxn],len,a[maxn],S,T;char s[maxn],t[maxn]</div>
         </div>
       </a>
 
@@ -170,9 +174,7 @@
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9">状态压缩</a>&nbsp;
+            <a href="/tags/Manacher">Manacher</a>&nbsp;
           
         
       </div>
@@ -183,20 +185,24 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3081/">
-        <p class="h4 index-header">HDU-3081</p>
+      <a href="/2020/02/07/HDU-4763/">
+        <p class="h4 index-header">HDU-4763</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3081 Marriage Match II
-题目链接：https://vjudge.net/problem/HDU-3081
-题目大意：有N个女孩要与N个男孩玩配对游戏.每个女孩有一个可选男孩的集合(即该女孩可以选自己集合中的任意一个男孩作为该轮的搭档).然后从第一轮开始,每个女孩都要和一个不同的男孩配对.如果第一轮N个女孩都配对成功,那么就开始第二轮配对,女孩依然从自己的备选男孩集合中选择,但是不能选那些已经被该女孩在前几轮选择中选过的男孩了(比如i女孩在第一轮选了j男孩,那么i在第二轮就不能选j男孩了). 问你游戏最多能进行多少轮?
-题解：女生:1n;男生:(n+1)(n*2)。对于女生u，她可以直接连向不讨厌的男生，边权为1。
-假设我们当前二分尝试的轮数为K(即能够进行K轮匹配):首先如果女孩i可能选择男孩j,那么就有边(i, j+n, 1).且源点到每个女孩i有边(s,i,K),每个男孩j到汇点t有边(j+n,t,K).
-如果最大流==K*n,那么就表示可以进行最少K轮匹配.
-证明：如果满流,那么每个女生肯定选择了K个不同的男孩,每个男孩肯定被K个不同的</div>
+          <div class="index-text mb-1">题目名称：HDU - 4763 Theme Section
+题目链接：https://vjudge.net/problem/HDU-4763#author=0
+题目大意：字符串E是字符串S的前缀和后缀，同时也出现在字符串S的中间，不与前缀后缀重合，问字符串S中符合要求的字符串E的最大长度。
+题解：这题显示是kmp问题，kmp中Next[i]表示字符串s从0…..i-1中前缀与后缀的最大公共子串，而问题就是求EAEBE，A，B长度任意(可以为0)，显然E最长为Next[len]，于是可以从len-Next[len]开始往前看Next[now]与E的大小关系，now&gt;=2*E，因为不可以重叠，如果找不到呢，E就应该缩小，理论是E–，所以E=Next[E]，继续寻找，直到找到或者无法继续。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000000+5;
+in</div>
         </div>
       </a>
 
@@ -208,48 +214,355 @@
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/kmp">kmp</a>&nbsp;
           
-            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-2387/">
+        <p class="h4 index-header">POJ-2387</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 2387 Til the Cows Come Home
+题目链接：https://vjudge.net/problem/POJ-2387#author=ght5160
+题目大意：求从1到n的最短距离
+题解：最短路模板，spfa或者dijkstra+堆优化。朴素Dijkstra：时间复杂度o(n^2)堆优化Dijkstra：时间复杂度o(（V+E）logV）
+spfa在稀疏图O（E），稠密图O（VE）
+dijkstra+堆优化的代码：
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=2000+5;
+int n,m,k=1,dist[maxn],vis[maxn],head[maxn];
+struct node
+{
+    int to,next,w;
+}edge[maxn*2];
+struct N
+{
+  </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-2253/">
+        <p class="h4 index-header">POJ-2253</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 2253 Frogger
+题目链接：https://vjudge.net/problem/POJ-2253#author=dusenlin
+题目大意：两块石头之间的青蛙距离被定义为两块石头之间所有可能路径上的最小必要跳跃距离，某条路径的必要跳跃距离即这条路径中单次跳跃的最远跳跃距离。求1到2的最小必要跳跃距离。
+题解：数据很小，符合Floyd算法。每一次更新的时候需要调整一下：dist[i][j]=min(dist[i][j],max(dist[i][k],dist[k][j]));因为必要跳跃距离是指整个路径单次跳跃的最远距离，所以取max
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=200+5;
+int n;double dist[maxn][maxn],x[maxn],y[maxn];
+i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1797/">
+        <p class="h4 index-header">POJ-1797</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1797 Heavy Transportation
+题目链接：https://vjudge.net/problem/POJ-1797#author=0
+题目大意：求1-n路径上边权最小值最大。
+题解：最短路径的变形题，用spfa来实现原本的dist[edge[i].to]=min(dist[edge[i].to],dist[x]+edge[i].w)修改为dist[edge[i].to]=max(dist[edge[i].to],min(dist[x],edge[i].w)注意初始化dist全为0，由于收缩，dist[1] =0x3f3f3f3f;
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=1000000+5;
+const int maxm=1000+5;
+int k=1,T,n,m,head</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3268/">
+        <p class="h4 index-header">POJ-3268</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3268 Silver Cow Party
+题目链接：https://vjudge.net/problem/POJ-3268#author=Demon_de_Laplace
+题目大意：N头牛，M条单行道，在s出举行聚会，每头牛出发和返回都是走最短路，问所有牛中走的路程最远的牛走了多远？
+题解：建边的时候建双向边，k=2开始.当边号为偶数时，说明是正边；当边号为奇数时，说明时反边；从s出发，跑正边，dist[i]存的是从s到i的最短距离；从s出发，跑反边，dist[i]存的是从i到s的最短距离；ans=max(ans,dist1[i]+dist2[i])
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=100000+5;
+int n,m,t,k=1,head[maxn],vis[maxn],dist1</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1860/">
+        <p class="h4 index-header">POJ-1860</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1860 Currency Exchange
+题目链接：https://vjudge.net/problem/POJ-1860#author=riba2534
+题目大意：给出每两种货币之间交换的手续费和汇率，求出从当前货币s开始交换，能否赚。能赚输出YES，否则输出NO
+题解：运用spfa判断是否存在存在正环(类似于判负环)。和判负环一样，记录一下点出现的次数，一旦出现此次数&gt;n就可以作出判断。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=10000+5;
+int n,m,s,k=1,head[maxn],vis[maxn],used[maxn];double w,dist[maxn];
+struct node
+{
+    int to,next;double w,q;
+}edge[max</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3259/">
+        <p class="h4 index-header">POJ-3259</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3259 Wormholes
+题目链接：https://vjudge.net/problem/POJ-3259#author=chen_zhe_
+题目大意：有n个教室，m条走廊(双向)，w条密道(单向)。走廊耗时&gt;0，密道可耗时&lt;0，问是否可以回到过去。
+题解：密道耗时&lt;0，再根据题目要求，就是问该图是否存在负环。由于这是一个连通图，从哪个点出发效果都一样，不妨从1开始出发，判断是否存在负环，判断方法：每次进行收缩时记录次数++，一旦超过了n就可以作出判断。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=50000+5;
+int k=1,T,n,m,w,head[maxn],vis[maxn],dist[maxn],used[maxn];
+struct node
+{
+    in</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1502/">
+        <p class="h4 index-header">POJ-1502</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1502 MPI Maelstrom
+题目链接：https://vjudge.net/problem/POJ-1502#author=20175101008
+题目大意：给出a[i][j]之间的值，若a[i][j]==’x’说明i，j之间不通，问从1开始同时向2…..n传递信息，需要多久全部结点都收到？
+题解：n&lt;=100，显然可以用Floyd算法，读入时字符串读入，加以处理，得到a[i][j]之间的距离，i，j不通则将长度设为无穷大，然后开始跑Floyd，最后统计dist[1][i],i∈[2,n]的最大值，该值为答案
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200+5;
+int n,a[maxn][maxn],dist[maxn][maxn];
+int main()
+{
+    memset(dist,0x3f3f3f3f,s</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3660/">
+        <p class="h4 index-header">POJ-3660</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3660 Cow Contest
+题目链接：https://vjudge.net/problem/POJ-3660#author=arasHi_
+题目大意：有n头牛，m条比赛结果，每行两个数字，第一个数字表示的是胜利者。问有几头牛的排名可以确定？
+题解：排名可以确定，这该如何理解？对于结点i，如果箭头指向i所包含的结点数为ans1，i箭头指出所包含的结点数为ans2，若ans1+ans2==n-1就说明结点i的排名可以确定。问题在于如何确定ans1，ans2的值。举个例子：若a可以到b，b可以到c，那么a就可以到c。这就是传递闭包了。如何进行传递闭包呢？以上例子，a可以到b，b可以到c，则dist[a][b]=1,dist[b][c]=1,则a可以到c，即dist[a][c]=1；用floyd进行收缩即可。然后每个结点是否可以到达剩余的n-1个结点，或者剩余n-1个结点能否到达该结点，即ans1+ans2==n。判断条件就是dist[i][j]==1||dist[j][i]==1;
+代码：#include&lt;cstdio&gt;
+#include&lt;cst</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92">闭包传递</a>&nbsp;
           
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-2732/">
-        <p class="h4 index-header">HDU-2732</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 2732 Leapin’ Lizards
-题目链接：https://vjudge.net/problem/HDU-2732
-题目大意：题目是说一个n*m的迷宫中，有每个格子有柱子。柱子高度为0~3，高度为0的柱子是不能站的（高度为0就是没有柱子）在一些有柱子的格子上有一些蜥蜴，一次最多跳距离d,相邻格子的距离是1，只要跳出迷宫就是安全的。这个距离是曼哈顿距离（好像是的）。蜥蜴一次最多跳距离d,但是起跳的地方的柱子高度会减一，一个柱子同一时间只能有一个蜥蜴要求最少几个不能逃出迷宫。
-题解：最大流问题，求出dinic跑出的最大流，然后总数-ans就是剩余的数。建图方法：
-1.每个柱子有容纳量，超过了就塌了。u–&gt;u’ 边权为容纳量
-2.有蜥蜴的柱子与起点s相连，即s–&gt;u,边权为1
-3.边界上可以跳出界的与终点相连，条件(x1&lt;=p||y1&lt;=p||n-x1+1&lt;=p||len-y1+1&lt;=p)&amp;&amp;h[x1][y1]，u’–&gt;t,边权0x3f3f3f3f
-4.任意两个有容纳量的柱子，且曼哈顿距离&lt;=d，可</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
         
       </div>
@@ -260,7 +573,7 @@
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
