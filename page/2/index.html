@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 ~ Phoenix_ZH&#39;Blog</title>
+  <title>Phoenix_ZH&#39;Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -121,6 +121,10 @@
           </div>
 
           
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
         </div>
       </div>
     </div>
@@ -136,78 +140,127 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 13 篇文章</p>
-  <hr>
-  
+
+  <div class="row mb-4 mx-auto">
     
-      
-      <p class="h5">2020</p>
     
-    <a href="/2020/02/07/UVA-10480/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">UVA-10480</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3605/">
+        <p class="h4 index-header">HDU-3605</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 3605 Escape
+题目链接：https://vjudge.net/problem/HDU-3605
+题目大意：有n个人，m个星球，前n行，每一行有m个数字，分别表示第i个星球是否适合这个人。最后一行有m个，表示每个星球的最多居住人数。n (1 &lt;= n &lt;= 100000), m (1 &lt;= m &lt;= 10)
+题解：一开始想多没想就开始建裸图，心里想：别看着图稠密，边多，实际上一跑就出结果了。事实证明自己太天真，nnm的数据量早就TLE！正确做法有点意思：由于m很小，就可以考虑状态压缩。对于第i个人，m个星球的居住情况已知，转换为二进制储存，所有的状态也不过才2^10而已，起点s连向状态，边权为这种状态的总人数，然后10个星球与这种状态匹配，若星球属于这个状态，则状态连向星球，边权为无穷大，然后星球与终点t连接，边权为星球的最大居住人数。然后就可以跑dinic了，若ans==n，就YES，否则就NO。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostr</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+            <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9">状态压缩</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
     
-    <a href="/2020/02/07/POJ-3436/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">POJ-3436</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
     
-    <a href="/2020/02/07/POJ-3281/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">POJ-3281</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3081/">
+        <p class="h4 index-header">HDU-3081</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 3081 Marriage Match II
+题目链接：HDU - 3081 Marriage Match II
+题目大意：有N个女孩要与N个男孩玩配对游戏.每个女孩有一个可选男孩的集合(即该女孩可以选自己集合中的任意一个男孩作为该轮的搭档).然后从第一轮开始,每个女孩都要和一个不同的男孩配对.如果第一轮N个女孩都配对成功,那么就开始第二轮配对,女孩依然从自己的备选男孩集合中选择,但是不能选那些已经被该女孩在前几轮选择中选过的男孩了(比如i女孩在第一轮选了j男孩,那么i在第二轮就不能选j男孩了). 问你游戏最多能进行多少轮?
+题解：女生:1n;男生:(n+1)(n*2)。对于女生u，她可以直接连向不讨厌的男生，边权为1。
+假设我们当前二分尝试的轮数为K(即能够进行K轮匹配):首先如果女孩i可能选择男孩j,那么就有边(i, j+n, 1).且源点到每个女孩i有边(s,i,K),每个男孩j到汇点t有边(j+n,t,K).
+如果最大流==K*n,那么就表示可以进行最少K轮匹配.
+证明：如果满流,那么每个女生肯定选择了K个不同的男孩,每个男孩肯定被K个不同的女孩选择了(因</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92">闭包传递</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
     
-    <a href="/2020/02/07/POJ-2516/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">POJ-2516</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
     
-    <a href="/2020/02/07/POJ-2195/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">POJ-2195</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
-    
-    <a href="/2020/02/07/POJ-1459/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">POJ-1459</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
-    
-    <a href="/2020/02/07/POJ-1087/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">POJ-1087</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
-    
-    <a href="/2020/02/07/HDU-4292/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HDU-4292</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
-    
-    <a href="/2020/02/07/HDU-4289/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HDU-4289</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
-    
-    <a href="/2020/02/07/HDU-4280/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HDU-4280</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
-</div>
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-2732/">
+        <p class="h4 index-header">HDU-2732</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 2732 Leapin’ Lizards
+题目链接：https://vjudge.net/problem/HDU-2732
+题目大意：题目是说一个n*m的迷宫中，有每个格子有柱子。柱子高度为0~3，高度为0的柱子是不能站的（高度为0就是没有柱子）在一些有柱子的格子上有一些蜥蜴，一次最多跳距离d,相邻格子的距离是1，只要跳出迷宫就是安全的。这个距离是曼哈顿距离（好像是的）。蜥蜴一次最多跳距离d,但是起跳的地方的柱子高度会减一，一个柱子同一时间只能有一个蜥蜴要求最少几个不能逃出迷宫。
+题解：最大流问题，求出dinic跑出的最大流，然后总数-ans就是剩余的数。建图方法：
+1.每个柱子有容纳量，超过了就塌了。u–&gt;u’ 边权为容纳量
+2.有蜥蜴的柱子与起点s相连，即s–&gt;u,边权为1
+3.边界上可以跳出界的与终点相连，条件(x1&lt;=p||y1&lt;=p||n-x1+1&lt;=p||len-y1+1&lt;=p)&amp;&amp;h[x1][y1]，u’–&gt;t,边权0x3f3f3f3f
+4.任意两个有容纳量的柱子，且曼哈顿距离&lt;=d，可</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/02/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/02/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
     </span>
   </nav>
   
@@ -216,6 +269,7 @@
       ele.href += '#board';
     }
   </script>
+
 
 
               </div>
@@ -341,7 +395,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
