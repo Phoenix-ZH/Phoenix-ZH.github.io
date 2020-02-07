@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    391 字
+                    408 字
                   </span>&nbsp;
                 
 
@@ -184,68 +184,7 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-2609" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-2609</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给n个字符串，每个字符串可以滑动形成新的字符串，问有多少个不同的字符串。<br>ps：若一个字符串滑动后与另一个字符串相同，则这两个字符串相同。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>先将每个字符串的最小表示法找到，然后用string数组储存字符串的最小表示法，然后sort排序，匹配找到总数</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=10000+5;
-const int maxm=100+5;
-int len2,Next[maxn],len1,n;string s[maxn];char a[maxn][maxm];
-int cmp(string x,string y)
-{
-    return x&lt;y;
-}
-int get_min(int opt)
-{
-    int opt1=0,opt2=1,k=0;
-    while(opt1&lt;len1&amp;&amp;opt2&lt;len1&amp;&amp;k&lt;len1)
-    {
-        if(s[opt][(opt1+k)%len1]==s[opt][(opt2+k)%len1])k++;
-        else if(s[opt][(opt1+k)%len1]&gt;s[opt][(opt2+k)%len1])
-        {
-            opt1=opt1+k+1;k=0;
-            if(opt1==opt2)
-                opt1++;
-        }
-        else if(s[opt][(opt1+k)%len1]&lt;s[opt][(opt2+k)%len1])
-        {
-            opt2=opt2+k+1;k=0;
-            if(opt1==opt2)
-                opt2++;
-        }
-    }
-    return min(opt1,opt2);
-}
-int main()
-{
-    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)
-    {
-        memset(a,0,sizeof(a));//char  与 string不同，必须清空！string s[i] 清空：s[i].clear(); 
-        for(int i=1;i&lt;=n;i++)cin&gt;&gt;s[i];
-        for(int i=1;i&lt;=n;i++)
-        {
-            len1=s[i].length();
-            int x=get_min(i);
-            int opt=0;
-            while(opt&lt;len1)
-            {
-                a[i][opt]=s[i][(x+opt)%len1];
-                opt++;
-            }
-        }
-        for(int i=1;i&lt;=n;i++)s[i]=a[i];
-        sort(s+1,s+1+n,cmp);
-        int ans=1;
-        for(int i=2;i&lt;=n;i++)
-        {
-            if(s[i]!=s[i-1])ans++;
-        }
-        printf(&quot;%d\n&quot;,ans);
-    }
-    return 0;
-}</code></pre>
-
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">10000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm=<span class="number">100</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> len2,Next[maxn],len1,n;<span class="built_in">string</span> s[maxn];<span class="keyword">char</span> a[maxn][maxm];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="built_in">string</span> x,<span class="built_in">string</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x&lt;y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_min</span><span class="params">(<span class="keyword">int</span> opt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> opt1=<span class="number">0</span>,opt2=<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(opt1&lt;len1&amp;&amp;opt2&lt;len1&amp;&amp;k&lt;len1)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(s[opt][(opt1+k)%len1]==s[opt][(opt2+k)%len1])k++;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s[opt][(opt1+k)%len1]&gt;s[opt][(opt2+k)%len1])</span><br><span class="line">		&#123;</span><br><span class="line">			opt1=opt1+k+<span class="number">1</span>;k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(opt1==opt2)</span><br><span class="line">				opt1++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s[opt][(opt1+k)%len1]&lt;s[opt][(opt2+k)%len1])</span><br><span class="line">		&#123;</span><br><span class="line">			opt2=opt2+k+<span class="number">1</span>;k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(opt1==opt2)</span><br><span class="line">				opt2++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> min(opt1,opt2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));<span class="comment">//char  与 string不同，必须清空！string s[i] 清空：s[i].clear(); </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">cin</span>&gt;&gt;s[i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			len1=s[i].length();</span><br><span class="line">			<span class="keyword">int</span> x=get_min(i);</span><br><span class="line">			<span class="keyword">int</span> opt=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(opt&lt;len1)</span><br><span class="line">			&#123;</span><br><span class="line">				a[i][opt]=s[i][(x+opt)%len1];</span><br><span class="line">				opt++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)s[i]=a[i];</span><br><span class="line">		sort(s+<span class="number">1</span>,s+<span class="number">1</span>+n,cmp);</span><br><span class="line">		<span class="keyword">int</span> ans=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(s[i]!=s[i<span class="number">-1</span>])ans++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             <hr>
           </div>
           <br>

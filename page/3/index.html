@@ -164,8 +164,7 @@
 题目链接：https://vjudge.net/problem/POJ-3660#author=arasHi_
 题目大意：有n头牛，m条比赛结果，每行两个数字，第一个数字表示的是胜利者。问有几头牛的排名可以确定？
 题解：排名可以确定，这该如何理解？对于结点i，如果箭头指向i所包含的结点数为ans1，i箭头指出所包含的结点数为ans2，若ans1+ans2==n-1就说明结点i的排名可以确定。问题在于如何确定ans1，ans2的值。举个例子：若a可以到b，b可以到c，那么a就可以到c。这就是传递闭包了。如何进行传递闭包呢？以上例子，a可以到b，b可以到c，则dist[a][b]=1,dist[b][c]=1,则a可以到c，即dist[a][c]=1；用floyd进行收缩即可。然后每个结点是否可以到达剩余的n-1个结点，或者剩余n-1个结点能否到达该结点，即ans1+ans2==n。判断条件就是dist[i][j]==1||dist[j][i]==1;
-代码：#include&lt;cstdio&gt;
-#include&lt;cst</div>
+代码：12345678910111213141516171819202122232</div>
         </div>
       </a>
 
@@ -201,15 +200,7 @@
 题目链接：https://vjudge.net/problem/POJ-2240#author=Andy_acmer
 题目大意：有n种货币，m条货币的汇率关系。比如：USDollar 0.5 BritishPound说明1个USDollar货币，可以换成0.5个BritishPound货币，问是否可以通过这种关系来获利。
 题解：由于货币名字使字符串，那么用map比较方便,map&lt;string,int&gt;q，可以将字符串映射成int型。然后跑spfa，看是否存在正环，与判断负环的方法一样。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-#include&lt;map&gt;
-using namespace std;
-const int maxn=10000+5;
-int n,m,head[maxn],vis[maxn],used[</div>
+代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#incl</div>
         </div>
       </a>
 
@@ -245,14 +236,7 @@ int n,m,head[maxn],vis[maxn],used[</div>
 题目链接：https://vjudge.net/problem/POJ-1511#author=0
 题目大意：n-1个人从1号点出发，到剩余n-1个宣传点，然后再回到1号点汇报结果，求所有人往返路径和的最小值。
 题解：m条边，边号为偶数的表示正方向，边号为奇数的表示反方向。spfa1()沿着正方向跑，起点为1，则dist[i]表示的是从1到i的最短距离。spfa2()沿着反方向跑，起点为1，则dist2[i]表示的是从i到1的最短距离。最终答案就是dist1[i]+dist2[i]的总和，i∈[2,n]。
-代码：    #include&lt;cstdio&gt;
-    #include&lt;cstring&gt;
-    #include&lt;iostream&gt;
-    #include&lt;algorithm&gt;
-    #include&lt;queue&gt;
-    using namespace std;
-    const long long maxn=1000000+5;
-    str</div>
+代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192#include&lt;cstdio&gt;#include&lt</div>
         </div>
       </a>
 
@@ -287,11 +271,7 @@ int n,m,head[maxn],vis[maxn],used[</div>
 题目大意：有n个同学，m条信息，每条信息为a,b,c三个整数表示a相信b的糖果不会比自己多于c。问n同学最多比1同学多多少个糖果？
 题解：这是差分约束的题目，由题知Have[b]-Have[a]&lt;=c;即Have[b]&lt;=c+Have[a]；而最短路的更新条件是dist[edge[i].to]&gt;dist[x]+edge[i].w，就说明了dist[edge[i].to]&lt;=dist[x]+edge[i].w;于是建边就可以a—&gt;b,边权为c，跑最短路。dist[n]就是答案
 ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保险！
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt</div>
+代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636</div>
         </div>
       </a>
 
@@ -327,9 +307,7 @@ ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保�
 题目链接：https://vjudge.net/problem/POJ-2502#author=1738160864
 题目大意：小k要从家去学校，他可以选择步行或者地铁，步行的速度是10km/h，地铁的速度是40km/h。假设小k非常的幸运，每次他到地铁站就立刻会有地铁。小k可以随意上下地铁，并且可以在地铁线路之间转换。所有的地铁运行都是双向的。注意地铁站不会重复出现。
 题解：n&lt;=200，所以可以用Floyd。每次出现的新地铁站，先与起点更新时间花费，此时速度为v1，然后输入地铁线，此时速度为v2，可以更新相邻地铁站之间的时间花费，并且更新起点与地铁站之间的时间花费，此时速度为v1。最后地铁站输入完之后，tot++，这就是终点编号，所有结点与终点的时间花费需要更新。然后开始跑Floyd。最后dist[0][tot]储存答案，需要四舍五入，即int ans=dist[0][tot]+0.5;ans为最终答案
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;io</div>
+代码：1234567891011121314151617181920212223242526272829303132333435</div>
         </div>
       </a>
 
@@ -397,12 +375,7 @@ ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保�
 题目大意：输入n,a,b三个数，表示有n个点(1-n)，起点是a，终点是b，然后接下来有n行，每一行的第一个数m表示后面将会有m个数，输入结构是这样的，然后我再具体的解释一下。
 3 2 1     3表示共有n个点，接下来有n行，2表示起点，1表示终点2 2 3     第一个数2表示后面有2个数，因为这是第1行，所以后面两个数表示从1到2和从1到3的边2 3 1     表示从2到3和从2到1的边2 1 2     表示从3到1和从3到2的边
 题解：n&lt;=100，可以跑Floyd，dist初始化无穷大，每个结点所连接的第一个结点与它的距离为0，其余相连的为1，然后跑Floyd。dist[s][t]为最终的结果。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-co</div>
+代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445#include&lt;cstdio&gt;#include&lt;cstrin</div>
         </div>
       </a>
 
@@ -436,14 +409,7 @@ co</div>
 题目链接：https://vjudge.net/problem/LightOJ-1074#author=bbisnouse
 题目大意：在一个堵车的城市中, 每个路口都有一个拥挤程度a[i], 从u驶向v得到一个数量, 值为(a[v]-a[u])^3, 给出Q组查询, 每组给出一个数, 求1到这个数的点的最小数量, 如果不可达输出 ？
 题解：一开始觉得n很小，可以直接跑floyd，但是后来WA了两发，发现可能存在负环，所以需要判断负环，因此选择spfa，一旦判断出了负环就dfs，找到负环可以达到的所有点。对于查询一一输出结果即可。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=200005;
-int n,T,a[maxn],head[maxn],v</div>
+代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#include&lt;cst</div>
         </div>
       </a>
 
@@ -510,8 +476,7 @@ int n,T,a[maxn],head[maxn],v</div>
 题目链接：https://vjudge.net/problem/POJ-3169#author=634579757
 题目大意：有N头牛排队，多头牛可以在同一点。现有几对相互喜好的牛，他们不能超过一定距离，有几对相互厌恶的牛，他们至少隔开一定距离。求1和N最远相距多少。
 题解：这很显然是差分约束的题目。为了保证图能够联通，需要固定i，j的大小顺序。 对于前m1个a,b,c表示a和b之间的距离不超过c，不妨设a&gt;b，则应满足d[a]-d[b]&lt;=c，最短路的要求就是如此，所以建边：b–&gt;a 边权为c。对于后m2个a，b，c表示a和b之间的距离不小于c，不妨设a&gt;b，则应满足d[a]-d[b]&gt;=c，即d[b]&lt;=d[a]-c，所以建边：a–&gt;b边权为-c。然后开始跑spfa，期间要判断负环，如果有负环存在则说明无解；如果dist[n]==0x3f3f3f3f,说明n号可以无限远。其余的则dist[n]为答案
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt</div>
+代码：123456789101112131415161718192021222324252627</div>
         </div>
       </a>
 

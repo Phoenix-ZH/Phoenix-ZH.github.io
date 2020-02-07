@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    547 字
+                    575 字
                   </span>&nbsp;
                 
 
@@ -186,117 +186,9 @@
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>最短路模板，spfa或者dijkstra+堆优化。<br>朴素Dijkstra：时间复杂度o(n^2)<br>堆优化Dijkstra：时间复杂度o(（V+E）logV）</p>
 <p>spfa在稀疏图O（E），稠密图O（VE）</p>
 <p>dijkstra+堆优化的代码：</p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=2000+5;
-int n,m,k=1,dist[maxn],vis[maxn],head[maxn];
-struct node
-{
-    int to,next,w;
-}edge[maxn*2];
-struct N
-{
-    int now,w;
-    bool operator &lt; (N x)const{return x.w&lt;w;}
-};
-void add(int u,int v,int w)
-{
-    edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;
-}
-void dijkstra()
-{
-    priority_queue&lt;N&gt;q;
-    memset(vis,0,sizeof(vis));
-    memset(dist,0x3f3f3f3f,sizeof(dist));
-    dist[1]=0;
-    N x;x.now=1;x.w=0;
-    q.push(x);
-    while(!q.empty())
-    {
-        x=q.top();q.pop();
-        if(vis[x.now])continue;
-        vis[x.now]=1;
-        for(int i=head[x.now];i;i=edge[i].next)
-        {
-            if(!vis[edge[i].to]&amp;&amp;dist[edge[i].to]&gt;dist[x.now]+edge[i].w)
-            {
-                dist[edge[i].to]=dist[x.now]+edge[i].w;
-                N now;now.now=edge[i].to;now.w=dist[edge[i].to];
-                q.push(now);
-            }
-        }
-    }
-}
-int main()
-{
-    scanf(&quot;%d%d&quot;,&amp;m,&amp;n);
-    for(int i=1;i&lt;=m;i++)
-    {
-        int a,b,c;
-        scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);add(a,b,c);add(b,a,c);
-    }
-    dijkstra();
-    printf(&quot;%d\n&quot;,dist[n]);
-    return 0;
-}</code></pre>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,k=<span class="number">1</span>,dist[maxn],vis[maxn],head[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,w;</span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">N</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> now,w;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (N x)<span class="keyword">const</span>&#123;<span class="keyword">return</span> x.w&lt;w;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	priority_queue&lt;N&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">	<span class="built_in">memset</span>(dist,<span class="number">0x3f3f3f3f</span>,<span class="keyword">sizeof</span>(dist));</span><br><span class="line">	dist[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">	N x;x.now=<span class="number">1</span>;x.w=<span class="number">0</span>;</span><br><span class="line">	q.push(x);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		x=q.top();q.pop();</span><br><span class="line">		<span class="keyword">if</span>(vis[x.now])<span class="keyword">continue</span>;</span><br><span class="line">		vis[x.now]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x.now];i;i=edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!vis[edge[i].to]&amp;&amp;dist[edge[i].to]&gt;dist[x.now]+edge[i].w)</span><br><span class="line">			&#123;</span><br><span class="line">				dist[edge[i].to]=dist[x.now]+edge[i].w;</span><br><span class="line">				N now;now.now=edge[i].to;now.w=dist[edge[i].to];</span><br><span class="line">				q.push(now);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;m,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> a,b,c;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;c);add(a,b,c);add(b,a,c);</span><br><span class="line">	&#125;</span><br><span class="line">	dijkstra();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,dist[n]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>spfa的代码：</p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=2000+5;
-int n,m,k=1,head[maxn],dist[maxn],vis[maxn]; 
-struct node
-{
-    int to,next,w;
-}edge[maxn*2];
-void add(int u,int v,int w)
-{
-    edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;
-}
-void spfa()
-{
-    memset(dist,0x3f3f3f3f,sizeof(dist));
-    memset(vis,0,sizeof(vis));
-    queue&lt;int&gt;q;
-    dist[1]=0;vis[1]=1;
-    q.push(1);
-    while(!q.empty())
-    {
-        int x=q.front();q.pop();vis[x]=0;
-        for(int i=head[x];i;i=edge[i].next)
-        {
-            if(dist[edge[i].to]&gt;dist[x]+edge[i].w)
-            {
-                dist[edge[i].to]=dist[x]+edge[i].w;
-                if(!vis[edge[i].to])
-                {
-                    q.push(edge[i].to);
-                    vis[edge[i].to]=1;
-                }
-            }
-        }
-    }
-}
-int main()
-{
-    scanf(&quot;%d%d&quot;,&amp;m,&amp;n);
-    for(int i=1;i&lt;=m;i++)
-    {
-        int a,b,c;
-        scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);add(a,b,c);add(b,a,c);
-    }
-    spfa();
-    printf(&quot;%d\n&quot;,dist[n]);
-    return 0;
-}</code></pre>
-
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,k=<span class="number">1</span>,head[maxn],dist[maxn],vis[maxn]; </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,w;</span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dist,<span class="number">0x3f3f3f3f</span>,<span class="keyword">sizeof</span>(dist));</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	dist[<span class="number">1</span>]=<span class="number">0</span>;vis[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	q.push(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x=q.front();q.pop();vis[x]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(dist[edge[i].to]&gt;dist[x]+edge[i].w)</span><br><span class="line">			&#123;</span><br><span class="line">				dist[edge[i].to]=dist[x]+edge[i].w;</span><br><span class="line">				<span class="keyword">if</span>(!vis[edge[i].to])</span><br><span class="line">				&#123;</span><br><span class="line">					q.push(edge[i].to);</span><br><span class="line">					vis[edge[i].to]=<span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;m,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> a,b,c;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;c);add(a,b,c);add(b,a,c);</span><br><span class="line">	&#125;</span><br><span class="line">	spfa();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,dist[n]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             <hr>
           </div>
           <br>

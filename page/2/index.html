@@ -165,11 +165,7 @@
 题目大意：假设有n个人按顺序的身高分别是h[1], h[2] … h[n]，从中挑出一些人形成一个新的队形，新的队形若满足以下要求，则就是新的完美队形：　　1、连续的　　2、形成回文串　　3、从左到中间那个人，身高需保证不下降
 　　　问有组成完美队形的最多人数
 题解：要求连续的并且是回文串，这很明显就是回文串的题，应该用Manacher算法，但是又要求从左到中间，身高不下降，就需要修改一下判定条件：    while(t[i+p[i]]==t[i-p[i]]&amp;&amp;(t[i-p[i]]==0||t[i-p[i]]&lt;=t[i-p[i]+2]))p[i]++;
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace </div>
+代码：12345678910111213141516171819202122232425262728293031323334353637383940#include&lt;cstdio&gt;#include&lt;cstring&g</div>
         </div>
       </a>
 
@@ -203,13 +199,7 @@ using namespace </div>
 题目链接：https://vjudge.net/problem/HDU-3294#author=asasas5d
 题目大意：先给一个字符x，然后给一个 字符串，表示字符串中所有字符x变成’a’，其余的字符依次往前变换。例如b babad就转换成azazc。让寻找第一个最长回文串，长度若小于2，则输出No solution!，否则输出起点，终点和转换后的最长回文串。
 题解：最长回文串问题，当然就是用Manacher，先计算出字符x与‘a’的差值，然后将字符串进行转换。然后直接跑Manacher，更新ans时注意更新储存一下终点和起点
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=200000*2+105;
-int p[maxn],len,a[maxn],S,T;char s[maxn],t[maxn]</div>
+代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algori</div>
         </div>
       </a>
 
@@ -243,13 +233,7 @@ int p[maxn],len,a[maxn],S,T;char s[maxn],t[maxn]</div>
 题目链接：https://vjudge.net/problem/HDU-4763#author=0
 题目大意：字符串E是字符串S的前缀和后缀，同时也出现在字符串S的中间，不与前缀后缀重合，问字符串S中符合要求的字符串E的最大长度。
 题解：这题显示是kmp问题，kmp中Next[i]表示字符串s从0…..i-1中前缀与后缀的最大公共子串，而问题就是求EAEBE，A，B长度任意(可以为0)，显然E最长为Next[len]，于是可以从len-Next[len]开始往前看Next[now]与E的大小关系，now&gt;=2*E，因为不可以重叠，如果找不到呢，E就应该缩小，理论是E–，所以E=Next[E]，继续寻找，直到找到或者无法继续。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1000000+5;
-in</div>
+代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include&lt;cstdio&gt;#include&lt;cstring&gt</div>
         </div>
       </a>
 
@@ -285,21 +269,7 @@ in</div>
 题解：最短路模板，spfa或者dijkstra+堆优化。朴素Dijkstra：时间复杂度o(n^2)堆优化Dijkstra：时间复杂度o(（V+E）logV）
 spfa在稀疏图O（E），稠密图O（VE）
 dijkstra+堆优化的代码：
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=2000+5;
-int n,m,k=1,dist[maxn],vis[maxn],head[maxn];
-struct node
-{
-    int to,next,w;
-}edge[maxn*2];
-struct N
-{
-  </div>
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;using namespace std;const int maxn=2000+5;int n,m,</div>
         </div>
       </a>
 
@@ -333,15 +303,7 @@ struct N
 题目链接：https://vjudge.net/problem/POJ-2253#author=dusenlin
 题目大意：两块石头之间的青蛙距离被定义为两块石头之间所有可能路径上的最小必要跳跃距离，某条路径的必要跳跃距离即这条路径中单次跳跃的最远跳跃距离。求1到2的最小必要跳跃距离。
 题解：数据很小，符合Floyd算法。每一次更新的时候需要调整一下：dist[i][j]=min(dist[i][j],max(dist[i][k],dist[k][j]));因为必要跳跃距离是指整个路径单次跳跃的最远距离，所以取max
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-using namespace std;
-const int maxn=200+5;
-int n;double dist[maxn][maxn],x[maxn],y[maxn];
-i</div>
+代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;using names</div>
         </div>
       </a>
 
@@ -375,15 +337,7 @@ i</div>
 题目链接：https://vjudge.net/problem/POJ-1797#author=0
 题目大意：求1-n路径上边权最小值最大。
 题解：最短路径的变形题，用spfa来实现原本的dist[edge[i].to]=min(dist[edge[i].to],dist[x]+edge[i].w)修改为dist[edge[i].to]=max(dist[edge[i].to],min(dist[x],edge[i].w)注意初始化dist全为0，由于收缩，dist[1] =0x3f3f3f3f;
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=1000000+5;
-const int maxm=1000+5;
-int k=1,T,n,m,head</div>
+代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#in</div>
         </div>
       </a>
 
@@ -417,14 +371,7 @@ int k=1,T,n,m,head</div>
 题目链接：https://vjudge.net/problem/POJ-3268#author=Demon_de_Laplace
 题目大意：N头牛，M条单行道，在s出举行聚会，每头牛出发和返回都是走最短路，问所有牛中走的路程最远的牛走了多远？
 题解：建边的时候建双向边，k=2开始.当边号为偶数时，说明是正边；当边号为奇数时，说明时反边；从s出发，跑正边，dist[i]存的是从s到i的最短距离；从s出发，跑反边，dist[i]存的是从i到s的最短距离；ans=max(ans,dist1[i]+dist2[i])
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=100000+5;
-int n,m,t,k=1,head[maxn],vis[maxn],dist1</div>
+代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283#include&lt;cstdio&gt;#include&lt;cstring&gt;#inc</div>
         </div>
       </a>
 
@@ -458,18 +405,7 @@ int n,m,t,k=1,head[maxn],vis[maxn],dist1</div>
 题目链接：https://vjudge.net/problem/POJ-1860#author=riba2534
 题目大意：给出每两种货币之间交换的手续费和汇率，求出从当前货币s开始交换，能否赚。能赚输出YES，否则输出NO
 题解：运用spfa判断是否存在存在正环(类似于判负环)。和判负环一样，记录一下点出现的次数，一旦出现此次数&gt;n就可以作出判断。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=10000+5;
-int n,m,s,k=1,head[maxn],vis[maxn],used[maxn];double w,dist[maxn];
-struct node
-{
-    int to,next;double w,q;
-}edge[max</div>
+代码：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;using namespace std;const int maxn=10000+5;int n,m,s,k=1,head</div>
         </div>
       </a>
 
@@ -505,17 +441,7 @@ struct node
 题目链接：https://vjudge.net/problem/POJ-3259#author=chen_zhe_
 题目大意：有n个教室，m条走廊(双向)，w条密道(单向)。走廊耗时&gt;0，密道可耗时&lt;0，问是否可以回到过去。
 题解：密道耗时&lt;0，再根据题目要求，就是问该图是否存在负环。由于这是一个连通图，从哪个点出发效果都一样，不妨从1开始出发，判断是否存在负环，判断方法：每次进行收缩时记录次数++，一旦超过了n就可以作出判断。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=50000+5;
-int k=1,T,n,m,w,head[maxn],vis[maxn],dist[maxn],used[maxn];
-struct node
-{
-    in</div>
+代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;u</div>
         </div>
       </a>
 
@@ -551,16 +477,7 @@ struct node
 题目链接：https://vjudge.net/problem/POJ-1502#author=20175101008
 题目大意：给出a[i][j]之间的值，若a[i][j]==’x’说明i，j之间不通，问从1开始同时向2…..n传递信息，需要多久全部结点都收到？
 题解：n&lt;=100，显然可以用Floyd算法，读入时字符串读入，加以处理，得到a[i][j]之间的距离，i，j不通则将长度设为无穷大，然后开始跑Floyd，最后统计dist[1][i],i∈[2,n]的最大值，该值为答案
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=200+5;
-int n,a[maxn][maxn],dist[maxn][maxn];
-int main()
-{
-    memset(dist,0x3f3f3f3f,s</div>
+代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int</div>
         </div>
       </a>
 

@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    399 字
+                    402 字
                   </span>&nbsp;
                 
 
@@ -185,47 +185,7 @@
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>假设有n个人按顺序的身高分别是h[1], h[2] … h[n]，从中挑出一些人形成一个新的队形，新的队形若满足以下要求，则就是新的完美队形：<br>　　1、连续的<br>　　2、形成回文串<br>　　3、从左到中间那个人，身高需保证不下降</p>
 <p>　　　问有组成完美队形的最多人数</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>要求连续的并且是回文串，这很明显就是回文串的题，应该用Manacher算法，但是又要求从左到中间，身高不下降，就需要修改一下判定条件：    while(t[i+p[i]]==t[i-p[i]]&amp;&amp;(t[i-p[i]]==0||t[i-p[i]]&lt;=t[i-p[i]+2]))p[i]++;</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=100000*2+15;
-int T,n,p[maxn],s[maxn],t[maxn];
-int main()
-{
-    scanf(&quot;%d&quot;,&amp;T);
-    while(T--)
-    {
-        memset(p,0,sizeof(p));
-        memset(t,0,sizeof(t));
-        scanf(&quot;%d&quot;,&amp;n);
-        for(int i=1;i&lt;=n;i++)scanf(&quot;%d&quot;,&amp;s[i]);
-        int len=0;
-        t[0]=10000;
-        for(int i=1;i&lt;=n;i++)
-        {
-            t[++len]=0;t[++len]=s[i];
-        }
-        t[++len]=0;
-        int id=0,mx=0,ans=0;
-        for(int i=1;i&lt;=len;i++)
-        {
-            if(i&lt;mx)p[i]=min(p[id*2-i],mx-i);
-            else p[i]=1;
-            while(t[i+p[i]]==t[i-p[i]]&amp;&amp;(t[i-p[i]]==0||t[i-p[i]]&lt;=t[i-p[i]+2]))p[i]++;
-            if(i+p[i]&gt;mx)
-            {
-                mx=i+p[i];
-                id=i;
-            }
-            ans=max(ans,p[i]-1);
-        }
-        printf(&quot;%d\n&quot;,ans);
-    }
-    return 0;
-}</code></pre>
-
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">100000</span>*<span class="number">2</span>+<span class="number">15</span>;</span><br><span class="line"><span class="keyword">int</span> T,n,p[maxn],s[maxn],t[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">memset</span>(p,<span class="number">0</span>,<span class="keyword">sizeof</span>(p));</span><br><span class="line">		<span class="built_in">memset</span>(t,<span class="number">0</span>,<span class="keyword">sizeof</span>(t));</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;s[i]);</span><br><span class="line">		<span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line">		t[<span class="number">0</span>]=<span class="number">10000</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			t[++len]=<span class="number">0</span>;t[++len]=s[i];</span><br><span class="line">		&#125;</span><br><span class="line">		t[++len]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> id=<span class="number">0</span>,mx=<span class="number">0</span>,ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;mx)p[i]=min(p[id*<span class="number">2</span>-i],mx-i);</span><br><span class="line">			<span class="keyword">else</span> p[i]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span>(t[i+p[i]]==t[i-p[i]]&amp;&amp;(t[i-p[i]]==<span class="number">0</span>||t[i-p[i]]&lt;=t[i-p[i]+<span class="number">2</span>]))p[i]++;</span><br><span class="line">			<span class="keyword">if</span>(i+p[i]&gt;mx)</span><br><span class="line">			&#123;</span><br><span class="line">				mx=i+p[i];</span><br><span class="line">				id=i;</span><br><span class="line">			&#125;</span><br><span class="line">			ans=max(ans,p[i]<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             <hr>
           </div>
           <br>

@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    363 字
+                    372 字
                   </span>&nbsp;
                 
 
@@ -184,54 +184,7 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-2253#author=dusenlin" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-2253#author=dusenlin</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>两块石头之间的青蛙距离被定义为两块石头之间所有可能路径上的最小必要跳跃距离，某条路径的必要跳跃距离即这条路径中单次跳跃的最远跳跃距离。求1到2的最小必要跳跃距离。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>数据很小，符合Floyd算法。每一次更新的时候需要调整一下：<br>dist[i][j]=min(dist[i][j],max(dist[i][k],dist[k][j]));<br>因为必要跳跃距离是指整个路径单次跳跃的最远距离，所以取max</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-using namespace std;
-const int maxn=200+5;
-int n;double dist[maxn][maxn],x[maxn],y[maxn];
-int main()
-{
-    int opt=0;
-    while(1)
-    {
-        opt++;
-        scanf(&quot;%d&quot;,&amp;n);
-        if(n==0)break;
-        for(int i=1;i&lt;=n;i++)
-            for(int j=1;j&lt;=n;j++)
-                dist[i][j]=0x3f3f3f3f;
-        for(int i=1;i&lt;=n;i++)
-        {
-            scanf(&quot;%lf%lf&quot;,&amp;x[i],&amp;y[i]);
-        }
-        for(int i=1;i&lt;=n;i++)
-        {
-            for(int j=1;j&lt;=n;j++)
-            {
-                if(i!=j)
-                dist[i][j]=sqrt((x[i]-x[j])*(x[i]-x[j])+(y[i]-y[j])*(y[i]-y[j]));
-            }
-        }
-        for(int k=1;k&lt;=n;k++)
-        {
-            for(int i=1;i&lt;=n;i++)
-            {
-                for(int j=1;j&lt;=n;j++)
-                {
-                    dist[i][j]=min(dist[i][j],max(dist[i][k],dist[k][j]));
-                }
-            }    
-        }
-        printf(&quot;Scenario #%d\n&quot;,opt);
-        printf(&quot;Frog Distance = %.3lf\n&quot;,dist[1][2]);
-        cout&lt;&lt;endl;
-    }
-    return 0;
-}</code></pre>
-
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">200</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n;<span class="keyword">double</span> dist[maxn][maxn],x[maxn],y[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> opt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		opt++;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				dist[i][j]=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;x[i],&amp;y[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(i!=j)</span><br><span class="line">				dist[i][j]=<span class="built_in">sqrt</span>((x[i]-x[j])*(x[i]-x[j])+(y[i]-y[j])*(y[i]-y[j]));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				&#123;</span><br><span class="line">					dist[i][j]=min(dist[i][j],max(dist[i][k],dist[k][j]));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Scenario #%d\n"</span>,opt);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Frog Distance = %.3lf\n"</span>,dist[<span class="number">1</span>][<span class="number">2</span>]);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             <hr>
           </div>
           <br>

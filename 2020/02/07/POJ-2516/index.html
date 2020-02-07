@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      5 分钟
                   </span>&nbsp;
                 
 
@@ -184,131 +184,7 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-2516" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-2516</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有 n 个商店，k种物品和 m 个供货商，让你求进满足商店需求的货物的最小花费？<br>有必要说一下输入数据。<br>首先n ，k ，m。<br>然后是一个n*m的矩阵，n个商店对每种货物的需求，表示第 i 个商店需要第 j 种货物 x个?<br>然后是m * k 的矩阵，m个供货商可以供k种货物的数量，表示第 i 个供货商 提供第 j 中货物 x 个<br>接下来是 k 个 n * m 的矩阵，表示第 i 个货物，由 k 供应商发货给 j 商店的价格x<br>（注意如果供不应求的或输出-1）</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>一开始将商店分成很多，对于商品1有1-n商店，对于商品2有n+1-2<em>n商店，对于商品k有n</em>（k-1）-n<em>k商店。<br>对于供货商也是同理，s为起点，与商店连接，边权为商店对该物品的需求，费用为0，t为终点，供货商与t连接，边权为供货商能提供的量，费用为0，然后有后面k个矩阵可以建图，商店与供货商连接，注意要一一对应，因为商店和供货商相当于拆了点了，边权为无穷大，费用为价格。<br>但是最后跑费用流就凉了，TLE！！！难受！<br>然后看了一下题解，题解的办法是对于每次的商品来跑费用流，就不需要对商店和供货商进行拆点，跑k次费用流。<br>如果maxflow==需求，就输出mincost，否则就输出-1<br>TLE原因：SPFA费用流算法在稠密图上运行比较慢。可以将一个稠密大图拆成多个小图，虽然小图依然是稠密图，但是减少的幅度是非常大的。<br>从2500</em>2500到50*50.这样，只需建K次图，跑K遍SPFA费用流即可。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int N=3000+5;
-const int maxn=40000+5;
-int k=1,sign,ans,n,m,q,s,t,head[maxn],dist[maxn],vis[maxn],flow[maxn],pre[maxn],last[maxn],maxflow,mincost,rd[52][52],cd[52][52];
-struct node
-{
-    int to,next,w,dis;
-}edge[maxn*2];
-void add(int u,int v,int w,int dis)
-{
-    edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;edge[k].dis=dis;
-}
-bool spfa()
-{
-    queue&lt;int&gt;q;
-    memset(dist,0x3f3f3f3f,sizeof(dist));
-    memset(flow,0x3f3f3f3f,sizeof(flow));
-    memset(vis,0,sizeof(vis));
-    memset(pre,0,sizeof(pre));
-    memset(last,0,sizeof(last));
-    vis[s]=1;dist[s]=0;
-    q.push(s);
-    while(!q.empty())
-    {
-        int x=q.front();q.pop();vis[x]=0;
-        for(int i=head[x];i;i=edge[i].next)
-        {
-            if(dist[edge[i].to]&gt;dist[x]+edge[i].dis&amp;&amp;edge[i].w)
-            {
-                dist[edge[i].to]=dist[x]+edge[i].dis;
-                pre[edge[i].to]=x;
-                last[edge[i].to]=i;
-                flow[edge[i].to]=min(flow[x],edge[i].w);
-                if(!vis[edge[i].to])
-                {
-                    vis[edge[i].to]=1;
-                    q.push(edge[i].to);
-                }
-            }
-        }
-    }
-    return pre[t];
-}
-void MCMF()
-{
-    while(spfa())
-    {
-        maxflow+=flow[t];
-        mincost+=flow[t]*dist[t];
-        int now=t;
-        while(now!=s)
-        {
-            edge[last[now]].w-=flow[t];
-            edge[last[now]^1].w+=flow[t];
-            now=pre[now];
-        }
-    }
-}
-int main()
-{
-    while(scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;q)!=EOF)
-    {
-        s=0;t=N*5;
-        k=1;ans=0;sign=0;
-        memset(head,0,sizeof(head));
-        memset(edge,0,sizeof(edge));
-        maxflow=0;mincost=0;
-        if(n==0&amp;&amp;m==0&amp;&amp;q==0)break;
-        int tot=0;
-        for(int i=1;i&lt;=n;i++)
-        {
-            for(int j=1;j&lt;=q;j++)
-            {
-                int x;scanf(&quot;%d&quot;,&amp;x);
-                tot+=x;
-                rd[i][j]=x;
-            }
-        }
-        for(int i=1;i&lt;=m;i++)
-        {
-            for(int j=1;j&lt;=q;j++)
-            {
-                int x;scanf(&quot;%d&quot;,&amp;x);
-                cd[i][j]=x;
-            }
-        }
-        for(int i=1;i&lt;=q;i++)
-        {
-            k=1;
-            memset(head,0,sizeof(head));
-            memset(edge,0,sizeof(edge));
-            maxflow=0;mincost=0;
-            for(int j=1;j&lt;=n;j++)
-            {
-                add(s,j,rd[j][i],0);add(j,s,0,0);
-            }
-            for(int j=1;j&lt;=m;j++)
-            {
-                add(j+N,t,cd[j][i],0);add(t,j+N,0,0);
-            }
-            for(int j=1;j&lt;=n;j++)
-            {
-                for(int p=1;p&lt;=m;p++)
-                {
-                    int x;scanf(&quot;%d&quot;,&amp;x);
-                    add(j,p+N,0x3f3f3f3f,x);add(p+N,j,0,-x);
-                }
-            }
-            MCMF();
-            ans+=mincost;
-            sign+=maxflow;
-        }
-        if(sign==tot)
-        printf(&quot;%d\n&quot;,ans);
-        else 
-        printf(&quot;-1\n&quot;);
-    }
-    return 0;
-}</code></pre>
-
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">3000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">40000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> k=<span class="number">1</span>,sign,ans,n,m,q,s,t,head[maxn],dist[maxn],vis[maxn],flow[maxn],pre[maxn],last[maxn],maxflow,mincost,rd[<span class="number">52</span>][<span class="number">52</span>],cd[<span class="number">52</span>][<span class="number">52</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,w,dis;</span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w,<span class="keyword">int</span> dis)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;edge[k].dis=dis;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(dist,<span class="number">0x3f3f3f3f</span>,<span class="keyword">sizeof</span>(dist));</span><br><span class="line">	<span class="built_in">memset</span>(flow,<span class="number">0x3f3f3f3f</span>,<span class="keyword">sizeof</span>(flow));</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">	<span class="built_in">memset</span>(pre,<span class="number">0</span>,<span class="keyword">sizeof</span>(pre));</span><br><span class="line">	<span class="built_in">memset</span>(last,<span class="number">0</span>,<span class="keyword">sizeof</span>(last));</span><br><span class="line">	vis[s]=<span class="number">1</span>;dist[s]=<span class="number">0</span>;</span><br><span class="line">	q.push(s);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x=q.front();q.pop();vis[x]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(dist[edge[i].to]&gt;dist[x]+edge[i].dis&amp;&amp;edge[i].w)</span><br><span class="line">			&#123;</span><br><span class="line">				dist[edge[i].to]=dist[x]+edge[i].dis;</span><br><span class="line">				pre[edge[i].to]=x;</span><br><span class="line">				last[edge[i].to]=i;</span><br><span class="line">				flow[edge[i].to]=min(flow[x],edge[i].w);</span><br><span class="line">				<span class="keyword">if</span>(!vis[edge[i].to])</span><br><span class="line">				&#123;</span><br><span class="line">					vis[edge[i].to]=<span class="number">1</span>;</span><br><span class="line">					q.push(edge[i].to);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> pre[t];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MCMF</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(spfa())</span><br><span class="line">	&#123;</span><br><span class="line">		maxflow+=flow[t];</span><br><span class="line">		mincost+=flow[t]*dist[t];</span><br><span class="line">		<span class="keyword">int</span> now=t;</span><br><span class="line">		<span class="keyword">while</span>(now!=s)</span><br><span class="line">		&#123;</span><br><span class="line">			edge[last[now]].w-=flow[t];</span><br><span class="line">			edge[last[now]^<span class="number">1</span>].w+=flow[t];</span><br><span class="line">			now=pre[now];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;q)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		s=<span class="number">0</span>;t=N*<span class="number">5</span>;</span><br><span class="line">		k=<span class="number">1</span>;ans=<span class="number">0</span>;sign=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">		<span class="built_in">memset</span>(edge,<span class="number">0</span>,<span class="keyword">sizeof</span>(edge));</span><br><span class="line">		maxflow=<span class="number">0</span>;mincost=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>&amp;&amp;m==<span class="number">0</span>&amp;&amp;q==<span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">int</span> tot=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=q;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> x;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">				tot+=x;</span><br><span class="line">				rd[i][j]=x;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=q;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> x;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">				cd[i][j]=x;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			k=<span class="number">1</span>;</span><br><span class="line">			<span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">			<span class="built_in">memset</span>(edge,<span class="number">0</span>,<span class="keyword">sizeof</span>(edge));</span><br><span class="line">			maxflow=<span class="number">0</span>;mincost=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				add(s,j,rd[j][i],<span class="number">0</span>);add(j,s,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				add(j+N,t,cd[j][i],<span class="number">0</span>);add(t,j+N,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> p=<span class="number">1</span>;p&lt;=m;p++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">int</span> x;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">					add(j,p+N,<span class="number">0x3f3f3f3f</span>,x);add(p+N,j,<span class="number">0</span>,-x);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			MCMF();</span><br><span class="line">			ans+=mincost;</span><br><span class="line">			sign+=maxflow;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(sign==tot)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             <hr>
           </div>
           <br>
