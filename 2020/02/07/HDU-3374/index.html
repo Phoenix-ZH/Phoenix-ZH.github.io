@@ -1,240 +1,503 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+<html lang="zh-CN">
 
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>HDU-3374 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目名称：HDU - 3374 String Problem 题目链接：https:&#x2F;&#x2F;vjudge.net&#x2F;problem&#x2F;HDU-3374 题目大意：对于一个字符串，它可以每次左移一次，得到一个新的字符串，因此一个长度为n的字符串，可以得到n个字符串。问，字典序最小的字符串排第几位，一共有多少个，字典序最大的字符串排第几位，一共有多少个ps:如果最大和最小的有多个，输出最先出现的那个。 题解：">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HDU-3374">
-<meta property="og:url" content="http://yoursite.com/2020/02/07/HDU-3374/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目名称：HDU - 3374 String Problem 题目链接：https:&#x2F;&#x2F;vjudge.net&#x2F;problem&#x2F;HDU-3374 题目大意：对于一个字符串，它可以每次左移一次，得到一个新的字符串，因此一个长度为n的字符串，可以得到n个字符串。问，字典序最小的字符串排第几位，一共有多少个，字典序最大的字符串排第几位，一共有多少个ps:如果最大和最小的有多个，输出最先出现的那个。 题解：">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-07T09:01:58.000Z">
-<meta property="article:modified_time" content="2020-02-07T09:03:10.022Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="kmp">
-<meta property="article:tag" content="字符串的最小(大)表示法">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>HDU-3374 ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-HDU-3374" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/07/HDU-3374/" class="article-date">
-  <time datetime="2020-02-07T09:01:58.000Z" itemprop="datePublished">2020-02-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      HDU-3374
-    </h1>
-  
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p>HDU - 3374 String Problem</p>
-<h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-3374" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-3374</a></p>
-<h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>对于一个字符串，它可以每次左移一次，得到一个新的字符串，因此一个长度为n的字符串，可以得到n个字符串。问，字典序最小的字符串排第几位，一共有多少个，字典序最大的字符串排第几位，一共有多少个<br>ps:如果最大和最小的有多个，输出最先出现的那个。</p>
-<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>求有多少个相同的字符串相对简单，并且运用到了kmp的知识，只有内部循环的字符串才可能会重复，对于这种字符串来讲它的循环节T= n-Next[n]，出现次数times=n/T。如何求最大字符串和最小字符串呢？这个就需要用到字符串的最小表示法和最大表示法。这里简单描述一下字符串的最小表示法，至于字符串的最大表示法，可以将最小表示法照搬修改即可。<br>字符串的最小表示法：<br>设定一个opt1和一个opt2与k。初始opt1=0，opt2=1，k=0，一开始指向s[0],s[1]<br>如果s[opt1+k]==s[opt2+k]，则k++.注意opt2+k可能越界，所以要对len取模。当k==len时，说明每一个字符串都恰好等于，没有字符串比当前的小。就直接返回min(opt1,opt2)<br>如果s[opt1+k]&gt;s[opt2+k],说明s[opt1…..opt1+k]之间的每个字符都不可能作为最小字符串的起始点.于是opt1滑至opt1+k+1，k=0.<br>如果s[opt1+k]&lt;s[opt2+k],说明s[opt2…..opt2+k]之间的每个字符都不可能作为最小字符串的起始点.于是opt2滑至opt2+k+1，k=0.<br>如果opt1==opt2，则让刚才修改过的opt++；<br>最后返回min(opt1,opt2)就可以了。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1000000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> len1,len2,Next[maxn];<span class="keyword">char</span> s1[maxn],s2[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">next_pre</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">1</span>;Next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(j&lt;len2)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(Next[i]!=<span class="number">-1</span>&amp;&amp;s2[i]!=s2[j])i=Next[i];</span><br><span class="line">		<span class="keyword">if</span>(s2[i]==s2[j])Next[j+<span class="number">1</span>]=i+<span class="number">1</span>,i++;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_min</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> opt1=<span class="number">0</span>,opt2=<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(opt1&lt;len2&amp;&amp;opt2&lt;len2&amp;&amp;k&lt;len2)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(s2[(opt1+k)%len2]==s2[(opt2+k)%len2])k++;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s2[(opt1+k)%len2]&gt;s2[(opt2+k)%len2])</span><br><span class="line">		&#123;</span><br><span class="line">			opt1=opt1+k+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(opt1==opt2)</span><br><span class="line">				opt1++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s2[(opt1+k)%len2]&lt;s2[(opt2+k)%len2])</span><br><span class="line">		&#123;</span><br><span class="line">			opt2=opt2+k+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(opt1==opt2)</span><br><span class="line">				opt2++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> min(opt1,opt2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_max</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> opt1=<span class="number">0</span>,opt2=<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(opt1&lt;len2&amp;&amp;opt2&lt;len2&amp;&amp;k&lt;len2)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(s2[(opt1+k)%len2]==s2[(opt2+k)%len2])k++;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s2[(opt1+k)%len2]&lt;s2[(opt2+k)%len2])</span><br><span class="line">		&#123;</span><br><span class="line">			opt1=opt1+k+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(opt1==opt2)</span><br><span class="line">				opt1++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s2[(opt1+k)%len2]&gt;s2[(opt2+k)%len2])</span><br><span class="line">		&#123;</span><br><span class="line">			opt2=opt2+k+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(opt1==opt2)</span><br><span class="line">				opt2++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> min(opt1,opt2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s2)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		len2=<span class="built_in">strlen</span>(s2);</span><br><span class="line">		<span class="built_in">memset</span>(Next,<span class="number">0</span>,<span class="keyword">sizeof</span>(Next));</span><br><span class="line">		next_pre();</span><br><span class="line">		<span class="keyword">int</span> T=len2-Next[len2];<span class="keyword">int</span> times=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(len2%T==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			times=len2/T;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">			times=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> x1=get_min();</span><br><span class="line">		<span class="keyword">int</span> x2=get_max();</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d %d %d\n"</span>,x1+<span class="number">1</span>,times,x2+<span class="number">1</span>,times);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/07/HDU-3374/" data-id="ck6c658s7000kd0vqe4et2po9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kmp/" rel="tag">kmp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F-%E5%A4%A7-%E8%A1%A8%E7%A4%BA%E6%B3%95/" rel="tag">字符串的最小(大)表示法</a></li></ul>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/02/07/HDU-2328/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          HDU-2328
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/02/07/HDU-2609/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">HDU-2609</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Manacher/" rel="tag">Manacher</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ex-kmp/" rel="tag">ex-kmp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kmp/" rel="tag">kmp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%A4%E7%8E%AF/" rel="tag">判环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F-%E5%A4%A7-%E8%A1%A8%E7%A4%BA%E6%B3%95/" rel="tag">字符串的最小(大)表示法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/" rel="tag">差分约束</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2/" rel="tag">最小割</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" rel="tag">最短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" rel="tag">状态压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="tag">网络流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/" rel="tag">费用流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92/" rel="tag">闭包传递</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Manacher/" style="font-size: 14px;">Manacher</a> <a href="/tags/ex-kmp/" style="font-size: 12px;">ex-kmp</a> <a href="/tags/kmp/" style="font-size: 16px;">kmp</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 10px;">二分</a> <a href="/tags/%E5%88%A4%E7%8E%AF/" style="font-size: 14px;">判环</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F-%E5%A4%A7-%E8%A1%A8%E7%A4%BA%E6%B3%95/" style="font-size: 12px;">字符串的最小(大)表示法</a> <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/" style="font-size: 12px;">差分约束</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2/" style="font-size: 12px;">最小割</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" style="font-size: 20px;">最短路</a> <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" style="font-size: 10px;">状态压缩</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" style="font-size: 18px;">网络流</a> <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/" style="font-size: 12px;">费用流</a> <a href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92/" style="font-size: 12px;">闭包传递</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/02/07/HDU-3416/">HDU-3416</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
           </li>
         
-          <li>
-            <a href="/2020/02/07/luogu-2764/">luogu-2764</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
           </li>
         
-          <li>
-            <a href="/2020/02/07/HDU-3336/">HDU-3336</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
           </li>
         
-          <li>
-            <a href="/2020/02/07/HDU-4300/">HDU-4300</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
           </li>
         
-          <li>
-            <a href="/2020/02/07/HDU-1238/">HDU-1238</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
-  
-</aside>
-        
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 二月 7日 2020, 5:01 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    777 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      3 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p>HDU - 3374 String Problem</p>
+<h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-3374" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-3374</a></p>
+<h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>对于一个字符串，它可以每次左移一次，得到一个新的字符串，因此一个长度为n的字符串，可以得到n个字符串。问，字典序最小的字符串排第几位，一共有多少个，字典序最大的字符串排第几位，一共有多少个<br>ps:如果最大和最小的有多个，输出最先出现的那个。</p>
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>求有多少个相同的字符串相对简单，并且运用到了kmp的知识，只有内部循环的字符串才可能会重复，对于这种字符串来讲它的循环节T= n-Next[n]，出现次数times=n/T。如何求最大字符串和最小字符串呢？这个就需要用到字符串的最小表示法和最大表示法。这里简单描述一下字符串的最小表示法，至于字符串的最大表示法，可以将最小表示法照搬修改即可。<br>字符串的最小表示法：<br>设定一个opt1和一个opt2与k。初始opt1=0，opt2=1，k=0，一开始指向s[0],s[1]<br>如果s[opt1+k]==s[opt2+k]，则k++.注意opt2+k可能越界，所以要对len取模。当k==len时，说明每一个字符串都恰好等于，没有字符串比当前的小。就直接返回min(opt1,opt2)<br>如果s[opt1+k]&gt;s[opt2+k],说明s[opt1…..opt1+k]之间的每个字符都不可能作为最小字符串的起始点.于是opt1滑至opt1+k+1，k=0.<br>如果s[opt1+k]&lt;s[opt2+k],说明s[opt2…..opt2+k]之间的每个字符都不可能作为最小字符串的起始点.于是opt2滑至opt2+k+1，k=0.<br>如果opt1==opt2，则让刚才修改过的opt++；<br>最后返回min(opt1,opt2)就可以了。</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000000+5;
+int len1,len2,Next[maxn];char s1[maxn],s2[maxn];
+void next_pre()
+{
+    int i=0,j=1;Next[0]=-1;
+    while(j&lt;len2)
+    {
+        while(Next[i]!=-1&amp;&amp;s2[i]!=s2[j])i=Next[i];
+        if(s2[i]==s2[j])Next[j+1]=i+1,i++;
+        j++;
+    }
+}
+int get_min()
+{
+    int opt1=0,opt2=1,k=0;
+    while(opt1&lt;len2&amp;&amp;opt2&lt;len2&amp;&amp;k&lt;len2)
+    {
+        if(s2[(opt1+k)%len2]==s2[(opt2+k)%len2])k++;
+        else if(s2[(opt1+k)%len2]&gt;s2[(opt2+k)%len2])
+        {
+            opt1=opt1+k+1,k=0;
+            if(opt1==opt2)
+                opt1++;
+        }
+        else if(s2[(opt1+k)%len2]&lt;s2[(opt2+k)%len2])
+        {
+            opt2=opt2+k+1,k=0;
+            if(opt1==opt2)
+                opt2++;
+        }
+    }
+    return min(opt1,opt2);
+}
+int get_max()
+{
+    int opt1=0,opt2=1,k=0;
+    while(opt1&lt;len2&amp;&amp;opt2&lt;len2&amp;&amp;k&lt;len2)
+    {
+        if(s2[(opt1+k)%len2]==s2[(opt2+k)%len2])k++;
+        else if(s2[(opt1+k)%len2]&lt;s2[(opt2+k)%len2])
+        {
+            opt1=opt1+k+1,k=0;
+            if(opt1==opt2)
+                opt1++;
+        }
+        else if(s2[(opt1+k)%len2]&gt;s2[(opt2+k)%len2])
+        {
+            opt2=opt2+k+1,k=0;
+            if(opt1==opt2)
+                opt2++;
+        }
+    }
+    return min(opt1,opt2);
+}
+int main()
+{
+    while(scanf(&quot;%s&quot;,s2)!=EOF)
+    {
+        len2=strlen(s2);
+        memset(Next,0,sizeof(Next));
+        next_pre();
+        int T=len2-Next[len2];int times=0;
+        if(len2%T==0)
+        {
+            times=len2/T;
+        }
+        else 
+            times=1;
+        int x1=get_min();
+        int x2=get_max();
+        printf(&quot;%d %d %d %d\n&quot;,x1+1,times,x2+1,times);
+    }
+    return 0;
+}</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/kmp">kmp</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E8%A1%A8%E7%A4%BA%E6%B3%95">字符串的最小(大)表示法</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
     </div>
   </div>
-</footer>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
-    <nav id="mobile-nav">
+  </div>
+</div>
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
   
-</nav>
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
+    <!-- cnzz Analytics icon -->
+    
 
   </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "HDU-3374&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
