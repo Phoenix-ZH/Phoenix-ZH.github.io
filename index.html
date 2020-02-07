@@ -153,12 +153,11 @@
         
         <div class="index-excerpt" >
           <div class="index-text mb-1">题目名称：UVA - 10480 Sabotage
-题目链接：UVA - 10480 Sabotage
+题目链接：https://vjudge.net/problem/UVA-10480
 题目大意：有n个点，m条无向边，权值为wi。问从1到2，要割断的最小代价。
 题解：1–&gt;2要进行割断并且要消耗最小，显然这是最小割问题。建边的时候要注意是双向边，起点s=1，终点t=2，跑dinic，最小割=最大流。然后从s开始dfs，要edge[i].w&gt;0才开始继续，即s可到达的为一个集合，其余则为t可到达的。然后对于所有正向边，看是否u为s集合，v为t集合，如果是就输出。一开始想着这题和HDU - 4289 Control差不多，以为要拆点，结果就WA了。HDU - 4289 Control这道题由于是点权，将点转换成边，所以需要拆点连边，而这道题说明了m条边的边权，所以不必拆点！为什么割边的判断条件不是edge[i].w==0呢？原因是可能流量流过该边，并且最后该边edge[i].w==0但是实际上并没有割去这条边，只是由于前面的流量影响了这条边！
 代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include</div>
+#include&lt;cstr</div>
         </div>
       </a>
 

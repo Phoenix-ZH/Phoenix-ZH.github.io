@@ -173,7 +173,7 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p>HDU - 3081 Marriage Match II</p>
-<h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p>HDU - 3081 Marriage Match II</p>
+<h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-3081" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-3081</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有N个女孩要与N个男孩玩配对游戏.每个女孩有一个可选男孩的集合(即该女孩可以选自己集合中的任意一个男孩作为该轮的搭档).<br>然后从第一轮开始,每个女孩都要和一个不同的男孩配对.如果第一轮N个女孩都配对成功,那么就开始第二轮配对,女孩依然从自己的备选男孩集合中选择,<br>但是不能选那些已经被该女孩在前几轮选择中选过的男孩了(比如i女孩在第一轮选了j男孩,那么i在第二轮就不能选j男孩了). 问你游戏最多能进行多少轮?</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>女生:1<del>n;男生:(n+1)</del>(n*2)。对于女生u，她可以直接连向不讨厌的男生，边权为1。</p>
 <p>假设我们当前二分尝试的轮数为K(即能够进行K轮匹配):首先如果女孩i可能选择男孩j,那么就有边(i, j+n, 1).且源点到每个女孩i有边(s,i,K),<br>每个男孩j到汇点t有边(j+n,t,K).</p>
