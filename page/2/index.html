@@ -153,6 +153,41 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3068/">
+        <p class="h4 index-header">HDU-3068</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 3068 最长回文
+题目链接：https://vjudge.net/problem/HDU-3068
+题目大意：求多组数据的最长回文的长度，就是Manacher的模板题
+题解：讲解一下Manacher算法首先该算法的时间复杂度为O(N)，一个长度为len的字符串，len可能为奇数，也可能是偶数，那么中间点就不一样了，那对于长度L=2len+1呢？显然它一定是奇数。具体操作为：t[0]=’$’;for(int i=1;i&lt;=len;i++)t[++len]=’#’,t[++len]=s[i-1];t[++len]=’#’;比如字符串 abccba 就转换成了 $#a#b#c#c#b#a#;
+以上是初始化的过程，接下来是具体的操作过程：对于p[i]，如果i&lt;mx，设j是i关于id对称点，如图所示，则基于以下三种情况，可以求出p[i]的值：
+（1）以j为中心的回文串有一部分在以id为中心的回文串之外。因为mx是以id为中心的最长回文的右边界，所以以i为中心的回文串不可能会有字符在以id为中心的回文串之外；否则mx就不是以id为中心的最长回文的右边界。所以，在</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Manacher">Manacher</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-4513/">
         <p class="h4 index-header">HDU-4513</p>
         
@@ -456,40 +491,6 @@ dijkstra+堆优化的代码：
             <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
             <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1502/">
-        <p class="h4 index-header">POJ-1502</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1502 MPI Maelstrom
-题目链接：https://vjudge.net/problem/POJ-1502#author=20175101008
-题目大意：给出a[i][j]之间的值，若a[i][j]==’x’说明i，j之间不通，问从1开始同时向2…..n传递信息，需要多久全部结点都收到？
-题解：n&lt;=100，显然可以用Floyd算法，读入时字符串读入，加以处理，得到a[i][j]之间的距离，i，j不通则将长度设为无穷大，然后开始跑Floyd，最后统计dist[1][i],i∈[2,n]的最大值，该值为答案
-代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
         
       </div>

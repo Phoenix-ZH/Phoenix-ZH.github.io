@@ -153,6 +153,42 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3169/">
+        <p class="h4 index-header">POJ-3169</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3169 Layout
+题目链接：https://vjudge.net/problem/POJ-3169#author=634579757
+题目大意：有N头牛排队，多头牛可以在同一点。现有几对相互喜好的牛，他们不能超过一定距离，有几对相互厌恶的牛，他们至少隔开一定距离。求1和N最远相距多少。
+题解：这很显然是差分约束的题目。为了保证图能够联通，需要固定i，j的大小顺序。 对于前m1个a,b,c表示a和b之间的距离不超过c，不妨设a&gt;b，则应满足d[a]-d[b]&lt;=c，最短路的要求就是如此，所以建边：b–&gt;a 边权为c。对于后m2个a，b，c表示a和b之间的距离不小于c，不妨设a&gt;b，则应满足d[a]-d[b]&gt;=c，即d[b]&lt;=d[a]-c，所以建边：a–&gt;b边权为-c。然后开始跑spfa，期间要判断负环，如果有负环存在则说明无解；如果dist[n]==0x3f3f3f3f,说明n号可以无限远。其余的则dist[n]为答案
+代码：123456789101112131415161718192021222324252627</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F">差分约束</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-4370/">
         <p class="h4 index-header">HDU-4370</p>
         
@@ -460,41 +496,6 @@ ps：我麻烦了一点，对房子进行了拆点，其实可以不拆，毕竟
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4289/">
-        <p class="h4 index-header">HDU-4289</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4289 Control
-题目链接：https://vjudge.net/problem/HDU-4289
-题目大意：给一个无向图，有些不法分子要从S点T点，现在要抓住所有的不法分子阻止他们去T，那么就要控制某一些城市等待他们，控制每个城市花费不同，问最少花费是多少。第一行是两个整数N，M（2&lt;=N&lt;=200，1&lt;=M&lt;=20000）,分别表示城市数量和道路数量，城市的编号为1到N。 第二行是两个整数S，T（1&lt;=S,T&lt;=N）,分别表示起点和终点的位置。 接下来以下N行，分别表示控制第每一个城市的成本costi（cost&lt;10^7）。 接下来M行，每行有两个整数A，B表示城市A和B之间存在一条双向道路。
-题解：根据题意，要设法将S，T分割开，求最小花费，显然是求图的最小割，即求最大流。一开始想着单独将S，T隔开，无向边u，v建边：u+N–&gt;v,边权0x3f3f3f3f，v+N-&gt;u，边权0x3f3f3f3f，当然回路也要建立。然后跑dinic，然后将跑出来的最大流和单独隔离s、单独隔离t三者取最小。但是这样跑</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2">最小割</a>&nbsp;
           
         
       </div>
