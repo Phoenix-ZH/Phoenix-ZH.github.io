@@ -153,6 +153,42 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3259/">
+        <p class="h4 index-header">POJ-3259</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3259 Wormholes
+题目链接：https://vjudge.net/problem/POJ-3259#author=chen_zhe_
+题目大意：有n个教室，m条走廊(双向)，w条密道(单向)。走廊耗时&gt;0，密道可耗时&lt;0，问是否可以回到过去。
+题解：密道耗时&lt;0，再根据题目要求，就是问该图是否存在负环。由于这是一个连通图，从哪个点出发效果都一样，不妨从1开始出发，判断是否存在负环，判断方法：每次进行收缩时记录次数++，一旦超过了n就可以作出判断。
+代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;u</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-1502/">
         <p class="h4 index-header">POJ-1502</p>
         
@@ -444,39 +480,6 @@ ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保�
 题目大意：在一个堵车的城市中, 每个路口都有一个拥挤程度a[i], 从u驶向v得到一个数量, 值为(a[v]-a[u])^3, 给出Q组查询, 每组给出一个数, 求1到这个数的点的最小数量, 如果不可达输出 ？
 题解：一开始觉得n很小，可以直接跑floyd，但是后来WA了两发，发现可能存在负环，所以需要判断负环，因此选择spfa，一旦判断出了负环就dfs，找到负环可以达到的所有点。对于查询一一输出结果即可。
 代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#include&lt;cst</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4725/">
-        <p class="h4 index-header">HDU-4725</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4725 The Shortest Path in Nya Graph
-题目链接：https://vjudge.net/problem/HDU-4725#author=0
-题目大意：现在给你n个点 ，这些点的分布是层型分布的，你可以从第i层走到相邻的层（i+1，i-1）中，这样走的花费是c，接着他会给你m（从u-&gt;v）条小路，从小路走的花费 是w，问你从1-&gt;n所走的最小花费是多少。
-题解：看到数据范围就不敢用spfa了，太过玄学，不想TLE，所以选择dijkstra，这题的难点在于建边。当然，很容易想到将层转化成点，比如第i个点的层数为deep[i],则转化为点deep[i]+n.对于给的小道就直接建边a–&gt;b权值为c,b–&gt;a权值为c（建双向边），将deep数组从小到大排列，对于deep[i] 和 deep[i-1] （i∈[2,n]），首先要判断它们是否刚好相差1，只有刚好相差1才可以建边，建边方式为add(deep[i-1]+n,deep[i]+n,c);add(deep[i]+n,deep[i-1]+n,c)，相邻层数可以相互移动</div>
         </div>
       </a>
 

@@ -153,6 +153,50 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/09/KM%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">
+        <p class="h4 index-header">KM算法详解</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">介绍：以匈牙利算法为基础，改善后用于求解带权二分图的最佳匹配问题
+完备匹配：如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，或者Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。 
+完美匹配：若二分图X部的每一个顶点都与Y中的一个顶点匹配，并且Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完美匹配。 
+即： 一个二分图，X部和Y部的顶点数相等，存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。  
+最大权匹配：带权二分图的边权重和最大的匹配，如图，最大和为102
+  
+最佳匹配：带权二分图的边权重和最大的完备匹配，如图
+  
+显然最大权匹配和最佳匹配不完全相同，最大权匹配由于不一定是最大匹配，所以无法等同于最佳匹配。
+但是如果把剩余的边补上，并且设置边权为0，那么二者可以统一起来。如图
+  
+KM算法km算法用于求最佳匹配，而不是最大权匹配。换言之，km算法用来求完备匹配下的最大权匹配。
+如果不存在完备匹配，km算法会求最大匹配，如果最大匹配存在多种，那么结果就是最大匹配中权重和最大的。
+
+在一个二分图中，左顶点为X，右顶点为Y，现在对于每组左右连</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/KM">KM</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/08/luogu-3386/">
         <p class="h4 index-header">luogu-3386</p>
         
@@ -466,40 +510,6 @@
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E8%A1%A8%E7%A4%BA%E6%B3%95">字符串的最小(大)表示法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/FZU-1901/">
-        <p class="h4 index-header">FZU-1901</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：FZU - 1901 Period II
-题目链接：https://vjudge.net/problem/FZU-1901
-题目大意：对于一个正整数p，p&lt;=字符串的长度，使得任意的s[i]==s[i+p]，求出所有符合要求的p。
-题解：这个题和之前的某个题意很迷的密码题有点相似，那个题当时就是用的ex-kmp，做这个题开始时题意不理解，百度了一下题意。一开始想的就是用kmp，似乎网上用kmp的很多，但我一下子不知道如何运行Next，不过，我突然发现，令s2=s1，用s1的所有后缀匹配s2的结果让我意外，所有符合Extend[i]+i&gt;=len的都是p，当然len本身也是。很显然这个题可以用ex-kmp来做。
-代码：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576#include&lt;cstdio&gt;#include&lt;</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
           
         
       </div>

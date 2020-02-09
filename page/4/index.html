@@ -153,6 +153,39 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4725/">
+        <p class="h4 index-header">HDU-4725</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 4725 The Shortest Path in Nya Graph
+题目链接：https://vjudge.net/problem/HDU-4725#author=0
+题目大意：现在给你n个点 ，这些点的分布是层型分布的，你可以从第i层走到相邻的层（i+1，i-1）中，这样走的花费是c，接着他会给你m（从u-&gt;v）条小路，从小路走的花费 是w，问你从1-&gt;n所走的最小花费是多少。
+题解：看到数据范围就不敢用spfa了，太过玄学，不想TLE，所以选择dijkstra，这题的难点在于建边。当然，很容易想到将层转化成点，比如第i个点的层数为deep[i],则转化为点deep[i]+n.对于给的小道就直接建边a–&gt;b权值为c,b–&gt;a权值为c（建双向边），将deep数组从小到大排列，对于deep[i] 和 deep[i-1] （i∈[2,n]），首先要判断它们是否刚好相差1，只有刚好相差1才可以建边，建边方式为add(deep[i-1]+n,deep[i]+n,c);add(deep[i]+n,deep[i-1]+n,c)，相邻层数可以相互移动</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-3169/">
         <p class="h4 index-header">POJ-3169</p>
         
@@ -450,40 +483,6 @@ ps：我麻烦了一点，对房子进行了拆点，其实可以不拆，毕竟
 题目链接：https://vjudge.net/problem/POJ-1087#author=cjyl
 题目大意：宾馆里有几种插座，分别有其对应型号，你携带了几种用电器（手机，电脑一类的），也有其对应型号；可是不一定用电器就能和插座匹配上，于是宾馆的商店里提供了一些转换器，这些转换器可以将某一型号电源转换成另一型号的。问，你的用电器最少会有多少种无法充电 。注意插座型号是字符串形式，长度小于24，用电器名称也是字符串。
 题解：这是最大流问题。先说一下细节，插座和用电器的数量肯定都只有一个，但是转换器的数量是无限的。建图：设起点为s，终点为t，首先s与所有的用电器相连，边权为1，（一开始还想着拆点，我怕是个哈批啊，对于两边的点，边权就是容量，不需要去拆点！），t与所有的插座相连。如果型号相同，就可以二者之间进行连边。然后对于转换器，转换器之间可以相连，并且转换可以实现A–&gt;B，也可以实现B–&gt;A。所以，对于用电器型号=A||B的都可以连边，对于插座型号=A||B的都可以连边，边权为1，对于转换器之间可以相连的，</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4292/">
-        <p class="h4 index-header">HDU-4292</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4292 Food
-题目链接：https://vjudge.net/problem/HDU-4292#author=yupengju
-题目大意：昊妈决定只给每个人一种食物和一种饮料，而且每种饮料和食物都只能提供有限次。现在给出每个人喜欢的食物种类和饮料种类，昊妈可以最多让多少人得到满足呢？第一行给出N F D表示人数，食物种类数，饮料种类数第二行给出F个数字表示第i种食物有几个第三行给出D个数字表示第i种饮料有几个接下来N行分别给出第i个人对第j种食物的喜爱情况，Y是喜欢N是不喜欢，再来N行对饮料的
-题解：这道题是最大流问题，重点自然就是建图，一个人要满足，必须同时拥有食物和饮料。而一个人也最多可以满足一次，而且饮料和食物的容量也是有限的。最简单的自然是食物连向起点，边权为食物的容量；饮料连向中点，边权为饮料的容量；如果某人i喜欢食物j，那么二者就要连边，即j–&gt;i+N，边权为1，并且人位于中间必须拆点，即i+N–&gt;i+2N,边权为1。如果某人i喜欢饮料j，那么i+2N–&gt;j+3*N，边权为1建好后跑dinic。
-代码：1234567891011</div>
         </div>
       </a>
 
