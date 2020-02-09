@@ -153,6 +153,44 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1459/">
+        <p class="h4 index-header">POJ-1459</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1459 Power Network
+题目链接：https://vjudge.net/problem/POJ-1459#author=alexandleo
+题目大意：每组测试数据给出N，Np，Nc，M。N代表结点数量，M代表边的数量，Np代表结点中电站的数量（只产电，不耗电），Nc代表消费者数量（只耗电，不产电），其他结点代表中转站（不产电，不耗电）。接着M组（u，v）w数据，代表u到v容量为w，接着Np组（u）w，代表结点u产电w，接着Nc组（u）w，代表结点u耗电w。求电网中能消耗的最大电能值。
+题解：求最大电能，显然这是最大流问题，s与所有的电站连接，边权为产电量，t与所有的消费者连接，边权为耗电量，然后根据m条边的信息，如果u，v属于电站，则值不变，如果不是电站，那么需要+N，成为另一个集合，再建边，边权为容量w，然后跑网络流dinic。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-1087/">
         <p class="h4 index-header">POJ-1087</p>
         
