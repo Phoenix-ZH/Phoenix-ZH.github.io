@@ -164,7 +164,20 @@
 题目链接：https://vjudge.net/problem/HDU-2255#author=0
 题目大意：n个居民n个房子，每个居民会给不同的房子不同的钱，问如何分配使得钱最多？
 题解：KM的模板题，KM的具体介绍由blog的KM讲解中提供
-代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=300+5;int Map[maxn][maxn],visx</div>
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=300+5;
+int Map[maxn][maxn],visx[maxn],visy[maxn],cx[maxn],cy[maxn],n,wx[maxn],wy[maxn],minn;
+int dfs(int x)
+{
+    visx[x]=1;
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(!visy[i]&amp;&amp;Map[x][i]!=0x3f3f3f3f)
+     </div>
         </div>
       </a>
 
@@ -290,7 +303,12 @@ KM算法km算法用于求最佳匹配，而不是最大权匹配。换言之，k
 题目链接：https://vjudge.net/problem/HDU-3416
 题目大意： n 个点 m 条边带权有向图，问每条边最多只能走一次时从 A 到 B 的最短路径数量。 
 题解：问题是问从s–&gt;t有多少种完全不同的最短路径。首先要想办法找到哪些边属于最短路径里面的边，于是先正向跑一遍spfa，再反向跑一遍spfa，设smin为s–&gt;t的最短路的长度，那如果一条边属于最短路，那它一定满足dist1[x[i]]+dist2[y[i]]+w[i]==smin&amp;&amp;x[i]!=y[i]。这样就可以找到最短路径的所有边，然后建边时注意，x[i]–&gt;y[i],边权为1，跑dinic，得到的最大流ans就是答案。
-代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374</div>
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std</div>
         </div>
       </a>
 
@@ -361,7 +379,15 @@ KM算法km算法用于求最佳匹配，而不是最大权匹配。换言之，k
 题目链接：https://vjudge.net/problem/HDU-3336#author=cust_acm
 题目大意：给一个字符串，求它所有子串(包括自身)出现的总次数之
 题解：该题目需要比较完善地理解Next数组地含义与作用。当匹配到i失败时，就会返回到Next[i]。则匹配到i时，应该记录了子串s[0…i]，以及与子串s[0…Next[i]]。于是就可以得到动态转移方程dp[i]=dp[Next[i]]+1.然后求和dp数组，同时取模。
-代码：1234567891011121314151617181920212223242526272829303132333435363738394041#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=200000+5;const int Mod=10007;int T,l</div>
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200000+5;
+const int Mod=10007;
+int T,len1,len2,Next[maxn],dp[maxn];char s1[maxn],s2[maxn];
+void next_pre</div>
         </div>
       </a>
 
@@ -428,7 +454,19 @@ KM算法km算法用于求最佳匹配，而不是最大权匹配。换言之，k
 题目链接：https://vjudge.net/problem/HDU-1238#author=organicsalt
 题目大意：给n个字符串，问是否存在一个子串(或将该子串reverse)为所有字符串的子串。
 题解：将第一个字符串的所有子串与其余子串匹配一遍，如果有一个匹配失败，就将该子串reverse再匹配。这里使用reverse会更快，用kmp加速。
-代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=1005;int n</div>
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1005;
+int n,T,Next[maxn],len1,len2;string s[105],s2;
+void next_pre(int len)
+{
+    int i=0,j=1;Next[0]=-1;
+    while(j&lt;len)
+    {
+        while(Next[i]!=-1&</div>
         </div>
       </a>
 
@@ -462,7 +500,14 @@ KM算法km算法用于求最佳匹配，而不是最大权匹配。换言之，k
 题目链接：https://vjudge.net/problem/HDU-2328
 题目大意：求n个字符串的最长公共子串，若有多个则输出字典序最小的，若没有就输出“IDENTITY LOST”。
 题解：这道题就相当简单了，直接暴力枚举第一个字符串的所有子串，用kmp与所有别的字符串匹配，看它们是否都包含了这个子串，将符合条件的子串存进数组，在排序sort一下，输出第一个字符串即可。用到substr函数。不过数据可能比较水，理论上时间复杂度是不够的，以为会TLE，结果可以过，甚至暴力都可以过。
-代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586#include&lt;cstdio&gt;#include&lt;cstring&gt;#inclu</div>
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=4000+5;
+int len1,len2,Next[maxn],n,ans;string s1[maxn],s2,Ans[maxn];
+void next_p</div>
         </div>
       </a>
 

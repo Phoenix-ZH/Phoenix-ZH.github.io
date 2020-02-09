@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    449 字
+                    436 字
                   </span>&nbsp;
                 
 
@@ -184,7 +184,84 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-2240#author=Andy_acmer" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-2240#author=Andy_acmer</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有n种货币，m条货币的汇率关系。比如：USDollar 0.5 BritishPound<br>说明1个USDollar货币，可以换成0.5个BritishPound货币，问是否可以通过这种关系来获利。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>由于货币名字使字符串，那么用map比较方便,map&lt;string,int&gt;q，可以将字符串映射成int型。然后跑spfa，看是否存在正环，与判断负环的方法一样。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">10000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,head[maxn],vis[maxn],used[maxn],k=<span class="number">1</span>;<span class="keyword">double</span> dist[maxn];</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt;q;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next;<span class="keyword">double</span> w;</span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">double</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(dist,<span class="number">0</span>,<span class="keyword">sizeof</span>(dist));</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">	<span class="built_in">memset</span>(used,<span class="number">0</span>,<span class="keyword">sizeof</span>(used));</span><br><span class="line">	vis[<span class="number">1</span>]=<span class="number">1</span>;used[<span class="number">1</span>]=<span class="number">1</span>;dist[<span class="number">1</span>]=<span class="number">1.0</span>;</span><br><span class="line">	q.push(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x=q.front();q.pop();vis[x]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(dist[edge[i].to]&lt;dist[x]*edge[i].w)</span><br><span class="line">			&#123;</span><br><span class="line">				dist[edge[i].to]=dist[x]*edge[i].w;</span><br><span class="line">				<span class="keyword">if</span>(!vis[edge[i].to])</span><br><span class="line">				&#123;</span><br><span class="line">					vis[edge[i].to]=<span class="number">1</span>;</span><br><span class="line">					used[edge[i].to]++;</span><br><span class="line">					<span class="keyword">if</span>(used[edge[i].to]&gt;n)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">					q.push(edge[i].to);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> now=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		now++;</span><br><span class="line">		k=<span class="number">1</span>;<span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">		<span class="built_in">memset</span>(edge,<span class="number">0</span>,<span class="keyword">sizeof</span>(edge));</span><br><span class="line">		q.clear();</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">int</span> tot=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">string</span> x;<span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">			q[x]=++tot;	</span><br><span class="line">		&#125;		</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">string</span> a,b;<span class="keyword">double</span> c;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;c&gt;&gt;b;</span><br><span class="line">			add(q[a],q[b],c);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> x=spfa();</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Case %d: "</span>,now);</span><br><span class="line">		<span class="keyword">if</span>(x==<span class="number">1</span>)<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;map&gt;
+using namespace std;
+const int maxn=10000+5;
+int n,m,head[maxn],vis[maxn],used[maxn],k=1;double dist[maxn];
+map&lt;string,int&gt;q;
+struct node
+{
+    int to,next;double w;
+}edge[maxn*2];
+void add(int u,int v,double w)
+{
+    edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;    
+}
+int spfa()
+{
+    queue&lt;int&gt;q;
+    memset(dist,0,sizeof(dist));
+    memset(vis,0,sizeof(vis));
+    memset(used,0,sizeof(used));
+    vis[1]=1;used[1]=1;dist[1]=1.0;
+    q.push(1);
+    while(!q.empty())
+    {
+        int x=q.front();q.pop();vis[x]=0;
+        for(int i=head[x];i;i=edge[i].next)
+        {
+            if(dist[edge[i].to]&lt;dist[x]*edge[i].w)
+            {
+                dist[edge[i].to]=dist[x]*edge[i].w;
+                if(!vis[edge[i].to])
+                {
+                    vis[edge[i].to]=1;
+                    used[edge[i].to]++;
+                    if(used[edge[i].to]&gt;n)return 1;
+                    q.push(edge[i].to);
+                }
+            }
+        }
+    }
+    return 0;
+}
+int main()
+{
+    int now=0;
+    while(1)
+    {
+        now++;
+        k=1;memset(head,0,sizeof(head));
+        memset(edge,0,sizeof(edge));
+        q.clear();
+        scanf(&quot;%d&quot;,&amp;n);
+        if(n==0)break;
+        int tot=0;
+        for(int i=1;i&lt;=n;i++)
+        {
+            string x;cin&gt;&gt;x;
+            q[x]=++tot;    
+        }        
+        scanf(&quot;%d&quot;,&amp;m);
+        for(int i=1;i&lt;=m;i++)
+        {
+            string a,b;double c;
+            cin&gt;&gt;a&gt;&gt;c&gt;&gt;b;
+            add(q[a],q[b],c);
+        }
+        int x=spfa();
+        printf(&quot;Case %d: &quot;,now);
+        if(x==1)printf(&quot;Yes\n&quot;);
+        else printf(&quot;No\n&quot;);
+    }
+    return 0;
+}</code></pre>
+
             <hr>
           </div>
           <br>

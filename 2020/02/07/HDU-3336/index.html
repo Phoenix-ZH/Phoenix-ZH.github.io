@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    305 字
+                    302 字
                   </span>&nbsp;
                 
 
@@ -184,7 +184,48 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-3336#author=cust_acm" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-3336#author=cust_acm</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给一个字符串，求它所有子串(包括自身)出现的总次数之</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>该题目需要比较完善地理解Next数组地含义与作用。当匹配到i失败时，就会返回到Next[i]。则匹配到i时，应该记录了子串s[0…i]，以及与子串s[0…Next[i]]。于是就可以得到动态转移方程dp[i]=dp[Next[i]]+1.然后求和dp数组，同时取模。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">200000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Mod=<span class="number">10007</span>;</span><br><span class="line"><span class="keyword">int</span> T,len1,len2,Next[maxn],dp[maxn];<span class="keyword">char</span> s1[maxn],s2[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">next_pre</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">1</span>;Next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(j&lt;len2)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(Next[i]!=<span class="number">-1</span>&amp;&amp;s2[i]!=s2[j])i=Next[i];</span><br><span class="line">		<span class="keyword">if</span>(s2[i]==s2[j])Next[j+<span class="number">1</span>]=i+<span class="number">1</span>,i++;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">memset</span>(s2,<span class="number">0</span>,<span class="keyword">sizeof</span>(s2));</span><br><span class="line">		<span class="built_in">memset</span>(Next,<span class="number">0</span>,<span class="keyword">sizeof</span>(Next));</span><br><span class="line">		<span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;len2);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s2);</span><br><span class="line">		next_pre();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len2;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(Next[i]!=<span class="number">-1</span>)</span><br><span class="line">				dp[i]=dp[Next[i]]+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len2;i++)</span><br><span class="line">			ans=(ans+dp[i])%Mod;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200000+5;
+const int Mod=10007;
+int T,len1,len2,Next[maxn],dp[maxn];char s1[maxn],s2[maxn];
+void next_pre()
+{
+    int i=0,j=1;Next[0]=-1;
+    while(j&lt;len2)
+    {
+        while(Next[i]!=-1&amp;&amp;s2[i]!=s2[j])i=Next[i];
+        if(s2[i]==s2[j])Next[j+1]=i+1,i++;
+        j++;
+    }
+}
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        int ans=0;
+        memset(s2,0,sizeof(s2));
+        memset(Next,0,sizeof(Next));
+        memset(dp,0,sizeof(dp));
+        scanf(&quot;%d&quot;,&amp;len2);
+        scanf(&quot;%s&quot;,s2);
+        next_pre();
+        for(int i=1;i&lt;=len2;i++)
+        {
+            if(Next[i]!=-1)
+                dp[i]=dp[Next[i]]+1;
+        }
+        for(int i=1;i&lt;=len2;i++)
+            ans=(ans+dp[i])%Mod;
+        printf(&quot;%d\n&quot;,ans);
+    }    
+    return 0;
+} </code></pre>
+
             <hr>
           </div>
           <br>

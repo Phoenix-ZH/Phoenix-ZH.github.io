@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.1k 字
+                    1k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      5 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -187,8 +187,105 @@
 <p>由konig定理知：最小点覆盖=最大匹配数；<br>而该题抽出模型就成了：最小路径覆盖；<br>最小路径覆盖=点数-最大匹配数；</p>
 <p>如何理解这个结论呢？(这个解释并不严谨，只是为了帮助理解，请勿喷)<br>    加入1–&gt;2–&gt;3;<br>    可以转化为1–&gt;2’;2–&gt;3’;<br>    1,2,3在X中，1’,2’,3’在Y中；路径数=3-2；符合结论；<br>    再举例1–&gt;2,1–&gt;3,2–&gt;4,3–&gt;4;<br>    可以转化为1–&gt;2’,1–&gt;3’,2–&gt;4’,3–&gt;4’;最大匹配数为2；最少路径数为2.符合结论<br>由上面的例子可以分析一下：<br>    x与x’都处于匹配边中时，说明点x处于一条路径中；而一条路径中的开头点与结尾点的x和x’只能选择其中一个。此时(该路径中的)点个数-边数=1;<br>那么有多少个“1”就说明有多少条路径。就可以说明最小路径覆盖=点数-最大匹配数；</p>
 <p>证明了以上的结论后，就可以考虑建模了：<br>    把一个点拆成x，x’，s向所有的x连边，所有的x’ 向t连边， 如果x1–&gt;y1，就将x1向y1’连边，所有的边容量为1(反边容量为0)；<br>    然后开始跑最大流，实际上跑出来的最大流就是最大匹配数，那么最小边覆盖=n-ans；<br>接着要开始说明每一条路径：<br>    从1-n都枚举一边，每一个点连向的是x’,并且如果最大流流向了x’(流向了x’就说明该边流量为0），然后输出该值，继续dfs。<br>    注意要排除s，t的点；</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4>  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">600000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,k=<span class="number">1</span>,head[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,w;</span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> s,t,ans,deep[maxn];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(deep,<span class="number">0</span>,<span class="keyword">sizeof</span>(deep));</span><br><span class="line">	deep[s]=<span class="number">1</span>;q.push(s);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x=q.front();q.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(edge[i].w&amp;&amp;!deep[edge[i].to])</span><br><span class="line">			&#123;</span><br><span class="line">				deep[edge[i].to]=deep[x]+<span class="number">1</span>;</span><br><span class="line">				q.push(edge[i].to);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(deep[t])<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> F)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x==t)<span class="keyword">return</span> F;</span><br><span class="line">	<span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(deep[edge[i].to]==deep[x]+<span class="number">1</span>&amp;&amp;edge[i].w)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> w=dfs(edge[i].to,min(F,edge[i].w));</span><br><span class="line">			edge[i].w-=w;edge[i^<span class="number">1</span>].w+=w;f+=w;F-=w;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(!f)deep[x]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dinic</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(bfs())</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=dfs(s,<span class="number">0x3f3f3f3f</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> vis[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> TO=edge[i].to;</span><br><span class="line">		<span class="keyword">if</span>(TO&gt;<span class="number">2</span>*n)<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(TO&gt;n)TO-=n;</span><br><span class="line">		<span class="keyword">if</span>(edge[i].w==<span class="number">0</span>&amp;&amp;!vis[TO])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> x=edge[i].to;</span><br><span class="line">			<span class="keyword">if</span>(x&gt;n)x-=n;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;x&lt;&lt;<span class="string">' '</span>;</span><br><span class="line">			vis[x]=<span class="number">1</span>;</span><br><span class="line">			work(x);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	s=<span class="number">2</span>*n+<span class="number">1</span>;t=s+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)add(s,i,<span class="number">1</span>),add(i,s,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> a,b;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b;</span><br><span class="line">		add(a,b+n,<span class="number">1</span>);add(b+n,a,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)add(i+n,t,<span class="number">1</span>),add(t,i+n,<span class="number">0</span>);</span><br><span class="line">	dinic();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i])</span><br><span class="line">		&#123;</span><br><span class="line">			vis[i]=<span class="number">1</span>;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">' '</span>;</span><br><span class="line">			work(i);</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;n-ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt; 
+using namespace std;
+const int maxn=600000+5;
+int n,m,k=1,head[maxn];
+struct node
+{
+    int to,next,w;
+}edge[maxn*2];
+void add(int u,int v,int w)
+{
+    edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;
+}
+int s,t,ans,deep[maxn];
+bool bfs()
+{
+    queue&lt;int&gt;q;
+    memset(deep,0,sizeof(deep));
+    deep[s]=1;q.push(s);
+    while(!q.empty())
+    {
+        int x=q.front();q.pop();
+        for(int i=head[x];i;i=edge[i].next)
+        {
+            if(edge[i].w&amp;&amp;!deep[edge[i].to])
+            {
+                deep[edge[i].to]=deep[x]+1;
+                q.push(edge[i].to);
+            }
+        }
+    }
+    if(deep[t])return 1;
+    return 0;
+}
+int dfs(int x,int F)
+{
+    if(x==t)return F;
+    int f=0;
+    for(int i=head[x];i;i=edge[i].next)
+    {
+        if(deep[edge[i].to]==deep[x]+1&amp;&amp;edge[i].w)
+        {
+            int w=dfs(edge[i].to,min(F,edge[i].w));
+            edge[i].w-=w;edge[i^1].w+=w;f+=w;F-=w;    
+        }
+    }
+    if(!f)deep[x]=0;
+    return f;
+}
+void dinic()
+{
+    while(bfs())
+    {
+        ans+=dfs(s,0x3f3f3f3f);
+    }
+}
+int vis[maxn];
+void work(int x)
+{
+    for(int i=head[x];i;i=edge[i].next)
+    {
+        int TO=edge[i].to;
+        if(TO&gt;2*n)continue;
+        if(TO&gt;n)TO-=n;
+        if(edge[i].w==0&amp;&amp;!vis[TO])
+        {
+            int x=edge[i].to;
+            if(x&gt;n)x-=n;
+            cout&lt;&lt;x&lt;&lt;&#39; &#39;;
+            vis[x]=1;
+            work(x);
+        }
+    }
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;m;
+    s=2*n+1;t=s+1;
+    for(int i=1;i&lt;=n;i++)add(s,i,1),add(i,s,0);
+    for(int i=1;i&lt;=m;i++)
+    {
+        int a,b;
+        cin&gt;&gt;a&gt;&gt;b;
+        add(a,b+n,1);add(b+n,a,0);
+    }
+    for(int i=1;i&lt;=n;i++)add(i+n,t,1),add(t,i+n,0);
+    dinic();
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(!vis[i])
+        {
+            vis[i]=1;
+            cout&lt;&lt;i&lt;&lt;&#39; &#39;;
+            work(i);
+            cout&lt;&lt;endl;
+        }
+    }
+    cout&lt;&lt;n-ans&lt;&lt;endl;
+    return 0;
+}</code></pre>
 
             <hr>
           </div>

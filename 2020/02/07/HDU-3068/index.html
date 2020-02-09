@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    697 字
+                    696 字
                   </span>&nbsp;
                 
 
@@ -189,7 +189,44 @@
 <p>（2）以j为中心的回文串全部在以id为中心的回文串的内部，则p[i]=p[j]，而且p[i]不可能再增加。</p>
 <p>（3）以j为中心的回文串的左端正好与以id为中心的回文串的左端重合。则p[i]=p[j]或p[i]=mx–i，并且p[i]还有可能会继续增加，即while (s_new[i-p[i]]==s_new[i+p[i]]) p[i]++;</p>
 <p>所以，if (i &lt; mx) p[i] = min(p[2 * id - i], mx- i)；其中2*id - i为i关于id的对称点，即上面的j点，而p[j]表示以j为中心的最长回文半径，因此可以利用p[j]来加快求解p[i]。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">110000</span>*<span class="number">2</span>+<span class="number">100</span>;</span><br><span class="line"><span class="keyword">char</span> s[maxn],t[maxn];<span class="keyword">int</span> len,p[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		len=<span class="number">0</span>;<span class="built_in">memset</span>(p,<span class="number">0</span>,<span class="keyword">sizeof</span>(p));</span><br><span class="line">		<span class="built_in">memset</span>(t,<span class="number">0</span>,<span class="keyword">sizeof</span>(t));</span><br><span class="line">		<span class="keyword">int</span> L=<span class="built_in">strlen</span>(s),ans=<span class="number">0</span>;</span><br><span class="line">		t[<span class="number">0</span>]=<span class="string">'$'</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=L;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			t[++len]=<span class="string">'#'</span>;t[++len]=s[i<span class="number">-1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		t[++len]=<span class="string">'#'</span>;</span><br><span class="line">		<span class="keyword">int</span> id=<span class="number">0</span>,mx=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;mx)p[i]=min(p[id*<span class="number">2</span>-i],mx-i);</span><br><span class="line">			<span class="keyword">else</span> p[i]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span>(t[i+p[i]]==t[i-p[i]])p[i]++;</span><br><span class="line">			<span class="keyword">if</span>(i+p[i]&gt;mx)</span><br><span class="line">			&#123;</span><br><span class="line">				mx=i+p[i];</span><br><span class="line">				id=i;</span><br><span class="line">			&#125;</span><br><span class="line">			ans=max(ans,p[i]<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=110000*2+100;
+char s[maxn],t[maxn];int len,p[maxn];
+int main()
+{
+    while(scanf(&quot;%s&quot;,s)!=EOF)
+    {
+        len=0;memset(p,0,sizeof(p));
+        memset(t,0,sizeof(t));
+        int L=strlen(s),ans=0;
+        t[0]=&#39;$&#39;;
+        for(int i=1;i&lt;=L;i++)
+        {
+            t[++len]=&#39;#&#39;;t[++len]=s[i-1];
+        }
+        t[++len]=&#39;#&#39;;
+        int id=0,mx=0;
+        for(int i=1;i&lt;=len;i++)
+        {
+            if(i&lt;mx)p[i]=min(p[id*2-i],mx-i);
+            else p[i]=1;
+            while(t[i+p[i]]==t[i-p[i]])p[i]++;
+            if(i+p[i]&gt;mx)
+            {
+                mx=i+p[i];
+                id=i;
+            }
+            ans=max(ans,p[i]-1);
+        }
+        printf(&quot;%d\n&quot;,ans);
+    }
+    return 0;
+}</code></pre>
+
             <hr>
           </div>
           <br>

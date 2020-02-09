@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    559 字
+                    534 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      2 分钟
                   </span>&nbsp;
                 
 
@@ -184,7 +184,99 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-1511#author=0" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-1511#author=0</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>n-1个人从1号点出发，到剩余n-1个宣传点，然后再回到1号点汇报结果，求所有人往返路径和的最小值。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>m条边，边号为偶数的表示正方向，边号为奇数的表示反方向。spfa1()沿着正方向跑，起点为1，则dist[i]表示的是从1到i的最短距离。spfa2()沿着反方向跑，起点为1，则dist2[i]表示的是从i到1的最短距离。最终答案就是dist1[i]+dist2[i]的总和，i∈[2,n]。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">long</span> maxn=<span class="number">1000000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> to,next,w;</span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> k=<span class="number">1</span>,head[maxn],vis[maxn],dist1[maxn],dist2[maxn],T,n,m;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> u,<span class="keyword">long</span> <span class="keyword">long</span> v,<span class="keyword">long</span> <span class="keyword">long</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spfa1</span><span class="params">()</span><span class="comment">//1到其余所有点 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">	<span class="built_in">memset</span>(dist1,<span class="number">0x3f3f3f3f</span>,<span class="keyword">sizeof</span>(dist1));</span><br><span class="line">	dist1[<span class="number">1</span>]=<span class="number">0</span>;vis[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	q.push(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> x=q.front();q.pop();vis[x]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">1</span>)<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(dist1[edge[i].to]&gt;dist1[x]+edge[i].w)</span><br><span class="line">			&#123;</span><br><span class="line">				dist1[edge[i].to]=dist1[x]+edge[i].w;</span><br><span class="line">				<span class="keyword">if</span>(!vis[edge[i].to])</span><br><span class="line">				&#123;</span><br><span class="line">					vis[edge[i].to]=<span class="number">1</span>;</span><br><span class="line">					q.push(edge[i].to);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spfa2</span><span class="params">()</span><span class="comment">//其余所有点到1； </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">	<span class="built_in">memset</span>(dist2,<span class="number">0x3f3f3f3f</span>,<span class="keyword">sizeof</span>(dist2));</span><br><span class="line">	dist2[<span class="number">1</span>]=<span class="number">0</span>;vis[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	q.push(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> x=q.front();q.pop();vis[x]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(dist2[edge[i].to]&gt;dist2[x]+edge[i].w)</span><br><span class="line">			&#123;</span><br><span class="line">				dist2[edge[i].to]=dist2[x]+edge[i].w;</span><br><span class="line">				<span class="keyword">if</span>(!vis[edge[i].to])</span><br><span class="line">				&#123;</span><br><span class="line">					vis[edge[i].to]=<span class="number">1</span>;</span><br><span class="line">					q.push(edge[i].to);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		k=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">		<span class="built_in">memset</span>(edge,<span class="number">0</span>,<span class="keyword">sizeof</span>(edge));</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;m);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">long</span> <span class="keyword">long</span> a,b,c;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">			add(a,b,c);add(b,a,c);</span><br><span class="line">		&#125;</span><br><span class="line">		spfa1(); </span><br><span class="line">		spfa2();</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			ans+=dist1[i]+dist2[i];	</span><br><span class="line">		&#125;	</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">    #include&lt;cstdio&gt;
+    #include&lt;cstring&gt;
+    #include&lt;iostream&gt;
+    #include&lt;algorithm&gt;
+    #include&lt;queue&gt;
+    using namespace std;
+    const long long maxn=1000000+5;
+    struct node
+    {
+        long long to,next,w;
+    }edge[maxn*2];
+    long long k=1,head[maxn],vis[maxn],dist1[maxn],dist2[maxn],T,n,m;
+    void add(long long u,long long v,long long w)
+    {
+        edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;
+    }
+    void spfa1()//1到其余所有点 
+    {
+        queue&lt;long long&gt;q;
+        memset(vis,0,sizeof(vis));
+        memset(dist1,0x3f3f3f3f,sizeof(dist1));
+        dist1[1]=0;vis[1]=1;
+        q.push(1);
+        while(!q.empty())
+        {
+            long long x=q.front();q.pop();vis[x]=0;
+            for(long long i=head[x];i;i=edge[i].next)
+            {
+                if(i%2==1)continue;
+                if(dist1[edge[i].to]&gt;dist1[x]+edge[i].w)
+                {
+                    dist1[edge[i].to]=dist1[x]+edge[i].w;
+                    if(!vis[edge[i].to])
+                    {
+                        vis[edge[i].to]=1;
+                        q.push(edge[i].to);
+                    }
+                }
+            }
+        }
+    }
+    void spfa2()//其余所有点到1； 
+    {
+        queue&lt;long long&gt;q;
+        memset(vis,0,sizeof(vis));
+        memset(dist2,0x3f3f3f3f,sizeof(dist2));
+        dist2[1]=0;vis[1]=1;
+        q.push(1);
+        while(!q.empty())
+        {
+            long long x=q.front();q.pop();vis[x]=0;
+            for(long long i=head[x];i;i=edge[i].next)
+            {
+                if(i%2==0)continue;
+                if(dist2[edge[i].to]&gt;dist2[x]+edge[i].w)
+                {
+                    dist2[edge[i].to]=dist2[x]+edge[i].w;
+                    if(!vis[edge[i].to])
+                    {
+                        vis[edge[i].to]=1;
+                        q.push(edge[i].to);
+                    }
+                }
+            }
+        }
+    }
+    int main()
+    {
+        scanf(&quot;%lld&quot;,&amp;T);
+        while(T--)
+        {
+            k=1;
+            memset(head,0,sizeof(head));
+            memset(edge,0,sizeof(edge));
+            scanf(&quot;%lld%lld&quot;,&amp;n,&amp;m);
+            for(long long i=1;i&lt;=m;i++)
+            {
+                long long a,b,c;
+                scanf(&quot;%lld%lld%lld&quot;,&amp;a,&amp;b,&amp;c);
+                add(a,b,c);add(b,a,c);
+            }
+            spfa1(); 
+            spfa2();
+            long long ans=0;
+            for(long long i=2;i&lt;=n;i++)
+            {
+                ans+=dist1[i]+dist2[i];    
+            }    
+            printf(&quot;%lld\n&quot;,ans);
+        }
+        return 0;
+    }</code></pre>
+
             <hr>
           </div>
           <br>

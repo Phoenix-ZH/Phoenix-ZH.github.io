@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    714 字
+                    683 字
                   </span>&nbsp;
                 
 
@@ -184,7 +184,106 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-1459#author=alexandleo" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-1459#author=alexandleo</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>每组测试数据给出N，Np，Nc，M。N代表结点数量，M代表边的数量，Np代表结点中电站的数量（只产电，不耗电），<br>Nc代表消费者数量（只耗电，不产电），其他结点代表中转站（不产电，不耗电）。<br>接着M组（u，v）w数据，代表u到v容量为w，接着Np组（u）w，代表结点u产电w，接着Nc组（u）w，代表结点u耗电w。<br>求电网中能消耗的最大电能值。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>求最大电能，显然这是最大流问题，s与所有的电站连接，边权为产电量，t与所有的消费者连接，边权为耗电量，然后根据m条边的信息，<br>如果u，v属于电站，则值不变，如果不是电站，那么需要+N，成为另一个集合，再建边，边权为容量w，然后跑网络流dinic。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">200000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">205</span>;</span><br><span class="line"><span class="keyword">int</span> k=<span class="number">1</span>,s,t,head[maxn],deep[maxn],n,m,np,nc,ans,vis[maxn],u[maxn],v[maxn],w[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,w;</span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(deep,<span class="number">0</span>,<span class="keyword">sizeof</span>(deep));</span><br><span class="line">	deep[s]=<span class="number">1</span>;</span><br><span class="line">	q.push(s);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x=q.front();q.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!deep[edge[i].to]&amp;&amp;edge[i].w)</span><br><span class="line">			&#123;</span><br><span class="line">				deep[edge[i].to]=deep[x]+<span class="number">1</span>;</span><br><span class="line">				q.push(edge[i].to);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> deep[t];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> F)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x==t)<span class="keyword">return</span> F;</span><br><span class="line">	<span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(deep[edge[i].to]==deep[x]+<span class="number">1</span>&amp;&amp;edge[i].w)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> w=dfs(edge[i].to,min(edge[i].w,F));</span><br><span class="line">			edge[i].w-=w;edge[i^<span class="number">1</span>].w+=w;f+=w;F-=w;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(!f)deep[x]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dinic</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(bfs())</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=dfs(s,<span class="number">0x3f3f3f3f</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;n,&amp;np,&amp;nc,&amp;m)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		ans=<span class="number">0</span>;</span><br><span class="line">		k=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">		<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">		t=N*<span class="number">5</span>;s=t+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">char</span> x,y,z;</span><br><span class="line">			<span class="keyword">int</span> a,b,c;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;a&gt;&gt;y&gt;&gt;b&gt;&gt;z&gt;&gt;c;</span><br><span class="line">			u[i]=a;v[i]=b;w[i]=c;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=np;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> b,c;<span class="keyword">char</span> x,y;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;b&gt;&gt;y&gt;&gt;c;</span><br><span class="line">			add(s,b,c);add(b,s,<span class="number">0</span>);</span><br><span class="line">			vis[b]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!vis[u[i]])u[i]+=N;</span><br><span class="line">			<span class="keyword">if</span>(!vis[v[i]])v[i]+=N;</span><br><span class="line">			add(u[i],v[i],w[i]);add(v[i],u[i],<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nc;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> b,c;<span class="keyword">char</span> x,y;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;b&gt;&gt;y&gt;&gt;c;</span><br><span class="line">			add(b+N,t,c);add(t,b+N,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		dinic();</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=200000+5;
+const int N=205;
+int k=1,s,t,head[maxn],deep[maxn],n,m,np,nc,ans,vis[maxn],u[maxn],v[maxn],w[maxn];
+struct node
+{
+    int to,next,w;
+}edge[maxn*2];
+void add(int u,int v,int w)
+{
+    edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;
+}
+bool bfs()
+{
+    queue&lt;int&gt;q;
+    memset(deep,0,sizeof(deep));
+    deep[s]=1;
+    q.push(s);
+    while(!q.empty())
+    {
+        int x=q.front();q.pop();
+        for(int i=head[x];i;i=edge[i].next)
+        {
+            if(!deep[edge[i].to]&amp;&amp;edge[i].w)
+            {
+                deep[edge[i].to]=deep[x]+1;
+                q.push(edge[i].to);
+            }
+        }
+    }
+    return deep[t];
+}
+int dfs(int x,int F)
+{
+    if(x==t)return F;
+    int f=0;
+    for(int i=head[x];i;i=edge[i].next)
+    {
+        if(deep[edge[i].to]==deep[x]+1&amp;&amp;edge[i].w)
+        {
+            int w=dfs(edge[i].to,min(edge[i].w,F));
+            edge[i].w-=w;edge[i^1].w+=w;f+=w;F-=w;
+        }
+    }
+    if(!f)deep[x]=0;
+    return f;
+}
+void dinic()
+{
+    while(bfs())
+    {
+        ans+=dfs(s,0x3f3f3f3f);
+    }
+}
+int main()
+{
+    while(scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;np,&amp;nc,&amp;m)!=EOF)
+    {
+        ans=0;
+        k=1;
+        memset(head,0,sizeof(head));
+        memset(vis,0,sizeof(vis));
+        t=N*5;s=t+1;
+        for(int i=1;i&lt;=m;i++)
+        {
+            char x,y,z;
+            int a,b,c;
+            cin&gt;&gt;x&gt;&gt;a&gt;&gt;y&gt;&gt;b&gt;&gt;z&gt;&gt;c;
+            u[i]=a;v[i]=b;w[i]=c;
+        }
+        for(int i=1;i&lt;=np;i++)
+        {
+            int b,c;char x,y;
+            cin&gt;&gt;x&gt;&gt;b&gt;&gt;y&gt;&gt;c;
+            add(s,b,c);add(b,s,0);
+            vis[b]=1;
+        }
+        for(int i=1;i&lt;=m;i++)
+        {
+            if(!vis[u[i]])u[i]+=N;
+            if(!vis[v[i]])v[i]+=N;
+            add(u[i],v[i],w[i]);add(v[i],u[i],0);
+        }
+        for(int i=1;i&lt;=nc;i++)
+        {
+            int b,c;char x,y;
+            cin&gt;&gt;x&gt;&gt;b&gt;&gt;y&gt;&gt;c;
+            add(b+N,t,c);add(t,b+N,0);
+        }
+        dinic();
+        printf(&quot;%d\n&quot;,ans);
+    }
+    return 0;
+}</code></pre>
+
             <hr>
           </div>
           <br>

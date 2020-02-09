@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    396 字
+                    385 字
                   </span>&nbsp;
                 
 
@@ -184,7 +184,62 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-4763#author=0" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-4763#author=0</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>字符串E是字符串S的前缀和后缀，同时也出现在字符串S的中间，不与前缀后缀重合，问字符串S中符合要求的字符串E的最大长度。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>这题显示是kmp问题，kmp中Next[i]表示字符串s从0…..i-1中前缀与后缀的最大公共子串，而问题就是求EAEBE，A，B长度任意(可以为0)，显然E最长为Next[len]，于是可以从len-Next[len]开始往前看Next[now]与E的大小关系，now&gt;=2*E，因为不可以重叠，如果找不到呢，E就应该缩小，理论是E–，所以E=Next[E]，继续寻找，直到找到或者无法继续。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1000000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,len1,len2,Next[maxn];<span class="keyword">char</span> s1[maxn],s2[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">next_pre</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">1</span>;Next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(j&lt;len2)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(Next[i]!=<span class="number">-1</span>&amp;&amp;s2[i]!=s2[j])i=Next[i];</span><br><span class="line">		<span class="keyword">if</span>(s2[i]==s2[j])Next[j+<span class="number">1</span>]=i+<span class="number">1</span>,i++;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">while</span>(n--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">memset</span>(Next,<span class="number">0</span>,<span class="keyword">sizeof</span>(Next));</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s2);</span><br><span class="line">		len2=<span class="built_in">strlen</span>(s2);</span><br><span class="line">		next_pre();</span><br><span class="line">		<span class="keyword">int</span> L=Next[len2];</span><br><span class="line">		<span class="keyword">int</span> sign=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(L)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> now=len2-L;</span><br><span class="line">			<span class="keyword">while</span>(Next[now]==<span class="number">0</span>&amp;&amp;now&gt;=<span class="number">2</span>*L)now--;</span><br><span class="line">			<span class="keyword">while</span>(now&gt;=<span class="number">2</span>*L)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(Next[now]&gt;=L)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> now--;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(Next[now]&gt;=L&amp;&amp;now&gt;=<span class="number">2</span>*L)</span><br><span class="line">			&#123;</span><br><span class="line">				sign=<span class="number">1</span>;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,L);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			L=Next[L];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(sign==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"0\n"</span>);</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000000+5;
+int n,len1,len2,Next[maxn];char s1[maxn],s2[maxn];
+void next_pre()
+{
+    int i=0,j=1;Next[0]=-1;
+    while(j&lt;len2)
+    {
+        while(Next[i]!=-1&amp;&amp;s2[i]!=s2[j])i=Next[i];
+        if(s2[i]==s2[j])Next[j+1]=i+1,i++;
+        j++;
+    }
+}
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;n);
+    while(n--)
+    {
+        memset(Next,0,sizeof(Next));
+        scanf(&quot;%s&quot;,s2);
+        len2=strlen(s2);
+        next_pre();
+        int L=Next[len2];
+        int sign=0;
+        while(L)
+        {
+            int now=len2-L;
+            while(Next[now]==0&amp;&amp;now&gt;=2*L)now--;
+            while(now&gt;=2*L)
+            {
+                if(Next[now]&gt;=L)
+                {
+                    break;
+                }
+                else now--;
+            }
+            if(Next[now]&gt;=L&amp;&amp;now&gt;=2*L)
+            {
+                sign=1;
+                printf(&quot;%d\n&quot;,L);
+                break;
+            }
+            L=Next[L];
+        }
+        if(sign==0)
+        {
+            printf(&quot;0\n&quot;);
+            continue;
+        }
+    }
+    return 0;
+}</code></pre>
 <p>//注意要判定now&gt;=2*L！</p>
 
             <hr>

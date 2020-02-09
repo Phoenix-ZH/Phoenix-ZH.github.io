@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    814 字
+                    781 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -184,7 +184,117 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-4292#author=yupengju" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-4292#author=yupengju</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>昊妈决定只给每个人一种食物和一种饮料，而且每种饮料和食物都只能提供有限次。现在给出每个人喜欢的食物种类和饮料种类，<br>昊妈可以最多让多少人得到满足呢？第一行给出N F D表示人数，食物种类数，饮料种类数第二行给出F个数字表示第i种食物有几个第三行给出D个数字<br>表示第i种饮料有几个接下来N行分别给出第i个人对第j种食物的喜爱情况，Y是喜欢N是不喜欢，再来N行对饮料的</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>这道题是最大流问题，重点自然就是建图，一个人要满足，必须同时拥有食物和饮料。而一个人也最多可以满足一次，<br>而且饮料和食物的容量也是有限的。最简单的自然是食物连向起点，边权为食物的容量；饮料连向中点，边权为饮料的容量；如果某人i喜欢食物j，<br>那么二者就要连边，即j–&gt;i+N，边权为1，并且人位于中间必须拆点，即i+N–&gt;i+2<em>N,边权为1。如果某人i喜欢饮料j，那么i+2</em>N–&gt;j+3*N，边权为1<br>建好后跑dinic。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">200000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">200</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> k=<span class="number">1</span>,n,f,d,deep[maxn],head[maxn],ans,s,t;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,w;</span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(deep,<span class="number">0</span>,<span class="keyword">sizeof</span>(deep));</span><br><span class="line">	deep[s]=<span class="number">1</span>;</span><br><span class="line">	q.push(s);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x=q.front();q.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(edge[i].w&amp;&amp;!deep[edge[i].to])</span><br><span class="line">			&#123;</span><br><span class="line">				deep[edge[i].to]=deep[x]+<span class="number">1</span>;</span><br><span class="line">				q.push(edge[i].to);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> deep[t];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> F)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x==t)<span class="keyword">return</span> F;</span><br><span class="line">	<span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(deep[edge[i].to]==deep[x]+<span class="number">1</span>&amp;&amp;edge[i].w)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> w=dfs(edge[i].to,min(F-f,edge[i].w));</span><br><span class="line">			edge[i].w-=w;edge[i^<span class="number">1</span>].w+=w;f+=w;</span><br><span class="line">			<span class="keyword">if</span>(f==F)<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(!f)deep[x]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dinic</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(bfs())</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=dfs(s,<span class="number">0x3f3f3f3f</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;f,&amp;d)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		k=<span class="number">1</span>;s=<span class="number">0</span>;t=<span class="number">5</span>*N;ans=<span class="number">0</span>;</span><br><span class="line">		<span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">		<span class="built_in">memset</span>(edge,<span class="number">0</span>,<span class="keyword">sizeof</span>(edge));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=f;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> x;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">			add(s,i,x);add(i,s,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=d;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> x;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">			add(i+<span class="number">3</span>*N,t,x);add(t,i+<span class="number">3</span>*N,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">string</span> x;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=f;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(x[j<span class="number">-1</span>]==<span class="string">'Y'</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					add(j,i+N,<span class="number">1</span>);add(i+N,j,<span class="number">0</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">string</span> x;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=d;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(x[j<span class="number">-1</span>]==<span class="string">'Y'</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					add(i+<span class="number">2</span>*N,j+<span class="number">3</span>*N,<span class="number">1</span>);add(j+<span class="number">3</span>*N,i+<span class="number">2</span>*N,<span class="number">0</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			add(i+N,i+<span class="number">2</span>*N,<span class="number">1</span>);add(i+<span class="number">2</span>*N,i+N,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		dinic();</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=200000+5;
+const int N=200+5;
+int k=1,n,f,d,deep[maxn],head[maxn],ans,s,t;
+struct node
+{
+    int to,next,w;
+}edge[maxn*2];
+void add(int u,int v,int w)
+{
+    edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;
+}
+bool bfs()
+{
+    queue&lt;int&gt;q;
+    memset(deep,0,sizeof(deep));
+    deep[s]=1;
+    q.push(s);
+    while(!q.empty())
+    {
+        int x=q.front();q.pop();
+        for(int i=head[x];i;i=edge[i].next)
+        {
+            if(edge[i].w&amp;&amp;!deep[edge[i].to])
+            {
+                deep[edge[i].to]=deep[x]+1;
+                q.push(edge[i].to);
+            }
+        }
+    }
+    return deep[t];
+}
+int dfs(int x,int F)
+{
+    if(x==t)return F;
+    int f=0;
+    for(int i=head[x];i;i=edge[i].next)
+    {
+        if(deep[edge[i].to]==deep[x]+1&amp;&amp;edge[i].w)
+        {
+            int w=dfs(edge[i].to,min(F-f,edge[i].w));
+            edge[i].w-=w;edge[i^1].w+=w;f+=w;
+            if(f==F)break;
+        }
+    }
+    if(!f)deep[x]=0;
+    return f;
+}
+void dinic()
+{
+    while(bfs())
+    {
+        ans+=dfs(s,0x3f3f3f3f);
+    }
+}
+int main()
+{
+    while(scanf(&quot;%d%d%d&quot;,&amp;n,&amp;f,&amp;d)!=EOF)
+    {
+        k=1;s=0;t=5*N;ans=0;
+        memset(head,0,sizeof(head));
+        memset(edge,0,sizeof(edge));
+        for(int i=1;i&lt;=f;i++)
+        {
+            int x;scanf(&quot;%d&quot;,&amp;x);
+            add(s,i,x);add(i,s,0);
+        }
+        for(int i=1;i&lt;=d;i++)
+        {
+            int x;scanf(&quot;%d&quot;,&amp;x);
+            add(i+3*N,t,x);add(t,i+3*N,0);
+        }
+        for(int i=1;i&lt;=n;i++)
+        {
+            string x;
+            cin&gt;&gt;x;
+            for(int j=1;j&lt;=f;j++)
+            {
+                if(x[j-1]==&#39;Y&#39;)
+                {
+                    add(j,i+N,1);add(i+N,j,0);
+                }
+            }
+        }
+        for(int i=1;i&lt;=n;i++)
+        {
+            string x;
+            cin&gt;&gt;x;
+            for(int j=1;j&lt;=d;j++)
+            {
+                if(x[j-1]==&#39;Y&#39;)
+                {
+                    add(i+2*N,j+3*N,1);add(j+3*N,i+2*N,0);
+                }
+            }
+        }
+        for(int i=1;i&lt;=n;i++)
+        {
+            add(i+N,i+2*N,1);add(i+2*N,i+N,0);
+        }
+        dinic();
+        printf(&quot;%d\n&quot;,ans);
+    }
+    return 0;
+}</code></pre>
+
             <hr>
           </div>
           <br>

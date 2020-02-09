@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    800 字
+                    777 字
                   </span>&nbsp;
                 
 
@@ -184,7 +184,86 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-3374" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-3374</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>对于一个字符串，它可以每次左移一次，得到一个新的字符串，因此一个长度为n的字符串，可以得到n个字符串。问，字典序最小的字符串排第几位，一共有多少个，字典序最大的字符串排第几位，一共有多少个<br>ps:如果最大和最小的有多个，输出最先出现的那个。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>求有多少个相同的字符串相对简单，并且运用到了kmp的知识，只有内部循环的字符串才可能会重复，对于这种字符串来讲它的循环节T= n-Next[n]，出现次数times=n/T。如何求最大字符串和最小字符串呢？这个就需要用到字符串的最小表示法和最大表示法。这里简单描述一下字符串的最小表示法，至于字符串的最大表示法，可以将最小表示法照搬修改即可。<br>字符串的最小表示法：<br>设定一个opt1和一个opt2与k。初始opt1=0，opt2=1，k=0，一开始指向s[0],s[1]<br>如果s[opt1+k]==s[opt2+k]，则k++.注意opt2+k可能越界，所以要对len取模。当k==len时，说明每一个字符串都恰好等于，没有字符串比当前的小。就直接返回min(opt1,opt2)<br>如果s[opt1+k]&gt;s[opt2+k],说明s[opt1…..opt1+k]之间的每个字符都不可能作为最小字符串的起始点.于是opt1滑至opt1+k+1，k=0.<br>如果s[opt1+k]&lt;s[opt2+k],说明s[opt2…..opt2+k]之间的每个字符都不可能作为最小字符串的起始点.于是opt2滑至opt2+k+1，k=0.<br>如果opt1==opt2，则让刚才修改过的opt++；<br>最后返回min(opt1,opt2)就可以了。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1000000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> len1,len2,Next[maxn];<span class="keyword">char</span> s1[maxn],s2[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">next_pre</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">1</span>;Next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(j&lt;len2)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(Next[i]!=<span class="number">-1</span>&amp;&amp;s2[i]!=s2[j])i=Next[i];</span><br><span class="line">		<span class="keyword">if</span>(s2[i]==s2[j])Next[j+<span class="number">1</span>]=i+<span class="number">1</span>,i++;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_min</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> opt1=<span class="number">0</span>,opt2=<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(opt1&lt;len2&amp;&amp;opt2&lt;len2&amp;&amp;k&lt;len2)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(s2[(opt1+k)%len2]==s2[(opt2+k)%len2])k++;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s2[(opt1+k)%len2]&gt;s2[(opt2+k)%len2])</span><br><span class="line">		&#123;</span><br><span class="line">			opt1=opt1+k+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(opt1==opt2)</span><br><span class="line">				opt1++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s2[(opt1+k)%len2]&lt;s2[(opt2+k)%len2])</span><br><span class="line">		&#123;</span><br><span class="line">			opt2=opt2+k+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(opt1==opt2)</span><br><span class="line">				opt2++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> min(opt1,opt2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_max</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> opt1=<span class="number">0</span>,opt2=<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(opt1&lt;len2&amp;&amp;opt2&lt;len2&amp;&amp;k&lt;len2)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(s2[(opt1+k)%len2]==s2[(opt2+k)%len2])k++;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s2[(opt1+k)%len2]&lt;s2[(opt2+k)%len2])</span><br><span class="line">		&#123;</span><br><span class="line">			opt1=opt1+k+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(opt1==opt2)</span><br><span class="line">				opt1++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s2[(opt1+k)%len2]&gt;s2[(opt2+k)%len2])</span><br><span class="line">		&#123;</span><br><span class="line">			opt2=opt2+k+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(opt1==opt2)</span><br><span class="line">				opt2++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> min(opt1,opt2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s2)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		len2=<span class="built_in">strlen</span>(s2);</span><br><span class="line">		<span class="built_in">memset</span>(Next,<span class="number">0</span>,<span class="keyword">sizeof</span>(Next));</span><br><span class="line">		next_pre();</span><br><span class="line">		<span class="keyword">int</span> T=len2-Next[len2];<span class="keyword">int</span> times=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(len2%T==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			times=len2/T;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">			times=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> x1=get_min();</span><br><span class="line">		<span class="keyword">int</span> x2=get_max();</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d %d %d\n"</span>,x1+<span class="number">1</span>,times,x2+<span class="number">1</span>,times);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000000+5;
+int len1,len2,Next[maxn];char s1[maxn],s2[maxn];
+void next_pre()
+{
+    int i=0,j=1;Next[0]=-1;
+    while(j&lt;len2)
+    {
+        while(Next[i]!=-1&amp;&amp;s2[i]!=s2[j])i=Next[i];
+        if(s2[i]==s2[j])Next[j+1]=i+1,i++;
+        j++;
+    }
+}
+int get_min()
+{
+    int opt1=0,opt2=1,k=0;
+    while(opt1&lt;len2&amp;&amp;opt2&lt;len2&amp;&amp;k&lt;len2)
+    {
+        if(s2[(opt1+k)%len2]==s2[(opt2+k)%len2])k++;
+        else if(s2[(opt1+k)%len2]&gt;s2[(opt2+k)%len2])
+        {
+            opt1=opt1+k+1,k=0;
+            if(opt1==opt2)
+                opt1++;
+        }
+        else if(s2[(opt1+k)%len2]&lt;s2[(opt2+k)%len2])
+        {
+            opt2=opt2+k+1,k=0;
+            if(opt1==opt2)
+                opt2++;
+        }
+    }
+    return min(opt1,opt2);
+}
+int get_max()
+{
+    int opt1=0,opt2=1,k=0;
+    while(opt1&lt;len2&amp;&amp;opt2&lt;len2&amp;&amp;k&lt;len2)
+    {
+        if(s2[(opt1+k)%len2]==s2[(opt2+k)%len2])k++;
+        else if(s2[(opt1+k)%len2]&lt;s2[(opt2+k)%len2])
+        {
+            opt1=opt1+k+1,k=0;
+            if(opt1==opt2)
+                opt1++;
+        }
+        else if(s2[(opt1+k)%len2]&gt;s2[(opt2+k)%len2])
+        {
+            opt2=opt2+k+1,k=0;
+            if(opt1==opt2)
+                opt2++;
+        }
+    }
+    return min(opt1,opt2);
+}
+int main()
+{
+    while(scanf(&quot;%s&quot;,s2)!=EOF)
+    {
+        len2=strlen(s2);
+        memset(Next,0,sizeof(Next));
+        next_pre();
+        int T=len2-Next[len2];int times=0;
+        if(len2%T==0)
+        {
+            times=len2/T;
+        }
+        else 
+            times=1;
+        int x1=get_min();
+        int x2=get_max();
+        printf(&quot;%d %d %d %d\n&quot;,x1+1,times,x2+1,times);
+    }
+    return 0;
+}</code></pre>
+
             <hr>
           </div>
           <br>

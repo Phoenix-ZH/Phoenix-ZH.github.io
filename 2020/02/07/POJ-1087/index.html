@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    992 字
+                    945 字
                   </span>&nbsp;
                 
 
@@ -147,7 +147,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      5 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -185,7 +185,146 @@
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>宾馆里有几种插座，分别有其对应型号，你携带了几种用电器（手机，电脑一类的），也有其对应型号；<br>可是不一定用电器就能和插座匹配上，于是宾馆的商店里提供了一些转换器，这些转换器可以将某一型号电源转换成另一型号的。<br>问，你的用电器最少会有多少种无法充电 。注意插座型号是字符串形式，长度小于24，用电器名称也是字符串。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>这是最大流问题。先说一下细节，插座和用电器的数量肯定都只有一个，但是转换器的数量是无限的。<br>建图：设起点为s，终点为t，首先s与所有的用电器相连，边权为1，（一开始还想着拆点，我怕是个哈批啊，对于两边的点，边权就是容量，<br>不需要去拆点！），t与所有的插座相连。如果型号相同，就可以二者之间进行连边。然后对于转换器，转换器之间可以相连，并且转换可以实现A–&gt;B，<br>也可以实现B–&gt;A。所以，对于用电器型号=A||B的都可以连边，对于插座型号=A||B的都可以连边，边权为1，对于转换器之间可以相连的，直接连接，<br>由于容量无穷大，因此不必拆点！</p>
 <p>代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">300000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">200</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> s,t,n,k=<span class="number">1</span>,m,q,ans,head[maxn],deep[maxn];<span class="keyword">char</span> r[maxn][<span class="number">25</span>],mr[maxn][<span class="number">25</span>],mc[maxn][<span class="number">25</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,w;</span><br><span class="line">&#125;edge[maxn*<span class="number">2</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">N</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> s[<span class="number">40</span>];<span class="keyword">char</span> r[<span class="number">25</span>];</span><br><span class="line">&#125;a[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(deep,<span class="number">0</span>,<span class="keyword">sizeof</span>(deep));</span><br><span class="line">	deep[s]=<span class="number">1</span>;</span><br><span class="line">	q.push(s);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x=q.front();q.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!deep[edge[i].to]&amp;&amp;edge[i].w)</span><br><span class="line">			&#123;</span><br><span class="line">				deep[edge[i].to]=deep[x]+<span class="number">1</span>;</span><br><span class="line">				q.push(edge[i].to);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> deep[t];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> F)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x==t)<span class="keyword">return</span> F;</span><br><span class="line">	<span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(deep[edge[i].to]==deep[x]+<span class="number">1</span>&amp;&amp;edge[i].w)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> w=dfs(edge[i].to,min(F,edge[i].w));</span><br><span class="line">			edge[i].w-=w;edge[i^<span class="number">1</span>].w+=w;f+=w;F-=w;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(!f)deep[x]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dinic</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(bfs())</span><br><span class="line">	&#123;</span><br><span class="line">		ans+=dfs(s,<span class="number">0x3f3f3f3f</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		k=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line">		<span class="built_in">memset</span>(edge,<span class="number">0</span>,<span class="keyword">sizeof</span>(edge));</span><br><span class="line">		s=<span class="number">0</span>;t=<span class="number">4</span>*N;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,r[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			add(s,i,<span class="number">1</span>);add(i,s,<span class="number">0</span>);</span><br><span class="line">			<span class="keyword">char</span> x;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,a[i].s,a[i].r);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">strcmp</span>(a[i].r,r[j])==<span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					add(i,j+N,<span class="number">1</span>);add(j+N,i,<span class="number">0</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			add(i+N,t,<span class="number">1</span>);add(t,i+N,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,mr[i],mc[i]);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=q;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">strcmp</span>(a[j].r,mr[i])==<span class="number">0</span>||<span class="built_in">strcmp</span>(a[j].r,mc[i])==<span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					add(j,i+<span class="number">2</span>*N,<span class="number">1</span>);add(i+<span class="number">2</span>*N,j,<span class="number">0</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">strcmp</span>(r[j],mc[i])==<span class="number">0</span>||<span class="built_in">strcmp</span>(r[j],mr[i])==<span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					add(i+<span class="number">2</span>*N,j+N,<span class="number">1</span>);add(j+N,i+<span class="number">2</span>*N,<span class="number">0</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(i!=j&amp;&amp;<span class="built_in">strcmp</span>(mc[i],mr[j])==<span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					add(i+<span class="number">2</span>*N,j+<span class="number">2</span>*N,<span class="number">0x3f3f3f3f</span>);add(j+<span class="number">2</span>*N,i+<span class="number">2</span>*N,<span class="number">0</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(i!=j&amp;&amp;<span class="built_in">strcmp</span>(mr[i],mc[j])==<span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					add(i+<span class="number">2</span>*N,j+<span class="number">2</span>*N,<span class="number">0x3f3f3f3f</span>);add(j+<span class="number">2</span>*N,i+<span class="number">2</span>*N,<span class="number">0</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		dinic();</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,q-ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;map&gt;
+using namespace std;
+const int maxn=300000+5;
+const int N=200+5;
+int s,t,n,k=1,m,q,ans,head[maxn],deep[maxn];char r[maxn][25],mr[maxn][25],mc[maxn][25];
+struct node
+{
+    int to,next,w;
+}edge[maxn*2];
+struct N
+{
+    char s[40];char r[25];
+}a[maxn];
+void add(int u,int v,int w)
+{
+    edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;
+}
+bool bfs()
+{
+    queue&lt;int&gt;q;
+    memset(deep,0,sizeof(deep));
+    deep[s]=1;
+    q.push(s);
+    while(!q.empty())
+    {
+        int x=q.front();q.pop();
+        for(int i=head[x];i;i=edge[i].next)
+        {
+            if(!deep[edge[i].to]&amp;&amp;edge[i].w)
+            {
+                deep[edge[i].to]=deep[x]+1;
+                q.push(edge[i].to);
+            }
+        }
+    }
+    return deep[t];
+}
+int dfs(int x,int F)
+{
+    if(x==t)return F;
+    int f=0;
+    for(int i=head[x];i;i=edge[i].next)
+    {
+        if(deep[edge[i].to]==deep[x]+1&amp;&amp;edge[i].w)
+        {
+            int w=dfs(edge[i].to,min(F,edge[i].w));
+            edge[i].w-=w;edge[i^1].w+=w;f+=w;F-=w;
+        }
+    }
+    if(!f)deep[x]=0;
+    return f;
+}
+void dinic()
+{
+    ans=0;
+    while(bfs())
+    {
+        ans+=dfs(s,0x3f3f3f3f);
+    }
+}
+int main()
+{
+    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)
+    {
+        k=1;
+        memset(head,0,sizeof(head));
+        memset(edge,0,sizeof(edge));
+        s=0;t=4*N;
+        for(int i=1;i&lt;=n;i++)
+        {
+            scanf(&quot;%s&quot;,r[i]);
+        }
+        scanf(&quot;%d&quot;,&amp;q);
+        for(int i=1;i&lt;=q;i++)
+        {
+            add(s,i,1);add(i,s,0);
+            char x;
+            scanf(&quot;%s%s&quot;,a[i].s,a[i].r);
+        }
+        for(int i=1;i&lt;=q;i++)
+        {
+            for(int j=1;j&lt;=n;j++)
+            {
+                if(strcmp(a[i].r,r[j])==0)
+                {
+                    add(i,j+N,1);add(j+N,i,0);
+                }
+            }
+        }
+        for(int i=1;i&lt;=n;i++)
+        {
+            add(i+N,t,1);add(t,i+N,0);
+        }
+        scanf(&quot;%d&quot;,&amp;m);
+        for(int i=1;i&lt;=m;i++)
+        {
+            scanf(&quot;%s%s&quot;,mr[i],mc[i]);
+            for(int j=1;j&lt;=q;j++)
+            {
+                if(strcmp(a[j].r,mr[i])==0||strcmp(a[j].r,mc[i])==0)
+                {
+                    add(j,i+2*N,1);add(i+2*N,j,0);
+                }
+            }
+            for(int j=1;j&lt;=n;j++)
+            {
+                if(strcmp(r[j],mc[i])==0||strcmp(r[j],mr[i])==0)
+                {
+                    add(i+2*N,j+N,1);add(j+N,i+2*N,0);
+                }
+            }
+        }
+        for(int i=1;i&lt;=m;i++)
+        {
+            for(int j=1;j&lt;=m;j++)
+            {
+                if(i!=j&amp;&amp;strcmp(mc[i],mr[j])==0)
+                {
+                    add(i+2*N,j+2*N,0x3f3f3f3f);add(j+2*N,i+2*N,0);
+                }
+            }
+            for(int j=1;j&lt;=m;j++)
+            {
+                if(i!=j&amp;&amp;strcmp(mr[i],mc[j])==0)
+                {
+                    add(i+2*N,j+2*N,0x3f3f3f3f);add(j+2*N,i+2*N,0);
+                }
+            }
+        }
+        dinic();
+        printf(&quot;%d\n&quot;,q-ans);
+    }
+    return 0;
+}    </code></pre>
+
             <hr>
           </div>
           <br>
