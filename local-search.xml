@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>HDU-2819</title>
+    <link href="/2020/02/10/HDU-2819/"/>
+    <url>/2020/02/10/HDU-2819/</url>
+    
+    <content type="html"><![CDATA[<h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p>HDU-2819 Swap</p><h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-2819" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-2819</a></p><h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给一个n*n的方阵，每一个格子(i,j)由0/1组成，问能否使得斜对角线即i==j,（i∈[1,n]），如果不能就输出-1，否则请输出方案。R表示交换行，C表示交换列。</p><hr><p><strong>这里有一点需要说明，就是说题目的交换，其实是将原来图的某一行移到最后图的某一行，而不是指先交换两行，得到一个新图，再交换新图的两行。</strong> </p><h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>首先是关于能否得到斜对角线全为1的方阵，假如一个方阵的斜对角线全为1，那么这个方阵的秩为n，那么如果一个方阵的秩小于n那一定就不可以。那么如何得到方阵的秩呢？受到前面几个二分图的题的影响，凡是方格类的题目都可以将行和列分开，将数字为1的方格就行连边，即行i–&gt;列j，最后求最大匹配，一旦最大匹配为n那就可以，否则输出-1。由矩阵的运算性质可以知道，所有的列变换都可以用行变换来替代，所有的行变换都可以用列变换来替代，于是我们不妨全部都用列变换来替换，已知cy[i]表示第i列和cy[i]行来配对，从1-n列开始枚举，然后枚举得到第一个cy[j]==i的列，说明i列与j列应该替换，然后这一层循环就应该终止！必须终止！否则答案会变多。储存交换的列。最后一个个输出。</p><h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=10000+5;const int maxm=100+5;const int N=100+5;int n,a[maxm][maxm],k=1,head[maxn],cy[maxn],l1[maxn],l2[maxn],vis[maxn]; struct node{    int to,next;}edge[maxn*2];void add(int u,int v){    edge[++k].to=v;edge[k].next=head[u];head[u]=k;}int dfs(int x){    vis[x]=1;    for(int i=head[x];i;i=edge[i].next)    {        if(!vis[edge[i].to])        {            vis[edge[i].to]=1;            if(!cy[edge[i].to]||dfs(cy[edge[i].to]))            {                cy[edge[i].to]=x;                return 1;            }        }    }    return 0;}int main(){    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)    {        k=1;        memset(head,0,sizeof(head));        memset(edge,0,sizeof(edge));        memset(cy,0,sizeof(cy));        for(int i=1;i&lt;=n;i++)        {            for(int j=1;j&lt;=n;j++)            {                scanf(&quot;%d&quot;,&amp;a[i][j]);            }        }        for(int i=1;i&lt;=n;i++)        {            for(int j=1;j&lt;=n;j++)            {                if(a[i][j])                {                    add(i,j+N);                }            }        }            int ans=0;            for(int i=1;i&lt;=n;i++)        {            memset(vis,0,sizeof(vis));            ans+=dfs(i);        }        if(ans==n)        {            int tot=0;            for(int i=1;i&lt;=n;i++)            {                for(int j=1;j&lt;=n;j++)                {                    if(cy[j+N]!=i)continue;                    if(i!=j)//交换i，j列                     {                        tot++;                        l1[tot]=i;l2[tot]=j;                        swap(cy[j+N],cy[i+N]);                        break;                    }                }            }            printf(&quot;%d\n&quot;,tot);            for(int i=1;i&lt;=tot;i++)            {                printf(&quot;C %d %d\n&quot;,l1[i],l2[i]);            }        }        else         {            printf(&quot;-1\n&quot;);        }    }    return 0;}</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>二分图(匈牙利算法)</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>HDU-1281</title>
     <link href="/2020/02/10/HDU-1281/"/>
     <url>/2020/02/10/HDU-1281/</url>

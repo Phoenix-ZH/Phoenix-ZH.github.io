@@ -153,6 +153,41 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/10/HDU-2819/">
+        <p class="h4 index-header">HDU-2819</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-2819 Swap
+题目链接：https://vjudge.net/problem/HDU-2819
+题目大意：给一个n*n的方阵，每一个格子(i,j)由0/1组成，问能否使得斜对角线即i==j,（i∈[1,n]），如果不能就输出-1，否则请输出方案。R表示交换行，C表示交换列。
+
+这里有一点需要说明，就是说题目的交换，其实是将原来图的某一行移到最后图的某一行，而不是指先交换两行，得到一个新图，再交换新图的两行。 
+题解：首先是关于能否得到斜对角线全为1的方阵，假如一个方阵的斜对角线全为1，那么这个方阵的秩为n，那么如果一个方阵的秩小于n那一定就不可以。那么如何得到方阵的秩呢？受到前面几个二分图的题的影响，凡是方格类的题目都可以将行和列分开，将数字为1的方格就行连边，即行i–&gt;列j，最后求最大匹配，一旦最大匹配为n那就可以，否则输出-1。由矩阵的运算性质可以知道，所有的列变换都可以用行变换来替代，所有的行变换都可以用列变换来替代，于是我们不妨全部都用列变换来替换，已知cy[i]表示第i列和cy[i]行来配对，从1-n列开始枚举，然后枚举得到第一个cy[j]==i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/10/HDU-1281/">
         <p class="h4 index-header">HDU-1281</p>
         
@@ -501,48 +536,6 @@ using namespace std</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3336/">
-        <p class="h4 index-header">HDU-3336</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3336 Count the string
-题目链接：https://vjudge.net/problem/HDU-3336#author=cust_acm
-题目大意：给一个字符串，求它所有子串(包括自身)出现的总次数之
-题解：该题目需要比较完善地理解Next数组地含义与作用。当匹配到i失败时，就会返回到Next[i]。则匹配到i时，应该记录了子串s[0…i]，以及与子串s[0…Next[i]]。于是就可以得到动态转移方程dp[i]=dp[Next[i]]+1.然后求和dp数组，同时取模。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=200000+5;
-const int Mod=10007;
-int T,len1,len2,Next[maxn],dp[maxn];char s1[maxn],s2[maxn];
-void next_pre</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/kmp">kmp</a>&nbsp;
           
         
       </div>
