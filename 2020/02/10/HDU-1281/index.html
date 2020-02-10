@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>标签 - 二分图(匈牙利算法) ~ Phoenix_ZH&#39;Blog</title>
+  <title>HDU-1281 ~ Phoenix_ZH&#39;Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -115,7 +115,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/biaoqian.jpg')no-repeat center center;
+         style="background: url('/img/example.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -125,6 +125,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 10日 2020, 3:51 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    673 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      3 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -136,60 +171,151 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-<!--  <p class="h4">共计 5 篇文章</p>-->
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/02/10/HDU-1281/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HDU-1281</span>
-      <span style="float: right;">02-10</span>
-    </a>
-  
-    
-    <a href="/2020/02/09/HDU-1083/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HDU-1083</span>
-      <span style="float: right;">02-09</span>
-    </a>
-  
-    
-    <a href="/2020/02/09/HDU-2444/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HDU-2444</span>
-      <span style="float: right;">02-09</span>
-    </a>
-  
-    
-    <a href="/2020/02/09/HDU-1045/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HDU-1045</span>
-      <span style="float: right;">02-09</span>
-    </a>
-  
-    
-    <a href="/2020/02/08/luogu-3386/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">luogu-3386</span>
-      <span style="float: right;">02-08</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p>HDU-1281 棋盘游戏</p>
+<h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-1281" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-1281</a></p>
+<h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>在N*M的棋盘上，在p个位置上允许放车，每一行每一列最多放一个车，并且在不允许放车的位置并不会影响车的攻击。重要点：要使车的数量最大，该点必须放车。问最多有多少个重要点、最多允许放多少个车？</p>
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>这道题和Fire Net的区别在于，Fire Net不允许放置的点是一堵墙，会隔离攻击，而这道题不会影响攻击。所以Fire Net那道题需要进行分区域块，这样就可以分离开。但是这道题不会影响攻击，因此直接按点分，X集合为行，Y集合为列，只要当a[i][j]==1才可以让i行与j列连边，相当于点(i,j)可以放车。这样跑匈牙利算法可以得到最大匹配即最大的车的放置量。对于重要点的求解需要暴力求解，对于每一个可放置车的点需要去除它，然后跑匈牙利算法，如果最大匹配变小了，说明这是重要点，当然对于前向星链表，要记录出发点u，这样就可以进行标记了，vis数组不可以开大了，容易TLE。</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=100000+5;
+const int maxm=300+5;
+const int N=100+5;
+int head[maxn],k=1,n,m,p,a[maxm][maxm],cy[maxn],vis[maxm];
+struct node
+{
+    int to,next,u;
+}edge[maxn*2];
+void add(int u,int v)
+{
+    edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].u=u;
+}
+int dfs(int x,int sign1,int sign2)
+{
+    vis[x]=1;
+    for(int i=head[x];i;i=edge[i].next)
+    {
+        if(edge[i].to==sign2&amp;&amp;edge[i].u==sign1)continue;
+        if(!vis[edge[i].to])
+        {
+            vis[edge[i].to]=1;
+            if(!cy[edge[i].to]||dfs(cy[edge[i].to],sign1,sign2))
+            {
+                cy[edge[i].to]=x;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+int main()
+{
+    int opt=0;
+    while(scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;p)!=EOF)
+    {
+        opt++;
+        k=1;
+        memset(head,0,sizeof(head));
+        memset(edge,0,sizeof(edge));
+        memset(a,0,sizeof(a));
+        memset(cy,0,sizeof(cy));
+        for(int i=1;i&lt;=p;i++)
+        {
+            int X,Y;
+            scanf(&quot;%d%d&quot;,&amp;X,&amp;Y);
+            a[X][Y]=1;
+        }
+        int ans1=0,ans2=0,tot=0;
+        for(int i=1;i&lt;=n;i++)
+        {
+            for(int j=1;j&lt;=m;j++)
+            {
+                if(a[i][j])
+                {
+                    add(i,j+N);
+                }
+            }
+        }
+        for(int i=1;i&lt;=n;i++)
+        {
+            memset(vis,0,sizeof(vis));
+            ans2+=dfs(i,0,0);
+        }
+        for(int i=1;i&lt;=n;i++)
+        {
+            for(int j=1;j&lt;=m;j++)
+            {
+                ans1=0;
+                memset(cy,0,sizeof(cy));
+                for(int w=1;w&lt;=n;w++)
+                {
+                    memset(vis,0,sizeof(vis));
+                    ans1+=dfs(w,i,j+N);
+                }
+                if(ans1!=ans2)
+                    tot++;
+            }
+        }
+        printf(&quot;Board %d have %d important blanks for %d chessmen.\n&quot;,opt,tot,ans2);
+    }
+    return 0;
+}</code></pre>
 
-
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -268,6 +394,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -308,7 +439,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - 二分图(匈牙利算法)&nbsp;",
+        "HDU-1281&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
