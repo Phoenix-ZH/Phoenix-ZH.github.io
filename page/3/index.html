@@ -153,6 +153,45 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4513/">
+        <p class="h4 index-header">HDU-4513</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 4513 吉哥系列故事——完美队形II
+题目链接：https://vjudge.net/problem/HDU-4513#author=hzoi2017_wty
+题目大意：假设有n个人按顺序的身高分别是h[1], h[2] … h[n]，从中挑出一些人形成一个新的队形，新的队形若满足以下要求，则就是新的完美队形：　　1、连续的　　2、形成回文串　　3、从左到中间那个人，身高需保证不下降
+　　　问有组成完美队形的最多人数
+题解：要求连续的并且是回文串，这很明显就是回文串的题，应该用Manacher算法，但是又要求从左到中间，身高不下降，就需要修改一下判定条件：    while(t[i+p[i]]==t[i-p[i]]&amp;&amp;(t[i-p[i]]==0||t[i-p[i]]&lt;=t[i-p[i]+2]))p[i]++;
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Manacher">Manacher</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-3294/">
         <p class="h4 index-header">HDU-3294</p>
         
@@ -532,43 +571,6 @@ int main()
         
         
           <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3660/">
-        <p class="h4 index-header">POJ-3660</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3660 Cow Contest
-题目链接：https://vjudge.net/problem/POJ-3660#author=arasHi_
-题目大意：有n头牛，m条比赛结果，每行两个数字，第一个数字表示的是胜利者。问有几头牛的排名可以确定？
-题解：排名可以确定，这该如何理解？对于结点i，如果箭头指向i所包含的结点数为ans1，i箭头指出所包含的结点数为ans2，若ans1+ans2==n-1就说明结点i的排名可以确定。问题在于如何确定ans1，ans2的值。举个例子：若a可以到b，b可以到c，那么a就可以到c。这就是传递闭包了。如何进行传递闭包呢？以上例子，a可以到b，b可以到c，则dist[a][b]=1,dist[b][c]=1,则a可以到c，即dist[a][c]=1；用floyd进行收缩即可。然后每个结点是否可以到达剩余的n-1个结点，或者剩余n-1个结点能否到达该结点，即ans1+ans2==n。判断条件就是dist[i][j]==1||dist[j][i]==1;
-代码：#include&lt;cstdio&gt;
-#include&lt;cst</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92">闭包传递</a>&nbsp;
           
             <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           

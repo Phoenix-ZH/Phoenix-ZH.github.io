@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>HDU-4185</title>
+    <link href="/2020/02/11/HDU-4185/"/>
+    <url>/2020/02/11/HDU-4185/</url>
+    
+    <content type="html"><![CDATA[<h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p> HDU - 4185  Oil Skimming </p><h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-4185" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-4185</a></p><h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有K组数据，每组数据是N*N的方阵，每个方格由.或者#组成，问有多少个互相不重叠的##(横着或竖着)。</p><p>  (1 &lt;= K &lt;= 100)  (1 &lt;= N &lt;= 600) </p><h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>最开始的思路是每个点只判断它下方或者右方是不是#，如果是就连边，但是这个方法存在一个问题：横着的##和竖着的##如果重叠会导致计数重复，又没有一个比较好的办法来规范。于是换了一个想法，一个点若为#就像它上下左右为#的点都连边，最后答案/2就可以避免重复。枚举所有的点，预处理#点的编号temp记录，然后开始跑匈牙利算法，最后ans/2.</p><h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=1200+5;const int maxm=360000+5;const int N=360000;int k=1,T,n,head[maxm],vis[maxm],cy[maxm],s[605][605];char a[605][605];struct node{    int to,next;}edge[maxm*4];void add(int u,int v){    edge[++k].to=v;edge[k].next=head[u];head[u]=k;}int dfs(int x){     vis[x]=0;    for(int i=head[x];i;i=edge[i].next)    {        if(!vis[edge[i].to])        {            vis[edge[i].to]=1;            if(!cy[edge[i].to]||dfs(cy[edge[i].to]))            {                cy[edge[i].to]=x;                return 1;            }        }    }    return 0;}int main(){    int opt=0;    scanf(&quot;%d&quot;,&amp;T);    while(T--)    {        scanf(&quot;%d&quot;,&amp;n);        opt++;        k=1;        memset(cy,0,sizeof(cy));        memset(head,0,sizeof(head));        memset(edge,0,sizeof(edge));        memset(s,0,sizeof(s));        int temp=0;        for(int i=1;i&lt;=n;i++)        {            scanf(&quot;%s&quot;,a[i]);            for(int j=0;j&lt;n;j++)            {                if(a[i][j]==&#39;#&#39;)                {                    s[i][j]=++temp;                }            }        }        for(int i=1;i&lt;=n;i++)        {            for(int j=0;j&lt;n;j++)            {                if(a[i][j]==&#39;#&#39;)                {                    if(j&lt;=n-2&amp;&amp;a[i][j+1]==&#39;#&#39;)                    {                        add(s[i][j],s[i][j+1]);                    }                    if(j&gt;=1&amp;&amp;a[i][j-1]==&#39;#&#39;)                    {                        add(s[i][j],s[i][j-1]);                    }                    if(i&lt;=n-1&amp;&amp;a[i+1][j]==&#39;#&#39;)                    {                        add(s[i][j],s[i+1][j]);                    }                    if(i&gt;=2&amp;&amp;a[i-1][j]==&#39;#&#39;)                    {                        add(s[i][j],s[i-1][j]);                    }                }            }        }        int ans=0;        for(int i=1;i&lt;=temp;i++)        {            memset(vis,0,sizeof(vis));            ans+=dfs(i);        }        printf(&quot;Case %d: %d\n&quot;,opt,ans/2);    }    return 0;}</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>二分图-匈牙利算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>HDU-2389</title>
     <link href="/2020/02/10/HDU-2389/"/>
     <url>/2020/02/10/HDU-2389/</url>
