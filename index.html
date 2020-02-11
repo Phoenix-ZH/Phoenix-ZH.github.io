@@ -153,21 +153,22 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/11/POJ-3020/">
-        <p class="h4 index-header">POJ-3020</p>
+      <a href="/2020/02/11/HDU-1054/">
+        <p class="h4 index-header">HDU-1054</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ-3020  Antenna Placement 
-题目链接：https://vjudge.net/problem/POJ-3020
-题目大意：有T组数据，每一组数据是hxw的矩阵，矩阵中的每一个方格有o或者*组成,问用1x2的矩阵 (横着或竖着都可以)来覆盖所有的 * ，问至少需要多少个这样的矩阵？
-题解：这个题和HDU4185 Oil Skimming 很相似。观察之后发现，将所有的 * 先预处理出它的编号，然后对于 * 的上下左右若为 * 就可以建边，然后跑匈牙利算法，求出最大匹配，对于这样求出来的最大匹配ans应该要÷2，即ans/=2，因为我们建的双向边。ans*2表示的是已经覆盖了的点，temp-ans *2就是剩余的美誉覆盖的点，这些点只能单独覆盖了，所以最终答案是 temp-ans *2+ans。
-ps：WA了几次，注意 * 的数量&lt;=4010=400，边就是400 * 4004，数组要够，不然就是TLE或者WA。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostr</div>
+          <div class="index-text mb-1">题目名称：HDU-1054 Strategic Game
+题目链接：https://vjudge.net/problem/HDU-1054#author=0
+题目大意：Bob非常享受玩电脑游戏的过程，尤其是策略游戏，但是在有些时候，他因为不能在第一时间找到最佳的策略而十分伤心。 现在，他遇到了一个问题。他必须保卫一个中世纪的城市，有很多道路将整个城市连起来，整体上看上去像一棵树。Bob需要放置尽可能少的士兵，保卫树上所有的边。士兵只能放在节点上，但是却可以保卫所有与这个节点相邻的边。 
+题解：题目要求很明确，就是要最少的点覆盖所有的边，即最小定点覆盖问题。 最小顶点覆盖要求用最少的点，让每条边都至少和其中一个点关联。即点集里面的点能覆盖所有的边 。
+knoig定理： 二分图的最小顶点覆盖数=二分图的最大匹配数。 
+证明：
+要证明最小顶点覆盖数==最大匹配数，即证明最小顶点覆盖数&gt;=最大匹配数，并且最大匹配数&gt;=最小顶点覆盖数。设最小顶点覆盖数为S，最大匹配数为M。
+ ① 最小顶点覆盖数&gt;=最大匹配数：
+假设最大匹配数为n，那么我们就得到了n条互不相邻的边，光覆盖这些边</div>
         </div>
       </a>
 
@@ -179,7 +180,46 @@ ps：WA了几次，注意 * 的数量&lt;=4010=400，边就是400 * 4004，数�
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE-%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95">二分图-匈牙利算法</a>&nbsp;
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%B0%8F%E9%A1%B6%E7%82%B9%E8%A6%86%E7%9B%96">最小顶点覆盖</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/11/POJ-3020/">
+        <p class="h4 index-header">POJ-3020</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-3020  Antenna Placement 
+题目链接：https://vjudge.net/problem/POJ-3020
+题目大意：有T组数据，每一组数据是hxw的矩阵，矩阵中的每一个方格有o或者*组成,问用1x2的矩阵 (横着或竖着都可以)来覆盖所有的 * ，问至少需要多少个这样的矩阵？
+题解：这个题和HDU4185 Oil Skimming 很相似。观察之后发现，将所有的 * 先预处理出它的编号，然后对于 * 的上下左右若为 * 就可以建边，然后跑匈牙利算法，求出最大匹配，对于这样求出来的最大匹配ans应该要÷2，即ans/=2，因为我们建的双向边。ans * 2表示的是已经覆盖了的点，temp-ans * 2就是剩余的美誉覆盖的点，这些点只能单独覆盖了，所以最终答案是 temp-ans * 2+ans。
+ps：WA了几次，注意 * 的数量&lt;=40 * 10=400，边就是400 * 400 * 4，数组要够，不然就是TLE或者WA。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#includ</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
           
         
       </div>
@@ -220,7 +260,7 @@ const</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE-%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95">二分图-匈牙利算法</a>&nbsp;
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
           
         
       </div>
@@ -475,50 +515,6 @@ int dfs(int x)
     {
         if(!visy[i]&amp;&amp;Map[x][i]!=0x3f3f3f3f)
      </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/KM">KM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/09/KM%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">
-        <p class="h4 index-header">KM算法详解</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">介绍：以匈牙利算法为基础，改善后用于求解带权二分图的最佳匹配问题
-完备匹配：如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，或者Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。 
-完美匹配：若二分图X部的每一个顶点都与Y中的一个顶点匹配，并且Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完美匹配。 
-即： 一个二分图，X部和Y部的顶点数相等，存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。  
-最大权匹配：带权二分图的边权重和最大的匹配，如图，最大和为102
-  
-最佳匹配：带权二分图的边权重和最大的完备匹配，如图
-  
-显然最大权匹配和最佳匹配不完全相同，最大权匹配由于不一定是最大匹配，所以无法等同于最佳匹配。
-但是如果把剩余的边补上，并且设置边权为0，那么二者可以统一起来。如图
-  
-KM算法km算法用于求最佳匹配，而不是最大权匹配。换言之，km算法用来求完备匹配下的最大权匹配。
-如果不存在完备匹配，km算法会求最大匹配，如果最大匹配存在多种，那么结果就是最大匹配中权重和最大的。
-
-在一个二分图中，左顶点为X，右顶点为Y，现在对于每组左右连</div>
         </div>
       </a>
 
