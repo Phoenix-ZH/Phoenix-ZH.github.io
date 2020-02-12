@@ -185,7 +185,7 @@
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>在外星上有n个点需要机器人去探险，有m条单向路径。问至少需要几个机器人才能遍历完所有的点，一个点可以被多个机器人经过（这就是和单纯的最小路径覆盖的区别）。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>这也是最小路径覆盖问题，但是这与最小不相交路径覆盖问题不同，这是最小相交路径覆盖问题，每个顶点可以经过多次。算法和最小不相交路径覆盖问题基本相同，但是需要用闭包传递预处理一下再建图。</p>
 <p>闭包传递的原因：</p>
-<p><img src="E:%5CBlog%5Cmyblog%5Csource_posts%5C%E6%97%A0%E6%A0%87%E9%A2%98.png" srcset="/img/loading.gif" alt="图例"></p>
+<p><img src="E:%5CBlog%5Cmyblog%5Csource_posts%5C%E6%97%A0%E6%A0%87%E9%A2%98.png" srcset="/img/loading.gif" alt=""></p>
 <p>如图，如果不进行闭包传递，最终需要三条路径，但实际上3可以经过多次，只需要两条路径，如果1-&gt;3-&gt;4这条路径走了，2-&gt;3-&gt;5也是可以走的，于是就需要（2，5）合并，（1，4）合并，这就要用到闭包传递。</p>
 <h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
