@@ -153,6 +153,45 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/12/POJ-2112/">
+        <p class="h4 index-header">POJ-2112</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-2112 Optimal Milking
+题目链接：https://vjudge.net/problem/POJ-2112#author=0
+题目大意：FJ有K台挤奶机和C只奶牛。机器编号1K，奶牛编号K+1K+C。机器一天工作M只奶牛。如何把奶牛分配给机器，使得奶牛到机器的最远距离最小。奶牛可以进过某些机器，但不在那台机器上挤奶。奶牛也可以经过其他奶牛所在的位置。                     输出一个整数，表示走最远的奶牛的需要行走的最小距离。  
+题解：“最远的行走的最小距离”确认是二分，每一个机器一天可以工作M只奶牛显然是多重匹配。首先用Floyd跑出任意两点之间的最小距离，然后建图，奶牛–&gt;机器，边权为dist[奶牛][机器],当然建单向边，二分距离，跑匈牙利算法的时候，一旦edge[i].w&gt;Max(Max就是二分的距离)那么奶牛就不可以去edge[i].to机器，注意这是多重匹配。
+ps：WA了一次，比较奇怪r=200这样是错的，所以r=0x3f3f3f3f靠谱点。
+代码：</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/12/POJ-2289/">
         <p class="h4 index-header">POJ-2289</p>
         
@@ -510,46 +549,11 @@ hopcroft-karp的时间复杂度为 O（n^0.5*m）。
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/10/HDU-1281/">
-        <p class="h4 index-header">HDU-1281</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-1281 棋盘游戏
-题目链接：https://vjudge.net/problem/HDU-1281
-题目大意：在N*M的棋盘上，在p个位置上允许放车，每一行每一列最多放一个车，并且在不允许放车的位置并不会影响车的攻击。重要点：要使车的数量最大，该点必须放车。问最多有多少个重要点、最多允许放多少个车？
-题解：这道题和Fire Net的区别在于，Fire Net不允许放置的点是一堵墙，会隔离攻击，而这道题不会影响攻击。所以Fire Net那道题需要进行分区域块，这样就可以分离开。但是这道题不会影响攻击，因此直接按点分，X集合为行，Y集合为列，只要当a[i][j]==1才可以让i行与j列连边，相当于点(i,j)可以放车。这样跑匈牙利算法可以得到最大匹配即最大的车的放置量。对于重要点的求解需要暴力求解，对于每一个可放置车的点需要去除它，然后跑匈牙利算法，如果最大匹配变小了，说明这是重要点，当然对于前向星链表，要记录出发点u，这样就可以进行标记了，vis数组不可以开大了，容易TLE。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
