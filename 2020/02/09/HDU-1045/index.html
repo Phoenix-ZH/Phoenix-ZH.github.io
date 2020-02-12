@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    768 字
+                    765 字
                   </span>&nbsp;
                 
 
@@ -210,7 +210,6 @@ void add(int u,int v)
 }
 int check(int x)
 {
-    vis[x]=1;
     for(int i=head[x];i;i=edge[i].next)
     {
         if(!vis[edge[i].to])

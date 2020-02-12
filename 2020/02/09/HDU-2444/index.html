@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    692 字
+                    689 字
                   </span>&nbsp;
                 
 
@@ -221,7 +221,6 @@ bool bfs()
 }
 int dfs(int x)
 {
-    vis[x]=1;
     for(int i=head[x];i;i=edge[i].next)
     {
         if(!vis[edge[i].to])

@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    673 字
+                    670 字
                   </span>&nbsp;
                 
 
@@ -204,7 +204,6 @@ void add(int u,int v)
 }
 int dfs(int x,int sign1,int sign2)
 {
-    vis[x]=1;
     for(int i=head[x];i;i=edge[i].next)
     {
         if(edge[i].to==sign2&amp;&amp;edge[i].u==sign1)continue;

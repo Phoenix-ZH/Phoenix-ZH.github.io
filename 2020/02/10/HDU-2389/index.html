@@ -233,7 +233,6 @@ void add(int u,int v)
 }
 int dfs(int x)
 {
-    vis[x]=1;
     for(int i=head[x];i;i=edge[i].next)
     {
         if(!vis[edge[i].to])
