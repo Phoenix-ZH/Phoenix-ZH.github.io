@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>luogu-1640</title>
+    <link href="/2020/02/13/luogu-1640/"/>
+    <url>/2020/02/13/luogu-1640/</url>
+    
+    <content type="html"><![CDATA[<h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p>luogu1640-[SCOI2010]连续攻击游戏</p><h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://www.luogu.com.cn/problem/P1640" target="_blank" rel="noopener">https://www.luogu.com.cn/problem/P1640</a></p><h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有n个装备，每个装备有两个攻击值，每个装备只能用1次，问从1开始可以连续攻击几次？</p><h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>虽然有很多并查集的方法，但是最近一直在练习二分图匹配，发现这个题可以用二分图来做，主要是因为每个装备只有两个攻击值这样的话可以大大减少时间复杂度，很显然这个地方就是突破点，设想每个攻击值x，y对装备i建单向边，然后从1开始跑匈牙利算法，一旦找不到匹配说明攻击中断，当前的最大匹配ans就是最多能连续攻击的次数，但是注意一下不可以memset(vis,0,sizeof(vis))，处理方法很简单，vis只是防止当前dfs不能重复点，于是vis[edge[i].to]=x，相当于一个时间戳，就可以完美避免初始化了。</p><h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=1000000+5;int k=1,head[maxn],vis[maxn],cy[maxn],n;struct node{    int to,next;}edge[maxn*2];void add(int u,int v){    edge[++k].to=v;edge[k].next=head[u];head[u]=k;}int dfs(int x){    for(int i=head[x];i;i=edge[i].next)    {        if(vis[edge[i].to]==x)continue;        vis[edge[i].to]=x;        if(cy[edge[i].to]==-1||dfs(cy[edge[i].to]))        {            cy[edge[i].to]=x;            return 1;        }    }    return 0;}int main(){    int maxx=0;    scanf(&quot;%d&quot;,&amp;n);    memset(cy,-1,sizeof(cy));    for(int i=1;i&lt;=n;i++)    {        int x,y;        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);        maxx=max(maxx,y);        add(x,i);add(y,i);    }    int ans=0;    for(int i=1;i&lt;=maxx;i++)    {    //    memset(vis,0,sizeof(vis));        if(dfs(i))        {            ans++;        }        else break;    }    printf(&quot;%d\n&quot;,ans);    return 0;}</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>二分图(匈牙利算法)</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>HDU-3488</title>
     <link href="/2020/02/13/HDU-3488/"/>
     <url>/2020/02/13/HDU-3488/</url>
