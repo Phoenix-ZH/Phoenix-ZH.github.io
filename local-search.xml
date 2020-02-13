@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>HDU-3488</title>
+    <link href="/2020/02/13/HDU-3488/"/>
+    <url>/2020/02/13/HDU-3488/</url>
+    
+    <content type="html"><![CDATA[<h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p>HDU-3488 Tour</p><h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-3488" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-3488</a></p><h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有T组数据，n个点，m条有向边边(可能有重边)， 现在问将图中的每一个点都划分到一个环中的最少代价是多少？每条边都有一个代价 。即选择边，使得图是若干个有向环，除出发点(即终点)外每个点都只可以经过一次，如何选择花费最小？</p><h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>这里需要提到一下<strong>有向环覆盖问题</strong>： 给一个N个顶点M条边的带权有向图，要你把该图分成一个或多个不相交的有向环。且所有定点都被有向环覆盖。问你该有向环所有权值的总和最小是多少? </p><p>答案就是：有向环最大权值覆盖=最佳匹配。 </p><p>如果，改为无向图，问你无向环最大权值覆盖？答案也是一样的。只是在建图的时候把有向改为无向即可。 </p><p><strong>分析</strong>：把任意一个顶点i分成连个点，即i和i‘，如果原图存在边i–&gt;j，那么二分图就存在i–&gt;j’</p><p><strong>引理</strong>： </p><p>①  如果原图能由多个不相交的有向环覆盖，那么二分图必然存在完备匹配。 二者互为充要条件 。即： 二分图存在完备匹配,那么原图必定能由几个不相交的有向环覆盖。</p><p>②  如果 即权值最大的有向环覆盖在数值上等于改图的最佳匹配值。原图存在权值最大的有向环覆盖，那么二分图的<strong>最佳匹配</strong>一定就是这个值。</p><p>因为该有向环覆盖对应了一个二分图的完备匹配,而该完备匹配的权值就等于该有向环覆盖的权值,所以最佳匹配不可能丢失该最大权值的匹配。 </p><p>(假设原图的有向环为(1-&gt;2-&gt;3-&gt;1) and(6-&gt;5-&gt;4-&gt;6),那么二分图的完备匹配就是1-&gt;2’ 2-&gt;3’ 3-&gt;1’ 6-&gt;5’ 5-&gt;4’ 4-&gt;6’)</p><p>(假设二分图的完备匹配是1-&gt;2’ 2-&gt;3’ 3-&gt;1’ 6-&gt;5’ 5-&gt;4’ 4-&gt;6’那么原图的有向环为(1-&gt;2-&gt;3-&gt;1) and (6-&gt;5-&gt;4-&gt;6))</p><p>由此，知道了如果一个二分图存在<strong>完备匹配</strong>，那么这个<strong>完备匹配</strong>一定是可以在原图构成有向环，题目既然给出了路径，并且一定可以组成有向环，那么二分图一定存在<strong>完备匹配</strong>，而且是求最小的代价，此时想到了KM是求<strong>最佳匹配</strong>，即边权最大的完备匹配，所以需要转换一下， 将边权转换为负值，初始化为-0x3f3f3f3f，然后wx也初始化为-0x3f3f3f3f，然后其余正常地跑KM，求得ans为最佳匹配，输出-ans即可</p><h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=30000+5;const int maxm=200+5;int Map[maxm][maxm],visx[maxm],visy[maxm],wx[maxm],wy[maxm],cx[maxm],cy[maxm],T,n,m,minn;int dfs(int x){    visx[x]=1;    for(int i=1;i&lt;=n;i++)    {        if(!visy[i]&amp;&amp;Map[x][i]!=-0x3f3f3f3f)        {            int t=wx[x]+wy[i]-Map[x][i];            if(t==0)            {                visy[i]=1;                if(!cy[i]||dfs(cy[i]))                {                    cy[i]=x;                    cx[x]=i;                    return 1;                }            }            else             {                minn=min(minn,t);            }        }    }    return 0;}int KM(){    memset(cy,0,sizeof(cy));    memset(cx,0,sizeof(cx));    memset(visx,0,sizeof(visx));    memset(visy,0,sizeof(visy));    for(int i=1;i&lt;=n;i++)wx[i]=-0x3f3f3f3f;    memset(wy,0,sizeof(wy));    minn=0x3f3f3f3f;    for(int i=1;i&lt;=n;i++)    {        for(int j=1;j&lt;=n;j++)        {            wx[i]=max(wx[i],Map[i][j]);        }    }    for(int i=1;i&lt;=n;i++)    {        while(1)        {            memset(visx,0,sizeof(visx));            memset(visy,0,sizeof(visy));            minn=0x3f3f3f3f;            if(dfs(i))break;            for(int i=1;i&lt;=n;i++)            {                if(visx[i])                {                    wx[i]-=minn;                }            }            for(int i=1;i&lt;=n;i++)            {                if(visy[i])                {                    wy[i]+=minn;                }            }        }    }    int ans=0;    for(int i=1;i&lt;=n;i++)    {        if(cx[i]!=0)        {            ans+=Map[i][cx[i]];        }    }    return ans;}int main(){    scanf(&quot;%d&quot;,&amp;T);    while(T--)    {        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);        for(int i=1;i&lt;=n;i++)            for(int j=1;j&lt;=n;j++)                Map[i][j]=-0x3f3f3f3f;        for(int i=1;i&lt;=m;i++)        {            int a,b,c;            scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);            Map[a][b]=max(Map[a][b],-c);        }        int ans=KM();        printf(&quot;%d\n&quot;,-ans);    }    return 0;}</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>KM</tag>
+      
+      <tag>有向环覆盖</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>POJ-3189</title>
     <link href="/2020/02/13/POJ-3189/"/>
     <url>/2020/02/13/POJ-3189/</url>
