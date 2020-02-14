@@ -153,6 +153,56 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/14/CodeForces-620/">
+        <p class="h4 index-header">CodeForces-620</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A：题目名称：Professor GukiZ’s Robot 
+题目大意：机器人很好玩
+一开始在(x1,y1)
+最后在(x2,y2)
+每秒钟内横坐标最多变化1（也可以不变化）纵坐标也是
+问最少几秒钟到 x1 和 x2 绝对值在10^9以内 。
+题解：取两者坐标x，y相差的最大值，开longlong保平安。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int main()
+{
+    long long x1,x2,y1,y2;
+    scanf(&quot;%lld%lld%lld%lld&quot;,&amp;x1,&amp;y1,&amp;x2,&amp;y2);
+    long long maxx=max(abs(x1-x2),abs(y1-y2));
+    printf(&quot;%lld\n&quot;,maxx);
+    return 0;
+} 
+B:题目名称： Gr</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-14&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForce">CodeForce</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/13/luogu-1640/">
         <p class="h4 index-header">luogu-1640</p>
         
@@ -504,43 +554,6 @@ knoig定理： 二分图的最小顶点覆盖数=二分图的最大匹配数。
             <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
           
             <a href="/tags/%E6%9C%80%E5%B0%8F%E9%A1%B6%E7%82%B9%E8%A6%86%E7%9B%96">最小顶点覆盖</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/11/POJ-3020/">
-        <p class="h4 index-header">POJ-3020</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ-3020  Antenna Placement 
-题目链接：https://vjudge.net/problem/POJ-3020
-题目大意：有T组数据，每一组数据是hxw的矩阵，矩阵中的每一个方格有o或者*组成,问用1x2的矩阵 (横着或竖着都可以)来覆盖所有的 * ，问至少需要多少个这样的矩阵？
-题解：这个题和HDU4185 Oil Skimming 很相似。观察之后发现，将所有的 * 先预处理出它的编号，然后对于 * 的上下左右若为 * 就可以建边，然后跑匈牙利算法，求出最大匹配，对于这样求出来的最大匹配ans应该要÷2，即ans/=2，因为我们建的双向边。ans * 2表示的是已经覆盖了的点，temp-ans * 2就是剩余的美誉覆盖的点，这些点只能单独覆盖了，所以最终答案是 temp-ans * 2+ans。
-ps：WA了几次，注意 * 的数量&lt;=40 * 10=400，边就是400 * 400 * 4，数组要够，不然就是TLE或者WA。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#includ</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
           
         
       </div>
