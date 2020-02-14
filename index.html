@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/13/luogu-1640/">
+        <p class="h4 index-header">luogu-1640</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：luogu1640-[SCOI2010]连续攻击游戏
+题目链接：https://www.luogu.com.cn/problem/P1640
+题目大意：有n个装备，每个装备有两个攻击值，每个装备只能用1次，问从1开始可以连续攻击几次？
+题解：虽然有很多并查集的方法，但是最近一直在练习二分图匹配，发现这个题可以用二分图来做，主要是因为每个装备只有两个攻击值这样的话可以大大减少时间复杂度，很显然这个地方就是突破点，设想每个攻击值x，y对装备i建单向边，然后从1开始跑匈牙利算法，一旦找不到匹配说明攻击中断，当前的最大匹配ans就是最多能连续攻击的次数，但是注意一下不可以memset(vis,0,sizeof(vis))，处理方法很简单，vis只是防止当前dfs不能重复点，于是vis[edge[i].to]=x，相当于一个时间戳，就可以完美避免初始化了。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-13&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/13/HDU-3488/">
+        <p class="h4 index-header">HDU-3488</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-3488 Tour
+题目链接：https://vjudge.net/problem/HDU-3488
+题目大意：有T组数据，n个点，m条有向边边(可能有重边)， 现在问将图中的每一个点都划分到一个环中的最少代价是多少？每条边都有一个代价 。即选择边，使得图是若干个有向环，除出发点(即终点)外每个点都只可以经过一次，如何选择花费最小？
+题解：这里需要提到一下有向环覆盖问题： 给一个N个顶点M条边的带权有向图，要你把该图分成一个或多个不相交的有向环。且所有定点都被有向环覆盖。问你该有向环所有权值的总和最小是多少? 
+答案就是：有向环最大权值覆盖=最佳匹配。 
+如果，改为无向图，问你无向环最大权值覆盖？答案也是一样的。只是在建图的时候把有向改为无向即可。 
+分析：把任意一个顶点i分成连个点，即i和i‘，如果原图存在边i–&gt;j，那么二分图就存在i–&gt;j’
+引理： 
+①  如果原图能由多个不相交的有向环覆盖，那么二分图必然存在完备匹配。 二者互为充要条件 。即： 二分图存在完备匹配,那么原图必定能由几个不相交的有向环覆盖。
+②  如果 即权值最大的有向环覆盖在数值上</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-13&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/KM">KM</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%89%E5%90%91%E7%8E%AF%E8%A6%86%E7%9B%96">有向环覆盖</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/13/POJ-3189/">
+        <p class="h4 index-header">POJ-3189</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-3189 Steady Cow Assignment
+题目链接：https://vjudge.net/problem/POJ-3189
+题目大意：这道题的题意是真的很坑人啊，首先答案是求所有牛对居住的牛棚最大喜欢度-最小喜欢度+1，就是求区间长度，不是让求最大值-最小值。然后矩阵i，j不是表示第i头牛对第j个牛棚的喜欢度，而是表示第i头牛心中排名第j的牛棚是map[i][j]，喜欢度就是指牛棚在牛心中的排名。
+题解：每个牛棚是有容纳量的，所以会用到多重匹配，而如何找到最小的区间长度呢？区间长度=所有牛对居住的牛棚最大喜欢度-最小喜欢度+1，那么求出最大值-最小值就可以了，求最值问题，很容易就想到二分了，但是光二分又不够，这时候枚举最小值就可以了，二分最大值-最小值的值，然后跑匈牙利算法的多重匹配，对每一条边的边权要判断：edge[i].w&gt;=minn&amp;&amp;edge[i].w&lt;-=maxx，并且注意容纳量。跑出的最大匹配如果==n，就说明所有的牛都又牛棚，就符合题意，于是右边界就可以缩小，否则左边界增大，直到找到ans，注意在枚举最小值的时候要</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-13&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/12/POJ-2112/">
+        <p class="h4 index-header">POJ-2112</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-2112 Optimal Milking
+题目链接：https://vjudge.net/problem/POJ-2112#author=0
+题目大意：FJ有K台挤奶机和C只奶牛。机器编号1K，奶牛编号K+1K+C。机器一天工作M只奶牛。如何把奶牛分配给机器，使得奶牛到机器的最远距离最小。奶牛可以进过某些机器，但不在那台机器上挤奶。奶牛也可以经过其他奶牛所在的位置。                     输出一个整数，表示走最远的奶牛的需要行走的最小距离。  
+题解：“最远的行走的最小距离”确认是二分，每一个机器一天可以工作M只奶牛显然是多重匹配。首先用Floyd跑出任意两点之间的最小距离，然后建图，奶牛–&gt;机器，边权为dist[奶牛][机器],当然建单向边，二分距离，跑匈牙利算法的时候，一旦edge[i].w&gt;Max(Max就是二分的距离)那么奶牛就不可以去edge[i].to机器，注意这是多重匹配。
+ps：WA了一次，比较奇怪r=200这样是错的，所以r=0x3f3f3f3f靠谱点。
+代码：#include&lt;cstdio&gt;
+#includ</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/12/POJ-2289/">
+        <p class="h4 index-header">POJ-2289</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-2289  Jamie’s Contact Groups 
+题目链接：https://vjudge.net/problem/POJ-2289
+题目大意： n个人，m个社交团体，一个人可能对应多个社交团体，但只能参加一个社交团体，问所有社交团体中人数最多的团体最少有多少人。 (N&lt;=1000,M&lt;=500)
+题解：“最多的最少“这是典型的二分的套路，由题可知：一个人可能对于多个社交团体。可以二分最多的团体的人数，每一个人向自己可参加的团体连一条有向边。
+然后在跑匈牙利算法的时候，需要注意：
+要记录这个团体对应了多少的成员了，以cy[edge[i].to][0]记录团体edge[i].to的人数，Max表示本次团队最多容纳人数，如果cy[edge[i].to][0]&lt;Max，直接加入这个团队即可，否则就从第一个成员到最后一个成员都找一次增广路。
+每一次二分时，如果跑完匈牙利算法后，最大匹配==n，就缩小r，否则增大l。
+ps：题目给的团队从0开始，我自己对它+1了，所以从1开始。
+代码：#include&lt;cstdio&gt;
+#include&lt</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/12/HDU-3829/">
+        <p class="h4 index-header">HDU-3829</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-3829 Cat VS Dog
+题目链接：https://vjudge.net/problem/HDU-3829
+题目大意：一群小朋友去动物园，如果每个小朋友喜欢的动物是猫，那么不喜欢的动物一定是狗，反之也是。现在动物园的管理者要拿走一些动物，如果拿走的是某个小朋友不喜欢的动物，那这个小朋友就非常开心，反之，如果是某个小朋友喜欢的动物，这个小朋友就非常的不开心，问那完后最多有几个小朋友会非常开心。 
+题解：这是最大独立集的问题。这里需要讲解一样最大独立集。
+最小顶点覆盖：
+定义:假如选了一个点就相当于覆盖了以它为端点的所有边 。最小顶点覆盖就是选择最少的点来覆盖所有的边。 结论： 最小顶点覆盖等于最大匹配。 
+  
+最大独立集： 
+定义: 选出一些顶点使得这些顶点两两不相邻，则这些点构成的集合称为独立集。  找出一个包含顶点数最多的独立集称为最大独立集。 结论： 最大独立集 = 顶点个数 - 最小覆盖 。
+  
+红点的选择：显然每一条非匹配边一定和匹配边有公共点，所以这样的公共点一定会被选出来，不可能作为最大独立集的元素。
+这样就了解了最大独立集，将每一个人喜欢的动物</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86">最大独立集</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/12/POJ-2594/">
+        <p class="h4 index-header">POJ-2594</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-2594  Treasure Exploration 
+题目链接：https://vjudge.net/problem/POJ-2594
+题目大意：在外星上有n个点需要机器人去探险，有m条单向路径。问至少需要几个机器人才能遍历完所有的点，一个点可以被多个机器人经过（这就是和单纯的最小路径覆盖的区别）。
+题解：这也是最小路径覆盖问题，但是这与最小不相交路径覆盖问题不同，这是最小相交路径覆盖问题，每个顶点可以经过多次。算法和最小不相交路径覆盖问题基本相同，但是需要用闭包传递预处理一下再建图。
+闭包传递的原因：
+  
+如图，如果不进行闭包传递，最终需要三条路径，但实际上3可以经过多次，只需要两条路径，如果1-&gt;2-&gt;3这条路径走了，4-&gt;2-&gt;5也是可以走的，于是就需要（1，3）合并，（4，5）合并，这就要用到闭包传递。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E8%A6%86%E7%9B%96">最小路径覆盖</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/11/HDU-1151/">
+        <p class="h4 index-header">HDU-1151</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-1151 Air Raid
+题目链接：https://vjudge.net/problem/HDU-1151#author=0
+题目大意：一个城镇有n个路口，由一些单向马路连接。现在要安排一些伞兵降落在某些路口上，清查所有的路口。一个伞兵可以沿着马路一路清查过去。清查过程中不能有两个伞兵同时清查一个路口（应该是为了防止暴露）。给定城镇的线路，求最少需要几个人伞兵就能清查所有的路口。 
+题解：一开始看到这题，猜想入度为0则ans++，实则不对，出度大于1时就不对了。然后又猜想：建单向边，跑匈牙利算法求出最大匹配，n-ans就是最后的答案。事实证明这个思路是正确的。AC之后即去找了一份题解，这题就是最小路径覆盖问题。
+DAG的最小路径覆盖的定义： 在一个有向图中，找出最少的路径，使得这些路径经过了所有的点。 
+最小路径覆盖分为最小不相交路径覆盖和最小可相交路径覆盖。 
+最小不相交路径覆盖：每一条路径经过的顶点各不相同。
+最小可相交路径覆盖：每一条路径经过的顶点可以相同。
+DAG的最小不相交路径覆盖的算法： 把原图的每个点V拆成两个点Vx和Vy，如果有一条有向边A-&gt;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E8%A6%86%E7%9B%96">最小路径覆盖</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/11/HDU-1054/">
+        <p class="h4 index-header">HDU-1054</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-1054 Strategic Game
+题目链接：https://vjudge.net/problem/HDU-1054#author=0
+题目大意：Bob非常享受玩电脑游戏的过程，尤其是策略游戏，但是在有些时候，他因为不能在第一时间找到最佳的策略而十分伤心。 现在，他遇到了一个问题。他必须保卫一个中世纪的城市，有很多道路将整个城市连起来，整体上看上去像一棵树。Bob需要放置尽可能少的士兵，保卫树上所有的边。士兵只能放在节点上，但是却可以保卫所有与这个节点相邻的边。 
+题解：题目要求很明确，就是要最少的点覆盖所有的边，即最小定点覆盖问题。 最小顶点覆盖要求用最少的点，让每条边都至少和其中一个点关联。即点集里面的点能覆盖所有的边 。
+knoig定理： 二分图的最小顶点覆盖数=二分图的最大匹配数。 
+证明：
+要证明最小顶点覆盖数==最大匹配数，即证明最小顶点覆盖数&gt;=最大匹配数，并且最大匹配数&gt;=最小顶点覆盖数。设最小顶点覆盖数为S，最大匹配数为M。
+ ① 最小顶点覆盖数&gt;=最大匹配数：
+假设最大匹配数为n，那么我们就得到了n条互不相邻的边，光覆盖这些边</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%B0%8F%E9%A1%B6%E7%82%B9%E8%A6%86%E7%9B%96">最小顶点覆盖</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/11/POJ-3020/">
+        <p class="h4 index-header">POJ-3020</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-3020  Antenna Placement 
+题目链接：https://vjudge.net/problem/POJ-3020
+题目大意：有T组数据，每一组数据是hxw的矩阵，矩阵中的每一个方格有o或者*组成,问用1x2的矩阵 (横着或竖着都可以)来覆盖所有的 * ，问至少需要多少个这样的矩阵？
+题解：这个题和HDU4185 Oil Skimming 很相似。观察之后发现，将所有的 * 先预处理出它的编号，然后对于 * 的上下左右若为 * 就可以建边，然后跑匈牙利算法，求出最大匹配，对于这样求出来的最大匹配ans应该要÷2，即ans/=2，因为我们建的双向边。ans * 2表示的是已经覆盖了的点，temp-ans * 2就是剩余的美誉覆盖的点，这些点只能单独覆盖了，所以最终答案是 temp-ans * 2+ans。
+ps：WA了几次，注意 * 的数量&lt;=40 * 10=400，边就是400 * 400 * 4，数组要够，不然就是TLE或者WA。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#includ</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "人生本无止境，前行何须彷徨。&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>

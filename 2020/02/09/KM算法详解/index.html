@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>KM算法详解 ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 二月 9日 2020, 3:46 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      7 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h1><p>以<strong><em>匈牙利算法</em></strong>为基础，改善后用于求解带权二分图的<strong><em>最佳匹配</em></strong>问题</p>
+<h2 id="完备匹配："><a href="#完备匹配：" class="headerlink" title="完备匹配："></a>完备匹配：</h2><p>如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，<strong>或者</strong>Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。 </p>
+<h2 id="完美匹配："><a href="#完美匹配：" class="headerlink" title="完美匹配："></a>完美匹配：</h2><p>若二分图X部的每一个顶点都与Y中的一个顶点匹配，<strong>并且</strong>Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完美匹配。 </p>
+<p>即： 一个二分图，X部和Y部的顶点数相等，存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。  </p>
+<h2 id="最大权匹配："><a href="#最大权匹配：" class="headerlink" title="最大权匹配："></a>最大权匹配：</h2><p>带权二分图的边权重和最大的匹配，如图，最大和为102</p>
+<p> <img src="https://img-blog.csdnimg.cn/20181105155320651.png" srcset="/img/loading.gif" alt="img"> </p>
+<h2 id="最佳匹配："><a href="#最佳匹配：" class="headerlink" title="最佳匹配："></a>最佳匹配：</h2><p>带权二分图的边权重和最大的完备匹配，如图</p>
+<p> <img src="https://img-blog.csdnimg.cn/2018110515570130.png" srcset="/img/loading.gif" alt="img"> </p>
+<p>显然最大权匹配和最佳匹配不完全相同，最大权匹配由于不一定是最大匹配，所以无法等同于最佳匹配。</p>
+<p>但是如果把剩余的边补上，并且设置边权为0，那么二者可以统一起来。如图</p>
+<p> <img src="https://img-blog.csdnimg.cn/20181105160925184.png" srcset="/img/loading.gif" alt="img"> </p>
+<h2 id="KM算法"><a href="#KM算法" class="headerlink" title="KM算法"></a>KM算法</h2><p>km算法用于求最佳匹配，而不是最大权匹配。换言之，km算法用来求完备匹配下的最大权匹配。</p>
+<p><u>如果不存在完备匹配，km算法会求最大匹配，如果最大匹配存在多种，那么结果就是最大匹配中权重和最大的。</u></p>
+<hr>
+<p>在一个二分图中，左顶点为X，右顶点为Y，现在对于每组左右连接XiYi有权Wij，求最大匹配，并且使得该匹配中所有Wij的和最大。</p>
+<p>该算法通过给每一个顶点一个标号(称为顶标)来把求最大权匹配的问题转换为求完备匹配的问题。</p>
+<p>设顶点Xi的顶标为A[i]，顶点Yi的顶标为B[i]，顶点Xi和Yi之间的边权为W[i][j]，在整个过程中任意一条边&lt;i,j&gt;，始终满足A[i]+B[j]&gt;=W[i][j].</p>
+<h2 id="相等子图"><a href="#相等子图" class="headerlink" title="相等子图"></a>相等子图</h2><p>图G中每一条边有左右两个顶标，<strong><em>相等子图</em></strong>就是那些顶标和等于边权重的边构成的子图，如图例</p>
+<p> <img src="https://img-blog.csdnimg.cn/20181105162845589.png" srcset="/img/loading.gif" alt="img"> </p>
+<h2 id="KM算法的正确性"><a href="#KM算法的正确性" class="headerlink" title="KM算法的正确性"></a>KM算法的正确性</h2><p><strong>定理</strong>：若二分图中，A[i]+B[j]&gt;=W[i][j],并且存在某个相等子图有完备匹配，那么这个完备匹配就是二分图的最大权匹配</p>
+<p><strong>证明</strong>：因为这个完备匹配存在于相等子图中，因此，这个匹配所有边满足于：A[i]+B[j]==W[i][j],同时由于完备匹配包含所有的顶点，因此这个属于相等子图的完备匹配的总权重等于所有顶标的和。</p>
+<p>如果这个二分图存在另外一个完备匹配，如果它不完全属于相等子图，即存在某条边：A[i]+B[j]&gt;W[i][j],那么该匹配的权重和就小于所有顶标的和，即小于上述属于相等子图的完备匹配的权重和。</p>
+<h2 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h2><ul>
+<li><p>首先选择顶点数较少的为X部，初始时对X部的每一个顶点设置顶标，顶标的值为该点关联的最大边的权值，Y部的顶点顶标为0。</p>
+<p><img src="https://img-blog.csdnimg.cn/20181105161921533.png" srcset="/img/loading.gif" alt="img"> </p>
+</li>
+<li><p>对于X部中的每个顶点，在<strong><em>相等子图</em></strong>中利用<a href="https://blog.csdn.net/qq_25379821/article/details/83721379" target="_blank" rel="noopener">匈牙利算法</a>找一条<a href="https://blog.csdn.net/qq_25379821/article/details/83721379" target="_blank" rel="noopener">增广路径</a>，如果没有找到，则修改顶标，扩大相等子图，继续找增广路径。当每个点都找到增广路径时，此时意味着每个点都在匹配中，即找到了二分图的完备匹配。该完备匹配是最大权重的完备匹配，即为二分图的最佳匹配。</p>
+<p><strong>匈牙利算法</strong>对左边第一个顶点，在<strong><em>相等子图</em></strong>中进行增广路径搜索，找到路径1-C后进行<a href="https://blog.csdn.net/qq_25379821/article/details/83721379" target="_blank" rel="noopener">匹配增广操作</a>，如下图所示 </p>
+<p><img src="https://img-blog.csdnimg.cn/20181105163243917.png" srcset="/img/loading.gif" alt="img"> </p>
+</li>
+</ul>
+<p>接着<strong>匈牙利算法</strong>对左边第二个顶点，在<strong><em>相等子图</em></strong>中进行增广路径搜索，结果是没有找到增广路径！这时需要修改顶标值，<strong>扩大</strong>相等子图，左边的顶标减少d，右边的顶标增加d，这里产生两个问题： </p>
+<ul>
+<li>哪些顶标需要修改</li>
+<li>d是多少</li>
+</ul>
+<p><strong>question1：</strong> 注意在保持相等子图原来的边符合相等子图要求的同时，让新加的边也满足相等子图的要求。 </p>
+<p>那么在增广路径搜索时，我们知道，如果下面这些紫色边任意一条加入相等子图后，都可以在相等子图中使用<strong>匈牙利算法</strong>找到一条增广路径2-A（or 2-B or 2-C-1-A）： </p>
+<p> <img src="https://img-blog.csdnimg.cn/20181105165825707.png" srcset="/img/loading.gif" alt="img"> </p>
+<p><strong>question2</strong>： <strong>KM算法</strong>选择上述三条紫色边中，顶标和与边权重差值最小的边1-A或者2-A，以该最小差值为d </p>
+<p><strong>ps</strong>： 为什么选最小那个 ？</p>
+<p><strong>回答</strong>：如果比这个还小就不能扩大相等子图了，如果大了，就不能保证A[i]+B[j]&gt;=W[i][j]总是成立了。 比如上图选择了2-B边 ，则差值d就为2，1-A就有A[i]+B[j]=2+0&lt;3=W[i][j].</p>
+<p><strong>KM算法</strong>中需要修改的顶标是<strong>匈牙利算法</strong>增广路径搜索时，产生一棵交错树，为了保证A[i]+B[j]&gt;=W[i][j]总是成立，交错树上所有的顶标都需要进行修改。</p>
+<p>比如在第二个顶点搜索增广路时，产生如图所示的橙色顶标集合{1,2,C}</p>
+<p> <img src="https://img-blog.csdnimg.cn/20181105165032976.png" srcset="/img/loading.gif" alt="img"> </p>
+<p> <strong>修改顶标</strong>后产生如下图所示的结果： </p>
+<p> <img src="https://img-blog.csdnimg.cn/20181105183106680.png" srcset="/img/loading.gif" alt="img"> </p>
+<p> 在该相等子图上以顶点2为开始点，<strong>搜索增广路径</strong>2-A（or 2-C-1-A），<strong>进行增广</strong>操作: </p>
+<p> <img src="https://img-blog.csdnimg.cn/20181105183544455.png" srcset="/img/loading.gif" alt="img"> </p>
+<p> 同样对左边第三个点： </p>
+<p> <img src="https://img-blog.csdnimg.cn/20181105185155651.png" srcset="/img/loading.gif" alt="img"> </p>
+<p><strong>ps</strong>:为什么修改橙色顶标而不去修改顶标A(找到最小差对应的边的右边顶标)？修改顶标A的值为-1， 那么边1-A也可以加入<strong>相等子图</strong>了。但是这样就无法保证A[i]+B[j]&gt;=W[i][j]恒成立了。如下图所示结果，修改顶标A，边3-A就不满足该条件了。除非在修改顶标A的同时，增加顶标3的值，但是需要修改的顶标集合需要额外的搜索算法，而修改橙色顶标所需要的<strong>交错树</strong>在增广路径搜索时可以一并产生。 </p>
+<p> <img src="https://img-blog.csdnimg.cn/20181106152548762.png" srcset="/img/loading.gif" alt="img"> </p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=300+5;
+int Map[maxn][maxn],visx[maxn],visy[maxn],cx[maxn],cy[maxn],n,wx[maxn],wy[maxn],minn;
+int dfs(int x)
+{
+    visx[x]=1;
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(!visy[i]&amp;&amp;Map[x][i]!=0x3f3f3f3f)
+        {
+            int t=wx[x]+wy[i]-Map[x][i];
+            if(t==0)
+            {
+                visy[i]=1;
+                if(!cy[i]||dfs(cy[i]))
+                {
+                    cy[i]=x;
+                    cx[x]=i;
+                    return 1;
+                }        
+            }
+            else 
+            {
+                minn=min(minn,t);
+            }
+        }
+    }
+    return 0;
+}
+int KM()
+{
+    memset(visx,0,sizeof(visx));
+    memset(visy,0,sizeof(visy));
+    memset(cx,0,sizeof(cx));
+    memset(cy,0,sizeof(cy));
+    memset(wx,0,sizeof(wx));
+    memset(wy,0,sizeof(wy));
+    minn=0x3f3f3f3f;
+    for(int i=1;i&lt;=n;i++)
+    {
+        for(int j=1;j&lt;=n;j++)
+        {
+            if(Map[i][j]!=0x3f3f3f3f)
+            {
+                wx[i]=max(wx[i],Map[i][j]);
+            }
+        }
+    }
+    for(int i=1;i&lt;=n;i++)
+    {
+        while(1)
+        {
+            memset(visx,0,sizeof(visx));
+            memset(visy,0,sizeof(visy));
+            minn=0x3f3f3f3f;
+            if(dfs(i))break;
+            for(int i=1;i&lt;=n;i++)
+            {
+                if(visx[i])
+                {
+                    wx[i]-=minn;
+                }
+            }
+            for(int i=1;i&lt;=n;i++)
+            {
+                if(visy[i])
+                {
+                    wy[i]+=minn;
+                }
+            }
+        }
+    }
+    int ans=0;
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(cx[i]!=0)ans+=Map[i][cx[i]];
+    }
+    return ans;
+}
+int main()
+{
+    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)
+    {
+        memset(Map,0x3f3f3f3f,sizeof(Map));
+        for(int i=1;i&lt;=n;i++)
+        {
+            for(int j=1;j&lt;=n;j++)
+            {
+                scanf(&quot;%d&quot;,&amp;Map[i][j]);
+            }
+        }
+        int ans=KM();
+        printf(&quot;%d\n&quot;,ans);
+    }
+    return 0;
+}</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/KM">KM</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "KM算法详解&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>
