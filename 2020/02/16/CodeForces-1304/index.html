@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    2.2k 字
+                    3.5k 字
                   </span>&nbsp;
                 
 
@@ -149,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      10 分钟
+                      16 分钟
                   </span>&nbsp;
                 
 
@@ -458,13 +458,183 @@ int main()
     }
     return 0;
 }</code></pre>
+<h1 id="E：题目名称："><a href="#E：题目名称：" class="headerlink" title="E：题目名称："></a>E：题目名称：</h1><p> 1-Trees and Queries </p>
+<h4 id="题目大意：-4"><a href="#题目大意：-4" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给定一个n个点的树,相邻点的距离为1 。</p>
+<p>q个询问，每个询问包含无个整数： x,y,a,b,k。</p>
+<p>含义是：在原树上新连上一条边 (x,y) ，要求判断一下从a点是否有距离为k的到b的路径。</p>
+<p>注意：</p>
+<ul>
+<li>每个询问是独立的，即上次询问加上的边，不能为这一次的询问所用。</li>
+<li>这一条路径也许会重复经过某一条边或某一点。</li>
+</ul>
+<p>(q&lt;=10^5,n&lt;=10^5)</p>
+<h4 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h4><p>由题知此图是树，任意两点之间的最短距离是确定唯一的。有q个操作，每次操作会加入两种新边，一共就有三种边(对于在无关路径上来回移动的不考虑)，很显然每次新加入边之后，受到直接影响的是端点x，y。它将改变a–&gt;b的路径方式。考虑新的路径必然是将端点a，b作为切入点。(必须要走新加入的边，因为这个边是改变路径方式的唯一方式！)</p>
+<p>路径1：a–&gt;b；</p>
+<p>路径2：a–&gt;x x–&gt;y(即新加的边) y–&gt;b</p>
+<p>路径3：a–&gt;y y–&gt;x(即新加的边) x–&gt;b</p>
+<p>那么就开始求路径1，2，3的长度。如何求呢？肯定需要用到LCA了。为了方便，设点1为起点，并且deep[1]=0,假如要求点a，b的距离，那么就要分两种情况：</p>
+<p>情况1：a，b其中一点是另一个点的祖先，那么s=abs(deep[a]-deep[b]);</p>
+<p>情况2：f1是点a，b的最近公共祖先，那么s=deep[a]+deep[b]-deep[f1]*2(第一次交就因为没×2 WA了)</p>
+<p>对于路径1的s：</p>
+<pre><code class="cpp">        f1=lca(x,y);
+        if(f1==x||f1==y)
+        s1=abs(deep[x]-deep[y]);
+        else
+        s1=deep[x]+deep[y]-deep[f1]*2;</code></pre>
+<p>对于路径2的s：</p>
+<pre><code class="cpp">        f1=lca(x,a);f2=lca(b,y);//因为是两条边，自然两边的LCA都要求
+        if(f1==x||f1==a)
+        s1=abs(deep[x]-deep[a]);
+        else 
+        s1=deep[x]+deep[a]-deep[f1]*2;
+        if(f2==b||f2==y)
+        s1=s1+abs(deep[b]-deep[y]);
+        else 
+        s1=s1+deep[b]+deep[y]-deep[f2]*2;
+        s1+=1;//必须要走新加入的边，因为这个边是改变路径方式的唯一方式！</code></pre>
+<p>对于路径3的s：(同路径2类似)</p>
+<pre><code class="cpp">        f1=lca(x,b);f2=lca(a,y);
+        if(f1==x||f1==b)
+        s1=abs(deep[x]-deep[b]);
+        else 
+        s1=deep[x]+deep[b]-deep[f1]*2;
+        if(f2==a||f2==y)
+        s1=s1+abs(deep[a]-deep[y]);
+        else 
+        s1=s1+deep[a]+deep[y]-deep[f2]*2;
+        s1+=1;</code></pre>
+<p>最后如何判定s是否符合要求呢？</p>
+<p>首先明确一下，如果如果剩余了偶数的长度，其实就可以在终点和它相邻的点之间来回走，直到走完为止。当然要确保k足够提前到达终点。</p>
+<p>所以判定条件就是(k-s1)&gt;=0&amp;&amp;(k-s1)%2==0。三条路径任意一条满足即可，否则就NO。</p>
+<p><strong>ps</strong>:我人傻了，为什么要分情况啊，直接s1=deep[a]+deep[b]-deep[f1]*2就可以了啊;</p>
+<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const long long maxn=100000+5;
+long long K=1,n,q,head[maxn],father[maxn][22],vis[maxn],deep[maxn];
+struct node
+{
+    long long to,next;
+}edge[maxn*2];
+void add(long long u,long long v)
+{
+    edge[++K].to=v;edge[K].next=head[u];head[u]=K;
+}
+long long dfs(long long x,long long depth)
+{
+    deep[x]=depth;vis[x]=1;
+    for(long long i=head[x];i;i=edge[i].next)
+    {
+        if(!vis[edge[i].to])
+        {
+            father[edge[i].to][0]=x;
+            dfs(edge[i].to,depth+1);
+        }
+    }
+}
+long long lca(long long x,long long y)
+{
+    if(deep[x]&lt;deep[y])swap(x,y);
+    long long depth=deep[x]-deep[y];
+    for(long long i=20;i&gt;=0;i--)
+    {
+        if(depth&amp;(1&lt;&lt;i))
+        {
+            x=father[x][i];
+        }
+    }
+    if(x==y)return x;
+    for(long long i=20;i&gt;=0;i--)
+    {
+        if(father[x][i]!=father[y][i])
+        {
+            x=father[x][i];y=father[y][i];
+        }
+    }
+    return father[x][0];
+}
+int main()
+{
+    scanf(&quot;%lld&quot;,&amp;n);
+    for(long long i=1;i&lt;n;i++)
+    {
+        long long a,b;
+        scanf(&quot;%lld%lld&quot;,&amp;a,&amp;b);
+        add(a,b);add(b,a);
+    }
+    dfs(1,0);
+    for(long long i=1;i&lt;=20;i++)
+    {
+        for(long long j=1;j&lt;=n;j++)
+        {
+            father[j][i]=father[father[j][i-1]][i-1];
+        }
+    }
+    scanf(&quot;%lld&quot;,&amp;q);
+    for(long long i=1;i&lt;=q;i++)
+    {
+        long long a,b,x,y,k,f1,f2,s1;//新加a--b 
+        long long sign=0;
+        scanf(&quot;%lld%lld%lld%lld%lld&quot;,&amp;a,&amp;b,&amp;x,&amp;y,&amp;k);
+        f1=lca(x,y);
+        if(f1==x||f1==y)
+        s1=abs(deep[x]-deep[y]);
+        else
+        s1=deep[x]+deep[y]-deep[f1]*2;
+        if((k-s1)&gt;=0&amp;&amp;(k-s1)%2==0)
+        {
+            sign=1;
+            printf(&quot;YES\n&quot;);
+            continue;
+        }
+        f1=lca(x,a);f2=lca(b,y);
+        if(f1==x||f1==a)
+        s1=abs(deep[x]-deep[a]);
+        else 
+        s1=deep[x]+deep[a]-deep[f1]*2;
+        if(f2==b||f2==y)
+        s1=s1+abs(deep[b]-deep[y]);
+        else 
+        s1=s1+deep[b]+deep[y]-deep[f2]*2;
+        s1+=1;
+        if((k-s1)&gt;=0&amp;&amp;(k-s1)%2==0)
+        {
+            sign=1;
+            printf(&quot;YES\n&quot;);
+            continue;
+        }
+        f1=lca(x,b);f2=lca(a,y);
+        if(f1==x||f1==b)
+        s1=abs(deep[x]-deep[b]);
+        else 
+        s1=deep[x]+deep[b]-deep[f1]*2;
+        if(f2==a||f2==y)
+        s1=s1+abs(deep[a]-deep[y]);
+        else 
+        s1=s1+deep[a]+deep[y]-deep[f2]*2;
+        s1+=1;
+        if((k-s1)&gt;=0&amp;&amp;(k-s1)%2==0)
+        {
+            sign=1;
+            printf(&quot;YES\n&quot;);
+            continue;
+        }
+        if(sign==0)
+        {
+            printf(&quot;NO\n&quot;);
+        }
+    }
+    return 0;
+}</code></pre>
 
-        <div id="aplayer-GhaJXjRq" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-DdMGXPvJ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-GhaJXjRq"),
+            element: document.getElementById("aplayer-DdMGXPvJ"),
             narrow: false,
             autoplay: true,
             showlrc: false,
