@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 
 
@@ -39,13 +39,6 @@
 
 
 <body>
-
- <iframe frameborder="no" border="0" 
-   marginwidth="0" marginheight="0" 
-   width=330 height=86 
-   src="//music.163.com/outchain/player?type=2&id=34341360&auto=1&height=66">
- </iframe>
-
   <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
@@ -155,6 +148,52 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/16/CodeForces-1304/">
+        <p class="h4 index-header">CodeForces-1304</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A: 题目名称： Two Rabbits 
+题目大意：有T组数据，给定x，y，a，b。其中x，y分别为两兔子的坐标(x&lt;y),a，b分别为对应兔子的速度，左边的兔子向右跳，右边的兔子向左跳，问能否相遇，若能请输出时间t，否则输出-1.
+题解：设delt=y-x，若delt%(a+b)则t=delt/(a+b),否则输出-1.
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+long long t,x,y,a,b;
+int main()
+{
+    scanf(&quot;%lld&quot;,&amp;t);
+    while(t--)
+    {
+        scanf(&quot;%lld%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;a,&amp;b);
+        long long delt=abs(y-x);
+        if(del</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-16&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
 
   <div class="row mb-4 mx-auto">
     
@@ -525,46 +564,6 @@ using namespace</div>
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E8%A6%86%E7%9B%96">最小路径覆盖</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/11/HDU-1151/">
-        <p class="h4 index-header">HDU-1151</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-1151 Air Raid
-题目链接：https://vjudge.net/problem/HDU-1151#author=0
-题目大意：一个城镇有n个路口，由一些单向马路连接。现在要安排一些伞兵降落在某些路口上，清查所有的路口。一个伞兵可以沿着马路一路清查过去。清查过程中不能有两个伞兵同时清查一个路口（应该是为了防止暴露）。给定城镇的线路，求最少需要几个人伞兵就能清查所有的路口。 
-题解：一开始看到这题，猜想入度为0则ans++，实则不对，出度大于1时就不对了。然后又猜想：建单向边，跑匈牙利算法求出最大匹配，n-ans就是最后的答案。事实证明这个思路是正确的。AC之后即去找了一份题解，这题就是最小路径覆盖问题。
-DAG的最小路径覆盖的定义： 在一个有向图中，找出最少的路径，使得这些路径经过了所有的点。 
-最小路径覆盖分为最小不相交路径覆盖和最小可相交路径覆盖。 
-最小不相交路径覆盖：每一条路径经过的顶点各不相同。
-最小可相交路径覆盖：每一条路径经过的顶点可以相同。
-DAG的最小不相交路径覆盖的算法： 把原图的每个点V拆成两个点Vx和Vy，如果有一条有向边A-&gt;</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
         
         
         

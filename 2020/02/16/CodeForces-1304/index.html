@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CodeForces-1304 ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 二月 16日 2020, 2:11 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      10 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="A-题目名称："><a href="#A-题目名称：" class="headerlink" title="A: 题目名称："></a>A: 题目名称：</h1><p> Two Rabbits </p>
+<h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有T组数据，给定x，y，a，b。其中x，y分别为两兔子的坐标(x&lt;y),a，b分别为对应兔子的速度，左边的兔子向右跳，右边的兔子向左跳，问能否相遇，若能请输出时间t，否则输出-1.</p>
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>设delt=y-x，若delt%(a+b)则t=delt/(a+b),否则输出-1.</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+long long t,x,y,a,b;
+int main()
+{
+    scanf(&quot;%lld&quot;,&amp;t);
+    while(t--)
+    {
+        scanf(&quot;%lld%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;a,&amp;b);
+        long long delt=abs(y-x);
+        if(delt%(a+b)==0)
+        {
+            long long t=delt/(a+b);
+            printf(&quot;%d\n&quot;,t);
+            continue;
+        }
+        else 
+        {
+            printf(&quot;-1\n&quot;);
+            continue;
+        }
+    }
+    return 0;
+}</code></pre>
+<h1 id="B：题目名称："><a href="#B：题目名称：" class="headerlink" title="B：题目名称："></a>B：题目名称：</h1><p> Longest Palindrome </p>
+<h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给定n个字符串，每个字符串的长度为m，可以任意选择若干个字符串随机组合构成最长的回文串，如果有多个这样的回文串，任意输出一个即可，如果没有则输出0.</p>
+<h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>枚举所有的字符串，找到两个字符串中：字符串i从头到尾等于字符串j的丛尾到头。这样i和j可以配对，并且标记一下。最后还要考虑一种情况：一个字符串本身就是回文，它可以放在中间，并且它没有被标记过，找到一个即可。最后判断是否存在，若无则输出0，否则先输出长度ans * 2 * m+Ans * m，然后先输出前面部分的字符串，并储存方便后面逆序输出，然后输出中间部分，若不存在则不管。</p>
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=100+5;
+int n,m,vis[maxn],stack[maxn],V[maxn];char s[maxn][maxn],t[maxn*maxn];
+int main()
+{
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=n;i++)scanf(&quot;%s&quot;,s[i]);
+    int ans=0,Ans=0;
+    for(int i=1;i&lt;=n;i++)
+    {
+        for(int j=1;j&lt;=n;j++)
+        {
+            if(i==j||vis[i]||vis[j])continue;
+            int sign=0;
+            for(int k=0;k&lt;m;k++)
+            {
+                if(s[i][k]!=s[j][m-k-1])
+                {
+                    sign=1;
+                    break;
+                }
+            }
+            if(sign==0)
+            {
+                vis[i]=j;vis[j]=i;
+                ans++;
+                stack[ans]=i;
+            }
+        }
+    }
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(vis[i])continue;
+        int sign=0;
+        for(int j=0;j&lt;m;j++)
+        {
+            if(s[i][j]!=s[i][m-j-1])
+            {
+                sign=1;
+                break;
+            }
+        }
+        if(sign==0)
+        {
+            Ans++;
+            V[Ans]=i;
+            break;
+        }
+    }
+    if(ans==0&amp;&amp;Ans==0)
+    {
+        printf(&quot;0\n&quot;);
+    }
+    else 
+    {
+        printf(&quot;%d\n&quot;,ans*2*m+Ans*m);
+        int now=0;
+        for(int i=1;i&lt;=ans;i++)
+        {
+            printf(&quot;%s&quot;,s[stack[i]]);
+            for(int j=0;j&lt;m;j++)
+            {
+                t[++now]=s[stack[i]][j];
+            }
+        }
+        if(Ans)
+        {
+            printf(&quot;%s&quot;,s[V[Ans]]);
+        }
+        for(int i=now;i&gt;=1;i--)
+        printf(&quot;%c&quot;,t[i]);
+        cout&lt;&lt;endl;
+    }
+    return  0;
+}</code></pre>
+<h1 id="C：题目名称："><a href="#C：题目名称：" class="headerlink" title="C：题目名称："></a>C：题目名称：</h1><p> Air Conditioner </p>
+<h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有q组数据，每组数据给定顾客数n，和初始温度m，然后再给定每个顾客到达的时间，和适应的最低温度和最高温度， 每一分钟可以选择升高温度1，降低温度1，或者不变。问能否满足所有的顾客，能则YES，否则NO。</p>
+<h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>一开始我以为是贪心，结果准备统计所有的空闲时间并且与调整时间来比大小，结果不对，完全错误，于是又想DP，但是数据10^9，没办法写出DP方程，然后突然想到了区间，既然给定了左右端点，那不就可以得到每个顾客到达那一刻温度可调整的区间吗？只要这个区间和顾客适应的区间存在交点那就符合。并且保证判断之后这个区间要修改到顾客适应的区间的范围内(一开始以为既然符合情况了就不会存在超出范围的情况了，其实完全可能某一端点无法在限定时间内缩回去，所以超出的必须除去)，因为当前温度超出顾客的适应范围就不符合要求了。</p>
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=500+5;
+long long T,n,t,x,y;
+struct node
+{
+    long long t,x,y;
+}a[maxn];
+int main()
+{
+    scanf(&quot;%lld&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%lld%lld&quot;,&amp;n,&amp;t);
+        x=y=t;
+        for(int i=1;i&lt;=n;i++)
+        scanf(&quot;%lld%lld%lld&quot;,&amp;a[i].t,&amp;a[i].x,&amp;a[i].y);
+        long long now=1;
+        long long sign=0;
+        while(now&lt;=n)
+        {
+            long long delt=a[now].t-a[now-1].t;
+            if(x&lt;a[now].x)
+            {
+                x+=delt;
+                if(x&gt;a[now].x)
+                x=a[now].x;
+            }
+            else if(x&gt;a[now].x)
+            {
+                x-=delt;
+                if(x&lt;a[now].x)
+                x=a[now].x;
+            }
+            if(y&lt;a[now].y)
+            {
+                y+=delt;
+                if(y&gt;a[now].y)
+                y=a[now].y;
+            }
+            else if(y&gt;a[now].y)
+            {
+                y-=delt;
+                if(y&lt;a[now].y)
+                y=a[now].y;
+            }
+            if((x&lt;a[now].x&amp;&amp;y&lt;a[now].x)||(x&gt;a[now].y&amp;&amp;y&gt;a[now].y))
+            {
+                sign=1;
+                printf(&quot;NO\n&quot;);
+                break;
+            }
+            if(x&lt;a[now].x)x=a[now].x;
+            if(y&gt;a[now].y)y=a[now].y;
+            now++;
+        }
+        if(sign==0)
+        {
+            printf(&quot;YES\n&quot;);
+        }
+    }
+    return 0;
+}</code></pre>
+<hr>
+<h1 id="补题："><a href="#补题：" class="headerlink" title="补题："></a>补题：</h1><h1 id="D：题目名称："><a href="#D：题目名称：" class="headerlink" title="D：题目名称："></a>D：题目名称：</h1><p> Shortest and Longest LIS </p>
+<h4 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有t组数据，每组数据给定一个n，说明数字1-n，然后给定n-1个&gt;/&lt;，让排出符合要求的数字排列，第一个要求最长上升序列是最短的，第二个要求最长上升序列是最短的。</p>
+<h4 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h4><p>贪心+模拟。首先考虑第一问，观察一下答案，发现凡是小于(不连续)的都是从左到右依次减小，而大于的都是左边的尽量大，右边的尽量小。可以设想：要让最长上升序列最短，那么&lt;对应的数字就要比它左边的&lt;对应的数字更小，这样就可以进行隔断，来缩小长度；而左边&gt;对应的数字就是比右边&gt;对应的数字更小，这样的话越右边的数字就越小，这样也可以缩小长度。于是对于问题一的做法就很简单了：设minn=1,maxx=n，因为越右边的&lt;对应的数字越小，所有我们从右向左枚举，一旦枚举到s[i]==’&lt;’就让a[i]=minn并且minn++，但是现在问题来了：如果&lt;重复了呢？(如&lt;&lt;,&lt;&lt;&lt;等等)再如此做的话就与’&lt;’的定义矛盾了，于是这时候就需要找到这一串连续的 ‘&lt;’的左端点，然后从左端点到右端点依次让a[j]=minn并且minn++。枚举结束后让i=now+1，这样就实现了跳转，依旧是线性的。然后对于’&gt;’，要让左边的尽量大，所以我们从左向右枚举，如果s[i]==’&gt;’,那么a[i]=maxx，maxx–；最后a[n]=maxx;这样再输出a数组，问题1就解决了。</p>
+<p>那问题2呢？</p>
+<p>问题2要求的是最长上升序列最长，就与问题1相反，对于’&lt;’就从左往右依次增大，对于’&gt;’就从右往左依次减小，方法与问题基本一样，但是要注意连续的’&gt;’的情况，处理方式与连续的’&lt;’类似，如果s[n-1]即最后一个符号是 &lt;，那么就让a[n]=n,这里特判一下即可。</p>
+<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200000+5;
+int T,n;char s[maxn];int a[maxn],maxx,minn;
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%d&quot;,&amp;n);scanf(&quot;%s&quot;,s+1);
+        maxx=n;minn=1;
+        for(int i=n-1;i&gt;=1;i--)
+        {
+            if(s[i]==&#39;&lt;&#39;&amp;&amp;s[i-1]!=&#39;&lt;&#39;)
+            {
+                a[i]=minn;
+                minn++;
+            }
+            else if(s[i]==&#39;&lt;&#39;&amp;&amp;s[i-1]==&#39;&lt;&#39;)
+            {
+                int now=i;
+                while(s[now]==&#39;&lt;&#39;&amp;&amp;now&gt;=1)now--;
+                for(int j=now+1;j&lt;=i;j++)
+                {
+                    a[j]=minn;
+                    minn++;
+                }
+                i=now+1;
+            }
+        }
+        for(int i=1;i&lt;=n-1;i++)
+        {
+            if(s[i]==&#39;&gt;&#39;)
+            {
+                a[i]=maxx;
+                maxx--;    
+            }
+        }
+        a[n]=maxx;
+        for(int i=1;i&lt;=n;i++)
+        printf(&quot;%d &quot;,a[i]);
+        cout&lt;&lt;endl;
+        maxx=n,minn=1;
+        for(int i=1;i&lt;=n-1;i++)
+        {
+            if(s[i]==&#39;&lt;&#39;)
+            {
+                a[i]=minn;
+                minn++;
+            }
+        }
+        if(s[n-1]==&#39;&lt;&#39;)
+        {
+            a[n]=n;maxx--;
+        }
+        for(int i=n-1;i&gt;=1;i--)
+        {
+            if(s[i]==&#39;&gt;&#39;&amp;&amp;s[i-1]!=&#39;&gt;&#39;)
+            {
+                a[i]=maxx;
+                maxx--;
+            }
+            else if(s[i]==&#39;&gt;&#39;&amp;&amp;s[i-1]==&#39;&gt;&#39;)
+            {
+                int now=i;
+                while(s[now]==&#39;&gt;&#39;&amp;&amp;now&gt;=1)now--;
+                for(int j=now+1;j&lt;=i;j++)
+                {
+                    a[j]=maxx;
+                    maxx--;
+                }
+                i=now+1;
+            }
+        }
+        if(s[n-1]!=&#39;&lt;&#39;)
+        {
+            a[n]=maxx;
+        }
+        for(int i=1;i&lt;=n;i++)
+        {
+            printf(&quot;%d &quot;,a[i]);
+        }
+        cout&lt;&lt;endl;
+    }
+    return 0;
+}</code></pre>
+
+        <div id="aplayer-GhaJXjRq" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-GhaJXjRq"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "那年",
+              author: "枯木逢春",
+              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/CodeForces">CodeForces</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CodeForces-1304&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>
