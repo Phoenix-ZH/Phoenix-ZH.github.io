@@ -153,6 +153,49 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-2195/">
+        <p class="h4 index-header">POJ-2195</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 2195 Going Home
+题目链接：https://vjudge.net/problem/POJ-2195#author=hrbustacm
+题目大意：免费送房子，m表示人，H表示房子，每个房子只能进一个人，房子数等于人数。黄弘毅为了方便起见决定要让所有人到自己的房子的距离和最小，请问这个距离和是多少？
+题解：距离和，这个问题一看显然就是费用流问题，而此题就是最小费用流的裸题，将人和房子统计出来，然后s与人连边，边权为1，费用dis为0，房子与t连边，边权为0，费用dis为0，人与房子连边，边权为1，费用dis为曼哈顿距离。然后跑MCMF就可以了。
+ps：我麻烦了一点，对房子进行了拆点，其实可以不拆，毕竟与t相连，流量固定了。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=200000+5;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+            <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81">费用流</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-1459/">
         <p class="h4 index-header">POJ-1459</p>
         
