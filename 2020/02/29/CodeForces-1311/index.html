@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CodeForces-1311 ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 二月 29日 2020, 4:50 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.8k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      13 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="A：题目名称："><a href="#A：题目名称：" class="headerlink" title="A：题目名称："></a>A：题目名称：</h1><p> Add Odd or Subtract Even</p>
+<h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><ul>
+<li>给定两个正整数a,b。</li>
+<li>每次操作你可以把 a加上某个正奇数，或者减去某个正偶数。</li>
+<li>问至少多少次操作可以把 a变成 b。</li>
+<li>多组数据 :T&lt;=10^4,1&lt;=a,b&lt;=10^9</li>
+</ul>
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>对于a，b关系可分为3种情况：a&gt;b;a==b;a&lt;b;<br>a==b:答案为0；<br>a &gt; b:若a-b为偶数，答案为1；否则为2，先减一个偶数让a=b-1，再加1。<br>a &lt; b:若b-a为奇数，答案为1；否则为2.</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int T,a,b;
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%d%d&quot;,&amp;a,&amp;b);
+        if(b&gt;a)
+        {
+            if((b-a)%2==1)printf(&quot;1\n&quot;);
+            else printf(&quot;2\n&quot;);
+        }
+        else if(b==a)
+        {
+            printf(&quot;0\n&quot;);
+        }
+        else if(b&lt;a)
+        {
+            if((a-b)%2==0)printf(&quot;1\n&quot;);
+            else printf(&quot;2\n&quot;);
+        }
+    }
+    return 0;
+}</code></pre>
+<h1 id="B：题目名称："><a href="#B：题目名称：" class="headerlink" title="B：题目名称："></a>B：题目名称：</h1><p>WeirdSort</p>
+<h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1582966700624.png" srcset="/img/loading.gif" alt="1582966700624"></p>
+<h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>这题看起来和冒泡排序很像，将冒泡排序的判断条件改一下就可以，每一次必须是在限制的位置上时才可以swap。最后再判断是否变成有序数列即可。</p>
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=100+5;
+int a[maxn],p[maxn],n,m,T,vis[maxn];
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        memset(vis,0,sizeof(vis));
+        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+        for(int i=1;i&lt;=n;i++)scanf(&quot;%d&quot;,&amp;a[i]);
+        for(int i=1;i&lt;=m;i++)
+        {
+            scanf(&quot;%d&quot;,&amp;p[i]);
+            vis[p[i]]=1;
+        }
+        int sign=0;
+        for(int i=1;i&lt;=n;i++)
+        {
+            if(sign==1)break;
+            for(int j=1;j&lt;=n-i;j++)
+            {
+                if(a[j]&gt;a[j+1])
+                {
+                    if(!vis[j])
+                    {
+                        sign=1;
+                        break;
+                    }
+                    else 
+                    {
+                        swap(a[j],a[j+1]);
+                    }
+                }
+            }
+        }
+        for(int i=1;i&lt;=n-1;i++)
+        {
+            if(sign==1)break;
+            if(a[i]&gt;a[i+1])
+            {
+                sign=1;
+                break;
+            }
+        }
+        if(sign==1)printf(&quot;NO\n&quot;);
+        else printf(&quot;YES\n&quot;);
+    }
+    return 0;
+}</code></pre>
+<h1 id="C：题目名称："><a href="#C：题目名称：" class="headerlink" title="C：题目名称："></a>C：题目名称：</h1><p>Perform the Combo</p>
+<h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p>一台机器准备要打印一篇文章，有 m 个打印操作</p>
+<p>给出操作序列 p1,p2, …,pm和 长度为 n的字符串 s<br>对于每个 1≤<em>i</em>≤m，pi表示该机器将位置1∼pi上的所有字母打印了出来<br>最后，在所有操作做完后，该机器又将整个字符串 s打印了出来</p>
+<p>请求出字母表中每个字母在文章中出现了多少次</p>
+<h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>先统计位置i之前26个字母每个字母的总数，然后直接模拟求总和，注意最后要加上一次完整的计数。</p>
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200000+5;
+int T,n,m,s[maxn][27],ans[27];char a[maxn];
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        memset(ans,0,sizeof(ans));
+        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+        scanf(&quot;%s&quot;,a+1);
+        for(int i=1;i&lt;=n;i++)
+        {
+            int x=a[i]-&#39;a&#39;+1;
+            for(int j=1;j&lt;=26;j++)
+            {
+                if(j==x)s[i][j]=s[i-1][j]+1;
+                else s[i][j]=s[i-1][j];
+            }
+        }
+        for(int i=1;i&lt;=m;i++)
+        {
+            int x;scanf(&quot;%d&quot;,&amp;x);
+            for(int j=1;j&lt;=26;j++)
+            {
+                ans[j]=ans[j]+s[x][j];
+            }
+        }
+        for(int i=1;i&lt;=26;i++)ans[i]=ans[i]+s[n][i];
+        for(int i=1;i&lt;=26;i++)printf(&quot;%d &quot;,ans[i]);
+        cout&lt;&lt;endl;
+    }
+    return 0;
+}</code></pre>
+<h1 id="D-题目名称："><a href="#D-题目名称：" class="headerlink" title="D:题目名称："></a>D:题目名称：</h1><p>Three Integers</p>
+<h4 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h4><p>题目给出三个整数a<em>≤</em>b<em>≤</em>c。</p>
+<p>在一次操作中，你可以给这三个数中任意一个数 +1 或 -1。你可以用同一个数字做这样的操作任意次。但你要保证，变换过后的数，是一个正数。</p>
+<p>你想要用最小操作步数使得三个整数 A<em>≤</em>B<em>≤</em>C能够符合：B 能被 A 整除， C能被 B整除。</p>
+<p>你需要回答 t 组询问。</p>
+<h4 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h4><p>一开始想着找出a与b，a与c的关系，结果这样写有点麻烦。b作为中间数字，当然用它来做媒介最好。注意b可以减到a，也可以加到c，所以枚举的大小应该为max(b-a,c-b);找到b-i的所有因子，得到a改变成b-i的因子的最小变化值ned1，并且记录a变化后的值。再找b-i的所有倍数，得到c变成b-i的倍数的最小变化之ned2，并且记录c变化后的值。再更新总变化值，以及记录a，b，c的值。然后同理求b+i的情况。如果b-i&lt;=0直接去掉。</p>
+<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=10000+5;
+int T,A,B,C,a,b,c;
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        int ans=0x3f3f3f3f;
+        scanf(&quot;%d%d%d&quot;,&amp;A,&amp;B,&amp;C);
+        for(int i=0;i&lt;=max(B-A,C-B);i++)//注意取max 
+        {
+            int B1=B-i,ned1=0x3f3f3f3f,ned2=0x3f3f3f3f,nowa,nowc;
+            if(B1&gt;0)
+            {
+                for(int j=1;j&lt;=sqrt(B1);j++)
+                {
+                    if(B1%j==0)
+                    {
+                        if(ned1&gt;abs(A-j))
+                        {
+                            ned1=abs(A-j);
+                            nowa=j;
+                        }
+                        if(ned1&gt;abs(A-B1/j))
+                        {
+                            ned1=abs(A-B1/j);
+                            nowa=B1/j;
+                        }
+                    }
+                }
+                for(int j=1;j&lt;=C/B1+1;j++)
+                {
+                    if(ned2&gt;abs(C-B1*j))
+                    {
+                        ned2=abs(C-B1*j);
+                        nowc=B1*j;
+                    }
+                }
+                if(ans&gt;ned1+ned2+i)
+                {
+                    ans=ned1+ned2+i;
+                    b=B1;a=nowa;c=nowc;
+                }    
+            }
+
+
+            B1=B+i,ned1=0x3f3f3f3f,ned2=0x3f3f3f3f;
+            for(int j=1;j&lt;=sqrt(B1);j++)
+            {
+                if(B1%j==0)
+                {
+                    if(ned1&gt;abs(A-j))
+                    {
+                        ned1=abs(A-j);
+                        nowa=j;
+                    }
+                    if(ned1&gt;abs(A-B1/j))
+                    {
+                        ned1=abs(A-B1/j);
+                        nowa=B1/j;
+                    }
+                }
+            }
+            for(int j=1;j&lt;=C/B1+1;j++)
+            {
+                if(ned2&gt;abs(C-B1*j))
+                {
+                    ned2=abs(C-B1*j);
+                    nowc=B1*j;
+                }
+            }
+            if(ans&gt;ned1+ned2+i)
+            {
+                ans=ned1+ned2+i;
+                b=B1;a=nowa;c=nowc;
+            }
+        }
+        printf(&quot;%d\n&quot;,ans);
+        printf(&quot;%d %d %d\n&quot;,a,b,c);
+    }
+    return 0;
+}</code></pre>
+<h1 id="E-题目名称："><a href="#E-题目名称：" class="headerlink" title="E:题目名称："></a>E:题目名称：</h1><p>Construct the Binary Tree</p>
+<h4 id="题目大意：-4"><a href="#题目大意：-4" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 要求构造一个n个节点的二叉树（每个节点拥有不超过2个孩子），节点1为根，要使所有节点到根的距离之和为d。要求先判断可不可以构造，如果可以输出“YES”，下一行输出2到n号节点的父亲节点，否则输出“NO”。有多组询问。 </p>
+<h4 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h4><p>要想构成树，那么必须保证Minn&lt;=d&lt;=Maxx,Minn就是满二叉树(最接近满二叉树)的情况，Maxx就是链。然后就是从Minn转换或者从Maxx转换成d。这里选择将链转换变成满足深度总和满足d的情况，预处理出Minn[i]，即n=i，对应的最小深度和，若d&lt;Minn||d&gt;Maxx那么就NO,(Maxx=i*(i-1)/2)，然后构成链，a[i][0]=i+1,f[i+1]=i,cnt[i]=1;(cnt[i]表示i这个深度点的总数)，从最底层向上移动，移动最多就是和根(1)相接，设最小深度为minn=1，每一次上升的高度为delt=min(i-minn,t)(i为当前移动点的深度，t为需要上升的总次数)。于是点(i+1)移动到深度为i-delt的层，该层最多有2^(i-delt-1)个点，点(i+1）就位于cnt[pos]的位置，f[i+1]对应的是上一层的第cnt[pos]/2的点。即f[i+1]=a[pot-1][cnt[pos]/2]，那么a[pos][cnt[pos]]=i+1;注意每次cnt[pos]++,一旦cnt[pos]&gt;=pow(2,minn)，那么就要往下一层走了。</p>
+<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=5000+5;
+int T,n,d,sum[maxn],maxx[maxn],f[maxn],a[maxn][maxn],cnt[maxn];
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    int opt=2;
+    sum[1]=0;maxx[1]=0;
+    for(int i=2;i&lt;=5000;i++)
+    {
+        maxx[i]=i*(i-1)/2;
+        if(i&lt;pow(2,opt))
+        {
+            sum[i]=sum[i-1]+(opt-1);
+        }
+        else
+        {
+            opt++;
+            sum[i]=sum[i-1]+(opt-1);
+        }
+    }
+    while(T--)
+    {
+        scanf(&quot;%d%d&quot;,&amp;n,&amp;d);
+        if(d&lt;sum[n]||d&gt;maxx[n])
+        {
+            printf(&quot;NO\n&quot;);
+            continue;
+        }
+        int t=maxx[n]-d;
+        for(int i=0;i&lt;=n-1;i++)
+        {
+            a[i][0]=i+1;f[i+1]=i;cnt[i]=1;
+        }
+        int minn=1;
+        for(int i=n-1;i&gt;=1;i--)
+        {
+            int delt=min(i-minn,t);
+            t-=delt;
+            int pos=i-delt;
+            f[i+1]=a[pos-1][cnt[pos]/2];
+            a[pos][cnt[pos]++]=i+1;
+            if(cnt[pos]&gt;=pow(2,minn))minn++;
+            if(!t)break;
+        }
+        printf(&quot;YES\n&quot;);
+        for(int i=2;i&lt;=n;i++)
+        {
+            printf(&quot;%d &quot;,f[i]);
+        }
+        cout&lt;&lt;endl;
+    }
+    return 0;
+}</code></pre>
+<h4 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a>代码：</h4><h1 id="F-题目名称："><a href="#F-题目名称：" class="headerlink" title="F:题目名称："></a>F:题目名称：</h1><p>Moving Points</p>
+<h4 id="题目大意：-5"><a href="#题目大意：-5" class="headerlink" title="题目大意："></a>题目大意：</h4><p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1582968080820.png" srcset="/img/loading.gif" alt="1582968080820"></p>
+<h4 id="题解：-5"><a href="#题解：-5" class="headerlink" title="题解："></a>题解：</h4><p>假如xi&lt;xj，那么要让i与j的距离可以变成0，就必须vi&gt;vj。不妨让所有的点按xi从小到大的顺序排列。对于i，需要找到所有满足vj&lt;vi的点，这样的i与j的距离就是0，其余的就是abs(xi-xj)，这样就需要维护这种点的vj的总和。可以选择树状数组来维护:先将所有点的vi从d小到大编号，1为最小，n为最大，找到点i的vi的排名p，然后加入到树状数组。排名小于p的就是vj&lt;vp的，否则就是vp&lt;vj的。树状数组要维护点p之前(包括点p)的点的个数和点p之前(包括点p)的v的总和。然后开始枚举点i，首先确定它v的排名p，得到p之前点的个数f1(即v&lt;vi的点的个数)，得到p之前的点的x总和f2(即v&lt;vi的x总和),求得可以使自己和点i之间的距离为0的个数，其余就是不可为0的。ans=ans+abs((n-f1-i)*a[i].x-(sum-f2));注意要减去a[i].x本身，并且每一对点之间只能计算一次，所以树状数组要更新，将权值加上负值即可(add(p,-1,-a[i].x);)。所以剩余距离不能为0的点个数为n-f1-i，而这些点的x之和就是sum-f2(每次sum-a[i].x)。最后输出ans。</p>
+<p><strong>开longlong保平安</strong></p>
+<h4 id="代码：-6"><a href="#代码：-6" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const long long maxn=200000+5;
+long long n,b[maxn],w1[maxn],w2[maxn];
+struct node
+{
+    long long x,v;
+}a[maxn];
+long long cmp(node x1,node x2)
+{
+    return x1.x&lt;x2.x;
+}
+long long lowbit(long long x)
+{
+    return x&amp;(-x);
+}
+void add(long long x,long long v1,long long v2)
+{
+    while(x&lt;=n)
+    {
+        w1[x]+=v1;w2[x]+=v2;x+=lowbit(x);
+    }
+}
+long long query1(long long x)
+{
+    long long ans=0;
+    while(x)
+    {
+        ans+=w1[x];x-=lowbit(x);
+    }
+    return ans;
+}
+long long query2(long long x)
+{
+    long long ans=0;
+    while(x)
+    {
+        ans+=w2[x];x-=lowbit(x);
+    }
+    return ans;
+}
+int main()
+{
+    scanf(&quot;%lld&quot;,&amp;n);
+    long long sum=0;
+    for(long long i=1;i&lt;=n;i++)scanf(&quot;%lld&quot;,&amp;a[i].x);
+    for(long long i=1;i&lt;=n;i++)
+    {
+        scanf(&quot;%lld&quot;,&amp;a[i].v);
+        b[i]=a[i].v;
+    }
+    sort(a+1,a+1+n,cmp);
+    sort(b+1,b+1+n);
+    long long tot=unique(b+1,b+1+n)-b-1;
+    for(long long i=1;i&lt;=n;i++)
+    {
+        long long p=lower_bound(b+1,b+1+tot,a[i].v)-b;
+        add(p,1,a[i].x);
+        sum+=a[i].x;
+    } 
+    long long ans=0;
+    for(long long i=1;i&lt;=n;i++)
+    {
+        long long p=lower_bound(b+1,b+1+tot,a[i].v)-b;
+        sum-=a[i].x;
+        long long f1=query1(p-1),f2=query2(p-1);
+        ans=ans+abs((n-f1-i)*a[i].x-(sum-f2));
+        add(p,-1,-a[i].x);
+    }
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+} </code></pre>
+ 
+        <div id="aplayer-QzGoKVkI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-QzGoKVkI"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "那年",
+              author: "枯木逢春",
+              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/CodeForces">CodeForces</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CodeForces-1311&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>

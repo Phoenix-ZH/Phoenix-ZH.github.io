@@ -153,6 +153,48 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/09/HDU-1083/">
+        <p class="h4 index-header">HDU-1083</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称： HDU - 1083Courses
+题目链接：https://vjudge.net/problem/HDU-1083#author=0
+题目大意： 一共有N个学生跟P门课程,一个学生可以任意选一 门或多门课,问是否达成:
+1.每个学生选的都是不同的课(即不能有两个学生选同一门课)
+2.每门课都有一个代表(即P门课都被成功选过)
+ 若能满足上面两个要求这输出”YES”,否则为”NO”  注意：是课程匹配的学生，学生没课上没事….. 
+题解：最终问题就是问能否所有的课程都被人选，并且没有两个及以上的人选同一门课。换言之，二分图的最大匹配数是否==p。建图时课程–&gt;学生，课程(1-P)，学生(N+1-N+n)，跑匈牙利算法。
+ps：数组开小了不会RE，它会TLE！因为一开始只开了10000的边，实际上时100*300，然后TLE了。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/09/HDU-2444/">
         <p class="h4 index-header">HDU-2444</p>
         
@@ -499,52 +541,6 @@ void next_pre</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-1238/">
-        <p class="h4 index-header">HDU-1238</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-1238 Substrings
-题目链接：https://vjudge.net/problem/HDU-1238#author=organicsalt
-题目大意：给n个字符串，问是否存在一个子串(或将该子串reverse)为所有字符串的子串。
-题解：将第一个字符串的所有子串与其余子串匹配一遍，如果有一个匹配失败，就将该子串reverse再匹配。这里使用reverse会更快，用kmp加速。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1005;
-int n,T,Next[maxn],len1,len2;string s[105],s2;
-void next_pre(int len)
-{
-    int i=0,j=1;Next[0]=-1;
-    while(j&lt;len)
-    {
-        while(Next[i]!=-1&</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/kmp">kmp</a>&nbsp;
           
         
       </div>
