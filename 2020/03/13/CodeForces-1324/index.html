@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CodeForces-1324 ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 三月 13日 2020, 2:50 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.9k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      14 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>第一次参加Div3，结果就翻车了，本来前三题都很顺利，半个小时AC之后，进入T4，结果T4WA了4发，当场崩溃，结果就是minn，maxx的位置有歧义。导致T6只剩下10min，即使有思路也没办法调试出来。第二天花了15minAC了，WA了一发。果然还是细节很不到位。</p>
+<h1 id="A：题目名称："><a href="#A：题目名称：" class="headerlink" title="A：题目名称："></a>A：题目名称：</h1><p>Yet Another Tetris Problem</p>
+<h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>第一行一个t，表示有t组数据。每组数据的第一行是一个数n，接下来一行是一个长度为n的数组a。 分别表示每一列的方块的高度。<br>现在有两个操作：<br>1.当至少一个ai&gt;0时，选择一些i(1&lt;=i&lt;=n)，将ai加2.<br>2.当所有的ai&gt;0时，将所有的ai减1。<br>问最后可不可以将所有的ai都变成0. 如果能，输出”YES”(没有引号)，不然输出”NO”(没有引号) </p>
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>问题转化过来就是，可以在任意一列上+2，问最后可不可以等高。那就看highmax与其余各列的高度差是否都为偶数即可。</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000+5;
+int T,n,a[maxn];
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        int maxx=0;
+        scanf(&quot;%d&quot;,&amp;n);
+        for(int i=1;i&lt;=n;i++)
+        {
+            scanf(&quot;%d&quot;,&amp;a[i]);
+            maxx=max(maxx,a[i]);
+        }
+        int sign=0;
+        for(int i=1;i&lt;=n;i++)
+        {
+            int t=maxx-a[i];
+            if(t%2==1)
+            {
+                sign=1;
+                break;
+            }
+        }
+        if(sign==0)printf(&quot;YES\n&quot;);
+        else printf(&quot;NO\n&quot;);
+    }
+    return 0;
+}</code></pre>
+<h1 id="B-题目名称："><a href="#B-题目名称：" class="headerlink" title="B: 题目名称："></a>B: 题目名称：</h1><p>Yet Another Palindrome Problem</p>
+<h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给定一个长度为 n 的序列 a，问其中是否有长度至少为 3 的子序列 b 为「回文序列」，如果有，则输出 <code>YES</code>，否则输出 <code>NO</code>。</p>
+<p>注意：本题有多组数据，对每一组数据，都要给出相应答案。</p>
+<h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>只要满足回文串的长度为3即可。那就找到任意相等的两个数字，看他们之间间隔是否大于1。对于每一个类型的数字，记录一下最先出现的位置，用vis[]表示。然后倒着枚举每一个数字，看它的位置与同样大小数字最先出现的位置相差是否大于1，一旦符合就YES；如果找不到就NO。</p>
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=5000+5;
+int T,n,a[maxn],vis[maxn],b[maxn];
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%d&quot;,&amp;n);
+        memset(vis,0,sizeof(vis));
+        memset(b,0,sizeof(b));
+        for(int i=1;i&lt;=n;i++)
+        {
+            scanf(&quot;%d&quot;,&amp;a[i]);
+            if(vis[a[i]])
+                b[i]=vis[a[i]];
+            else vis[a[i]]=i;
+        }
+        int sign=0;
+        for(int i=n;i&gt;=1;i--)
+        {
+            if(i-b[i]&gt;=2&amp;&amp;b[i]!=0)
+            {
+                printf(&quot;YES\n&quot;);
+                sign=1;
+                break;
+            }
+        }
+        if(sign==0)printf(&quot;NO\n&quot;);
+    }    
+    return 0;
+}</code></pre>
+<h1 id="C-题目名称："><a href="#C-题目名称：" class="headerlink" title="C: 题目名称："></a>C: 题目名称：</h1><p>Frog Jumps</p>
+<h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有T组数据。每组数据是一串由L与R组成的字符串。青蛙从0出发，到n+1停止。n就是字符串长度(n不会给出)。若青蛙停在ai上，ai==‘L’就只能向左跳，ai==’R’就只能向右跳。求出最小的d，使得每一次青蛙跳的距离不超过d并且可以到达n+1.</p>
+<h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>假如ai==‘L’，意味着青蛙要向左跳。由于最终要跳到n+1，就必须尽量落在ai==’R’上，假设ai–&gt;aj,ai==’R‘，aj==’L’，如果j-i==d，如果中间没有R了，那显然不能满足它跳到n+1去，若有R那肯定跳到最后一个ak==’R’ 上。如果j-i&lt;d,就看后面是否有ak==’R’(注意范围),或者i–j之间是否有ak==’R’.总之这样推断后，发现每一次都要落在ai==’R’上才能到达n+1处。现在就是如何求d了，对d进行二分即可。</p>
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200000+10;
+int T,len;char s[maxn];
+bool check(int mid)
+{
+    int opt=0,now=0,sign=0;
+    while(opt&lt;=len+1)
+    {
+        if(s[opt]==&#39;R&#39;&amp;&amp;opt-now&lt;=mid)
+        {
+            now=opt;
+        }
+        else if(opt-now&gt;mid)
+        {
+            sign=1;break;
+        }
+        opt++;
+    }
+    if(sign==1)return 0;
+    else return 1;
+}
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%s&quot;,s+1);
+        len=strlen(s+1);
+        s[len+1]=&#39;R&#39;;
+        int l=0,r=200000+5,ans=0;
+        while(l&lt;=r)
+        {
+            int mid=(l+r)/2;
+            if(check(mid))
+            {
+                ans=mid;
+                r=mid-1;
+            }
+            else 
+            {
+                l=mid+1;
+            }
+        }
+        printf(&quot;%d\n&quot;,ans);
+    }
+    return 0;
+}</code></pre>
+<h1 id="D-题目名称："><a href="#D-题目名称：" class="headerlink" title="D: 题目名称："></a>D: 题目名称：</h1><p>Pair of Topics</p>
+<h4 id="Ps：本场比赛WA了4次，把自己坑得人都没了QAQ"><a href="#Ps：本场比赛WA了4次，把自己坑得人都没了QAQ" class="headerlink" title="Ps：本场比赛WA了4次，把自己坑得人都没了QAQ"></a>Ps：本场比赛WA了4次，把自己坑得人都没了QAQ</h4><h4 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给定n组ai，bi。求有多少组满足ai+aj&gt;bi+bj(i&lt;j)</p>
+<h4 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h4><p>移项之后就是求 (ai-bi)+(aj-bj)&gt;0有多少组。设ci=ai-bi.就是求ci+cj&gt;0有多少组。将c数组从小到大排好。minn为最靠后的小于或等于0的数，maxx为最靠前的大于或等于0的数。这里特别要注意：如果存在0，那么minn=maxx=i(a[i]==0)，如果存在多个0，那么minn=maxx=i(<strong>i是最后一个0所在位置</strong>)，那么大于0的个数就是n-maxx+1.注意：如果maxx==n，可能a[maxx]=0或者a[maxx]&gt;0；也可能minn=maxx=1，意味着可能a[minn]=a[maxx]=0,也可能是全为负数。这里的特殊情况较多，很容易WA。(主要还是设计算法时候没有注意到），然后将minn倒着向前推，如果c[minn]+c[maxx]&gt;0,ans+=n-maxx+1(意味着maxx后面的也都满足)，如果c[minn]+c[maxx]&lt;=0，就maxx++，直到c[minn]+c[maxx]&gt;0(注意maxx不可以超过n),所以还要判断是否c[minn]+c[maxx]&gt;0。<br>ps：minn=maxx=1时候，也可能全正，直接输出答案即可。ans=(n-1)*n/2;</p>
+<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const long long maxn=200000+10;
+long long n,a[maxn],b[maxn],c[maxn];
+long long cmp(long long x,long long y)
+{
+    return x&lt;y;
+}
+int main()
+{
+    scanf(&quot;%lld&quot;,&amp;n);
+    for(long long i=1;i&lt;=n;i++)scanf(&quot;%lld&quot;,&amp;a[i]);
+    for(long long i=1;i&lt;=n;i++)scanf(&quot;%lld&quot;,&amp;b[i]);
+    for(long long i=1;i&lt;=n;i++)c[i]=a[i]-b[i];
+    sort(c+1,c+1+n,cmp);
+    long long minn=1,maxx=1;
+    for(long long i=1;i&lt;=n;i++)
+    {
+        if(c[i]==0)
+        {
+            minn=maxx=i;
+        }
+        if(c[i]&gt;0&amp;&amp;c[i-1]&lt;0)
+        {
+            minn=i-1;
+            maxx=i;
+        }
+        if(c[i]&gt;0&amp;&amp;c[i-1]&gt;0)break;
+    }
+    long long ans=0;
+    if(minn==maxx)
+    {
+        while(c[maxx]&lt;=0&amp;&amp;maxx&lt;=n-1)maxx++;
+    }
+    ans=(n-maxx+1)*(n-maxx)/2;
+    if(maxx==1)
+    {
+        printf(&quot;%lld\n&quot;,ans);
+        return 0;
+    }
+    for(long long i=minn;i&gt;=1;i--)
+    {
+        if(c[i]+c[maxx]&gt;0)
+        {
+            ans+=n-maxx+1;
+        }
+        else 
+        {
+            while(c[i]+c[maxx]&lt;=0&amp;&amp;maxx&lt;=n-1)maxx++;
+            if(c[i]+c[maxx]&gt;0)ans+=n-maxx+1;
+        }
+    }
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}</code></pre>
+<h1 id="E-题目名称："><a href="#E-题目名称：" class="headerlink" title="E: 题目名称："></a>E: 题目名称：</h1><p>Sleeping Schedule</p>
+<h4 id="题目大意：-4"><a href="#题目大意：-4" class="headerlink" title="题目大意："></a>题目大意：</h4><p> Vova  可以选择在ai小时或者ai-1小时后睡觉，每次睡h个小时，如果开始睡觉那一刻位于l和r之间就是符合要求的。问一共有多少个符合要求。</p>
+<h4 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h4><p>每一次睡觉时有两个选择：ai个小时后睡或者ai-1个小时后睡觉，但是由于之前i-1次也会出现这样的选择。如果单纯直接递推，就无法判断枚举的上次睡觉时间是否可以到达。所以vis[i][j]记录第i次在j时刻睡觉。dp[i][j]表示第i次在j时刻睡觉所累积的符合要求的数量。显然dp[1][a[i]]=1,dp[1][a[i]-1]=1.vis[1][a[1]]=1,vis[1][a[1]-1]=1,然后开始枚举ai，和ai-1次睡觉的时刻。必须满足vis[i-1][j]=1，即上一次睡觉可以在j时刻睡觉才可以继续。那么第i次睡觉可以在(j+a[i])%h或者(j+a[i]-1)%h开始。对vis数组进行记录。然后更新dp数组(看睡觉时刻是否处于l和r之间).然后再dp[n][j]中求maxx(0&lt;=j&lt;=h-1).<br><strong>ps</strong>:l&lt;=a[1]&lt;=r时候，dp[1][a[1]]=1;l&lt;=a[1]-1&lt;=r时候，dp[1][a[i]-1]=1,而vis数组直接标记即可。</p>
+<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=3000+5;
+int n,h,l,r,dp[maxn][maxn],a[maxn],vis[maxn][maxn];
+int main()
+{
+    scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;h,&amp;l,&amp;r);
+    for(int i=1;i&lt;=n;i++)scanf(&quot;%d&quot;,&amp;a[i]);
+    if(a[1]&gt;=l&amp;&amp;a[1]&lt;=r)
+    {
+        dp[1][a[1]]=1;
+    }
+    vis[1][a[1]]=1;
+    if(a[1]-1&gt;=l&amp;&amp;a[1]-1&lt;=r)
+    {
+        dp[1][a[1]-1]=1;
+    }
+    vis[1][a[1]-1]=1;
+    for(int i=2;i&lt;=n;i++)
+    {
+        for(int j=0;j&lt;=h-1;j++)
+        {
+            if(!vis[i-1][j])continue;
+            int x=(j+a[i])%h;
+            vis[i][x]=1;
+            if(x&gt;=l&amp;&amp;x&lt;=r)dp[i][x]=max(dp[i][x],dp[i-1][j]+1);
+            else dp[i][x]=max(dp[i][x],dp[i-1][j]);
+            x=(j+a[i]-1)%h;
+            vis[i][x]=1;
+            if(x&gt;=l&amp;&amp;x&lt;=r)dp[i][x]=max(dp[i][x],dp[i-1][j]+1);
+            else dp[i][x]=max(dp[i][x],dp[i-1][j]);
+        }
+    }
+    int ans=0;
+    for(int j=0;j&lt;=h-1;j++)
+    ans=max(ans,dp[n][j]);
+    printf(&quot;%d\n&quot;,ans);
+    return 0;
+}</code></pre>
+<h1 id="F-题目名称："><a href="#F-题目名称：" class="headerlink" title="F: 题目名称："></a>F: 题目名称：</h1><p>Sleeping Schedule</p>
+<h4 id="题目大意：-5"><a href="#题目大意：-5" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给定一棵 n 个节点无根树，每个节点 u有一个颜色au，若 au 为 0 则 u 是黑点，若 au为 1 则 u是白点。<br>对于每个节点 u，选出一个包含 u的连通子图，设子图中白点个数为 cnt1，黑点个数为 cnt2，请最大化 cnt1 - cnt2。并输出这个值。 </p>
+<h4 id="题解：-5"><a href="#题解：-5" class="headerlink" title="题解："></a>题解：</h4><p>默认1为根，从头到底进行一边dfs，每次进入dfs，先更新w1，w2数组，若为白色则w1[i]=1否则w2[i]=1,则sum[i]=w1[i]-w2<a href="sum数组表示cnt1-cnt2">i</a>.然后从底部进行回溯：若edge[i].to(即子树的头节点)它的sum[edge[i].to]&gt;0,那么sum[u]+=sum[edge[i].to].这样只是更新了头节点。而子树与其头节点的关系并没有更新。假如一个子树，它的父节点所在子树的sum[u]&gt;0,而该节点所在子树的sum[edge[i].to]&gt;0,那么显然父亲节点的子树一定包含了该子节点所在的子树，那么sum[edge[i].to]=sum[u].如果sum[edge[i].to]&lt;0，就说明该节点为黑色。sum[edge[i].to]=sum[edge[i].to]+sum[u];然后继续dfs。</p>
+<h4 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200000+5;
+int n,v[maxn],k=1,w1[maxn],w2[maxn],sum[maxn],son[maxn],head[maxn];
+struct node
+{
+    int to,next;
+}edge[maxn*2];
+void add(int u,int v)
+{
+    edge[++k].to=v;edge[k].next=head[u];head[u]=k;
+}
+void dfs(int u,int f)
+{
+    if(v[u]==0)w2[u]=1;
+    if(v[u]==1)w1[u]=1;
+    sum[u]=w1[u]-w2[u];
+    for(int i=head[u];i;i=edge[i].next)
+    {
+        if(edge[i].to==f)continue;
+        dfs(edge[i].to,u);
+        if(sum[edge[i].to]&gt;0)
+        sum[u]+=sum[edge[i].to];
+    }
+}
+void dfs2(int u,int f)
+{
+    for(int i=head[u];i;i=edge[i].next)
+    {
+        if(edge[i].to==f)continue;
+        if(sum[edge[i].to]&gt;=0&amp;&amp;sum[edge[i].to]&lt;sum[u])
+        sum[edge[i].to]=sum[u];
+        else if(sum[edge[i].to]&lt;0&amp;&amp;sum[u]&gt;=0)
+        sum[edge[i].to]+=sum[u];
+        dfs2(edge[i].to,u);
+    }
+}
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)scanf(&quot;%d&quot;,&amp;v[i]);
+    for(int i=1;i&lt;n;i++)
+    {
+        int u,v;
+        scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+        add(u,v);add(v,u);
+    }
+    dfs(1,1);
+    dfs2(1,1);
+    for(int i=1;i&lt;=n;i++)printf(&quot;%d &quot;,sum[i]);cout&lt;&lt;endl;
+    return 0;
+}</code></pre>
+<p>aplayer “那年” “枯木逢春” “<a href="https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3&quot;" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3&quot;</a> “autoplay” %}</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/CodeForces">CodeForces</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CodeForces-1324&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>

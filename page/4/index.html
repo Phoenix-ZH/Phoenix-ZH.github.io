@@ -153,6 +153,81 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3336/">
+        <p class="h4 index-header">HDU-3336</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 3336 Count the string
+题目链接：https://vjudge.net/problem/HDU-3336#author=cust_acm
+题目大意：给一个字符串，求它所有子串(包括自身)出现的总次数之
+题解：该题目需要比较完善地理解Next数组地含义与作用。当匹配到i失败时，就会返回到Next[i]。则匹配到i时，应该记录了子串s[0…i]，以及与子串s[0…Next[i]]。于是就可以得到动态转移方程dp[i]=dp[Next[i]]+1.然后求和dp数组，同时取模。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200000+5;
+const int Mod=10007;
+int T,len1,len2,Next[maxn],dp[maxn];char s1[maxn],s2[maxn];
+void next_pre</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4300/">
+        <p class="h4 index-header">HDU-4300</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-4300 Clairewd’s message
+题目链接：https://vjudge.net/problem/HDU-4300
+题目大意：第一行给的是26个字母对应的翻译密码，而第二行给的是文本串，该文本串前面部分为加密后的内容，而后部分(可能不完整)为未加密的内容。求：一行字符串前一半为加密后的内容，后一半为未加密的内容。一一对应的关系。
+题解：由题意可知，文本串前一部分是加密过后的内容，后一部分是未加密的内容，而这一部分可能是不完整的。则可理解为s=stringA+stringB。可以根据第一行给的加密方式将s整体当作加密内容，将其转化为整体未加密的内容，即字符串s转化成了t。这时候将原s的所有后缀与t匹配，这个过程实际上就是ex-kmp，将t作为子串，s作为母串，求t与s的所有后缀的公共前缀的长度extend[]。如果extend[i]+i==len(s)&amp;&amp;i&gt;=extend[i].即以i为分界点，s[0…i-1]作为stringA，s[i…len-1]作为stringB，即stringB就是原文本内容。(i&gt;=extend[i]</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-1238/">
         <p class="h4 index-header">HDU-1238</p>
         
@@ -472,101 +547,11 @@ int p[maxn],len,a[maxn],S,T;char s[maxn],t[maxn]</div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4763/">
-        <p class="h4 index-header">HDU-4763</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4763 Theme Section
-题目链接：https://vjudge.net/problem/HDU-4763#author=0
-题目大意：字符串E是字符串S的前缀和后缀，同时也出现在字符串S的中间，不与前缀后缀重合，问字符串S中符合要求的字符串E的最大长度。
-题解：这题显示是kmp问题，kmp中Next[i]表示字符串s从0…..i-1中前缀与后缀的最大公共子串，而问题就是求EAEBE，A，B长度任意(可以为0)，显然E最长为Next[len]，于是可以从len-Next[len]开始往前看Next[now]与E的大小关系，now&gt;=2*E，因为不可以重叠，如果找不到呢，E就应该缩小，理论是E–，所以E=Next[E]，继续寻找，直到找到或者无法继续。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1000000+5;
-in</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/kmp">kmp</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2387/">
-        <p class="h4 index-header">POJ-2387</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2387 Til the Cows Come Home
-题目链接：https://vjudge.net/problem/POJ-2387#author=ght5160
-题目大意：求从1到n的最短距离
-题解：最短路模板，spfa或者dijkstra+堆优化。朴素Dijkstra：时间复杂度o(n^2)堆优化Dijkstra：时间复杂度o(（V+E）logV）
-spfa在稀疏图O（E），稠密图O（VE）
-dijkstra+堆优化的代码：
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=2000+5;
-int n,m,k=1,dist[maxn],vis[maxn],head[maxn];
-struct node
-{
-    int to,next,w;
-}edge[maxn*2];
-struct N
-{
-  </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
