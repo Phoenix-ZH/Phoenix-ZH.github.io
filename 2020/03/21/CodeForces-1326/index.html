@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CodeForces-1326 ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 三月 21日 2020, 3:48 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      9 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="A-题目名称："><a href="#A-题目名称：" class="headerlink" title="A 题目名称："></a>A 题目名称：</h1><p>A Bad Ugly Numbers</p>
+<h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 构造一个 n位十进制数，保证不被该数的任意一位整除。 </p>
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>由于只需要求一组即可，那么就猜测一下一个数字一定要么是奇数要么是偶数，若为奇数则个位不为偶数，若为偶数则个位为偶数。这么不妨用2来替换。假如剩余全为3，那么3*x+2一定无法被3整除。所以就全用2，3表示。偶数不能被2整除。那么开头数字为2，其余全为3就可以了。</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int T,n;
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%d&quot;,&amp;n);
+        if(n==1)
+        {
+            printf(&quot;-1\n&quot;);
+        }
+        else 
+        {
+            printf(&quot;2&quot;);
+            for(int i=1;i&lt;=n-1;i++)
+            printf(&quot;3&quot;);
+            cout&lt;&lt;endl;
+        }
+    }
+    return 0;
+} </code></pre>
+<h1 id="B-题目名称："><a href="#B-题目名称：" class="headerlink" title="B 题目名称："></a>B 题目名称：</h1><p>Maximums </p>
+<h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p>对于一个序列 {an}，定义序列 {cn} ：ci=max{0,a1,⋯,ai−1} 。同时定义序列 {bn} :bi=ai−ci 。</p>
+<p>给定 {bn}，求 {an} 。</p>
+<h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>由题意可知：ci=max{0,a1,…,ai-1},bi=ai-ci.所以ai=bi+ci;那么维护max{0,a1,…ai-1}即可。</p>
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=200000 +5;
+long long n,b[maxn],a[maxn];
+int main()
+{
+    scanf(&quot;%lld&quot;,&amp;n);
+    for(long long i=1;i&lt;=n;i++)scanf(&quot;%lld&quot;,&amp;b[i]);
+    long long maxx=b[1];
+    a[1]=b[1];
+    for(long long i=2;i&lt;=n;i++)
+    {
+        a[i]=maxx+b[i];
+        maxx=max(maxx,a[i]);
+    }
+    for(long long i=1;i&lt;=n;i++)
+    printf(&quot;%lld &quot;,a[i]);
+    cout&lt;&lt;endl;
+    return 0;
+}</code></pre>
+<h1 id="C-题目名称："><a href="#C-题目名称：" class="headerlink" title="C 题目名称："></a>C 题目名称：</h1><p>Permutation Partitions</p>
+<h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 给定一个长度为 n的排列{an}。要求将这个序列分成互不相交的 k段。记第 p段的左端点和右端点分别为 lp,rp 。要求最大化 <img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1584777570005.png" srcset="/img/loading.gif" alt="1584777570005"><br>输出<strong>最大化的值</strong>和<strong>可以最大化该值的方案数</strong>。方案数对 998,244,353取模。 </p>
+<h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>将长度为n的排列分成互不相交的k段，并且取每段的最大值，问它们的和。这一问就直接找到前k大的数字，并求和就可以了。然后求有多少种方案数。这一问需要看一下规律，将前k大的数字进行标记，然后依次统计相邻标记的数字中间有几个未标记的位置，如果为0，这区域的方案数为，如果为1，这区域的方案数位2，如果为2，这区域的方案数为3，如果为k，这区域的方案数为k+1。最后全部一边成一边取模。</p>
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=200000 +5;
+const int Mod=998244353;
+int n,m,a[maxn],d[maxn],vis[maxn],tot,f[maxn];long long ans=1,sig=0;
+int main()
+{
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    f[0]=1;
+    for(int i=1;i&lt;=n;i++)
+    {
+        f[i]=i+1;
+    }
+    for(int i=1;i&lt;=n;i++)
+    {
+        scanf(&quot;%d&quot;,&amp;a[i]);
+        if(a[i]&gt;=n-m+1&amp;&amp;a[i]&lt;=n)
+        {
+            sig+=a[i];
+            vis[i]=1;
+        }
+    }
+    int maxx=0;
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(maxx==0&amp;&amp;vis[i]==1)
+        {
+            maxx=i;
+        }
+        else if(vis[i]==1)
+        {
+            d[++tot]=i-maxx-1;
+            maxx=i;
+        }
+    }
+    ans=f[d[1]];
+    for(int i=2;i&lt;=tot;i++)
+    {
+        ans=(ans*f[d[i]])%Mod;
+    }
+    printf(&quot;%lld %lld\n&quot;,sig,ans);
+    return 0;
+}</code></pre>
+<h1 id="D-题目名称："><a href="#D-题目名称：" class="headerlink" title="D 题目名称："></a>D 题目名称：</h1><h4 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 给定一个字符串。要求选取他的一个前缀(可以为空)和与该前缀不相交的一个后缀(可以为空)拼接成回文串，且该回文串长度最大。求该最大长度。 </p>
+<h4 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h4><h5 id="Easy版本："><a href="#Easy版本：" class="headerlink" title="Easy版本："></a>Easy版本：</h5><p>这个数据范围更小，T&lt;=1000,n&lt;=5000；可以暴力。首先从两边往中间收，一一匹配，直到左右不等，记录opt1，opt2。然后看以opt1为起点最长的回文串，然后以opt2为起点最长的回文串，这里可以用暴力办法，比如以opt1为起点时，枚举终点，从opt2开始，一旦中间不符合了，就终点位置往前靠一位；同理以opt2为起点时，枚举终点，从opt1开始，一旦中间不符合了，终点位置就往后靠一位。最后选择一个最长的与开始的合并输出。</p>
+<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=50000+5;
+int n,l;char s[maxn],t[maxn];
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;n);
+    while(n--)
+    {
+        memset(t,0,sizeof(t));l=0;
+        scanf(&quot;%s&quot;,s+1);
+        int opt1=1,opt2=strlen(s+1);
+        while(opt1&lt;=opt2)
+        {
+            if(s[opt1]==s[opt2])
+            {
+                t[++l]=s[opt1];
+                opt1++;
+                opt2--;
+            }
+            else 
+            break;
+        }
+        if(l==(strlen(s+1)+1)/2)
+        {
+            int len=strlen(s+1);
+            for(int i=1;i&lt;=strlen(s+1);i++)
+            cout&lt;&lt;s[i];
+            cout&lt;&lt;endl;
+            continue;
+        }
+        int s1=opt1,s2=opt2,tot1=0,sign1=0,T1=0,c=1;
+        while(s1&lt;=s2)
+        {
+            if(s1==s2)sign1=1;
+            if(s[s1]==s[s2])
+            {
+                s1++;s2--;
+                tot1++;
+                T1+=2;
+            }
+            else 
+            {
+                tot1=0;
+                s1=opt1;s2=opt2-c;//WA
+                c++;
+                T1=0;
+            }
+        }
+        if(sign1==1)T1--;
+        s1=opt1;s2=opt2;int tot2=0,sign2=0,T2=0;c=1;
+        while(s1&lt;=s2)
+        {
+            if(s1==s2)sign2=1;
+            if(s[s1]==s[s2])
+            {
+                s1++;s2--;
+                tot2++;
+                T2+=2;
+            }
+            else 
+            {
+                s1=opt1+c;s2=opt2;c++;
+                tot2=0;
+                T2=0;
+            }
+        }
+        if(sign2==1)T2--;
+        if(T1&gt;T2)
+        {
+            for(int i=opt1;i&lt;=opt1+tot1-1;i++)
+            {
+                t[++l]=s[i];
+            }
+            if(sign1==1)
+            {
+                int len=l;
+                for(int i=len-1;i&gt;=1;i--)t[++l]=t[i];
+            }
+            else 
+            {
+                int len=l;
+                for(int i=len;i&gt;=1;i--)t[++l]=t[i];
+            }
+        }
+        else 
+        {
+            for(int i=opt2;i&gt;=opt2-tot2+1;i--)
+            t[++l]=s[i];
+            if(sign2==1)
+            {
+                int len=l;
+                for(int i=len-1;i&gt;=1;i--)t[++l]=t[i];
+            }
+            else 
+            {
+                int len=l;
+                for(int i=len;i&gt;=1;i--)t[++l]=t[i];
+            }
+        }
+        cout&lt;&lt;t+1&lt;&lt;endl;
+    }
+    return 0;
+}</code></pre>
+<h5 id="hard版本："><a href="#hard版本：" class="headerlink" title="hard版本："></a>hard版本：</h5><p>这里数据范围很大，T&lt;=100000,n&lt;=1000000.显然每次查询必须在O(n)内完成，所以必须用到Manacher的算法了。首先还是先从两端开始匹配出相同的总数，直到两端不等为止，记录opt1，opt2。然后以opt1为起点求最长的回文串，再以opt2为起点求最长的回文串。这里要注意Manacher求得的最长回文串可能不一定以opt1为起点。所以更新长度时候要注意让<strong>i-(p[i]-1)==1</strong>然后再更新长度。当以opt2为起点时候，将字符串s，从opt1到opt2之间翻转一下reverse(s+opt1,s+1+opt2)即可。然后选择最长的回文串与开始的合并输出。</p>
+<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=3000000+5;
+int T,p[maxn],l;char s[maxn]; 
+int Manacher(int S,int T)
+{
+    int len=1;
+    string ss=&quot;$#&quot;;
+    for(int i=S;i&lt;=T;i++)
+    {
+        ss+=s[i];ss+=&#39;#&#39;;
+        len+=2;
+    }
+    int mx=0,id=0,ans=0;p[0]=p[1]=0;
+    for(int i=1;i&lt;=len;i++)
+    {
+        if(i&lt;mx)p[i]=min(p[id*2-i],mx-i);
+        else p[i]=1;
+        while(ss[i+p[i]]==ss[i-p[i]])p[i]++;
+        if(i+p[i]&gt;mx)
+        {
+            mx=i+p[i];
+            id=i;
+        }
+        ans=max(ans,p[i]-1);
+        if(i-p[i]+1==1)
+        {
+            if(l&lt;p[i]-1)
+            {
+                l=p[i]-1;
+            }
+        }
+    }
+    return l;
+}
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%s&quot;,s+1);
+        int len=strlen(s+1);
+        int opt1=1,opt2=len;
+        l=0;
+        while(opt1&lt;=opt2)
+        {
+            if(s[opt1]==s[opt2])
+            {
+                opt1++;opt2--;
+            }
+            else break;
+        }
+        if(opt1&gt;opt2)
+        {
+            printf(&quot;%s\n&quot;,s+1);
+            continue;
+        }
+        int ans1=Manacher(opt1,opt2);
+        reverse(s+opt1,s+1+opt2);
+        l=0;
+        int ans2=Manacher(opt1,opt2);
+//        cout&lt;&lt;opt1&lt;&lt;&#39; &#39;&lt;&lt;opt2&lt;&lt;&#39; &#39;&lt;&lt;ans1&lt;&lt;&#39; &#39;&lt;&lt;ans2&lt;&lt;endl;
+        if(ans1&gt;ans2)
+        {
+            reverse(s+opt1,s+1+opt2);
+            for(int i=1;i&lt;=opt1-1;i++)cout&lt;&lt;s[i];
+            for(int i=opt1;i&lt;=opt1+ans1-1;i++)cout&lt;&lt;s[i];
+            for(int i=opt1-1;i&gt;=1;i--)cout&lt;&lt;s[i];
+            cout&lt;&lt;endl;
+        }
+        else 
+        {
+            reverse(s+opt1,s+1+opt2);
+            for(int i=1;i&lt;=opt1-1;i++)cout&lt;&lt;s[i];
+            for(int i=opt2-ans2+1;i&lt;=len;i++)cout&lt;&lt;s[i];
+            cout&lt;&lt;endl;
+        }
+    }
+    return 0;
+}</code></pre>
+<p><strong>ps</strong>：说明一下<strong>reverse</strong>函数的用法：reverse(s+opt1,s+opt2),s为进行翻转的字符串，opt1为s[opt1]中的opt1，从s[0]开始。如果读入为s+1，也依然是从s[0]开始。opt2为s[0]开始的第opt2个。如果读入为s+1，也依然是s[0]开始的第opt2个。</p>
+
+        <div id="aplayer-spbeJXUh" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-spbeJXUh"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "那年",
+              author: "枯木逢春",
+              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>p
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/CodeForces">CodeForces</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CodeForces-1326&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>
