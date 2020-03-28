@@ -158,6 +158,55 @@ src="//music.163.com/outchain/player?type=2&id=34341360&auto=1&height=66">
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/28/CodeForces-1328/">
+        <p class="h4 index-header">CodeForces-1328</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A 题目名称：Divisibility Problem
+题目大意：给定正整数 a,b，求至少把 a加上多少才能让 a为 b的倍数。
+多组数据，T≤10^4，a,b≤10^9。
+题解：如果a%b==0，说明a就是b的倍数，那么答案为0；否则找到最近的a使得a%b==0，显然a=((a/b)+1)*b;答案就是a‘-a；
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+long long a,b,T;
+int main()
+{
+    cin&gt;&gt;T;
+    while(T--)
+    {
+        cin&gt;&gt;a&gt;&gt;b;
+        if(a%b==0)printf(&quot;0\n&quot;);
+        else 
+        {
+            long long x=a/b+1;
+            long long ans=b*x;
+            long long tot=ans-a;
+            cout&lt;&lt;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-28&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/21/CodeForces-1326/">
         <p class="h4 index-header">CodeForces-1326</p>
         
@@ -558,56 +607,6 @@ int main()
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-15&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/14/CodeForces-620/">
-        <p class="h4 index-header">CodeForces-620</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A：题目名称：Professor GukiZ’s Robot 
-题目大意：机器人很好玩
-一开始在(x1,y1)
-最后在(x2,y2)
-每秒钟内横坐标最多变化1（也可以不变化）纵坐标也是
-问最少几秒钟到 x1 和 x2 绝对值在10^9以内 。
-题解：取两者坐标x，y相差的最大值，开longlong保平安。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-int main()
-{
-    long long x1,x2,y1,y2;
-    scanf(&quot;%lld%lld%lld%lld&quot;,&amp;x1,&amp;y1,&amp;x2,&amp;y2);
-    long long maxx=max(abs(x1-x2),abs(y1-y2));
-    printf(&quot;%lld\n&quot;,maxx);
-    return 0;
-} 
-B:题目名称： Gr</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-14&nbsp;&nbsp;
         
         
         

@@ -153,6 +153,54 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/08/luogu-3386/">
+        <p class="h4 index-header">luogu-3386</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：luogu-P3386 二分图匹配模板
+题目链接：https://www.luogu.com.cn/problem/P3386
+题目大意： 给定一个二分图，结点个数分别为n,m，边数为e，求二分图最大匹配数 
+ 因为数据有坑，可能会遇到 v&gt;m 或者 u&gt;n的情况。请把 v&gt;m 或者 u&gt;n的数据自觉过滤掉。
+题解：这是二分图最大匹配匹配的模板题。
+这里简述一下二分图的匈牙利算法：
+给出下图，要求最大匹配数
+  
+ 匈牙利算法的工作模式 如下：
+ 一： 先试着给1号男生找妹子，发现第一个和他相连的1号女生还名花无主，got it，连上一条蓝线 
+  
+ 二：接着给2号男生找妹子，发现第一个和他相连的2号女生名花无主，got it   
+ 三：接下来是3号男生，很遗憾1号女生已经有主了，怎么办呢？ 
+ 我们试着给之前1号女生匹配的男生（也就是1号男生）另外分配一个妹子。 
+ (黄色表示这条边被临时拆掉) 
+  
+ 与1号男生相连的第二个女生是2号女生，但是2号女生也有主了，怎么办呢？我们再试着给2号女生的原配  重新找个妹子 
+  
+ 此时发现2号男生还</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-08&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-3416/">
         <p class="h4 index-header">HDU-3416</p>
         
@@ -503,41 +551,6 @@ int T,len1,len2,Next[maxn],Exten</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3068/">
-        <p class="h4 index-header">HDU-3068</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3068 最长回文
-题目链接：https://vjudge.net/problem/HDU-3068
-题目大意：求多组数据的最长回文的长度，就是Manacher的模板题
-题解：讲解一下Manacher算法首先该算法的时间复杂度为O(N)，一个长度为len的字符串，len可能为奇数，也可能是偶数，那么中间点就不一样了，那对于长度L=2len+1呢？显然它一定是奇数。具体操作为：t[0]=’$’;for(int i=1;i&lt;=len;i++)t[++len]=’#’,t[++len]=s[i-1];t[++len]=’#’;比如字符串 abccba 就转换成了 $#a#b#c#c#b#a#;
-以上是初始化的过程，接下来是具体的操作过程：对于p[i]，如果i&lt;mx，设j是i关于id对称点，如图所示，则基于以下三种情况，可以求出p[i]的值：
-（1）以j为中心的回文串有一部分在以id为中心的回文串之外。因为mx是以id为中心的最长回文的右边界，所以以i为中心的回文串不可能会有字符在以id为中心的回文串之外；否则mx就不是以id为中心的最长回文的右边界。所以，在</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Manacher">Manacher</a>&nbsp;
           
         
       </div>
