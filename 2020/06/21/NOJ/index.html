@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>NOJ ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 六月 21日 2020, 5:13 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      10 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="实验4-1：求赋权图中一个结点到所有结点的最短路径的长度"><a href="#实验4-1：求赋权图中一个结点到所有结点的最短路径的长度" class="headerlink" title="实验4.1：求赋权图中一个结点到所有结点的最短路径的长度"></a>实验4.1：求赋权图中一个结点到所有结点的最短路径的长度</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+10;
+//---------------------------------------------邻接矩阵-------------------------------------------------------------------------------//
+struct AdjMatrix
+{
+    int V,E;
+    char Vexs[maxn];
+    int Edge[maxn][maxn];
+};
+int vis[maxn],path[maxn],dist[maxn];
+//----------创建、初始化图----引用图G，节点数V，边数E---------------//
+void CreateAdjMatrix(AdjMatrix &amp;G,int V,int E)
+{
+    G.E=E;G.V=V;
+    for(int i=1;i&lt;=G.V;i++)
+    {
+        for(int j=1;j&lt;=G.V;j++)
+        {
+            if(i==j)continue;
+            G.Edge[i][j]=10000;
+        }
+    }
+    for(int i=1;i&lt;=V;i++)
+    {
+        for(int j=1;j&lt;=V;j++)
+        {
+            int w;
+            cin&gt;&gt;w;//输入权值 
+            G.Edge[i][j]=w;    
+        }
+    }
+}
+void Dijkstra(AdjMatrix &amp;G)
+{
+    int s=1;
+    for(int i=1;i&lt;=G.V;i++)
+    {
+        dist[i]=10000;//初始化起点1到别的所有点的距离，设置为10000 
+    }
+    for(int i=1;i&lt;=G.V;i++)
+    {
+        dist[i]=G.Edge[s][i];//初步更新起点1到别的结点的距离 
+        if(G.Edge[s][i]&lt;10000)
+        {
+            path[i]=s;//如果起点s与结点i之间存在边，则i的上一个结点就是s 
+        }
+        else 
+        {
+            path[i]=-1;//如果起点s与结点i之间不存在边，则i的上一个结点就是-1，即不存在 
+        }
+    }
+    vis[s]=1;path[s]=-1;//起点s标记掉，并且它的上一个结点为-1，即不存在 
+    for(int i=1;i&lt;=G.V-1;i++)
+    {
+        int minn=10000,now=0;//每一次要选择一个最优的点作为松弛的中间结点，minn为权值的中间结点到起点s的最近点 
+        for(int j=1;j&lt;=G.V;j++)
+        {
+            if(!vis[j]&amp;&amp;dist[j]&lt;minn)
+            {
+                now=j;
+                minn=dist[j];//如果j未被标记，并且离起点s更近，则更新minn和now 
+            }
+        }
+        vis[now]=1;//now就是 松弛的中间结点，标记掉它 
+        for(int j=1;j&lt;=G.V;j++)
+        {
+            if(!vis[j]&amp;&amp;dist[now]+G.Edge[now][j]&lt;dist[j])
+            {
+                dist[j]=dist[now]+G.Edge[now][j];
+                path[j]=now;//松弛所有未被标记的结点，并且被松弛过的点，它的上一个点就是now 
+            }
+        }
+    }
+}
+//---------------------------------------------邻接矩阵-------------------------------------------------------------------------------//
+int n;AdjMatrix G;
+int main()
+{
+    cin&gt;&gt;n;//邻接矩阵的图的结点数
+    CreateAdjMatrix(G,n,n);//建图，n*n的方针 
+    Dijkstra(G);//Dijkstra跑最短路 
+    for(int i=1;i&lt;=G.V;i++)
+    {
+        cout&lt;&lt;dist[i]&lt;&lt;endl;//输出结点0-(i-1)的最短路 
+    }
+    return 0;
+} </code></pre>
+<h1 id="实验4-2：用迪杰斯特拉算法求赋权图中的最短路径"><a href="#实验4-2：用迪杰斯特拉算法求赋权图中的最短路径" class="headerlink" title="实验4.2：用迪杰斯特拉算法求赋权图中的最短路径"></a>实验4.2：用迪杰斯特拉算法求赋权图中的最短路径</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+10;
+//---------------------------------------------邻接矩阵-------------------------------------------------------------------------------//
+struct AdjMatrix
+{
+    int V,E;
+    char Vexs[maxn];
+    int Edge[maxn][maxn];
+};
+int vis[maxn],path[maxn],dist[maxn];
+//----------创建、初始化图----引用图G，节点数V，边数E---------------//
+void CreateAdjMatrix(AdjMatrix &amp;G,int V,int E)
+{
+    G.E=E;G.V=V;
+    for(int i=1;i&lt;=G.V;i++)
+    {
+        for(int j=1;j&lt;=G.V;j++)
+        {
+            if(i==j)continue;
+            G.Edge[i][j]=10000;
+        }
+    }
+    for(int i=1;i&lt;=V;i++)
+    {
+        for(int j=1;j&lt;=V;j++)
+        {
+            int w;
+            cin&gt;&gt;w;//输入权值 
+            G.Edge[i][j]=w;    
+        }
+    }
+}
+void Dijkstra(AdjMatrix &amp;G,int s)
+{
+    for(int i=1;i&lt;=G.V;i++)
+    {
+        dist[i]=10000;//初始化起点1到别的所有点的距离，设置为10000 
+    }
+    for(int i=1;i&lt;=G.V;i++)
+    {
+        dist[i]=G.Edge[s][i];//初步更新起点1到别的结点的距离 
+        if(G.Edge[s][i]&lt;10000)
+        {
+            path[i]=s;//如果起点s与结点i之间存在边，则i的上一个结点就是s 
+        }
+        else 
+        {
+            path[i]=-1;//如果起点s与结点i之间不存在边，则i的上一个结点就是-1，即不存在 
+        }
+    }
+    vis[s]=1;path[s]=-1;//起点s标记掉，并且它的上一个结点为-1，即不存在 
+    for(int i=1;i&lt;=G.V-1;i++)
+    {
+        int minn=10000,now=0;//每一次要选择一个最优的点作为松弛的中间结点，minn为权值的中间结点到起点s的最近点 
+        for(int j=1;j&lt;=G.V;j++)
+        {
+            if(!vis[j]&amp;&amp;dist[j]&lt;minn)
+            {
+                now=j;
+                minn=dist[j];//如果j未被标记，并且离起点s更近，则更新minn和now 
+            }
+        }
+        vis[now]=1;//now就是 松弛的中间结点，标记掉它 
+        for(int j=1;j&lt;=G.V;j++)
+        {
+            if(!vis[j]&amp;&amp;dist[now]+G.Edge[now][j]&lt;dist[j])
+            {
+                dist[j]=dist[now]+G.Edge[now][j];
+                path[j]=now;//松弛所有未被标记的结点，并且被松弛过的点，它的上一个点就是now 
+            }
+        }
+    }
+}
+//---------------------------------------------邻接矩阵-------------------------------------------------------------------------------//
+int n;AdjMatrix G;int road[maxn];
+int main()
+{
+    cin&gt;&gt;n;//邻接矩阵的图的结点数
+    CreateAdjMatrix(G,n,n);//建图，n*n的方针 
+    int s,t;//接下来要求解的最短路径的起点s，终点v
+    cin&gt;&gt;s&gt;&gt;t;//输入 起点s，终点v
+    s++;t++; //由于起始点为1
+    Dijkstra(G,s);//Dijkstra跑最短路 
+    int opt=0;//road数组中的数量 
+    while(t!=-1)//停止信号是t==-1 
+    {
+        road[++opt]=t-1;//road用于记录路径中的结点编号，注意输出的要求0为起始点，所以这里要-1 
+        t=path[t];//终点回溯至上一个点 
+    }
+    while(opt)//倒序输出road
+    {
+        cout&lt;&lt;road[opt]&lt;&lt;endl;//输出路径结点号 
+        opt--;
+    }
+    return 0;
+} </code></pre>
+<h1 id="实验4-3：用弗洛伊德算法求赋权图的两点间的最短路径的长度"><a href="#实验4-3：用弗洛伊德算法求赋权图的两点间的最短路径的长度" class="headerlink" title="实验4.3：用弗洛伊德算法求赋权图的两点间的最短路径的长度"></a>实验4.3：用弗洛伊德算法求赋权图的两点间的最短路径的长度</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+10;
+//---------------------------------------------邻接矩阵-------------------------------------------------------------------------------//
+struct AdjMatrix
+{
+    int V,E;
+    char Vexs[maxn];
+    int Edge[maxn][maxn];
+};
+//----------创建、初始化图----引用图G，节点数V，边数E---------------//
+void CreateAdjMatrix(AdjMatrix &amp;G,int V,int E)
+{
+    G.E=E;G.V=V;
+    for(int i=1;i&lt;=G.V;i++)
+    {
+        for(int j=1;j&lt;=G.V;j++)
+        {
+            if(i==j)continue;
+            G.Edge[i][j]=10000;
+        }
+    }
+    for(int i=1;i&lt;=V;i++)
+    {
+        for(int j=1;j&lt;=V;j++)
+        {
+            int w;
+            cin&gt;&gt;w;//输入权值 
+            G.Edge[i][j]=w;    
+        }
+    }
+}
+void Floyd(AdjMatrix &amp;G)
+{
+    for(int k=1;k&lt;=G.V;k++)//枚举中间松弛点 
+    {
+        for(int i=1;i&lt;=G.V;i++)//枚举起点 
+        {
+            for(int j=1;j&lt;=G.V;j++)//枚举终点 
+            {
+                G.Edge[i][j]=min(G.Edge[i][j],G.Edge[i][k]+G.Edge[k][j]);//权值松弛 
+            }
+        }
+    }
+}
+//---------------------------------------------邻接矩阵-------------------------------------------------------------------------------//
+int n,m;AdjMatrix G;
+int main()
+{
+    cin&gt;&gt;n;//邻接矩阵的图的结点数
+    CreateAdjMatrix(G,n,n);//建图，n*n的方针 
+    Floyd(G);//Floyd跑最短路 
+    cin&gt;&gt;m;//测试最短路的组数
+    for(int i=1;i&lt;=m;i++)
+    {
+        int u,v;
+        cin&gt;&gt;u&gt;&gt;v;//输入起点和终点
+        u++;v++;//注意这里0对应的是1（计数从1开始） 
+        cout&lt;&lt;G.Edge[u][v]&lt;&lt;endl;//输出u--&gt;v的最短路的权值 
+    } 
+    return 0;
+} </code></pre>
+<h1 id="实验4-4：用弗洛伊德算法求赋权图中任意两点间的最短路径"><a href="#实验4-4：用弗洛伊德算法求赋权图中任意两点间的最短路径" class="headerlink" title="实验4.4：用弗洛伊德算法求赋权图中任意两点间的最短路径"></a>实验4.4：用弗洛伊德算法求赋权图中任意两点间的最短路径</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000+10;
+//---------------------------------------------邻接矩阵-------------------------------------------------------------------------------//
+struct AdjMatrix
+{
+    int V,E;
+    char Vexs[maxn];
+    int Edge[maxn][maxn];
+};
+int path[maxn][maxn];
+//----------创建、初始化图----引用图G，节点数V，边数E---------------//
+void CreateAdjMatrix(AdjMatrix &amp;G,int V,int E)
+{
+    G.E=E;G.V=V;
+    for(int i=1;i&lt;=G.V;i++)
+    {
+        for(int j=1;j&lt;=G.V;j++)
+        {
+            if(i==j)continue;
+            G.Edge[i][j]=10000;
+        }
+    }
+    for(int i=1;i&lt;=V;i++)
+    {
+        for(int j=1;j&lt;=V;j++)
+        {
+            int w;
+            cin&gt;&gt;w;//输入权值 
+            G.Edge[i][j]=w;    
+        }
+    }
+}
+void Floyd(AdjMatrix &amp;G)
+{
+    for(int i=1;i&lt;=G.V;i++)
+    {
+        for(int j=1;j&lt;=G.V;j++)
+        {
+            if(G.Edge[i][j]&lt;10000&amp;&amp;i!=j)//当i j两节点存在路径时
+            {
+                path[i][j]=i;//初始化
+            }
+            else 
+            {
+                path[i][j]=-1;//否则记为-1
+            }
+        }
+    }
+    for(int k=1;k&lt;=G.V;k++)//枚举中间松弛点 
+    {
+        for(int i=1;i&lt;=G.V;i++)//枚举起点 
+        {
+            for(int j=1;j&lt;=G.V;j++)//枚举终点 
+            {
+                if(G.Edge[i][k]+G.Edge[k][j]&lt;G.Edge[i][j]) 
+                {
+                    G.Edge[i][j]=G.Edge[i][k]+G.Edge[k][j];//权值松弛 
+                    path[i][j]=path[k][j];
+                }
+            }
+        }
+    }
+}
+//---------------------------------------------邻接矩阵-------------------------------------------------------------------------------//
+int n,m;AdjMatrix G;int road[maxn];
+int main()
+{
+    cin&gt;&gt;n;//邻接矩阵的图的结点数
+    CreateAdjMatrix(G,n,n);//建图，n*n的方针 
+    Floyd(G);//Floyd跑最短路 
+    cin&gt;&gt;m;//测试需要输出最短路径的组数
+    for(int i=1;i&lt;=m;i++)
+    {
+        int u,v;
+        cin&gt;&gt;u&gt;&gt;v;//输入起点和终点
+        u++;v++;//注意这里0对应的是1（计数从1开始） 
+        int opt=0;//road数组中的数量 
+        road[++opt]=v-1;
+        while(path[u][v]!=-1)//停止信号是path[u][v]==-1 
+        {
+            road[++opt]=path[u][v]-1;//road用于记录路径中的结点编号，注意输出的要求0为起始点，所以这里要-1 
+            v=path[u][v];//终点回溯至上一个点 
+        }
+        while(opt)//倒序输出road
+        {
+            cout&lt;&lt;road[opt]&lt;&lt;endl;//输出路径结点号 
+            opt--;
+        }
+    } 
+    return 0;
+} </code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/NOJ-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">NOJ-数据结构</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "NOJ&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>
