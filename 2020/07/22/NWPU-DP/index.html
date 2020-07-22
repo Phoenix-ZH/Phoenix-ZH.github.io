@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>NWPU-DP ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 七月 22日 2020, 10:22 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      9 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="1-题目："><a href="#1-题目：" class="headerlink" title="1.题目："></a>1.题目：</h1><h4 id="D-Proud-Merchants"><a href="#D-Proud-Merchants" class="headerlink" title="D - Proud Merchants"></a>D - Proud Merchants</h4><h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>n种商品，m元钱，每种商品都有p,q,v属性，p价格，q表示买这种商品你需要带q元老板才愿意和你交易，v这种商品的实际价值。求问最多可以获得多少价值 。</p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>如果p=q，那么就是01背包。但是如果p！=q， 如果A:p1 q1, B:p2 q2 ， 假设单独买A或者B的话，都是可以买到的 。 若先买A，则你至少需要p1+q2的钱；若先买B，则至少需要p2+q1的钱。  那肯定是花最少的钱 ，所以如果先买A再买B ， 那么p1+q2&lt;p2+q1  转换一下，就是q1-p1&gt;q2-p2  也就是说qi-pi大的先买。注意：排序的时候，得按照qi-pi从小到大排序，因为你买第n件商品的时候，是在比较你是否要先买第n件商品。 </p>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=5000+10;
+struct N
+{
+    int p,q,v;
+}a[maxn];
+int n,m;
+int cmp(N x,N y)
+{
+    return x.q-x.p&lt;y.q-y.p;
+}
+int dp[maxn];
+int main()
+{
+    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)
+    {
+        memset(dp,0,sizeof(dp));
+        for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i].p&gt;&gt;a[i].q&gt;&gt;a[i].v;
+        sort(a+1,a+1+n,cmp);
+        for(int i=1;i&lt;=n;i++)
+        {
+            for(int j=m;j&gt;=a[i].q;j--)
+            {
+                dp[j]=max(dp[j],dp[j-a[i].p]+a[i].v);
+            }
+        }
+        cout&lt;&lt;dp[m]&lt;&lt;endl;        
+    }
+
+    return 0;
+}
+//Phoenix-ZH</code></pre>
+<h1 id="2-题目："><a href="#2-题目：" class="headerlink" title="2.题目："></a>2.题目：</h1><h4 id="G-Knapsack-2"><a href="#G-Knapsack-2" class="headerlink" title="G - Knapsack 2"></a><strong>G - Knapsack 2</strong></h4><h2 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h2><p>现有 <strong>N</strong> 个物品，序号分别为 <strong>1, 2, … , N</strong>。对于每个 <strong>i</strong> (<strong>1 ≤ i ≤ N</strong>)，物品 <strong>i</strong> 有一个体积 <strong>wi</strong> 和一个价值 <strong>vi</strong>。小明想在这 <strong>N</strong> 个物品中选取一些放到背包里带回家。已知背包的容积为 <strong>W</strong>，这意味着所带物品的总体积不能超过 <strong>W</strong>。求出小明可以带回家的物品总价值可能的最大值。</p>
+<ul>
+<li>输入的所有数值均为整数。</li>
+<li><strong>1 ≤ N ≤ 100</strong></li>
+<li><strong>1 ≤ W ≤ 10^9</strong></li>
+<li><strong>1 ≤ wi ≤ W</strong></li>
+<li><strong>1 ≤ vi ≤ 10^3</strong></li>
+</ul>
+<h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>01背包问题，<strong>Knapsack 1</strong>是一个裸的01背包，但是这个题发现<strong>W</strong>的值特别大，直接<strong>N*W</strong>根本跑不掉。所以枚举W是不合理的。在<strong>Knapsack 1</strong>中设dp[i]：i为容量，dp[i]为容量为i时的最大价值。那么在<strong>Knapsack 2</strong>中，不妨反着来，设dp[i]:i指背包的价值为i，dp[i]指背包的价值为i时的最小容量。注意枚举价值（&lt;=100000）时要倒着枚举（01背包）。将dp数组初始化为无限大，dp[0]是下界。当dp[j-v[i]]是可达的或者j-v[i]==0(即下界)时，可以更新dp[j]=min(dp[j],dp[j-v[i]]+w[i])。然后倒着求出最大的可达价值（要保证dp[i]&lt;=m）。</p>
+<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const long long maxn=100000+50;
+long long n,m,w[maxn],v[maxn],dp[maxn];
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;m;
+    for(long long i=1;i&lt;=n;i++)cin&gt;&gt;w[i]&gt;&gt;v[i];
+    memset(dp,0x7f7f7f7f,sizeof(dp));
+    dp[0]=0;
+    for(int i=1;i&lt;=n;i++)
+    {
+        for(int j=100000;j&gt;=v[i];j--)
+        {
+            if(dp[j-v[i]]||j-v[i]==0)
+            {
+                dp[j]=min(dp[j],dp[j-v[i]]+w[i]);
+            }
+        }
+    }
+    for(int j=100000;j&gt;=1;j--)
+    {
+        if(dp[j]&amp;&amp;dp[j]&lt;=m)
+        {
+            cout&lt;&lt;j&lt;&lt;endl;
+            return 0;
+        }
+    }
+    return 0;
+}
+//Phoenix-ZH</code></pre>
+<h1 id="3-题目："><a href="#3-题目：" class="headerlink" title="3.题目："></a>3.题目：</h1><h4 id="I-Longest-Path"><a href="#I-Longest-Path" class="headerlink" title="I - Longest Path"></a>I - Longest Path</h4><h2 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h2><p>有一个有向图 G ，有 N 个顶点和 M 条边。顶点被编号为 1, 2, … , N，第 i 条有向边是从顶点xi 到顶点 yi (1 ≤ i ≤ M)。有向图 G 中 <strong>不包含有向环</strong>。<br>请找出G中最长有向路径的长度。最长有向路径的长度为它包含的边数量。</p>
+<ul>
+<li>所有的输入都是整数</li>
+<li>2 ≤ N ≤ 10^5</li>
+<li>1 ≤ M ≤ 10^5</li>
+<li>1 ≤ xi, yi ≤ N</li>
+<li>每一对 (xi, yi) 都保证不相同</li>
+<li>G <strong>不包含有向环</strong>.</li>
+</ul>
+<h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><p>直接用拓扑排序求最长路，先让所有入度为0的进队列，然后每次更新下一节点的路径长度，若入度减为0就入队列。最后线性地查一下最大地路径长度。</p>
+<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=100000+10;
+struct node
+{
+    int to,next,w;
+}edge[maxn];
+int k=1,head[maxn],ind[maxn],n,m,dp[maxn];
+void add(int u,int v,int w)
+{
+    edge[++k].to=v;edge[k].next=head[u];head[u]=k;edge[k].w=w;
+}
+void Topsort()
+{
+    queue&lt;int&gt;q;
+    for(int i=1;i&lt;=n;i++)
+        if(!ind[i])
+            q.push(i);
+    while(!q.empty())
+    {
+        int x=q.front();q.pop();
+        for(int i=head[x];i;i=edge[i].next)
+        {
+            dp[edge[i].to]=max(dp[edge[i].to],dp[x]+edge[i].w);
+            ind[edge[i].to]--;
+            if(!ind[edge[i].to])
+                q.push(edge[i].to);
+        }
+    }
+}
+int  main()
+{
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=m;i++)
+    {
+        int u,v;
+        cin&gt;&gt;u&gt;&gt;v;
+        add(u,v,1);
+        ind[v]++;
+    }
+    Topsort();
+    int ans=0;
+    for(int i=1;i&lt;=n;i++)
+        ans=max(ans,dp[i]);
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}
+//Phoenix-ZH</code></pre>
+<h1 id="4-题目："><a href="#4-题目：" class="headerlink" title="4.题目："></a>4.题目：</h1><h4 id="K-任务安排-1"><a href="#K-任务安排-1" class="headerlink" title="K - 任务安排 1"></a>K - 任务安排 1</h4><h2 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h2><p>有N个任务排成一个序列在一台机器上等待执行，它们的顺序不得改变。机器会把这N个任务分成若干批，每一批包含连续的若干个任务。从时刻0开始，任务被分批加工，执行第i个任务所需的时间是 Ti。另外，在每批任务开始前，机器需要S的启动时间，故执行一批任务所需的时间是启动时间S加上每个任务所需时间之和。<br>一个任务执行后，将在机器中稍作等待，直至该批任务全部执行完毕。也就是说，同一批任务将在同一时刻完成。每个任务的费用是它的完成时刻乘以一个费用系数Ci。<br>请为机器规划一个分组方案，使得总费用最小。</p>
+<h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>首先任务的顺序是不变的，变的是分组的数量，新的批次开始的时候回导致有启动时间。先考虑简单一点的方法设dp[i][j]：前个任务分成j组。那么对于第j组的第一个任务是哪一个是未知的，所以要枚举第j组的左边界，显然这个时间复杂度是O(n^3)，但是可以先写出来，再考虑优化。求出t[i]和c[i]的前缀和sumt[i]和sumc[i].dp[i][j]=min(dp[i][j],dp[k][j-1]+(s*j+sumt[i]) * (sumc[i]-sumc[k])).<br>即：</p>
+<pre><code class="cpp">for(int i=1;i&lt;=n;i++)
+    {
+        for(int j=1;j&lt;=i;j++)
+        {
+            for(int k=0;k&lt;=i-1;k++)
+            {
+                dp[i][j]=min(dp[i][j],dp[k][j-1]+(j*s+sumt[i])*(sumc[i]-sumc[k]));
+            }
+        }
+    }</code></pre>
+<p>然后我们再考虑对它进行优化：对于组数j它影响的始终是式子中的 (j<em>s+sumt[i]) * (sumc[i]-sumc[k])，如果我们每增加一组新的批次，都对后面的所有任务的代价都加上s</em>c[i]就可以规避这个问题。所以可以优化成一维的：dp[i]表示第i个任务需要的代价，同时枚举最后一组的第一个任务，那么<br>dp[i]=min(dp[i],dp[k-1]+s * (sumc[n]-sumc[k-1])+sumt[i] * (sumc[i]-sumc[k-1])).即：</p>
+<pre><code class="cpp">for(int i=1;i&lt;=n;i++)
+    {
+        for(int k=1;k&lt;=i;k++)
+        {
+            dp[i]=min(dp[i],dp[k-1]+s*(sumc[n]-sumc[k-1])+sumt[i]*(sumc[i]-sumc[k-1]));
+        }
+    }</code></pre>
+<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=5000+10;
+int n,s,t[maxn],c[maxn],dp[maxn],sumc[maxn],sumt[maxn];
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;s;
+    for(int i=1;i&lt;=n;i++)cin&gt;&gt;t[i]&gt;&gt;c[i],sumc[i]=sumc[i-1]+c[i],sumt[i]=sumt[i-1]+t[i];
+    memset(dp,0x3f3f3f3f,sizeof(dp));
+    dp[0]=0;
+/*    dp[0][0]=dp[0][1]=0;
+    for(int i=1;i&lt;=n;i++)
+    {
+        for(int j=1;j&lt;=i;j++)
+        {
+            for(int k=0;k&lt;=i-1;k++)
+            {
+                dp[i][j]=min(dp[i][j],dp[k][j-1]+(j*s+sumt[i])*(sumc[i]-sumc[k]));
+            }
+        }
+    }
+*/
+    for(int i=1;i&lt;=n;i++)
+    {
+        for(int k=1;k&lt;=i;k++)
+        {
+            dp[i]=min(dp[i],dp[k-1]+s*(sumc[n]-sumc[k-1])+sumt[i]*(sumc[i]-sumc[k-1]));
+        }
+    }
+/*
+    int ans=0x3f3f3f3f;
+    for(int i=1;i&lt;=n;i++)
+        ans=min(ans,dp[n][i]);
+*/
+    cout&lt;&lt;dp[n]&lt;&lt;endl;
+    return 0;
+}</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/DP">DP</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "NWPU-DP&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>
