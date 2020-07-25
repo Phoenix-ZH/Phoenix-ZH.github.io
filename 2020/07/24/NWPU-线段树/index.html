@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>NWPU-线段树 ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 七月 24日 2020, 11:25 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    5k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      22 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="一-综述"><a href="#一-综述" class="headerlink" title="一.综述"></a>一.综述</h1><p>假设有编号从1到n的n个点，每个点都存了一些信息，用[L,R]表示下标从L到R的这些点。<br>线段树的用处就是，对编号连续的一些点进行修改或者统计操作，修改和统计的复杂度都是O(log2(n)).</p>
+<p>线段树的原理，就是，将[1,n]分解成若干特定的子区间(数量不超过4*n),然后，将每个区间[L,R]都分解为<br>少量特定的子区间，通过对这些少量子区间的修改或者统计，来实现快速对[L,R]的修改或者统计。</p>
+<p>由此看出，用线段树统计的东西，必须符合区间加法，否则，不可能通过分成的子区间来得到[L,R]的统计结果。</p>
+<p><strong>符合区间加法的例子：</strong><br>1.数字之和——总数字之和 = 左区间数字之和 + 右区间数字之和<br>2.最大公因数(GCD)——总GCD = gcd( 左区间GCD , 右区间GCD );<br>3.最大值——总最大值=max(左区间最大值，右区间最大值)<br><strong>不符合区间加法的例子：</strong><br>1.众数——只知道左右区间的众数，没法求总区间的众数<br>2.01序列的最长连续零——只知道左右区间的最长连续零，没法知道总的最长连续零</p>
+<p>一个问题，只要能化成对一些连续点的修改和统计问题，基本就可以用线段树来解决了，具体怎么转化在第六节会讲。<br>由于点的信息可以千变万化，所以线段树是一种非常灵活的数据结构，可以做的题的类型特别多，只要会转化。<br>线段树当然是可以维护线段信息的，因为线段信息也是可以转换成用点来表达的（每个点代表一条线段）。</p>
+<h1 id="二-原理"><a href="#二-原理" class="headerlink" title="二.原理"></a>二.原理</h1><p>线段树本质上是维护下标为1,2,..,n的n个按顺序排列的数的信息，所以，其实是“点树”，是维护n的点的信息，至于每个点的数据的含义可以有很多，<br>在对线段操作的线段树中，每个点代表一条线段，在用线段树维护数列信息的时候，每个点代表一个数，但本质上都是每个点代表一个数。以下，在讨论线段树的时候，区间[L,R]指的是下标从L到R的这(R-L+1)个数，而不是指一条连续的线段。只是有时候这些数代表实际上一条线段的统计结果而已。</p>
+<p>线段树是将每个区间[L,R]分解成[L,M]和[M+1,R] (其中M=(L+R)/2 这里的除法是整数除法，即对结果下取整)直到 L==R 为止。<br>开始时是区间[1,n] ,通过递归来逐步分解，假设根的高度为1的话，树的最大高度为（n&gt;1）。<br>线段树对于每个n的分解是唯一的，所以n相同的线段树结构相同，这也是实现可持久化线段树的基础。<br>下图展示了区间[1,13]的分解过程： <img src="https://img-blog.csdn.net/20150908231214395?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" srcset="/img/loading.gif" alt="img"></p>
+<p> 1）储存方式：</p>
+<pre><code class="cpp">struct Tree
+{
+    long long l,r,w,lazy;
+}tree[maxn*4];</code></pre>
+<p>2）递归建树：</p>
+<pre><code class="cpp">void build(long long id,long long l,long long r)
+{
+    tree[id].l=l;tree[id].r=r;
+    if(l==r)
+    {
+        tree[id].lazy=0;
+        tree[id].w=a[l];
+        return ;
+    }
+    long long mid=(l+r)/2;
+    build(id*2,l,mid);build(id*2+1,mid+1,r);
+    tree[id].w=tree[id*2].w+tree[id*2+1].w;
+}</code></pre>
+<p>3）更新：</p>
+<pre><code class="cpp">void update(long long id,long long l,long long r,long long w)
+{
+    if(tree[id].l&gt;=l&amp;&amp;tree[id].r&lt;=r)
+    {
+        tree[id].w+=(tree[id].r-tree[id].l+1)*w;
+        tree[id].lazy+=w;
+        return ;
+    }
+    if(tree[id].lazy)spread(id);
+    long long mid=(tree[id].l+tree[id].r)/2;
+    if(r&gt;mid)update(id*2+1,l,r,w);
+    if(l&lt;=mid)update(id*2,l,r,w);
+    tree[id].w=tree[id*2].w+tree[id*2+1].w;
+}</code></pre>
+<pre><code class="cpp">void spread(long long id)
+{
+    tree[id*2].w+=(tree[id*2].r-tree[id*2].l+1)*tree[id].lazy;
+    tree[id*2+1].w+=(tree[id*2+1].r-tree[id*2+1].l+1)*tree[id].lazy;
+    tree[id*2].lazy+=tree[id].lazy;tree[id*2+1].lazy+=tree[id].lazy;
+    tree[id].lazy=0;
+}</code></pre>
+<p>线段树的区间修改也是将区间分成子区间，但是要加一个标记，称作懒惰标记。<br>标记的含义：<br>本节点的统计信息已经根据标记更新过了，但是本节点的子节点仍需要进行更新。<br>即，如果要给一个区间的所有值都加上1，那么，实际上并没有给这个区间的所有值都加上1，而是打个标记，记下来，这个节点所包含的区间需要加1.打上标记后，要根据标记更新本节点的统计信息，比如，如果本节点维护的是区间和，而本节点包含5个数，那么，打上+1的标记之后，要给本节点维护的和+5。这是向下延迟修改，但是向上显示的信息是修改以后的信息，所以查询的时候可以得到正确的结果。有的标记之间会相互影响，所以比较简单的做法是，每递归到一个区间，首先下推标记（若本节点有标记，就下推标记），然后再打上新的标记，这样仍然每个区间操作的复杂度是O(log2(n))。</p>
+<p>标记有相对标记和绝对标记之分：<br>相对标记是将区间的所有数+a之类的操作，标记之间可以共存，跟打标记的顺序无关（跟顺序无关才是重点）。<br>所以，可以在区间修改的时候不下推标记，留到查询的时候再下推。<br>      注意：如果区间修改时不下推标记，那么Spread函数中，必须考虑本节点的标记。<br>                 而如果所有操作都下推标记，那么Spread函数可以不考虑本节点的标记，因为本节点的标记一定已经被下推了（也就是对本节点无效了）<br>绝对标记是将区间的所有数变成a之类的操作，打标记的顺序直接影响结果，<br>所以这种标记在区间修改的时候必须下推旧标记，不然会出错。</p>
+<p>注意，有多个标记的时候，标记下推的顺序也很重要，错误的下推顺序可能会导致错误。</p>
+<p>之所以要区分两种标记，是因为非递归线段树只能维护相对标记。<br>因为非递归线段树是自底向上直接修改分成的每个子区间，所以根本做不到在区间修改的时候下推标记。<br>非递归线段树一般不下推标记，而是自下而上求答案的过程中，根据标记更新答案。</p>
+<p>4）查询：</p>
+<pre><code class="cpp">long long query(long long id,long long l,long long r)
+{
+    if(tree[id].l&gt;=l&amp;&amp;tree[id].r&lt;=r)return tree[id].w;
+    if(tree[id].lazy)spread(id);
+    long long mid=(tree[id].l+tree[id].r)/2,sum=0;
+    if(r&gt;mid)sum+=query(id*2+1,l,r);
+    if(l&lt;=mid)sum+=query(id*2,l,r);
+    return sum;
+}</code></pre>
+<h1 id="三-题单"><a href="#三-题单" class="headerlink" title="三.题单"></a>三.题单</h1><h2 id="①线段树入门"><a href="#①线段树入门" class="headerlink" title="①线段树入门"></a>①线段树入门</h2><h3 id="1-题目名称："><a href="#1-题目名称：" class="headerlink" title="1.题目名称："></a>1.题目名称：</h3><p><a href="https://www.luogu.com.cn/problem/P3372" target="_blank" rel="noopener">P3372 【模板】线段树 1</a> </p>
+<h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>如题，已知一个数列，你需要进行下面两种操作：</p>
+<ol>
+<li>将某区间每一个数加上 k。</li>
+<li>求出某区间每一个数的和。</li>
+</ol>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>线段树入门，建树，更新，lazy标记自上而下传递，查询区间和。</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const long long maxn=100000+10; 
+struct Tree
+{
+    long long l,r,w,lazy;
+}tree[maxn*4];
+long long n,m,a[maxn];
+void build(long long id,long long l,long long r)
+{
+    tree[id].l=l;tree[id].r=r;
+    if(l==r)
+    {
+        tree[id].lazy=0;
+        tree[id].w=a[l];
+        return ;
+    }
+    long long mid=(l+r)/2;
+    build(id*2,l,mid);build(id*2+1,mid+1,r);
+    tree[id].w=tree[id*2].w+tree[id*2+1].w;
+}
+void spread(long long id)
+{
+    tree[id*2].w+=(tree[id*2].r-tree[id*2].l+1)*tree[id].lazy;
+    tree[id*2+1].w+=(tree[id*2+1].r-tree[id*2+1].l+1)*tree[id].lazy;
+    tree[id*2].lazy+=tree[id].lazy;tree[id*2+1].lazy+=tree[id].lazy;
+    tree[id].lazy=0;
+}
+void update(long long id,long long l,long long r,long long w)
+{
+    if(tree[id].l&gt;=l&amp;&amp;tree[id].r&lt;=r)
+    {
+        tree[id].w+=(tree[id].r-tree[id].l+1)*w;
+        tree[id].lazy+=w;
+        return ;
+    }
+    if(tree[id].lazy)spread(id);
+    long long mid=(tree[id].l+tree[id].r)/2;
+    if(r&gt;mid)update(id*2+1,l,r,w);
+    if(l&lt;=mid)update(id*2,l,r,w);
+    tree[id].w=tree[id*2].w+tree[id*2+1].w;
+}
+long long query(long long id,long long l,long long r)
+{
+    if(tree[id].l&gt;=l&amp;&amp;tree[id].r&lt;=r)return tree[id].w;
+    if(tree[id].lazy)spread(id);
+    long long mid=(tree[id].l+tree[id].r)/2,sum=0;
+    if(r&gt;mid)sum+=query(id*2+1,l,r);
+    if(l&lt;=mid)sum+=query(id*2,l,r);
+    return sum;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;m;
+    for(long long i=1;i&lt;=n;i++)cin&gt;&gt;a[i];
+    build(1,1,n);
+    for(long long i=1;i&lt;=m;i++)
+    {
+        long long z,x,y,k;
+        cin&gt;&gt;z;
+        if(z==1)
+        {
+            cin&gt;&gt;x&gt;&gt;y&gt;&gt;k;
+            update(1,x,y,k);
+        }
+        else 
+        {
+            cin&gt;&gt;x&gt;&gt;y;
+            cout&lt;&lt;query(1,x,y)&lt;&lt;endl;
+        }
+    }
+}</code></pre>
+<h3 id="2-题目名称："><a href="#2-题目名称：" class="headerlink" title="2.题目名称："></a>2.题目名称：</h3><p> <a href="https://www.luogu.com.cn/problem/P3373" target="_blank" rel="noopener">P3373 【模板】线段树 2</a> </p>
+<h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>如题，已知一个数列，你需要进行下面三种操作：</p>
+<ul>
+<li>将某区间每一个数乘上x</li>
+<li>将某区间每一个数加上x</li>
+<li>求出某区间每一个数的和x</li>
+</ul>
+<h3 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h3><p>线段树中做两个lazy标记，一个lazy1是表示相加的传递标记，另一个lazy2是表示相乘的传递标记。注意要先乘法后加法，  <strong>加法和乘法顺序不一样会导致不同的结果</strong> 。比如：  (a+b)c 不等于 a<em>c + b  而在记录懒标记的时候，加法和乘法两种标记放到一起，并不知道哪个先，哪个后。 所以要确定一个优先级<br>我们分析一下两种顺序：</em><br>(1) 先加后乘 : (a+b)c = ac + bc<br>(2) 先乘后加：ac + b<br>比较一下，发现，上面的先加后乘相当于下面的式子，在加法上面多乘了一个c 所以，我们只要是先加后乘的式子，只要加一个*c就可以转化为先乘后加的式子具体的操作就是在添加乘法标记的时候，把加法标记c * c就好了 所以，我们就定了一个总顺序：先乘后加 。 然后在标记传递Spread的时候，儿子的加法标记传递完也要保持先乘后加的顺序 </p>
+<h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=100000+10;
+struct Tree
+{
+    long long l,r,w,lazy1,lazy2;
+}tree[maxn*4];
+long long n,m,p,a[maxn];
+void build(long long id,long long l,long long r)
+{
+    tree[id].l=l;tree[id].r=r;
+    if(l==r)
+    {
+        tree[id].w=a[l]%p;
+        return ;
+    }
+    long long mid=(l+r)/2;
+    build(id*2,l,mid);build(id*2+1,mid+1,r);
+    tree[id].w=(tree[id*2].w+tree[id*2+1].w)%p;
+    return;
+}
+void Spread(long long id)
+{
+    tree[id*2].w=((tree[id*2].w*tree[id].lazy2)%p+(tree[id*2].r-tree[id*2].l+1)*tree[id].lazy1%p)%p;
+    tree[id*2+1].w=((tree[id*2+1].w*tree[id].lazy2)%p+(tree[id*2+1].r-tree[id*2+1].l+1)*tree[id].lazy1%p)%p;
+    tree[id*2].lazy1=(tree[id*2].lazy1*tree[id].lazy2%p+tree[id].lazy1)%p;
+    tree[id*2+1].lazy1=(tree[id*2+1].lazy1*tree[id].lazy2%p+tree[id].lazy1)%p;
+    tree[id*2].lazy2=(tree[id*2].lazy2*tree[id].lazy2)%p;
+    tree[id*2+1].lazy2=(tree[id*2+1].lazy2*tree[id].lazy2)%p;
+    tree[id].lazy1=0;tree[id].lazy2=1;
+}
+void MulUpdate(long long id,long long l,long long r,long long k)
+{
+    if(tree[id].l&gt;=l&amp;&amp;tree[id].r&lt;=r)
+    {
+        tree[id].w=(tree[id].w*k)%p;
+        tree[id].lazy1=(tree[id].lazy1*k)%p;
+        tree[id].lazy2=(tree[id].lazy2*k)%p;
+        return ;
+    }
+    Spread(id);
+    long long mid=(tree[id].l+tree[id].r)/2;
+    if(r&gt;mid)MulUpdate(id*2+1,l,r,k);
+    if(l&lt;=mid)MulUpdate(id*2,l,r,k);
+    tree[id].w=(tree[id*2].w+tree[id*2+1].w)%p;
+    return ;
+}
+void AddUpdate(long long id,long long l,long long r,long long k)
+{
+    if(tree[id].l&gt;=l&amp;&amp;tree[id].r&lt;=r)
+    {
+        tree[id].w=((tree[id].r-tree[id].l+1)*k+tree[id].w)%p;
+        tree[id].lazy1=(tree[id].lazy1+k)%p;
+        return ;
+    }
+    Spread(id);
+    long long mid=(tree[id].l+tree[id].r)/2;
+    if(r&gt;mid)AddUpdate(id*2+1,l,r,k);
+    if(l&lt;=mid)AddUpdate(id*2,l,r,k);
+    tree[id].w=(tree[id*2].w+tree[id*2+1].w)%p;
+    return ;
+}
+long long query(long long id,long long l,long long r)
+{
+    if(tree[id].l&gt;=l&amp;&amp;tree[id].r&lt;=r)return tree[id].w%p;
+    Spread(id);
+    long long mid=(tree[id].l+tree[id].r)/2,sum=0;
+    if(mid&gt;=l)sum=(sum+query(id*2,l,r))%p;
+    if(mid&lt;r)sum=(sum+query(id*2+1,l,r))%p;
+    return sum%p;
+}
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;p;
+    for(long long i=1;i&lt;=n;i++)cin&gt;&gt;a[i];
+    for(int i=1;i&lt;=4*n;i++)tree[i].lazy2=1;
+    build(1,1,n);
+    for(long long i=1;i&lt;=m;i++)
+    {
+        long long z,x,y,k;
+        cin&gt;&gt;z;
+        if(z==1)
+        {
+            cin&gt;&gt;x&gt;&gt;y&gt;&gt;k;
+            MulUpdate(1,x,y,k);
+        }
+        else if(z==2)
+        {
+            cin&gt;&gt;x&gt;&gt;y&gt;&gt;k;
+            AddUpdate(1,x,y,k);
+        }
+        else 
+        {
+            cin&gt;&gt;x&gt;&gt;y;
+            cout&lt;&lt;query(1,x,y)%p&lt;&lt;endl;
+        }
+    }
+    return 0;
+}</code></pre>
+<h3 id="3-题目名称："><a href="#3-题目名称：" class="headerlink" title="3.题目名称："></a>3.题目名称：</h3><p><a href="https://www.luogu.com.cn/problem/P4588" target="_blank" rel="noopener">TJOI2018]数学计算</a> </p>
+<h3 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h3><p> 你有一个数x，初始为 1。你有两种操作，分别为：<br>1 m：x=x * m 输出x % mod;<br>2 pos：x=x/ 第pos次操作所乘的数   (保证第pos次操作一定为类型1,对于每一个类型1的操作至多会被除一次）输出x%mod;</p>
+<h3 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h3><p>一开始以为可以模拟，但发现由于x一直增大，会爆longlong，即使取模，但是除的时候需要逆元。所以直接模拟是错的。但是第一种操作就可以多一种类型的x，假设有n个第一种类型，就有n个数字，不妨让这n个当作区间，构造线段树，对于第二种操作就是将第pos次的结点数改成1 。全部都是点修改，每次区间查询。</p>
+<h3 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const long long maxn=100000+10;
+long long T,x,q,mod;
+struct Tree
+{
+    long long l,r,w,lazy;
+}tree[maxn*4];
+long long a[maxn],op[maxn],m[maxn];
+void build(long long id,long long l,long long r)
+{
+    tree[id].l=l;tree[id].r=r;
+    if(l==r)
+    {
+        tree[id].w=1;
+        return ;
+    }
+    long long mid=(l+r)/2;
+    build(id*2,l,mid);build(id*2+1,mid+1,r);
+    tree[id].w=tree[id*2].w*tree[id*2+1].w%mod;
+}
+void update(long long id,long long End,long long num)
+{
+    if(tree[id].l==End&amp;&amp;tree[id].r==End)
+    {
+        tree[id].w=num;
+        return ;
+    }
+    long long mid=(tree[id].l+tree[id].r)/2;
+    if(End&lt;=mid)update(id*2,End,num);
+    if(End&gt;mid)update(id*2+1,End,num);
+    tree[id].w=tree[id*2].w*tree[id*2+1].w%mod;
+    return ;
+}
+long long query(long long id,long long l,long long r)
+{
+    if(tree[id].l&gt;=l&amp;&amp;tree[id].r&lt;=r)return tree[id].w%mod;
+    long long mid=(tree[id].l+tree[id].r)/2,sum=0;
+    if(r&gt;mid)sum+=query(id*2+1,l,r),sum%=mod;
+    if(l&lt;=mid)sum+=query(id*2,l,r),sum%=mod;
+    return sum%mod;
+}
+int main()
+{
+    cin&gt;&gt;T;
+    while(T--)
+    {
+        cin&gt;&gt;q&gt;&gt;mod;
+        long long n=0;
+        for(long long i=1;i&lt;=q;i++)
+        {
+            cin&gt;&gt;op[i]&gt;&gt;m[i];
+            if(op[i]==1)n++,a[i]=n;
+        }
+        build(1,1,n);
+        long long cnt=0;
+        for(long long i=1;i&lt;=q;i++)
+        {
+            if(op[i]==1)
+            {
+                update(1,++cnt,m[i]);
+                cout&lt;&lt;tree[1].w&lt;&lt;endl;
+            }
+            else 
+            {
+                update(1,a[m[i]],1);
+                cout&lt;&lt;tree[1].w&lt;&lt;endl;
+            }
+        }
+    }
+    return 0;
+}</code></pre>
+<h2 id="②扫描线"><a href="#②扫描线" class="headerlink" title="②扫描线"></a>②扫描线</h2><h3 id="1-题目名称：-1"><a href="#1-题目名称：-1" class="headerlink" title="1.题目名称："></a>1.题目名称：</h3><p> <a href="https://www.luogu.com.cn/problem/P5490" target="_blank" rel="noopener">P5490 【模板】扫描线</a> </p>
+<h3 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h3><p> 求 n个矩形的面积并。 </p>
+<h3 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h3><p> 由于都是矩形，因此运用扫描线以后，面积的求法其实可以简化为<br>$$<br>∑截线段长度×扫过的高度<br>$$<br> 这也是扫描线算法最基础的应用。 </p>
+<p> <img src="https://img.ffis.me/images/2019/08/10/image.png" srcset="/img/loading.gif" alt="image.png"> </p>
+<p>问题在于如何才能模拟扫描线从下向上扫过图形，并且快速计算出当前扫描线被截得的长度。</p>
+<p>现在假设，扫描线每次会在碰到横边的时候停下来，如图。<br> <img src="https://img.ffis.me/images/2019/08/10/image1cba39d5beb42edc.png" srcset="/img/loading.gif" alt="image1cba39d5beb42edc.png"> </p>
+<p>简单来说，可对图形面积产生影响的元素，也就是这些横边左右端点的坐标。</p>
+<p>为了快速计算出截线段长度，可以将横边赋上不同的权值，具体为：对于一个矩形，其下边权值为1，上边权值为-1。 <img src="https://img.ffis.me/images/2019/08/10/image805e198e60891448.png" srcset="/img/loading.gif" alt="image805e198e60891448.png"> </p>
+<p>然后把所有的横边按照y坐标升序排序。这样，对于每个矩形，扫描线总是会<strong>先碰到下边，然后再碰到上边</strong>。那么就能保证扫描线所截的长度永远非负了。 这样操作以后，就可以和线段树扯上关系。先把所有端点在x轴上离散化（其实就是把所有点的横坐标存到X[里，然后升序排个序，最后去重）。 <img src="https://img.ffis.me/images/2019/08/10/imagec6ca891e8480bea8.png" srcset="/img/loading.gif" alt="imagec6ca891e8480bea8.png">  </p>
+<p> 在这个例子中，4个端点的纵投影总共把x轴切割成了5部分。取中间的3部分线段，建立一棵线段树，其每个端点维护<strong>一条线段</strong>（也就是一个区间）的信息： </p>
+<ol>
+<li>该线段被覆盖了多少次（被多少个矩形所覆盖）。</li>
+<li>该线段内被整个图形所截的长度是多少。 <img src="https://img.ffis.me/images/2019/08/10/image0a03aa15aca4877e.png" srcset="/img/loading.gif" alt="image0a03aa15aca4877e.png"> </li>
+</ol>
+<p>显然，只要一条线段被覆盖，那么它肯定被图形所截。所以，整个问题就转化为了一个<strong>区间查询问题</strong>，即：每次将 当前扫描线扫到的边 对应的信息 按照之前赋上的权值更新，然后再查询线段树根节点的信息，最后得到当前扫描线扫过的面积。这就可以用线段树来实现了.</p>
+<p>这棵线段树的每个节点都对应了一条线段。考虑将线段树上节点对应的区间和横边建立<strong>映射关系</strong> 。 先看对于一个叶子节点x，建树时保证了tree[x].l=tree[x].r， 但其保存的信息很显然不可能只是某条线段的一个端点（如果一条线段的两个端点重合，那么它实质上仅是一个点）   再看一个节点的左右儿子，同样地，建树的时候已经保证了左右儿子的区间不会重合（交集为空），但是看这样两条相邻线段  ：[1,2],[2,3],发现[1,2]∩[2,3]={2}  也就是说左儿子的右端点和右儿子的左端点其实是重合的。  考虑把线段树每个节点x<em>x</em>对应的区间（tree[x].l,tree[x].r不变，改变区间和横边的映射关系，具体为：  节点x对应X[tree[x].r+1],X[tree[x].r+1]这条横边 </p>
+<h3 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1000000+10;
+struct Tree
+{
+    long long l,r,lazy,w;
+}tree[maxn*4];
+long long x[maxn],y[maxn],x2[maxn],y2[maxn],X[maxn*2];
+struct N
+{
+    long long l,r,h,m;
+    bool operator &lt; (N &amp;x)const{return x.h&gt;h;}    
+}line[maxn*2];
+void build(long long id,long long l,long long r)
+{
+    tree[id].l=l;tree[id].r=r;
+    if(l==r)return ;
+    long long mid=(l+r)/2;
+    build(id*2,l,mid);build(id*2+1,mid+1,r);
+}
+void Spread(long long id)
+{
+    if(tree[id].lazy)
+    {
+        tree[id].w=X[tree[id].r+1]-X[tree[id].l];
+    }
+    else 
+    {
+        tree[id].w=tree[id*2].w+tree[id*2+1].w;
+    }
+}
+void update(long long id,long long l,long long r,long long num)
+{
+    if(X[tree[id].l]&gt;=l&amp;&amp;X[tree[id].r+1]&lt;=r)
+    {
+        tree[id].lazy+=num;
+        Spread(id);
+        return ;
+    }
+    long long mid=X[(tree[id].l+tree[id].r+1)/2];
+    if(mid==0)return ;
+    if(r&gt;mid)update(id*2+1,l,r,num);
+    if(l&lt;=mid)update(id*2,l,r,num);
+    Spread(id);
+}
+int main()
+{
+    long long n;
+    cin&gt;&gt;n;
+    long long tot=0;
+    for(long long i=1;i&lt;=n;i++)
+    {
+        cin&gt;&gt;x[i]&gt;&gt;y[i]&gt;&gt;x2[i]&gt;&gt;y2[i];
+        X[2*i-1]=x[i];X[2*i]=x2[i];
+        line[2*i-1]=(N){x[i],x2[i],y[i],1};
+        line[2*i]=(N){x[i],x2[i],y2[i],-1};
+    }
+    n*=2;
+    sort(X+1,X+1+n);
+    sort(line+1,line+1+n);
+    tot=unique(X+1,X+1+n)-X-1;
+    build(1,1,tot-1);
+    long long ans=0;
+    for(long long i=1;i&lt;n;i++)
+    {
+        update(1,line[i].l,line[i].r,line[i].m);
+        ans+=tree[1].w*(line[i+1].h-line[i].h);
+    }
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91">线段树</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "NWPU-线段树&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>
