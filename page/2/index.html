@@ -153,6 +153,50 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/07/CodeForces-1321/">
+        <p class="h4 index-header">CodeForces-1321</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A:题目名称：Contest for Robots
+题目大意：给出长度为1≤n≤100 的两个序列 r,b，且满足 ri, bi∈{0,1}，你需要确定 pi（pi≥1）。
+满足$$\sum_{i=1}^n r_ip_i &gt; \sum_{i=1}^n b_ip_i$$，并且最小化max pi（1&lt;=i&lt;=n）
+如果不可能，输出 -1 。
+题解：因为序列的数字要么为1，要么为0，那么如果r中没有数字比b中的大，那么显然不可能实现题目的要求。一旦求得r比b大的个数w1，和r比b小的个数w2，就可以求maxpi，但是注意要求是大于，所以ans=(w2+1)/w1;并且要判断是否整除，如果没有则ans++。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000+5;
+int a[maxn],b[maxn],n;
+int main()
+{
+    sc</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/29/CodeForces-1311/">
         <p class="h4 index-header">CodeForces-1311</p>
         
@@ -551,51 +595,11 @@ using namespace</div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/12/POJ-2112/">
-        <p class="h4 index-header">POJ-2112</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ-2112 Optimal Milking
-题目链接：https://vjudge.net/problem/POJ-2112#author=0
-题目大意：FJ有K台挤奶机和C只奶牛。机器编号1K，奶牛编号K+1K+C。机器一天工作M只奶牛。如何把奶牛分配给机器，使得奶牛到机器的最远距离最小。奶牛可以进过某些机器，但不在那台机器上挤奶。奶牛也可以经过其他奶牛所在的位置。                     输出一个整数，表示走最远的奶牛的需要行走的最小距离。  
-题解：“最远的行走的最小距离”确认是二分，每一个机器一天可以工作M只奶牛显然是多重匹配。首先用Floyd跑出任意两点之间的最小距离，然后建图，奶牛–&gt;机器，边权为dist[奶牛][机器],当然建单向边，二分距离，跑匈牙利算法的时候，一旦edge[i].w&gt;Max(Max就是二分的距离)那么奶牛就不可以去edge[i].to机器，注意这是多重匹配。
-ps：WA了一次，比较奇怪r=200这样是错的，所以r=0x3f3f3f3f靠谱点。
-代码：#include&lt;cstdio&gt;
-#includ</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

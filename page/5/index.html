@@ -153,6 +153,39 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4300/">
+        <p class="h4 index-header">HDU-4300</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-4300 Clairewd’s message
+题目链接：https://vjudge.net/problem/HDU-4300
+题目大意：第一行给的是26个字母对应的翻译密码，而第二行给的是文本串，该文本串前面部分为加密后的内容，而后部分(可能不完整)为未加密的内容。求：一行字符串前一半为加密后的内容，后一半为未加密的内容。一一对应的关系。
+题解：由题意可知，文本串前一部分是加密过后的内容，后一部分是未加密的内容，而这一部分可能是不完整的。则可理解为s=stringA+stringB。可以根据第一行给的加密方式将s整体当作加密内容，将其转化为整体未加密的内容，即字符串s转化成了t。这时候将原s的所有后缀与t匹配，这个过程实际上就是ex-kmp，将t作为子串，s作为母串，求t与s的所有后缀的公共前缀的长度extend[]。如果extend[i]+i==len(s)&amp;&amp;i&gt;=extend[i].即以i为分界点，s[0…i-1]作为stringA，s[i…len-1]作为stringB，即stringB就是原文本内容。(i&gt;=extend[i]</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-1238/">
         <p class="h4 index-header">HDU-1238</p>
         
@@ -512,61 +545,11 @@ in</div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2387/">
-        <p class="h4 index-header">POJ-2387</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2387 Til the Cows Come Home
-题目链接：https://vjudge.net/problem/POJ-2387#author=ght5160
-题目大意：求从1到n的最短距离
-题解：最短路模板，spfa或者dijkstra+堆优化。朴素Dijkstra：时间复杂度o(n^2)堆优化Dijkstra：时间复杂度o(（V+E）logV）
-spfa在稀疏图O（E），稠密图O（VE）
-dijkstra+堆优化的代码：
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=2000+5;
-int n,m,k=1,dist[maxn],vis[maxn],head[maxn];
-struct node
-{
-    int to,next,w;
-}edge[maxn*2];
-struct N
-{
-  </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
