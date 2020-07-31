@@ -35,7 +35,9 @@
   <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
 
 
 <body>
@@ -139,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.5k 字
+                    2.4k 字
                   </span>&nbsp;
                 
 
@@ -147,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      7 分钟
+                      11 分钟
                   </span>&nbsp;
                 
 
@@ -419,7 +421,96 @@ int main()
     }
     return 0;    
 } </code></pre>
+<h1 id="4-题目名称："><a href="#4-题目名称：" class="headerlink" title="4.题目名称："></a>4.题目名称：</h1><p><a href="https://vjudge.net/problem/LightOJ-1336" target="_blank" rel="noopener"><strong>LightOJ 1336</strong></a> Sigma Function</p>
+<h2 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h2><p>求和运算是一种有趣的操作，它来源于古希腊字母σ，现在我们来求一个数字的所有因子之和。例如σ(24)=1+2+3+4+6+8+12+24=60.对于小的数字求和是非常的简单，但是对于大数字求和就比较困难了。现在给你一个n，你需要求出有多少个[ 1 , n ]区间内的数字σ是偶数。<br>注：一个数字的σ指这个数的所有因子之和 </p>
+<h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>显然给的公式， <img src="https://vj.z180.cn/1510021ce5adea20ba5ebd2baa22e212?v=1596100178" srcset="/img/loading.gif" alt="img"> </p>
+<p>是没办法直接用的，对解题本身作用不大。</p>
+<p>由唯一分解定律可以知道： <img src="http://h.hiphotos.baidu.com/baike/s%3D124/sign=ae84eec8b4fd5266a32b38169f189799/f703738da97739129c546742fa198618367ae2a7.jpg" srcset="/img/loading.gif" alt="img">)，则因数之和为<img src="http://h.hiphotos.baidu.com/baike/s%3D550/sign=86d9618aab014c081d3b28a03a7a025b/f7246b600c3387448405c35f530fd9f9d62aa0d5.jpg" srcset="/img/loading.gif" alt="img"></p>
+<p><strong>规律1：</strong>偶数 * 偶数=偶数；偶数 * 奇数=偶数；奇数 * 奇数=奇数。可以先求得因数之和为奇数的个数，然后总数减去它，就是偶数的个数。要让因数之和为奇数，必须让上面的各项均为奇数。</p>
+<p><strong>规律2：</strong>所有的素数中只有2是偶数，其余的素数都是奇数。</p>
+<p><strong>规律3：</strong>要让因数之和为奇数，就要让 (1+pi+pi^2+……+pi^ai)这个东西都是奇数 。根据<strong>规律2</strong>，需要分成两种情况来考虑：<br>1）pi=2，则 (1+pi+pi^2+……+pi^ai)一定是奇数。<br>2）pi是奇数，pi^ai一定也是奇数，则需要考虑ai的奇偶。<br>      如果ai是奇数，则1+pi+pi^2+……+pi^ai就是偶数个奇数相加为偶数；<br>      如果ai是偶数，则1+pi+pi^2+……+pi^ai就是奇数个奇数相加为奇数。<br>因此ai是偶数才能使得pi为奇数时，因数之和为奇数。</p>
+<p>①当ai是偶数且pi为奇数时（不存在素数2），<img src="http://h.hiphotos.baidu.com/baike/s%3D124/sign=ae84eec8b4fd5266a32b38169f189799/f703738da97739129c546742fa198618367ae2a7.jpg" srcset="/img/loading.gif" alt="img">，则也可以表示成<br>$$<br>N=P_1^{a_1’^{2}}P_2^{a_2’^{2}}…P_n^{a_n’^{2}}即N=(P_1^{a_1’}P_2^{a_2’}…P_n^{a_n’})^{2}<br>$$<br>所以此时N一定是完全平方数。</p>
+<p>②当ai是偶数且pi为奇数时（存在素数2），N就相当于一个完全平方数 * 2^x。<br>综上所述，N的因数和要为奇数，则N要么是完全平方数，要么是2*完全平方数。</p>
+<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+long long T,n;
+int main()
+{
+    cin&gt;&gt;T;
+    int opt=0;
+    while(T--)
+    {
+        opt++;
+        scanf(&quot;%lld&quot;,&amp;n);
+        long long ans=0;
+        for(long long i=1;i*i&lt;=n;i++)ans++;
+        for(long long i=1;i*i*2&lt;=n;i++)ans++;
+        printf(&quot;Case %d: %lld\n&quot;,opt,n-ans);
+    }
+    return 0;
+ } </code></pre>
+<h1 id="5-题目名称："><a href="#5-题目名称：" class="headerlink" title="5.题目名称："></a>5.题目名称：</h1><p><a href="https://vjudge.net/problem/LightOJ-1282" target="_blank" rel="noopener"><strong>LightOJ 1282</strong></a> Leading and Trailing</p>
+<h2 id="题目大意：-4"><a href="#题目大意：-4" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给定两个数n,k 求n^k的前三位和最后三位 </p>
+<h2 id="思路：-4"><a href="#思路：-4" class="headerlink" title="思路："></a>思路：</h2><p>对于后三位：直接快速幂取模，但是需要注意最后如果小于100，就需要补前缀0，小于10补2个，小于100补1个。</p>
+<p>对于前三位：<br>$$<br>n^{k}=A==&gt;klog_{10}n=log_{10}A==&gt;A=10^{klog_{10}n}<br>$$</p>
+<p>$$<br>假设A=10^{a+b},其中a是整数部分，b是小数部分，并且a+b=klog_{10}n<br>$$</p>
+<p>所以可以得到整数a，和小数b，10^a控制A的位数，而10^b控制A的每一位的实际数字，即10^b就是X.xxxxxxx，要求A的前三位，那么就是10^(2+b)。</p>
+<h2 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int T,n,k;
+int fastpow(int x,int p)
+{
+    int ans=1;
+    while(p)
+    {
+        if(p&amp;1)ans=(ans*x)%1000;
+        p&gt;&gt;=1;
+        x=(x*x)%1000;
+    }
+    return ans;
+}
+int main()
+{
+    cin&gt;&gt;T;
+    int opt=0;
+    while(T--)
+    {
+        opt++;
+        cin&gt;&gt;n&gt;&gt;k;
+        double y=k*log10(n);
+        int y1=y;
+        double b=y-y1;
+        int ans=pow(10,2+b);
+        printf(&quot;Case %d: %d &quot;,opt,ans);
+        int x=n%1000;
+        x=fastpow(x,k);
+        if(x&lt;100)printf(&quot;0&quot;);
+        if(x&lt;10)printf(&quot;0&quot;);
+        printf(&quot;%d\n&quot;,x);
+    }
+    return 0;
+}</code></pre>
 
+        <div id="aplayer-bYuxxYqB" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-bYuxxYqB"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "那年",
+              author: "枯木逢春",
+              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
             <hr>
           </div>
           <br>
@@ -562,6 +653,17 @@ int main()
 <!-- Plugins -->
 
 
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?MC7rf8QP3x";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
   
 
   
