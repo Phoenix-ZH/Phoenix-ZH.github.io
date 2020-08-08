@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    2.4k 字
+                    3.1k 字
                   </span>&nbsp;
                 
 
@@ -149,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      11 分钟
+                      15 分钟
                   </span>&nbsp;
                 
 
@@ -490,13 +490,123 @@ int main()
     }
     return 0;
 }</code></pre>
+<h1 id="6-题目名称："><a href="#6-题目名称：" class="headerlink" title="6.题目名称："></a>6.题目名称：</h1><p><a href="https://vjudge.net/problem/LightOJ-1245" target="_blank" rel="noopener"><strong>LightOJ 1245</strong></a> Harmonic Number (II)</p>
+<h2 id="题目大意：-5"><a href="#题目大意：-5" class="headerlink" title="题目大意："></a>题目大意：</h2><p>求解：F(n)的值 （<strong>1 ≤ n &lt; 2147483648</strong> ）</p>
+<pre><code class="cpp">long long F(int n) {
+    long long res = 0;
+    for (int i = 1; i &lt;= n; i++) {
+        res += n / i;
+    }
+    return res;
+}</code></pre>
+<h2 id="思路：-5"><a href="#思路：-5" class="headerlink" title="思路："></a>思路：</h2><p>如果保证n&lt;=500000就可以避免超时。对于一个大于500000的数，可以将n/i=1，n/i=2…分别作为一组，这样再大的数，再10000次操作也可以减小到500000，时间复杂度也降低了。每一次操作res+=(i-1)*(pre-next+1).</p>
+<h2 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+long long T,n;
+int main()
+{
+    cin&gt;&gt;T;
+    long long opt=0;
+    while(T--)
+    {
+        opt++;
+        cin&gt;&gt;n;
+        long long res=0;
+        if(n&gt;=500000)
+        {
+            long long pre=n;
+            for(long long i=2;i&lt;=10000;i++)
+            {
+                long long next=n/i;next++;
+                res+=(i-1)*(pre-next+1);
+                pre=next-1;
+            }
+            for(long long i=1;i&lt;=pre;i++)
+            res+=n/i;
+        }
+        else 
+        {
+            for(long long i=1;i&lt;=n;i++)
+            res+=n/i;
+        }
+        printf(&quot;Case %lld: %lld\n&quot;,opt,res);
+    }
+    return 0;
+}</code></pre>
+<h1 id="7-题目名称："><a href="#7-题目名称：" class="headerlink" title="7.题目名称："></a>7.题目名称：</h1><p><a href="https://vjudge.net/problem/LightOJ-1236" target="_blank" rel="noopener"><strong>LightOJ 1236</strong></a> Pairs Forming LCM</p>
+<h2 id="题目大意：-6"><a href="#题目大意：-6" class="headerlink" title="题目大意："></a>题目大意：</h2><p>求解res： <strong>n (1 ≤ n ≤ 10^14)</strong></p>
+<pre><code class="cpp">long long pairsFormLCM( int n ) {
+    long long res = 0;
+    for( int i = 1; i &lt;= n; i++ )
+        for( int j = i; j &lt;= n; j++ )
+           if( lcm(i, j) == n ) res++; // lcm means least common multiple
+    return res;
+}</code></pre>
+<h2 id="思路：-6"><a href="#思路：-6" class="headerlink" title="思路："></a>思路：</h2><p>假设n是a，b的最小公倍数。<br>对a，b进行质因数分解：<br>$$<br>a=p_1^{a_1}<em>p_2^{a_2}</em>…*p_n^{a_n}<br>$$</p>
+<p>$$<br>b=p_1^{b_1}<em>p_2^{b_2}</em>…*p_n^{b_n}<br>$$</p>
+<p>因此：<br>$$<br>gcd(a,b)=p_1^{min(a_1,b_1)}<em>p_2^{min(a_2,b_2)}</em>…*p_n^{min(a_n,b_n)}<br>$$</p>
+<p>$$<br>lcm(a,b)=p_1^{max(a_1,b_1)}<em>p_2^{max(a_2,b_2)}</em>…*p_n^{max(a_n,b_n)}<br>$$</p>
+<p>根据题意得：lcm(a,b)=n.<br>                       假设max(ai,bi)=ei</p>
+<p>所以：<br>$$<br>n=p_1^{e_1}<em>p_2^{e_2}</em>…<em>p_n^{e_n}<br>$$<br>*</em>接下来就是计算方案数：**</p>
+<p>对于每一项质因数的幂pi^ei,需要a，b中至少有一个pi^ei，另一个随机。当ai=bi=ei时，方案只有一个。总数为2*(ei+1)-1</p>
+<p><strong>计算总方案：</strong></p>
+<p>将上述的结果叠乘，然后将总方案数/2+1， 加一是因为如果直接除以2，其中有一种方案ai=bi=ei是a等于b的，所以除多了，需要加上1 </p>
+<h2 id="代码：-6"><a href="#代码：-6" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1e7+50;
+const int N=1e7;
+typedef long long ll;
+ll T,n,prime_tot;bool vis_prime[maxn];int prime[1000010];
+void isprime()
+{
+    for(ll i=2;i&lt;=N;i++)
+    {
+        if(!vis_prime[i])
+            prime[++prime_tot]=i;
+        for(ll j=1;j&lt;=prime_tot&amp;&amp;prime[j]*i&lt;=N;j++)
+        {
+            vis_prime[i*prime[j]]=1;
+            if(i%prime[j]==0)
+                break;
+        }
+    }
+}
+int main()
+{
+    cin&gt;&gt;T;
+    isprime();
+    int opt=0;
+    while(T--)
+    {
+        opt++;
+        cin&gt;&gt;n;
+        ll ans=1;
+        for(ll i=1;i&lt;=prime_tot&amp;&amp;prime[i]&lt;=n;i++)
+        {
+            if(n%prime[i]==0)
+            {
+                ll tot=0;
+                while(n%prime[i]==0)
+                {
+                    tot++;
+                    n/=prime[i];    
+                }
+                ans=ans*(2*(tot+1)-1);
+            }
+        }
+        if(n&gt;1)ans=ans*(2*2-1);
+        ans=ans/2+1;
+        printf(&quot;Case %lld: %lld\n&quot;,opt,ans);
+    }
+    return 0;
+}</code></pre>
 
-        <div id="aplayer-bYuxxYqB" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-ERANnIBJ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-bYuxxYqB"),
+            element: document.getElementById("aplayer-ERANnIBJ"),
             narrow: false,
             autoplay: true,
             showlrc: false,

@@ -153,6 +153,41 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/13/POJ-3189/">
+        <p class="h4 index-header">POJ-3189</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-3189 Steady Cow Assignment
+题目链接：https://vjudge.net/problem/POJ-3189
+题目大意：这道题的题意是真的很坑人啊，首先答案是求所有牛对居住的牛棚最大喜欢度-最小喜欢度+1，就是求区间长度，不是让求最大值-最小值。然后矩阵i，j不是表示第i头牛对第j个牛棚的喜欢度，而是表示第i头牛心中排名第j的牛棚是map[i][j]，喜欢度就是指牛棚在牛心中的排名。
+题解：每个牛棚是有容纳量的，所以会用到多重匹配，而如何找到最小的区间长度呢？区间长度=所有牛对居住的牛棚最大喜欢度-最小喜欢度+1，那么求出最大值-最小值就可以了，求最值问题，很容易就想到二分了，但是光二分又不够，这时候枚举最小值就可以了，二分最大值-最小值的值，然后跑匈牙利算法的多重匹配，对每一条边的边权要判断：edge[i].w&gt;=minn&amp;&amp;edge[i].w&lt;-=maxx，并且注意容纳量。跑出的最大匹配如果==n，就说明所有的牛都又牛棚，就符合题意，于是右边界就可以缩小，否则左边界增大，直到找到ans，注意在枚举最小值的时候要</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-13&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/12/POJ-2112/">
         <p class="h4 index-header">POJ-2112</p>
         
@@ -509,41 +544,6 @@ hopcroft-karp的时间复杂度为 O（n^0.5*m）。
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(hopcroft-karp)">二分图(hopcroft-karp)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/10/HDU-2819/">
-        <p class="h4 index-header">HDU-2819</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-2819 Swap
-题目链接：https://vjudge.net/problem/HDU-2819
-题目大意：给一个n*n的方阵，每一个格子(i,j)由0/1组成，问能否使得斜对角线即i==j,（i∈[1,n]），如果不能就输出-1，否则请输出方案。R表示交换行，C表示交换列。
-
-这里有一点需要说明，就是说题目的交换，其实是将原来图的某一行移到最后图的某一行，而不是指先交换两行，得到一个新图，再交换新图的两行。 
-题解：首先是关于能否得到斜对角线全为1的方阵，假如一个方阵的斜对角线全为1，那么这个方阵的秩为n，那么如果一个方阵的秩小于n那一定就不可以。那么如何得到方阵的秩呢？受到前面几个二分图的题的影响，凡是方格类的题目都可以将行和列分开，将数字为1的方格就行连边，即行i–&gt;列j，最后求最大匹配，一旦最大匹配为n那就可以，否则输出-1。由矩阵的运算性质可以知道，所有的列变换都可以用行变换来替代，所有的行变换都可以用列变换来替代，于是我们不妨全部都用列变换来替换，已知cy[i]表示第i列和cy[i]行来配对，从1-n列开始枚举，然后枚举得到第一个cy[j]==i</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
           
         
       </div>
