@@ -153,6 +153,47 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/11/HDU-4185/">
+        <p class="h4 index-header">HDU-4185</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称： HDU - 4185  Oil Skimming 
+题目链接：https://vjudge.net/problem/HDU-4185
+题目大意：有K组数据，每组数据是N*N的方阵，每个方格由.或者#组成，问有多少个互相不重叠的##(横着或竖着)。
+  (1 &lt;= K &lt;= 100)  (1 &lt;= N &lt;= 600) 
+题解：最开始的思路是每个点只判断它下方或者右方是不是#，如果是就连边，但是这个方法存在一个问题：横着的##和竖着的##如果重叠会导致计数重复，又没有一个比较好的办法来规范。于是换了一个想法，一个点若为#就像它上下左右为#的点都连边，最后答案/2就可以避免重复。枚举所有的点，预处理#点的编号temp记录，然后开始跑匈牙利算法，最后ans/2.
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1200+5;
+const</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/10/HDU-2389/">
         <p class="h4 index-header">HDU-2389</p>
         
@@ -501,47 +542,6 @@ KM算法km算法用于求最佳匹配，而不是最大权匹配。换言之，k
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3416/">
-        <p class="h4 index-header">HDU-3416</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-3416 Marriage Match IV
-题目链接：https://vjudge.net/problem/HDU-3416
-题目大意： n 个点 m 条边带权有向图，问每条边最多只能走一次时从 A 到 B 的最短路径数量。 
-题解：问题是问从s–&gt;t有多少种完全不同的最短路径。首先要想办法找到哪些边属于最短路径里面的边，于是先正向跑一遍spfa，再反向跑一遍spfa，设smin为s–&gt;t的最短路的长度，那如果一条边属于最短路，那它一定满足dist1[x[i]]+dist2[y[i]]+w[i]==smin&amp;&amp;x[i]!=y[i]。这样就可以找到最短路径的所有边，然后建边时注意，x[i]–&gt;y[i],边权为1，跑dinic，得到的最大流ans就是答案。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
         
       </div>

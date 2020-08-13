@@ -153,6 +153,48 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4280/">
+        <p class="h4 index-header">HDU-4280</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 4280 Island Transport
+题目链接：https://vjudge.net/problem/HDU-4280#author=smilestruggler
+题目大意：在n个岛屿中，有m条双向航线，航线有单位时间内的运输上限，现在求从最左侧到最右侧的最大运输
+题解：题意含明显它是最大流的模板题，直接建边，然后找到起点s和终点t就可以了，然后直接跑dinic。但是n=100000，m=100000，数据规模大，dinic容易超时，但是我们可以做优化。
+优化1：bfs只要跑到t就返回1，开始dfs。
+优化2；dfs内每次min(F-f,edge[i].w），f表示之前已经流过的流量，F-f表示剩余可流的流量，一旦F==f就break，表示满流了！
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int max</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-3605/">
         <p class="h4 index-header">HDU-3605</p>
         
