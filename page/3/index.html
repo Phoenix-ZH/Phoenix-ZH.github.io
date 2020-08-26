@@ -153,6 +153,58 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/15/CodeForces-1303/">
+        <p class="h4 index-header">CodeForces-1303</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A：题目名称：  Erasing Zeroes 
+题目大意：删除最少的0，使所有的1连续，问删除多少个0？
+题解：找到最后一个1的位置，和开头1的位置，枚举中间0的个数
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int T;char s[105];
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%s&quot;,s);
+        int sign=0,ans=0,t=0;
+        for(int i=strlen(s);i&gt;=0;i--)
+        {
+            if(s[i]==&#39;1&#39;)
+            {
+                t=i;
+                break;
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-15&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/14/CodeForces-620/">
         <p class="h4 index-header">CodeForces-620</p>
         
@@ -514,46 +566,6 @@ DAG的最小不相交路径覆盖的算法： 把原图的每个点V拆成两个
             <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
           
             <a href="/tags/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E8%A6%86%E7%9B%96">最小路径覆盖</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/11/HDU-1054/">
-        <p class="h4 index-header">HDU-1054</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-1054 Strategic Game
-题目链接：https://vjudge.net/problem/HDU-1054#author=0
-题目大意：Bob非常享受玩电脑游戏的过程，尤其是策略游戏，但是在有些时候，他因为不能在第一时间找到最佳的策略而十分伤心。 现在，他遇到了一个问题。他必须保卫一个中世纪的城市，有很多道路将整个城市连起来，整体上看上去像一棵树。Bob需要放置尽可能少的士兵，保卫树上所有的边。士兵只能放在节点上，但是却可以保卫所有与这个节点相邻的边。 
-题解：题目要求很明确，就是要最少的点覆盖所有的边，即最小定点覆盖问题。 最小顶点覆盖要求用最少的点，让每条边都至少和其中一个点关联。即点集里面的点能覆盖所有的边 。
-knoig定理： 二分图的最小顶点覆盖数=二分图的最大匹配数。 
-证明：
-要证明最小顶点覆盖数==最大匹配数，即证明最小顶点覆盖数&gt;=最大匹配数，并且最大匹配数&gt;=最小顶点覆盖数。设最小顶点覆盖数为S，最大匹配数为M。
- ① 最小顶点覆盖数&gt;=最大匹配数：
-假设最大匹配数为n，那么我们就得到了n条互不相邻的边，光覆盖这些边</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E5%B0%8F%E9%A1%B6%E7%82%B9%E8%A6%86%E7%9B%96">最小顶点覆盖</a>&nbsp;
           
         
       </div>
