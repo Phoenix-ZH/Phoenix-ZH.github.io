@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CodeForces-1397 ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 八月 31日 2020, 10:47 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="A-题目名称："><a href="#A-题目名称：" class="headerlink" title="A.题目名称："></a>A.题目名称：</h1><p> Juggling Letters </p>
+<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>n个字符串，每次操作可以选择两个字符串（可以相同）选择其中一个字符串中某一字符插入到另一字符串。问：操作任意次，能否使得所有字符串都相同？ </p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>统计n个字符串中26个小写字母的数量是否是n的倍数，是则YES，否则NO</p>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1e3+40;
+int T,n,cnt[100];char s[maxn][maxn];
+int main()
+{
+    cin&gt;&gt;T;
+    while(T--)
+    {
+        cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++)cin&gt;&gt;s[i]+1;
+        memset(cnt,0,sizeof(cnt));
+        for(int i=1;i&lt;=n;i++)
+        {
+            int len=strlen(s[i]+1);
+            for(int j=1;j&lt;=len;j++)
+            {
+                cnt[s[i][j]-&#39;a&#39;+1]++;                
+            }
+        }
+        int sign=0;
+        for(int i=1;i&lt;=26;i++)
+        {
+            if(cnt[i]==0)continue;
+            if(cnt[i]%n)
+            {
+                sign=1;
+                break;
+            }
+        }
+        if(sign)printf(&quot;NO\n&quot;);
+        else printf(&quot;YES\n&quot;);
+    }
+    return 0;
+}</code></pre>
+<h1 id="B-题目名称"><a href="#B-题目名称" class="headerlink" title="B.题目名称:"></a>B.题目名称:</h1><p>Power Sequence </p>
+<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意:"></a>题目大意:</h2><p>n个数组成的数组，下标为0~n-1，首先对数组从小到大排序，然后有一操作：可以对任意数组中任意一个元素的值加一或者减一，代价为1；问最少需要多少代价可以使得数组a[i]=c^i.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>首先将a[]从小到大排序,然后枚举c(1-MAX),再枚举到最小代价之前,答案都在不断减小,所以一旦不再减小就应该终止枚举.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1e5+50;
+typedef long long ll;
+ll n,a[maxn],ans;
+int check(ll x)
+{
+    ll sum=0,now=1;
+    for(int i=1;i&lt;=n;i++)
+    {
+        sum+=abs(a[i]-now);
+        now*=x;
+        if(sum&gt;ans)return 0;
+    }
+    ans=sum;
+    return 1;
+}
+int main()
+{
+    cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i],ans+=a[i];
+    sort(a+1,a+1+n);
+    ans-=n;
+    for(ll i=2;i&lt;=1000000;i++)
+    {
+        if(!check(i))break;
+    }    
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}</code></pre>
+<h1 id="C-题目名称"><a href="#C-题目名称" class="headerlink" title="C.题目名称:"></a>C.题目名称:</h1><p>Multiples of Length </p>
+<h2 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意:"></a>题目大意:</h2><p>n个元素组成的数组，有一操作：对于某一段区间[l,r]，可以加上该区间长度len的任意倍数。题目说明：可以证明三次操作可以使得数组所有元素都变成0。 </p>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路:"></a>思路:</h2><p>这是一个构造题:当n=1的时候,将[1,1]的数+1,再将[1,1]的数-1,最后[1,1]的数-a[1].当n&gt;1的时候,将[1,1]的数改成n,即加上(n-a[1]),再将[2,n]的数全加上a[i] * (n-1).最后再-(a[i] * n).</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码:"></a>代码:</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1e5+50;
+typedef long long ll;
+ll n,a[maxn],y[maxn],t[maxn];
+int main()
+{
+    cin&gt;&gt;n;
+    for(ll i=1;i&lt;=n;i++)cin&gt;&gt;a[i];
+    if(n==1)
+    {
+        printf(&quot;1 1\n1\n&quot;);
+        printf(&quot;1 1\n-1\n&quot;);
+        printf(&quot;1 1\n%d\n&quot;,-a[1]);
+        return 0;
+    }
+    cout&lt;&lt;&quot;1 1&quot;&lt;&lt;endl;
+    cout&lt;&lt;n-a[1]&lt;&lt;endl;
+    cout&lt;&lt;&quot;2 &quot;&lt;&lt;n&lt;&lt;endl;
+    t[1]=-n;
+    for(int i=2;i&lt;=n;i++)
+    {
+        y[i]=a[i]*(n-1);
+        t[i]=-a[i]*n;
+    }
+    for(int i=2;i&lt;=n;i++)cout&lt;&lt;y[i]&lt;&lt;&#39; &#39;;cout&lt;&lt;endl;
+    cout&lt;&lt;&quot;1 &quot;&lt;&lt;n&lt;&lt;endl;
+    for(int i=1;i&lt;=n;i++)cout&lt;&lt;t[i]&lt;&lt;&#39; &#39;;cout&lt;&lt;endl;
+    return 0;
+}</code></pre>
+<h1 id="D-题目名称"><a href="#D-题目名称" class="headerlink" title="D.题目名称:"></a>D.题目名称:</h1><p>Stoned Game </p>
+<h2 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意:"></a>题目大意:</h2><p>T和HL玩游戏,每人选择一个未被上一个玩家选择的堆中拿一个石头,一旦某一个人无法拿到石头,则另一个玩家获胜.</p>
+<h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路:"></a>思路:</h2><p>当一堆大于其余堆的总和的时候,T一定选择这个堆,则T获胜.<br>其余一般情况:假设最后一堆是x,则知道x的具体值,就知道了sum-x的奇偶性,若x=5,则当剩余9的时候,先手一定选择5这个堆,而后手再先手出手之前一定会阻止它,所以x=4.当x=4的时候,同理剩余7的时候也会出现上述情况,最后x=1,所以当sum为奇数T获胜,否则HL获胜.</p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码:"></a>代码:</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1000+50;
+int T,n,a[maxn];
+int main()
+{
+    cin&gt;&gt;T;
+    while(T--)
+    {
+        cin&gt;&gt;n;
+        int sum=0,maxx=0;
+        for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i],sum+=a[i],maxx=max(maxx,a[i]);
+        if(maxx&gt;sum-maxx)printf(&quot;T\n&quot;);
+        else 
+        {
+            if(sum%2==1)printf(&quot;T\n&quot;);
+            else printf(&quot;HL\n&quot;);
+        }
+    }
+    return 0;
+}</code></pre>
+
+        <div id="aplayer-aaluVMJU" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-aaluVMJU"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "那年",
+              author: "枯木逢春",
+              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/CodeForces">CodeForces</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?MC7rf8QP3x";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CodeForces-1397&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>

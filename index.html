@@ -157,6 +157,54 @@ src="//music.163.com/outchain/player?type=2&id=34341360&auto=1&height=66">
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/31/CodeForces-1397/">
+        <p class="h4 index-header">CodeForces-1397</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A.题目名称： Juggling Letters 
+题目大意：n个字符串，每次操作可以选择两个字符串（可以相同）选择其中一个字符串中某一字符插入到另一字符串。问：操作任意次，能否使得所有字符串都相同？ 
+思路：统计n个字符串中26个小写字母的数量是否是n的倍数，是则YES，否则NO
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1e3+40;
+int T,n,cnt[100];char s[maxn][maxn];
+int main()
+{
+    cin&gt;&gt;T;
+    while(T--)
+    {
+        cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++)cin&gt;&gt;s[i]+1;
+        memset(cnt,0,sizeof(cnt));
+        for(int i=1;i&lt;=n;i++)
+        {
+            int len=strlen(s[i]+1);
+     </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-31&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/08/26/CodeForces-1400/">
         <p class="h4 index-header">CodeForces-1400</p>
         
@@ -550,52 +598,6 @@ stru</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/DP">DP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/20/kuangbin%E4%B8%93%E9%A2%98-%E4%BA%8C%E5%8D%81%E5%9B%9B/">
-        <p class="h4 index-header">kuangbin专题-二十四</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.题目：CodeForces - 371C  A-Hamburgers题目大意：做汉堡包，需要的材料用字符串给出了。
-已有的材料数在第二行。（顺序：B,S,C）
-商店卖的材料的需要的钱数在第三行。（顺序：B,S,C）
-第四行是你有的钱数。
-问最多做多少汉堡。
-思路：看到（1&lt;=r&lt;=10^12)和“最多”就觉得是二分。二分汉堡的数量，已知已经拥有的汉堡B，S，C材料的数量，也可以得到需要的总数量，由此知道需要购买的数量。然后计算总钱数，就可以进行判断了。ps：WA了两次：第一次：注意ans1，ans2，ans3，可能是负的，一旦为负就要定为0，不然结果偏大。第二次：注意最多数量可能比10^12更大，所以右边界要大一点。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=10000+10;
-long long n1,n2,n3,h1,h2,h3,m1,m2,m3,r;
-bool check(long long mid)
-{
-    long long N1=n1*mid-h1,N2=n2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-20&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
-          
-            <a href="/tags/%E5%B0%BA%E5%8F%96">尺取</a>&nbsp;
-          
-            <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88%E9%98%9F%E5%88%97">单调栈队列</a>&nbsp;
           
         
       </div>
