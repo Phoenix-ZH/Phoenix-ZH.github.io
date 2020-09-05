@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CodeForces-1409 ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 九月 5日 2020, 3:19 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      10 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="A-题目名称"><a href="#A-题目名称" class="headerlink" title="A.题目名称:"></a>A.题目名称:</h1><p>Yet Another Two Integers Problem </p>
+<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>每次选择一个k∈[1,10]，a可以a-=k或者a+=k，问需要的最小次数使得a变成b。</p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>尽量选大，则D=abs(a-b)，D=ceil(D/10)</p>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+ll T,a,b;
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;a&gt;&gt;b;
+        ll d=abs(a-b);
+        ll ans=ceil(d*1.0/10.0);
+        cout&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}</code></pre>
+<h1 id="B-题目名称："><a href="#B-题目名称：" class="headerlink" title="B.题目名称："></a>B.题目名称：</h1><p>Minimum Product </p>
+<h2 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h2><p>每次可以对a-=1，或者b-=1，最多操作n次，并且保证a&gt;=x,b&gt;=y.求a * b的最小值。</p>
+<h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>先将a变成最小，若有剩余再将b变小，求得minn1；先将b变成最小，若有剩余再将a变小，求得minn2。ans=min(minn1,minn2）。</p>
+<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+ll T,a,b,x,y,n;
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;a&gt;&gt;b&gt;&gt;x&gt;&gt;y&gt;&gt;n;
+        ll d1=min(a-x,n);
+        ll resn=n-d1;
+        ll d2=min(b-y,resn);
+        ll ans1=(a-d1)*(b-d2);
+        d2=min(b-y,n);
+        resn=n-d2;
+        d1=min(a-x,resn);
+        ll ans2=(a-d1)*(b-d2);
+        cout&lt;&lt;min(ans1,ans2)&lt;&lt;endl;
+    }
+    return 0;
+}</code></pre>
+<h1 id="C-题目名称："><a href="#C-题目名称：" class="headerlink" title="C.题目名称："></a>C.题目名称：</h1><p>Yet Another Array Restoration </p>
+<h2 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h2><p>一组数组有n个数，一定包含x，y，求得这组数组使得其中最大的尽量小。</p>
+<h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><p>枚举x与y之间得数字个数，进而得到差值，尽量让y作为最大值，如果中间不够填充，则先向左边扩展，再向右扩展。</p>
+<p>特判：n==2，直接输出x，y。</p>
+<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+ll T,x,y,n;
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;n&gt;&gt;x&gt;&gt;y;
+        ll d=y-x,tot=0;
+        if(n==2){
+            cout&lt;&lt;x&lt;&lt;&#39; &#39;&lt;&lt;y&lt;&lt;endl;
+            continue;
+        }
+        for(int i=n-1;i;i--){
+            if(d%i==0){
+                ll D=d/i;
+                ll now=x;
+                while(now&lt;=y&amp;&amp;tot&lt;n){
+                    cout&lt;&lt;now&lt;&lt;&#39; &#39;;
+                    tot++;
+                    now+=D;
+                }
+                now=x-D;
+                while(now&gt;0&amp;&amp;tot&lt;n){
+                    cout&lt;&lt;now&lt;&lt;&#39; &#39;;
+                    tot++;
+                    now-=D;
+                }
+                now=y+D;
+                while(tot&lt;n){
+                    cout&lt;&lt;now&lt;&lt;&#39; &#39;;
+                    now+=D;
+                    tot++;
+                }
+                break;
+            }
+        }
+        cout&lt;&lt;endl;
+    }
+    return 0;
+}</code></pre>
+<h1 id="D-题目名称"><a href="#D-题目名称" class="headerlink" title="D.题目名称:"></a>D.题目名称:</h1><p>Decrease the Sum of Digits </p>
+<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意:"></a>题目大意:</h2><p>给一个数n,每次可以让n+=1,使得n的各个位的数字之和&lt;=s.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>先分解出各个位上的数字,并求和得到sum,若sum&lt;=s则直接输出答案(0),然后从从左到右(从高位到低位)开始判断该位上的数字是否需要变化.如果s-a[opt]&gt;=1,则这一位不会变化,往下一位走.最后走到某一位opt发现s-a[opt]&lt;1,则从opt-1到个位都是要变化的,最小的变化次数是(a[opt-1]+1)*(10^(n-opt+1))-(opt-1位作为最高位的数字)</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+const ll maxn=100+50;
+ll T,n,s,a[maxn],p[maxn];char t[maxn];
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        p[0]=1;
+        for(ll i=1;i&lt;=19;i++)p[i]=p[i-1]*10ll;
+        cin&gt;&gt;t+1&gt;&gt;s;
+        ll sum=0,len=strlen(t+1);
+        for(ll i=1;i&lt;=len;i++)sum=sum+t[i]-&#39;0&#39;,a[i]=t[i]-&#39;0&#39;;
+        if(sum&lt;=s){
+            cout&lt;&lt;&quot;0&quot;&lt;&lt;endl;
+            continue;
+        }
+        ll opt=1;
+        while(opt&lt;=len&amp;&amp;s&gt;a[opt])s-=a[opt],opt++;
+        ll res=p[len-opt+1]*(a[opt-1]+1);
+        ll tot=0;
+        for(ll i=opt-1;i&lt;=len;i++)tot=tot*10+a[i];
+        ll ans=res-tot;
+        cout&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}</code></pre>
+<h1 id="E-题目名称"><a href="#E-题目名称" class="headerlink" title="E.题目名称:"></a>E.题目名称:</h1><p>Two Platforms </p>
+<h2 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意:"></a>题目大意:</h2><p>有n个左边点,两块长度为k的木板条,只要球下降掉在木板范围以内,表示木板可以借住小球,求木板可以接住的最大数量.</p>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路:"></a>思路:</h2><p>先将球按照x轴的坐标从小到大排序,另开一个数组b来存在所有球的x轴坐标,对他进行去重.然后用map存每一个对应的x轴的值所对应的最大的下标值.然后对一个点求当前点作为木板的左边界可以接住的球的数量:有当前球的x轴坐标t[i].x可以求得木板的右边界t[i].x+k,如果这个有边界&gt;=t[i].n,则sum[i]=n-i+1;否则在b数组中二分求得第一个比t[i].x+k大的数字b[t],则b[t-1]就是木板所接住的最右边的球,由map反解出b[t-1]对应的x的值对应的最大的小标mp[b[t-1]],sum[i]=mp[b[t-1]]-i+1.这样求出每一个点作为左边界可以接住的球的数量,但是这只是针对一根木板,还需要在这基础上从右到左求得M数组,M[i]表示i之后的点(包括i)一根木板可以接到的最大的球的数量.这样每一次枚举最左边的木板的左边界点i,由此得到木板的右边第一个不在该木板范围内的点i+sum[i],则第二个木板可以接到的最大数量是M[i+sum[i]],这样得到的数量就是sum[i]+M[i+sum[i]],然后每次取最大即可.</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码:"></a>代码:</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+const int maxn=2e5+50;
+int T,n,k,sum[maxn],b[maxn],M[maxn];
+struct Point{
+    int x,y;
+}t[maxn];
+int cmp(Point a,Point b){
+    if(a.x==b.x)return a.y&lt;b.y;
+    return a.x&lt;b.x;
+}
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        memset(M,0,sizeof(M));
+        map&lt;int,int&gt;mp;
+        cin&gt;&gt;n&gt;&gt;k;
+        for(int i=1;i&lt;=n;i++)cin&gt;&gt;t[i].x,b[i]=t[i].x;
+        for(int i=1;i&lt;=n;i++)cin&gt;&gt;t[i].y;
+        sort(t+1,t+1+n,cmp);
+        sort(b+1,b+1+n);
+        int len=unique(b+1,b+1+n)-b-1;
+        for(int i=1;i&lt;=n;i++){
+            mp[t[i].x]=i;
+        }
+        for(int i=1;i&lt;=n;i++){
+            int maxx=t[i].x+k;
+            if(maxx&gt;=t[n].x){
+                sum[i]=n-i+1;
+            }
+            else{
+                int t=upper_bound(b+1,b+1+n,maxx)-b;
+                int re=mp[b[t-1]];
+                sum[i]=re-i+1;
+            }
+        }
+        for(int i=n;i&gt;=1;i--){
+            M[i]=max(M[i+1],sum[i]);
+        }
+        int ans=0;
+        for(int i=1;i&lt;=n;i++){
+            ans=max(ans,sum[i]+M[i+sum[i]]);
+        }
+        cout&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}</code></pre>
+<h1 id="F-题目名称"><a href="#F-题目名称" class="headerlink" title="F.题目名称:"></a>F.题目名称:</h1><p>Subsequences of Length Two </p>
+<h2 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意:"></a>题目大意:</h2><p>对于字符串s可以将一个字母改成任意一个小写字母,可以操作不超过k次,求s中出现串t的最大数量.</p>
+<h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路:"></a>思路:</h2><p>设置dp[i][j][cnt0]表示枚举到i时改变了j次其中右cnt0个t[0]时出现的t的最大数量.则对于i+1来讲有三种状态:</p>
+<p>ps:e0=s[i]==t[0];e1=s[i]==t[1];e01=t[0]==t[1].</p>
+<p>第一种:直接不改变,则dp[i+1][j][l+e0]=max(dp[i+1][j][l+e0],dp[i][j][l]+(e1?l:0);</p>
+<p>第二种:将它变成t[0],则dp[i+1][j+1][l+1]=max(dp[i+1][j+1][l+1],dp[i][j][l]+(e01?l:0));</p>
+<p>第三种:将它变成t[1].则dp[i+1][j+1][l+e01]=max(dp[i+1][j+1][l+e01],dp[i][j][l]+l).</p>
+<p>其中第二种和第三种状态中要保证j+1&lt;=k;三种情况都要保证dp[i][j][l]!=-0x3f3f3f3f</p>
+<p>最后枚举改变次数和cnt0的数量,求max(dp[n][i][cnt0]);</p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码:"></a>代码:</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=200+50;
+int n,k,dp[maxn][maxn][maxn];char s[maxn],t[maxn];
+int main(){
+    cin&gt;&gt;n&gt;&gt;k;
+    cin&gt;&gt;s&gt;&gt;t;
+    memset(dp,-0x3f3f3f3f,sizeof(dp));
+    dp[0][0][0]=0;
+    for(int i=0;i&lt;n;i++){
+        for(int j=0;j&lt;=k;j++){
+            for(int l=0;l&lt;=n;l++){
+                if(dp[i][j][l]==-0x3f3f3f3f)continue;
+                int e0=s[i]==t[0];
+                int e1=s[i]==t[1];
+                int e01=t[0]==t[1];
+                dp[i+1][j][l+e0]=max(dp[i+1][j][l+e0],dp[i][j][l]+(e1?l:0));
+                if(j+1&lt;=k){
+                    dp[i+1][j+1][l+1]=max(dp[i+1][j+1][l+1],dp[i][j][l]+(e01?l:0));
+                    dp[i+1][j+1][l+e01]=max(dp[i+1][j+1][l+e01],dp[i][j][l]+l);    
+                }
+            }
+        }
+    }
+    int ans=0;
+    for(int i=0;i&lt;=k;i++){
+        for(int j=0;j&lt;=n;j++){
+            ans=max(ans,dp[n][i][j]);
+        }
+    }
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}</code></pre>
+
+        <div id="aplayer-WuvTWmkO" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-WuvTWmkO"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "那年",
+              author: "枯木逢春",
+              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/CodeForces">CodeForces</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?MC7rf8QP3x";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CodeForces-1409&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>

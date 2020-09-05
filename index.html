@@ -137,11 +137,7 @@
       </div>
     </div>
   </header>
-<iframe frameborder="no" border="0"
- marginwidth="0" marginheight="0" 
-width=330 height=86 
-src="//music.163.com/outchain/player?type=2&id=34341360&auto=1&height=66">
-</iframe>
+
   <main>
     
       <div class="container nopadding-md">
@@ -152,6 +148,55 @@ src="//music.163.com/outchain/player?type=2&id=34341360&auto=1&height=66">
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/09/05/CodeForces-1409/">
+        <p class="h4 index-header">CodeForces-1409</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A.题目名称:Yet Another Two Integers Problem 
+题目大意：每次选择一个k∈[1,10]，a可以a-=k或者a+=k，问需要的最小次数使得a变成b。
+思路：尽量选大，则D=abs(a-b)，D=ceil(D/10)
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+ll T,a,b;
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;a&gt;&gt;b;
+        ll d=abs(a-b);
+        ll ans=ceil(d*1.0/10.0);
+        cout&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}
+B.题目名称：Minimum Product 
+题目大意：每次可以对a-=1，或者b-=1，最多操作n次，并且保证a&gt;=x,b&gt;=y.求a * b的最小值。
+思路：先将a变成最小，若有</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-05&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
 
   <div class="row mb-4 mx-auto">
     
@@ -560,44 +605,6 @@ const int m</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91">线段树</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/22/NWPU-DP/">
-        <p class="h4 index-header">NWPU-DP</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.题目：D - Proud Merchants题目大意：n种商品，m元钱，每种商品都有p,q,v属性，p价格，q表示买这种商品你需要带q元老板才愿意和你交易，v这种商品的实际价值。求问最多可以获得多少价值 。
-思路：如果p=q，那么就是01背包。但是如果p！=q， 如果A:p1 q1, B:p2 q2 ， 假设单独买A或者B的话，都是可以买到的 。 若先买A，则你至少需要p1+q2的钱；若先买B，则至少需要p2+q1的钱。  那肯定是花最少的钱 ，所以如果先买A再买B ， 那么p1+q2&lt;p2+q1  转换一下，就是q1-p1&gt;q2-p2  也就是说qi-pi大的先买。注意：排序的时候，得按照qi-pi从小到大排序，因为你买第n件商品的时候，是在比较你是否要先买第n件商品。 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=5000+10;
-stru</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-22&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/DP">DP</a>&nbsp;
           
         
       </div>
