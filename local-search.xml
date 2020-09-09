@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>CodeForces-1407-D</title>
+    <link href="/2020/09/09/CodeForces-1407-D/"/>
+    <url>/2020/09/09/CodeForces-1407-D/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h1><p>Discrete Centrifugal Jumps</p><h1 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h1><p>有n个楼房，给出n个楼房的高度，开始位于1号楼，最后需到达n号楼。当满足一下任一条件则可转移：</p><p>i + 1 = j；</p><p>max(hi+1,…,hj-1)&lt;min(hi,hj);</p><p>max(hi,hj)&lt;min(hi+1,…,hj-1);</p><p>求到达n号楼需要的最少步数。</p><h1 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h1><p>根据条件有如下转移:</p><p>1.dp[i]=dp[i-1]+1;</p><p>2.i前面有一个下标假设为j，且这个j满足(a[j]&gt;max(a[j+1]……,a[i-1]); dp[i]=dp[j]+1;</p><p>3.i前面有一个下标假设为j,且这个j满足(a[j]&lt;min(a[j+1]…….a[i-1]);dp[i]=dp[j]+1;</p><p>那么找这个j的过程用单调栈优化。</p><p>具体是什么意思呢？</p><p>比如现在有</p><p>h[i]：4 3 2 5 这样的楼高度</p><p> i :  1 2 3 4</p><p>设一个down的单调栈，维护栈内的元素是单调递减的。当遍历到i=4的时候，由于h[4]&gt;h[down.top() =(3) ] ,那么此时down栈的单调递减性质破坏，需要不停down.pop(),使得栈里没有比h[4]更校的。让这个h[4]来当down栈此时的龙头。</p><p>于是在pop()的过程中，最开始的down.top=3,但是这个是和i=4相邻的，在转移最开始我们就进行了dp[i]=dp[i-1]+1；所以这里其实无所谓第一个top的转移。但是当第二个down.top()==2的时候,这时候进行dp[i]=min(dp[i],dp[down.top]+1)的转移。如此往复到i=n的时候就维护好了。优化了不停找j的过程。</p><h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn=3e5+50;int h[maxn],dp[maxn],n,d[maxn],top1,u[maxn],top2;int main(){    cin&gt;&gt;n;    for(int i=1;i&lt;=n;i++){        cin&gt;&gt;h[i];        dp[i]=i;    }    dp[1]=0;    d[++top1]=1,u[++top2]=1;    for(int i=2;i&lt;=n;i++){        dp[i]=dp[i-1]+1;        while(h[i]&gt;=h[d[top1]]&amp;&amp;top1){            int x=h[d[top1]];            top1--;            if(h[i]&gt;x&amp;&amp;top1){                dp[i]=min(dp[i],dp[d[top1]]+1);            }        }        d[++top1]=i;        while(h[i]&lt;=h[u[top2]]&amp;&amp;top2){            int x=h[u[top2]];            top2--;            if(h[i]&lt;x&amp;&amp;top2){                dp[i]=min(dp[i],dp[u[top2]]+1);            }        }        u[++top2]=i;    }    cout&lt;&lt;dp[n]&lt;&lt;endl;    return 0;} </code></pre>        <div id="aplayer-wWYjVoSq" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-wWYjVoSq"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>单调栈</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CodeForces-1409</title>
     <link href="/2020/09/05/CodeForces-1409/"/>
     <url>/2020/09/05/CodeForces-1409/</url>
