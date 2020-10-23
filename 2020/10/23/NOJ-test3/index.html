@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>NOJ-test3 ~ Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 十月 23日 2020, 11:53 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    4k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      24 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>先占个坑,等什么时候有空了,再补题解,先贴上代码.</p>
+<p>代码都不长,就是简单bfs.vis标记注意状态.除了<strong>特殊的二阶魔方</strong>是真的恶心!</p>
+<h1 id="A-加1乘2平方"><a href="#A-加1乘2平方" class="headerlink" title="A.加1乘2平方"></a>A.加1乘2平方</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=10000+50; 
+int n,m,vis[maxn];
+int min(int x,int y){
+    return x&lt;=y?x:y;
+}
+int main(){
+    cin&gt;&gt;m&gt;&gt;n;
+    memset(vis,0x3f3f3f3f,sizeof(vis));
+    vis[m]=1;
+    for(int i=m+1;i&lt;=n;i++){
+        int t=sqrt(i);
+        if(vis[i-1])vis[i]=min(vis[i],vis[i-1]+1);
+        if(i%2==0&amp;&amp;vis[i/2])vis[i]=min(vis[i],vis[i/2]+1);
+        if(t*t==i&amp;&amp;vis[t])vis[i]=min(vis[i],vis[t]+1);
+    }
+    cout&lt;&lt;vis[n]-1&lt;&lt;endl;
+    return 0;
+}</code></pre>
+<h1 id="B-电子老鼠闯迷宫"><a href="#B-电子老鼠闯迷宫" class="headerlink" title="B.电子老鼠闯迷宫"></a>B.电子老鼠闯迷宫</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=205;
+int n,m,sx,sy,tx,ty,a[maxn][maxn],vis[maxn][maxn];
+int dx[4]={0,0,1,-1};
+int dy[4]={1,-1,0,0};
+struct Point{
+    int x,y,cnt;
+};
+int min(int x,int y){
+    return x&lt;=y?x:y;
+}
+int main(){
+    cin&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;m=n=12;
+    for(int i=1;i&lt;=n;i++)
+        for(int j=1;j&lt;=m;j++){
+            char x;cin&gt;&gt;x;
+            if(x==&#39;.&#39;)a[i][j]=1;
+        }
+    queue&lt;Point&gt;q;
+    Point now;
+    now.x=sx;now.y=sy;now.cnt=0;
+    vis[sx][sy]=1;
+    q.push(now);
+    int ans=0x3f3f3f3f;
+    while(!q.empty()){
+        now=q.front();q.pop();
+        if(now.x==tx&amp;&amp;now.y==ty){
+            ans=min(ans,now.cnt);
+            continue;
+        }
+        if(now.cnt&gt;ans)continue;
+        for(int i=0;i&lt;4;i++){
+            if(now.x+dx[i]&gt;=1&amp;&amp;now.x+dx[i]&lt;=n&amp;&amp;now.y+dy[i]&gt;=1&amp;&amp;now.y+dy[i]&lt;=m&amp;&amp;!vis[now.x+dx[i]][now.y+dy[i]]&amp;&amp;a[now.x+dx[i]][now.y+dy[i]]){
+                Point nex;nex.x=now.x+dx[i];nex.y=now.y+dy[i];nex.cnt=now.cnt+1;
+                vis[nex.x][nex.y]=1;
+                q.push(nex);
+            }
+        }
+    }    
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}</code></pre>
+<h1 id="C-跳马"><a href="#C-跳马" class="headerlink" title="C.跳马"></a>C.跳马</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=200+50;
+int T,xs,xt,ys,yt,vis[maxn][maxn];
+struct Node{
+    int x,y,s;
+};
+int d[8][2]={{1,2},{2,1},{2,-1},{1,-2},{-2,1},{-1,2},{-2,-1},{-1,-2}};
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        int i;
+        memset(vis,0,sizeof(vis));
+        cin&gt;&gt;xs&gt;&gt;ys&gt;&gt;xt&gt;&gt;yt;
+        queue&lt;Node&gt;q;
+        Node now={xs,ys,0};
+        q.push(now);
+        int step=0,ans=0;
+        while(!q.empty()){
+            now=q.front();q.pop();
+            if(vis[now.x][now.y])continue;
+            if(now.x==xt&amp;&amp;now.y==yt){
+                ans=now.s;
+                break;
+            }
+            vis[now.x][now.y]=1;
+            for(i=0;i&lt;8;i++){
+                int x=now.x+d[i][0],y=now.y+d[i][1];
+                if(x&gt;=1&amp;&amp;x&lt;=200&amp;&amp;y&gt;=1&amp;&amp;y&lt;=200){
+                    Node nex={x,y,now.s+1};
+                    q.push(nex);
+                }
+            }
+        }
+        cout&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+} </code></pre>
+<h1 id="D-独轮车"><a href="#D-独轮车" class="headerlink" title="D.独轮车"></a>D.独轮车</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=20+5;
+const int maxm=5+5;
+struct Node{
+    int x,y,s,c,f;
+};
+int d[4][2]={{1,0},{-1,0},{0,-1},{0,1}};
+int vis[maxn][maxn][maxm][maxm];
+int xs,xt,ys,yt,F;char f,col1,col2,a[maxn][maxn];
+int main(){
+    cin&gt;&gt;xs&gt;&gt;ys&gt;&gt;col1&gt;&gt;f;
+    cin&gt;&gt;xt&gt;&gt;yt&gt;&gt;col2;
+    int n=20;
+    for(int i=1;i&lt;=n;i++){
+        for(int j=1;j&lt;=n;j++){
+            cin&gt;&gt;a[i][j];
+        }
+    }
+    int c1,c2;
+    if(col1==&#39;R&#39;)c1=0;
+    else if(col1==&#39;Y&#39;)c1=1;
+    else if(col1==&#39;B&#39;)c1=2;
+    else if(col1==&#39;W&#39;)c1=3;
+    else if(col1==&#39;G&#39;)c1=4;
+    if(col2==&#39;R&#39;)c2=0;
+    else if(col2==&#39;Y&#39;)c2=1;
+    else if(col2==&#39;B&#39;)c2=2;
+    else if(col2==&#39;W&#39;)c2=3;
+    else if(col2==&#39;G&#39;)c2=4;
+    if(f==&#39;N&#39;)F=0;
+    else if(f==&#39;E&#39;)F=1;
+    else if(f==&#39;S&#39;)F=2;
+    else if(f==&#39;W&#39;)F=3;
+    Node now={xs,ys,0,c1,F};
+    queue&lt;Node&gt;q;q.push(now);
+    int ans=0;
+    while(!q.empty()){
+        now=q.front();q.pop();
+        if(!(now.x&gt;=1&amp;&amp;now.x&lt;=n&amp;&amp;now.y&gt;=1&amp;&amp;now.y&lt;=n)||a[now.x][now.y]==&#39;X&#39;)continue;
+        if(vis[now.x][now.y][now.c][now.f])continue;
+        vis[now.x][now.y][now.c][now.f]=1;
+        if(now.x==xt&amp;&amp;now.y==yt&amp;&amp;now.c==c2){
+            ans=now.s;
+            break;
+        }
+        Node nex;nex.x=now.x;nex.y=now.y;nex.s=now.s+1;nex.c=now.c;nex.f=(now.f+1)%4;
+        q.push(nex);
+    //    nex.x=now.x;nex.y=now.y;nex.s=now.s+1;nex.c=now.c;nex.f=(now.f+2)%4;
+    //    q.push(nex);//注意是旋转90° 
+        nex.x=now.x;nex.y=now.y;nex.s=now.s+1;nex.c=now.c;nex.f=(now.f+3)%4;
+        q.push(nex);
+        if(now.f==0){
+            nex.x=now.x-1;nex.y=now.y;nex.s=now.s+1;nex.c=(now.c+1)%5;nex.f=now.f;
+            q.push(nex);
+        }
+        else if(now.f==1){
+            nex.x=now.x;nex.y=now.y+1;nex.s=now.s+1;nex.c=(now.c+1)%5;nex.f=now.f;
+            q.push(nex);
+        }
+        else if(now.f==2){
+            nex.x=now.x+1;nex.y=now.y;nex.s=now.s+1;nex.c=(now.c+1)%5;nex.f=now.f;
+            q.push(nex);
+        }
+        else if(now.f==3){
+            nex.x=now.x;nex.y=now.y-1;nex.s=now.s+1;nex.c=(now.c+1)%5;nex.f=now.f;
+            q.push(nex);
+        }
+    }
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}</code></pre>
+<h1 id="E-六数码问题"><a href="#E-六数码问题" class="headerlink" title="E.六数码问题"></a>E.六数码问题</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=10+5;
+struct Node{
+    int a[10][10],s;
+};
+int a[10][10];
+int main(){
+    while(cin&gt;&gt;a[1][1]&gt;&gt;a[1][2]&gt;&gt;a[1][3]&gt;&gt;a[2][1]&gt;&gt;a[2][2]&gt;&gt;a[2][3]){
+        Node now;
+        for(int i=1;i&lt;=2;i++){
+            for(int j=1;j&lt;=3;j++){
+                now.a[i][j]=a[i][j];
+            }
+        }
+        queue&lt;Node&gt;q;
+        now.s=0;
+        q.push(now);
+        int ans=0x3f3f3f3f,cnt=0;
+        while(!q.empty()){
+            cnt++;
+            now=q.front();q.pop();
+            int sign=0;
+            for(int i=1;i&lt;=2;i++){
+                for(int j=1;j&lt;=3;j++){
+                    if(now.a[i][j]!=(i-1)*3+j){
+                        sign=1;
+                        break;
+                    }
+                }
+                if(sign)break;
+            }
+            if(!sign||cnt&gt;=1000){
+                if(sign==0)
+                ans=now.s;
+                break;
+            }
+            Node nex1=now,nex2=now;
+            int t=nex1.a[2][1];nex1.a[2][1]=nex1.a[2][2];nex1.a[2][2]=nex1.a[1][2];nex1.a[1][2]=nex1.a[1][1];nex1.a[1][1]=t;
+            t=nex2.a[2][2];nex2.a[2][2]=nex2.a[2][3];nex2.a[2][3]=nex2.a[1][3];nex2.a[1][3]=nex2.a[1][2];nex2.a[1][2]=t;
+            nex1.s++;nex2.s++;
+            q.push(nex1);
+            q.push(nex2);
+        }
+        if(ans==0x3f3f3f3f){
+            cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;
+        }
+        else{
+            cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;
+        }    
+    }
+}</code></pre>
+<h1 id="F-特殊的二阶魔方"><a href="#F-特殊的二阶魔方" class="headerlink" title="F.特殊的二阶魔方"></a>F.特殊的二阶魔方</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;map&gt;
+using namespace std;
+struct Node{
+    int a[7][4][4],st,s;
+};
+map&lt;int,int&gt;mp;
+int main(){
+    Node now;now.st=0;
+    int i,j,k;
+    for(i=1;i&lt;=6;i++){
+        for(j=1;j&lt;=2;j++){
+            for(k=1;k&lt;=2;k++){
+                char x;cin&gt;&gt;x;
+                now.a[i][j][k]=x-&#39;0&#39;;
+                now.s=now.s*2+now.a[i][j][k];
+            }
+        }
+    }
+    queue&lt;Node&gt;q;
+    q.push(now);
+    int ans=0x3f3f3f3f;
+    while(!q.empty()){
+        now=q.front();q.pop();
+        if(mp[now.s])continue;
+        mp[now.s]=1;
+        for(i=1;i&lt;=6;i++){
+            int sign=0;
+            for(j=1;j&lt;=2;j++){
+                for(k=1;k&lt;=2;k++){
+                    if(now.a[i][j][k]==1){
+                        sign=1;
+                    }
+                }
+            }
+            if(!sign){
+                cout&lt;&lt;now.st&lt;&lt;endl;
+                return 0;
+            }
+        }
+        Node nex=now;nex.st++;nex.s=0;
+        //1-Up 2-Down 3-Lefe 4-Right 5-front 6-back
+        //DR 
+        nex.a[6][2][1]=now.a[3][2][2];nex.a[6][2][2]=now.a[3][2][1];
+        nex.a[3][2][2]=now.a[5][2][2];nex.a[3][2][1]=now.a[5][2][1];
+        nex.a[5][2][1]=now.a[4][2][2];nex.a[5][2][2]=now.a[4][2][1];
+        nex.a[4][2][1]=now.a[6][2][1];nex.a[4][2][2]=now.a[6][2][2];
+        nex.a[2][1][1]=now.a[2][2][1];nex.a[2][1][2]=now.a[2][1][1];nex.a[2][2][2]=now.a[2][1][2];nex.a[2][2][1]=now.a[2][2][2];
+        for(i=1;i&lt;=6;i++){
+            for(j=1;j&lt;=2;j++){
+                for(k=1;k&lt;=2;k++){
+                    nex.s=nex.s*2+nex.a[i][j][k];
+                }
+            }
+        }
+        q.push(nex);
+        //DL
+        nex=now;nex.st++;nex.s=0;
+        nex.a[6][2][1]=now.a[4][2][1];nex.a[6][2][2]=now.a[4][2][2];
+        nex.a[3][2][1]=now.a[6][2][2];nex.a[3][2][2]=now.a[6][2][1];
+        nex.a[5][2][1]=now.a[3][2][1];nex.a[5][2][2]=now.a[3][2][2];
+        nex.a[4][2][1]=now.a[5][2][2];nex.a[4][2][2]=now.a[5][2][1];
+        nex.a[2][1][1]=now.a[2][1][2];nex.a[2][1][2]=now.a[2][2][2];nex.a[2][2][2]=now.a[2][2][1];nex.a[2][2][1]=now.a[2][1][1];
+        for(i=1;i&lt;=6;i++){
+            for(j=1;j&lt;=2;j++){
+                for(k=1;k&lt;=2;k++){
+                    nex.s=nex.s*2+nex.a[i][j][k];
+                }
+            }
+        }
+        q.push(nex);
+        //RU
+        nex=now;nex.st++;nex.s=0;
+        nex.a[1][1][2]=now.a[5][1][2];nex.a[1][2][2]=now.a[5][2][2];
+        nex.a[5][1][2]=now.a[2][2][2];nex.a[5][2][2]=now.a[2][1][2];
+        nex.a[2][1][2]=now.a[6][1][2];nex.a[2][2][2]=now.a[6][2][2];
+        nex.a[6][1][2]=now.a[1][2][2];nex.a[6][2][2]=now.a[1][1][2]; 
+        nex.a[4][1][1]=now.a[4][1][2];nex.a[4][1][2]=now.a[4][2][2];nex.a[4][2][2]=now.a[4][2][1];nex.a[4][2][1]=now.a[4][1][1];
+        for(i=1;i&lt;=6;i++){
+            for(j=1;j&lt;=2;j++){
+                for(k=1;k&lt;=2;k++){
+                    nex.s=nex.s*2+nex.a[i][j][k];
+                }
+            }
+        }
+        q.push(nex);
+        //RD
+        nex=now;nex.st++;nex.s=0;
+        nex.a[1][1][2]=now.a[6][2][2];nex.a[1][2][2]=now.a[6][1][2];
+        nex.a[6][1][2]=now.a[2][1][2];nex.a[6][2][2]=now.a[2][2][2];
+        nex.a[2][1][2]=now.a[5][2][2];nex.a[2][2][2]=now.a[5][1][2];
+        nex.a[5][1][2]=now.a[1][1][2];nex.a[5][2][2]=now.a[1][2][2]; 
+        nex.a[4][1][1]=now.a[4][2][1];nex.a[4][2][1]=now.a[4][2][2];nex.a[4][2][2]=now.a[4][1][2];nex.a[4][1][2]=now.a[4][1][1];
+        for(i=1;i&lt;=6;i++){
+            for(j=1;j&lt;=2;j++){
+                for(k=1;k&lt;=2;k++){
+                    nex.s=nex.s*2+nex.a[i][j][k];
+                }
+            }
+        }
+        q.push(nex);
+        //C
+        nex=now;nex.st++;nex.s=0;
+        nex.a[1][1][1]=now.a[3][2][1];nex.a[1][1][2]=now.a[3][1][1];
+        nex.a[3][1][1]=now.a[2][1][1];nex.a[3][2][1]=now.a[2][1][2];
+        nex.a[2][1][1]=now.a[4][2][1];nex.a[2][1][2]=now.a[4][1][1];
+        nex.a[4][1][1]=now.a[1][1][1];nex.a[4][2][1]=now.a[1][1][2];
+        nex.a[6][1][1]=now.a[6][2][1];nex.a[6][2][1]=now.a[6][2][2];nex.a[6][2][2]=now.a[6][1][2];nex.a[6][1][2]=now.a[6][1][1];
+        for(i=1;i&lt;=6;i++){
+            for(j=1;j&lt;=2;j++){
+                for(k=1;k&lt;=2;k++){
+                    nex.s=nex.s*2+nex.a[i][j][k];
+                }
+            }
+        }
+        q.push(nex);
+        //CC
+        nex=now;nex.st++;nex.s=0;
+        nex.a[1][1][1]=now.a[4][1][1];nex.a[1][1][2]=now.a[4][2][1];
+        nex.a[4][1][1]=now.a[2][1][2];nex.a[4][2][1]=now.a[2][1][1];
+        nex.a[2][1][1]=now.a[3][1][1];nex.a[2][1][2]=now.a[3][2][1];
+        nex.a[3][1][1]=now.a[1][1][2];nex.a[3][2][1]=now.a[1][1][1];
+        nex.a[6][1][1]=now.a[6][1][2];nex.a[6][1][2]=now.a[6][2][2];nex.a[6][2][2]=now.a[6][2][1];nex.a[6][2][1]=now.a[6][1][1];
+        for(i=1;i&lt;=6;i++){
+            for(j=1;j&lt;=2;j++){
+                for(k=1;k&lt;=2;k++){
+                    nex.s=nex.s*2+nex.a[i][j][k];
+                }
+            }
+        }
+        q.push(nex);
+    }
+    cout&lt;&lt;&quot;-1&quot;&lt;&lt;endl;
+    return 0;
+}</code></pre>
+<h1 id="G-推箱子"><a href="#G-推箱子" class="headerlink" title="G.推箱子"></a>G.推箱子</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=10+5;
+struct Node{
+    int xr,yr,x,y,s;
+};
+char a[maxn][maxn];int xt,yt;
+int d[4][2]={{1,0},{-1,0},{0,1},{0,-1}},vis[maxn][maxn][maxn][maxn];
+int main(){
+    int i;
+    for(i=1;i&lt;=10;i++)cin&gt;&gt;a[i]+1;
+    queue&lt;Node&gt;q;
+    Node now; 
+    for(i=1;i&lt;=10;i++){
+        for(int j=1;j&lt;=10;j++){
+            if(a[i][j]==&#39;2&#39;){
+                now.x=i;now.y=j;    
+            }
+            else if(a[i][j]==&#39;3&#39;){
+                xt=i;yt=j;
+            }
+            else if(a[i][j]==&#39;4&#39;){
+                now.xr=i;now.yr=j;
+            }
+        }
+    }
+    now.s=0;
+    q.push(now);
+    int ans=0x3f3f3f3f;
+    while(!q.empty()){
+        now=q.front();q.pop();
+        if(vis[now.xr][now.yr][now.x][now.y])continue;
+        vis[now.xr][now.yr][now.x][now.y]=1;
+        if(now.xr&lt;1||now.xr&gt;10||now.yr&lt;1||now.yr&gt;10||now.x&lt;1||now.x&gt;10||now.y&lt;1||now.y&gt;10)continue;
+        if(a[now.xr][now.yr]==&#39;1&#39;||a[now.x][now.y]==&#39;1&#39;)continue;
+        if(now.x==xt&amp;&amp;now.y==yt){
+            ans=now.s;
+            break;
+        }
+        for(i=0;i&lt;4;i++){
+            Node nex=now;
+            nex.xr+=d[i][0],nex.yr+=d[i][1],nex.s++;
+            if(nex.xr==nex.x&amp;&amp;nex.yr==nex.y){
+                nex.x+=d[i][0];nex.y+=d[i][1];
+                q.push(nex);
+            }
+            else{
+                q.push(nex);
+            }
+        }
+    }
+    if(ans==0x3f3f3f3f)cout&lt;&lt;&quot;-1&quot;&lt;&lt;endl;
+    else cout&lt;&lt;ans&lt;&lt;endl;
+}</code></pre>
+<h1 id="H-polygon"><a href="#H-polygon" class="headerlink" title="H.polygon"></a>H.polygon</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=2000+50;
+int n,m,vis[maxn];double len=10000.0,a[maxn],b[maxn];
+int main(){
+    cin&gt;&gt;n&gt;&gt;m;
+    int i,j;
+    for(i=1;i&lt;=n;i++){
+        a[i]=(i-1)*(len/n);
+    }
+    for(i=1;i&lt;=n+m;i++){
+        b[i]=(i-1)*(len/(n+m));
+    }
+    double ans=0;
+    for(i=1;i&lt;=n;i++){
+        int opt=0;double maxx=1e9;
+        for(j=1;j&lt;=n+m;j++){
+            if(!vis[j]&amp;&amp;fabs(a[i]-b[j])&lt;maxx){
+                maxx=fabs(a[i]-b[j]);
+                opt=j;
+            }
+        }    
+        vis[opt]=1;
+        ans+=fabs(a[i]-b[opt]);
+    }
+    printf(&quot;%.4lf\n&quot;,ans);
+    return 0;
+}</code></pre>
+<h1 id="I-木乃伊迷宫"><a href="#I-木乃伊迷宫" class="headerlink" title="I.木乃伊迷宫"></a>I.木乃伊迷宫</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=10+5;
+struct Node{
+    int xr,yr,xm,ym;
+};
+int a[maxn][maxn][maxn],n,xt,yt,vis[maxn][maxn][maxn][maxn];
+int d[4][2]={{0,1},{0,-1},{1,0},{-1,0}};
+int main(){
+    cin&gt;&gt;n;
+    int i,j;
+    for(i=1;i&lt;=n;i++){
+        int s,x,y;
+        cin&gt;&gt;x&gt;&gt;y&gt;&gt;s;
+        if(s==0){
+            a[x][y][0]=a[x+1][y][3]=1;//下侧 上侧 
+        }
+        else{
+            a[x][y][1]=a[x][y][2]=1;//右侧 左侧 ps: 我也不知道为什么这里错的可以AC，原本对的WA。 
+        }
+    }
+    Node now;
+    cin&gt;&gt;now.xm&gt;&gt;now.ym&gt;&gt;now.xr&gt;&gt;now.yr&gt;&gt;xt&gt;&gt;yt;
+    queue&lt;Node&gt;q;
+    q.push(now);
+    while(!q.empty()){
+        now=q.front();q.pop();
+        if(vis[now.xr][now.yr][now.xm][now.ym])continue;
+        vis[now.xr][now.yr][now.xm][now.ym]=1;
+        Node nex;
+        if(now.xr==xt&amp;&amp;now.yr==yt){
+            cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;
+            return 0;
+        }
+        for(int i=0;i&lt;4;i++){
+            Node nex;
+            if(i==0&amp;&amp;a[now.xr][now.yr][0])continue;
+            if(i==1&amp;&amp;a[now.xr][now.yr][3])continue;
+            if(i==2&amp;&amp;a[now.xr][now.yr][1])continue;
+            if(i==3&amp;&amp;a[now.xr][now.yr][2])continue;
+            nex.xr=now.xr+d[i][0];nex.yr=now.yr+d[i][1];
+            if(nex.xr&lt;0||nex.xr&gt;=6||nex.yr&lt;0||nex.yr&gt;=6)continue;
+            int res=2;
+            while(now.yr!=now.ym&amp;&amp;res){
+                if(now.ym&gt;now.yr&amp;&amp;!a[now.xm][now.ym][2])now.ym--;
+                else if(now.ym&lt;now.yr&amp;&amp;!a[now.xm][now.ym][1])now.ym++;
+                res--;
+            }
+            while(res){
+                if(now.xm&gt;now.xr&amp;&amp;!a[now.xm][now.ym][3])now.xm--;
+                else if(now.xm&lt;now.xr&amp;&amp;!a[now.xm][now.ym][0])now.xm++;
+                if(now.xm==now.xr&amp;&amp;now.ym==now.yr)break;
+                res--;
+            }
+            if(!res){
+                nex.xm=now.xm;nex.ym=now.ym;
+                q.push(nex);
+            }
+        }
+    }
+    cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;
+    return 0;
+}</code></pre>
+<h1 id="J-八数码"><a href="#J-八数码" class="headerlink" title="J.八数码"></a>J.八数码</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;map&gt;
+using namespace std;
+const int maxn=20+5;
+struct Node{
+    int s,a[5][5],state;
+}; 
+int a[maxn][maxn],t[maxn][maxn],state;map&lt;int,int&gt;mp;
+int main(){
+    int i,j;Node now;now.state=0;now.s=0;
+    for(i=1;i&lt;=3;i++){
+        for(j=1;j&lt;=3;j++){
+            cin&gt;&gt;now.a[i][j];
+            now.state=now.state*10+now.a[i][j];
+            t[i][j]=(i-1)*3+j;
+            state=state*10+t[i][j];
+        }
+    }
+    state-=9;
+    t[3][3]=0;
+    queue&lt;Node&gt;q;
+    int ans=0x3f3f3f3f;
+    q.push(now);
+    while(!q.empty()){
+        now=q.front();q.pop();
+        if(mp[now.state])continue;
+        mp[now.state]=1;
+        for(i=1;i&lt;=3;i++){
+            int sign=0;
+            for(j=1;j&lt;=3;j++){
+                if(now.a[i][j]==0){
+                    sign=1;break;
+                }
+            }
+            if(sign)break;
+        }
+        if(now.state==state){
+            ans=now.s;
+            break;
+        }
+        Node nex=now;
+        if(j&gt;=2){
+            swap(nex.a[i][j],nex.a[i][j-1]);
+            nex.state=0;
+            for(int i=1;i&lt;=3;i++){
+                for(int j=1;j&lt;=3;j++){
+                    nex.state=nex.state*10+nex.a[i][j];
+                }
+            }
+            nex.s++;
+            q.push(nex);
+        }
+        nex=now;
+        if(j&lt;=2){
+            swap(nex.a[i][j],nex.a[i][j+1]);
+            nex.state=0;
+            for(int i=1;i&lt;=3;i++){
+                for(int j=1;j&lt;=3;j++){
+                    nex.state=nex.state*10+nex.a[i][j];
+                }
+            }
+            nex.s++;
+            q.push(nex);
+        }
+        nex=now;
+        if(i&gt;=2){
+            swap(nex.a[i][j],nex.a[i-1][j]);
+            nex.state=0;
+            for(int i=1;i&lt;=3;i++){
+                for(int j=1;j&lt;=3;j++){
+                    nex.state=nex.state*10+nex.a[i][j];
+                }
+            }
+            nex.s++;
+            q.push(nex);
+        }
+        nex=now;
+        if(i&lt;=2){
+            swap(nex.a[i][j],nex.a[i+1][j]);
+            nex.state=0;
+            for(int i=1;i&lt;=3;i++){
+                for(int j=1;j&lt;=3;j++){
+                    nex.state=nex.state*10+nex.a[i][j];
+                }
+            }
+            nex.s++;
+            q.push(nex);
+        }
+    }
+    if(ans==0x3f3f3f3f)cout&lt;&lt;&quot;-1&quot;&lt;&lt;endl;
+    else cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+
+        <div id="aplayer-SBeirCnO" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-SBeirCnO"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "那年",
+              author: "枯木逢春",
+              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/NOJ">NOJ</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?MC7rf8QP3x";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "NOJ-test3&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>
