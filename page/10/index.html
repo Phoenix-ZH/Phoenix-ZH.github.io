@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 ~ Phoenix_ZH&#39;Blog</title>
+  <title>Phoenix_ZH&#39;Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -115,7 +115,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/guidang.jpg')no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -128,6 +128,10 @@
             
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
           
         </div>
       </div>
@@ -144,26 +148,58 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 91 篇文章</p>
-  <hr>
-  
+
+  <div class="row mb-4 mx-auto">
     
-      
-      <p class="h5">2020</p>
     
-    <a href="/2020/09/09/CodeForces-1407-D/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CodeForces-1407-D</span>
-      <span style="float: right;">09-09</span>
-    </a>
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-2732/">
+        <p class="h4 index-header">HDU-2732</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 2732 Leapin’ Lizards
+题目链接：https://vjudge.net/problem/HDU-2732
+题目大意：题目是说一个n*m的迷宫中，有每个格子有柱子。柱子高度为0~3，高度为0的柱子是不能站的（高度为0就是没有柱子）在一些有柱子的格子上有一些蜥蜴，一次最多跳距离d,相邻格子的距离是1，只要跳出迷宫就是安全的。这个距离是曼哈顿距离（好像是的）。蜥蜴一次最多跳距离d,但是起跳的地方的柱子高度会减一，一个柱子同一时间只能有一个蜥蜴要求最少几个不能逃出迷宫。
+题解：最大流问题，求出dinic跑出的最大流，然后总数-ans就是剩余的数。建图方法：
+1.每个柱子有容纳量，超过了就塌了。u–&gt;u’ 边权为容纳量
+2.有蜥蜴的柱子与起点s相连，即s–&gt;u,边权为1
+3.边界上可以跳出界的与终点相连，条件(x1&lt;=p||y1&lt;=p||n-x1+1&lt;=p||len-y1+1&lt;=p)&amp;&amp;h[x1][y1]，u’–&gt;t,边权0x3f3f3f3f
+4.任意两个有容纳量的柱子，且曼哈顿距离&lt;=d，可</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+    </span>
+  </nav>
   
-    
-    <a href="/2020/09/05/CodeForces-1409/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CodeForces-1409</span>
-      <span style="float: right;">09-05</span>
-    </a>
-  
-</div>
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
 
 
               </div>
@@ -300,7 +336,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "人生本无止境，前行何须彷徨。&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

@@ -153,6 +153,50 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/10/29/NOJ-%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA%E4%BD%9C%E4%B8%9A/">
+        <p class="h4 index-header">NOJ-算法设计理论作业</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.二分查找描述
+给定一个单调递增的整数序列，问某个整数是否在序列中。
+输入
+第一行为一个整数n，表示序列中整数的个数；第二行为n（n不超过10000）个整数；第三行为一个整数m（m不超过50000），表示查询的个数；接下来m行每行一个整数k。
+输出
+每个查询的输出占一行，如果k在序列中，输出Yes，否则输出No。
+输入样例
+51 3 4 7 113369
+输出样例
+YesNoNo
+思路：方法一：按照题目要求进行二分查找，由于a[]是单增数列，所以对于每一个输入查询x，我们先设置左边界l=1，有边界r=n，ans储存可能的位置，进行二分查找，每一次二分查找时mid=(l+r)/2。如果a[mid]&gt;=x，说明如果存在x，那么x一定在左边界（包括mid），那么此时r=mid-1，ans=mid；如果a[mid]&lt;x，则说明x一定在有边界。二分查找完之后，要验证a[ans]是否等于x，因为二分只是由于它是有序序列进行二分，不断查找与x最接近的数字，但它不一定能够是x。
+这个方法时间复杂度为O(nlogn).
+代码：
+#include&lt;cstdio&gt;
+#include</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-29&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/10/23/NOJ-test3/">
         <p class="h4 index-header">NOJ-test3</p>
         
@@ -583,55 +627,11 @@ int main()
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/31/CodeForces-1388/">
-        <p class="h4 index-header">CodeForces-1388</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称： Captain Flint and Crew Recruitment 
-题目大意：如果一个数 x能够表示成两个不同质数的乘积，那我们就称 x是 nearly prime 。给出n，求n能否分成4个不同正整数的和，其中至少三个是 nearly prime 
-思路：首先可以取得最小的三个 nearly prime：6，10，14。如果n&lt;=30那么肯定无法得到符合要求的组合。如果n&gt;=45则至少都有6，10，14，所以一定可以得到符合要求的组合。问题就是30&lt;n&lt;45之间的情况，只需要单独分析x=6/10/14（x=n-30）的情况。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int T,n;
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--){
-        cin&gt;&gt;n;
-        if(n&lt;=30)
-        {
-            printf(&quot;NO\n&quot;);
-          </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-31&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
