@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>NOJ-防卫导弹</title>
+    <link href="/2020/11/04/NOJ-%E9%98%B2%E5%8D%AB%E5%AF%BC%E5%BC%B9/"/>
+    <url>/2020/11/04/NOJ-%E9%98%B2%E5%8D%AB%E5%AF%BC%E5%BC%B9/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="防卫导弹"><a href="#防卫导弹" class="headerlink" title="防卫导弹"></a>防卫导弹</h1><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>一种新型的防卫导弹可截击多个攻击导弹。它可以向前飞行，也可以用很快的速度向下飞行，可以毫无损伤地截击进攻导弹，但不可以向后或向上飞行。但有一个缺点，尽管它发射时可以达到任意高度，但它只能截击比它上次截击导弹时所处高度低或者高度相同的导弹。现对这种新型防卫导弹进行测试，在每一次测试中，发射一系列的测试导弹（这些导弹发射的间隔时间固定，飞行速度相同），该防卫导弹所能获得的信息包括各进攻导弹的高度，以及它们发射次序。现要求编一程序，求在每次测试中，该防卫导弹最多能截击的进攻导弹数量，一个导弹能被截击应满足下列两个条件之一：<br>a)它是该次测试中第一个被防卫导弹截击的导弹；<br>b)它是在上一次被截击导弹的发射后发射，且高度不大于上一次被截击导弹的高度的导弹。</p><p>输入</p><p>多个测例。<br>每个测例第一行是一个整数n（n不超过100），第二行n个整数表示导弹的高度（数字的顺序即发射的顺序）。<br>n＝0表示输入结束。</p><p>输出</p><p>每个测例在单独的一行内输出截击导弹的最大数目。</p><p>输入样例：</p><p>5<br>5 6 100 6 61<br>0</p><p>输出样例：</p><p>2</p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>枚举每一个导弹i（i from 1 to n），这个导弹一定是由之前更高的导弹击中（设未击中导弹的时候，拦截导弹的高度为0x3f3f3f3f）枚举之前的所有导弹，一旦h[j]&gt;=h[i]，那么dp[i]=max{dp[i],dp[j]+1},当然被拦截的导弹i也可以作为第一个被拦截的导弹，dp[i]=1。最后在线性查找一遍最大的数量,ans=max{ans,dp[i]};</p><p>这个方法特别简单，不粘贴代码了。时间复杂度 O(n^2)。</p><p>这个复杂度不够优秀，下面就介绍O(nlogn)的做法。</p><p>先介绍一下<strong>lower_bound,upper_bound函数的使用方法</strong>。</p><p>lower_bound(dp+1,dp+1+n,h[i])dp[]中第一个&gt;=h[i]的下标<br>upper_bound(dp+1,dp+1+n,h[i])dp[]中第一个&gt;h[i]的下标<br>lower_bound(dp+1,dp+1+n,h[i],greater&lt; int &gt;())dp[]中第一个&lt;=h[i]的下标 greater&lt; int &gt;() == cmp(int x,int y){return x&gt;y}<br>upper_bound(dp+1,dp+1+n,h[i],greater&lt; int &gt;())dp[]中第一个&lt;h[i]的下标 </p><p>greater&lt; int &gt;()表示内置类型从大到小排序，比如说原序列是1，2，4，7，15，34，在greater&lt; int &gt;()的表示下，<br>1&gt;2&gt;4&gt;7&gt;15&gt;34,lower_bound(num,num+6,7,greater&lt; int &gt;()) 返回greater&lt; int &gt;序列下第一个大于或等于被查数7的值，<br>即4；也就是返回的是原序列的中第一个小于或等于被查数7的值 </p><p>下面介绍二分+动态规划来解决最长不上升子序列问题：</p><p>我们在O(n^2)的做法是将导弹i(1-n)之前的导弹j(1-i)都枚举一遍，然后更新dp[i]的值，但实际上根本没有必要将导弹j全部枚举一遍。我们定义一个dp[]数组，dp[]数组储存的是答案所求的最长的不上升子序列。那么我们对于导弹i，如果它要加入到dp[]中，那么就要找到dp[]数组中第一个小于h[i]的导弹，然后把它替换成h[i].（dp[]初始化为0），当已加入的导弹均高于当前导弹，就直接加入该导弹（无需替换）。</p><p>思考这样做的正确性：因为将dp[j]替换成了h[i]，此时dp[]依旧是非递增序列，并且保证dp[]相较于之前是更加优化的（因为它整体要更大了）。</p><p>如何查找这个最先小于h[i]的dp[j]呢？显然dp[]是非递增序列，所以可以考虑用二分查找。对于很多单调性问题，首先考虑单调栈、单调队列、二分。尤其是这种带查找的最优化问题很有可能用二分。二分查找到最先小于的h[i]的进行替换。并且如果h[i]是直接假如dp[]，记得更新dp[]数组的大小。最后的dp[]数组的大小就是答案。</p><p><strong>PS</strong>：那如果问题是问，最少需要几枚导弹呢？这就是最长上升序列问题了。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=1000+50;int n,h[maxn],dp[maxn];int max(int x,int y){    if(x&gt;=y)return x;    return y;}int cmp(int x,int y){    return x&gt;y;}int main(){    int i;    while(1){        cin&gt;&gt;n;        if(n==0)break;        for(i=1;i&lt;=n;i++)cin&gt;&gt;h[i],dp[i]=0;        int ans=0;        for(i=1;i&lt;=n;i++){            int t=upper_bound(dp+1,dp+1+n,h[i],cmp)-dp;            dp[t]=h[i];            ans=max(ans,t);        }        cout&lt;&lt;ans&lt;&lt;endl;            }    return 0;}</code></pre>        <div id="aplayer-PVlPGJyY" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-PVlPGJyY"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-最长公共子序列</title>
+    <link href="/2020/11/04/NOJ-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/"/>
+    <url>/2020/11/04/NOJ-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h1><p>描述</p><p>一个给定序列的子序列是在该序列中删去若干元素后得到的序列。确切地说，若给定序列X=&lt;x1, x2,…, xm&gt;，则另一序列Z=&lt;z1, z2,…, zk&gt;是X的子序列是指存在一个严格递增的下标序列 &lt;i1, i2,…, ik&gt;，使得对于所有j=1,2,…,k有：<br>Xij ＝ Zj<br>如果一个序列S即是A的子序列又是B的子序列，则称S是A、B的公共子序列。<br>求A、B所有公共子序列中最长的序列的长度。</p><p>输入</p><p>输入共两行，每行一个由字母和数字组成的字符串，代表序列A、B。A、B的长度不超过200个字符。</p><p>输出</p><p>一个整数，表示最长各个子序列的长度。</p><p>格式：printf(“%d\n”);</p><p>输入样例</p><p>programming<br>contest</p><p>输出样例</p><p>2</p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>像LCS这样的问题，它具有重叠子问题的性质，因此：用递归来求解就太不划算了。因为采用递归，它重复地求解了子问题。采用动态规划时，并不需要去一 一 计算那些重叠了的子问题 。对于<strong>dp[i][j]</strong>表示 <strong>(s1,s2….si) 和 (t1,t2…tj) 的最长公共子序列的长度</strong> 。</p><p>当i==0||j==0 时,dp[i][j]=0;</p><p>当i,j&gt;0,si==tj时,  dp[i][j]=dp[i-1][j-1]+1;</p><p>当i,j&gt;0,si!=tj时，dp[i][j]=max{dp[i][j-1],dp[i-1][j]};</p><h3 id="时间复杂度："><a href="#时间复杂度：" class="headerlink" title="时间复杂度："></a><strong>时间复杂度：</strong></h3><p>由于只需要填一个m行n列的二维数组，其中m代表第一个字符串长度，n代表第二个字符串长度</p><p>所以时间复杂度为O（m*n）</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=1000+50;char s[maxn],t[maxn];int lens,lent,dp[maxn][maxn];int max(int x,int y){    if(x&gt;y)return x;    return y;}int main(){    scanf(&quot;%s%s&quot;,s+1,t+1);    lens=strlen(s+1);    lent=strlen(t+1);    for(int i=1;i&lt;=lens;i++){        for(int j=1;j&lt;=lent;j++){            if(s[i]==t[j]){                dp[i][j]=dp[i-1][j-1]+1;            }            else{                dp[i][j]=max(dp[i-1][j],dp[i][j-1]);            }        }    }    printf(&quot;%d\n&quot;,dp[lens][lent]);    return 0;}</code></pre>        <div id="aplayer-fprefIMH" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-fprefIMH"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>NOJ-test4</title>
     <link href="/2020/11/02/NOJ-test4/"/>
     <url>/2020/11/02/NOJ-test4/</url>
