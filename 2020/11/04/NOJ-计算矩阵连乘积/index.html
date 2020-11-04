@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 ~ Phoenix_ZH&#39;Blog</title>
+  <title>NOJ-计算矩阵连乘积 ~ Phoenix_ZH&#39;Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -35,11 +35,13 @@
   <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -115,7 +117,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/guidang.jpg')no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -125,6 +127,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 十一月 4日 2020, 11:07 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    708 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      3 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -136,65 +173,122 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 96 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/08/31/CodeForces-1397/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CodeForces-1397</span>
-      <span style="float: right;">08-31</span>
-    </a>
-  
-    
-    <a href="/2020/08/26/CodeForces-1400/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CodeForces-1400</span>
-      <span style="float: right;">08-26</span>
-    </a>
-  
-    
-    <a href="/2020/08/17/CodeForces-1392/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CodeForces-1392</span>
-      <span style="float: right;">08-17</span>
-    </a>
-  
-    
-    <a href="/2020/08/13/CodeForces-1394/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CodeForces-1394</span>
-      <span style="float: right;">08-13</span>
-    </a>
-  
-    
-    <a href="/2020/08/10/CodeForces-1391/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CodeForces-1391</span>
-      <span style="float: right;">08-10</span>
-    </a>
-  
-    
-    <a href="/2020/08/08/CodeForces-1393/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CodeForces-1393</span>
-      <span style="float: right;">08-08</span>
-    </a>
-  
-</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="计算矩阵连乘积"><a href="#计算矩阵连乘积" class="headerlink" title="计算矩阵连乘积"></a>计算矩阵连乘积</h1><p><strong>描述</strong></p>
+<p>在科学计算中经常要计算矩阵的乘积。矩阵A和B可乘的条件是矩阵A的列数等于矩阵B的行数。若A是一个p×q的矩阵，B是一个q×r的矩阵，则其乘积C=AB是一个p×r的矩阵。计算C=AB总共需要p×q×r次乘法。<br>现在的问题是，给定n个矩阵{A1,A2,…,An}。其中Ai与Ai+1是可乘的，i=1,2,…,n-1。<br>要求计算出这n个矩阵的连乘积A1A2…An最少需要多少次乘法。</p>
+<p><strong>输入</strong></p>
+<p>输入数据的第一行是一个整树n（0 &lt; n &lt;= 10），表示矩阵的个数。<br>接下来的n行每行两个整数p,q( 0 &lt; p,q &lt; 100)，分别表示一个矩阵的行数和列数。</p>
+<p><strong>输出</strong></p>
+<p>输出一个整数：计算连乘积最少需要乘法的次数。</p>
+<p><strong>输入样例</strong></p>
+<p>10<br>1 2<br>2 3<br>3 4<br>4 5<br>5 6<br>6 7<br>7 8<br>8 9<br>9 10<br>10 11</p>
+<p><strong>输出样例</strong></p>
+<p>438</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>设dp[i][j]表示合并第i个矩阵到第j个矩阵所需要的最少的乘法次数。初始化dp为0x3f3f3f3f（即初始化为无穷大）。dp[i][i]=0(所有的i-i的合并的乘法次数为0).然后就开始考虑动态规划的转移方程：先枚举长度len （len from 2 to n），合并的长度最短为2，最长为n。然后嵌套枚举左边界l（l from 1 to n），与此同时由len和l就可以得到r=l+len-1.于是就可以考虑dp[l][r] 的转移方程了，要求<strong>l-r</strong>的合并耗费的乘法次数，就要考虑中间枚举一个点mid，那么合并<strong>l-r</strong>的乘法次数就是合并<strong>l-mid</strong>与合并<strong>mid+1 - r</strong>的乘法次数之和再加上合并新的左右两个矩阵，它们的乘法次数是p[l] * q[m] * q[r]。枚举l，r之间的一个矩阵mid(l&lt;=mid&lt;=mid-1)，dp[l][r]=min(dp[l][r],dp[l][mid+dp[mid+1][r]+ p[l] * q[m] * q[r] ).最终答案就是dp[1][n];</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000+50;
+int n,p[maxn],q[maxn],dp[maxn][maxn];
+int min(int x,int y){
+    if(x&lt;=y)return x;
+    return y;
+}
+int main(){
+    cin&gt;&gt;n;
+    memset(dp,0x3f3f3f3f,sizeof(dp));
+    for(int i=1;i&lt;=n;i++){
+        cin&gt;&gt;p[i]&gt;&gt;q[i];
+        dp[i][i]=0;
+    }
+    for(int len=2;len&lt;=n;len++){
+        for(int l=1;l&lt;=n;l++){
+            int r=l+len-1;
+            for(int m=l;m&lt;=r-1;m++){
+                dp[l][r]=min(dp[l][r],dp[l][m]+dp[m+1][r]+p[l]*q[m]*q[r]);
+            }
+        }
+    }
+    cout&lt;&lt;dp[1][n]&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+
+        <div id="aplayer-bRaDzJsl" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-bRaDzJsl"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "那年",
+              author: "枯木逢春",
+              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
 
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/NOJ">NOJ</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -273,6 +367,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -324,7 +423,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "NOJ-计算矩阵连乘积&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

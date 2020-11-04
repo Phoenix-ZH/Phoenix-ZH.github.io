@@ -153,6 +153,55 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/26/CodeForces-1400/">
+        <p class="h4 index-header">CodeForces-1400</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A.题目名称 String Similarity 
+题目大意：定义两个字符串相似：两个字符串中至少有一个位置的值相同。
+现在给出一个长度为2n−1的字符串s，现在让你构造一个长度为n的字符串，使得这个字符串与s的所有长度为n的子串都相似。
+思路：直接将s[n]输出n次
+ps：一开始想复杂了，认为cnt0的个数&gt;=n就全输出0，否则全输出1.实际上全输出s[n]就可以了。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1e3+50;
+int T,n;char s[maxn];
+int main()
+{
+    cin&gt;&gt;T;
+    while(T--)
+    {
+        cin&gt;&gt;n;
+        cin&gt;&gt;s+1;
+        int opt0=0;
+        for(int i=1;i&lt;=2*n-1;i++)
+            if(s[i]==&#39;0&#39;)
+                opt0++</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-26&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/08/17/CodeForces-1392/">
         <p class="h4 index-header">CodeForces-1392</p>
         
@@ -543,51 +592,6 @@ bool check(long long mid)
             <a href="/tags/%E5%B0%BA%E5%8F%96">尺取</a>&nbsp;
           
             <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88%E9%98%9F%E5%88%97">单调栈队列</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/21/NOJ/">
-        <p class="h4 index-header">NOJ</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">实验4.1：求赋权图中一个结点到所有结点的最短路径的长度#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=10000+10;
-//---------------------------------------------邻接矩阵-------------------------------------------------------------------------------//
-struct AdjMatrix
-{
-    int V,E;
-    char Vexs[maxn];
-    int Edge[maxn][maxn];
-};
-int vis[maxn],path[maxn],dist[maxn];
-//----------创建、初始化图----引用图G，节点数V，边数E---------------//
-void CreateAdjMatrix(A</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-21&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">NOJ-数据结构</a>&nbsp;
           
         
       </div>
