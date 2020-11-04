@@ -153,6 +153,39 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/09/HDU-1045/">
+        <p class="h4 index-header">HDU-1045</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称： HDU - 1045 Fire Net
+题目链接https://vjudge.net/problem/HDU-1045#author=Codeblocksm
+题目大意： 现在有一个N*N的地图，地图上有一些围墙。你的任务是在没有围墙的空白地方建尽可能多的炮台。 假设炮台可以向“上下左右”四个方向发射子弹，子弹可以穿越任何距离并可在途中摧毁一个另一个炮台。而墙壁结构坚固，可以阻止子弹。 问最多可以建设多少个炮台？
+题解：刚开始做二分图的最大匹配问题，没有什么思路啊，没想到如何将一块区域弄来建图，后来看了一下别人的思路，将同一列的联通区域求出来，当然同一联通区域有且只有一个炮台，否则不合题意；将同一行的联通区域求出来，也只能存在一个炮台。如何将列和行结合起来呢？然后列中第i个连通块与行中第j个连通块有交点，说明交点处可以建炮台，判断方法：y[j].h&gt;=x[i].s&amp;&amp;y[j].h&lt;=x[i].t&amp;&amp;x[i].l&gt;=y[j].s&amp;&amp;x[i].l&lt;=y[j].t。那么可以add(i,j+N)。这样建了图后用匈</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/09/HDU-2255/">
         <p class="h4 index-header">HDU-2255</p>
         
@@ -520,41 +553,6 @@ void next_p</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/kmp">kmp</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3374/">
-        <p class="h4 index-header">HDU-3374</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3374 String Problem
-题目链接：https://vjudge.net/problem/HDU-3374
-题目大意：对于一个字符串，它可以每次左移一次，得到一个新的字符串，因此一个长度为n的字符串，可以得到n个字符串。问，字典序最小的字符串排第几位，一共有多少个，字典序最大的字符串排第几位，一共有多少个ps:如果最大和最小的有多个，输出最先出现的那个。
-题解：求有多少个相同的字符串相对简单，并且运用到了kmp的知识，只有内部循环的字符串才可能会重复，对于这种字符串来讲它的循环节T= n-Next[n]，出现次数times=n/T。如何求最大字符串和最小字符串呢？这个就需要用到字符串的最小表示法和最大表示法。这里简单描述一下字符串的最小表示法，至于字符串的最大表示法，可以将最小表示法照搬修改即可。字符串的最小表示法：设定一个opt1和一个opt2与k。初始opt1=0，opt2=1，k=0，一开始指向s[0],s[1]如果s[opt1+k]==s[opt2+k]，则k++.注意opt2+k可能越界，所以要对len取模。当k==len时，说明每一个字符</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/kmp">kmp</a>&nbsp;
-          
-            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E8%A1%A8%E7%A4%BA%E6%B3%95">字符串的最小(大)表示法</a>&nbsp;
           
         
       </div>

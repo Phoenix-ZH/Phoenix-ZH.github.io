@@ -153,6 +153,49 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/12/POJ-2594/">
+        <p class="h4 index-header">POJ-2594</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-2594  Treasure Exploration 
+题目链接：https://vjudge.net/problem/POJ-2594
+题目大意：在外星上有n个点需要机器人去探险，有m条单向路径。问至少需要几个机器人才能遍历完所有的点，一个点可以被多个机器人经过（这就是和单纯的最小路径覆盖的区别）。
+题解：这也是最小路径覆盖问题，但是这与最小不相交路径覆盖问题不同，这是最小相交路径覆盖问题，每个顶点可以经过多次。算法和最小不相交路径覆盖问题基本相同，但是需要用闭包传递预处理一下再建图。
+闭包传递的原因：
+  
+如图，如果不进行闭包传递，最终需要三条路径，但实际上3可以经过多次，只需要两条路径，如果1-&gt;2-&gt;3这条路径走了，4-&gt;2-&gt;5也是可以走的，于是就需要（1，3）合并，（4，5）合并，这就要用到闭包传递。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E8%A6%86%E7%9B%96">最小路径覆盖</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/11/HDU-1151/">
         <p class="h4 index-header">HDU-1151</p>
         
@@ -475,39 +518,6 @@ ps：数组开小了不会RE，它会TLE！因为一开始只开了10000的边�
 题目链接：https://vjudge.net/problem/HDU-2444#author=0
 题目大意：有n个关系，他们之间某些人相互认识。这样的人有m对。你需要把人分成2组，使得每组人内部之间是相互不认识的。如果可以，就可以安排他们住宿了。安排住宿时，住在一个房间的两个人应该相互认识。最多的能有多少个房间住宿的两个相互认识。 
 题解：这个题分为两个问题，第一个问题就是问是否可以分成两组，每一组内部任意两人都互相不认识；第二个问题是最多有几组两人之间相互认识，注意一人只能选择一次。第一个问题很显然就是判断这个图是否可以形成一个二分图，第二个问题是在该图是二分图的条件下的最大匹配数。二分图的判断方法就染色法，用bfs，将相邻的点全部染成相反的颜色，一旦该点与相邻点颜色相同就说明不能形成二分图，最后如果无矛盾就说明可以形成二分图。注意我们建图全部小–&gt;大，而条件给的数据也是如此，这样一定是从小的点出发，bfs起点就为1。求最大匹配时候，我们注意这图是单向的所以直接跑匈牙利。当然保险的是建</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/09/HDU-1045/">
-        <p class="h4 index-header">HDU-1045</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称： HDU - 1045 Fire Net
-题目链接https://vjudge.net/problem/HDU-1045#author=Codeblocksm
-题目大意： 现在有一个N*N的地图，地图上有一些围墙。你的任务是在没有围墙的空白地方建尽可能多的炮台。 假设炮台可以向“上下左右”四个方向发射子弹，子弹可以穿越任何距离并可在途中摧毁一个另一个炮台。而墙壁结构坚固，可以阻止子弹。 问最多可以建设多少个炮台？
-题解：刚开始做二分图的最大匹配问题，没有什么思路啊，没想到如何将一块区域弄来建图，后来看了一下别人的思路，将同一列的联通区域求出来，当然同一联通区域有且只有一个炮台，否则不合题意；将同一行的联通区域求出来，也只能存在一个炮台。如何将列和行结合起来呢？然后列中第i个连通块与行中第j个连通块有交点，说明交点处可以建炮台，判断方法：y[j].h&gt;=x[i].s&amp;&amp;y[j].h&lt;=x[i].t&amp;&amp;x[i].l&gt;=y[j].s&amp;&amp;x[i].l&lt;=y[j].t。那么可以add(i,j+N)。这样建了图后用匈</div>
         </div>
       </a>
 
