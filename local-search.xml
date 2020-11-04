@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>NOJ-石子合并</title>
+    <link href="/2020/11/04/NOJ-%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/"/>
+    <url>/2020/11/04/NOJ-%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="石子合并"><a href="#石子合并" class="headerlink" title="石子合并"></a>石子合并</h1><p><strong>描述</strong></p><p>在一个圆形操场的四周摆放着n堆石子(n&lt;= 100)，现要将石子有次序地合并成一堆。规定每次只能选取相邻的两堆合并成新的一堆,并将新的一堆的石子数,记为该次合并的得分。编一程序，读入石子堆数n及每堆的石子数(&lt;=20)。选择一种合并石子的方案,使得做n－1次合并,得分的总和最小； 比如有4堆石子：4 4 5 9 则最佳合并方案如下：<br>4 4 5 9 score: 0<br>8 5 9 score: 8<br>13 9 score: 8 + 13 = 21<br>22 score: 8 + 13 + 22 = 43</p><p><strong>输入</strong></p><p>可能有多组测试数据。 当输入n=0时结束! 第一行为石子堆数n(1&lt;=n&lt;=100)； 第二行为n堆的石子每堆的石子数,每两个数之间用一个空格分隔。</p><p><strong>输出</strong></p><p>合并的最小得分，每个结果一行。</p><p><strong>输入样例</strong></p><p>4 4 4 5 9 0</p><p><strong>输出样例</strong></p><p>43</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一开始以为这个题和合并果子一样是个贪心的题，拿着优先队列就开始一波贪心，WA了。才发现是合并相邻的石子。那这个题就和上一个<strong>计算矩阵连乘积</strong>的题几乎一样了。但是也有不一样的。这个题的序列是循环序列，并且为了记录每一次合并对答案的贡献我们还需要记录前缀和（这里求前缀和是为了优化时间复杂度，不求前缀和的话每次求贡献需要O(n)），由于这是<strong>循环数列</strong>，求前缀和时候需要求前2 * n的。数列大小是2 * n（a[1],a[2],…,a[n],a[1],a[2],…a[n]）.设sum[i]为数组a[i]前i个的和，那么要求l-r之间a[]之和，就可以O(1) 求得，即sum[r]-sum[l-1]。设dp[i][j]为合并i-j之间所有石子的最小代价，初始化为0x3f3f3f3f（即无穷大），dp[i][i]=0(i from 1 to n即所有的单堆石子合并代价都是0)。枚举长度len(len from 2 to n)，嵌套枚举左边界l（l from 1 to n），那么有边界r=l+len-1，由此可以更新dp[l][r],为了求dp[l][r]，还需要考虑是哪两段石子进行了合并，所以需要枚举l-r之间的mid(l&lt;=mid&lt;=r-1)，这样合并石子区段l-mid和mid+1 - r 。dp[l][r]=min{dp[l][r],dp[l][mid]+dp[mid+1][r]+sum[r]-sum[l-1]};(每一次合并除了那两个区段合并的代价，还需要注意合并当前这两个区段的代价是区段石子的总和：sum[r]-sum[l-1]).</p><p>最后需要枚举一遍答案求得最优解：ans=min(ans,dp[i][i+len-1]);(i from 1 to n 需要找到合并的起点)。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;using namespace std;const int maxn=200+50;int a[maxn],n,dp[maxn][maxn],sum[maxn];int min(int x,int y){    if(x&lt;=y)return x;    return y;}int main(){    while(1){        int i;        cin&gt;&gt;n;        if(n==0)break;        memset(dp,0x3f3f3f3f,sizeof(dp));        for(i=1;i&lt;=n;i++)cin&gt;&gt;a[i],sum[i]=sum[i-1]+a[i],dp[i][i]=dp[i+n][i+n]=0;        for(i=1;i&lt;=n;i++)sum[i+n]=sum[i+n-1]+a[i];         for(int len=2;len&lt;=n;len++){            for(int l=1;l&lt;=2*n-len+1;l++){                int r=l+len-1;                for(int m=l;m&lt;=r-1;m++){                    dp[l][r]=min(dp[l][r],dp[l][m]+dp[m+1][r]+sum[r]-sum[l-1]);                }            }        }//len从2到n 更新         int ans=0x3f3f3f3f;        for(i=1;i&lt;=n;i++){            ans=min(ans,dp[i][i+n-1]);        }        cout&lt;&lt;ans&lt;&lt;endl;    }    return 0;} </code></pre>        <div id="aplayer-dHovcvRt" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-dHovcvRt"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>NOJ-计算矩阵连乘积</title>
     <link href="/2020/11/04/NOJ-%E8%AE%A1%E7%AE%97%E7%9F%A9%E9%98%B5%E8%BF%9E%E4%B9%98%E7%A7%AF/"/>
     <url>/2020/11/04/NOJ-%E8%AE%A1%E7%AE%97%E7%9F%A9%E9%98%B5%E8%BF%9E%E4%B9%98%E7%A7%AF/</url>
