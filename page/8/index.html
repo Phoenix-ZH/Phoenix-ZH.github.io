@@ -153,6 +153,180 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4763/">
+        <p class="h4 index-header">HDU-4763</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 4763 Theme Section
+题目链接：https://vjudge.net/problem/HDU-4763#author=0
+题目大意：字符串E是字符串S的前缀和后缀，同时也出现在字符串S的中间，不与前缀后缀重合，问字符串S中符合要求的字符串E的最大长度。
+题解：这题显示是kmp问题，kmp中Next[i]表示字符串s从0…..i-1中前缀与后缀的最大公共子串，而问题就是求EAEBE，A，B长度任意(可以为0)，显然E最长为Next[len]，于是可以从len-Next[len]开始往前看Next[now]与E的大小关系，now&gt;=2*E，因为不可以重叠，如果找不到呢，E就应该缩小，理论是E–，所以E=Next[E]，继续寻找，直到找到或者无法继续。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000000+5;
+in</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-2387/">
+        <p class="h4 index-header">POJ-2387</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 2387 Til the Cows Come Home
+题目链接：https://vjudge.net/problem/POJ-2387#author=ght5160
+题目大意：求从1到n的最短距离
+题解：最短路模板，spfa或者dijkstra+堆优化。朴素Dijkstra：时间复杂度o(n^2)堆优化Dijkstra：时间复杂度o(（V+E）logV）
+spfa在稀疏图O（E），稠密图O（VE）
+dijkstra+堆优化的代码：
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=2000+5;
+int n,m,k=1,dist[maxn],vis[maxn],head[maxn];
+struct node
+{
+    int to,next,w;
+}edge[maxn*2];
+struct N
+{
+  </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-2253/">
+        <p class="h4 index-header">POJ-2253</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 2253 Frogger
+题目链接：https://vjudge.net/problem/POJ-2253#author=dusenlin
+题目大意：两块石头之间的青蛙距离被定义为两块石头之间所有可能路径上的最小必要跳跃距离，某条路径的必要跳跃距离即这条路径中单次跳跃的最远跳跃距离。求1到2的最小必要跳跃距离。
+题解：数据很小，符合Floyd算法。每一次更新的时候需要调整一下：dist[i][j]=min(dist[i][j],max(dist[i][k],dist[k][j]));因为必要跳跃距离是指整个路径单次跳跃的最远距离，所以取max
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=200+5;
+int n;double dist[maxn][maxn],x[maxn],y[maxn];
+i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1797/">
+        <p class="h4 index-header">POJ-1797</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1797 Heavy Transportation
+题目链接：https://vjudge.net/problem/POJ-1797#author=0
+题目大意：求1-n路径上边权最小值最大。
+题解：最短路径的变形题，用spfa来实现原本的dist[edge[i].to]=min(dist[edge[i].to],dist[x]+edge[i].w)修改为dist[edge[i].to]=max(dist[edge[i].to],min(dist[x],edge[i].w)注意初始化dist全为0，由于收缩，dist[1] =0x3f3f3f3f;
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=1000000+5;
+const int maxm=1000+5;
+int k=1,T,n,m,head</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-3268/">
         <p class="h4 index-header">POJ-3268</p>
         
@@ -407,162 +581,11 @@ int n,m,head[maxn],vis[maxn],used[</div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1511/">
-        <p class="h4 index-header">POJ-1511</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1511 Invitation Cards
-题目链接：https://vjudge.net/problem/POJ-1511#author=0
-题目大意：n-1个人从1号点出发，到剩余n-1个宣传点，然后再回到1号点汇报结果，求所有人往返路径和的最小值。
-题解：m条边，边号为偶数的表示正方向，边号为奇数的表示反方向。spfa1()沿着正方向跑，起点为1，则dist[i]表示的是从1到i的最短距离。spfa2()沿着反方向跑，起点为1，则dist2[i]表示的是从i到1的最短距离。最终答案就是dist1[i]+dist2[i]的总和，i∈[2,n]。
-代码：    #include&lt;cstdio&gt;
-    #include&lt;cstring&gt;
-    #include&lt;iostream&gt;
-    #include&lt;algorithm&gt;
-    #include&lt;queue&gt;
-    using namespace std;
-    const long long maxn=1000000+5;
-    str</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3159/">
-        <p class="h4 index-header">POJ-3159</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3159 Candies
-题目链接：https://vjudge.net/problem/POJ-3159#author=2018112767
-题目大意：有n个同学，m条信息，每条信息为a,b,c三个整数表示a相信b的糖果不会比自己多于c。问n同学最多比1同学多多少个糖果？
-题解：这是差分约束的题目，由题知Have[b]-Have[a]&lt;=c;即Have[b]&lt;=c+Have[a]；而最短路的更新条件是dist[edge[i].to]&gt;dist[x]+edge[i].w，就说明了dist[edge[i].to]&lt;=dist[x]+edge[i].w;于是建边就可以a—&gt;b,边权为c，跑最短路。dist[n]就是答案
-ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保险！
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-            <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F">差分约束</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2502/">
-        <p class="h4 index-header">POJ-2502</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2502 Subway
-题目链接：https://vjudge.net/problem/POJ-2502#author=1738160864
-题目大意：小k要从家去学校，他可以选择步行或者地铁，步行的速度是10km/h，地铁的速度是40km/h。假设小k非常的幸运，每次他到地铁站就立刻会有地铁。小k可以随意上下地铁，并且可以在地铁线路之间转换。所有的地铁运行都是双向的。注意地铁站不会重复出现。
-题解：n&lt;=200，所以可以用Floyd。每次出现的新地铁站，先与起点更新时间花费，此时速度为v1，然后输入地铁线，此时速度为v2，可以更新相邻地铁站之间的时间花费，并且更新起点与地铁站之间的时间花费，此时速度为v1。最后地铁站输入完之后，tot++，这就是终点编号，所有结点与终点的时间花费需要更新。然后开始跑Floyd。最后dist[0][tot]储存答案，需要四舍五入，即int ans=dist[0][tot]+0.5;ans为最终答案
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;io</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1062/">
-        <p class="h4 index-header">POJ-1062</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1062 昂贵的聘礼
-题目链接：https://vjudge.net/problem/POJ-1062#author=0
-题目大意：一个人要买1号物品，而此物品可以通过直接购买或者到别人的手中买别的东西+一些金币来得到。但是需要注意：如果两人地位等级差距超过了delt，就不可以进行间接交易，即该交易圈的人两两之间等级差异不可大于delt。问要得到1号物品至少要花费多少钱？
-题解：建立一个源点，它与所有物品建边，即s–&gt;i（边权为物品原价），因为每个物品除了直接购买，还可以间接购买，设间接购买物品为j，则建边方式为j–&gt;i（边权为额外金币）然后跑最短路，注意最短路的条件不再是dist[edge[i].to]&gt;dist[x]+edge[i].w，因为当价格相等时也需要进入队列来进行松弛，所以应变为dist[edge[i].to]&gt;dist[x]+edge[i].w;然后就是等级限制的判断了。刚开始的s的等级需要从最低到最高都设置一次，意味着跑n次spfa，s就是这次spfa的最低等级，因此a[edge[i].to].l&gt;=limit&am</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

@@ -153,6 +153,157 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1511/">
+        <p class="h4 index-header">POJ-1511</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1511 Invitation Cards
+题目链接：https://vjudge.net/problem/POJ-1511#author=0
+题目大意：n-1个人从1号点出发，到剩余n-1个宣传点，然后再回到1号点汇报结果，求所有人往返路径和的最小值。
+题解：m条边，边号为偶数的表示正方向，边号为奇数的表示反方向。spfa1()沿着正方向跑，起点为1，则dist[i]表示的是从1到i的最短距离。spfa2()沿着反方向跑，起点为1，则dist2[i]表示的是从i到1的最短距离。最终答案就是dist1[i]+dist2[i]的总和，i∈[2,n]。
+代码：    #include&lt;cstdio&gt;
+    #include&lt;cstring&gt;
+    #include&lt;iostream&gt;
+    #include&lt;algorithm&gt;
+    #include&lt;queue&gt;
+    using namespace std;
+    const long long maxn=1000000+5;
+    str</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3159/">
+        <p class="h4 index-header">POJ-3159</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3159 Candies
+题目链接：https://vjudge.net/problem/POJ-3159#author=2018112767
+题目大意：有n个同学，m条信息，每条信息为a,b,c三个整数表示a相信b的糖果不会比自己多于c。问n同学最多比1同学多多少个糖果？
+题解：这是差分约束的题目，由题知Have[b]-Have[a]&lt;=c;即Have[b]&lt;=c+Have[a]；而最短路的更新条件是dist[edge[i].to]&gt;dist[x]+edge[i].w，就说明了dist[edge[i].to]&lt;=dist[x]+edge[i].w;于是建边就可以a—&gt;b,边权为c，跑最短路。dist[n]就是答案
+ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保险！
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F">差分约束</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-2502/">
+        <p class="h4 index-header">POJ-2502</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 2502 Subway
+题目链接：https://vjudge.net/problem/POJ-2502#author=1738160864
+题目大意：小k要从家去学校，他可以选择步行或者地铁，步行的速度是10km/h，地铁的速度是40km/h。假设小k非常的幸运，每次他到地铁站就立刻会有地铁。小k可以随意上下地铁，并且可以在地铁线路之间转换。所有的地铁运行都是双向的。注意地铁站不会重复出现。
+题解：n&lt;=200，所以可以用Floyd。每次出现的新地铁站，先与起点更新时间花费，此时速度为v1，然后输入地铁线，此时速度为v2，可以更新相邻地铁站之间的时间花费，并且更新起点与地铁站之间的时间花费，此时速度为v1。最后地铁站输入完之后，tot++，这就是终点编号，所有结点与终点的时间花费需要更新。然后开始跑Floyd。最后dist[0][tot]储存答案，需要四舍五入，即int ans=dist[0][tot]+0.5;ans为最终答案
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;io</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1062/">
+        <p class="h4 index-header">POJ-1062</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1062 昂贵的聘礼
+题目链接：https://vjudge.net/problem/POJ-1062#author=0
+题目大意：一个人要买1号物品，而此物品可以通过直接购买或者到别人的手中买别的东西+一些金币来得到。但是需要注意：如果两人地位等级差距超过了delt，就不可以进行间接交易，即该交易圈的人两两之间等级差异不可大于delt。问要得到1号物品至少要花费多少钱？
+题解：建立一个源点，它与所有物品建边，即s–&gt;i（边权为物品原价），因为每个物品除了直接购买，还可以间接购买，设间接购买物品为j，则建边方式为j–&gt;i（边权为额外金币）然后跑最短路，注意最短路的条件不再是dist[edge[i].to]&gt;dist[x]+edge[i].w，因为当价格相等时也需要进入队列来进行松弛，所以应变为dist[edge[i].to]&gt;dist[x]+edge[i].w;然后就是等级限制的判断了。刚开始的s的等级需要从最低到最高都设置一次，意味着跑n次spfa，s就是这次spfa的最低等级，因此a[edge[i].to].l&gt;=limit&am</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-1847/">
         <p class="h4 index-header">POJ-1847</p>
         
@@ -378,156 +529,11 @@ X12+X13+…+X1n=1
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3436/">
-        <p class="h4 index-header">POJ-3436</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3436 ACM Computer Factory
-题目链接：https://vjudge.net/problem/POJ-3436#author=yupengju
-题目大意：有p种零件，n个工厂加工，第i个工厂一小时可以加工Qi个电脑，对于每一个工厂第一个数字表示一小时加工数量Qi，然后有p个数字，若为0则表示不能有这个零件，1则表示必须有这个零件，2表示有没有都无所谓。最后p个数字，表示加工后电脑零件的存在情况，只有p个零件都为1才表示电脑加工完成。问一小时最多生产多少电脑？生产线有几条？如何设计？（special judge）（1 ≤ P ≤ 10, 1 ≤ N ≤ 50, 1 ≤ Qi ≤ 10000）
-题解：如果一开始直接想以零件为个体来建图就相当复杂，感觉无从下手，于是就从略大一点的个体出发，从工厂出发，s为起点，t为终点，如果一开始工厂要求的零件都没有，即p个数字都是0或者2，则s–&gt;i，边权为工厂容量或者无穷大。由于工厂自身一小时生产力有限，因此要对工厂进行拆点，i–&gt;i+N，边权为工厂容量。如果一个工厂生产后电脑的零件情况与另一个工厂</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3281/">
-        <p class="h4 index-header">POJ-3281</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3281 Dining or  P2891 [USACO07OPEN]吃饭Dining
-题目链接：https://vjudge.net/problem/POJ-3281
-题目大意：有F种食物和D种饮料，每种食物或饮料只能供一头牛享用，且每头牛只享用一种食物和一种饮料。现在有n头牛，每头牛都有自己喜欢的食物种类列表和饮料种类列表，问最多能使几头牛同时享用到自己喜欢的食物和饮料。（1 &lt;= f &lt;= 100, 1 &lt;= d &lt;= 100, 1 &lt;= n &lt;= 100）
-题解：我一开始想到的办法稍微有点复杂。首先着很明显是最大流问题，难点就只有建图，最开始我想到的建图是一个超级源点，指向牛，然后牛指向食物，由于食物只有一次使用机会，所以食物–&gt;食物’（流量为1）表示的是，该食物的数量为1，然后食物’指向牛’，牛’指向饮料，饮料–&gt;饮料’（流量为1），然后饮料’指向超级汇点。但是这种方法有问题。至于问题，我现在没找到，之后再想想。
-ps:后面想通了，由于牛–&gt;食物，食物–&gt;食物’，食物’–&gt;牛’；这样单次经</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2516/">
-        <p class="h4 index-header">POJ-2516</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2516 Minimum Cost
-题目链接：https://vjudge.net/problem/POJ-2516
-题目大意：有 n 个商店，k种物品和 m 个供货商，让你求进满足商店需求的货物的最小花费？有必要说一下输入数据。首先n ，k ，m。然后是一个n*m的矩阵，n个商店对每种货物的需求，表示第 i 个商店需要第 j 种货物 x个?然后是m * k 的矩阵，m个供货商可以供k种货物的数量，表示第 i 个供货商 提供第 j 中货物 x 个接下来是 k 个 n * m 的矩阵，表示第 i 个货物，由 k 供应商发货给 j 商店的价格x（注意如果供不应求的或输出-1）
-题解：一开始将商店分成很多，对于商品1有1-n商店，对于商品2有n+1-2n商店，对于商品k有n（k-1）-nk商店。对于供货商也是同理，s为起点，与商店连接，边权为商店对该物品的需求，费用为0，t为终点，供货商与t连接，边权为供货商能提供的量，费用为0，然后有后面k个矩阵可以建图，商店与供货商连接，注意要一一对应，因为商店和供货商相当于拆了点了，边权为无穷大，费用为价格。但是最后跑费用流就凉了</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81">费用流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2195/">
-        <p class="h4 index-header">POJ-2195</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2195 Going Home
-题目链接：https://vjudge.net/problem/POJ-2195#author=hrbustacm
-题目大意：免费送房子，m表示人，H表示房子，每个房子只能进一个人，房子数等于人数。黄弘毅为了方便起见决定要让所有人到自己的房子的距离和最小，请问这个距离和是多少？
-题解：距离和，这个问题一看显然就是费用流问题，而此题就是最小费用流的裸题，将人和房子统计出来，然后s与人连边，边权为1，费用dis为0，房子与t连边，边权为0，费用dis为0，人与房子连边，边权为1，费用dis为曼哈顿距离。然后跑MCMF就可以了。
-ps：我麻烦了一点，对房子进行了拆点，其实可以不拆，毕竟与t相连，流量固定了。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=200000+5;</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81">费用流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/8/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/8/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

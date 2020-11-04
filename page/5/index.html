@@ -153,6 +153,165 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/13/POJ-3189/">
+        <p class="h4 index-header">POJ-3189</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-3189 Steady Cow Assignment
+题目链接：https://vjudge.net/problem/POJ-3189
+题目大意：这道题的题意是真的很坑人啊，首先答案是求所有牛对居住的牛棚最大喜欢度-最小喜欢度+1，就是求区间长度，不是让求最大值-最小值。然后矩阵i，j不是表示第i头牛对第j个牛棚的喜欢度，而是表示第i头牛心中排名第j的牛棚是map[i][j]，喜欢度就是指牛棚在牛心中的排名。
+题解：每个牛棚是有容纳量的，所以会用到多重匹配，而如何找到最小的区间长度呢？区间长度=所有牛对居住的牛棚最大喜欢度-最小喜欢度+1，那么求出最大值-最小值就可以了，求最值问题，很容易就想到二分了，但是光二分又不够，这时候枚举最小值就可以了，二分最大值-最小值的值，然后跑匈牙利算法的多重匹配，对每一条边的边权要判断：edge[i].w&gt;=minn&amp;&amp;edge[i].w&lt;-=maxx，并且注意容纳量。跑出的最大匹配如果==n，就说明所有的牛都又牛棚，就符合题意，于是右边界就可以缩小，否则左边界增大，直到找到ans，注意在枚举最小值的时候要</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-13&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/12/POJ-2112/">
+        <p class="h4 index-header">POJ-2112</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-2112 Optimal Milking
+题目链接：https://vjudge.net/problem/POJ-2112#author=0
+题目大意：FJ有K台挤奶机和C只奶牛。机器编号1K，奶牛编号K+1K+C。机器一天工作M只奶牛。如何把奶牛分配给机器，使得奶牛到机器的最远距离最小。奶牛可以进过某些机器，但不在那台机器上挤奶。奶牛也可以经过其他奶牛所在的位置。                     输出一个整数，表示走最远的奶牛的需要行走的最小距离。  
+题解：“最远的行走的最小距离”确认是二分，每一个机器一天可以工作M只奶牛显然是多重匹配。首先用Floyd跑出任意两点之间的最小距离，然后建图，奶牛–&gt;机器，边权为dist[奶牛][机器],当然建单向边，二分距离，跑匈牙利算法的时候，一旦edge[i].w&gt;Max(Max就是二分的距离)那么奶牛就不可以去edge[i].to机器，注意这是多重匹配。
+ps：WA了一次，比较奇怪r=200这样是错的，所以r=0x3f3f3f3f靠谱点。
+代码：#include&lt;cstdio&gt;
+#includ</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/12/POJ-2289/">
+        <p class="h4 index-header">POJ-2289</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-2289  Jamie’s Contact Groups 
+题目链接：https://vjudge.net/problem/POJ-2289
+题目大意： n个人，m个社交团体，一个人可能对应多个社交团体，但只能参加一个社交团体，问所有社交团体中人数最多的团体最少有多少人。 (N&lt;=1000,M&lt;=500)
+题解：“最多的最少“这是典型的二分的套路，由题可知：一个人可能对于多个社交团体。可以二分最多的团体的人数，每一个人向自己可参加的团体连一条有向边。
+然后在跑匈牙利算法的时候，需要注意：
+要记录这个团体对应了多少的成员了，以cy[edge[i].to][0]记录团体edge[i].to的人数，Max表示本次团队最多容纳人数，如果cy[edge[i].to][0]&lt;Max，直接加入这个团队即可，否则就从第一个成员到最后一个成员都找一次增广路。
+每一次二分时，如果跑完匈牙利算法后，最大匹配==n，就缩小r，否则增大l。
+ps：题目给的团队从0开始，我自己对它+1了，所以从1开始。
+代码：#include&lt;cstdio&gt;
+#include&lt</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/12/HDU-3829/">
+        <p class="h4 index-header">HDU-3829</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-3829 Cat VS Dog
+题目链接：https://vjudge.net/problem/HDU-3829
+题目大意：一群小朋友去动物园，如果每个小朋友喜欢的动物是猫，那么不喜欢的动物一定是狗，反之也是。现在动物园的管理者要拿走一些动物，如果拿走的是某个小朋友不喜欢的动物，那这个小朋友就非常开心，反之，如果是某个小朋友喜欢的动物，这个小朋友就非常的不开心，问那完后最多有几个小朋友会非常开心。 
+题解：这是最大独立集的问题。这里需要讲解一样最大独立集。
+最小顶点覆盖：
+定义:假如选了一个点就相当于覆盖了以它为端点的所有边 。最小顶点覆盖就是选择最少的点来覆盖所有的边。 结论： 最小顶点覆盖等于最大匹配。 
+  
+最大独立集： 
+定义: 选出一些顶点使得这些顶点两两不相邻，则这些点构成的集合称为独立集。  找出一个包含顶点数最多的独立集称为最大独立集。 结论： 最大独立集 = 顶点个数 - 最小覆盖 。
+  
+红点的选择：显然每一条非匹配边一定和匹配边有公共点，所以这样的公共点一定会被选出来，不可能作为最大独立集的元素。
+这样就了解了最大独立集，将每一个人喜欢的动物</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86">最大独立集</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/12/POJ-2594/">
         <p class="h4 index-header">POJ-2594</p>
         
@@ -391,156 +550,11 @@ hopcroft-karp的时间复杂度为 O（n^0.5*m）。
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/10/HDU-2819/">
-        <p class="h4 index-header">HDU-2819</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-2819 Swap
-题目链接：https://vjudge.net/problem/HDU-2819
-题目大意：给一个n*n的方阵，每一个格子(i,j)由0/1组成，问能否使得斜对角线即i==j,（i∈[1,n]），如果不能就输出-1，否则请输出方案。R表示交换行，C表示交换列。
-
-这里有一点需要说明，就是说题目的交换，其实是将原来图的某一行移到最后图的某一行，而不是指先交换两行，得到一个新图，再交换新图的两行。 
-题解：首先是关于能否得到斜对角线全为1的方阵，假如一个方阵的斜对角线全为1，那么这个方阵的秩为n，那么如果一个方阵的秩小于n那一定就不可以。那么如何得到方阵的秩呢？受到前面几个二分图的题的影响，凡是方格类的题目都可以将行和列分开，将数字为1的方格就行连边，即行i–&gt;列j，最后求最大匹配，一旦最大匹配为n那就可以，否则输出-1。由矩阵的运算性质可以知道，所有的列变换都可以用行变换来替代，所有的行变换都可以用列变换来替代，于是我们不妨全部都用列变换来替换，已知cy[i]表示第i列和cy[i]行来配对，从1-n列开始枚举，然后枚举得到第一个cy[j]==i</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/10/HDU-1281/">
-        <p class="h4 index-header">HDU-1281</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-1281 棋盘游戏
-题目链接：https://vjudge.net/problem/HDU-1281
-题目大意：在N*M的棋盘上，在p个位置上允许放车，每一行每一列最多放一个车，并且在不允许放车的位置并不会影响车的攻击。重要点：要使车的数量最大，该点必须放车。问最多有多少个重要点、最多允许放多少个车？
-题解：这道题和Fire Net的区别在于，Fire Net不允许放置的点是一堵墙，会隔离攻击，而这道题不会影响攻击。所以Fire Net那道题需要进行分区域块，这样就可以分离开。但是这道题不会影响攻击，因此直接按点分，X集合为行，Y集合为列，只要当a[i][j]==1才可以让i行与j列连边，相当于点(i,j)可以放车。这样跑匈牙利算法可以得到最大匹配即最大的车的放置量。对于重要点的求解需要暴力求解，对于每一个可放置车的点需要去除它，然后跑匈牙利算法，如果最大匹配变小了，说明这是重要点，当然对于前向星链表，要记录出发点u，这样就可以进行标记了，vis数组不可以开大了，容易TLE。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/09/HDU-1083/">
-        <p class="h4 index-header">HDU-1083</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称： HDU - 1083Courses
-题目链接：https://vjudge.net/problem/HDU-1083#author=0
-题目大意： 一共有N个学生跟P门课程,一个学生可以任意选一 门或多门课,问是否达成:
-1.每个学生选的都是不同的课(即不能有两个学生选同一门课)
-2.每门课都有一个代表(即P门课都被成功选过)
- 若能满足上面两个要求这输出”YES”,否则为”NO”  注意：是课程匹配的学生，学生没课上没事….. 
-题解：最终问题就是问能否所有的课程都被人选，并且没有两个及以上的人选同一门课。换言之，二分图的最大匹配数是否==p。建图时课程–&gt;学生，课程(1-P)，学生(N+1-N+n)，跑匈牙利算法。
-ps：数组开小了不会RE，它会TLE！因为一开始只开了10000的边，实际上时100*300，然后TLE了。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/09/HDU-2444/">
-        <p class="h4 index-header">HDU-2444</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称： HDU - 2444 The Accomodation of Students
-题目链接：https://vjudge.net/problem/HDU-2444#author=0
-题目大意：有n个关系，他们之间某些人相互认识。这样的人有m对。你需要把人分成2组，使得每组人内部之间是相互不认识的。如果可以，就可以安排他们住宿了。安排住宿时，住在一个房间的两个人应该相互认识。最多的能有多少个房间住宿的两个相互认识。 
-题解：这个题分为两个问题，第一个问题就是问是否可以分成两组，每一组内部任意两人都互相不认识；第二个问题是最多有几组两人之间相互认识，注意一人只能选择一次。第一个问题很显然就是判断这个图是否可以形成一个二分图，第二个问题是在该图是二分图的条件下的最大匹配数。二分图的判断方法就染色法，用bfs，将相邻的点全部染成相反的颜色，一旦该点与相邻点颜色相同就说明不能形成二分图，最后如果无矛盾就说明可以形成二分图。注意我们建图全部小–&gt;大，而条件给的数据也是如此，这样一定是从小的点出发，bfs起点就为1。求最大匹配时候，我们注意这图是单向的所以直接跑匈牙利。当然保险的是建</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
