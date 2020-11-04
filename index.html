@@ -153,6 +153,43 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/04/CodeForces-1442-B/">
+        <p class="h4 index-header">CodeForces-1442-B</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：Identify the Operations
+题目大意：一个数组a长度为n，一个数组b长度为m，a数组中的元素各不相同，b数组中的元素各不相同。在a数组中要将a${i}$加入到b${i}$中，可以将a${i-1}$,a${i+1}$划去，然后ai加入到b数组的右侧。问得到b数组的总方案数，答案对998244353取模。
+思路：Div2的最后一题居然是水题，这是我没想到的，错过了大好的上分时机。要依次将a数组的一些元素加入到b数组中来得到b数组。这里有三种情况：
+1）如果a${i-1}$和a${i+1}$都在b数组中。此时他们都还在数组a中，ai想加入b数组中，必须划去a${i-1}$或者a${i+1}$，但是显然无法划去。对于这种情况的选择方案为0.
+2）a${i-1}$和a${i+1}$中有一个在b中，而另外一个不在。可以划去那个不在b数组中的。方案数为1.
+3）a${i-1}$和a${i+1}$两个数字都不在b中，则有两种方案。
+用vis数组来标记ai是否在b数组中。用pos数组表示一个值w在a数组中对应的位置。
+代码：#include&lt;bits/stdc++.h</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%94%EF%BC%89/">
         <p class="h4 index-header">NOJ-花生米（五）</p>
         
@@ -497,54 +534,6 @@ programmingcontest
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/02/NOJ-test4/">
-        <p class="h4 index-header">NOJ-test4</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">先补作业，再补题解。（有缘补题解QAQ）
-A-最长公共子序列#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1000+50;
-char s[maxn],t[maxn];int lens,lent,dp[maxn][maxn];
-int max(int x,int y){
-    if(x&gt;=y)return x;
-    return y;
-}
-int main(){
-    cin&gt;&gt;s+1&gt;&gt;t+1;
-    lens=strlen(s+1);lent=strlen(t+1);
-    for(int i=1;i&lt;=lens;i++){
-        for(int j=1;j&lt;=lent;j++){
-            if(s[i]==t[j]){
-                dp[i][j]=max(dp[i</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-02&nbsp;&nbsp;
         
         
         

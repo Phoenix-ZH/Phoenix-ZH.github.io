@@ -153,6 +153,54 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/02/NOJ-test4/">
+        <p class="h4 index-header">NOJ-test4</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">先补作业，再补题解。（有缘补题解QAQ）
+A-最长公共子序列#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000+50;
+char s[maxn],t[maxn];int lens,lent,dp[maxn][maxn];
+int max(int x,int y){
+    if(x&gt;=y)return x;
+    return y;
+}
+int main(){
+    cin&gt;&gt;s+1&gt;&gt;t+1;
+    lens=strlen(s+1);lent=strlen(t+1);
+    for(int i=1;i&lt;=lens;i++){
+        for(int j=1;j&lt;=lent;j++){
+            if(s[i]==t[j]){
+                dp[i][j]=max(dp[i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-02&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/01/CodeForces-1444/">
         <p class="h4 index-header">CodeForces-1444</p>
         
@@ -560,54 +608,6 @@ int main()
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-13&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/10/CodeForces-1391/">
-        <p class="h4 index-header">CodeForces-1391</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称：Suborrays
-题目大意：求一个长度为n的序列，保证任意区间[i,j]之间a[i]|a[i+1]|…|a[j]&gt;=i-j+1.
-思路：直接按序输出1 - n一定是符合的。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int T,n;
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--)
-    {
-        cin&gt;&gt;n;
-        for(int i=1;i&lt;=n;i++)cout&lt;&lt;i&lt;&lt;&#39; &#39;;cout&lt;&lt;endl;
-    }
-    return 0;
-}
-B.题目名称： Fix You 
-题目大意：一个(n,m)的矩阵，每一个单位格上有‘D’，‘R’，‘D’：向下移动一格，‘R’：向右移动一格。对于任意位置上的物品需要保证它可以运动到(n,m)，一旦出界就失败了。问至少要改变几个单位格？
-思路：真正有影响的是最后一行和最后一列。若最后一行还有‘D’一定不符合条件，必须改</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-10&nbsp;&nbsp;
         
         
         

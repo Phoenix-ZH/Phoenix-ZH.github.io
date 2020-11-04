@@ -153,6 +153,54 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/18/CodeForces-1325/">
+        <p class="h4 index-header">CodeForces-1325</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A 题目名称：EhAb AnD gCd
+题目大意给你一个数x，输出一组 (a,b)使得 a和 b的最大公约数和最小公倍数的和为 x，若有多种答案，输出任意一种即可。第一行输入一个 t，有 t组数据，之后每组数据输入一个数 x。对于每组数据，输出两个用一个空格隔开的数 a,b。若有多种答案，输出任意一种即可。
+题解1是任意一个数的公约数，任意数是它和1的倍数，那么x=1+y。1，y就是答案
+代码#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+int n;int T;
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%d&quot;,&amp;n);
+        if(n==2)
+        {
+            printf(&quot;1 1\n&quot;);
+        }
+        e</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/13/CodeForces-1324/">
         <p class="h4 index-header">CodeForces-1324</p>
         
@@ -550,47 +598,6 @@ using namespace</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/13/HDU-3488/">
-        <p class="h4 index-header">HDU-3488</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-3488 Tour
-题目链接：https://vjudge.net/problem/HDU-3488
-题目大意：有T组数据，n个点，m条有向边边(可能有重边)， 现在问将图中的每一个点都划分到一个环中的最少代价是多少？每条边都有一个代价 。即选择边，使得图是若干个有向环，除出发点(即终点)外每个点都只可以经过一次，如何选择花费最小？
-题解：这里需要提到一下有向环覆盖问题： 给一个N个顶点M条边的带权有向图，要你把该图分成一个或多个不相交的有向环。且所有定点都被有向环覆盖。问你该有向环所有权值的总和最小是多少? 
-答案就是：有向环最大权值覆盖=最佳匹配。 
-如果，改为无向图，问你无向环最大权值覆盖？答案也是一样的。只是在建图的时候把有向改为无向即可。 
-分析：把任意一个顶点i分成连个点，即i和i‘，如果原图存在边i–&gt;j，那么二分图就存在i–&gt;j’
-引理： 
-①  如果原图能由多个不相交的有向环覆盖，那么二分图必然存在完备匹配。 二者互为充要条件 。即： 二分图存在完备匹配,那么原图必定能由几个不相交的有向环覆盖。
-②  如果 即权值最大的有向环覆盖在数值上</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-13&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/KM">KM</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%89%E5%90%91%E7%8E%AF%E8%A6%86%E7%9B%96">有向环覆盖</a>&nbsp;
           
         
       </div>
