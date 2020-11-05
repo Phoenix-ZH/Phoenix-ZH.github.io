@@ -153,6 +153,84 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3169/">
+        <p class="h4 index-header">POJ-3169</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3169 Layout
+题目链接：https://vjudge.net/problem/POJ-3169#author=634579757
+题目大意：有N头牛排队，多头牛可以在同一点。现有几对相互喜好的牛，他们不能超过一定距离，有几对相互厌恶的牛，他们至少隔开一定距离。求1和N最远相距多少。
+题解：这很显然是差分约束的题目。为了保证图能够联通，需要固定i，j的大小顺序。 对于前m1个a,b,c表示a和b之间的距离不超过c，不妨设a&gt;b，则应满足d[a]-d[b]&lt;=c，最短路的要求就是如此，所以建边：b–&gt;a 边权为c。对于后m2个a，b，c表示a和b之间的距离不小于c，不妨设a&gt;b，则应满足d[a]-d[b]&gt;=c，即d[b]&lt;=d[a]-c，所以建边：a–&gt;b边权为-c。然后开始跑spfa，期间要判断负环，如果有负环存在则说明无解；如果dist[n]==0x3f3f3f3f,说明n号可以无限远。其余的则dist[n]为答案
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F">差分约束</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4370/">
+        <p class="h4 index-header">HDU-4370</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 4370 0 or 1
+题目链接：https://vjudge.net/problem/HDU-4370#author=cjyl
+题目大意：给出一个n×n的矩阵，求一个符合题意的n×n的只含有0和1的矩阵，使得两个矩阵位置对应的元素相乘后和最小。
+题意要求01矩阵：
+
+X12+X13+…+X1n=1
+2.X14+X24+…+X(n-1)n=1
+3.∑Xki (1&lt;=k&lt;=n)=∑Xij (1&lt;=j&lt;=n).（1&lt;i&lt;n）
+
+
+题解：对于条件1，可以说明1结点一定有且仅有一个出度，并且不是指向自己。对于条件2，可以说明n结点一定有且仅有一个入度，并且该入度的发出者不是自己。对于条件3，可以说明每个2-n-1的每一个结点的出度等于入度。而题目要求求ΣCij * X ij最小值，即求最短路。但是要分2种情况：原因：结点1一定会指向结点i(i∈[2,n])，然后结点i一定指向别的结点，注意结点i不可以直接指向它自己，因为这样出度就不等于入读。最终会指向结点n，或者指向结点1形成自环。对于结点n来讲也是一样。
+情况1：结点1最终指向结点n</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/UVA-10480/">
         <p class="h4 index-header">UVA-10480</p>
         
@@ -418,83 +496,6 @@ const int maxn=200000+5;</div>
 题目大意：昊妈决定只给每个人一种食物和一种饮料，而且每种饮料和食物都只能提供有限次。现在给出每个人喜欢的食物种类和饮料种类，昊妈可以最多让多少人得到满足呢？第一行给出N F D表示人数，食物种类数，饮料种类数第二行给出F个数字表示第i种食物有几个第三行给出D个数字表示第i种饮料有几个接下来N行分别给出第i个人对第j种食物的喜爱情况，Y是喜欢N是不喜欢，再来N行对饮料的
 题解：这道题是最大流问题，重点自然就是建图，一个人要满足，必须同时拥有食物和饮料。而一个人也最多可以满足一次，而且饮料和食物的容量也是有限的。最简单的自然是食物连向起点，边权为食物的容量；饮料连向中点，边权为饮料的容量；如果某人i喜欢食物j，那么二者就要连边，即j–&gt;i+N，边权为1，并且人位于中间必须拆点，即i+N–&gt;i+2N,边权为1。如果某人i喜欢饮料j，那么i+2N–&gt;j+3*N，边权为1建好后跑dinic。
 代码：#include&lt;c</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4289/">
-        <p class="h4 index-header">HDU-4289</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4289 Control
-题目链接：https://vjudge.net/problem/HDU-4289
-题目大意：给一个无向图，有些不法分子要从S点T点，现在要抓住所有的不法分子阻止他们去T，那么就要控制某一些城市等待他们，控制每个城市花费不同，问最少花费是多少。第一行是两个整数N，M（2&lt;=N&lt;=200，1&lt;=M&lt;=20000）,分别表示城市数量和道路数量，城市的编号为1到N。 第二行是两个整数S，T（1&lt;=S,T&lt;=N）,分别表示起点和终点的位置。 接下来以下N行，分别表示控制第每一个城市的成本costi（cost&lt;10^7）。 接下来M行，每行有两个整数A，B表示城市A和B之间存在一条双向道路。
-题解：根据题意，要设法将S，T分割开，求最小花费，显然是求图的最小割，即求最大流。一开始想着单独将S，T隔开，无向边u，v建边：u+N–&gt;v,边权0x3f3f3f3f，v+N-&gt;u，边权0x3f3f3f3f，当然回路也要建立。然后跑dinic，然后将跑出来的最大流和单独隔离s、单独隔离t三者取最小。但是这样跑</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2">最小割</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4280/">
-        <p class="h4 index-header">HDU-4280</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4280 Island Transport
-题目链接：https://vjudge.net/problem/HDU-4280#author=smilestruggler
-题目大意：在n个岛屿中，有m条双向航线，航线有单位时间内的运输上限，现在求从最左侧到最右侧的最大运输
-题解：题意含明显它是最大流的模板题，直接建边，然后找到起点s和终点t就可以了，然后直接跑dinic。但是n=100000，m=100000，数据规模大，dinic容易超时，但是我们可以做优化。
-优化1：bfs只要跑到t就返回1，开始dfs。
-优化2；dfs内每次min(F-f,edge[i].w），f表示之前已经流过的流量，F-f表示剩余可流的流量，一旦F==f就break，表示满流了！
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int max</div>
         </div>
       </a>
 

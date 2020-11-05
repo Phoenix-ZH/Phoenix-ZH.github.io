@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>NOJ-滑雪</title>
+    <link href="/2020/11/05/NOJ-%E6%BB%91%E9%9B%AA/"/>
+    <url>/2020/11/05/NOJ-%E6%BB%91%E9%9B%AA/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="滑雪"><a href="#滑雪" class="headerlink" title="滑雪"></a>滑雪</h1><p><strong>描述</strong></p><p>Michael喜欢滑雪这并不奇怪，因为滑雪的确很刺激。可是为了获得速度，滑的区域必须向下倾斜，而且当你滑到坡底，你不得不再次走上坡或者等待升降机来载你。Michael想知道载一个区域中最长底滑坡。区域由一个二维数组给出。数组的每个数字代表点的高度。下面是一个例子<br>1 2 3 4 5<br>16 17 18 19 6<br>15 24 25 20 7<br>14 23 22 21 8<br>13 12 11 10 9<br>一个人可以从某个点滑向上下左右相邻四个点之一，当且仅当高度减小。在上面的例子中，一条可滑行的滑坡为24-17-16-1。当然25-24-23-…-3-2-1更长。事实上，这是最长的一条。</p><p><strong>输入</strong></p><p>输入的第一行表示区域的行数R和列数C(1 &lt;= R,C &lt;= 100)。下面是R行，每行有C个整数，代表高度h，0&lt;=h&lt;=10000。</p><p><strong>输出</strong></p><p>输出最长区域的长度。 </p><p><strong>输入样例</strong></p><p>5 5<br>1 2 3 4 5<br>16 17 18 19 6<br>15 24 25 20 7<br>14 23 22 21 8<br>13 12 11 10 9</p><p><strong>输出样例</strong></p><p>25</p><p><strong>输出提示</strong><br>printf(“%d\n,num”);</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>问题问的是最长的高度减小的序列的长度（要依次相邻），设dp[i][j]表示到达(i,j)的最长的高度不减小序列的长度。一开始想着将问题转化成最长的高度不减小（即hi&gt;=hj），然后就由每一个点出发找到相邻的比它高的，由此更新dp数组。但是发现初始点不好找，一旦要找肯定都得找一遍（直接找最小的不一定最优，这样的贪心策略很显然是错误的，完全可能最后的终点高度不是最小的），然后遍历到一个点(i,j)肯定又要更新答案，并且不能将(i,j)标记掉让后面的点不能再走到它，这样会让答案不是最优的。所以我就放弃了这种方法。</p><p>但是我们将所有的点都走一遍，由高到低进行记忆化搜索，dp[x][y]表示当前走到(x,y)的最长的高度减小的序列的长度。一旦dp[x][y]存在说明之前已经遍历过了就直接返回，否则就找到周围比它高度小的点进行dfs。这样讲所有的点都作为起点进行dfs求得的答案就是最长的长度。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;using namespace std;const int maxn=200+50;int n,m,h[maxn][maxn],dp[maxn][maxn];int max(int x,int y){    if(x&gt;=y)return x;    return y;}int d[4][2]={{1,0},{-1,0},{0,1},{0,-1}};int dfs(int x,int y){    if(dp[x][y])return dp[x][y];    dp[x][y]=1;    int sign=0,ans=0,i;    for(i=0;i&lt;4;i++){        int nexx=x+d[i][0],nexy=y+d[i][1];        if(nexx&gt;=1&amp;&amp;nexx&lt;=n&amp;&amp;nexy&gt;=1&amp;&amp;nexy&lt;=m&amp;&amp;h[nexx][nexy]&gt;h[x][y])sign++,ans=max(ans,dfs(nexx,nexy)+1);    }    if(!sign)dp[x][y]=1;    else dp[x][y]=ans;    return dp[x][y];}int main(){    cin&gt;&gt;n&gt;&gt;m;    int i,j,k,maxx=0;    for(i=1;i&lt;=n;i++){        for(j=1;j&lt;=m;j++){            cin&gt;&gt;h[i][j];        }    }    int ans=0;    for(i=1;i&lt;=n;i++){        for(j=1;j&lt;=m;j++){            ans=max(ans,dfs(i,j));        }    }    cout&lt;&lt;ans&lt;&lt;endl;    return 0;}</code></pre>        <div id="aplayer-EoHmPCJe" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-EoHmPCJe"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-装盘子</title>
+    <link href="/2020/11/05/NOJ-%E8%A3%85%E7%9B%98%E5%AD%90/"/>
+    <url>/2020/11/05/NOJ-%E8%A3%85%E7%9B%98%E5%AD%90/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="装盘子"><a href="#装盘子" class="headerlink" title="装盘子"></a>装盘子</h1><p><strong>描述</strong></p><p>N人为了大快朵颐，行至云餐二楼，取了N个盘子，打了M个饺子。现欲将M个饺子装入N个盘子中，试问共有多少种不同的装法？<br>假设盘子足够大，并且盘子里可以什么都不放。注意像2 5 0和5 0 2之类的属于同一种放法。</p><p><strong>输入</strong></p><p>两个整数M、N(1=&lt; M,N &lt;=100)以空格隔开。</p><p><strong>输出</strong></p><p>单独一行输出共有几种装法。</p><p><strong>输入样例</strong></p><p>7 3</p><p><strong>输出样例</strong></p><p>8</p><p><strong>提示</strong></p><p>注意输出要以“\n”结尾。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>问m个饺子放到n个盘子的方法，这个题直接写动态转移方程不好写，那就换成写记忆化搜索就行了。考虑m&gt;=n和m&lt;n两种情况。dfs(int resn ,int resm)表示剩余resn个盘子，剩余resm个饺子的放置种类数目，dp[resn][resm]对其进行记录，一旦dp[resn][resm]遍历过，就直接返回即可，优化时间复杂度。m&lt;n的话肯定有n-m个盘子都是空的ans=dfs(rem,rem)。m&gt;=n的话可以一个盘子不妨饺子即dfs(resn-1,resm ),也可以将每个盘子都至少放一个饺子即dfs(resn,resm-resn).由dfs(resn-1,resm)不断搜索下去可以对不同数量的空盘子均可以遍历到。最后答案就是dfs(n,m).</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=100+50;int n,m,dp[maxn][maxn];int dfs(int resn,int resm){    if(resn==1||resm==1||resm==0)return 1;    if(dp[resn][resm])return dp[resn][resm];    int ans=0;    if(resm&lt;resn)ans=dfs(resm,resm);    else ans=dfs(resn-1,resm)+dfs(resn,resm-resn);    dp[resn][resm]=ans;    return ans;}int main(){    cin&gt;&gt;m&gt;&gt;n;    cout&lt;&lt;dfs(n,m)&lt;&lt;endl;    return 0;}</code></pre>        <div id="aplayer-sjgaoeBg" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-sjgaoeBg"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CodeForces-1442-B</title>
     <link href="/2020/11/04/CodeForces-1442-B/"/>
     <url>/2020/11/04/CodeForces-1442-B/</url>
@@ -27,7 +65,7 @@
     <link href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%94%EF%BC%89/"/>
     <url>/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%94%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>        <div id="aplayer-VbcknqbH" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-VbcknqbH"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="花生米（五）"><a href="#花生米（五）" class="headerlink" title="花生米（五）"></a>花生米（五）</h1><p><strong>描述</strong></p><p>五一长假第六天，Tom在QQ上遇到了Kitty。呵呵，Kitty，在离散数学课上认识的PPMM……等等！Tom恍然大悟：自己这一生除了看帖不回之外最大的错误就是离散数学没学好！<br>五一长假第七天，Tom和Jerry在仓库散步的时候发现了一堆花生米（仓库，呵呵，仓库…）。这次Tom制定分花生米规则如下：<br>1、首先选出最苦的一粒花生米，放到一个瓶子里；<br>2、把剩下的花生米做成花生酱，Tom和Jerry轮流取一些花生酱吃掉；<br>3、第一个取的人只能取1.0克，以后取花生酱的数量不能少于两个人已经取过的总数量且不能超过两个人已经取过的总数量的三倍；<br>4、不能按规则3取花生酱的人必须吃掉瓶子里的花生米；<br>5、为显示规则的公平性，Jerry可以选择先取或者后取。<br>Jerry当然希望瓶子里的花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。</p><p><strong>输入</strong></p><p>本题有多个测例，每个测例的输入是一个浮点数w，w大于1.0小于等于1000.0，w最多只有一位小数，代表花生酱的数量，单位为克。<br>w小于0表示输入结束，不需要处理。</p><p><strong>输出</strong></p><p>每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取输出0。</p><p><strong>输入样例</strong></p><p>1.5<br>7.9<br>-1</p><p><strong>输出样例</strong></p><p>1<br>0</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这个题和<strong>花生米（三）</strong>极其相似<a href="https://editor.csdn.net/md/?articleId=109495550，只是**花生米（三）**中要求是后者取的花生数不能超过前者的两倍，而这个题后者取的花生数w&gt;=前面取的花生的总数并且w" target="_blank" rel="noopener">https://editor.csdn.net/md/?articleId=109495550，只是**花生米（三）**中要求是后者取的花生数不能超过前者的两倍，而这个题后者取的花生数w&gt;=前面取的花生的总数并且w</a>&lt;=前面取的花生的总数的三倍，并且Jerry希望Tom无法按则规则取花生这样Jerry就胜利了。显然这个题和<strong>花生米（三）</strong>都无法确认当前人取花生的数量，只能确认一个范围进行枚举。并且这个题还是小数。由于最多一位小数，那就全部乘10，这样就全部转化成整数问题了。dp[res]表示剩余res个的时候后手的必胜或者必败，dp[res]=0表示剩余res个的情况后手必胜。从<strong>花生米（三）</strong>知道一个状态要是必胜态，必须保证推导它的之前的状态都是必败（即要后手必胜，必须保证先手必败），设先手取了c个花生米，那么对于后手就要枚举他选择i个花生的所有状态（i from c to 3 * c），并且dfs的结果均为1（即先手必败）。这里用到了记忆化搜索，不赘述。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=10000+50;int dp[maxn];int dfs(int res,int c){    int i;    if(res&lt;c){        dp[res]=0;        return dp[res];    }    if(dp[res]!=-1)return dp[res];    int sign=1;    for(i=c;i&lt;=3*c;i++){        if(res&lt;i)break;        sign&amp;=dfs(res-i,c+i);        if(sign==0)break;    }    dp[res]=0;    if(!sign)dp[res]=1;    return dp[res];}int main(){    int tot=0;    while(1){        int i;        double x;        cin&gt;&gt;x;        if(x&lt;0)break;        for(i=0;i&lt;=x*10;i++){            dp[i]=-1;        }        int w=x*10;        cout&lt;&lt;1-dfs(w-10,10)&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-dLZjjWvc" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-dLZjjWvc"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
     
     
     

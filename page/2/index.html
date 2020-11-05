@@ -153,6 +153,87 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/04/NOJ-%E9%98%B2%E5%8D%AB%E5%AF%BC%E5%BC%B9/">
+        <p class="h4 index-header">NOJ-防卫导弹</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">防卫导弹描述一种新型的防卫导弹可截击多个攻击导弹。它可以向前飞行，也可以用很快的速度向下飞行，可以毫无损伤地截击进攻导弹，但不可以向后或向上飞行。但有一个缺点，尽管它发射时可以达到任意高度，但它只能截击比它上次截击导弹时所处高度低或者高度相同的导弹。现对这种新型防卫导弹进行测试，在每一次测试中，发射一系列的测试导弹（这些导弹发射的间隔时间固定，飞行速度相同），该防卫导弹所能获得的信息包括各进攻导弹的高度，以及它们发射次序。现要求编一程序，求在每次测试中，该防卫导弹最多能截击的进攻导弹数量，一个导弹能被截击应满足下列两个条件之一：a)它是该次测试中第一个被防卫导弹截击的导弹；b)它是在上一次被截击导弹的发射后发射，且高度不大于上一次被截击导弹的高度的导弹。
+输入
+多个测例。每个测例第一行是一个整数n（n不超过100），第二行n个整数表示导弹的高度（数字的顺序即发射的顺序）。n＝0表示输入结束。
+输出
+每个测例在单独的一行内输出截击导弹的最大数目。
+输入样例：
+55 6 100 6 610
+输出样例：
+2
+思路：枚举每一个导弹i（i from 1 to n），这个导弹一定是由之前更高的导弹</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/04/NOJ-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/">
+        <p class="h4 index-header">NOJ-最长公共子序列</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">最长公共子序列描述
+一个给定序列的子序列是在该序列中删去若干元素后得到的序列。确切地说，若给定序列X=&lt;x1, x2,…, xm&gt;，则另一序列Z=&lt;z1, z2,…, zk&gt;是X的子序列是指存在一个严格递增的下标序列 &lt;i1, i2,…, ik&gt;，使得对于所有j=1,2,…,k有：Xij ＝ Zj如果一个序列S即是A的子序列又是B的子序列，则称S是A、B的公共子序列。求A、B所有公共子序列中最长的序列的长度。
+输入
+输入共两行，每行一个由字母和数字组成的字符串，代表序列A、B。A、B的长度不超过200个字符。
+输出
+一个整数，表示最长各个子序列的长度。
+格式：printf(“%d\n”);
+输入样例
+programmingcontest
+输出样例
+2
+思路：像LCS这样的问题，它具有重叠子问题的性质，因此：用递归来求解就太不划算了。因为采用递归，它重复地求解了子问题。采用动态规划时，并不需要去一 一 计算那些重叠了的子问题 。对于dp[i][j]表示 (s1,s2….si) 和 (t1,t2…tj) 的最长公共子序列的长度 。
+当i==0||j==0</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/02/NOJ-test4/">
         <p class="h4 index-header">NOJ-test4</p>
         
@@ -506,108 +587,6 @@ int main()
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-26&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/17/CodeForces-1392/">
-        <p class="h4 index-header">CodeForces-1392</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称Omkar and Password 
-题目大意：将任意两个相邻的大小不同的数字合并，问数组长度最小可以为多少？
-思路：每次将最大的和别的合并。如果所有都相同，长度为n；否则长度为1.
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=2e5+60;
-int T,n,a[maxn];
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--)
-    {
-        cin&gt;&gt;n;
-        for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i];
-        int sign=0;
-        for(int i=2;i&lt;=n;i++)
-        {
-            if(a[i]!=a[i-1])
-            {
-                sign=1;
-                break;
-            }
-        }
-       </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-17&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/13/CodeForces-1394/">
-        <p class="h4 index-header">CodeForces-1394</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称 Boboniu Likes to Color Balls 
-题目大意：r个红球，g个绿球，b个蓝球，w个白球。可以任意次将一个红球和一个绿球和一个蓝球都转化成白球。是否可以组成回文色？
-思路：当偶数色的数目&gt;=3则一定可以。若只有一个偶数色，则红绿蓝都至少有一个就可以。其余的都是不可以的。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-long long T,a,b,c,d;
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--)
-    {
-        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d;
-        int tot=0;
-        if(a%2==0)tot++;
-        if(b%2==0)tot++;
-        if(c%2==0)tot++;
-        if(d%2==0)tot++;
-        if(tot&gt;=3||tot==0)
-        {
-         </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-13&nbsp;&nbsp;
         
         
         

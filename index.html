@@ -153,6 +153,89 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/05/NOJ-%E6%BB%91%E9%9B%AA/">
+        <p class="h4 index-header">NOJ-滑雪</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">滑雪描述
+Michael喜欢滑雪这并不奇怪，因为滑雪的确很刺激。可是为了获得速度，滑的区域必须向下倾斜，而且当你滑到坡底，你不得不再次走上坡或者等待升降机来载你。Michael想知道载一个区域中最长底滑坡。区域由一个二维数组给出。数组的每个数字代表点的高度。下面是一个例子1 2 3 4 516 17 18 19 615 24 25 20 714 23 22 21 813 12 11 10 9一个人可以从某个点滑向上下左右相邻四个点之一，当且仅当高度减小。在上面的例子中，一条可滑行的滑坡为24-17-16-1。当然25-24-23-…-3-2-1更长。事实上，这是最长的一条。
+输入
+输入的第一行表示区域的行数R和列数C(1 &lt;= R,C &lt;= 100)。下面是R行，每行有C个整数，代表高度h，0&lt;=h&lt;=10000。
+输出
+输出最长区域的长度。 
+输入样例
+5 51 2 3 4 516 17 18 19 615 24 25 20 714 23 22 21 813 12 11 10 9
+输出样例
+25
+输出提示printf(“%d\n,num”);
+思路问题问的是最</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-05&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/05/NOJ-%E8%A3%85%E7%9B%98%E5%AD%90/">
+        <p class="h4 index-header">NOJ-装盘子</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">装盘子描述
+N人为了大快朵颐，行至云餐二楼，取了N个盘子，打了M个饺子。现欲将M个饺子装入N个盘子中，试问共有多少种不同的装法？假设盘子足够大，并且盘子里可以什么都不放。注意像2 5 0和5 0 2之类的属于同一种放法。
+输入
+两个整数M、N(1=&lt; M,N &lt;=100)以空格隔开。
+输出
+单独一行输出共有几种装法。
+输入样例
+7 3
+输出样例
+8
+提示
+注意输出要以“\n”结尾。
+思路问m个饺子放到n个盘子的方法，这个题直接写动态转移方程不好写，那就换成写记忆化搜索就行了。考虑m&gt;=n和m&lt;n两种情况。dfs(int resn ,int resm)表示剩余resn个盘子，剩余resm个饺子的放置种类数目，dp[resn][resm]对其进行记录，一旦dp[resn][resm]遍历过，就直接返回即可，优化时间复杂度。m&lt;n的话肯定有n-m个盘子都是空的ans=dfs(rem,rem)。m&gt;=n的话可以一个盘子不妨饺子即dfs(resn-1,resm ),也可以将每个盘子都至少放一个饺子即dfs(resn,resm-resn).由dfs(resn-1</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-05&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/04/CodeForces-1442-B/">
         <p class="h4 index-header">CodeForces-1442-B</p>
         
@@ -199,26 +282,12 @@ const int maxn = 20000</div>
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">
-        
-            
-        
-        
-          var ap = new APlayer({
-            element: document.getElementById("aplayer-VbcknqbH"),
-            narrow: false,
-            autoplay: true,
-            showlrc: false,
-            music: {
-              title: "那年",
-              author: "枯木逢春",
-              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
-              pic: "",
-              lrc: ""
-            }
-          });
-          window.aplayers || (window.aplayers = []);
-  </div>
+          <div class="index-text mb-1">花生米（五）描述
+五一长假第六天，Tom在QQ上遇到了Kitty。呵呵，Kitty，在离散数学课上认识的PPMM……等等！Tom恍然大悟：自己这一生除了看帖不回之外最大的错误就是离散数学没学好！五一长假第七天，Tom和Jerry在仓库散步的时候发现了一堆花生米（仓库，呵呵，仓库…）。这次Tom制定分花生米规则如下：1、首先选出最苦的一粒花生米，放到一个瓶子里；2、把剩下的花生米做成花生酱，Tom和Jerry轮流取一些花生酱吃掉；3、第一个取的人只能取1.0克，以后取花生酱的数量不能少于两个人已经取过的总数量且不能超过两个人已经取过的总数量的三倍；4、不能按规则3取花生酱的人必须吃掉瓶子里的花生米；5、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然希望瓶子里的花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
+输入
+本题有多个测例，每个测例的输入是一个浮点数w，w大于1.0小于等于1000.0，w最多只有一位小数，代表花生酱的数量，单位为克。w小于0表示输入结束，不需要处理。
+输出
+每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取</div>
         </div>
       </a>
 
@@ -449,87 +518,6 @@ const int maxn = 20000</div>
 输出样例
 438
 思路设dp[i][j]表示合并第i个矩阵到第j个矩阵所需要的最少的乘法次数。初始化dp为0x3f3f3f3f（即初始化为无穷大）。dp[i][i]=0(所有的i-i的合并的乘法次数为0).然后就开始考虑动态规划的转移方程：先枚举长度len （len fro</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E9%98%B2%E5%8D%AB%E5%AF%BC%E5%BC%B9/">
-        <p class="h4 index-header">NOJ-防卫导弹</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">防卫导弹描述一种新型的防卫导弹可截击多个攻击导弹。它可以向前飞行，也可以用很快的速度向下飞行，可以毫无损伤地截击进攻导弹，但不可以向后或向上飞行。但有一个缺点，尽管它发射时可以达到任意高度，但它只能截击比它上次截击导弹时所处高度低或者高度相同的导弹。现对这种新型防卫导弹进行测试，在每一次测试中，发射一系列的测试导弹（这些导弹发射的间隔时间固定，飞行速度相同），该防卫导弹所能获得的信息包括各进攻导弹的高度，以及它们发射次序。现要求编一程序，求在每次测试中，该防卫导弹最多能截击的进攻导弹数量，一个导弹能被截击应满足下列两个条件之一：a)它是该次测试中第一个被防卫导弹截击的导弹；b)它是在上一次被截击导弹的发射后发射，且高度不大于上一次被截击导弹的高度的导弹。
-输入
-多个测例。每个测例第一行是一个整数n（n不超过100），第二行n个整数表示导弹的高度（数字的顺序即发射的顺序）。n＝0表示输入结束。
-输出
-每个测例在单独的一行内输出截击导弹的最大数目。
-输入样例：
-55 6 100 6 610
-输出样例：
-2
-思路：枚举每一个导弹i（i from 1 to n），这个导弹一定是由之前更高的导弹</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/">
-        <p class="h4 index-header">NOJ-最长公共子序列</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">最长公共子序列描述
-一个给定序列的子序列是在该序列中删去若干元素后得到的序列。确切地说，若给定序列X=&lt;x1, x2,…, xm&gt;，则另一序列Z=&lt;z1, z2,…, zk&gt;是X的子序列是指存在一个严格递增的下标序列 &lt;i1, i2,…, ik&gt;，使得对于所有j=1,2,…,k有：Xij ＝ Zj如果一个序列S即是A的子序列又是B的子序列，则称S是A、B的公共子序列。求A、B所有公共子序列中最长的序列的长度。
-输入
-输入共两行，每行一个由字母和数字组成的字符串，代表序列A、B。A、B的长度不超过200个字符。
-输出
-一个整数，表示最长各个子序列的长度。
-格式：printf(“%d\n”);
-输入样例
-programmingcontest
-输出样例
-2
-思路：像LCS这样的问题，它具有重叠子问题的性质，因此：用递归来求解就太不划算了。因为采用递归，它重复地求解了子问题。采用动态规划时，并不需要去一 一 计算那些重叠了的子问题 。对于dp[i][j]表示 (s1,s2….si) 和 (t1,t2…tj) 的最长公共子序列的长度 。
-当i==0||j==0</div>
         </div>
       </a>
 
