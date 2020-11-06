@@ -153,6 +153,97 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/20/kuangbin%E4%B8%93%E9%A2%98-%E4%BA%8C%E5%8D%81%E5%9B%9B/">
+        <p class="h4 index-header">kuangbin专题-二十四</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.题目：CodeForces - 371C  A-Hamburgers题目大意：做汉堡包，需要的材料用字符串给出了。
+已有的材料数在第二行。（顺序：B,S,C）
+商店卖的材料的需要的钱数在第三行。（顺序：B,S,C）
+第四行是你有的钱数。
+问最多做多少汉堡。
+思路：看到（1&lt;=r&lt;=10^12)和“最多”就觉得是二分。二分汉堡的数量，已知已经拥有的汉堡B，S，C材料的数量，也可以得到需要的总数量，由此知道需要购买的数量。然后计算总钱数，就可以进行判断了。ps：WA了两次：第一次：注意ans1，ans2，ans3，可能是负的，一旦为负就要定为0，不然结果偏大。第二次：注意最多数量可能比10^12更大，所以右边界要大一点。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=10000+10;
+long long n1,n2,n3,h1,h2,h3,m1,m2,m3,r;
+bool check(long long mid)
+{
+    long long N1=n1*mid-h1,N2=n2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-20&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E5%B0%BA%E5%8F%96">尺取</a>&nbsp;
+          
+            <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88%E9%98%9F%E5%88%97">单调栈队列</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/06/21/NOJ/">
+        <p class="h4 index-header">NOJ</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">实验4.1：求赋权图中一个结点到所有结点的最短路径的长度#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+10;
+//---------------------------------------------邻接矩阵-------------------------------------------------------------------------------//
+struct AdjMatrix
+{
+    int V,E;
+    char Vexs[maxn];
+    int Edge[maxn][maxn];
+};
+int vis[maxn],path[maxn],dist[maxn];
+//----------创建、初始化图----引用图G，节点数V，边数E---------------//
+void CreateAdjMatrix(A</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-21&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">NOJ-数据结构</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/28/CodeForces-1328/">
         <p class="h4 index-header">CodeForces-1328</p>
         
@@ -504,104 +595,6 @@ int main()
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/16/CodeForces-1304/">
-        <p class="h4 index-header">CodeForces-1304</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A: 题目名称： Two Rabbits 
-题目大意：有T组数据，给定x，y，a，b。其中x，y分别为两兔子的坐标(x&lt;y),a，b分别为对应兔子的速度，左边的兔子向右跳，右边的兔子向左跳，问能否相遇，若能请输出时间t，否则输出-1.
-题解：设delt=y-x，若delt%(a+b)则t=delt/(a+b),否则输出-1.
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-long long t,x,y,a,b;
-int main()
-{
-    scanf(&quot;%lld&quot;,&amp;t);
-    while(t--)
-    {
-        scanf(&quot;%lld%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;a,&amp;b);
-        long long delt=abs(y-x);
-        if(del</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-16&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/15/CodeForces-1303/">
-        <p class="h4 index-header">CodeForces-1303</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A：题目名称：  Erasing Zeroes 
-题目大意：删除最少的0，使所有的1连续，问删除多少个0？
-题解：找到最后一个1的位置，和开头1的位置，枚举中间0的个数
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-int T;char s[105];
-int main()
-{
-    scanf(&quot;%d&quot;,&amp;T);
-    while(T--)
-    {
-        scanf(&quot;%s&quot;,s);
-        int sign=0,ans=0,t=0;
-        for(int i=strlen(s);i&gt;=0;i--)
-        {
-            if(s[i]==&#39;1&#39;)
-            {
-                t=i;
-                break;
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-15&nbsp;&nbsp;
         
         
         

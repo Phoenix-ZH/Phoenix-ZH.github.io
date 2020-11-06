@@ -153,6 +153,86 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/11/HDU-1151/">
+        <p class="h4 index-header">HDU-1151</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-1151 Air Raid
+题目链接：https://vjudge.net/problem/HDU-1151#author=0
+题目大意：一个城镇有n个路口，由一些单向马路连接。现在要安排一些伞兵降落在某些路口上，清查所有的路口。一个伞兵可以沿着马路一路清查过去。清查过程中不能有两个伞兵同时清查一个路口（应该是为了防止暴露）。给定城镇的线路，求最少需要几个人伞兵就能清查所有的路口。 
+题解：一开始看到这题，猜想入度为0则ans++，实则不对，出度大于1时就不对了。然后又猜想：建单向边，跑匈牙利算法求出最大匹配，n-ans就是最后的答案。事实证明这个思路是正确的。AC之后即去找了一份题解，这题就是最小路径覆盖问题。
+DAG的最小路径覆盖的定义： 在一个有向图中，找出最少的路径，使得这些路径经过了所有的点。 
+最小路径覆盖分为最小不相交路径覆盖和最小可相交路径覆盖。 
+最小不相交路径覆盖：每一条路径经过的顶点各不相同。
+最小可相交路径覆盖：每一条路径经过的顶点可以相同。
+DAG的最小不相交路径覆盖的算法： 把原图的每个点V拆成两个点Vx和Vy，如果有一条有向边A-&gt;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E8%A6%86%E7%9B%96">最小路径覆盖</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/11/HDU-1054/">
+        <p class="h4 index-header">HDU-1054</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-1054 Strategic Game
+题目链接：https://vjudge.net/problem/HDU-1054#author=0
+题目大意：Bob非常享受玩电脑游戏的过程，尤其是策略游戏，但是在有些时候，他因为不能在第一时间找到最佳的策略而十分伤心。 现在，他遇到了一个问题。他必须保卫一个中世纪的城市，有很多道路将整个城市连起来，整体上看上去像一棵树。Bob需要放置尽可能少的士兵，保卫树上所有的边。士兵只能放在节点上，但是却可以保卫所有与这个节点相邻的边。 
+题解：题目要求很明确，就是要最少的点覆盖所有的边，即最小定点覆盖问题。 最小顶点覆盖要求用最少的点，让每条边都至少和其中一个点关联。即点集里面的点能覆盖所有的边 。
+knoig定理： 二分图的最小顶点覆盖数=二分图的最大匹配数。 
+证明：
+要证明最小顶点覆盖数==最大匹配数，即证明最小顶点覆盖数&gt;=最大匹配数，并且最大匹配数&gt;=最小顶点覆盖数。设最小顶点覆盖数为S，最大匹配数为M。
+ ① 最小顶点覆盖数&gt;=最大匹配数：
+假设最大匹配数为n，那么我们就得到了n条互不相邻的边，光覆盖这些边</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%B0%8F%E9%A1%B6%E7%82%B9%E8%A6%86%E7%9B%96">最小顶点覆盖</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/11/POJ-3020/">
         <p class="h4 index-header">POJ-3020</p>
         
@@ -440,97 +520,6 @@ ps：数组开小了不会RE，它会TLE！因为一开始只开了10000的边�
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/09/HDU-2255/">
-        <p class="h4 index-header">HDU-2255</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-2255  奔小康赚大钱 
-题目链接：https://vjudge.net/problem/HDU-2255#author=0
-题目大意：n个居民n个房子，每个居民会给不同的房子不同的钱，问如何分配使得钱最多？
-题解：KM的模板题，KM的具体介绍由blog的KM讲解中提供
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=300+5;
-int Map[maxn][maxn],visx[maxn],visy[maxn],cx[maxn],cy[maxn],n,wx[maxn],wy[maxn],minn;
-int dfs(int x)
-{
-    visx[x]=1;
-    for(int i=1;i&lt;=n;i++)
-    {
-        if(!visy[i]&amp;&amp;Map[x][i]!=0x3f3f3f3f)
-     </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/KM">KM</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/09/KM%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">
-        <p class="h4 index-header">KM算法详解</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">介绍：以匈牙利算法为基础，改善后用于求解带权二分图的最佳匹配问题
-完备匹配：如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，或者Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。 
-完美匹配：若二分图X部的每一个顶点都与Y中的一个顶点匹配，并且Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完美匹配。 
-即： 一个二分图，X部和Y部的顶点数相等，存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。  
-最大权匹配：带权二分图的边权重和最大的匹配，如图，最大和为102
-  
-最佳匹配：带权二分图的边权重和最大的完备匹配，如图
-  
-显然最大权匹配和最佳匹配不完全相同，最大权匹配由于不一定是最大匹配，所以无法等同于最佳匹配。
-但是如果把剩余的边补上，并且设置边权为0，那么二者可以统一起来。如图
-  
-KM算法km算法用于求最佳匹配，而不是最大权匹配。换言之，km算法用来求完备匹配下的最大权匹配。
-如果不存在完备匹配，km算法会求最大匹配，如果最大匹配存在多种，那么结果就是最大匹配中权重和最大的。
-
-在一个二分图中，左顶点为X，右顶点为Y，现在对于每组左右连</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/KM">KM</a>&nbsp;
           
         
       </div>

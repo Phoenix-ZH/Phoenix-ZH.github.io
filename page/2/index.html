@@ -153,6 +153,86 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/04/NOJ-%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">
+        <p class="h4 index-header">NOJ-石子合并</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">石子合并描述
+在一个圆形操场的四周摆放着n堆石子(n&lt;= 100)，现要将石子有次序地合并成一堆。规定每次只能选取相邻的两堆合并成新的一堆,并将新的一堆的石子数,记为该次合并的得分。编一程序，读入石子堆数n及每堆的石子数(&lt;=20)。选择一种合并石子的方案,使得做n－1次合并,得分的总和最小； 比如有4堆石子：4 4 5 9 则最佳合并方案如下：4 4 5 9 score: 08 5 9 score: 813 9 score: 8 + 13 = 2122 score: 8 + 13 + 22 = 43
+输入
+可能有多组测试数据。 当输入n=0时结束! 第一行为石子堆数n(1&lt;=n&lt;=100)； 第二行为n堆的石子每堆的石子数,每两个数之间用一个空格分隔。
+输出
+合并的最小得分，每个结果一行。
+输入样例
+4 4 4 5 9 0
+输出样例
+43
+思路一开始以为这个题和合并果子一样是个贪心的题，拿着优先队列就开始一波贪心，WA了。才发现是合并相邻的石子。那这个题就和上一个计算矩阵连乘积的题几乎一样了。但是也有不一样的。这个题的序列是循环序列，并且为了记录每一次合并对答</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/04/NOJ-%E8%AE%A1%E7%AE%97%E7%9F%A9%E9%98%B5%E8%BF%9E%E4%B9%98%E7%A7%AF/">
+        <p class="h4 index-header">NOJ-计算矩阵连乘积</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">计算矩阵连乘积描述
+在科学计算中经常要计算矩阵的乘积。矩阵A和B可乘的条件是矩阵A的列数等于矩阵B的行数。若A是一个p×q的矩阵，B是一个q×r的矩阵，则其乘积C=AB是一个p×r的矩阵。计算C=AB总共需要p×q×r次乘法。现在的问题是，给定n个矩阵{A1,A2,…,An}。其中Ai与Ai+1是可乘的，i=1,2,…,n-1。要求计算出这n个矩阵的连乘积A1A2…An最少需要多少次乘法。
+输入
+输入数据的第一行是一个整树n（0 &lt; n &lt;= 10），表示矩阵的个数。接下来的n行每行两个整数p,q( 0 &lt; p,q &lt; 100)，分别表示一个矩阵的行数和列数。
+输出
+输出一个整数：计算连乘积最少需要乘法的次数。
+输入样例
+101 22 33 44 55 66 77 88 99 1010 11
+输出样例
+438
+思路设dp[i][j]表示合并第i个矩阵到第j个矩阵所需要的最少的乘法次数。初始化dp为0x3f3f3f3f（即初始化为无穷大）。dp[i][i]=0(所有的i-i的合并的乘法次数为0).然后就开始考虑动态规划的转移方程：先枚举长度len （len fro</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/04/NOJ-%E9%98%B2%E5%8D%AB%E5%AF%BC%E5%BC%B9/">
         <p class="h4 index-header">NOJ-防卫导弹</p>
         
@@ -490,103 +570,6 @@ B.题目名称：Minimum Product
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-05&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/31/CodeForces-1397/">
-        <p class="h4 index-header">CodeForces-1397</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称： Juggling Letters 
-题目大意：n个字符串，每次操作可以选择两个字符串（可以相同）选择其中一个字符串中某一字符插入到另一字符串。问：操作任意次，能否使得所有字符串都相同？ 
-思路：统计n个字符串中26个小写字母的数量是否是n的倍数，是则YES，否则NO
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=1e3+40;
-int T,n,cnt[100];char s[maxn][maxn];
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--)
-    {
-        cin&gt;&gt;n;
-        for(int i=1;i&lt;=n;i++)cin&gt;&gt;s[i]+1;
-        memset(cnt,0,sizeof(cnt));
-        for(int i=1;i&lt;=n;i++)
-        {
-            int len=strlen(s[i]+1);
-     </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-31&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/26/CodeForces-1400/">
-        <p class="h4 index-header">CodeForces-1400</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称 String Similarity 
-题目大意：定义两个字符串相似：两个字符串中至少有一个位置的值相同。
-现在给出一个长度为2n−1的字符串s，现在让你构造一个长度为n的字符串，使得这个字符串与s的所有长度为n的子串都相似。
-思路：直接将s[n]输出n次
-ps：一开始想复杂了，认为cnt0的个数&gt;=n就全输出0，否则全输出1.实际上全输出s[n]就可以了。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=1e3+50;
-int T,n;char s[maxn];
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--)
-    {
-        cin&gt;&gt;n;
-        cin&gt;&gt;s+1;
-        int opt0=0;
-        for(int i=1;i&lt;=2*n-1;i++)
-            if(s[i]==&#39;0&#39;)
-                opt0++</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-26&nbsp;&nbsp;
         
         
         
