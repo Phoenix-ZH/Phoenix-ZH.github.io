@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    979 字
+                    994 字
                   </span>&nbsp;
                 
 
@@ -212,10 +212,11 @@ int dfs(int res,int c){
         dp[res][c]=0;
         return 0;
     }
-    else if(dp[res][c]!=-1)return dp[res][c];
+    if(dp[res][c]!=-1)return dp[res][c];
     int sign=1;
-    for(i=1;i&lt;=min(res,c);i++){
-        sign=sign&amp;dfs(res-i,2*i);//下一个dfs就是Jerry先手的状态了，必须全部为1，才能使得当前dfs中的为后手必胜 
+    for(i=1;i&lt;=2*c;i++){
+        if(i&gt;res)break;
+        sign=sign&amp;dfs(res-i,i);//下一个dfs就是Jerry先手的状态了，必须全部为1，才能使得当前dfs中的为后手必胜 
         if(sign==0)break;
     }
     dp[res][c]=0;
@@ -227,22 +228,27 @@ int main(){
     int i,j;
     while(1){
         cin&gt;&gt;n;
+        if(n==1){
+            cout&lt;&lt;0&lt;&lt;endl;
+            continue;
+        }
         if(n==0)break;
         for(i=0;i&lt;=1000;i++){
             for(j=0;j&lt;=1000;j++){
                 dp[i][j]=-1;
             }
         }
-        cout&lt;&lt;dfs(n,1)&lt;&lt;endl;
+        cout&lt;&lt;1-dfs(n-1,1)&lt;&lt;endl;
     }
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-MmAVyGme" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-XHvIikLF" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-MmAVyGme"),
+            element: document.getElementById("aplayer-XHvIikLF"),
             narrow: false,
             autoplay: true,
             showlrc: false,
