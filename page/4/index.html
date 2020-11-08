@@ -153,6 +153,95 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/31/CodeForces-1388/">
+        <p class="h4 index-header">CodeForces-1388</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A.题目名称： Captain Flint and Crew Recruitment 
+题目大意：如果一个数 x能够表示成两个不同质数的乘积，那我们就称 x是 nearly prime 。给出n，求n能否分成4个不同正整数的和，其中至少三个是 nearly prime 
+思路：首先可以取得最小的三个 nearly prime：6，10，14。如果n&lt;=30那么肯定无法得到符合要求的组合。如果n&gt;=45则至少都有6，10，14，所以一定可以得到符合要求的组合。问题就是30&lt;n&lt;45之间的情况，只需要单独分析x=6/10/14（x=n-30）的情况。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int T,n;
+int main()
+{
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;n;
+        if(n&lt;=30)
+        {
+            printf(&quot;NO\n&quot;);
+          </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-31&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/29/kuangbin%E4%B8%93%E9%A2%9814-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/">
+        <p class="h4 index-header">kuangbin专题14-数论基础</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.题目名称：LightOJ 1370 Bi-shoe and Phi-shoe
+题目大意：给出n个数字的序列a[]，对于每个数字ai找到一个欧拉函数值大于等于ai的数bi，求找到的所有数bi的最小值之和sum 
+思路：已知a[]&lt;=1000000,要求得phi[]，则应当线性求phi。
+1.phi(p) == p-1 因为素数p除了1以外的因子只有p，所以与 p 互素的个数是 p - 1个 
+2.phi(p^k) == p^k - p^(k-1) == (p-1) * p^(k-1) 
+3.如果i mod p == 0, 那么 phi(i * p) == p * phi(i)  
+4.如果i mod p != 0, 那么 phi(i * p) == phi(i) * (p-1)  
+求得phi[]之后，就寻找大于等于a[i]的最小的phi[]的下标，求和。
+PS：WA了很多次：a[]&lt;=1000000,但是phi[]可能&gt;1000000
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int m</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-29&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B%E7%B4%A0%E6%95%B0">线性筛素数</a>&nbsp;
+          
+            <a href="/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">欧拉函数</a>&nbsp;
+          
+            <a href="/tags/hopcroft-karp">hopcroft-karp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/07/24/NWPU-%E7%BA%BF%E6%AE%B5%E6%A0%91/">
         <p class="h4 index-header">NWPU-线段树</p>
         
@@ -495,104 +584,11 @@ A：题目名称：Yet Another Tetris Problem
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/07/CodeForces-1321/">
-        <p class="h4 index-header">CodeForces-1321</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A:题目名称：Contest for Robots
-题目大意：给出长度为1≤n≤100 的两个序列 r,b，且满足 ri, bi∈{0,1}，你需要确定 pi（pi≥1）。
-满足$$\sum_{i=1}^n r_ip_i &gt; \sum_{i=1}^n b_ip_i$$，并且最小化max pi（1&lt;=i&lt;=n）
-如果不可能，输出 -1 。
-题解：因为序列的数字要么为1，要么为0，那么如果r中没有数字比b中的大，那么显然不可能实现题目的要求。一旦求得r比b大的个数w1，和r比b小的个数w2，就可以求maxpi，但是注意要求是大于，所以ans=(w2+1)/w1;并且要判断是否整除，如果没有则ans++。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1000+5;
-int a[maxn],b[maxn],n;
-int main()
-{
-    sc</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/29/CodeForces-1311/">
-        <p class="h4 index-header">CodeForces-1311</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A：题目名称： Add Odd or Subtract Even
-题目大意：
-给定两个正整数a,b。
-每次操作你可以把 a加上某个正奇数，或者减去某个正偶数。
-问至少多少次操作可以把 a变成 b。
-多组数据 :T&lt;=10^4,1&lt;=a,b&lt;=10^9
-
-题解：对于a，b关系可分为3种情况：a&gt;b;a==b;a&lt;b;a==b:答案为0；a &gt; b:若a-b为偶数，答案为1；否则为2，先减一个偶数让a=b-1，再加1。a &lt; b:若b-a为奇数，答案为1；否则为2.
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-int T,a,b;
-int main()
-{
-    scanf(&quot;%d&quot;,&amp;T);
-    while(T--)
-    {
-        scanf(&quot;%d%d&quot;,&amp;a,&amp;b</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-29&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

@@ -153,6 +153,100 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/10/29/NOJ-%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA%E4%BD%9C%E4%B8%9A/">
+        <p class="h4 index-header">NOJ-算法设计理论作业</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.二分查找描述
+给定一个单调递增的整数序列，问某个整数是否在序列中。
+输入
+第一行为一个整数n，表示序列中整数的个数；第二行为n（n不超过10000）个整数；第三行为一个整数m（m不超过50000），表示查询的个数；接下来m行每行一个整数k。
+输出
+每个查询的输出占一行，如果k在序列中，输出Yes，否则输出No。
+输入样例
+51 3 4 7 113369
+输出样例
+YesNoNo
+思路：方法一：按照题目要求进行二分查找，由于a[]是单增数列，所以对于每一个输入查询x，我们先设置左边界l=1，有边界r=n，ans储存可能的位置，进行二分查找，每一次二分查找时mid=(l+r)/2。如果a[mid]&gt;=x，说明如果存在x，那么x一定在左边界（包括mid），那么此时r=mid-1，ans=mid；如果a[mid]&lt;x，则说明x一定在有边界。二分查找完之后，要验证a[ans]是否等于x，因为二分只是由于它是有序序列进行二分，不断查找与x最接近的数字，但它不一定能够是x。
+这个方法时间复杂度为O(nlogn).
+代码：
+#include&lt;cstdio&gt;
+#include</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-29&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/10/23/NOJ-test3/">
+        <p class="h4 index-header">NOJ-test3</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">先占个坑,等什么时候有空了,再补题解,先贴上代码.
+代码都不长,就是简单bfs.vis标记注意状态.除了特殊的二阶魔方是真的恶心!
+A.加1乘2平方#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=10000+50; 
+int n,m,vis[maxn];
+int min(int x,int y){
+    return x&lt;=y?x:y;
+}
+int main(){
+    cin&gt;&gt;m&gt;&gt;n;
+    memset(vis,0x3f3f3f3f,sizeof(vis));
+    vis[m]=1;
+    for(int i=m+1;i&lt;=n;i++){
+        int t=sqrt(i);
+        if(vis[i-1])vi</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-23&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/09/09/CodeForces-1407-D/">
         <p class="h4 index-header">CodeForces-1407-D</p>
         
@@ -533,100 +627,11 @@ int main()
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/31/CodeForces-1388/">
-        <p class="h4 index-header">CodeForces-1388</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称： Captain Flint and Crew Recruitment 
-题目大意：如果一个数 x能够表示成两个不同质数的乘积，那我们就称 x是 nearly prime 。给出n，求n能否分成4个不同正整数的和，其中至少三个是 nearly prime 
-思路：首先可以取得最小的三个 nearly prime：6，10，14。如果n&lt;=30那么肯定无法得到符合要求的组合。如果n&gt;=45则至少都有6，10，14，所以一定可以得到符合要求的组合。问题就是30&lt;n&lt;45之间的情况，只需要单独分析x=6/10/14（x=n-30）的情况。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int T,n;
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--){
-        cin&gt;&gt;n;
-        if(n&lt;=30)
-        {
-            printf(&quot;NO\n&quot;);
-          </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-31&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/29/kuangbin%E4%B8%93%E9%A2%9814-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/">
-        <p class="h4 index-header">kuangbin专题14-数论基础</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.题目名称：LightOJ 1370 Bi-shoe and Phi-shoe
-题目大意：给出n个数字的序列a[]，对于每个数字ai找到一个欧拉函数值大于等于ai的数bi，求找到的所有数bi的最小值之和sum 
-思路：已知a[]&lt;=1000000,要求得phi[]，则应当线性求phi。
-1.phi(p) == p-1 因为素数p除了1以外的因子只有p，所以与 p 互素的个数是 p - 1个 
-2.phi(p^k) == p^k - p^(k-1) == (p-1) * p^(k-1) 
-3.如果i mod p == 0, 那么 phi(i * p) == p * phi(i)  
-4.如果i mod p != 0, 那么 phi(i * p) == phi(i) * (p-1)  
-求得phi[]之后，就寻找大于等于a[i]的最小的phi[]的下标，求和。
-PS：WA了很多次：a[]&lt;=1000000,但是phi[]可能&gt;1000000
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int m</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-29&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B%E7%B4%A0%E6%95%B0">线性筛素数</a>&nbsp;
-          
-            <a href="/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">欧拉函数</a>&nbsp;
-          
-            <a href="/tags/hopcroft-karp">hopcroft-karp</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

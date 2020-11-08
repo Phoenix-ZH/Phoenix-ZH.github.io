@@ -153,6 +153,75 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3281/">
+        <p class="h4 index-header">POJ-3281</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3281 Dining or  P2891 [USACO07OPEN]吃饭Dining
+题目链接：https://vjudge.net/problem/POJ-3281
+题目大意：有F种食物和D种饮料，每种食物或饮料只能供一头牛享用，且每头牛只享用一种食物和一种饮料。现在有n头牛，每头牛都有自己喜欢的食物种类列表和饮料种类列表，问最多能使几头牛同时享用到自己喜欢的食物和饮料。（1 &lt;= f &lt;= 100, 1 &lt;= d &lt;= 100, 1 &lt;= n &lt;= 100）
+题解：我一开始想到的办法稍微有点复杂。首先着很明显是最大流问题，难点就只有建图，最开始我想到的建图是一个超级源点，指向牛，然后牛指向食物，由于食物只有一次使用机会，所以食物–&gt;食物’（流量为1）表示的是，该食物的数量为1，然后食物’指向牛’，牛’指向饮料，饮料–&gt;饮料’（流量为1），然后饮料’指向超级汇点。但是这种方法有问题。至于问题，我现在没找到，之后再想想。
+ps:后面想通了，由于牛–&gt;食物，食物–&gt;食物’，食物’–&gt;牛’；这样单次经</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-2516/">
+        <p class="h4 index-header">POJ-2516</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 2516 Minimum Cost
+题目链接：https://vjudge.net/problem/POJ-2516
+题目大意：有 n 个商店，k种物品和 m 个供货商，让你求进满足商店需求的货物的最小花费？有必要说一下输入数据。首先n ，k ，m。然后是一个n*m的矩阵，n个商店对每种货物的需求，表示第 i 个商店需要第 j 种货物 x个?然后是m * k 的矩阵，m个供货商可以供k种货物的数量，表示第 i 个供货商 提供第 j 中货物 x 个接下来是 k 个 n * m 的矩阵，表示第 i 个货物，由 k 供应商发货给 j 商店的价格x（注意如果供不应求的或输出-1）
+题解：一开始将商店分成很多，对于商品1有1-n商店，对于商品2有n+1-2n商店，对于商品k有n（k-1）-nk商店。对于供货商也是同理，s为起点，与商店连接，边权为商店对该物品的需求，费用为0，t为终点，供货商与t连接，边权为供货商能提供的量，费用为0，然后有后面k个矩阵可以建图，商店与供货商连接，注意要一一对应，因为商店和供货商相当于拆了点了，边权为无穷大，费用为价格。但是最后跑费用流就凉了</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+            <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81">费用流</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-2195/">
         <p class="h4 index-header">POJ-2195</p>
         
@@ -452,48 +521,11 @@ const int max</div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-2732/">
-        <p class="h4 index-header">HDU-2732</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 2732 Leapin’ Lizards
-题目链接：https://vjudge.net/problem/HDU-2732
-题目大意：题目是说一个n*m的迷宫中，有每个格子有柱子。柱子高度为0~3，高度为0的柱子是不能站的（高度为0就是没有柱子）在一些有柱子的格子上有一些蜥蜴，一次最多跳距离d,相邻格子的距离是1，只要跳出迷宫就是安全的。这个距离是曼哈顿距离（好像是的）。蜥蜴一次最多跳距离d,但是起跳的地方的柱子高度会减一，一个柱子同一时间只能有一个蜥蜴要求最少几个不能逃出迷宫。
-题解：最大流问题，求出dinic跑出的最大流，然后总数-ans就是剩余的数。建图方法：
-1.每个柱子有容纳量，超过了就塌了。u–&gt;u’ 边权为容纳量
-2.有蜥蜴的柱子与起点s相连，即s–&gt;u,边权为1
-3.边界上可以跳出界的与终点相连，条件(x1&lt;=p||y1&lt;=p||n-x1+1&lt;=p||len-y1+1&lt;=p)&amp;&amp;h[x1][y1]，u’–&gt;t,边权0x3f3f3f3f
-4.任意两个有容纳量的柱子，且曼哈顿距离&lt;=d，可</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/10/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span>
+      <a class="extend prev" rel="prev" href="/page/10/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

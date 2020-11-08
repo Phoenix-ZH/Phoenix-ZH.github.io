@@ -153,6 +153,85 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4300/">
+        <p class="h4 index-header">HDU-4300</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-4300 Clairewd’s message
+题目链接：https://vjudge.net/problem/HDU-4300
+题目大意：第一行给的是26个字母对应的翻译密码，而第二行给的是文本串，该文本串前面部分为加密后的内容，而后部分(可能不完整)为未加密的内容。求：一行字符串前一半为加密后的内容，后一半为未加密的内容。一一对应的关系。
+题解：由题意可知，文本串前一部分是加密过后的内容，后一部分是未加密的内容，而这一部分可能是不完整的。则可理解为s=stringA+stringB。可以根据第一行给的加密方式将s整体当作加密内容，将其转化为整体未加密的内容，即字符串s转化成了t。这时候将原s的所有后缀与t匹配，这个过程实际上就是ex-kmp，将t作为子串，s作为母串，求t与s的所有后缀的公共前缀的长度extend[]。如果extend[i]+i==len(s)&amp;&amp;i&gt;=extend[i].即以i为分界点，s[0…i-1]作为stringA，s[i…len-1]作为stringB，即stringB就是原文本内容。(i&gt;=extend[i]</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-1238/">
+        <p class="h4 index-header">HDU-1238</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-1238 Substrings
+题目链接：https://vjudge.net/problem/HDU-1238#author=organicsalt
+题目大意：给n个字符串，问是否存在一个子串(或将该子串reverse)为所有字符串的子串。
+题解：将第一个字符串的所有子串与其余子串匹配一遍，如果有一个匹配失败，就将该子串reverse再匹配。这里使用reverse会更快，用kmp加速。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1005;
+int n,T,Next[maxn],len1,len2;string s[105],s2;
+void next_pre(int len)
+{
+    int i=0,j=1;Next[0]=-1;
+    while(j&lt;len)
+    {
+        while(Next[i]!=-1&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-2328/">
         <p class="h4 index-header">HDU-2328</p>
         
@@ -466,103 +545,11 @@ in</div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2387/">
-        <p class="h4 index-header">POJ-2387</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2387 Til the Cows Come Home
-题目链接：https://vjudge.net/problem/POJ-2387#author=ght5160
-题目大意：求从1到n的最短距离
-题解：最短路模板，spfa或者dijkstra+堆优化。朴素Dijkstra：时间复杂度o(n^2)堆优化Dijkstra：时间复杂度o(（V+E）logV）
-spfa在稀疏图O（E），稠密图O（VE）
-dijkstra+堆优化的代码：
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=2000+5;
-int n,m,k=1,dist[maxn],vis[maxn],head[maxn];
-struct node
-{
-    int to,next,w;
-}edge[maxn*2];
-struct N
-{
-  </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2253/">
-        <p class="h4 index-header">POJ-2253</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2253 Frogger
-题目链接：https://vjudge.net/problem/POJ-2253#author=dusenlin
-题目大意：两块石头之间的青蛙距离被定义为两块石头之间所有可能路径上的最小必要跳跃距离，某条路径的必要跳跃距离即这条路径中单次跳跃的最远跳跃距离。求1到2的最小必要跳跃距离。
-题解：数据很小，符合Floyd算法。每一次更新的时候需要调整一下：dist[i][j]=min(dist[i][j],max(dist[i][k],dist[k][j]));因为必要跳跃距离是指整个路径单次跳跃的最远距离，所以取max
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-using namespace std;
-const int maxn=200+5;
-int n;double dist[maxn][maxn],x[maxn],y[maxn];
-i</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
