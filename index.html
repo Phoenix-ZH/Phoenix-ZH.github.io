@@ -153,6 +153,57 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/08/NOJ-1541-%E5%8A%A01%E4%B9%982%E5%B9%B3%E6%96%B9/">
+        <p class="h4 index-header">NOJ-1541-加1乘2平方</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">加1乘2平方描述
+给定两个正整数m、n，问只能做加1、乘2和平方这三种变化，从m变化到n最少需要几次
+输入
+输入两个10000以内的正整数m和n，且m小于n
+输出
+输出从m变化到n的最少次数
+输入样例
+1 16
+输出样例
+3
+方法1：思路：设定dp[i]表示从m到达i最少需要i步。初始化dp[]无穷大，显然dp[m]=0,即到起点的步数为0。对于i来讲可以到达i的只有三种状态：i-1、i/2、sqrt(i)（其中i/2和sqrt(i)需要满足整数条件）。这也是基于i整体单增的条件才满足动态规划。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn = 10000 + 50;
+int dp[maxn], n,m;
+int min(int x,int y){
+    if(x&lt;=y)return x;
+    return</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/08/%E7%AC%AC45%E5%B1%8A%E5%9B%BD%E9%99%85%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B(ICPC)%E4%BA%9A%E6%B4%B2%E7%BD%91%E4%B8%8A%E5%8C%BA%E5%9F%9F%E8%B5%9B%E6%A8%A1%E6%8B%9F%E8%B5%9B%20E%20Eat%20Walnuts/">
         <p class="h4 index-header">第45届国际大学生程序设计竞赛(ICPC)亚洲网上区域赛模拟赛 E Eat Walnuts</p>
         
@@ -479,46 +530,6 @@ const int maxn = 20000</div>
 输出样例
 01001
 思路这个题与花生米（二）https://blog.csdn.net/Phoenix_ZengHao/article/details/109495057  相比，状态变多了。之前对于状态i，它只能由状态i-1，i-5，i-10进行推导。显然直接枚举状态并且对每一个状态做三个dp转移方程是行不通的。我们需</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%8C%EF%BC%89/">
-        <p class="h4 index-header">NOJ-花生米（二）</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">花生米（二）描述
-五一长假第二天，Tom和Jerry在仓库散步的时候又发现了一堆花生米（这个仓库还真奇怪）。这次Tom制定分花生米规则如下：    1、Tom和Jerry轮流从堆中取出k粒花生米吃掉，k可以是1，5，10中的任意一个数字；    2、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然还是希望最后一粒花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
-输入
-本题有多个测例，每个测例的输入是一个整数n，n大于零小于等于1000，代表花生米的数量。n等于0表示输入结束，不需要处理。
-输出
-每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取输出0。
-输入样例
-12340
-输出样例
-0101
-思路博弈论：定义： jerry后手胜利 为必胜态。（即：Tom拿了最后一颗并且初始Jerry后手）10以内的必胜状态：1,3,5,7,9.由于可以一次拿10个，我们需要考虑10周围的情况:11为必胜 。什么才是必败态？当前面i-1,i-5,i-10这10个状态都是必胜态的时候， i一定是必败态。否则 i就有机会成为必胜态。必胜状态推导出的下</div>
         </div>
       </a>
 

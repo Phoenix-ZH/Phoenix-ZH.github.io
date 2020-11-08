@@ -153,6 +153,51 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/09/09/CodeForces-1407-D/">
+        <p class="h4 index-header">CodeForces-1407-D</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：Discrete Centrifugal Jumps
+题目大意：有n个楼房，给出n个楼房的高度，开始位于1号楼，最后需到达n号楼。当满足一下任一条件则可转移：
+i + 1 = j；
+max(hi+1,…,hj-1)&lt;min(hi,hj);
+max(hi,hj)&lt;min(hi+1,…,hj-1);
+求到达n号楼需要的最少步数。
+思路：根据条件有如下转移:
+1.dp[i]=dp[i-1]+1;
+2.i前面有一个下标假设为j，且这个j满足(a[j]&gt;max(a[j+1]……,a[i-1]); dp[i]=dp[j]+1;
+3.i前面有一个下标假设为j,且这个j满足(a[j]&lt;min(a[j+1]…….a[i-1]);dp[i]=dp[j]+1;
+那么找这个j的过程用单调栈优化。
+具体是什么意思呢？
+比如现在有
+h[i]：4 3 2 5 这样的楼高度
+ i :  1 2 3 4
+设一个down的单调栈，维护栈内的元素是单调递减的。当遍历到i=4的时候，由于h[4]&gt;h[down.top() =(3) ] ,那么此时down栈的单调递减性质破坏，需要不停d</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-09&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88">单调栈</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/09/05/CodeForces-1409/">
         <p class="h4 index-header">CodeForces-1409</p>
         
@@ -571,40 +616,6 @@ const int m</div>
             <a href="/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">欧拉函数</a>&nbsp;
           
             <a href="/tags/hopcroft-karp">hopcroft-karp</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/24/NWPU-%E7%BA%BF%E6%AE%B5%E6%A0%91/">
-        <p class="h4 index-header">NWPU-线段树</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">一.综述假设有编号从1到n的n个点，每个点都存了一些信息，用[L,R]表示下标从L到R的这些点。线段树的用处就是，对编号连续的一些点进行修改或者统计操作，修改和统计的复杂度都是O(log2(n)).
-线段树的原理，就是，将[1,n]分解成若干特定的子区间(数量不超过4*n),然后，将每个区间[L,R]都分解为少量特定的子区间，通过对这些少量子区间的修改或者统计，来实现快速对[L,R]的修改或者统计。
-由此看出，用线段树统计的东西，必须符合区间加法，否则，不可能通过分成的子区间来得到[L,R]的统计结果。
-符合区间加法的例子：1.数字之和——总数字之和 = 左区间数字之和 + 右区间数字之和2.最大公因数(GCD)——总GCD = gcd( 左区间GCD , 右区间GCD );3.最大值——总最大值=max(左区间最大值，右区间最大值)不符合区间加法的例子：1.众数——只知道左右区间的众数，没法求总区间的众数2.01序列的最长连续零——只知道左右区间的最长连续零，没法知道总的最长连续零
-一个问题，只要能化成对一些连续点的修改和统计问题，基本就可以用线段树来解决了，具体怎么转化在第六节会讲</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-24&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91">线段树</a>&nbsp;
           
         
       </div>

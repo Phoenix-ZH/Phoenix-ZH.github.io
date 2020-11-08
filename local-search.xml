@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>NOJ-1541-加1乘2平方</title>
+    <link href="/2020/11/08/NOJ-1541-%E5%8A%A01%E4%B9%982%E5%B9%B3%E6%96%B9/"/>
+    <url>/2020/11/08/NOJ-1541-%E5%8A%A01%E4%B9%982%E5%B9%B3%E6%96%B9/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="加1乘2平方"><a href="#加1乘2平方" class="headerlink" title="加1乘2平方"></a>加1乘2平方</h1><p><strong>描述</strong></p><p>给定两个正整数m、n，问只能做加1、乘2和平方这三种变化，从m变化到n最少需要几次</p><p><strong>输入</strong></p><p>输入两个10000以内的正整数m和n，且m小于n</p><p><strong>输出</strong></p><p>输出从m变化到n的最少次数</p><p><strong>输入样例</strong></p><p>1 16</p><p><strong>输出样例</strong></p><p>3</p><h3 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h3><h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>设定dp[i]表示从m到达i最少需要i步。初始化dp[]无穷大，显然dp[m]=0,即到起点的步数为0。对于i来讲可以到达i的只有三种状态：i-1、i/2、sqrt(i)（其中i/2和sqrt(i)需要满足整数条件）。这也是基于i整体单增的条件才满足动态规划。</p><h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;using namespace std;const int maxn = 10000 + 50;int dp[maxn], n,m;int min(int x,int y){    if(x&lt;=y)return x;    return y;}int main(){    cin &gt;&gt; m &gt;&gt; n;    memset(dp, 0x3f3f3f3f, sizeof(dp));    dp[m] = 0;    for (int i = m + 1; i &lt;= n;i++){        int t = sqrt(i);        dp[i] = min(dp[i], dp[i - 1]+1);        if(i%2==0)            dp[i] = min(dp[i], dp[i / 2]+1);        if(t*t==i)            dp[i] = min(dp[i], dp[t] + 1);    }    cout &lt;&lt; dp[n] &lt;&lt; endl;    return 0;}</code></pre><h3 id="方法2："><a href="#方法2：" class="headerlink" title="方法2："></a>方法2：</h3><h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><p>按照一般的方法进行BFS。一个点i往后搜索，它可以到达三个状态：i+1，i * 2，i * i，并且相应的步数+1.对于一个状态i如果已经到达过了就没必要再进行搜索了，因为第一次到达它的时候所耗步数一定是最小的，因为BFS本身就是层次遍历，一定是步数小的执行，所以只需要处理第一次到达的情况。并且在BFS的同时把到达过的点都标记了，避免重复搜索。一旦到达n就可以直接输出答案了，当然continue继续也没错。</p><p>网上的代码感觉基本雷同。所以这里写了两个方法，一个递推另一个队列+BFS（一般bfs都是配队列，当然优先队列有时效果更佳）。当然这里显然用递推是最简单的，而且O(n)的时间复杂度明显比bfs快。（测试数据：1 1000000）。</p><p><strong>ps：</strong>if(now.now&gt;=n||vis[now.now])continue;这里顺序不要调换，不然运行错误了找半天错。</p><h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;queue&gt;using namespace std;const int maxn = 10000 + 50;struct Node{    int now, w;};int min(int x,int y){    if(x&lt;=y)return x;    return y;}int n, m,vis[maxn];queue&lt;Node&gt;q;int main(){    cin &gt;&gt; m &gt;&gt; n;    Node now;    now.now = m;    now.w = 0;    q.push(now);    int ans=0x3f3f3f3f;    while(!q.empty()){        now= q.front();q.pop();        if(now.now==n){            ans=min(ans,now.w);continue;        }        if(now.now&gt;=n||vis[now.now])continue;        vis[now.now]=1;        Node nex;nex.now=now.now+1;nex.w=now.w+1;q.push(nex);        nex.now=now.now*2;nex.w=now.w+1;q.push(nex);        nex.now=now.now*now.now;nex.w=now.w+1;q.push(nex);     }    cout&lt;&lt;ans&lt;&lt;endl;    return 0;}</code></pre>        <div id="aplayer-UlhGlThz" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-UlhGlThz"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第45届国际大学生程序设计竞赛(ICPC)亚洲网上区域赛模拟赛 E Eat Walnuts</title>
     <link href="/2020/11/08/%E7%AC%AC45%E5%B1%8A%E5%9B%BD%E9%99%85%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B(ICPC)%E4%BA%9A%E6%B4%B2%E7%BD%91%E4%B8%8A%E5%8C%BA%E5%9F%9F%E8%B5%9B%E6%A8%A1%E6%8B%9F%E8%B5%9B%20E%20Eat%20Walnuts/"/>
     <url>/2020/11/08/%E7%AC%AC45%E5%B1%8A%E5%9B%BD%E9%99%85%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B(ICPC)%E4%BA%9A%E6%B4%B2%E7%BD%91%E4%B8%8A%E5%8C%BA%E5%9F%9F%E8%B5%9B%E6%A8%A1%E6%8B%9F%E8%B5%9B%20E%20Eat%20Walnuts/</url>
