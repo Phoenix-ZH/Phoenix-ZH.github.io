@@ -153,6 +153,47 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3268/">
+        <p class="h4 index-header">POJ-3268</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3268 Silver Cow Party
+题目链接：https://vjudge.net/problem/POJ-3268#author=Demon_de_Laplace
+题目大意：N头牛，M条单行道，在s出举行聚会，每头牛出发和返回都是走最短路，问所有牛中走的路程最远的牛走了多远？
+题解：建边的时候建双向边，k=2开始.当边号为偶数时，说明是正边；当边号为奇数时，说明时反边；从s出发，跑正边，dist[i]存的是从s到i的最短距离；从s出发，跑反边，dist[i]存的是从i到s的最短距离；ans=max(ans,dist1[i]+dist2[i])
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=100000+5;
+int n,m,t,k=1,head[maxn],vis[maxn],dist1</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-1860/">
         <p class="h4 index-header">POJ-1860</p>
         
@@ -499,46 +540,6 @@ ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保�
 题目链接：https://vjudge.net/problem/POJ-1062#author=0
 题目大意：一个人要买1号物品，而此物品可以通过直接购买或者到别人的手中买别的东西+一些金币来得到。但是需要注意：如果两人地位等级差距超过了delt，就不可以进行间接交易，即该交易圈的人两两之间等级差异不可大于delt。问要得到1号物品至少要花费多少钱？
 题解：建立一个源点，它与所有物品建边，即s–&gt;i（边权为物品原价），因为每个物品除了直接购买，还可以间接购买，设间接购买物品为j，则建边方式为j–&gt;i（边权为额外金币）然后跑最短路，注意最短路的条件不再是dist[edge[i].to]&gt;dist[x]+edge[i].w，因为当价格相等时也需要进入队列来进行松弛，所以应变为dist[edge[i].to]&gt;dist[x]+edge[i].w;然后就是等级限制的判断了。刚开始的s的等级需要从最低到最高都设置一次，意味着跑n次spfa，s就是这次spfa的最低等级，因此a[edge[i].to].l&gt;=limit&am</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1847/">
-        <p class="h4 index-header">POJ-1847</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1847 Tram
-题目链接：https://vjudge.net/problem/POJ-1847
-题目大意：输入n,a,b三个数，表示有n个点(1-n)，起点是a，终点是b，然后接下来有n行，每一行的第一个数m表示后面将会有m个数，输入结构是这样的，然后我再具体的解释一下。
-3 2 1     3表示共有n个点，接下来有n行，2表示起点，1表示终点2 2 3     第一个数2表示后面有2个数，因为这是第1行，所以后面两个数表示从1到2和从1到3的边2 3 1     表示从2到3和从2到1的边2 1 2     表示从3到1和从3到2的边
-题解：n&lt;=100，可以跑Floyd，dist初始化无穷大，每个结点所连接的第一个结点与它的距离为0，其余相连的为1，然后跑Floyd。dist[s][t]为最终的结果。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-co</div>
         </div>
       </a>
 
