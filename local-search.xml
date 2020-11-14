@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>CodeForces-1438D-Powerful Ksenia</title>
+    <link href="/2020/11/14/CodeForces-1438D-Powerful%20Ksenia/"/>
+    <url>/2020/11/14/CodeForces-1438D-Powerful%20Ksenia/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h1><p>​    <img src="https://img-blog.csdnimg.cn/20201114163444944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"> </p><p>有一个长度为n的数组a，每次选择三个数字$a_i$ ^$a_j$ ^$a_k$，使得最后n个数字都相等。如果存在就输出“YES”，并且输出操作次数m，再输出m行，每行是操作的数的下标；否则就输出“NO”</p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>先考虑n为奇数的情况。假设n-1个数字两两相等，那么就剩余一个数字未配对，每次将这个数字（假设下标为i）$a_i$ 与那n-1个数字中的任意两个进行异或，最后都可以变成$a_i$ 。如何将这n-1个数字两两相等？假设那个未配对的数字是$a_n$ ，那么之间的1~n-1个数字可以三个为一组进行异或，前一组将$a_i$ ,$a_{i-1}$ ,$a_{i-2}$进行异或，当前这组将$a_i$ ,$a_{i+1}$ ,$a_{i+2}$进行异或.这样操作就可以将前n-1个数字两两配对相等。最后两两配对的数字再都与最后一个数字an进行异或就可以将n个数字都变成an。</p><p>那如何考虑n为偶数的情况？</p><p>n为偶数的时候，将数组a全部进行异或之后，假设可以实现最后全部相等，那么异或的结果就是0.假设当前对$a_i$,$a_j$,$a_k$异或，那么$a_i$=$a_j$=$a_k$=$a_i$ ^ $a_j$ ^ $a_k$.那么此时再对$a_i$,$a_j$,$a_k$异或，$a_{i’}$ ^ $a_{j’}$ ^ $a_{k’}$=($a_i$ ^ $a_j$ ^ $a_k$)($a_i$ ^ $a_j$ ^ $a_k$)($a_i$ ^ $a_j$ ^ $a_k$),这样其实和原来是相等的。所以a数组最初的所有数字异或的结果=a数组最终结果的所有数字异或结果，最终由于a数组全部相等，那么a数组的异或结果就是0，即a数组的最初异或结果是0.我们将前n-1个数字当作奇数进行处理，就可以将前n-1个数字都变成$a_n$。因为前n-1个的异或结果=$a_n$，而前n-1个当作奇数情况进行上述<strong>情况一</strong>进行处理都变成了相同的数，显然最后都变了$a_n$。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn=2e5+50;typedef long long ll;int n,a[maxn],cnt;struct Node{    int x,y,z;}t[maxn];int main(){    cin&gt;&gt;n;    int x=0;    for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i],x^=a[i];    sort(a+1,a+1+n);    if(n%2){        cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;        for(int i=1;i+2&lt;=n;i+=2){            cnt++;t[cnt].x=i;t[cnt].y=i+1;t[cnt].z=i+2;        }        for(int i=1;i+1&lt;=n-1;i+=2){            cnt++;t[cnt].x=i;t[cnt].y=i+1;t[cnt].z=n;        }        cout&lt;&lt;cnt&lt;&lt;endl;        for(int i=1;i&lt;=cnt;i++){            cout&lt;&lt;t[i].x&lt;&lt;&#39; &#39;&lt;&lt;t[i].y&lt;&lt;&#39; &#39;&lt;&lt;t[i].z&lt;&lt;endl;        }    }    else{        if(x){            cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;        }        else{            cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;            n--;            for(int i=1;i+2&lt;=n;i+=2){                cnt++;t[cnt].x=i;t[cnt].y=i+1;t[cnt].z=i+2;            }            for(int i=1;i+1&lt;=n-1;i+=2){                cnt++;t[cnt].x=i;t[cnt].y=i+1;t[cnt].z=n;            }            cout&lt;&lt;cnt&lt;&lt;endl;            for(int i=1;i&lt;=cnt;i++){                cout&lt;&lt;t[i].x&lt;&lt;&#39; &#39;&lt;&lt;t[i].y&lt;&lt;&#39; &#39;&lt;&lt;t[i].z&lt;&lt;endl;            }        }    }    return 0;}</code></pre>        <div id="aplayer-zLaNQpNf" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-zLaNQpNf"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CodeForces</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CodeForces-1438C-Engineer Artem</title>
     <link href="/2020/11/14/CodeForces-1438C-Engineer%20Artem/"/>
     <url>/2020/11/14/CodeForces-1438C-Engineer%20Artem/</url>

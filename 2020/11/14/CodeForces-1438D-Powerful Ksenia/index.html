@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 ~ Phoenix_ZH&#39;Blog</title>
+  <title>CodeForces-1438D-Powerful Ksenia ~ Phoenix_ZH&#39;Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -35,11 +35,13 @@
   <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -115,7 +117,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/guidang.jpg')no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -125,6 +127,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 十一月 14日 2020, 4:16 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    866 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -136,59 +173,133 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 113 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/02/07/HDU-3605/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HDU-3605</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
-    
-    <a href="/2020/02/07/HDU-3081/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HDU-3081</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
-    
-    <a href="/2020/02/07/HDU-2732/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HDU-2732</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
-</div>
 
-  <nav aria-label="index posts navigation">
-    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/2020/page/11/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/archives/2020/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/10/">10</a><a class="page-number" href="/archives/2020/page/11/">11</a><span class="page-number current">12</span>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
-      ele.href += '#board';
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h1><p>​    <img src="https://img-blog.csdnimg.cn/20201114163444944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"> </p>
+<p>有一个长度为n的数组a，每次选择三个数字$a_i$ ^$a_j$ ^$a_k$，使得最后n个数字都相等。如果存在就输出“YES”，并且输出操作次数m，再输出m行，每行是操作的数的下标；否则就输出“NO”</p>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>先考虑n为奇数的情况。假设n-1个数字两两相等，那么就剩余一个数字未配对，每次将这个数字（假设下标为i）$a_i$ 与那n-1个数字中的任意两个进行异或，最后都可以变成$a_i$ 。如何将这n-1个数字两两相等？假设那个未配对的数字是$a_n$ ，那么之间的1~n-1个数字可以三个为一组进行异或，前一组将$a_i$ ,$a_{i-1}$ ,$a_{i-2}$进行异或，当前这组将$a_i$ ,$a_{i+1}$ ,$a_{i+2}$进行异或.这样操作就可以将前n-1个数字两两配对相等。最后两两配对的数字再都与最后一个数字an进行异或就可以将n个数字都变成an。</p>
+<p>那如何考虑n为偶数的情况？</p>
+<p>n为偶数的时候，将数组a全部进行异或之后，假设可以实现最后全部相等，那么异或的结果就是0.假设当前对$a_i$,$a_j$,$a_k$异或，那么$a_i$=$a_j$=$a_k$=$a_i$ ^ $a_j$ ^ $a_k$.那么此时再对$a_i$,$a_j$,$a_k$异或，$a_{i’}$ ^ $a_{j’}$ ^ $a_{k’}$=($a_i$ ^ $a_j$ ^ $a_k$)($a_i$ ^ $a_j$ ^ $a_k$)($a_i$ ^ $a_j$ ^ $a_k$),这样其实和原来是相等的。所以a数组最初的所有数字异或的结果=a数组最终结果的所有数字异或结果，最终由于a数组全部相等，那么a数组的异或结果就是0，即a数组的最初异或结果是0.我们将前n-1个数字当作奇数进行处理，就可以将前n-1个数字都变成$a_n$。因为前n-1个的异或结果=$a_n$，而前n-1个当作奇数情况进行上述<strong>情况一</strong>进行处理都变成了相同的数，显然最后都变了$a_n$。</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=2e5+50;
+typedef long long ll;
+int n,a[maxn],cnt;
+struct Node{
+    int x,y,z;
+}t[maxn];
+int main(){
+    cin&gt;&gt;n;
+    int x=0;
+    for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i],x^=a[i];
+    sort(a+1,a+1+n);
+    if(n%2){
+        cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+        for(int i=1;i+2&lt;=n;i+=2){
+            cnt++;t[cnt].x=i;t[cnt].y=i+1;t[cnt].z=i+2;
+        }
+        for(int i=1;i+1&lt;=n-1;i+=2){
+            cnt++;t[cnt].x=i;t[cnt].y=i+1;t[cnt].z=n;
+        }
+        cout&lt;&lt;cnt&lt;&lt;endl;
+        for(int i=1;i&lt;=cnt;i++){
+            cout&lt;&lt;t[i].x&lt;&lt;&#39; &#39;&lt;&lt;t[i].y&lt;&lt;&#39; &#39;&lt;&lt;t[i].z&lt;&lt;endl;
+        }
     }
-  </script>
+    else{
+        if(x){
+            cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+        }
+        else{
+            cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+            n--;
+            for(int i=1;i+2&lt;=n;i+=2){
+                cnt++;t[cnt].x=i;t[cnt].y=i+1;t[cnt].z=i+2;
+            }
+            for(int i=1;i+1&lt;=n-1;i+=2){
+                cnt++;t[cnt].x=i;t[cnt].y=i+1;t[cnt].z=n;
+            }
+            cout&lt;&lt;cnt&lt;&lt;endl;
+            for(int i=1;i&lt;=cnt;i++){
+                cout&lt;&lt;t[i].x&lt;&lt;&#39; &#39;&lt;&lt;t[i].y&lt;&lt;&#39; &#39;&lt;&lt;t[i].z&lt;&lt;endl;
+            }
+        }
+    }
+    return 0;
+}</code></pre>
+
+        <div id="aplayer-zLaNQpNf" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-zLaNQpNf"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "那年",
+              author: "枯木逢春",
+              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
 
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/CodeForces">CodeForces</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -267,6 +378,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -318,7 +434,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "CodeForces-1438D-Powerful Ksenia&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

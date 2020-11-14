@@ -153,6 +153,40 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/14/CodeForces-1438D-Powerful%20Ksenia/">
+        <p class="h4 index-header">CodeForces-1438D-Powerful Ksenia</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：​     
+有一个长度为n的数组a，每次选择三个数字$a_i$ ^$a_j$ ^$a_k$，使得最后n个数字都相等。如果存在就输出“YES”，并且输出操作次数m，再输出m行，每行是操作的数的下标；否则就输出“NO”
+思路：先考虑n为奇数的情况。假设n-1个数字两两相等，那么就剩余一个数字未配对，每次将这个数字（假设下标为i）$a_i$ 与那n-1个数字中的任意两个进行异或，最后都可以变成$a_i$ 。如何将这n-1个数字两两相等？假设那个未配对的数字是$a_n$ ，那么之间的1~n-1个数字可以三个为一组进行异或，前一组将$a_i$ ,$a_{i-1}$ ,$a_{i-2}$进行异或，当前这组将$a_i$ ,$a_{i+1}$ ,$a_{i+2}$进行异或.这样操作就可以将前n-1个数字两两配对相等。最后两两配对的数字再都与最后一个数字an进行异或就可以将n个数字都变成an。
+那如何考虑n为偶数的情况？
+n为偶数的时候，将数组a全部进行异或之后，假设可以实现最后全部相等，那么异或的结果就是0.假设当前对$a_i$,$a_j$,$a_k$异或，那么$a_i$=$a_j$=$a</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-14&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/14/CodeForces-1438C-Engineer%20Artem/">
         <p class="h4 index-header">CodeForces-1438C-Engineer Artem</p>
         
@@ -525,45 +559,6 @@ N人为了大快朵颐，行至云餐二楼，取了N个盘子，打了M个饺�
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/CodeForces-1442-B/">
-        <p class="h4 index-header">CodeForces-1442-B</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：Identify the Operations
-题目大意：一个数组a长度为n，一个数组b长度为m，a数组中的元素各不相同，b数组中的元素各不相同。在a数组中要将ai加入到bi中，可以将ai-1,ai+1划去，然后ai加入到b数组的右侧。问得到b数组的总方案数，答案对998244353取模。
-思路：Div2的最后一题居然是水题，这是我没想到的，错过了大好的上分时机。要依次将a数组的一些元素加入到b数组中来得到b数组。这里有三种情况：
-1）如果ai-1和ai+1都在b数组中。此时他们都还在数组a中，ai想加入b数组中，必须划去ai-1或者ai+1，但是显然无法划去。对于这种情况的选择方案为0.
-2）ai-1和ai+1中有一个在b中，而另外一个不在。可以划去那个不在b数组中的。方案数为1.
-3）ai-1和ai+1两个数字都不在b中，则有两种方案。
-用vis数组来标记ai是否在b数组中。用pos数组表示一个值w在a数组中对应的位置。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn = 20000</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
           
         
       </div>
