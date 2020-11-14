@@ -153,6 +153,42 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/01/CodeForces-1444/">
+        <p class="h4 index-header">CodeForces-1444</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">C. Division题目大意：T组数据，每组给出pi和qi，其中 1≤pi≤10^18, 2≤qi≤10^9,求出最大的xi使得pi%xi==0，xi%qi!=0.
+思路：假设y=p/x，存在质数a，使得y%a==0&amp;&amp;a%q!=0,那么p%(a * x)==0&amp;&amp;(a * x)%q!=0
+如果存在两个质数a和b，如果y%a==0&amp;&amp;y%b==0并且q%a==0&amp;&amp;q%b==0.因为x%q!=0，所以存在一个质数c（c可以等于a或者b），并且c在x中出现的次方数小于c在q中出现的次方数。a或b中的一个不等于c，因此将x‘=x * c，那么x‘%q!=0，因此答案要求的最大x不可能是a或者b。
+所以x=p/（q中某个因数的幂次）。所以枚举q的所有因数，时间复杂度sqrt(q),注意因数一大一小对应枚举。然后设t=p，如果t%q==0，则t/=枚举的因数，直到t%q!=0，ans=max{t}.
+以上是p%q==0的情况。
+如果p%q！=0，显然答案就是p本身。
+代码：#include&lt;bits/stdc++.h&gt</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-01&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/10/29/NOJ-%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA%E4%BD%9C%E4%B8%9A/">
         <p class="h4 index-header">NOJ-算法设计理论作业</p>
         
@@ -572,49 +608,6 @@ B.题目名称： Fix You
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-10&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/08/CodeForces-1393/">
-        <p class="h4 index-header">CodeForces-1393</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称Rainbow Dash, Fluttershy and Chess Coloring
-题目大意：给定一个正方形区域上色，要求上色的块相邻之间不能相同，也就是我们会在每回合上不同的颜色，要求上色的块邻边是边界或是上一个以上色的块。求至少要多少个回合才能把这个正方形区域完。 
-思路：第一个回合，我们只能在边界的块上上色，且 要间隔开一格子上色，那么我们至少可以把边界的一半给上完，那么在下个回合，我们用不同的颜色上色自然可以把最外面的边界给上完。依次这样， 所以我们还是按着之前的块相邻来填，我们发现，进行完这个回合我们的区域和上个回合的是一样的，只不过长度减了2，我们每次进行这种回合都会这样子，那么我们对边长n/2即可，最后再加1.
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-long long T,n;
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--)
-    {
-        cin&gt;&gt;n;
-        long long ans=n/2+1;
-   </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-08&nbsp;&nbsp;
         
         
         

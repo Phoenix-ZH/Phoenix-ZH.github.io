@@ -153,6 +153,41 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%94%EF%BC%89/">
+        <p class="h4 index-header">NOJ-花生米（五）</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">花生米（五）描述
+五一长假第六天，Tom在QQ上遇到了Kitty。呵呵，Kitty，在离散数学课上认识的PPMM……等等！Tom恍然大悟：自己这一生除了看帖不回之外最大的错误就是离散数学没学好！五一长假第七天，Tom和Jerry在仓库散步的时候发现了一堆花生米（仓库，呵呵，仓库…）。这次Tom制定分花生米规则如下：1、首先选出最苦的一粒花生米，放到一个瓶子里；2、把剩下的花生米做成花生酱，Tom和Jerry轮流取一些花生酱吃掉；3、第一个取的人只能取1.0克，以后取花生酱的数量不能少于两个人已经取过的总数量且不能超过两个人已经取过的总数量的三倍；4、不能按规则3取花生酱的人必须吃掉瓶子里的花生米；5、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然希望瓶子里的花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
+输入
+本题有多个测例，每个测例的输入是一个浮点数w，w大于1.0小于等于1000.0，w最多只有一位小数，代表花生酱的数量，单位为克。w小于0表示输入结束，不需要处理。
+输出
+每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E5%9B%9B%EF%BC%89/">
         <p class="h4 index-header">NOJ-花生米（四）</p>
         
@@ -502,42 +537,6 @@ int main(){
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/01/CodeForces-1444/">
-        <p class="h4 index-header">CodeForces-1444</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">C. Division题目大意：T组数据，每组给出pi和qi，其中 1≤pi≤10^18, 2≤qi≤10^9,求出最大的xi使得pi%xi==0，xi%qi!=0.
-思路：假设y=p/x，存在质数a，使得y%a==0&amp;&amp;a%q!=0,那么p%(a * x)==0&amp;&amp;(a * x)%q!=0
-如果存在两个质数a和b，如果y%a==0&amp;&amp;y%b==0并且q%a==0&amp;&amp;q%b==0.因为x%q!=0，所以存在一个质数c（c可以等于a或者b），并且c在x中出现的次方数小于c在q中出现的次方数。a或b中的一个不等于c，因此将x‘=x * c，那么x‘%q!=0，因此答案要求的最大x不可能是a或者b。
-所以x=p/（q中某个因数的幂次）。所以枚举q的所有因数，时间复杂度sqrt(q),注意因数一大一小对应枚举。然后设t=p，如果t%q==0，则t/=枚举的因数，直到t%q!=0，ans=max{t}.
-以上是p%q==0的情况。
-如果p%q！=0，显然答案就是p本身。
-代码：#include&lt;bits/stdc++.h&gt</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-01&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
           
         
       </div>

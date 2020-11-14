@@ -153,6 +153,50 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/14/CodeForces-1438C-Engineer%20Artem/">
+        <p class="h4 index-header">CodeForces-1438C-Engineer Artem</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：Engineer Artem 
+题目大意：
+有T组数据，每组数据有一个n行m列的矩阵，希望通过一种操作使得矩阵任意相邻的数字不同，这个操作只能让某一个数字加1，可以操作无限次，但是每一个方格只能操作一次。
+思路：一个数字一定可以由奇数变成偶数或者由偶数变成奇数，我们可以让坐标x+y为偶数的格子放偶数，x+y为奇数的格子放奇数。即：如果x+y为偶数的格子上的数为奇数，就让它+1；如果x+y为奇数的格子上的数为偶数，就让它+1，这样就实现的奇偶相间，也保证了相邻不等。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1005;
+int a[maxn][maxn],T,n,m;
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;n&gt;&gt;m;
+        for(int i=1;i&lt;=n;i++){
+            for(int j=1;j&lt;=m;j++){
+           </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-14&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/08/NOJ-1205-%E6%B4%BB%E5%8A%A8%E5%AE%89%E6%8E%92/">
         <p class="h4 index-header">NOJ-1205-活动安排</p>
         
@@ -520,41 +564,6 @@ const int maxn = 20000</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%94%EF%BC%89/">
-        <p class="h4 index-header">NOJ-花生米（五）</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">花生米（五）描述
-五一长假第六天，Tom在QQ上遇到了Kitty。呵呵，Kitty，在离散数学课上认识的PPMM……等等！Tom恍然大悟：自己这一生除了看帖不回之外最大的错误就是离散数学没学好！五一长假第七天，Tom和Jerry在仓库散步的时候发现了一堆花生米（仓库，呵呵，仓库…）。这次Tom制定分花生米规则如下：1、首先选出最苦的一粒花生米，放到一个瓶子里；2、把剩下的花生米做成花生酱，Tom和Jerry轮流取一些花生酱吃掉；3、第一个取的人只能取1.0克，以后取花生酱的数量不能少于两个人已经取过的总数量且不能超过两个人已经取过的总数量的三倍；4、不能按规则3取花生酱的人必须吃掉瓶子里的花生米；5、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然希望瓶子里的花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
-输入
-本题有多个测例，每个测例的输入是一个浮点数w，w大于1.0小于等于1000.0，w最多只有一位小数，代表花生酱的数量，单位为克。w小于0表示输入结束，不需要处理。
-输出
-每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
           
         
       </div>

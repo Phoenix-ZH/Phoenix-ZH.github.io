@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>CodeForces-1438C-Engineer Artem</title>
+    <link href="/2020/11/14/CodeForces-1438C-Engineer%20Artem/"/>
+    <url>/2020/11/14/CodeForces-1438C-Engineer%20Artem/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id=""><a href="#" class="headerlink" title=""></a><img src="http://m.qpic.cn/psc?/V51bUsDX4SEfaG2VXUBf1cyC78293WDm/ruAMsa53pVQWN7FLK88i5i*sNk79o*VQBwpn3OwS4tAMjiG9aR3o5f9slM6vw2DpazT9qE1S1TRJLOlvCutrJMo8SILsWnwy*91AoD8vzno!/b&bo=aAPMAWgDzAEDCSw!&rf=viewer_4" srcset="/img/loading.gif" alt="img"></h1><h1 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h1><p>Engineer Artem </p><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p><img src="http://m.qpic.cn/psc?/V51bUsDX4SEfaG2VXUBf1cyC78293WDm/ruAMsa53pVQWN7FLK88i5i*sNk79o*VQBwpn3OwS4tAMjiG9aR3o5f9slM6vw2DpazT9qE1S1TRJLOlvCutrJMo8SILsWnwy*91AoD8vzno!/b&bo=aAPMAWgDzAEDCSw!&rf=viewer_4" srcset="/img/loading.gif" alt="img"></p><p>有T组数据，每组数据有一个n行m列的矩阵，希望通过一种操作使得矩阵任意相邻的数字不同，这个操作只能让某一个数字加1，可以操作无限次，但是每一个方格只能操作一次。</p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>一个数字一定可以由奇数变成偶数或者由偶数变成奇数，我们可以让坐标x+y为偶数的格子放偶数，x+y为奇数的格子放奇数。即：如果x+y为偶数的格子上的数为奇数，就让它+1；如果x+y为奇数的格子上的数为偶数，就让它+1，这样就实现的奇偶相间，也保证了相邻不等。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn=1005;int a[maxn][maxn],T,n,m;int main(){    cin&gt;&gt;T;    while(T--){        cin&gt;&gt;n&gt;&gt;m;        for(int i=1;i&lt;=n;i++){            for(int j=1;j&lt;=m;j++){                cin&gt;&gt;a[i][j];                if((i+j)%2==0){                    if(a[i][j]%2)a[i][j]++;                }                else{                    if(a[i][j]%2==0)a[i][j]++;                }            }        }        for(int i=1;i&lt;=n;i++){            for(int j=1;j&lt;=m;j++){                cout&lt;&lt;a[i][j]&lt;&lt;&#39; &#39;;            }            cout&lt;&lt;endl;        }    }    return 0;}</code></pre>        <div id="aplayer-AcnuwdzN" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-AcnuwdzN"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CodeForces</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>NOJ-1205-活动安排</title>
     <link href="/2020/11/08/NOJ-1205-%E6%B4%BB%E5%8A%A8%E5%AE%89%E6%8E%92/"/>
     <url>/2020/11/08/NOJ-1205-%E6%B4%BB%E5%8A%A8%E5%AE%89%E6%8E%92/</url>
