@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    695 字
+                    694 字
                   </span>&nbsp;
                 
 
@@ -184,10 +184,12 @@
           <div class="markdown-body">
             <h1 id="A-题目名称："><a href="#A-题目名称：" class="headerlink" title="A:题目名称："></a>A:题目名称：</h1><p>Contest for Robots</p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给出长度为1≤<em>n</em>≤100 的两个序列 r,b，且满足 ri, bi∈{0,1}，你需要确定 pi（pi≥1）。</p>
-<p>满足<br>$$<br>\sum_{i=1}^n r_ip_i &gt; \sum_{i=1}^n b_ip_i<br>$$<br>，并且最小化max pi（1&lt;=i&lt;=n）</p>
+<p>满足</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^n r_ip_i > \sum_{i=1}^n b_ip_i</script><p>，并且最小化max pi（1&lt;=i&lt;=n）</p>
 <p>如果不可能，输出 -1 。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>因为序列的数字要么为1，要么为0，那么如果r中没有数字比b中的大，那么显然不可能实现题目的要求。一旦求得r比b大的个数w1，和r比b小的个数w2，就可以求maxpi，但是注意要求是大于，所以ans=(w2+1)/w1;并且要判断是否整除，如果没有则ans++。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -214,13 +216,17 @@ int main()
         printf(&quot;%d&quot;,s);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="B：题目名称："><a href="#B：题目名称：" class="headerlink" title="B：题目名称："></a>B：题目名称：</h1><p>Journey Planning</p>
 <h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给出一个长度为 n的序列 b。</p>
 <p>设 b的一个子序列 c 的长度为 m，它的第 i个元素在原序列的下标为ci，要求对于任意 1≤<em>i</em>&lt;<em>m</em>，ci+1−ci=bci+1−bci。</p>
-<p>此时这个子序列的贡献为<br>$$<br>\sum_{i=1}^m{b_{c_i}}<br>​<br>$$<br>求出所有合法的子序列的贡献中最大的贡献。</p>
+<p>此时这个子序列的贡献为</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^m{b_{c_i}}
+​</script><p>求出所有合法的子序列的贡献中最大的贡献。</p>
 <h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>有题目大意可知，要求一个子序列，假设该数字在原数组第i位，则要满足bi-bj=i-j;即<br>bi-i=bj-j;所以只需要sort排序的条件设为x.v-x.id&lt;y.v-x.id；然后线性求和并取max，注意最后的小细节。</p>
-<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -261,14 +267,15 @@ int main()
     maxx=max(maxx,ans);
     printf(&quot;%lld\n&quot;,maxx);
     return 0;
-} </code></pre>
+}
+</code></pre>
  
-        <div id="aplayer-WlLdynQj" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-fJrtsJTE" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-WlLdynQj"),
+            element: document.getElementById("aplayer-fJrtsJTE"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -322,6 +329,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

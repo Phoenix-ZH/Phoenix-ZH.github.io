@@ -195,7 +195,7 @@
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这个题与<strong>花生米（二）</strong><a href="https://blog.csdn.net/Phoenix_ZengHao/article/details/109495057" target="_blank" rel="noopener">https://blog.csdn.net/Phoenix_ZengHao/article/details/109495057</a>  相比，状态变多了。之前对于状态i，它只能由状态i-1，i-5，i-10进行推导。显然直接枚举状态并且对每一个状态做三个dp转移方程是行不通的。我们需要把所有的状态都枚举一次。但是又不确定到底可以取多少颗。假设在这之前的人拿了i颗花生米。那么当前这个人可以拿1~min（res，2 * i）。如果要让当前状态都是必胜态，必须保证下一次的所有状态都是必胜态，换言之后手当前状态必须是必胜态，那么对于先手在下一次的时候必须是必败态。</p>
 <p>定义dfs(int res,int c)当前dfs的状态是花生米剩余res，上一次的人拿了c颗花生米。dp[res][c]同理。记录dp[res][c]是为了进行记忆化搜索，这样的时间复杂度也是O(n^2)，在思路上比直接动态规划简单，并且时间复杂度也是相当的。dp[][]初始化为-1，dfs的时候一旦dp[res][c]！=-1说明这个状态已经遍历过了，直接返回答案即可。如果dfs到res==1的时候说明后手必胜，定义dp[res][c]=0表示这个状态下后手必胜。如果没有答案这个状态，就需要枚举它推导出的所有状态，拿i个的情况（i from 1 to min(res,c)），这样枚举到的是从后手转到了先手，要想后手必胜，必须保证先手所有的状态都是必败。所以定义sign=1，sign&amp;所有的dfs的结果，一旦sign=0，那么后手就无法必胜。如果最后sign=1，那么后手就是必胜。</p>
 <p> dp[i][j]==0：Jerry后手且此时剩余i个而对手在上一轮中取j个并且是必胜态。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -243,12 +243,12 @@ int main(){
 }
 </code></pre>
 
-        <div id="aplayer-agqsjEcl" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-gFpvXulY" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-agqsjEcl"),
+            element: document.getElementById("aplayer-gFpvXulY"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -263,7 +263,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -304,6 +303,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

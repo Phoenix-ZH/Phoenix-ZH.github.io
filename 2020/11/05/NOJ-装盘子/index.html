@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    504 字
+                    198 字
                   </span>&nbsp;
                 
 
@@ -149,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      2 分钟
+                      1 分钟
                   </span>&nbsp;
                 
 
@@ -194,8 +194,8 @@
 <p>8</p>
 <p><strong>提示</strong></p>
 <p>注意输出要以“\n”结尾。</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>问m个饺子放到n个盘子的方法，这个题直接写动态转移方程不好写，那就换成写记忆化搜索就行了。考虑m&gt;=n和m&lt;n两种情况。dfs(int resn ,int resm)表示剩余resn个盘子，剩余resm个饺子的放置种类数目，dp[resn][resm]对其进行记录，一旦dp[resn][resm]遍历过，就直接返回即可，优化时间复杂度。m&lt;n的话肯定有n-m个盘子都是空的ans=dfs(rem,rem)。m&gt;=n的话可以一个盘子不妨饺子即dfs(resn-1,resm ),也可以将每个盘子都至少放一个饺子即dfs(resn,resm-resn).由dfs(resn-1,resm)不断搜索下去可以对不同数量的空盘子均可以遍历到。最后答案就是dfs(n,m).</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>问m个饺子放到n个盘子的方法，这个题直接写动态转移方程不好写，那就换成写记忆化搜索就行了。考虑m&gt;=n和m<n两种情况。dfs(int resn ,int resm)表示剩余resn个盘子，剩余resm个饺子的放置种类数目，dp[resn][resm]对其进行记录，一旦dp[resn][resm]遍历过，就直接返回即可，优化时间复杂度。m<n的话肯定有n-m个盘子都是空的ans=dfs(rem,rem)。m>=n的话可以一个盘子不妨饺子即dfs(resn-1,resm ),也可以将每个盘子都至少放一个饺子即dfs(resn,resm-resn).由dfs(resn-1,resm)不断搜索下去可以对不同数量的空盘子均可以遍历到。最后答案就是dfs(n,m).</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -215,14 +215,15 @@ int main(){
     cin&gt;&gt;m&gt;&gt;n;
     cout&lt;&lt;dfs(n,m)&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-sjgaoeBg" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-NRXBDozL" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-sjgaoeBg"),
+            element: document.getElementById("aplayer-NRXBDozL"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -276,6 +277,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

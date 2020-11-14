@@ -183,10 +183,10 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p>POJ - 3660 Cow Contest</p>
-<h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-3660#author=arasHi" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-3660#author=arasHi</a>_</p>
+<h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-3660#author=arasHi_" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-3660#author=arasHi_</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有n头牛，m条比赛结果，每行两个数字，第一个数字表示的是胜利者。<br>问有几头牛的排名可以确定？</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>排名可以确定，这该如何理解？对于结点i，如果箭头指向i所包含的结点数为ans1，i箭头指出所包含的结点数为ans2，若ans1+ans2==n-1就说明结点i的排名可以确定。问题在于如何确定ans1，ans2的值。<br>举个例子：若a可以到b，b可以到c，那么a就可以到c。这就是传递闭包了。<br><img src="https://img-blog.csdn.net/20170409190428811?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3p3MTM3NjEyNDA2MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" alt=""><br>如何进行传递闭包呢？以上例子，a可以到b，b可以到c，则dist[a][b]=1,dist[b][c]=1,则a可以到c，即dist[a][c]=1；用floyd进行收缩即可。然后每个结点是否可以到达剩余的n-1个结点，或者剩余n-1个结点能否到达该结点，即ans1+ans2==n。判断条件就是dist[i][j]==1||dist[j][i]==1;</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -226,14 +226,15 @@ int main()
     }
     printf(&quot;%d\n&quot;,ans);
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-ohLJJeos" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-UvhTJipR" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-ohLJJeos"),
+            element: document.getElementById("aplayer-UvhTJipR"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -289,6 +290,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

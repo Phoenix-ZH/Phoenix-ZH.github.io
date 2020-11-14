@@ -195,7 +195,7 @@
 <h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>按照题目要求进行二分查找，由于a[]是单增数列，所以对于每一个输入查询x，我们先设置左边界l=1，有边界r=n，ans储存可能的位置，进行二分查找，每一次二分查找时mid=(l+r)/2。如果a[mid]&gt;=x，说明如果存在x，那么x一定在左边界（包括mid），那么此时r=mid-1，ans=mid；如果a[mid]&lt;x，则说明x一定在有边界。二分查找完之后，要验证a[ans]是否等于x，因为二分只是由于它是有序序列进行二分，不断查找与x最接近的数字，但它不一定能够是x。</p>
 <p>这个方法时间复杂度为O(nlogn).</p>
 <p><strong>代码：</strong></p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -228,13 +228,14 @@ int main(){
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p><strong>运行结果：</strong></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603882322650.png" srcset="/img/loading.gif" alt="1603882322650"></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603882299481.png" srcset="/img/loading.gif" alt="1603882299481"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603882322650.png" srcset="/img/loading.gif" alt="1603882322650"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603882299481.png" srcset="/img/loading.gif" alt="1603882299481"></p>
 <h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>题目要求很明确，就是问x是否在a[]中存在，那就把a[]中出现过的数字进行标记就可以了，这里对 a[]中的每一个数字的范围解释不够清楚，所以我们可以用map进行映射处理。当然其实也可以vis[]数组进行标记，vis[]大小设置为5e5，这样让vis[a[i]]=1,然后查询vis[x]是否等于1就可以了，或者用map标记方法也一样。这种方法的时间复杂度O(n)(直接数组标记)或者O(nlogn)(map)。</p>
 <p><strong>代码：</strong></p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -257,10 +258,11 @@ int main(){
             cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;
         }
     }
-}</code></pre>
+}
+</code></pre>
 <p><strong>运行结果：</strong></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603882725484.png" srcset="/img/loading.gif" alt="1603882725484"></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603882683549.png" srcset="/img/loading.gif" alt="1603882683549"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603882725484.png" srcset="/img/loading.gif" alt="1603882725484"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603882683549.png" srcset="/img/loading.gif" alt="1603882683549"></p>
 <h1 id="2-求解投骰子游戏问题"><a href="#2-求解投骰子游戏问题" class="headerlink" title="2.求解投骰子游戏问题"></a>2.求解投骰子游戏问题</h1><p><strong>[问题描述]</strong>玩家根据骰子的点数决定走的步数，即骰子点数为1时可以走一步，点数为2时可以走两步，点数为n时可以走n步。求玩家走到第n步（n≤骰子最大点数且投骰子方法唯一）时总共有多少种投骰子的方法。</p>
 <p>输入描述：输入包括一个整数n（1≤n≤6）。</p>
 <p>输出描述：输出一个整数，表示投骰子的方法数。</p>
@@ -268,7 +270,7 @@ int main(){
 <p>输出样例：32</p>
 <h3 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h3><h4 id="方法一：-1"><a href="#方法一：-1" class="headerlink" title="方法一："></a>方法一：</h4><p>看到这个题的第一个思路是用递推/动态规划。很容易看出来对于状态i（当前走到第i步）可以由状态0，1，……,i-1得到（即走i步，走i-1步，……,走1步），设dp[0]=1（即处于原始位置的方式只有一种），那么dp[i]=dp[i-1]+dp[i-2]+…+dp[0].所以n^2枚举即可，当然为了时候的优化，我们还可以进行<strong>前缀和优化</strong>（即每一次得到dp[i-1]都在pre之中，对于dp[i+1]我们就可以O(1)求得），当然这里n&lt;=6，就不必这么复杂了。所以写了一个时间复杂度为O(n^2)的代码。</p>
 <p><strong>代码：</strong></p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -285,14 +287,15 @@ int main(){
     }
     cout&lt;&lt;dp[n]&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p><strong>运行结果：</strong></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603883072417.png" srcset="/img/loading.gif" alt="1603883072417"></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603883059224.png" srcset="/img/loading.gif" alt="1603883059224"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603883072417.png" srcset="/img/loading.gif" alt="1603883072417"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603883059224.png" srcset="/img/loading.gif" alt="1603883059224"></p>
 <h4 id="方法二：-1"><a href="#方法二：-1" class="headerlink" title="方法二："></a>方法二：</h4><p>老师出这个题应该是为了考察dfs，所以这样写一下dfs的方法：</p>
 <p>对于x，与方法一的解释一样，它肯定是由0，1，…,x-1得到的，所以我们再dfs求走到第0,1,…,x-1步的方法，dfs的边界设置为 if(x==0)return 1;这样也是可以求得结果的，只是时间复杂度是指数级别。但是如果我们进行<strong>记忆化搜索</strong>，即用dp[]进行记录每一个状态的答案，一旦存在就不再dfs，这样的时间复杂度可以优化到O(n^2).</p>
 <p><strong>代码：</strong></p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -308,10 +311,11 @@ int main(){
     cin&gt;&gt;n;
     cout&lt;&lt;dfs(n)&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p><strong>运行结果：</strong></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603883468240.png" srcset="/img/loading.gif" alt="1603883468240"></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603883460594.png" srcset="/img/loading.gif" alt="1603883460594"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603883468240.png" srcset="/img/loading.gif" alt="1603883468240"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603883460594.png" srcset="/img/loading.gif" alt="1603883460594"></p>
 <h1 id="3-0-1背包"><a href="#3-0-1背包" class="headerlink" title="3.0-1背包"></a>3.0-1背包</h1><p>描述</p>
 <p>需对容量为c 的背包进行装载。从n 个物品中选取装入背包的物品，每件物品i 的重量为wi ，价值为pi 。对于可行的背包装载，背包中物品的总重量不能超过背包的容量，最佳装载是指所装入的物品价值最高。 </p>
 <p>输入</p>
@@ -325,7 +329,7 @@ int main(){
 <h3 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h3><h4 id="方法一：-2"><a href="#方法一：-2" class="headerlink" title="方法一："></a>方法一：</h4><p>0-1背包的裸题，那就可以直接写一个01背包的动态转移方程：dp[j]=max(dp[j],dp[j-w[i]]+p[i])。dp[j]的意思是：当背包已装j的重量的物品时的最大价值。那么它可以由背包已装j-w[i]时最大的价值进行转移，即由dp[j-w[i]]+p[i]得到。注意每一次要将dp[]设置为0，因为背包此时无价值。当状态方程枚举结束后，我们再从 dp[]数组中找一遍，求得答案maxx=max{dp[i]}(i from 0 to c)，输出答案maxx。这种动态规划的方法的时间复杂度为O(n^2).</p>
 <p><strong>ps：</strong>0-1背包也可以写成二维dp[][]，只是这样写成滚动数组可以更加节省空间。</p>
 <p><strong>代码：</strong></p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -355,14 +359,15 @@ int main(){
     }
 
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p><strong>运行结果：</strong></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603884301074.png" srcset="/img/loading.gif" alt="1603884301074"></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603884284377.png" srcset="/img/loading.gif" alt="1603884284377"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603884301074.png" srcset="/img/loading.gif" alt="1603884301074"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603884284377.png" srcset="/img/loading.gif" alt="1603884284377"></p>
 <h4 id="方法二：-2"><a href="#方法二：-2" class="headerlink" title="方法二："></a>方法二：</h4><p>除了直接写0-1背包的动态转移方程，还可以直接写dfs，每一个背包无非就是取和不取两个状态，如果要取则要求背包容量 res&gt;=w[now]。分别用ans1，ans2表示取当前物品，不取当前物品的最大价值，dfs返回max(ans1,ans2)，dfs的终止条件是now ==n+1。时间复杂度(2^n)。</p>
 <p><strong>ps:</strong>方法二相较于方法一思维上更加简单，容易想到，但是代码就相对麻烦，并且时间复杂度不够优秀，当然如果加上记忆化搜索后时间复杂度和动态规划是相当的。我个人更喜欢方法一。</p>
 <p><strong>代码：</strong></p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -389,14 +394,15 @@ int main(){
         cout&lt;&lt;dfs(1,c)&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p><strong>运行结果：</strong></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603885210798.png" srcset="/img/loading.gif" alt="1603885210798"></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603885191198.png" srcset="/img/loading.gif" alt="1603885191198"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603885210798.png" srcset="/img/loading.gif" alt="1603885210798"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603885191198.png" srcset="/img/loading.gif" alt="1603885191198"></p>
 <h1 id="4-求解组合问题"><a href="#4-求解组合问题" class="headerlink" title="4.求解组合问题"></a>4.求解组合问题</h1><p>编写一个实验程序,采用回溯法输出自然数1~n中任取r个数的所有组合。</p>
-<h3 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h3><p>用回溯法求组合，n个数字选r个，每一个数字有两种选择，要么选，要么不选。dfs(int now)表示当前的决策数字是now，则dfs的边界条件是now==n+1。对于数字now，可以选择，也可以不选择。选择的话a[++a[0]]=now，a[0]记录当前选择的数的数量，回溯的时候记得a[0]–,再进行不选择now的dfs搜索。当now==n+1的时候表明当前已经选择完了，如果a[0]==r,则当前的选择组合刚好是满足条件的，输出即可。时间复杂度O(2^n)</p>
+<h3 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h3><p>用回溯法求组合，n个数字选r个，每一个数字有两种选择，要么选，要么不选。dfs(int now)表示当前的决策数字是now，则dfs的边界条件是now==n+1。对于数字now，可以选择，也可以不选择。选择的话a[++a[0]]=now，a[0]记录当前选择的数的数量，回溯的时候记得a[0]—,再进行不选择now的dfs搜索。当now==n+1的时候表明当前已经选择完了，如果a[0]==r,则当前的选择组合刚好是满足条件的，输出即可。时间复杂度O(2^n)</p>
 <p><strong>代码：</strong></p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -419,10 +425,11 @@ int main(){
     cin&gt;&gt;n&gt;&gt;r;
     dfs(1);
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p><strong>运行结果：</strong></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603886599309.png" srcset="/img/loading.gif" alt="1603886599309"></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603886613973.png" srcset="/img/loading.gif" alt="1603886613973"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603886599309.png" srcset="/img/loading.gif" alt="1603886599309"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603886613973.png" srcset="/img/loading.gif" alt="1603886613973"></p>
 <h1 id="5-最小重量机"><a href="#5-最小重量机" class="headerlink" title="5.最小重量机"></a>5.最小重量机</h1><p>设某一机器由n个部件组成，每一种部件都可以从m个不同的供应商处购得。设 wij  是从供应商j处购得的部件 i 的重量， cij 是相应的价格。试设计一个算法，给出总价格不超过 c 的最小重量机器设计。</p>
 <p>输入：第一行3个整数n,m,cost，接下来n行输入wij  （每行m个整数），最后n行输入cij  （每行m个整数），这里n&gt;=1, m&lt;=100.</p>
 <p>输出：第一行包括n个整数，表示每个对应的供应商编号，第2行为对应的重量。</p>
@@ -440,7 +447,7 @@ int main(){
 <h3 id="思路：-4"><a href="#思路：-4" class="headerlink" title="思路："></a>思路：</h3><p>这里用dfs进行搜索，每找到一个符合条件的情况，就更新bestw和x[]。bestw储存最小的重量，x[i]表示部件i所对应的供应商，nowx[i]表示dfs过程中部件i选择的供应商。w[i][j] 表示从供应商j处购得的部件i的重量 ，c[i][j]表示相应的价格。dfs(int now,int noww,int nowp)表示搜索第now个部件时的当前重量为noww，耗费nowp，对于第now个物品它有m个供应商可以选择，当nowp+c[now][i]&lt;=cost时则符合条件可以进行dfs(now+1,noww+w[now][i],nowp+c[now][i]);dfs的边界条件时now==n+1，此时如果bestw&gt;noww，则要更新bestw，以及x[]。最后输出bestw和x[].</p>
 <p><strong>ps:</strong>如果PE的话，把最后的空格去掉（输出x[]的时候,x[n]后面不要跟空格），并且加上printf(“\n”).</p>
 <p><strong>代码：</strong></p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -480,12 +487,13 @@ int main(){
     cout&lt;&lt;endl;
     cout&lt;&lt;bestw&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p><strong>运行结果：</strong></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603888641972.png" srcset="/img/loading.gif" alt="1603888641972"></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603888654371.png" srcset="/img/loading.gif" alt="1603888654371"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603888641972.png" srcset="/img/loading.gif" alt="1603888641972"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603888654371.png" srcset="/img/loading.gif" alt="1603888654371"></p>
 <h1 id="6-最长公共子序列"><a href="#6-最长公共子序列" class="headerlink" title="6.最长公共子序列"></a>6.最长公共子序列</h1><p>描述</p>
-<p>一个给定序列的子序列是在该序列中删去若干元素后得到的序列。确切地说，若给定序列X=&lt;x1, x2,…, xm&gt;，则另一序列Z=&lt;z1, z2,…, zk&gt;是X的子序列是指存在一个严格递增的下标序列 &lt;i1, i2,…, ik&gt;，使得对于所有j=1,2,…,k有：<br>Xij ＝ Zj<br>如果一个序列S即是A的子序列又是B的子序列，则称S是A、B的公共子序列。<br>求A、B所有公共子序列中最长的序列的长度。</p>
+<p>一个给定序列的子序列是在该序列中删去若干元素后得到的序列。确切地说，若给定序列X=<x1, x2,…, xm>，则另一序列Z=<z1, z2,…, zk>是X的子序列是指存在一个严格递增的下标序列 <i1, i2,…, ik>，使得对于所有j=1,2,…,k有：<br>Xij ＝ Zj<br>如果一个序列S即是A的子序列又是B的子序列，则称S是A、B的公共子序列。<br>求A、B所有公共子序列中最长的序列的长度。</p>
 <p>输入</p>
 <p>输入共两行，每行一个由字母和数字组成的字符串，代表序列A、B。A、B的长度不超过200个字符。</p>
 <p>输出</p>
@@ -502,7 +510,7 @@ int main(){
 <h3 id="时间复杂度："><a href="#时间复杂度：" class="headerlink" title="时间复杂度："></a><strong>时间复杂度：</strong></h3><p>由于只需要填一个m行n列的二维数组，其中m代表第一个字符串长度，n代表第二个字符串长度</p>
 <p>所以时间复杂度为O（m*n）</p>
 <p><strong>代码：</strong></p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -532,11 +540,11 @@ int main(){
 }
 </code></pre>
 <p><strong>运行结果：</strong></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603899713319.png" srcset="/img/loading.gif" alt="1603899713319"></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603899700760.png" srcset="/img/loading.gif" alt="1603899700760"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603899713319.png" srcset="/img/loading.gif" alt="1603899713319"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603899700760.png" srcset="/img/loading.gif" alt="1603899700760"></p>
 <h1 id="7-活动安排问题"><a href="#7-活动安排问题" class="headerlink" title="7.活动安排问题"></a>7.活动安排问题</h1><p>问题：有n个活动的集合A={1,2,…,n}，其中每个活动都要求使用同一资源，如演讲会场等，而在同一时间内只有一个活动能使用这一资源。<br>求解：安排尽量多项活动在该场地进行，即求A的最大相容子集。<br>设待安排的11个活动的开始时间和结束时间按结束时间的升序排列如下：</p>
 <p>将此表数据作为实现该算法的测试数据。</p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603896772164.png" srcset="/img/loading.gif" alt="1603896772164"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603896772164.png" srcset="/img/loading.gif" alt="1603896772164"></p>
 <h3 id="思路：-6"><a href="#思路：-6" class="headerlink" title="思路："></a>思路：</h3><h4 id="方法一：-3"><a href="#方法一：-3" class="headerlink" title="方法一："></a>方法一：</h4><p>题意很明显希望参加的活动数目尽量多。对于活动安排问题可以采取动态规划的策略：</p>
 <p>首先将活动的结束时间按照第一关键字排序（由小到大），再将活动的开始时间作为第二关键字排序（由小到大）</p>
 <p>定义<strong>dp[i]</strong>表示在前i场比赛中最多可以参加几场比赛，</p>
@@ -548,7 +556,7 @@ int main(){
 <h4 id="方法二：-3"><a href="#方法二：-3" class="headerlink" title="方法二："></a>方法二：</h4><p>这个问题可以抽象为在一个数轴上有n条线段，现要选取其中k条线段使得这k条线段两两没有重合部分，问最大的k为多少。<br>最左边的线段放什么最好？<br>显然放右端点最靠左的线段最好，从左向右放，右端点越小妨碍越少。<br>其他线段放置按右端点排序，贪心放置线段，即能放就放。</p>
 <p>以上两种方法的时间复杂度都是O(nlogn)，快速排序的时间复杂度是O(nlogn),而动态规划或者贪心执行更新策略的时间复杂度是O(n).</p>
 <p><strong>代码：</strong></p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -579,15 +587,15 @@ int main(){
 }
 </code></pre>
 <p><strong>运行结果：</strong></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603897881797.png" srcset="/img/loading.gif" alt="1603897881797"></p>
-<p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1603896695091.png" srcset="/img/loading.gif" alt="1603896695091"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603897881797.png" srcset="/img/loading.gif" alt="1603897881797"></p>
+<p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1603896695091.png" srcset="/img/loading.gif" alt="1603896695091"></p>
 
-        <div id="aplayer-aQyioFJo" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-ZrdVIvcm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-aQyioFJo"),
+            element: document.getElementById("aplayer-ZrdVIvcm"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -602,7 +610,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -643,6 +650,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

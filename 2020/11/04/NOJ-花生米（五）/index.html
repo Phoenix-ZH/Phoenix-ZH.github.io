@@ -192,8 +192,8 @@
 <p>1.5<br>7.9<br>-1</p>
 <p><strong>输出样例</strong></p>
 <p>1<br>0</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这个题和<strong>花生米（三）</strong>极其相似 <a href="https://blog.csdn.net/Phoenix_ZengHao/article/details/109495550" target="_blank" rel="noopener">https://blog.csdn.net/Phoenix_ZengHao/article/details/109495550</a>    ，只是<strong>花生米（三）</strong>中要求是后者取的花生数不能超过前者的两倍，而这个题后者取的花生数w&gt;=前面取的花生的总数并且w&lt;=前面取的花生的总数的三倍，并且Jerry希望Tom无法按则规则取花生这样Jerry就胜利了。显然这个题和<strong>花生米（三）</strong>都无法确认当前人取花生的数量，只能确认一个范围进行枚举。并且这个题还是小数。由于最多一位小数，那就全部乘10，这样就全部转化成整数问题了。dp[res]表示剩余res个的时候后手的必胜或者必败，dp[res]=0表示剩余res个的情况后手必胜。从<strong>花生米（三）</strong>知道一个状态要是必胜态，必须保证推导它的之前的状态都是必败（即要后手必胜，必须保证先手必败），设先手取了c个花生米，那么对于后手就要枚举他选择i个花生的所有状态（i from c to 3 * c），并且dfs的结果均为1（即先手必败）。这里用到了记忆化搜索，不赘述。这个题可以用一维数组表示的原因是由c我们就可以得到res，由res就可以得到c，因为res+c=n，所以二维数组就可以简化成一维。而<strong>花生米（三）</strong>则不能这样表示。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这个题和<strong>花生米（三）</strong>极其相似 <a href="https://blog.csdn.net/Phoenix_ZengHao/article/details/109495550" target="_blank" rel="noopener">https://blog.csdn.net/Phoenix_ZengHao/article/details/109495550</a>    ，只是<strong>花生米（三）</strong>中要求是后者取的花生数不能超过前者的两倍，而这个题后者取的花生数w&gt;=前面取的花生的总数并且w&lt;=前面取的花生的总数的三倍，并且Jerry希望Tom无法按则规则取花生这样Jerry就胜利了。显然这个题和<strong>花生米（三）</strong>都无法确认当前人取花生的数量，只能确认一个范围进行枚举。并且这个题还是小数。由于最多一位小数，那就全部乘10，这样就全部转化成整数问题了。dp[res]表示剩余res个的时候后手的必胜或者必败，dp[res]=0表示剩余res个的情况后手必胜。从<strong>花生米（三）</strong>知道一个状态要是必胜态，必须保证推导它的之前的状态都是必败（即要后手必胜，必须保证先手必败），设先手取了c个花生米，那么对于后手就要枚举他选择i个花生的所有状态（i from c to 3 <em> c），并且dfs的结果均为1（即先手必败）。这里用到了记忆化搜索，不赘述。这个题可以用一维数组表示的原因是由c我们就可以得到res，由res就可以得到c，因为res+c=n，所以二维数组就可以简化成一维。而<em>*花生米（三）</em></em>则不能这样表示。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -231,14 +231,15 @@ int main(){
         cout&lt;&lt;1-dfs(w-10,10)&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-QZHRASnd" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-nqviYXty" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-QZHRASnd"),
+            element: document.getElementById("aplayer-nqviYXty"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -253,7 +254,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -294,6 +294,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

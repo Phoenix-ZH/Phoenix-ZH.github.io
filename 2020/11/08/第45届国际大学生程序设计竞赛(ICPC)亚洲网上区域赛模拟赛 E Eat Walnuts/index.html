@@ -197,10 +197,14 @@ For 90% of the testcases, n ≤ 90.
 
 For 100% of the testcases, n ≤ 100.
 
-The number of the testcases does not exceed 1000.</code></pre><h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h3><pre><code>For each test case, print a integer–the minimum price Mr.Watermelon will pay.</code></pre><p>示例1</p>
+The number of the testcases does not exceed 1000.
+</code></pre><h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h3><pre><code>For each test case, print a integer–the minimum price Mr.Watermelon will pay.
+</code></pre><p>示例1</p>
 <h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><pre><code>5
-3 1 50 20 15</code></pre><h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><pre><code>6698</code></pre><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>最开始定义dp[l][r]表示删除l到r之间的所有数（不包括l和r）的最小代价，最后答案就是dp[1][n]，然后感觉有点绕了，于是重新定义一下，dp[l][r]表示删除l到r之间的所有数（包括l和r）的最小代价。先全部初始化为0x3f3f3f3f，对于dp[i][i]即删除一个数的代价是(a[i-1]+a[i]+a[i+1]) * (a[i-1]+a[i]+a[i+1]),接下来就是<strong>区间DP</strong>，对于长度为len的区间（len：2~n），枚举左边界l，右边界r显然就是<strong>l+len-1</strong>，要求dp[l][r]就是求两个区间合并的总代价+一个数删去的代价：dp[l][r] = min(dp[l][r], dp[l][mid - 1] + dp[mid + 1][r] + (a[l - 1] + a[mid] + a[r + 1]) * (a[l - 1] + a[mid] + a[r + 1])。但是如果mid==l或者mid==r呢？这时候就直接是一个区间的代价+一个数删除的代价（感觉这里我写复杂了）。最后答案就是dp[2][n-1].(首尾不删除)</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+3 1 50 20 15
+</code></pre><h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><pre><code>6698
+</code></pre><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>最开始定义dp[l][r]表示删除l到r之间的所有数（不包括l和r）的最小代价，最后答案就是dp[1][n]，然后感觉有点绕了，于是重新定义一下，dp[l][r]表示删除l到r之间的所有数（包括l和r）的最小代价。先全部初始化为0x3f3f3f3f，对于dp[i][i]即删除一个数的代价是(a[i-1]+a[i]+a[i+1]) <em> (a[i-1]+a[i]+a[i+1]),接下来就是<strong>区间DP</strong>，对于长度为len的区间（len：2~n），枚举左边界l，右边界r显然就是<strong>l+len-1</strong>，要求dp[l][r]就是求两个区间合并的总代价+一个数删去的代价：dp[l][r] = min(dp[l][r], dp[l][mid - 1] + dp[mid + 1][r] + (a[l - 1] + a[mid] + a[r + 1]) </em> (a[l - 1] + a[mid] + a[r + 1])。但是如果mid==l或者mid==r呢？这时候就直接是一个区间的代价+一个数删除的代价（感觉这里我写复杂了）。最后答案就是dp[2][n-1].(首尾不删除)</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn = 100 + 50;
 int n, dp[maxn][maxn], a[maxn];
@@ -244,14 +248,15 @@ int main(){
         cout &lt;&lt; dp[2][n - 1] &lt;&lt; endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-vdvfRUCX" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-uxRjfqXz" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-vdvfRUCX"),
+            element: document.getElementById("aplayer-uxRjfqXz"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -266,7 +271,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -307,6 +311,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

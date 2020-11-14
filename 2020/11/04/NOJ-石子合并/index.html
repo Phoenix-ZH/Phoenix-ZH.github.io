@@ -192,9 +192,9 @@
 <p>4 4 4 5 9 0</p>
 <p><strong>输出样例</strong></p>
 <p>43</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一开始以为这个题和合并果子一样是个贪心的题，拿着优先队列就开始一波贪心，WA了。才发现是合并相邻的石子。那这个题就和上一个<strong>计算矩阵连乘积</strong>的题几乎一样了。但是也有不一样的。这个题的序列是循环序列，并且为了记录每一次合并对答案的贡献我们还需要记录前缀和（这里求前缀和是为了优化时间复杂度，不求前缀和的话每次求贡献需要O(n)），由于这是<strong>循环数列</strong>，求前缀和时候需要求前2 * n的。数列大小是2 * n（a[1],a[2],…,a[n],a[1],a[2],…a[n]）.设sum[i]为数组a[i]前i个的和，那么要求l-r之间a[]之和，就可以O(1) 求得，即sum[r]-sum[l-1]。设dp[i][j]为合并i-j之间所有石子的最小代价，初始化为0x3f3f3f3f（即无穷大），dp[i][i]=0(i from 1 to n即所有的单堆石子合并代价都是0)。枚举长度len(len from 2 to n)，嵌套枚举左边界l（l from 1 to n），那么有边界r=l+len-1，由此可以更新dp[l][r],为了求dp[l][r]，还需要考虑是哪两段石子进行了合并，所以需要枚举l-r之间的mid(l&lt;=mid&lt;=r-1)，这样合并石子区段l-mid和mid+1 - r 。dp[l][r]=min{dp[l][r],dp[l][mid]+dp[mid+1][r]+sum[r]-sum[l-1]};(每一次合并除了那两个区段合并的代价，还需要注意合并当前这两个区段的代价是区段石子的总和：sum[r]-sum[l-1]).</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一开始以为这个题和合并果子一样是个贪心的题，拿着优先队列就开始一波贪心，WA了。才发现是合并相邻的石子。那这个题就和上一个<strong>计算矩阵连乘积</strong>的题几乎一样了。但是也有不一样的。这个题的序列是循环序列，并且为了记录每一次合并对答案的贡献我们还需要记录前缀和（这里求前缀和是为了优化时间复杂度，不求前缀和的话每次求贡献需要O(n)），由于这是<strong>循环数列</strong>，求前缀和时候需要求前2 <em> n的。数列大小是2 </em> n（a[1],a[2],…,a[n],a[1],a[2],…a[n]）.设sum[i]为数组a[i]前i个的和，那么要求l-r之间a[]之和，就可以O(1) 求得，即sum[r]-sum[l-1]。设dp[i][j]为合并i-j之间所有石子的最小代价，初始化为0x3f3f3f3f（即无穷大），dp[i][i]=0(i from 1 to n即所有的单堆石子合并代价都是0)。枚举长度len(len from 2 to n)，嵌套枚举左边界l（l from 1 to n），那么有边界r=l+len-1，由此可以更新dp[l][r],为了求dp[l][r]，还需要考虑是哪两段石子进行了合并，所以需要枚举l-r之间的mid(l&lt;=mid&lt;=r-1)，这样合并石子区段l-mid和mid+1 - r 。dp[l][r]=min{dp[l][r],dp[l][mid]+dp[mid+1][r]+sum[r]-sum[l-1]};(每一次合并除了那两个区段合并的代价，还需要注意合并当前这两个区段的代价是区段石子的总和：sum[r]-sum[l-1]).</p>
 <p>最后需要枚举一遍答案求得最优解：ans=min(ans,dp[i][i+len-1]);(i from 1 to n 需要找到合并的起点)。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -229,15 +229,15 @@ int main(){
         cout&lt;&lt;ans&lt;&lt;endl;
     }
     return 0;
-} 
+}
 </code></pre>
 
-        <div id="aplayer-dHovcvRt" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-hSXpntyA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-dHovcvRt"),
+            element: document.getElementById("aplayer-hSXpntyA"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -252,7 +252,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -293,6 +292,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

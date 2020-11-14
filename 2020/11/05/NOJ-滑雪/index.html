@@ -195,7 +195,7 @@
 <p><strong>输出提示</strong><br>printf(“%d\n,num”);</p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>问题问的是最长的高度减小的序列的长度（要依次相邻），设dp[i][j]表示到达(i,j)的最长的高度不减小序列的长度。一开始想着将问题转化成最长的高度不减小（即hi&gt;=hj），然后就由每一个点出发找到相邻的比它高的，由此更新dp数组。但是发现初始点不好找，一旦要找肯定都得找一遍（直接找最小的不一定最优，这样的贪心策略很显然是错误的，完全可能最后的终点高度不是最小的），然后遍历到一个点(i,j)肯定又要更新答案，并且不能将(i,j)标记掉让后面的点不能再走到它，这样会让答案不是最优的。所以我就放弃了这种方法。</p>
 <p>但是我们将所有的点都走一遍，由高到低进行记忆化搜索，dp[x][y]表示当前走到(x,y)的最长的高度减小的序列的长度。一旦dp[x][y]存在说明之前已经遍历过了就直接返回，否则就找到周围比它高度小的点进行dfs。这样讲所有的点都作为起点进行dfs求得的答案就是最长的长度。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -236,14 +236,15 @@ int main(){
     }
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-EoHmPCJe" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-brlqqorm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-EoHmPCJe"),
+            element: document.getElementById("aplayer-brlqqorm"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -297,6 +298,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

@@ -212,7 +212,7 @@
 <p> <strong>四</strong>： 接下来是4号男生，很遗憾，按照第三步的节奏我们没法给4号男生腾出来一个妹子 。</p>
 <p>综上所诉：</p>
 <p>我们对于左边(即X集合)每一个点都进行一次dfs，寻找可匹配的点(Y集合)，注意每一轮的dfs每一个点只可遍历一次，对于vis数组每轮开始要清空，然后遍历时，注意!girl[edge[i].to]||check(girl[edge[i].to])意味着有增广路，也就是说匹配数可以增加1.此时Y集合对应的X集合的点就变了。、</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -262,14 +262,15 @@ int main()
     }
     printf(&quot;%d\n&quot;,ans);
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-rvzMRrPN" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-cNhxFkxi" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-rvzMRrPN"),
+            element: document.getElementById("aplayer-cNhxFkxi"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -323,6 +324,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

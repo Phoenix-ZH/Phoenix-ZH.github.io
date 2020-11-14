@@ -186,7 +186,7 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-3189" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-3189</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>这道题的题意是真的很坑人啊，首先答案是求所有牛对居住的牛棚最大喜欢度-最小喜欢度+1，就是求区间长度，不是让求最大值-最小值。然后矩阵i，j不是表示第i头牛对第j个牛棚的喜欢度，而是表示第i头牛心中排名第j的牛棚是map[i][j]，喜欢度就是指牛棚在牛心中的排名。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>每个牛棚是有容纳量的，所以会用到多重匹配，而如何找到最小的区间长度呢？区间长度=所有牛对居住的牛棚最大喜欢度-最小喜欢度+1，那么求出最大值-最小值就可以了，求最值问题，很容易就想到二分了，但是光二分又不够，这时候枚举最小值就可以了，二分<strong>最大值-最小值的值</strong>，然后跑匈牙利算法的多重匹配，对每一条边的边权要判断：edge[i].w&gt;=minn&amp;&amp;edge[i].w&lt;-=maxx，并且注意容纳量。跑出的最大匹配如果==n，就说明所有的牛都又牛棚，就符合题意，于是右边界就可以缩小，否则左边界增大，直到找到ans，注意在枚举最小值的时候要更新答案minn，最后minn+1就是区间长度。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -278,14 +278,15 @@ int main()
     }
     printf(&quot;%d\n&quot;,minn+1);
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-SFbvNIFt" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-FPRMXlJr" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-SFbvNIFt"),
+            element: document.getElementById("aplayer-FPRMXlJr"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -341,6 +342,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

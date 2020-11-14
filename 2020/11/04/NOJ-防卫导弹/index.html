@@ -202,7 +202,7 @@
 <p>思考这样做的正确性：因为将dp[j]替换成了h[i]，此时dp[]依旧是非递增序列，并且保证dp[]相较于之前是更加优化的（因为它整体要更大了）。</p>
 <p>如何查找这个最先小于h[i]的dp[j]呢？显然dp[]是非递增序列，所以可以考虑用二分查找。对于很多单调性问题，首先考虑单调栈、单调队列、二分。尤其是这种带查找的最优化问题很有可能用二分。二分查找到最先小于的h[i]的进行替换。并且如果h[i]是直接假如dp[]，记得更新dp[]数组的大小。最后的dp[]数组的大小就是答案。</p>
 <p><strong>PS</strong>：那如果问题是问，最少需要几枚导弹呢？这就是最长上升序列问题了。</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -234,12 +234,12 @@ int main(){
 }
 </code></pre>
 
-        <div id="aplayer-PVlPGJyY" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-moojJvIt" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-PVlPGJyY"),
+            element: document.getElementById("aplayer-moojJvIt"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -254,7 +254,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -295,6 +294,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

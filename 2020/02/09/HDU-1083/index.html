@@ -188,9 +188,9 @@
 <p>1.每个学生选的都是不同的课(即不能有两个学生选同一门课)</p>
 <p>2.每门课都有一个代表(即P门课都被成功选过)</p>
 <p> 若能满足上面两个要求这输出”YES”,否则为”NO”  注意：是课程匹配的学生，学生没课上没事….. </p>
-<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>最终问题就是问能否所有的课程都被人选，并且没有两个及以上的人选同一门课。换言之，二分图的最大匹配数是否==p。建图时课程–&gt;学生，课程(1-P)，学生(N+1-N+n)，跑匈牙利算法。</p>
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>最终问题就是问能否所有的课程都被人选，并且没有两个及以上的人选同一门课。换言之，二分图的最大匹配数是否==p。建图时课程—&gt;学生，课程(1-P)，学生(N+1-N+n)，跑匈牙利算法。</p>
 <p><strong>ps</strong>：数组开小了不会RE，它会TLE！因为一开始只开了10000的边，实际上时100*300，然后TLE了。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -260,14 +260,15 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-aZHjORXe" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-LzujRIDu" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-aZHjORXe"),
+            element: document.getElementById("aplayer-LzujRIDu"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -321,6 +322,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

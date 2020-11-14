@@ -188,7 +188,7 @@
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>最短路模板，spfa或者dijkstra+堆优化。<br>朴素Dijkstra：时间复杂度o(n^2)<br>堆优化Dijkstra：时间复杂度o(（V+E）logV）</p>
 <p>spfa在稀疏图O（E），稠密图O（VE）</p>
 <p>dijkstra+堆优化的代码：</p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -244,9 +244,10 @@ int main()
     dijkstra();
     printf(&quot;%d\n&quot;,dist[n]);
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p>spfa的代码：</p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -297,14 +298,15 @@ int main()
     spfa();
     printf(&quot;%d\n&quot;,dist[n]);
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-phKWLyQA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-CtMKvwHc" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-phKWLyQA"),
+            element: document.getElementById("aplayer-CtMKvwHc"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -358,6 +360,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

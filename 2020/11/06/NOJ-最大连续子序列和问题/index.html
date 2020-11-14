@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    360 字
+                    323 字
                   </span>&nbsp;
                 
 
@@ -183,15 +183,17 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <h1 id="最大连续子序列和问题"><a href="#最大连续子序列和问题" class="headerlink" title="最大连续子序列和问题"></a>最大连续子序列和问题</h1><p><strong>描述</strong>：</p>
-<p>给定一整数序列A0，A1， A2，… An-1 （可能有负数），求A0<del>An-1的一个连续子序列Ai</del>Aj，使得Ai到Aj的和最大。</p>
+<p>给定一整数序列A0，A1， A2，… An-1 （可能有负数），求A0~An-1的一个连续子序列Ai~Aj，使得Ai到Aj的和最大。</p>
 <p><strong>输入</strong>：</p>
 <p>先输入一个正整数n(1&lt;n&lt;1000)，再输入n个整数。</p>
 <p><strong>输出</strong>：</p>
 <p>输出最大连续子序列的和。</p>
 <p><strong>输入样例</strong>：</p>
-<pre><code>102 -1 5 -7 2 -1 4 -2 4 -5</code></pre><p><strong>输出样例</strong>：</p>
-<pre><code>7</code></pre><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>代码还没有AC，NOJ评测机炸了，但是这个O(n)的思路大概是对的：sum[i]为前i个数字的连续子序列的最大和。如果sum[i-1]&lt;0，那对于sum[i]就没必要加上前i-1的总和了，因为这样对答案的贡献还不如0.如果sum[i-1]&gt;0,则sum[i]=sum[i-1]+a[i].ans=max(ans,sum[i]);</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code>102 -1 5 -7 2 -1 4 -2 4 -5
+</code></pre><p><strong>输出样例</strong>：</p>
+<pre><code>7
+</code></pre><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>代码还没有AC，NOJ评测机炸了，但是这个O(n)的思路大概是对的：sum[i]为前i个数字的连续子序列的最大和。如果sum[i-1]<0，那对于sum[i]就没必要加上前i-1的总和了，因为这样对答案的贡献还不如0.如果sum[i-1]>0,则sum[i]=sum[i-1]+a[i].ans=max(ans,sum[i]);</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -214,14 +216,15 @@ int main(){
     }
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-rFdMIPFC" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-qsCajlof" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-rFdMIPFC"),
+            element: document.getElementById("aplayer-qsCajlof"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -275,6 +278,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

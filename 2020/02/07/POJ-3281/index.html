@@ -185,10 +185,10 @@
             <h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p>POJ - 3281 Dining or  P2891 [USACO07OPEN]吃饭Dining</p>
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-3281" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-3281</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有F种食物和D种饮料，每种食物或饮料只能供一头牛享用，且每头牛只享用一种食物和一种饮料。<br>现在有n头牛，每头牛都有自己喜欢的食物种类列表和饮料种类列表，问最多能使几头牛同时享用到自己喜欢的食物和饮料。（1 &lt;= f &lt;= 100, 1 &lt;= d &lt;= 100, 1 &lt;= n &lt;= 100）</p>
-<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>我一开始想到的办法稍微有点复杂。首先着很明显是最大流问题，难点就只有建图，<br>最开始我想到的建图是一个超级源点，指向牛，然后牛指向食物，由于食物只有一次使用机会，所以食物–&gt;食物’（流量为1）表示的是，<br>该食物的数量为1，然后食物’指向牛’，牛’指向饮料，饮料–&gt;饮料’（流量为1），然后饮料’指向超级汇点。但是这种方法有问题。<br>至于问题，我现在没找到，之后再想想。</p>
-<p>ps:后面想通了，由于牛–&gt;食物，食物–&gt;食物’，食物’–&gt;牛’；这样单次经过的牛可能不是同一头牛，会导致错乱，当然答案不对。</p>
-<p>正确做法：显然上面的建图有点复杂了，对于牛来讲，它必须满足食物和饮料均有，所以将牛放在中间，超级源点指向牛，而每种牛只有一条，<br>所以牛–&gt;牛’（容量为1），牛’–&gt;饮料，饮料指向超级源点，跑网络流dinic就可以了</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>我一开始想到的办法稍微有点复杂。首先着很明显是最大流问题，难点就只有建图，<br>最开始我想到的建图是一个超级源点，指向牛，然后牛指向食物，由于食物只有一次使用机会，所以食物—&gt;食物’（流量为1）表示的是，<br>该食物的数量为1，然后食物’指向牛’，牛’指向饮料，饮料—&gt;饮料’（流量为1），然后饮料’指向超级汇点。但是这种方法有问题。<br>至于问题，我现在没找到，之后再想想。</p>
+<p>ps:后面想通了，由于牛—&gt;食物，食物—&gt;食物’，食物’—&gt;牛’；这样单次经过的牛可能不是同一头牛，会导致错乱，当然答案不对。</p>
+<p>正确做法：显然上面的建图有点复杂了，对于牛来讲，它必须满足食物和饮料均有，所以将牛放在中间，超级源点指向牛，而每种牛只有一条，<br>所以牛—&gt;牛’（容量为1），牛’—&gt;饮料，饮料指向超级源点，跑网络流dinic就可以了</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -313,14 +313,15 @@ int main()
     dinic();
     printf(&quot;%d\n&quot;,ans);
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-mUsyZNnz" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-BmAAQCyR" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-mUsyZNnz"),
+            element: document.getElementById("aplayer-BmAAQCyR"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -374,6 +375,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

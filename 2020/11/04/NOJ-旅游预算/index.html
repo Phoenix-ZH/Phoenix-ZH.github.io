@@ -193,8 +193,8 @@
 <p><strong>输出样例</strong></p>
 <p>38.09 1 </p>
 <p>2</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>由题意可知：如果在第i个加油站要加油，必须保证到达第i+1个加油站的时候油箱的油少于一半。并且一旦加油，油箱的油就加满了。dp[i]表示到达第i个加油站的最小耗费，初始化为1e9(无穷大)。dp[0]： 起点加满油箱的费用 。a[i].d表示第i个加油站距离起点的距离，a[i].w表示第i个加油站加油的单价费用。枚举当前到达的加油站i(i from 1 to n),然后再枚举上一次加油的加油站j(j from 0 to i-1，0就是起点)。if(a[i].d-a[j].d&gt;road||(a[i].d-a[j].d) * 2&lt;road)如果无法从j到达i或者从j到达i油箱油量过半都无法考虑，其余的情况dp[i]=min(dp[i],dp[j]+ned * a[i].w+2)，因为最后答案要输出在哪些加油站加了油，所以需要记录上一次加油的加油站pre[i]=j;最后再看从哪个加油站i到终点代价最小（i from 0 to n），<strong>必须保证油量可以从i到终点</strong>，ans为最终答案，ans=min(ans,dp[i]),并且记录最后一个加油站last。由last为终点前的加油站，进行回溯查询加过油的加油站。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>由题意可知：如果在第i个加油站要加油，必须保证到达第i+1个加油站的时候油箱的油少于一半。并且一旦加油，油箱的油就加满了。dp[i]表示到达第i个加油站的最小耗费，初始化为1e9(无穷大)。dp[0]： 起点加满油箱的费用 。a[i].d表示第i个加油站距离起点的距离，a[i].w表示第i个加油站加油的单价费用。枚举当前到达的加油站i(i from 1 to n),然后再枚举上一次加油的加油站j(j from 0 to i-1，0就是起点)。if(a[i].d-a[j].d&gt;road||(a[i].d-a[j].d) <em> 2&lt;road)如果无法从j到达i或者从j到达i油箱油量过半都无法考虑，其余的情况dp[i]=min(dp[i],dp[j]+ned </em> a[i].w+2)，因为最后答案要输出在哪些加油站加了油，所以需要记录上一次加油的加油站pre[i]=j;最后再看从哪个加油站i到终点代价最小（i from 0 to n），<strong>必须保证油量可以从i到终点</strong>，ans为最终答案，ans=min(ans,dp[i]),并且记录最后一个加油站last。由last为终点前的加油站，进行回溯查询加过油的加油站。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -238,14 +238,15 @@ int main(){
     printf(&quot;%.2lf %d\n&quot;,ans,tot);
     for(i=tot;i&gt;=1;i--)cout&lt;&lt;t[i]&lt;&lt;&#39; &#39;;cout&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-UoYwGVND" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-JCNfwsPf" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-UoYwGVND"),
+            element: document.getElementById("aplayer-JCNfwsPf"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -260,7 +261,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -301,6 +301,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

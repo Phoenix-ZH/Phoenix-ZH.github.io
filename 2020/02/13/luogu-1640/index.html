@@ -186,7 +186,7 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://www.luogu.com.cn/problem/P1640" target="_blank" rel="noopener">https://www.luogu.com.cn/problem/P1640</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有n个装备，每个装备有两个攻击值，每个装备只能用1次，问从1开始可以连续攻击几次？</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>虽然有很多并查集的方法，但是最近一直在练习二分图匹配，发现这个题可以用二分图来做，主要是因为每个装备只有两个攻击值这样的话可以大大减少时间复杂度，很显然这个地方就是突破点，设想每个攻击值x，y对装备i建单向边，然后从1开始跑匈牙利算法，一旦找不到匹配说明攻击中断，当前的最大匹配ans就是最多能连续攻击的次数，但是注意一下不可以memset(vis,0,sizeof(vis))，处理方法很简单，vis只是防止当前dfs不能重复点，于是vis[edge[i].to]=x，相当于一个时间戳，就可以完美避免初始化了。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -239,14 +239,15 @@ int main()
     }
     printf(&quot;%d\n&quot;,ans);
     return 0;
-}</code></pre>
+}
+</code></pre>
  
-        <div id="aplayer-gWaUiYmW" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-LDhjFncT" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-gWaUiYmW"),
+            element: document.getElementById("aplayer-LDhjFncT"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -261,7 +262,6 @@ int main()
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -302,6 +302,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

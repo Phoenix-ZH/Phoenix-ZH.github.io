@@ -183,7 +183,7 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <p>先补作业，再补题解。（有缘补题解QAQ）</p>
-<h1 id="A-最长公共子序列"><a href="#A-最长公共子序列" class="headerlink" title="A-最长公共子序列"></a>A-最长公共子序列</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+<h1 id="A-最长公共子序列"><a href="#A-最长公共子序列" class="headerlink" title="A-最长公共子序列"></a>A-最长公共子序列</h1><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -209,10 +209,11 @@ int main(){
     }
     cout&lt;&lt;dp[lens][lent]&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="B-防卫导弹"><a href="#B-防卫导弹" class="headerlink" title="B-防卫导弹"></a>B-防卫导弹</h1><p>lower_bound(dp+1,dp+1+n,h[i])dp[]中第一个&gt;=h[i]的下标<br>upper_bound(dp+1,dp+1+n,h[i])dp[]中第一个&gt;h[i]的下标<br>lower_bound(dp+1,dp+1+n,h[i],greater&lt; int &gt;())dp[]中第一个&lt;=h[i]的下标 greater&lt; int &gt;() == cmp(int x,int y){return x&gt;y}<br>upper_bound(dp+1,dp+1+n,h[i],greater&lt; int &gt;())dp[]中第一个&lt;h[i]的下标 </p>
 <p>greater&lt; int &gt;()表示内置类型从大到小排序，比如说原序列是1，2，4，7，15，34，在greater&lt; int &gt;()的表示下，<br>1&gt;2&gt;4&gt;7&gt;15&gt;34,lower_bound(num,num+6,7,greater&lt; int &gt;()) 返回greater&lt; int &gt;序列下第一个大于或等于被查数7的值，<br>即4；也就是返回的是原序列的中第一个小于或等于被查数7的值</p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -241,9 +242,10 @@ int main(){
         cout&lt;&lt;ans&lt;&lt;endl;        
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="C-田忌赛马-tian-ji-racing"><a href="#C-田忌赛马-tian-ji-racing" class="headerlink" title="C-田忌赛马(tian ji racing)"></a>C-田忌赛马(tian ji racing)</h1><p>如果田忌最快的马快于齐王最快的马，就PK<br>如果田忌最快的马慢于齐王最快的马：<br>    如果田忌最慢的马快于齐王的最慢的马，PK<br>    否则就田忌最慢的马PK齐王最快的马（反正都是输） </p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -271,8 +273,9 @@ int main(){
         cout&lt;&lt;win+lose&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
-<h1 id="D-计算矩阵连乘积"><a href="#D-计算矩阵连乘积" class="headerlink" title="D-计算矩阵连乘积"></a>D-计算矩阵连乘积</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+}
+</code></pre>
+<h1 id="D-计算矩阵连乘积"><a href="#D-计算矩阵连乘积" class="headerlink" title="D-计算矩阵连乘积"></a>D-计算矩阵连乘积</h1><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -300,8 +303,9 @@ int main(){
     }
     cout&lt;&lt;dp[1][n]&lt;&lt;endl;
     return 0;
-}</code></pre>
-<h1 id="E-石子合并"><a href="#E-石子合并" class="headerlink" title="E-石子合并"></a>E-石子合并</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+}
+</code></pre>
+<h1 id="E-石子合并"><a href="#E-石子合并" class="headerlink" title="E-石子合并"></a>E-石子合并</h1><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -336,9 +340,10 @@ int main(){
         cout&lt;&lt;ans&lt;&lt;endl;
     }
     return 0;
-} </code></pre>
+}
+</code></pre>
 <h1 id="F-旅游预算"><a href="#F-旅游预算" class="headerlink" title="F-旅游预算"></a>F-旅游预算</h1><p><strong>ps：</strong>注意油量超过一半并且可以到达下一个点不加油！ </p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -382,9 +387,10 @@ int main(){
     printf(&quot;%.2lf %d\n&quot;,ans,tot);
     for(i=tot;i&gt;=1;i--)cout&lt;&lt;t[i]&lt;&lt;&#39; &#39;;cout&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="G-花生米（二）"><a href="#G-花生米（二）" class="headerlink" title="G-花生米（二）"></a>G-花生米（二）</h1><p>博弈论：<br>定义： jerry后手胜利 为必胜态。<br>10以内的必胜状态：1,3,5,7,9.<br>由于可以一次拿10个，我们需要考虑10周围的情况:11为必胜 。<br>什么才是必败态？<br>当前面i-1,i-5,i-10这10个状态都是必胜态的时候， i一定是必败态。<br>否则 i就有机会成为必胜态。<br>dp[i]=1表示i是必胜态。 </p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -404,9 +410,10 @@ int main(){
         else cout&lt;&lt;1&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="H-花生米（三）"><a href="#H-花生米（三）" class="headerlink" title="H-花生米（三）"></a>H-花生米（三）</h1><p>dp[i][j]==0：Jerry后手且此时剩余i个当前可取j个并且是必胜态 </p>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -446,8 +453,9 @@ int main(){
         }
         cout&lt;&lt;dfs(n,1)&lt;&lt;endl;
     }
-}</code></pre>
-<h1 id="I-花生米（四）"><a href="#I-花生米（四）" class="headerlink" title="I-花生米（四）"></a>I-花生米（四）</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+}
+</code></pre>
+<h1 id="I-花生米（四）"><a href="#I-花生米（四）" class="headerlink" title="I-花生米（四）"></a>I-花生米（四）</h1><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -497,7 +505,7 @@ int main(){
 */
 //Jerry 后手必胜的条件：后手且吃掉最后的花生米，则Jerry无法后手胜利。
 </code></pre>
-<h1 id="J-花生米（五）"><a href="#J-花生米（五）" class="headerlink" title="J-花生米（五）"></a>J-花生米（五）</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+<h1 id="J-花生米（五）"><a href="#J-花生米（五）" class="headerlink" title="J-花生米（五）"></a>J-花生米（五）</h1><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -537,7 +545,7 @@ int main(){
     return 0;
 }
 </code></pre>
-<h1 id="K-装盘子"><a href="#K-装盘子" class="headerlink" title="K-装盘子"></a>K-装盘子</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+<h1 id="K-装盘子"><a href="#K-装盘子" class="headerlink" title="K-装盘子"></a>K-装盘子</h1><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -559,7 +567,7 @@ int main(){
     return 0;
 }
 </code></pre>
-<h1 id="L-滑雪"><a href="#L-滑雪" class="headerlink" title="L-滑雪"></a>L-滑雪</h1><pre><code class="cpp">#include&lt;cstdio&gt;
+<h1 id="L-滑雪"><a href="#L-滑雪" class="headerlink" title="L-滑雪"></a>L-滑雪</h1><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -603,15 +611,17 @@ int main(){
 }
 </code></pre>
 <h1 id="I’-最大连续子序列和问题"><a href="#I’-最大连续子序列和问题" class="headerlink" title="I’-最大连续子序列和问题"></a>I’-最大连续子序列和问题</h1><p><strong>描述</strong>：</p>
-<p>给定一整数序列A0，A1， A2，… An-1 （可能有负数），求A0<del>An-1的一个连续子序列Ai</del>Aj，使得Ai到Aj的和最大。</p>
+<p>给定一整数序列A0，A1， A2，… An-1 （可能有负数），求A0~An-1的一个连续子序列Ai~Aj，使得Ai到Aj的和最大。</p>
 <p><strong>输入</strong>：</p>
 <p>先输入一个正整数n(1&lt;n&lt;1000)，再输入n个整数。</p>
 <p><strong>输出</strong>：</p>
 <p>输出最大连续子序列的和。</p>
 <p><strong>输入样例</strong>：</p>
-<pre><code>102 -1 5 -7 2 -1 4 -2 4 -5</code></pre><p><strong>输出样例</strong>：</p>
-<pre><code>7</code></pre><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>代码还没有AC，NOJ评测机炸了，但是这个O(n)的思路大概是对的：sum[i]为前i个数字的连续子序列的最大和。如果sum[i-1]&lt;0，那对于sum[i]就没必要加上前i-1的总和了，因为这样对答案的贡献还不如0.如果sum[i-1]&gt;0,则sum[i]=sum[i-1]+a[i].ans=max(ans,sum[i]);</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<pre><code>102 -1 5 -7 2 -1 4 -2 4 -5
+</code></pre><p><strong>输出样例</strong>：</p>
+<pre><code>7
+</code></pre><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>代码还没有AC，NOJ评测机炸了，但是这个O(n)的思路大概是对的：sum[i]为前i个数字的连续子序列的最大和。如果sum[i-1]<0，那对于sum[i]就没必要加上前i-1的总和了，因为这样对答案的贡献还不如0.如果sum[i-1]>0,则sum[i]=sum[i-1]+a[i].ans=max(ans,sum[i]);</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -634,7 +644,8 @@ int main(){
     }
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="J’-0-1背包问题"><a href="#J’-0-1背包问题" class="headerlink" title="J’-0-1背包问题"></a>J’-0-1背包问题</h1><p><strong>描述：</strong></p>
 <p>一个背包容量为c ，现有n件物品，求能装入背包的最大重量是多少？</p>
 <p><strong>输入：</strong></p>
@@ -642,12 +653,14 @@ int main(){
 <p><strong>输出：</strong></p>
 <p>输出能装入背包的最大重量。</p>
 <p><strong>输入样例：</strong></p>
-<pre><code>5 5023 18 13 35 24</code></pre><p><strong>输出样例：</strong></p>
-<pre><code>48</code></pre><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>0-1背包的裸题，那就可以直接写一个01背包的动态转移方程：dp[j]=max(dp[j],dp[j-w[i]]+p[i])。dp[j]的意思是：当背包已装j的重量的物品时的最大价值。那么它可以由背包已装j-w[i]时最大的价值进行转移，即由dp[j-w[i]]+p[i]得到。注意每一次要将dp[]设置为0，因为背包此时无价值。当状态方程枚举结束后，我们再从 dp[]数组中找一遍，求得答案maxx=max{dp[i]}(i from 0 to c)，输出答案maxx。这种动态规划的方法的时间复杂度为O(n^2).</p>
+<pre><code>5 5023 18 13 35 24
+</code></pre><p><strong>输出样例：</strong></p>
+<pre><code>48
+</code></pre><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>0-1背包的裸题，那就可以直接写一个01背包的动态转移方程：dp[j]=max(dp[j],dp[j-w[i]]+p[i])。dp[j]的意思是：当背包已装j的重量的物品时的最大价值。那么它可以由背包已装j-w[i]时最大的价值进行转移，即由dp[j-w[i]]+p[i]得到。注意每一次要将dp[]设置为0，因为背包此时无价值。当状态方程枚举结束后，我们再从 dp[]数组中找一遍，求得答案maxx=max{dp[i]}(i from 0 to c)，输出答案maxx。这种动态规划的方法的时间复杂度为O(n^2).</p>
 <p><strong>ps：</strong>0-1背包也可以写成二维dp[][]，只是这样写成滚动数组可以更加节省空间。</p>
 <h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>除了直接写0-1背包的动态转移方程，还可以直接写dfs，每一个背包无非就是取和不取两个状态，如果要取则要求背包容量 res&gt;=w[now]。分别用ans1，ans2表示取当前物品，不取当前物品的最大价值，dfs返回max(ans1,ans2)，dfs的终止条件是now ==n+1。时间复杂度(2^n)。</p>
 <p><strong>ps:</strong>方法二相较于方法一思维上更加简单，容易想到，但是代码就相对麻烦，并且时间复杂度不够优秀，当然如果加上记忆化搜索后时间复杂度和动态规划是相当的。我个人更喜欢方法一。</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -671,8 +684,9 @@ int main(){
             maxx=dp[i];
     cout&lt;&lt;maxx&lt;&lt;endl;
     return 0;
-}</code></pre>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+}
+</code></pre>
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -695,14 +709,15 @@ int main(){
     for(i=1;i&lt;=n;i++)cin&gt;&gt;w[i],p[i]=w[i];
     cout&lt;&lt;dfs(1,c)&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-yZRZChSF" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-IOqZYszV" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-yZRZChSF"),
+            element: document.getElementById("aplayer-IOqZYszV"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -756,6 +771,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

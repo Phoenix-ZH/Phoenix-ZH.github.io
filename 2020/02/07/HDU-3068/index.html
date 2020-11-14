@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    741 字
+                    740 字
                   </span>&nbsp;
                 
 
@@ -190,8 +190,8 @@
 <p>（1）以j为中心的回文串有一部分在以id为中心的回文串之外。因为mx是以id为中心的最长回文的右边界，所以以i为中心的回文串不可能会有字符在以id为中心的回文串之外；否则mx就不是以id为中心的最长回文的右边界。所以，在这种情况下，p[i]=mx–i。<br>具体阐释一下：此时s[id,id+1,…i-1,i]=s[id,id-1,…,j+1,j]，假如以i为中心的回文串有字符在以id为中心的回文串之外，显然mx不应该为右边界！</p>
 <p>（2）以j为中心的回文串全部在以id为中心的回文串的内部，则p[i]=p[j]，而且p[i]不可能再增加。</p>
 <p>（3）以j为中心的回文串的左端正好与以id为中心的回文串的左端重合。则p[i]=p[j]或p[i]=mx–i，并且p[i]还有可能会继续增加，即while (s_new[i-p[i]]==s_new[i+p[i]]) p[i]++;</p>
-<p>所以，if (i &lt; mx) p[i] = min(p[2 * id - i], mx- i)；其中2*id - i为i关于id的对称点，即上面的j点，而p[j]表示以j为中心的最长回文半径，因此可以利用p[j]来加快求解p[i]。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<p>所以，if (i &lt; mx) p[i] = min(p[2 <em> id - i], mx- i)；其中2</em>id - i为i关于id的对称点，即上面的j点，而p[j]表示以j为中心的最长回文半径，因此可以利用p[j]来加快求解p[i]。</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -227,14 +227,15 @@ int main()
         printf(&quot;%d\n&quot;,ans);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-PcejZJRh" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-srWozmql" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-PcejZJRh"),
+            element: document.getElementById("aplayer-srWozmql"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -288,6 +289,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

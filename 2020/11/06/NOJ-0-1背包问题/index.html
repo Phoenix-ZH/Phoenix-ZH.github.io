@@ -189,12 +189,14 @@
 <p><strong>输出：</strong></p>
 <p>输出能装入背包的最大重量。</p>
 <p><strong>输入样例：</strong></p>
-<pre><code>5 5023 18 13 35 24</code></pre><p><strong>输出样例：</strong></p>
-<pre><code>48</code></pre><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>0-1背包的裸题，那就可以直接写一个01背包的动态转移方程：dp[j]=max(dp[j],dp[j-w[i]]+p[i])。dp[j]的意思是：当背包已装j的重量的物品时的最大价值。那么它可以由背包已装j-w[i]时最大的价值进行转移，即由dp[j-w[i]]+p[i]得到。注意每一次要将dp[]设置为0，因为背包此时无价值。当状态方程枚举结束后，我们再从 dp[]数组中找一遍，求得答案maxx=max{dp[i]}(i from 0 to c)，输出答案maxx。这种动态规划的方法的时间复杂度为O(n^2).</p>
+<pre><code>5 5023 18 13 35 24
+</code></pre><p><strong>输出样例：</strong></p>
+<pre><code>48
+</code></pre><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>0-1背包的裸题，那就可以直接写一个01背包的动态转移方程：dp[j]=max(dp[j],dp[j-w[i]]+p[i])。dp[j]的意思是：当背包已装j的重量的物品时的最大价值。那么它可以由背包已装j-w[i]时最大的价值进行转移，即由dp[j-w[i]]+p[i]得到。注意每一次要将dp[]设置为0，因为背包此时无价值。当状态方程枚举结束后，我们再从 dp[]数组中找一遍，求得答案maxx=max{dp[i]}(i from 0 to c)，输出答案maxx。这种动态规划的方法的时间复杂度为O(n^2).</p>
 <p><strong>ps：</strong>0-1背包也可以写成二维dp[][]，只是这样写成滚动数组可以更加节省空间。</p>
 <h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>除了直接写0-1背包的动态转移方程，还可以直接写dfs，每一个背包无非就是取和不取两个状态，如果要取则要求背包容量 res&gt;=w[now]。分别用ans1，ans2表示取当前物品，不取当前物品的最大价值，dfs返回max(ans1,ans2)，dfs的终止条件是now ==n+1。时间复杂度(2^n)。</p>
 <p><strong>ps:</strong>方法二相较于方法一思维上更加简单，容易想到，但是代码就相对麻烦，并且时间复杂度不够优秀，当然如果加上记忆化搜索后时间复杂度和动态规划是相当的。我个人更喜欢方法一。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -218,8 +220,9 @@ int main(){
             maxx=dp[i];
     cout&lt;&lt;maxx&lt;&lt;endl;
     return 0;
-}</code></pre>
-<pre><code class="cpp">#include&lt;cstdio&gt;
+}
+</code></pre>
+<pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -242,14 +245,15 @@ int main(){
     for(i=1;i&lt;=n;i++)cin&gt;&gt;w[i],p[i]=w[i];
     cout&lt;&lt;dfs(1,c)&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-PgXQclyd" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-bkEEOeOb" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-PgXQclyd"),
+            element: document.getElementById("aplayer-bkEEOeOb"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -264,7 +268,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -305,6 +308,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

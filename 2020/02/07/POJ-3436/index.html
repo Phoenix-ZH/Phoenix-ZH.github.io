@@ -185,8 +185,8 @@
             <h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p>POJ - 3436 ACM Computer Factory</p>
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-3436#author=yupengju" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-3436#author=yupengju</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有p种零件，n个工厂加工，第i个工厂一小时可以加工Qi个电脑，对于每一个工厂第一个数字表示一小时加工数量Qi，<br>然后有p个数字，若为0则表示不能有这个零件，1则表示必须有这个零件，2表示有没有都无所谓。最后p个数字，表示加工后电脑零件的存在情况，<br>只有p个零件都为1才表示电脑加工完成。问一小时最多生产多少电脑？生产线有几条？如何设计？（special judge）（1 ≤ P ≤ 10, 1 ≤ N ≤ 50, 1 ≤ Qi ≤ 10000）</p>
-<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>如果一开始直接想以零件为个体来建图就相当复杂，感觉无从下手，于是就从略大一点的个体出发，从工厂出发，s为起点，t为终点，如果一开始工厂要求的零件都没有，即p个数字都是0或者2，则s–&gt;i，边权为工厂容量或者无穷大。由于工厂自身一小时生产力有限，因此要对工厂进行拆点，i–&gt;i+N，边权为工厂容量。如果一个工厂生产后电脑的零件情况与另一个工厂生产前对零件的要求情况一致，则可以连边，i+N–&gt;j，边权为无穷大。如果工厂生产后电脑的零件情况均为1，则可以连边，i+N–&gt;t,边权为无穷大或者工厂容量。<br>这样跑dinic就可以求得最大流，但是还要输出生产线的情况。如何记录呢？在建边的时候记录一下工厂最开始的容量，和边的起点。<br>跑完dinic之后，对所有的偶数边（偶数边才是正向边）判断容量是否减少了，并且起点∈[1+N,n+N],终点∈[1,N],然后储存起点，终点，流量。<br>最后依次输出即可</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>如果一开始直接想以零件为个体来建图就相当复杂，感觉无从下手，于是就从略大一点的个体出发，从工厂出发，s为起点，t为终点，如果一开始工厂要求的零件都没有，即p个数字都是0或者2，则s—&gt;i，边权为工厂容量或者无穷大。由于工厂自身一小时生产力有限，因此要对工厂进行拆点，i—&gt;i+N，边权为工厂容量。如果一个工厂生产后电脑的零件情况与另一个工厂生产前对零件的要求情况一致，则可以连边，i+N—&gt;j，边权为无穷大。如果工厂生产后电脑的零件情况均为1，则可以连边，i+N—&gt;t,边权为无穷大或者工厂容量。<br>这样跑dinic就可以求得最大流，但是还要输出生产线的情况。如何记录呢？在建边的时候记录一下工厂最开始的容量，和边的起点。<br>跑完dinic之后，对所有的偶数边（偶数边才是正向边）判断容量是否减少了，并且起点∈[1+N,n+N],终点∈[1,N],然后储存起点，终点，流量。<br>最后依次输出即可</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -341,14 +341,15 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-XXLXjjmA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-pvQnZdUc" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-XXLXjjmA"),
+            element: document.getElementById("aplayer-pvQnZdUc"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -402,6 +403,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

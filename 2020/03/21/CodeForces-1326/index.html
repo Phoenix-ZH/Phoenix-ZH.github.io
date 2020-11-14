@@ -185,7 +185,7 @@
             <h1 id="A-题目名称："><a href="#A-题目名称：" class="headerlink" title="A 题目名称："></a>A 题目名称：</h1><p>A Bad Ugly Numbers</p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 构造一个 n位十进制数，保证不被该数的任意一位整除。 </p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>由于只需要求一组即可，那么就猜测一下一个数字一定要么是奇数要么是偶数，若为奇数则个位不为偶数，若为偶数则个位为偶数。这么不妨用2来替换。假如剩余全为3，那么3*x+2一定无法被3整除。所以就全用2，3表示。偶数不能被2整除。那么开头数字为2，其余全为3就可以了。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int T,n;
 int main()
@@ -207,12 +207,13 @@ int main()
         }
     }
     return 0;
-} </code></pre>
+}
+</code></pre>
 <h1 id="B-题目名称："><a href="#B-题目名称：" class="headerlink" title="B 题目名称："></a>B 题目名称：</h1><p>Maximums </p>
 <h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p>对于一个序列 {an}，定义序列 {cn} ：ci=max{0,a1,⋯,ai−1} 。同时定义序列 {bn} :bi=ai−ci 。</p>
 <p>给定 {bn}，求 {an} 。</p>
 <h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>由题意可知：ci=max{0,a1,…,ai-1},bi=ai-ci.所以ai=bi+ci;那么维护max{0,a1,…ai-1}即可。</p>
-<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=200000 +5;
 long long n,b[maxn],a[maxn];
@@ -231,11 +232,12 @@ int main()
     printf(&quot;%lld &quot;,a[i]);
     cout&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="C-题目名称："><a href="#C-题目名称：" class="headerlink" title="C 题目名称："></a>C 题目名称：</h1><p>Permutation Partitions</p>
-<h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 给定一个长度为 n的排列{an}。要求将这个序列分成互不相交的 k段。记第 p段的左端点和右端点分别为 lp,rp 。要求最大化 <img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1584777570005.png" srcset="/img/loading.gif" alt="1584777570005"><br>输出<strong>最大化的值</strong>和<strong>可以最大化该值的方案数</strong>。方案数对 998,244,353取模。 </p>
+<h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 给定一个长度为 n的排列{an}。要求将这个序列分成互不相交的 k段。记第 p段的左端点和右端点分别为 lp,rp 。要求最大化 <img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1584777570005.png" srcset="/img/loading.gif" alt="1584777570005"><br>输出<strong>最大化的值</strong>和<strong>可以最大化该值的方案数</strong>。方案数对 998,244,353取模。 </p>
 <h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>将长度为n的排列分成互不相交的k段，并且取每段的最大值，问它们的和。这一问就直接找到前k大的数字，并求和就可以了。然后求有多少种方案数。这一问需要看一下规律，将前k大的数字进行标记，然后依次统计相邻标记的数字中间有几个未标记的位置，如果为0，这区域的方案数为，如果为1，这区域的方案数位2，如果为2，这区域的方案数为3，如果为k，这区域的方案数为k+1。最后全部一边成一边取模。</p>
-<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=200000 +5;
 const int Mod=998244353;
@@ -277,10 +279,11 @@ int main()
     }
     printf(&quot;%lld %lld\n&quot;,sig,ans);
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="D-题目名称："><a href="#D-题目名称：" class="headerlink" title="D 题目名称："></a>D 题目名称：</h1><h4 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 给定一个字符串。要求选取他的一个前缀(可以为空)和与该前缀不相交的一个后缀(可以为空)拼接成回文串，且该回文串长度最大。求该最大长度。 </p>
 <h4 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h4><h5 id="Easy版本："><a href="#Easy版本：" class="headerlink" title="Easy版本："></a>Easy版本：</h5><p>这个数据范围更小，T&lt;=1000,n&lt;=5000；可以暴力。首先从两边往中间收，一一匹配，直到左右不等，记录opt1，opt2。然后看以opt1为起点最长的回文串，然后以opt2为起点最长的回文串，这里可以用暴力办法，比如以opt1为起点时，枚举终点，从opt2开始，一旦中间不符合了，就终点位置往前靠一位；同理以opt2为起点时，枚举终点，从opt1开始，一旦中间不符合了，终点位置就往后靠一位。最后选择一个最长的与开始的合并输出。</p>
-<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=50000+5;
 int n,l;char s[maxn],t[maxn];
@@ -383,9 +386,10 @@ int main()
         cout&lt;&lt;t+1&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h5 id="hard版本："><a href="#hard版本：" class="headerlink" title="hard版本："></a>hard版本：</h5><p>这里数据范围很大，T&lt;=100000,n&lt;=1000000.显然每次查询必须在O(n)内完成，所以必须用到Manacher的算法了。首先还是先从两端开始匹配出相同的总数，直到两端不等为止，记录opt1，opt2。然后以opt1为起点求最长的回文串，再以opt2为起点求最长的回文串。这里要注意Manacher求得的最长回文串可能不一定以opt1为起点。所以更新长度时候要注意让<strong>i-(p[i]-1)==1</strong>然后再更新长度。当以opt2为起点时候，将字符串s，从opt1到opt2之间翻转一下reverse(s+opt1,s+1+opt2)即可。然后选择最长的回文串与开始的合并输出。</p>
-<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=3000000+5;
 int T,p[maxn],l;char s[maxn]; 
@@ -464,15 +468,16 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p><strong>ps</strong>：说明一下<strong>reverse</strong>函数的用法：reverse(s+opt1,s+opt2),s为进行翻转的字符串，opt1为s[opt1]中的opt1，从s[0]开始。如果读入为s+1，也依然是从s[0]开始。opt2为s[0]开始的第opt2个。如果读入为s+1，也依然是s[0]开始的第opt2个。</p>
 
-        <div id="aplayer-rkkBNhNZ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-TneODgmo" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-rkkBNhNZ"),
+            element: document.getElementById("aplayer-TneODgmo"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -526,6 +531,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

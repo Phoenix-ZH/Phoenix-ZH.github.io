@@ -203,7 +203,7 @@
 <p>这里只是讲解一下动态规划的想法。就不写代码了，动态规划的代码和下面的贪心方法相似。只是这种动态规划的思路是基于贪心的思想来实现的。</p>
 <h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>这个问题可以抽象为在一个数轴上有n条线段，现要选取其中k条线段使得这k条线段两两没有重合部分，问最大的k为多少。<br>最左边的线段放什么最好？<br>显然放右端点最靠左的线段最好，从左向右放，右端点越小妨碍越少。<br>其他线段放置按右端点排序，贪心放置线段，即能放就放。</p>
 <p>以上两种方法的时间复杂度都是O(nlogn)，快速排序的时间复杂度是O(nlogn),而动态规划或者贪心执行更新策略的时间复杂度是O(n).</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -234,12 +234,12 @@ int main(){
 }
 </code></pre>
 
-        <div id="aplayer-AWnHKPuM" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-CGpfWJGZ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-AWnHKPuM"),
+            element: document.getElementById("aplayer-CGpfWJGZ"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -293,6 +293,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

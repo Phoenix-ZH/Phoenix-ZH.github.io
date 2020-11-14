@@ -185,7 +185,7 @@
             <h1 id="A-题目名称"><a href="#A-题目名称" class="headerlink" title="A.题目名称"></a>A.题目名称</h1><p>Omkar and Password </p>
 <h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>将任意两个相邻的大小不同的数字合并，问数组长度最小可以为多少？</p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>每次将最大的和别的合并。如果所有都相同，长度为n；否则长度为1.</p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=2e5+60;
 int T,n,a[maxn];
@@ -209,11 +209,12 @@ int main()
         else printf(&quot;%d\n&quot;,n);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="B-题目名称"><a href="#B-题目名称" class="headerlink" title="B.题目名称"></a>B.题目名称</h1><p>Omkar and Infinity Clock </p>
 <h2 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h2><p>在一个长度为n的数组中操作k次。每次操作选择最大的数字ai为d，然后用d-ai（1&lt;=i&lt;=n）。问k次操作后数组的数字。</p>
 <h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>首先操作一次，记录数组，注意每次取maxx的初始值为-1e18，因为-1e9&lt;=ai&lt;=1e9，然后判断k-1的奇偶性，如果为偶就是该数组，否则再取maxx，然后maxx-ai，就是所求数组。</p>
-<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long LL;
 const int maxn=2e5+50;
@@ -242,13 +243,14 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="C-题目名称"><a href="#C-题目名称" class="headerlink" title="C.题目名称"></a>C.题目名称</h1><p>Omkar and Waterslide </p>
 <h2 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h2><p>将一串数字变成非递减，每次操作可以将一串连续的非递减数列都+1，问最少需要多少次操作？</p>
 <h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><p>对于a[i]&lt;=a[i+1],  不需要对a[i+1]进行操作；</p>
 <p>对于a[i]&gt;a[i+1],需要将a[i+1]加到a[i]，即ans+=a[i+1]-a[i];</p>
 <p>现在把a[i+1]加到和a[i]一样大，a[i+1]就可以和a[i]一起操作，所以当a[i]&gt;=a[i-1]的时候，a[i+1]也会跟着加。</p>
-<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=2e5+50;
 long long T,n,a[maxn];
@@ -264,9 +266,10 @@ int main()
         ans+=max(0ll,a[i]-a[i+1]);
         cout&lt;&lt;ans&lt;&lt;endl;
     }
-}</code></pre>
+}
+</code></pre>
 <h2 id="思路-2："><a href="#思路-2：" class="headerlink" title="思路-2："></a>思路-2：</h2><p>这是比赛时候的时候，写得特别麻烦，对于a[i]&gt;a[i+1]的直接将ans+=a[i]-a[i+1],记录一串不符合条件（非递减）的数列的最大值maxx，一旦遇到a[i]&gt;a[i-1],ans+=a[i]-maxx，因为之前的已经非递减了，只要加到a[i]就好了，最后这一串数列结束，ans+=a[opt-1]-maxx，即加到刚好非递减</p>
-<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const long long maxn=2e5+50;
 long long T,n,a[maxn];
@@ -316,13 +319,14 @@ int main()
         cout&lt;&lt;ans&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="D-题目名称"><a href="#D-题目名称" class="headerlink" title="D.题目名称"></a>D.题目名称</h1><p>Omkar and Bed Wars</p>
 <h2 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h2><p> 一个人同时被左右两两边的人攻击，或者左右两边的人都没攻击他，那他可随便攻击一个人。一个人若只被一个人攻击，他就要攻击回去。问如何该边人的攻击，使得用最少的改变次数，使得攻击符合条件。</p>
 <h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>当a[j-1]=R,a[j]=R,a[j+1]=R的时候对于a[j]的攻击就不符合条件；当a[j-1]=L,a[j]=L,a[j+1]=L的时候对于a[j]的攻击也是不符合条件。因此要时候没有&gt;=3的连续L/R出现。</p>
 <p>当全是L/R的时候答案就是(n+2)/3;</p>
 <p>然后将所有的连续子串加入数组中，判断s[1]与s[n],如果s[1]=s[n]，就要就首尾合并，最后ans+=a[i]/3;</p>
-<h2 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=2e5+50;
 int n,T;char s[maxn];
@@ -370,14 +374,15 @@ int main()
         cout&lt;&lt;ans&lt;&lt;endl;
     }
     return 0;
-} </code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-BeOmaxxM" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-arOBufDj" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-BeOmaxxM"),
+            element: document.getElementById("aplayer-arOBufDj"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -431,6 +436,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

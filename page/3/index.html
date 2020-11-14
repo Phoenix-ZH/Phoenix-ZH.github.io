@@ -209,12 +209,13 @@ int main(){
         
         <div class="index-excerpt" >
           <div class="index-text mb-1">C. Division题目大意：T组数据，每组给出pi和qi，其中 1≤pi≤10^18, 2≤qi≤10^9,求出最大的xi使得pi%xi==0，xi%qi!=0.
-思路：假设y=p/x，存在质数a，使得y%a==0&amp;&amp;a%q!=0,那么p%(a * x)==0&amp;&amp;(a * x)%q!=0
+思路：假设y=p/x，存在质数a，使得y%a==0&amp;&amp;a%q!=0,那么p%(a  x)==0&amp;&amp;(a  x)%q!=0
 如果存在两个质数a和b，如果y%a==0&amp;&amp;y%b==0并且q%a==0&amp;&amp;q%b==0.因为x%q!=0，所以存在一个质数c（c可以等于a或者b），并且c在x中出现的次方数小于c在q中出现的次方数。a或b中的一个不等于c，因此将x‘=x * c，那么x‘%q!=0，因此答案要求的最大x不可能是a或者b。
 所以x=p/（q中某个因数的幂次）。所以枚举q的所有因数，时间复杂度sqrt(q),注意因数一大一小对应枚举。然后设t=p，如果t%q==0，则t/=枚举的因数，直到t%q!=0，ans=max{t}.
 以上是p%q==0的情况。
 如果p%q！=0，显然答案就是p本身。
-代码：#include&lt;bits/stdc++.h&gt</div>
+代码：#include&lt;bits/stdc++.h&gt;
+</div>
         </div>
       </a>
 
@@ -400,9 +401,10 @@ int main(){
     }
     return 0;
 }
+
 B.题目名称：Minimum Product 
 题目大意：每次可以对a-=1，或者b-=1，最多操作n次，并且保证a&gt;=x,b&gt;=y.求a * b的最小值。
-思路：先将a变成最小，若有</div>
+思路：先将a变成最小，若</div>
         </div>
       </a>
 

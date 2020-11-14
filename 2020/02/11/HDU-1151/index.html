@@ -190,9 +190,9 @@
 <p>最小路径覆盖分为最小不相交路径覆盖和最小可相交路径覆盖。 </p>
 <p>最小不相交路径覆盖：每一条路径经过的顶点各不相同。</p>
 <p>最小可相交路径覆盖：每一条路径经过的顶点可以相同。</p>
-<p><strong>DAG的最小不相交路径覆盖的算法</strong>： 把原图的每个点V拆成两个点Vx和Vy，如果有一条有向边A-&gt;B，那么就加边：Ax–&gt;By。这样就得到了一个二分图。那么最小路径覆盖=原图的结点数-新图的最大匹配数。 </p>
+<p><strong>DAG的最小不相交路径覆盖的算法</strong>： 把原图的每个点V拆成两个点Vx和Vy，如果有一条有向边A-&gt;B，那么就加边：Ax—&gt;By。这样就得到了一个二分图。那么最小路径覆盖=原图的结点数-新图的最大匹配数。 </p>
 <p><strong>证明</strong>： 一开始每个点都是独立的为一条路径，总共有n条不相交路径。  每次在二分图里找一条匹配边就相当于把两条路径合成了一条路径，也就相当于路径数减少了1。  所以找到了几条匹配边，路径数就减少了多少。 所以 <strong>最小路径覆盖=原图的结点数-新图的最大匹配数。</strong> </p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -251,12 +251,12 @@ int main()
 }
 </code></pre>
 
-        <div id="aplayer-GdMsTRmf" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-LFDfPjer" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-GdMsTRmf"),
+            element: document.getElementById("aplayer-LFDfPjer"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -312,6 +312,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

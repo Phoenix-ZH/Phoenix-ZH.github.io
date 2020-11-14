@@ -188,7 +188,7 @@
 <p>第四行是你有的钱数。</p>
 <p>问最多做多少汉堡。</p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>看到（1&lt;=r&lt;=10^12)和“最多”就觉得是二分。二分汉堡的数量，已知已经拥有的汉堡B，S，C材料的数量，也可以得到需要的总数量，由此知道需要购买的数量。然后计算总钱数，就可以进行判断了。<br>ps：WA了两次：<br>第一次：注意ans1，ans2，ans3，可能是负的，一旦为负就要定为0，不然结果偏大。<br>第二次：注意最多数量可能比10^12更大，所以右边界要大一点。</p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=10000+10;
 long long n1,n2,n3,h1,h2,h3,m1,m2,m3,r;
@@ -230,10 +230,11 @@ int main()
     }
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
-}</code></pre>
-<h1 id="2-题目："><a href="#2-题目：" class="headerlink" title="2.题目："></a>2.题目：</h1><h4 id="CodeForces-343C-B-Read-Time"><a href="#CodeForces-343C-B-Read-Time" class="headerlink" title="CodeForces - 343C  B-Read Time"></a><a href="https://vjudge.net/problem/CodeForces-343C/origin" target="_blank" rel="noopener">CodeForces - 343C </a> B-Read Time</h4><h2 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h2><p> 给你n个探头，m个要读的轨道，n个探头的初始位置是h1—hn（从小到大），m个轨道的位置为p1——pn(也是从小到大)，探头可以左移或右移，这些探头可以一起动，每移动一格的时间为1，探头读轨道不计时间，如果要读的轨道上就有探头那么就不需要时间，找最小的时间来读完这些轨道。 </p>
+}
+</code></pre>
+<h1 id="2-题目："><a href="#2-题目：" class="headerlink" title="2.题目："></a>2.题目：</h1><h4 id="CodeForces-343C-B-Read-Time"><a href="#CodeForces-343C-B-Read-Time" class="headerlink" title="CodeForces - 343C  B-Read Time"></a><a href="https://vjudge.net/problem/CodeForces-343C/origin" target="_blank" rel="noopener">CodeForces - 343C </a> B-Read Time</h4><h2 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h2><p> 给你n个探头，m个要读的轨道，n个探头的初始位置是h1—-hn（从小到大），m个轨道的位置为p1———pn(也是从小到大)，探头可以左移或右移，这些探头可以一起动，每移动一格的时间为1，探头读轨道不计时间，如果要读的轨道上就有探头那么就不需要时间，找最小的时间来读完这些轨道。 </p>
 <h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>二分需要的时间。判断条件：<br>从左到右，对每一个探头进行操作：<br>1.如果该探头左边没有待读取的区域，则将探头移到右边可达的最远处；<br>2.如果该探头左边有带读取区域，这就需要分两种情况：<br>    1）先左移到带读取区域，再右移到可达的最远处；<br>    2）先右移到最远的区域（ps：这个区域需要让探头能够到左边的带读取区域）<br>ps：如果探头到左边待读取区域的时间大于了所给时间，直接返回0；<br>3.然后就得到了右边可达的最远处，这样在它左边的所有区域都是已读取的区域<br>4.如果所有区域可读取则返回1，否则返回0；</p>
-<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const long long maxn=100000+10;
 long long n,m,h[maxn],p[maxn],vis[maxn];
@@ -286,14 +287,15 @@ int main()
     }
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-etcbYwtk" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-SpDahzjy" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-etcbYwtk"),
+            element: document.getElementById("aplayer-SpDahzjy"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -351,6 +353,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

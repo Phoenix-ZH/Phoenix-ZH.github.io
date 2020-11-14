@@ -192,8 +192,8 @@
 <p>10<br>1 2<br>2 3<br>3 4<br>4 5<br>5 6<br>6 7<br>7 8<br>8 9<br>9 10<br>10 11</p>
 <p><strong>输出样例</strong></p>
 <p>438</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>设dp[i][j]表示合并第i个矩阵到第j个矩阵所需要的最少的乘法次数。初始化dp为0x3f3f3f3f（即初始化为无穷大）。dp[i][i]=0(所有的i-i的合并的乘法次数为0).然后就开始考虑动态规划的转移方程：先枚举长度len （len from 2 to n），合并的长度最短为2，最长为n。然后嵌套枚举左边界l（l from 1 to n），与此同时由len和l就可以得到r=l+len-1.于是就可以考虑dp[l][r] 的转移方程了，要求<strong>l-r</strong>的合并耗费的乘法次数，就要考虑中间枚举一个点mid，那么合并<strong>l-r</strong>的乘法次数就是合并<strong>l-mid</strong>与合并<strong>mid+1 - r</strong>的乘法次数之和再加上合并新的左右两个矩阵，它们的乘法次数是p[l] * q[m] * q[r]。枚举l，r之间的一个矩阵mid(l&lt;=mid&lt;=mid-1)，dp[l][r]=min(dp[l][r],dp[l][mid+dp[mid+1][r]+ p[l] * q[m] * q[r] ).最终答案就是dp[1][n];</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>设dp[i][j]表示合并第i个矩阵到第j个矩阵所需要的最少的乘法次数。初始化dp为0x3f3f3f3f（即初始化为无穷大）。dp[i][i]=0(所有的i-i的合并的乘法次数为0).然后就开始考虑动态规划的转移方程：先枚举长度len （len from 2 to n），合并的长度最短为2，最长为n。然后嵌套枚举左边界l（l from 1 to n），与此同时由len和l就可以得到r=l+len-1.于是就可以考虑dp[l][r] 的转移方程了，要求<strong>l-r</strong>的合并耗费的乘法次数，就要考虑中间枚举一个点mid，那么合并<strong>l-r</strong>的乘法次数就是合并<strong>l-mid</strong>与合并<strong>mid+1 - r</strong>的乘法次数之和再加上合并新的左右两个矩阵，它们的乘法次数是p[l] <em> q[m] </em> q[r]。枚举l，r之间的一个矩阵mid(l&lt;=mid&lt;=mid-1)，dp[l][r]=min(dp[l][r],dp[l][mid+dp[mid+1][r]+ p[l] <em> q[m] </em> q[r] ).最终答案就是dp[1][n];</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -224,12 +224,12 @@ int main(){
 }
 </code></pre>
 
-        <div id="aplayer-bRaDzJsl" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-rrGXkXYx" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-bRaDzJsl"),
+            element: document.getElementById("aplayer-rrGXkXYx"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -244,7 +244,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -285,6 +284,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

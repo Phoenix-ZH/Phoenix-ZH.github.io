@@ -176,9 +176,10 @@ int main()
     }
     return 0;
 }
+
 B.题目名称： Fix You 
 题目大意：一个(n,m)的矩阵，每一个单位格上有‘D’，‘R’，‘D’：向下移动一格，‘R’：向右移动一格。对于任意位置上的物品需要保证它可以运动到(n,m)，一旦出界就失败了。问至少要改变几个单位格？
-思路：真正有影响的是最后一行和最后一列。若最后一行还有‘D’一定不符合条件，必须改</div>
+思路：真正有影响的是最后一行和最后一列。若最后一行还有‘D’一定不符合条件，必须</div>
         </div>
       </a>
 
@@ -300,13 +301,13 @@ int main()
 思路：已知a[]&lt;=1000000,要求得phi[]，则应当线性求phi。
 1.phi(p) == p-1 因为素数p除了1以外的因子只有p，所以与 p 互素的个数是 p - 1个 
 2.phi(p^k) == p^k - p^(k-1) == (p-1) * p^(k-1) 
-3.如果i mod p == 0, 那么 phi(i * p) == p * phi(i)  
-4.如果i mod p != 0, 那么 phi(i * p) == phi(i) * (p-1)  
+3.如果i mod p == 0, 那么 phi(i  p) == p  phi(i)  
+4.如果i mod p != 0, 那么 phi(i  p) == phi(i)  (p-1)  
 求得phi[]之后，就寻找大于等于a[i]的最小的phi[]的下标，求和。
 PS：WA了很多次：a[]&lt;=1000000,但是phi[]可能&gt;1000000
 代码：#include&lt;bits/stdc++.h&gt;
 using namespace std;
-const int m</div>
+const int maxn=</div>
         </div>
       </a>
 
@@ -375,14 +376,17 @@ const int m</div>
         
         <div class="index-excerpt" >
           <div class="index-text mb-1">1.题目：D - Proud Merchants题目大意：n种商品，m元钱，每种商品都有p,q,v属性，p价格，q表示买这种商品你需要带q元老板才愿意和你交易，v这种商品的实际价值。求问最多可以获得多少价值 。
-思路：如果p=q，那么就是01背包。但是如果p！=q， 如果A:p1 q1, B:p2 q2 ， 假设单独买A或者B的话，都是可以买到的 。 若先买A，则你至少需要p1+q2的钱；若先买B，则至少需要p2+q1的钱。  那肯定是花最少的钱 ，所以如果先买A再买B ， 那么p1+q2&lt;p2+q1  转换一下，就是q1-p1&gt;q2-p2  也就是说qi-pi大的先买。注意：排序的时候，得按照qi-pi从小到大排序，因为你买第n件商品的时候，是在比较你是否要先买第n件商品。 
+思路：如果p=q，那么就是01背包。但是如果p！=q， 如果A:p1 q1, B:p2 q2 ， 假设单独买A或者B的话，都是可以买到的 。 若先买A，则你至少需要p1+q2的钱；若先买B，则至少需要p2+q1的钱。  那肯定是花最少的钱 ，所以如果先买A再买B ， 那么p1+q2q2-p2  也就是说qi-pi大的先买。注意：排序的时候，得按照qi-pi从小到大排序，因为你买第n件商品的时候，是在比较你是否要先买第n件商品。 
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 using namespace std;
 const int maxn=5000+10;
-stru</div>
+struct N
+{
+    int p,q,v;
+}a[ma</div>
         </div>
       </a>
 

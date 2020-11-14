@@ -185,7 +185,7 @@
             <h1 id="A-题目名称"><a href="#A-题目名称" class="headerlink" title="A.题目名称"></a>A.题目名称</h1><p> Boboniu Likes to Color Balls </p>
 <h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>r个红球，g个绿球，b个蓝球，w个白球。可以任意次将一个红球和一个绿球和一个蓝球都转化成白球。是否可以组成回文色？</p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>当偶数色的数目&gt;=3则一定可以。若只有一个偶数色，则红绿蓝都至少有一个就可以。其余的都是不可以的。</p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 long long T,a,b,c,d;
 int main()
@@ -214,11 +214,12 @@ int main()
         }
     }
     return 0;
-} </code></pre>
+}
+</code></pre>
 <h1 id="B-题目名称"><a href="#B-题目名称" class="headerlink" title="B.题目名称"></a>B.题目名称</h1><p>Boboniu Plays Chess </p>
 <h2 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h2><p>n*m的棋盘，初始位置在非边界处，每次可以移动到同一行或者同一列未到过的位置上。请输出符合情况的答案。</p>
 <h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>先左平移到边界，在从初始位置的右边开始右平移到边界，然后列下标依次减小，对于行下标一开始是由小到大，再由大到小，交替进行，类似于S线。注意开始的初始位置所在的行不可以经过。</p>
-<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int n,m,si,sj;
 int main()
@@ -260,11 +261,12 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="C-题目名称"><a href="#C-题目名称" class="headerlink" title="C.题目名称"></a>C.题目名称</h1><p>Boboniu and Bit Operations </p>
 <h2 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h2><p>a[]（长度为n）,b[]（长度为m），对于每一个ai（1&lt;=i&lt;=n）选择一个bj，ci=ai&amp;bj。求能得到的最小的c1|c2|…|cn。</p>
 <h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><p>观察到0&lt;=ai&lt;2^9,所以最大的答案就是2^10 - 1.直接从小到大枚举答案，能符合的最小的就是所求答案。接下来就是如何进行判定了：对于所枚举的答案，需要让a[]与所有b[]进行操作，一旦存在ci|mid&lt;=mid说明当前ai是符合的，如果不存在就说明枚举的答案是不对的。</p>
-<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=200+5;
 int n,m,a[maxn],b[maxn],c[maxn];
@@ -302,12 +304,13 @@ int main()
             return 0;
         }
     }
-}</code></pre>
+}
+</code></pre>
 <h1 id="D-题目名称"><a href="#D-题目名称" class="headerlink" title="D.题目名称"></a>D.题目名称</h1><p>Boboniu Chats with Du </p>
 <h2 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h2><p>Du可以在群里聊天n天，如果Du当前选择ai&gt;m（Boboniu的恒定心情值），则Du会被禁言d天，问最大的ai的和。</p>
 <h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>将a[]由小到大排序，可以枚举ai&lt;=m的个数，然后利用前缀和得到ai&lt;=m的和（肯定优先选择大的），剩下的天数就是发一次言就会被禁言，一次发言的耗费就是d+1天，注意求次数时候向上取整，这里也是前缀和。</p>
 <p><strong>ps</strong>：千万别忘了枚举天数别忘了枚举0天的情况！</p>
-<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const long long maxn=1e5+50;
 long long n,d,m,a[maxn],sum[maxn],sum2[maxn];
@@ -340,14 +343,15 @@ int main()
     }
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-aZTBktSI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-sGWpmzsg" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-aZTBktSI"),
+            element: document.getElementById("aplayer-sGWpmzsg"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -401,6 +405,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

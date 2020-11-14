@@ -149,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      8 分钟
+                      7 分钟
                   </span>&nbsp;
                 
 
@@ -198,7 +198,7 @@
 <hr>
 <p>在一个二分图中，左顶点为X，右顶点为Y，现在对于每组左右连接XiYi有权Wij，求最大匹配，并且使得该匹配中所有Wij的和最大。</p>
 <p>该算法通过给每一个顶点一个标号(称为顶标)来把求最大权匹配的问题转换为求完备匹配的问题。</p>
-<p>设顶点Xi的顶标为A[i]，顶点Yi的顶标为B[i]，顶点Xi和Yi之间的边权为W[i][j]，在整个过程中任意一条边&lt;i,j&gt;，始终满足A[i]+B[j]&gt;=W[i][j].</p>
+<p>设顶点Xi的顶标为A[i]，顶点Yi的顶标为B[i]，顶点Xi和Yi之间的边权为W[i][j]，在整个过程中任意一条边<i,j>，始终满足A[i]+B[j]&gt;=W[i][j].</p>
 <h2 id="相等子图"><a href="#相等子图" class="headerlink" title="相等子图"></a>相等子图</h2><p>图G中每一条边有左右两个顶标，<strong><em>相等子图</em></strong>就是那些顶标和等于边权重的边构成的子图，如图例</p>
 <p> <img src="https://img-blog.csdnimg.cn/20181105162845589.png" srcset="/img/loading.gif" alt="img"> </p>
 <h2 id="KM算法的正确性"><a href="#KM算法的正确性" class="headerlink" title="KM算法的正确性"></a>KM算法的正确性</h2><p><strong>定理</strong>：若二分图中，A[i]+B[j]&gt;=W[i][j],并且存在某个相等子图有完备匹配，那么这个完备匹配就是二分图的最大权匹配</p>
@@ -235,7 +235,7 @@
 <p> <img src="https://img-blog.csdnimg.cn/20181105185155651.png" srcset="/img/loading.gif" alt="img"> </p>
 <p><strong>ps</strong>:为什么修改橙色顶标而不去修改顶标A(找到最小差对应的边的右边顶标)？修改顶标A的值为-1， 那么边1-A也可以加入<strong>相等子图</strong>了。但是这样就无法保证A[i]+B[j]&gt;=W[i][j]恒成立了。如下图所示结果，修改顶标A，边3-A就不满足该条件了。除非在修改顶标A的同时，增加顶标3的值，但是需要修改的顶标集合需要额外的搜索算法，而修改橙色顶标所需要的<strong>交错树</strong>在增广路径搜索时可以一并产生。 </p>
 <p> <img src="https://img-blog.csdnimg.cn/20181106152548762.png" srcset="/img/loading.gif" alt="img"> </p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="cpp">#include&lt;cstdio&gt;
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -334,14 +334,15 @@ int main()
         printf(&quot;%d\n&quot;,ans);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-PcMRKUlG" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-MsoZqWoS" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-PcMRKUlG"),
+            element: document.getElementById("aplayer-MsoZqWoS"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -395,6 +396,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

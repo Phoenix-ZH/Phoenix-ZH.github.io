@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    2.8k 字
+                    2.7k 字
                   </span>&nbsp;
                 
 
@@ -189,8 +189,10 @@
 <li>问至少多少次操作可以把 a变成 b。</li>
 <li>多组数据 :T&lt;=10^4,1&lt;=a,b&lt;=10^9</li>
 </ul>
-<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>对于a，b关系可分为3种情况：a&gt;b;a==b;a&lt;b;<br>a==b:答案为0；<br>a &gt; b:若a-b为偶数，答案为1；否则为2，先减一个偶数让a=b-1，再加1。<br>a &lt; b:若b-a为奇数，答案为1；否则为2.</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>对于a，b关系可分为3种情况：a&gt;b;a==b;a<b;
+a==b:答案为0；
+a > b:若a-b为偶数，答案为1；否则为2，先减一个偶数让a=b-1，再加1。<br>a &lt; b:若b-a为奇数，答案为1；否则为2.</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -218,11 +220,12 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="B：题目名称："><a href="#B：题目名称：" class="headerlink" title="B：题目名称："></a>B：题目名称：</h1><p>WeirdSort</p>
-<h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1582966700624.png" srcset="/img/loading.gif" alt="1582966700624"></p>
+<h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1582966700624.png" srcset="/img/loading.gif" alt="1582966700624"></p>
 <h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>这题看起来和冒泡排序很像，将冒泡排序的判断条件改一下就可以，每一次必须是在限制的位置上时才可以swap。最后再判断是否变成有序数列即可。</p>
-<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -275,13 +278,14 @@ int main()
         else printf(&quot;YES\n&quot;);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="C：题目名称："><a href="#C：题目名称：" class="headerlink" title="C：题目名称："></a>C：题目名称：</h1><p>Perform the Combo</p>
 <h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p>一台机器准备要打印一篇文章，有 m 个打印操作</p>
 <p>给出操作序列 p1,p2, …,pm和 长度为 n的字符串 s<br>对于每个 1≤<em>i</em>≤m，pi表示该机器将位置1∼pi上的所有字母打印了出来<br>最后，在所有操作做完后，该机器又将整个字符串 s打印了出来</p>
 <p>请求出字母表中每个字母在文章中出现了多少次</p>
 <h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>先统计位置i之前26个字母每个字母的总数，然后直接模拟求总和，注意最后要加上一次完整的计数。</p>
-<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -318,14 +322,15 @@ int main()
         cout&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="D-题目名称："><a href="#D-题目名称：" class="headerlink" title="D:题目名称："></a>D:题目名称：</h1><p>Three Integers</p>
 <h4 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h4><p>题目给出三个整数a<em>≤</em>b<em>≤</em>c。</p>
 <p>在一次操作中，你可以给这三个数中任意一个数 +1 或 -1。你可以用同一个数字做这样的操作任意次。但你要保证，变换过后的数，是一个正数。</p>
 <p>你想要用最小操作步数使得三个整数 A<em>≤</em>B<em>≤</em>C能够符合：B 能被 A 整除， C能被 B整除。</p>
 <p>你需要回答 t 组询问。</p>
 <h4 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h4><p>一开始想着找出a与b，a与c的关系，结果这样写有点麻烦。b作为中间数字，当然用它来做媒介最好。注意b可以减到a，也可以加到c，所以枚举的大小应该为max(b-a,c-b);找到b-i的所有因子，得到a改变成b-i的因子的最小变化值ned1，并且记录a变化后的值。再找b-i的所有倍数，得到c变成b-i的倍数的最小变化之ned2，并且记录c变化后的值。再更新总变化值，以及记录a，b，c的值。然后同理求b+i的情况。如果b-i&lt;=0直接去掉。</p>
-<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -412,11 +417,12 @@ int main()
         printf(&quot;%d %d %d\n&quot;,a,b,c);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="E-题目名称："><a href="#E-题目名称：" class="headerlink" title="E:题目名称："></a>E:题目名称：</h1><p>Construct the Binary Tree</p>
 <h4 id="题目大意：-4"><a href="#题目大意：-4" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 要求构造一个n个节点的二叉树（每个节点拥有不超过2个孩子），节点1为根，要使所有节点到根的距离之和为d。要求先判断可不可以构造，如果可以输出“YES”，下一行输出2到n号节点的父亲节点，否则输出“NO”。有多组询问。 </p>
-<h4 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h4><p>要想构成树，那么必须保证Minn&lt;=d&lt;=Maxx,Minn就是满二叉树(最接近满二叉树)的情况，Maxx就是链。然后就是从Minn转换或者从Maxx转换成d。这里选择将链转换变成满足深度总和满足d的情况，预处理出Minn[i]，即n=i，对应的最小深度和，若d&lt;Minn||d&gt;Maxx那么就NO,(Maxx=i*(i-1)/2)，然后构成链，a[i][0]=i+1,f[i+1]=i,cnt[i]=1;(cnt[i]表示i这个深度点的总数)，从最底层向上移动，移动最多就是和根(1)相接，设最小深度为minn=1，每一次上升的高度为delt=min(i-minn,t)(i为当前移动点的深度，t为需要上升的总次数)。于是点(i+1)移动到深度为i-delt的层，该层最多有2^(i-delt-1)个点，点(i+1）就位于cnt[pos]的位置，f[i+1]对应的是上一层的第cnt[pos]/2的点。即f[i+1]=a[pot-1][cnt[pos]/2]，那么a[pos][cnt[pos]]=i+1;注意每次cnt[pos]++,一旦cnt[pos]&gt;=pow(2,minn)，那么就要往下一层走了。</p>
-<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h4><p>要想构成树，那么必须保证Minn&lt;=d&lt;=Maxx,Minn就是满二叉树(最接近满二叉树)的情况，Maxx就是链。然后就是从Minn转换或者从Maxx转换成d。这里选择将链转换变成满足深度总和满足d的情况，预处理出Minn[i]，即n=i，对应的最小深度和，若d<Minn||d>Maxx那么就NO,(Maxx=i*(i-1)/2)，然后构成链，a[i][0]=i+1,f[i+1]=i,cnt[i]=1;(cnt[i]表示i这个深度点的总数)，从最底层向上移动，移动最多就是和根(1)相接，设最小深度为minn=1，每一次上升的高度为delt=min(i-minn,t)(i为当前移动点的深度，t为需要上升的总次数)。于是点(i+1)移动到深度为i-delt的层，该层最多有2^(i-delt-1)个点，点(i+1）就位于cnt[pos]的位置，f[i+1]对应的是上一层的第cnt[pos]/2的点。即f[i+1]=a[pot-1][cnt[pos]/2]，那么a[pos][cnt[pos]]=i+1;注意每次cnt[pos]++,一旦cnt[pos]&gt;=pow(2,minn)，那么就要往下一层走了。</p>
+<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -474,12 +480,13 @@ int main()
         cout&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h4 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a>代码：</h4><h1 id="F-题目名称："><a href="#F-题目名称：" class="headerlink" title="F:题目名称："></a>F:题目名称：</h1><p>Moving Points</p>
-<h4 id="题目大意：-5"><a href="#题目大意：-5" class="headerlink" title="题目大意："></a>题目大意：</h4><p><img src="C:%5CUsers%5Cha'er%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1582968080820.png" srcset="/img/loading.gif" alt="1582968080820"></p>
-<h4 id="题解：-5"><a href="#题解：-5" class="headerlink" title="题解："></a>题解：</h4><p>假如xi&lt;xj，那么要让i与j的距离可以变成0，就必须vi&gt;vj。不妨让所有的点按xi从小到大的顺序排列。对于i，需要找到所有满足vj&lt;vi的点，这样的i与j的距离就是0，其余的就是abs(xi-xj)，这样就需要维护这种点的vj的总和。可以选择树状数组来维护:先将所有点的vi从d小到大编号，1为最小，n为最大，找到点i的vi的排名p，然后加入到树状数组。排名小于p的就是vj&lt;vp的，否则就是vp&lt;vj的。树状数组要维护点p之前(包括点p)的点的个数和点p之前(包括点p)的v的总和。然后开始枚举点i，首先确定它v的排名p，得到p之前点的个数f1(即v&lt;vi的点的个数)，得到p之前的点的x总和f2(即v&lt;vi的x总和),求得可以使自己和点i之间的距离为0的个数，其余就是不可为0的。ans=ans+abs((n-f1-i)*a[i].x-(sum-f2));注意要减去a[i].x本身，并且每一对点之间只能计算一次，所以树状数组要更新，将权值加上负值即可(add(p,-1,-a[i].x);)。所以剩余距离不能为0的点个数为n-f1-i，而这些点的x之和就是sum-f2(每次sum-a[i].x)。最后输出ans。</p>
+<h4 id="题目大意：-5"><a href="#题目大意：-5" class="headerlink" title="题目大意："></a>题目大意：</h4><p><img src="C:\Users\ha&#39;er\AppData\Roaming\Typora\typora-user-images\1582968080820.png" srcset="/img/loading.gif" alt="1582968080820"></p>
+<h4 id="题解：-5"><a href="#题解：-5" class="headerlink" title="题解："></a>题解：</h4><p>假如xi<xj，那么要让i与j的距离可以变成0，就必须vi>vj。不妨让所有的点按xi从小到大的顺序排列。对于i，需要找到所有满足vj&lt;vi的点，这样的i与j的距离就是0，其余的就是abs(xi-xj)，这样就需要维护这种点的vj的总和。可以选择树状数组来维护:先将所有点的vi从d小到大编号，1为最小，n为最大，找到点i的vi的排名p，然后加入到树状数组。排名小于p的就是vj&lt;vp的，否则就是vp&lt;vj的。树状数组要维护点p之前(包括点p)的点的个数和点p之前(包括点p)的v的总和。然后开始枚举点i，首先确定它v的排名p，得到p之前点的个数f1(即v&lt;vi的点的个数)，得到p之前的点的x总和f2(即v&lt;vi的x总和),求得可以使自己和点i之间的距离为0的个数，其余就是不可为0的。ans=ans+abs((n-f1-i)*a[i].x-(sum-f2));注意要减去a[i].x本身，并且每一对点之间只能计算一次，所以树状数组要更新，将权值加上负值即可(add(p,-1,-a[i].x);)。所以剩余距离不能为0的点个数为n-f1-i，而这些点的x之和就是sum-f2(每次sum-a[i].x)。最后输出ans。</p>
 <p><strong>开longlong保平安</strong></p>
-<h4 id="代码：-6"><a href="#代码：-6" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-6"><a href="#代码：-6" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -553,14 +560,15 @@ int main()
     }
     printf(&quot;%lld\n&quot;,ans);
     return 0;
-} </code></pre>
+}
+</code></pre>
  
-        <div id="aplayer-QzGoKVkI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-rWFKCeod" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-QzGoKVkI"),
+            element: document.getElementById("aplayer-rWFKCeod"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -614,6 +622,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

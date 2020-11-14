@@ -187,7 +187,7 @@
 <p>现在给出一个长度为<strong>2n−1</strong>的字符串s，现在让你构造一个长度为n的字符串，使得这个字符串与s的所有长度为n的子串都相似。</p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>直接将s[n]输出n次</p>
 <p><strong>ps</strong>：一开始想复杂了，认为cnt0的个数&gt;=n就全输出0，否则全输出1.实际上全输出s[n]就可以了。</p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=1e3+50;
 int T,n;char s[maxn];
@@ -212,11 +212,12 @@ int main()
         }
     }
     return 0;
-} </code></pre>
+}
+</code></pre>
 <h1 id="B-题目名称"><a href="#B-题目名称" class="headerlink" title="B.题目名称"></a>B.题目名称</h1><p> RPG Protagonist </p>
 <h2 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h2><p> 有两个人，一个人可以带p单位的重量，另一个人可以带f单位的重量，现在有两种物品，给出两种物品单件的重量以及两种物品的数量，求这两个人最多一共带走多少物品（数量最多）。</p>
 <h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>首先保证第一个物品的重量比第二个更小。然后枚举第一个人选择第一个物品的数量（从0到cnt1），然后计算第一个人选择第二个物品的数量（注意判断条件一定要小于等于cnt2），然后贪心求得第二个人选择第一个物品的数量和第二个物品的数量。</p>
-<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=2e5+50;
 long long T,n,w1,w2,cnt1,cnt2,p,f;
@@ -251,7 +252,8 @@ int main()
         cout&lt;&lt;ans&lt;&lt;endl;
     }
     return 0;
-} </code></pre>
+}
+</code></pre>
 <h1 id="C-题目名称"><a href="#C-题目名称" class="headerlink" title="C.题目名称"></a>C.题目名称</h1><p>Binary String Reconstruction </p>
 <h2 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h2><p>对于一个字符串s，通过以下规则构建字符串t。对于一个位置i，如果s[i-x]存在且s[i-x]=1或者s[i+x]存在且s[i+x]=1，那么t[i]=1,否则t[i]=1.现在给出串t，求串s。</p>
 <h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><p>从头开始，判断t[1]是0还是1，还确定s[i+x]，并且vis[i+x]标记为1，然后从2开始线性遍历。</p>
@@ -263,7 +265,7 @@ int main()
 <p>如果t[i]==0:</p>
 <p>​        if s[i-x]存在 则它必须为0；</p>
 <p>​        if s[i+x]存在 则它必须为0；</p>
-<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=1e5+50;
 int T,x,vis[maxn];char s[maxn],a[maxn];
@@ -331,11 +333,12 @@ int main()
         }
     }
     return 0;
-} </code></pre>
+}
+</code></pre>
 <h1 id="D-题目名称："><a href="#D-题目名称：" class="headerlink" title="D.题目名称："></a>D.题目名称：</h1><p>Zigzags </p>
 <h2 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给出一个数组，求满足以下条件的四元组（i，j，k，l）的个数。1&lt;=i&lt;j&lt;k&lt;l&lt;=n ai=ak&amp;&amp;aj=al</p>
-<h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>先枚举i与l的位置，则j和k一定在i和l之间，然后求i到l之间与i相同的数目res1和与l相同的数目res2，ans+=res1 * res2，注意如果ai==al则可能存在重复，需要去重ans-=res1。然后发现这种情况下，存在j与k顺序相反的情况。需要枚举i和j，让k在i和j之间，l在j之后，然后求得i与j之间和ai相等的总数res1，j之后与aj相等的数目res2，ans-=res1 * res2</p>
-<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>先枚举i与l的位置，则j和k一定在i和l之间，然后求i到l之间与i相同的数目res1和与l相同的数目res2，ans+=res1 <em> res2，注意如果ai==al则可能存在重复，需要去重ans-=res1。然后发现这种情况下，存在j与k顺序相反的情况。需要枚举i和j，让k在i和j之间，l在j之后，然后求得i与j之间和ai相等的总数res1，j之后与aj相等的数目res2，ans-=res1 </em> res2</p>
+<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=3000+50;
 int T,n,a[maxn],sum[maxn][maxn];
@@ -386,14 +389,15 @@ int main()
         cout&lt;&lt;ans&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-PILKFyEL" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-KtacGClv" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-PILKFyEL"),
+            element: document.getElementById("aplayer-KtacGClv"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -447,6 +451,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

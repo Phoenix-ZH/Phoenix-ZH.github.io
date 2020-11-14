@@ -186,7 +186,7 @@
 <h1 id="A：题目名称："><a href="#A：题目名称：" class="headerlink" title="A：题目名称："></a>A：题目名称：</h1><p>Yet Another Tetris Problem</p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>第一行一个t，表示有t组数据。每组数据的第一行是一个数n，接下来一行是一个长度为n的数组a。 分别表示每一列的方块的高度。<br>现在有两个操作：<br>1.当至少一个ai&gt;0时，选择一些i(1&lt;=i&lt;=n)，将ai加2.<br>2.当所有的ai&gt;0时，将所有的ai减1。<br>问最后可不可以将所有的ai都变成0. 如果能，输出”YES”(没有引号)，不然输出”NO”(没有引号) </p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>问题转化过来就是，可以在任意一列上+2，问最后可不可以等高。那就看highmax与其余各列的高度差是否都为偶数即可。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -219,12 +219,13 @@ int main()
         else printf(&quot;NO\n&quot;);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="B-题目名称："><a href="#B-题目名称：" class="headerlink" title="B: 题目名称："></a>B: 题目名称：</h1><p>Yet Another Palindrome Problem</p>
 <h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给定一个长度为 n 的序列 a，问其中是否有长度至少为 3 的子序列 b 为「回文序列」，如果有，则输出 <code>YES</code>，否则输出 <code>NO</code>。</p>
 <p>注意：本题有多组数据，对每一组数据，都要给出相应答案。</p>
 <h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>只要满足回文串的长度为3即可。那就找到任意相等的两个数字，看他们之间间隔是否大于1。对于每一个类型的数字，记录一下最先出现的位置，用vis[]表示。然后倒着枚举每一个数字，看它的位置与同样大小数字最先出现的位置相差是否大于1，一旦符合就YES；如果找不到就NO。</p>
-<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -259,11 +260,12 @@ int main()
         if(sign==0)printf(&quot;NO\n&quot;);
     }    
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="C-题目名称："><a href="#C-题目名称：" class="headerlink" title="C: 题目名称："></a>C: 题目名称：</h1><p>Frog Jumps</p>
 <h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有T组数据。每组数据是一串由L与R组成的字符串。青蛙从0出发，到n+1停止。n就是字符串长度(n不会给出)。若青蛙停在ai上，ai==‘L’就只能向左跳，ai==’R’就只能向右跳。求出最小的d，使得每一次青蛙跳的距离不超过d并且可以到达n+1.</p>
-<h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>假如ai==‘L’，意味着青蛙要向左跳。由于最终要跳到n+1，就必须尽量落在ai==’R’上，假设ai–&gt;aj,ai==’R‘，aj==’L’，如果j-i==d，如果中间没有R了，那显然不能满足它跳到n+1去，若有R那肯定跳到最后一个ak==’R’ 上。如果j-i&lt;d,就看后面是否有ak==’R’(注意范围),或者i–j之间是否有ak==’R’.总之这样推断后，发现每一次都要落在ai==’R’上才能到达n+1处。现在就是如何求d了，对d进行二分即可。</p>
-<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>假如ai==‘L’，意味着青蛙要向左跳。由于最终要跳到n+1，就必须尽量落在ai==’R’上，假设ai—&gt;aj,ai==’R‘，aj==’L’，如果j-i==d，如果中间没有R了，那显然不能满足它跳到n+1去，若有R那肯定跳到最后一个ak==’R’ 上。如果j-i&lt;d,就看后面是否有ak==’R’(注意范围),或者i—j之间是否有ak==’R’.总之这样推断后，发现每一次都要落在ai==’R’上才能到达n+1处。现在就是如何求d了，对d进行二分即可。</p>
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -313,11 +315,12 @@ int main()
         printf(&quot;%d\n&quot;,ans);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="D-题目名称："><a href="#D-题目名称：" class="headerlink" title="D: 题目名称："></a>D: 题目名称：</h1><p>Pair of Topics</p>
 <h4 id="Ps：本场比赛WA了4次，把自己坑得人都没了QAQ"><a href="#Ps：本场比赛WA了4次，把自己坑得人都没了QAQ" class="headerlink" title="Ps：本场比赛WA了4次，把自己坑得人都没了QAQ"></a>Ps：本场比赛WA了4次，把自己坑得人都没了QAQ</h4><h4 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给定n组ai，bi。求有多少组满足ai+aj&gt;bi+bj(i&lt;j)</p>
 <h4 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h4><p>移项之后就是求 (ai-bi)+(aj-bj)&gt;0有多少组。设ci=ai-bi.就是求ci+cj&gt;0有多少组。将c数组从小到大排好。minn为最靠后的小于或等于0的数，maxx为最靠前的大于或等于0的数。这里特别要注意：如果存在0，那么minn=maxx=i(a[i]==0)，如果存在多个0，那么minn=maxx=i(<strong>i是最后一个0所在位置</strong>)，那么大于0的个数就是n-maxx+1.注意：如果maxx==n，可能a[maxx]=0或者a[maxx]&gt;0；也可能minn=maxx=1，意味着可能a[minn]=a[maxx]=0,也可能是全为负数。这里的特殊情况较多，很容易WA。(主要还是设计算法时候没有注意到），然后将minn倒着向前推，如果c[minn]+c[maxx]&gt;0,ans+=n-maxx+1(意味着maxx后面的也都满足)，如果c[minn]+c[maxx]&lt;=0，就maxx++，直到c[minn]+c[maxx]&gt;0(注意maxx不可以超过n),所以还要判断是否c[minn]+c[maxx]&gt;0。<br>ps：minn=maxx=1时候，也可能全正，直接输出答案即可。ans=(n-1)*n/2;</p>
-<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -374,11 +377,12 @@ int main()
     }
     printf(&quot;%lld\n&quot;,ans);
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="E-题目名称："><a href="#E-题目名称：" class="headerlink" title="E: 题目名称："></a>E: 题目名称：</h1><p>Sleeping Schedule</p>
 <h4 id="题目大意：-4"><a href="#题目大意：-4" class="headerlink" title="题目大意："></a>题目大意：</h4><p> Vova  可以选择在ai小时或者ai-1小时后睡觉，每次睡h个小时，如果开始睡觉那一刻位于l和r之间就是符合要求的。问一共有多少个符合要求。</p>
 <h4 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h4><p>每一次睡觉时有两个选择：ai个小时后睡或者ai-1个小时后睡觉，但是由于之前i-1次也会出现这样的选择。如果单纯直接递推，就无法判断枚举的上次睡觉时间是否可以到达。所以vis[i][j]记录第i次在j时刻睡觉。dp[i][j]表示第i次在j时刻睡觉所累积的符合要求的数量。显然dp[1][a[i]]=1,dp[1][a[i]-1]=1.vis[1][a[1]]=1,vis[1][a[1]-1]=1,然后开始枚举ai，和ai-1次睡觉的时刻。必须满足vis[i-1][j]=1，即上一次睡觉可以在j时刻睡觉才可以继续。那么第i次睡觉可以在(j+a[i])%h或者(j+a[i]-1)%h开始。对vis数组进行记录。然后更新dp数组(看睡觉时刻是否处于l和r之间).然后再dp[n][j]中求maxx(0&lt;=j&lt;=h-1).<br><strong>ps</strong>:l&lt;=a[1]&lt;=r时候，dp[1][a[1]]=1;l&lt;=a[1]-1&lt;=r时候，dp[1][a[i]-1]=1,而vis数组直接标记即可。</p>
-<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -419,11 +423,12 @@ int main()
     ans=max(ans,dp[n][j]);
     printf(&quot;%d\n&quot;,ans);
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="F-题目名称："><a href="#F-题目名称：" class="headerlink" title="F: 题目名称："></a>F: 题目名称：</h1><p>Sleeping Schedule</p>
 <h4 id="题目大意：-5"><a href="#题目大意：-5" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给定一棵 n 个节点无根树，每个节点 u有一个颜色au，若 au 为 0 则 u 是黑点，若 au为 1 则 u是白点。<br>对于每个节点 u，选出一个包含 u的连通子图，设子图中白点个数为 cnt1，黑点个数为 cnt2，请最大化 cnt1 - cnt2。并输出这个值。 </p>
 <h4 id="题解：-5"><a href="#题解：-5" class="headerlink" title="题解："></a>题解：</h4><p>默认1为根，从头到底进行一边dfs，每次进入dfs，先更新w1，w2数组，若为白色则w1[i]=1否则w2[i]=1,则sum[i]=w1[i]-w2<a href="sum数组表示cnt1-cnt2">i</a>.然后从底部进行回溯：若edge[i].to(即子树的头节点)它的sum[edge[i].to]&gt;0,那么sum[u]+=sum[edge[i].to].这样只是更新了头节点。而子树与其头节点的关系并没有更新。假如一个子树，它的父节点所在子树的sum[u]&gt;0,而该节点所在子树的sum[edge[i].to]&gt;0,那么显然父亲节点的子树一定包含了该子节点所在的子树，那么sum[edge[i].to]=sum[u].如果sum[edge[i].to]&lt;0，就说明该节点为黑色。sum[edge[i].to]=sum[edge[i].to]+sum[u];然后继续dfs。</p>
-<h4 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -477,14 +482,15 @@ int main()
     dfs2(1,1);
     for(int i=1;i&lt;=n;i++)printf(&quot;%d &quot;,sum[i]);cout&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
  
-        <div id="aplayer-ufEoGpLl" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-pqvXrxwm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-ufEoGpLl"),
+            element: document.getElementById("aplayer-pqvXrxwm"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -538,6 +544,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

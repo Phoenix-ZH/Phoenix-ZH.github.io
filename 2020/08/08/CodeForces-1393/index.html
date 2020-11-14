@@ -185,7 +185,7 @@
             <h1 id="A-题目名称"><a href="#A-题目名称" class="headerlink" title="A.题目名称"></a>A.题目名称</h1><p>Rainbow Dash, Fluttershy and Chess Coloring</p>
 <h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给定一个正方形区域上色，要求上色的块相邻之间不能相同，也就是我们会在每回合上不同的颜色，要求上色的块邻边是边界或是上一个以上色的块。求至少要多少个回合才能把这个正方形区域完。 </p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>第一个回合，我们只能在边界的块上上色，且 要间隔开一格子上色，那么我们至少可以把边界的一半给上完，那么在下个回合，我们用不同的颜色上色自然可以把最外面的边界给上完。依次这样， 所以我们还是按着之前的块相邻来填，我们发现，进行完这个回合我们的区域和上个回合的是一样的，只不过长度减了2，我们每次进行这种回合都会这样子，那么我们对边长n/2即可，最后再加1.</p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 long long T,n;
 int main()
@@ -198,11 +198,12 @@ int main()
         cout&lt;&lt;ans&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="B-题目名称"><a href="#B-题目名称" class="headerlink" title="B.题目名称"></a>B.题目名称</h1><p>Applejack and Storages</p>
 <h2 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h2><p>小马们想做一个方形的和矩形的马厩，每个马厩需要四块木板。现在家具场有一些木板，每次回增加或者减少一个木板。问每次增加或者减少的时候能不能符合要求早出一个方形和一个矩形的马厩。</p>
 <h2 id="比赛思路："><a href="#比赛思路：" class="headerlink" title="比赛思路："></a>比赛思路：</h2><p>tot[]记录a[i]的个数，cnt[]记录tot[x]的数量。在q个查询中，依次更新tot[],cnt[]。如果cnt[2]和cnt[3]的数量&gt;=2&amp;&amp;cnt[4],cnt[5],cnt[6],cnt[7]任意存在一个，则符合条件。如果cnt[2],cnt[3]任意存在一个&amp;&amp;cnt[6],cnt[7]任意存在一个，则符合条件。如果cnt[4]+cnt[5]+cnt[6]+cnt[7]的数量&gt;=2则符合条件，如果存在一个tot[x]&gt;=8则符合条件。其余都不符合。</p>
-<h2 id="比赛代码："><a href="#比赛代码：" class="headerlink" title="比赛代码："></a>比赛代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="比赛代码："><a href="#比赛代码：" class="headerlink" title="比赛代码："></a>比赛代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=2e5+10;
 int a[maxn],n,tot[maxn],q,cnt[maxn],t,vis[maxn];
@@ -259,9 +260,10 @@ int main()
         continue;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h2 id="优化思路："><a href="#优化思路：" class="headerlink" title="优化思路："></a>优化思路：</h2><p>维护一个fangnum和一个junum，然后当木板增加减少到了边界的时候，就进行一次判断，更新fangnum和junum的数量，最后通过fangnum和junum判断是否能够成功搭建。</p>
-<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=1e5+50;
 int n,a[maxn],q,fangnum,junum,tot[maxn];
@@ -316,11 +318,12 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="C-题目名称"><a href="#C-题目名称" class="headerlink" title="C.题目名称"></a>C.题目名称</h1><p>Pinkie Pie Eats Patty-cakes</p>
 <h2 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给你一些数字，让你把这些数字尽可能的分散开来，问两个相同数字的最小间距的最大值是多少。 </p>
 <h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>用tot[]统计a[i]的数量，并且将a[i]重新排序，相同的排一起，数量多的排在前面。然后就是二分，判断条件就是x=x+mid+1，x&gt;n就不符合。</p>
-<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=1e5+10;
 int a[maxn],T,n,vis[maxn];
@@ -383,11 +386,12 @@ int main()
         cout&lt;&lt;ans&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="D-题目名称"><a href="#D-题目名称" class="headerlink" title="D.题目名称"></a>D.题目名称</h1><p> Rarity and New Dress </p>
 <h2 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h2><p>小红有强迫症，她必须要方形的裙子，但是必须是旋转45度的那种方形，并且裙子的颜色必须一样。 </p>
 <h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><p>对于每一个位置我们设dp[i][j]为位置[i][j]向上能最多”延申“的”斜正方形边长“，那么总的答案就是所有位置的dp值之和。转移分为当前位置[i][j]与上面四个位置（[i-1][j]、[i-1][j-1]、[i-1][j+1]、[i-2][j]）能否形成“斜正方形”：  若能，则取min（dp[i-1][j-1]、dp[i-1][j+1]、dp[i-2][j]）+1，这里可以简单画个图理解一下当前[i][j]高度的“延申”只是依赖于这三个位置的dp值， 若不能则dp[i][j]=1.</p>
-<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const long long maxn=2000+50;
 long long n,m,dp[maxn][maxn];char a[maxn][maxn];
@@ -409,14 +413,15 @@ int main()
     }
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-LjKAfCRD" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-LqWaCrAK" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-LjKAfCRD"),
+            element: document.getElementById("aplayer-LqWaCrAK"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -470,6 +475,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

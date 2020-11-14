@@ -185,7 +185,7 @@
             <h1 id="A：题目名称："><a href="#A：题目名称：" class="headerlink" title="A：题目名称："></a>A：题目名称：</h1><p>  Erasing Zeroes </p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>删除最少的0，使所有的1连续，问删除多少个0？</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>找到最后一个1的位置，和开头1的位置，枚举中间0的个数</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -227,12 +227,13 @@ int main()
         printf(&quot;%d\n&quot;,ans);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="B：题目名称："><a href="#B：题目名称：" class="headerlink" title="B：题目名称："></a>B：题目名称：</h1><p>National Project </p>
 <h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p>修一条长n的路，连续g天修的好路，连续b天修的坏路，好路至少占一半，问要修完这条路至少几天？(一天只修长度1的路)</p>
 <h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>先特判：n如果&lt;=g||(n/2&lt;=g&amp;&amp;n&gt;=g)直接修n天</p>
 <p>分n为奇数和偶数判断，先找到修g天好路需要t个轮回。如果好路没修够，就需要延长1个轮回，这个轮回不一定完整。如果好路修够了，那么只需要看剩下多长没修，注意期间可以修坏路，最后求个总和。对于延长一个轮回的情况，要加上继续修好路的天数。</p>
-<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -275,14 +276,15 @@ int main()
         printf(&quot;%lld\n&quot;,ans);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-SxupVYbY" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-yGAixyaQ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-SxupVYbY"),
+            element: document.getElementById("aplayer-yGAixyaQ"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -297,7 +299,6 @@ int main()
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -338,6 +339,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

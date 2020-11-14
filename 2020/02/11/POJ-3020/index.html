@@ -184,10 +184,10 @@
           <div class="markdown-body">
             <h4 id="题目名称："><a href="#题目名称：" class="headerlink" title="题目名称："></a>题目名称：</h4><p>POJ-3020  Antenna Placement </p>
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-3020" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-3020</a></p>
-<h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有T组数据，每一组数据是hxw的矩阵，矩阵中的每一个方格有o或者*组成,问用1x2的矩阵 (横着或竖着都可以)来覆盖所有的 * ，问至少需要多少个这样的矩阵？</p>
-<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>这个题和HDU4185 Oil Skimming 很相似。观察之后发现，将所有的 * 先预处理出它的编号，然后对于 * 的上下左右若为 * 就可以建边，然后跑匈牙利算法，求出最大匹配，对于这样求出来的最大匹配ans应该要÷2，即ans/=2，因为我们建的双向边。ans * 2表示的是已经覆盖了的点，temp-ans * 2就是剩余的美誉覆盖的点，这些点只能单独覆盖了，所以最终答案是 temp-ans * 2+ans。</p>
-<p><strong>ps</strong>：WA了几次，注意 * 的数量&lt;=40 * 10=400，边就是400 * 400 * 4，数组要够，不然就是TLE或者WA。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有T组数据，每一组数据是hxw的矩阵，矩阵中的每一个方格有o或者<em>组成,问用1x2的矩阵 (横着或竖着都可以)来覆盖所有的 </em> ，问至少需要多少个这样的矩阵？</p>
+<h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>这个题和HDU4185 Oil Skimming 很相似。观察之后发现，将所有的 <em> 先预处理出它的编号，然后对于 </em> 的上下左右若为 <em> 就可以建边，然后跑匈牙利算法，求出最大匹配，对于这样求出来的最大匹配ans应该要÷2，即ans/=2，因为我们建的双向边。ans </em> 2表示的是已经覆盖了的点，temp-ans <em> 2就是剩余的美誉覆盖的点，这些点只能单独覆盖了，所以最终答案是 temp-ans </em> 2+ans。</p>
+<p><strong>ps</strong>：WA了几次，注意 <em> 的数量&lt;=40 </em> 10=400，边就是400 <em> 400 </em> 4，数组要够，不然就是TLE或者WA。</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -277,14 +277,15 @@ int main()
         printf(&quot;%d\n&quot;,ans+yu);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-rARIcRuY" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-fPSKwAKk" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-rARIcRuY"),
+            element: document.getElementById("aplayer-fPSKwAKk"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -338,6 +339,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

@@ -187,11 +187,11 @@
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>已知a[]&lt;=1000000,要求得phi[]，则应当线性求phi。</p>
 <p>1.phi(p) == p-1 因为素数p除了1以外的因子只有p，所以与 p 互素的个数是 p - 1个 </p>
 <p>2.phi(p^k) == p^k - p^(k-1) == (p-1) * p^(k-1) </p>
-<p>3.如果i mod p == 0, 那么 phi(i * p) == p * phi(i)  </p>
-<p>4.如果i mod p != 0, 那么 phi(i * p) == phi(i) * (p-1)  </p>
+<p>3.如果i mod p == 0, 那么 phi(i <em> p) == p </em> phi(i)  </p>
+<p>4.如果i mod p != 0, 那么 phi(i <em> p) == phi(i) </em> (p-1)  </p>
 <p>求得phi[]之后，就寻找大于等于a[i]的最小的phi[]的下标，求和。</p>
 <p><strong>PS</strong>：WA了很多次：a[]&lt;=1000000,但是phi[]可能&gt;1000000</p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=1000000+100;
 int vis_prime[maxn],prime[maxn],phi[maxn],T,n,a[maxn],tot;
@@ -241,12 +241,13 @@ int main()
         printf(&quot;Case %lld: %lld Xukha\n&quot;,cnt,ans);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="2-题目名称："><a href="#2-题目名称：" class="headerlink" title="2.题目名称："></a>2.题目名称：</h1><p><a href="https://vjudge.net/problem/LightOJ-1356" target="_blank" rel="noopener"><strong>LightOJ 1356</strong></a> Prime Independence</p>
 <h2 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给出n个数，找出一个最大素数独立子集，如果a=b*一个素数，那么认为a是b的一个素数乘级，如果一个集合不存在一个数是另一个数的素数乘级，那么这就是素数独立子集。 </p>
 <h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>预处理出500000内的素数，对于a[i]可以得到a[i]*prime[j]对应的a[]的下标pos[]，这样i与pos[]就是存在关系：二者不可能在一个集合中。因此可以用二分图的做法，若两个数字之间存在素数倍数，则相连接，注意这里应该双向连接，因为两个互相有关系。最后n-最大匹配，求出最大独立集合。</p>
 <p><strong>ps</strong>：匈牙利算法过不了，需要<strong>hopcroft-karp</strong>，但是我的板子好像错了QAQ</p>
-<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=40000+50;
 const int maxm=500000+50;
@@ -356,13 +357,14 @@ int main()
         printf(&quot;Case %d: %d\n&quot;,opt,n-maxMatch()/2);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="3-题目名称："><a href="#3-题目名称：" class="headerlink" title="3.题目名称："></a>3.题目名称：</h1><p><a href="https://vjudge.net/problem/LightOJ-1341" target="_blank" rel="noopener"><strong>LightOJ 1341</strong></a> Aladdin and the Flying Carpet</p>
 <h2 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给一对数字 a，b 。其中，a表示一个矩形的面积，想知道有多少种整数的边的组合可以组成面积为a的矩形，而且要求矩形的最短的边不得小于b </p>
 <h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><p>一个大于1的正整数N，如果它的标准分解式为：   <img src="http://h.hiphotos.baidu.com/baike/s%3D124/sign=ae84eec8b4fd5266a32b38169f189799/f703738da97739129c546742fa198618367ae2a7.jpg" srcset="/img/loading.gif" alt="img"> ， 那么它的正因数个数为   <img src="http://b.hiphotos.baidu.com/baike/s%3D238/sign=d7c6a19a9c510fb37c197094e133c893/b151f8198618367aebbf90fe2c738bd4b31ce5db.jpg" srcset="/img/loading.gif" alt="img"> </p>
 <p> 它的全体正因数之和为  <img src="http://h.hiphotos.baidu.com/baike/s%3D550/sign=86d9618aab014c081d3b28a03a7a025b/f7246b600c3387448405c35f530fd9f9d62aa0d5.jpg" srcset="/img/loading.gif" alt="img"> </p>
-<p>而a&lt;=10^12,可以线性筛素数预处理10^6内的素数，则a可以做唯一分解定理，注意：可能最后a&gt;1，即不一定可以完全分解。所以在计算因数的时候a&gt;1时候，要ans*=2，记得最后求的是对数，所以ans/=2。由于b * b&gt;a，不可能有符合要求的答案，所以此时答案为0，因此b&lt;=10^6，所以只要找到[1,b）中的总对数sum，用ans-sum就是最后的答案。</p>
-<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<p>而a&lt;=10^12,可以线性筛素数预处理10^6内的素数，则a可以做唯一分解定理，注意：可能最后a&gt;1，即不一定可以完全分解。所以在计算因数的时候a&gt;1时候，要ans<em>=2，记得最后求的是对数，所以ans/=2。由于b </em> b&gt;a，不可能有符合要求的答案，所以此时答案为0，因此b&lt;=10^6，所以只要找到[1,b）中的总对数sum，用ans-sum就是最后的答案。</p>
+<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const long long maxn=1e6+50;
 const long long N=1e6+47;
@@ -420,18 +422,21 @@ int main()
         printf(&quot;Case %lld: %lld\n&quot;,opt,ans);
     }
     return 0;    
-} </code></pre>
+}
+</code></pre>
 <h1 id="4-题目名称："><a href="#4-题目名称：" class="headerlink" title="4.题目名称："></a>4.题目名称：</h1><p><a href="https://vjudge.net/problem/LightOJ-1336" target="_blank" rel="noopener"><strong>LightOJ 1336</strong></a> Sigma Function</p>
 <h2 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h2><p>求和运算是一种有趣的操作，它来源于古希腊字母σ，现在我们来求一个数字的所有因子之和。例如σ(24)=1+2+3+4+6+8+12+24=60.对于小的数字求和是非常的简单，但是对于大数字求和就比较困难了。现在给你一个n，你需要求出有多少个[ 1 , n ]区间内的数字σ是偶数。<br>注：一个数字的σ指这个数的所有因子之和 </p>
 <h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>显然给的公式， <img src="https://vj.z180.cn/1510021ce5adea20ba5ebd2baa22e212?v=1596100178" srcset="/img/loading.gif" alt="img"> </p>
 <p>是没办法直接用的，对解题本身作用不大。</p>
-<p>由唯一分解定律可以知道： <img src="http://h.hiphotos.baidu.com/baike/s%3D124/sign=ae84eec8b4fd5266a32b38169f189799/f703738da97739129c546742fa198618367ae2a7.jpg" srcset="/img/loading.gif" alt="img">)，则因数之和为<img src="http://h.hiphotos.baidu.com/baike/s%3D550/sign=86d9618aab014c081d3b28a03a7a025b/f7246b600c3387448405c35f530fd9f9d62aa0d5.jpg" srcset="/img/loading.gif" alt="img"></p>
-<p><strong>规律1：</strong>偶数 * 偶数=偶数；偶数 * 奇数=偶数；奇数 * 奇数=奇数。可以先求得因数之和为奇数的个数，然后总数减去它，就是偶数的个数。要让因数之和为奇数，必须让上面的各项均为奇数。</p>
+<p>由唯一分解定律可以知道： <img src="http://h.hiphotos.baidu.com/baike/s%3D124/sign=ae84eec8b4fd5266a32b38169f189799/f703738da97739129c546742fa198618367ae2a7.jpg" srcset="/img/loading.gif" alt="img">，则因数之和为<img src="http://h.hiphotos.baidu.com/baike/s%3D550/sign=86d9618aab014c081d3b28a03a7a025b/f7246b600c3387448405c35f530fd9f9d62aa0d5.jpg" srcset="/img/loading.gif" alt="img"></p>
+<p><strong>规律1：</strong>偶数 <em> 偶数=偶数；偶数 </em> 奇数=偶数；奇数 * 奇数=奇数。可以先求得因数之和为奇数的个数，然后总数减去它，就是偶数的个数。要让因数之和为奇数，必须让上面的各项均为奇数。</p>
 <p><strong>规律2：</strong>所有的素数中只有2是偶数，其余的素数都是奇数。</p>
 <p><strong>规律3：</strong>要让因数之和为奇数，就要让 (1+pi+pi^2+……+pi^ai)这个东西都是奇数 。根据<strong>规律2</strong>，需要分成两种情况来考虑：<br>1）pi=2，则 (1+pi+pi^2+……+pi^ai)一定是奇数。<br>2）pi是奇数，pi^ai一定也是奇数，则需要考虑ai的奇偶。<br>      如果ai是奇数，则1+pi+pi^2+……+pi^ai就是偶数个奇数相加为偶数；<br>      如果ai是偶数，则1+pi+pi^2+……+pi^ai就是奇数个奇数相加为奇数。<br>因此ai是偶数才能使得pi为奇数时，因数之和为奇数。</p>
-<p>①当ai是偶数且pi为奇数时（不存在素数2），<img src="http://h.hiphotos.baidu.com/baike/s%3D124/sign=ae84eec8b4fd5266a32b38169f189799/f703738da97739129c546742fa198618367ae2a7.jpg" srcset="/img/loading.gif" alt="img">，则也可以表示成<br>$$<br>N=P_1^{a_1’^{2}}P_2^{a_2’^{2}}…P_n^{a_n’^{2}}即N=(P_1^{a_1’}P_2^{a_2’}…P_n^{a_n’})^{2}<br>$$<br>所以此时N一定是完全平方数。</p>
-<p>②当ai是偶数且pi为奇数时（存在素数2），N就相当于一个完全平方数 * 2^x。<br>综上所述，N的因数和要为奇数，则N要么是完全平方数，要么是2*完全平方数。</p>
-<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<p>①当ai是偶数且pi为奇数时（不存在素数2），<img src="http://h.hiphotos.baidu.com/baike/s%3D124/sign=ae84eec8b4fd5266a32b38169f189799/f703738da97739129c546742fa198618367ae2a7.jpg" srcset="/img/loading.gif" alt="img">，则也可以表示成</p>
+<script type="math/tex; mode=display">
+N=P_1^{a_1'^{2}}P_2^{a_2'^{2}}...P_n^{a_n'^{2}}即N=(P_1^{a_1'}P_2^{a_2'}...P_n^{a_n'})^{2}</script><p>所以此时N一定是完全平方数。</p>
+<p>②当ai是偶数且pi为奇数时（存在素数2），N就相当于一个完全平方数 <em> 2^x。<br>综上所述，N的因数和要为奇数，则N要么是完全平方数，要么是2</em>完全平方数。</p>
+<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 long long T,n;
 int main()
@@ -448,14 +453,16 @@ int main()
         printf(&quot;Case %d: %lld\n&quot;,opt,n-ans);
     }
     return 0;
- } </code></pre>
+ }
+</code></pre>
 <h1 id="5-题目名称："><a href="#5-题目名称：" class="headerlink" title="5.题目名称："></a>5.题目名称：</h1><p><a href="https://vjudge.net/problem/LightOJ-1282" target="_blank" rel="noopener"><strong>LightOJ 1282</strong></a> Leading and Trailing</p>
 <h2 id="题目大意：-4"><a href="#题目大意：-4" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给定两个数n,k 求n^k的前三位和最后三位 </p>
 <h2 id="思路：-4"><a href="#思路：-4" class="headerlink" title="思路："></a>思路：</h2><p>对于后三位：直接快速幂取模，但是需要注意最后如果小于100，就需要补前缀0，小于10补2个，小于100补1个。</p>
-<p>对于前三位：<br>$$<br>n^{k}=A==&gt;klog_{10}n=log_{10}A==&gt;A=10^{klog_{10}n}<br>$$</p>
-<p>$$<br>假设A=10^{a+b},其中a是整数部分，b是小数部分，并且a+b=klog_{10}n<br>$$</p>
-<p>所以可以得到整数a，和小数b，10^a控制A的位数，而10^b控制A的每一位的实际数字，即10^b就是X.xxxxxxx，要求A的前三位，那么就是10^(2+b)。</p>
-<h2 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<p>对于前三位：</p>
+<script type="math/tex; mode=display">
+n^{k}=A==>klog_{10}n=log_{10}A==>A=10^{klog_{10}n}</script><script type="math/tex; mode=display">
+假设A=10^{a+b},其中a是整数部分，b是小数部分，并且a+b=klog_{10}n</script><p>所以可以得到整数a，和小数b，10^a控制A的位数，而10^b控制A的每一位的实际数字，即10^b就是X.xxxxxxx，要求A的前三位，那么就是10^(2+b)。</p>
+<h2 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int T,n,k;
 int fastpow(int x,int p)
@@ -489,18 +496,20 @@ int main()
         printf(&quot;%d\n&quot;,x);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="6-题目名称："><a href="#6-题目名称：" class="headerlink" title="6.题目名称："></a>6.题目名称：</h1><p><a href="https://vjudge.net/problem/LightOJ-1245" target="_blank" rel="noopener"><strong>LightOJ 1245</strong></a> Harmonic Number (II)</p>
 <h2 id="题目大意：-5"><a href="#题目大意：-5" class="headerlink" title="题目大意："></a>题目大意：</h2><p>求解：F(n)的值 （<strong>1 ≤ n &lt; 2147483648</strong> ）</p>
-<pre><code class="cpp">long long F(int n) {
+<pre><code class="lang-cpp">long long F(int n) {
     long long res = 0;
     for (int i = 1; i &lt;= n; i++) {
         res += n / i;
     }
     return res;
-}</code></pre>
+}
+</code></pre>
 <h2 id="思路：-5"><a href="#思路：-5" class="headerlink" title="思路："></a>思路：</h2><p>如果保证n&lt;=500000就可以避免超时。对于一个大于500000的数，可以将n/i=1，n/i=2…分别作为一组，这样再大的数，再10000次操作也可以减小到500000，时间复杂度也降低了。每一次操作res+=(i-1)*(pre-next+1).</p>
-<h2 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 long long T,n;
 int main()
@@ -532,26 +541,32 @@ int main()
         printf(&quot;Case %lld: %lld\n&quot;,opt,res);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="7-题目名称："><a href="#7-题目名称：" class="headerlink" title="7.题目名称："></a>7.题目名称：</h1><p><a href="https://vjudge.net/problem/LightOJ-1236" target="_blank" rel="noopener"><strong>LightOJ 1236</strong></a> Pairs Forming LCM</p>
 <h2 id="题目大意：-6"><a href="#题目大意：-6" class="headerlink" title="题目大意："></a>题目大意：</h2><p>求解res： <strong>n (1 ≤ n ≤ 10^14)</strong></p>
-<pre><code class="cpp">long long pairsFormLCM( int n ) {
+<pre><code class="lang-cpp">long long pairsFormLCM( int n ) {
     long long res = 0;
     for( int i = 1; i &lt;= n; i++ )
         for( int j = i; j &lt;= n; j++ )
            if( lcm(i, j) == n ) res++; // lcm means least common multiple
     return res;
-}</code></pre>
-<h2 id="思路：-6"><a href="#思路：-6" class="headerlink" title="思路："></a>思路：</h2><p>假设n是a，b的最小公倍数。<br>对a，b进行质因数分解：<br>$$<br>a=p_1^{a_1}<em>p_2^{a_2}</em>…*p_n^{a_n}<br>$$</p>
-<p>$$<br>b=p_1^{b_1}<em>p_2^{b_2}</em>…*p_n^{b_n}<br>$$</p>
-<p>因此：<br>$$<br>gcd(a,b)=p_1^{min(a_1,b_1)}<em>p_2^{min(a_2,b_2)}</em>…*p_n^{min(a_n,b_n)}<br>$$</p>
-<p>$$<br>lcm(a,b)=p_1^{max(a_1,b_1)}<em>p_2^{max(a_2,b_2)}</em>…*p_n^{max(a_n,b_n)}<br>$$</p>
-<p>根据题意得：lcm(a,b)=n.<br>                       假设max(ai,bi)=ei</p>
-<p>所以：<br>$$<br>n=p_1^{e_1}<em>p_2^{e_2}</em>…<em>p_n^{e_n}<br>$$<br>*</em>接下来就是计算方案数：**</p>
+}
+</code></pre>
+<h2 id="思路：-6"><a href="#思路：-6" class="headerlink" title="思路："></a>思路：</h2><p>假设n是a，b的最小公倍数。<br>对a，b进行质因数分解：</p>
+<script type="math/tex; mode=display">
+a=p_1^{a_1}*p_2^{a_2}*...*p_n^{a_n}</script><script type="math/tex; mode=display">
+b=p_1^{b_1}*p_2^{b_2}*...*p_n^{b_n}</script><p>因此：</p>
+<script type="math/tex; mode=display">
+gcd(a,b)=p_1^{min(a_1,b_1)}*p_2^{min(a_2,b_2)}*...*p_n^{min(a_n,b_n)}</script><script type="math/tex; mode=display">
+lcm(a,b)=p_1^{max(a_1,b_1)}*p_2^{max(a_2,b_2)}*...*p_n^{max(a_n,b_n)}</script><p>根据题意得：lcm(a,b)=n.<br>                       假设max(ai,bi)=ei</p>
+<p>所以：</p>
+<script type="math/tex; mode=display">
+n=p_1^{e_1}*p_2^{e_2}*...*p_n^{e_n}</script><p><strong>接下来就是计算方案数：</strong></p>
 <p>对于每一项质因数的幂pi^ei,需要a，b中至少有一个pi^ei，另一个随机。当ai=bi=ei时，方案只有一个。总数为2*(ei+1)-1</p>
 <p><strong>计算总方案：</strong></p>
 <p>将上述的结果叠乘，然后将总方案数/2+1， 加一是因为如果直接除以2，其中有一种方案ai=bi=ei是a等于b的，所以除多了，需要加上1 </p>
-<h2 id="代码：-6"><a href="#代码：-6" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-6"><a href="#代码：-6" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=1e7+50;
 const int N=1e7;
@@ -599,14 +614,15 @@ int main()
         printf(&quot;Case %lld: %lld\n&quot;,opt,ans);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-ERANnIBJ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-fAbzliUi" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-ERANnIBJ"),
+            element: document.getElementById("aplayer-fAbzliUi"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -664,6 +680,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

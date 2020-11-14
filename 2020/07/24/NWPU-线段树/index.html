@@ -190,12 +190,13 @@
 <h1 id="二-原理"><a href="#二-原理" class="headerlink" title="二.原理"></a>二.原理</h1><p>线段树本质上是维护下标为1,2,..,n的n个按顺序排列的数的信息，所以，其实是“点树”，是维护n的点的信息，至于每个点的数据的含义可以有很多，<br>在对线段操作的线段树中，每个点代表一条线段，在用线段树维护数列信息的时候，每个点代表一个数，但本质上都是每个点代表一个数。以下，在讨论线段树的时候，区间[L,R]指的是下标从L到R的这(R-L+1)个数，而不是指一条连续的线段。只是有时候这些数代表实际上一条线段的统计结果而已。</p>
 <p>线段树是将每个区间[L,R]分解成[L,M]和[M+1,R] (其中M=(L+R)/2 这里的除法是整数除法，即对结果下取整)直到 L==R 为止。<br>开始时是区间[1,n] ,通过递归来逐步分解，假设根的高度为1的话，树的最大高度为（n&gt;1）。<br>线段树对于每个n的分解是唯一的，所以n相同的线段树结构相同，这也是实现可持久化线段树的基础。<br>下图展示了区间[1,13]的分解过程： <img src="https://img-blog.csdn.net/20150908231214395?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" srcset="/img/loading.gif" alt="img"></p>
 <p> 1）储存方式：</p>
-<pre><code class="cpp">struct Tree
+<pre><code class="lang-cpp">struct Tree
 {
     long long l,r,w,lazy;
-}tree[maxn*4];</code></pre>
+}tree[maxn*4];
+</code></pre>
 <p>2）递归建树：</p>
-<pre><code class="cpp">void build(long long id,long long l,long long r)
+<pre><code class="lang-cpp">void build(long long id,long long l,long long r)
 {
     tree[id].l=l;tree[id].r=r;
     if(l==r)
@@ -207,9 +208,10 @@
     long long mid=(l+r)/2;
     build(id*2,l,mid);build(id*2+1,mid+1,r);
     tree[id].w=tree[id*2].w+tree[id*2+1].w;
-}</code></pre>
+}
+</code></pre>
 <p>3）更新：</p>
-<pre><code class="cpp">void update(long long id,long long l,long long r,long long w)
+<pre><code class="lang-cpp">void update(long long id,long long l,long long r,long long w)
 {
     if(tree[id].l&gt;=l&amp;&amp;tree[id].r&lt;=r)
     {
@@ -222,20 +224,22 @@
     if(r&gt;mid)update(id*2+1,l,r,w);
     if(l&lt;=mid)update(id*2,l,r,w);
     tree[id].w=tree[id*2].w+tree[id*2+1].w;
-}</code></pre>
-<pre><code class="cpp">void spread(long long id)
+}
+</code></pre>
+<pre><code class="lang-cpp">void spread(long long id)
 {
     tree[id*2].w+=(tree[id*2].r-tree[id*2].l+1)*tree[id].lazy;
     tree[id*2+1].w+=(tree[id*2+1].r-tree[id*2+1].l+1)*tree[id].lazy;
     tree[id*2].lazy+=tree[id].lazy;tree[id*2+1].lazy+=tree[id].lazy;
     tree[id].lazy=0;
-}</code></pre>
+}
+</code></pre>
 <p>线段树的区间修改也是将区间分成子区间，但是要加一个标记，称作懒惰标记。<br>标记的含义：<br>本节点的统计信息已经根据标记更新过了，但是本节点的子节点仍需要进行更新。<br>即，如果要给一个区间的所有值都加上1，那么，实际上并没有给这个区间的所有值都加上1，而是打个标记，记下来，这个节点所包含的区间需要加1.打上标记后，要根据标记更新本节点的统计信息，比如，如果本节点维护的是区间和，而本节点包含5个数，那么，打上+1的标记之后，要给本节点维护的和+5。这是向下延迟修改，但是向上显示的信息是修改以后的信息，所以查询的时候可以得到正确的结果。有的标记之间会相互影响，所以比较简单的做法是，每递归到一个区间，首先下推标记（若本节点有标记，就下推标记），然后再打上新的标记，这样仍然每个区间操作的复杂度是O(log2(n))。</p>
 <p>标记有相对标记和绝对标记之分：<br>相对标记是将区间的所有数+a之类的操作，标记之间可以共存，跟打标记的顺序无关（跟顺序无关才是重点）。<br>所以，可以在区间修改的时候不下推标记，留到查询的时候再下推。<br>      注意：如果区间修改时不下推标记，那么Spread函数中，必须考虑本节点的标记。<br>                 而如果所有操作都下推标记，那么Spread函数可以不考虑本节点的标记，因为本节点的标记一定已经被下推了（也就是对本节点无效了）<br>绝对标记是将区间的所有数变成a之类的操作，打标记的顺序直接影响结果，<br>所以这种标记在区间修改的时候必须下推旧标记，不然会出错。</p>
 <p>注意，有多个标记的时候，标记下推的顺序也很重要，错误的下推顺序可能会导致错误。</p>
 <p>之所以要区分两种标记，是因为非递归线段树只能维护相对标记。<br>因为非递归线段树是自底向上直接修改分成的每个子区间，所以根本做不到在区间修改的时候下推标记。<br>非递归线段树一般不下推标记，而是自下而上求答案的过程中，根据标记更新答案。</p>
 <p>4）查询：</p>
-<pre><code class="cpp">long long query(long long id,long long l,long long r)
+<pre><code class="lang-cpp">long long query(long long id,long long l,long long r)
 {
     if(tree[id].l&gt;=l&amp;&amp;tree[id].r&lt;=r)return tree[id].w;
     if(tree[id].lazy)spread(id);
@@ -243,7 +247,8 @@
     if(r&gt;mid)sum+=query(id*2+1,l,r);
     if(l&lt;=mid)sum+=query(id*2,l,r);
     return sum;
-}</code></pre>
+}
+</code></pre>
 <h1 id="三-题单"><a href="#三-题单" class="headerlink" title="三.题单"></a>三.题单</h1><h2 id="①线段树入门"><a href="#①线段树入门" class="headerlink" title="①线段树入门"></a>①线段树入门</h2><h3 id="1-题目名称："><a href="#1-题目名称：" class="headerlink" title="1.题目名称："></a>1.题目名称：</h3><p><a href="https://www.luogu.com.cn/problem/P3372" target="_blank" rel="noopener">P3372 【模板】线段树 1</a> </p>
 <h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>如题，已知一个数列，你需要进行下面两种操作：</p>
 <ol>
@@ -251,7 +256,7 @@
 <li>求出某区间每一个数的和。</li>
 </ol>
 <h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>线段树入门，建树，更新，lazy标记自上而下传递，查询区间和。</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const long long maxn=100000+10; 
 struct Tree
@@ -322,7 +327,8 @@ int main()
             cout&lt;&lt;query(1,x,y)&lt;&lt;endl;
         }
     }
-}</code></pre>
+}
+</code></pre>
 <h3 id="2-题目名称："><a href="#2-题目名称：" class="headerlink" title="2.题目名称："></a>2.题目名称：</h3><p> <a href="https://www.luogu.com.cn/problem/P3373" target="_blank" rel="noopener">P3373 【模板】线段树 2</a> </p>
 <h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h3><p>如题，已知一个数列，你需要进行下面三种操作：</p>
 <ul>
@@ -330,8 +336,8 @@ int main()
 <li>将某区间每一个数加上x</li>
 <li>求出某区间每一个数的和x</li>
 </ul>
-<h3 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h3><p>线段树中做两个lazy标记，一个lazy1是表示相加的传递标记，另一个lazy2是表示相乘的传递标记。注意要先乘法后加法，  <strong>加法和乘法顺序不一样会导致不同的结果</strong> 。比如：  (a+b)c 不等于 a<em>c + b  而在记录懒标记的时候，加法和乘法两种标记放到一起，并不知道哪个先，哪个后。 所以要确定一个优先级<br>我们分析一下两种顺序：</em><br>(1) 先加后乘 : (a+b)c = ac + bc<br>(2) 先乘后加：ac + b<br>比较一下，发现，上面的先加后乘相当于下面的式子，在加法上面多乘了一个c 所以，我们只要是先加后乘的式子，只要加一个*c就可以转化为先乘后加的式子具体的操作就是在添加乘法标记的时候，把加法标记c * c就好了 所以，我们就定了一个总顺序：先乘后加 。 然后在标记传递Spread的时候，儿子的加法标记传递完也要保持先乘后加的顺序 </p>
-<h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h3 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h3><p>线段树中做两个lazy标记，一个lazy1是表示相加的传递标记，另一个lazy2是表示相乘的传递标记。注意要先乘法后加法，  <strong>加法和乘法顺序不一样会导致不同的结果</strong> 。比如：  (a+b)c 不等于 a<em>c + b  而在记录懒标记的时候，加法和乘法两种标记放到一起，并不知道哪个先，哪个后。 所以要确定一个优先级<br>我们分析一下两种顺序：</em><br>(1) 先加后乘 : (a+b)c = ac + bc<br>(2) 先乘后加：ac + b<br>比较一下，发现，上面的先加后乘相当于下面的式子，在加法上面多乘了一个c 所以，我们只要是先加后乘的式子，只要加一个<em>c就可以转化为先乘后加的式子具体的操作就是在添加乘法标记的时候，把加法标记c </em> c就好了 所以，我们就定了一个总顺序：先乘后加 。 然后在标记传递Spread的时候，儿子的加法标记传递完也要保持先乘后加的顺序 </p>
+<h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=100000+10;
 struct Tree
@@ -429,11 +435,12 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h3 id="3-题目名称："><a href="#3-题目名称：" class="headerlink" title="3.题目名称："></a>3.题目名称：</h3><p><a href="https://www.luogu.com.cn/problem/P4588" target="_blank" rel="noopener">TJOI2018]数学计算</a> </p>
 <h3 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h3><p> 你有一个数x，初始为 1。你有两种操作，分别为：<br>1 m：x=x * m 输出x % mod;<br>2 pos：x=x/ 第pos次操作所乘的数   (保证第pos次操作一定为类型1,对于每一个类型1的操作至多会被除一次）输出x%mod;</p>
 <h3 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h3><p>一开始以为可以模拟，但发现由于x一直增大，会爆longlong，即使取模，但是除的时候需要逆元。所以直接模拟是错的。但是第一种操作就可以多一种类型的x，假设有n个第一种类型，就有n个数字，不妨让这n个当作区间，构造线段树，对于第二种操作就是将第pos次的结点数改成1 。全部都是点修改，每次区间查询。</p>
-<h3 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h3 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const long long maxn=100000+10;
 long long T,x,q,mod;
@@ -504,10 +511,13 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h2 id="②扫描线"><a href="#②扫描线" class="headerlink" title="②扫描线"></a>②扫描线</h2><h3 id="1-题目名称：-1"><a href="#1-题目名称：-1" class="headerlink" title="1.题目名称："></a>1.题目名称：</h3><p> <a href="https://www.luogu.com.cn/problem/P5490" target="_blank" rel="noopener">P5490 【模板】扫描线</a> </p>
 <h3 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h3><p> 求 n个矩形的面积并。 </p>
-<h3 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h3><p> 由于都是矩形，因此运用扫描线以后，面积的求法其实可以简化为<br>$$<br>∑截线段长度×扫过的高度<br>$$<br> 这也是扫描线算法最基础的应用。 </p>
+<h3 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h3><p> 由于都是矩形，因此运用扫描线以后，面积的求法其实可以简化为 </p>
+<script type="math/tex; mode=display">
+∑截线段长度×扫过的高度</script><p> 这也是扫描线算法最基础的应用。 </p>
 <p> <img src="https://img.ffis.me/images/2019/08/10/image.png" srcset="/img/loading.gif" alt="image.png"> </p>
 <p>问题在于如何才能模拟扫描线从下向上扫过图形，并且快速计算出当前扫描线被截得的长度。</p>
 <p>现在假设，扫描线每次会在碰到横边的时候停下来，如图。<br> <img src="https://img.ffis.me/images/2019/08/10/image1cba39d5beb42edc.png" srcset="/img/loading.gif" alt="image1cba39d5beb42edc.png"> </p>
@@ -521,7 +531,7 @@ int main()
 </ol>
 <p>显然，只要一条线段被覆盖，那么它肯定被图形所截。所以，整个问题就转化为了一个<strong>区间查询问题</strong>，即：每次将 当前扫描线扫到的边 对应的信息 按照之前赋上的权值更新，然后再查询线段树根节点的信息，最后得到当前扫描线扫过的面积。这就可以用线段树来实现了.</p>
 <p>这棵线段树的每个节点都对应了一条线段。考虑将线段树上节点对应的区间和横边建立<strong>映射关系</strong> 。 先看对于一个叶子节点x，建树时保证了tree[x].l=tree[x].r， 但其保存的信息很显然不可能只是某条线段的一个端点（如果一条线段的两个端点重合，那么它实质上仅是一个点）   再看一个节点的左右儿子，同样地，建树的时候已经保证了左右儿子的区间不会重合（交集为空），但是看这样两条相邻线段  ：[1,2],[2,3],发现[1,2]∩[2,3]={2}  也就是说左儿子的右端点和右儿子的左端点其实是重合的。  考虑把线段树每个节点x<em>x</em>对应的区间（tree[x].l,tree[x].r不变，改变区间和横边的映射关系，具体为：  节点x对应X[tree[x].r+1],X[tree[x].r+1]这条横边 </p>
-<h3 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h3 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=1000000+10;
 struct Tree
@@ -591,14 +601,15 @@ int main()
     }
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-iJeLVatN" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-ZDMqfmvn" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-iJeLVatN"),
+            element: document.getElementById("aplayer-ZDMqfmvn"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -652,6 +663,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

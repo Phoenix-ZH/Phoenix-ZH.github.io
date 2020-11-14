@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    2.8k 字
+                    213 字
                   </span>&nbsp;
                 
 
@@ -149,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      14 分钟
+                      1 分钟
                   </span>&nbsp;
                 
 
@@ -186,7 +186,7 @@
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给定正整数 a,b，求至少把 a加上多少才能让 a为 b的倍数。</p>
 <p>多组数据，T≤10^4，a,b≤10^9。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>如果a%b==0，说明a就是b的倍数，那么答案为0；<br>否则找到最近的a使得a%b==0，显然a=((a/b)+1)*b;答案就是a‘-a；</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 long long a,b,T;
 int main()
@@ -205,12 +205,14 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="B-题目名称："><a href="#B-题目名称：" class="headerlink" title="B 题目名称："></a>B 题目名称：</h1><p>K-th Beautiful String</p>
-<h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 给定正整数 n,k，考虑所有由 n-2个 <code>a</code> 和 2 个 <code>b</code> 构成的字符串，输出其中字典序第 k小的。<br>$$<br>T≤10^4,3&lt;=n&lt;=10^5,k&lt;=min(2<em>10^9,n</em>(n-1)/2),∑n&lt;=10^5;<br>$$</p>
-<h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>找规律：设b1，b2，b1更靠左。当b1在第二个位置上(从右开始)，共有1，当b1在第三个位置上,共有2个，当b1在第x个位置上，共有x-1个。由此就可以找到规律了。可以通过排名确定b1的位置，然后k-之前的所有数，就是b2所处的位置。</p>
-<p>如何确定b1的位置呢？<br>假设b1处在第x位，b2处在第1位，那么在这之前的所有数量就是1+2+…+(x-2),即<br>(x-1)<em>(x-2)/2;设tot=x-1.那么就要满足tot * (tot-1)/2&lt;=k.解方程即可。那么x=tot+1，b2的位置就是k-(x-1)</em>(x-2)/2;</p>
-<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 给定正整数 n,k，考虑所有由 n-2个 <code>a</code> 和 2 个 <code>b</code> 构成的字符串，输出其中字典序第 k小的。 </p>
+<script type="math/tex; mode=display">
+T≤10^4,3<=n<=10^5,k<=min(2*10^9,n*(n-1)/2),∑n<=10^5;</script><h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>找规律：设b1，b2，b1更靠左。当b1在第二个位置上(从右开始)，共有1，当b1在第三个位置上,共有2个，当b1在第x个位置上，共有x-1个。由此就可以找到规律了。可以通过排名确定b1的位置，然后k-之前的所有数，就是b2所处的位置。</p>
+<p>如何确定b1的位置呢？<br>假设b1处在第x位，b2处在第1位，那么在这之前的所有数量就是1+2+…+(x-2),即<br>(x-1)<em>(x-2)/2;设tot=x-1.那么就要满足tot </em> (tot-1)/2&lt;=k.解方程即可。那么x=tot+1，b2的位置就是k-(x-1)*(x-2)/2;</p>
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 long long T,n,k;
 int main()
@@ -242,11 +244,12 @@ int main()
         cout&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="C-题目名称："><a href="#C-题目名称：" class="headerlink" title="C 题目名称："></a>C 题目名称：</h1><p>Ternary XOR</p>
 <h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有T组数据，每组数据给一个n，表示数字长度为n， 要求 a,b 的异或值为 x且 max(<em>a</em>,<em>b</em>) 尽可能的小 .</p>
 <h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>若x[i]==0，则a[i]=b[i]=0;若x[i]=1,如果此情况第一次出现，那么随便让a[i],b[i]其中一个为1都可以，这里假设a[i]=1；如果这不是第一次出现，那么都让b[i]=1。因为之前a数组的高位已经比b更大了，所以a数组是最大的，但是要让a尽量小，所以后面就将数字让给b。如果x[i]==2,如果此前a，b数组的大小还未确定，那就让a[i]=b[i]=1,如果a数组已经更大了，就让b[i]=2.</p>
-<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=50000+5;
 int T,n,len,a[maxn],b[maxn];char s[maxn];
@@ -288,7 +291,8 @@ int main()
         cout&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="D-题目名称："><a href="#D-题目名称：" class="headerlink" title="D 题目名称："></a>D 题目名称：</h1><p>Carousel</p>
 <h4 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有q组询问,每组询问如下:</p>
 <p>已知一个有n(3≤n≤2*10^5)个点的环,点i的类型为ai,现在需要给每个点进行染色,要求相邻不同类型的点的颜色不同且所用颜色数最小.输出颜色数及一种染色方案即可.(颜色从1开始)</p>
@@ -297,7 +301,7 @@ int main()
 <p>2.a[n]==a[n-1]&amp;&amp;a[n]!=a[1],只需要两种颜色，c[n]不与c[1]相同即可。</p>
 <p>3.a[n]!=a[n-1]&amp;&amp;a[n]==a[1]，只需要两种颜色，c[n]不与c[n-1]相同即可。</p>
 <p>4.a[n]==a[n-1]&amp;&amp;a[n]==a[1]，只需要两种颜色，c[n]两种都可。</p>
-<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -364,12 +368,13 @@ int main()
         cout&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p><strong>ps</strong>：考试的时候一直WA，原因是：没有考虑到 a[n]与a[n-1],最开始的for 只枚举到了n-1.</p>
 <h1 id="E-题目名称："><a href="#E-题目名称：" class="headerlink" title="E 题目名称："></a>E 题目名称：</h1><p>Tree Queries</p>
 <h4 id="题目大意：-4"><a href="#题目大意：-4" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给你一个以 1为根的有根树.<br>每回询问 k节点v<em>1,</em>v2⋯vk<br>求出是否有一条以根节点为一端的链使得询问的每个节点到此链的距离均≤1.<br>只需输出可行性, 无需输出方案. </p>
 <h4 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h4><p>这道题真的是血亏啊。被傻逼D搞死了，这道题都没看，简单的LCA就这么放弃了。<br>每次询问给了k个结点，找到深度最深的，显然这个结点与1结点构成了链，然后其余的点与此点找到LCA，看深度差是否小于等于1.</p>
-<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=200000+5;
 int n,m,k=1,head[maxn],deep[maxn],fa[maxn][25],a[maxn];
@@ -447,13 +452,16 @@ int main()
         else printf(&quot;NO\n&quot;);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="F-题目名称："><a href="#F-题目名称：" class="headerlink" title="F 题目名称："></a>F 题目名称：</h1><p>Make k Equal</p>
 <h4 id="题目大意：-5"><a href="#题目大意：-5" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给你一个数组及其长度 n 以及一个值 k<br>仅通过将 <strong>最小</strong>元素<strong>自增</strong>/<strong>最大</strong>元素<strong>自减</strong> 的方式, 以使得至少有 k个元素相等, 输出所需的最少步数. </p>
-<h4 id="题解：-5"><a href="#题解：-5" class="headerlink" title="题解："></a>题解：</h4><p>首先先将数组a从小到大排序。如果数组中已经有k个数字大小相等了，那么直接输出0即可。对于ai，要让数组a有k-1个数字和它一样大，就有3种方法。<br>1.全部修改ai左边的数字：<br>    如果ai左边(包括ai)共有k个数字，那么ans=a[i] * k-sum[i]；<br>    如果ai左边(包括ai)超过k个数字，那么ans=a[i] * i-sum[i]-(i-k);<br>    如果ai左边(包括ai)不足k个数字，自然就与条件矛盾了。<br><strong>ps</strong>：需要主要每次是修改最小的值，所以修改其左边的数字，那么最终全部都要为ai或者ai-1.</p>
-<p>2.全部修改ai右边的数字：<br>    如果ai右边(包括ai)共有k个数字，那么ans=-a[i] * k+(sum[n]-sum[i-1]);<br>    如果ai右边(包括ai)超过k个数字，那么ans=-a[i] * i+(sum[n]-sum[i-1])-(n-i+1-k);<br>    如果ai右边(包括ai)不足k个数字，自然就与条件矛盾了。<br><strong>ps</strong>：需要主要每次是修改最大的值，所以修改其右边的数字，那么最终全部都要为ai或者ai+1.</p>
-<p>3.两边都要修改：<br>    那么左边要么为ai，要么为ai-1；右边要么为ai，要么为ai+1；所以<br>$$<br>ans=a[i]<em>i-sum[i]+sum[n]-sum[i-1]-(n-i+1)</em>a[i]-(n-k)<br>$$<br>最终取最小值即可。</p>
-<h4 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="题解：-5"><a href="#题解：-5" class="headerlink" title="题解："></a>题解：</h4><p>首先先将数组a从小到大排序。如果数组中已经有k个数字大小相等了，那么直接输出0即可。对于ai，要让数组a有k-1个数字和它一样大，就有3种方法。<br>1.全部修改ai左边的数字：<br>    如果ai左边(包括ai)共有k个数字，那么ans=a[i] <em> k-sum[i]；<br>    如果ai左边(包括ai)超过k个数字，那么ans=a[i] </em> i-sum[i]-(i-k);<br>    如果ai左边(包括ai)不足k个数字，自然就与条件矛盾了。<br><strong>ps</strong>：需要主要每次是修改最小的值，所以修改其左边的数字，那么最终全部都要为ai或者ai-1.</p>
+<p>2.全部修改ai右边的数字：<br>    如果ai右边(包括ai)共有k个数字，那么ans=-a[i] <em> k+(sum[n]-sum[i-1]);<br>    如果ai右边(包括ai)超过k个数字，那么ans=-a[i] </em> i+(sum[n]-sum[i-1])-(n-i+1-k);<br>    如果ai右边(包括ai)不足k个数字，自然就与条件矛盾了。<br><strong>ps</strong>：需要主要每次是修改最大的值，所以修改其右边的数字，那么最终全部都要为ai或者ai+1.</p>
+<p>3.两边都要修改：<br>    那么左边要么为ai，要么为ai-1；右边要么为ai，要么为ai+1；所以</p>
+<script type="math/tex; mode=display">
+ans=a[i]*i-sum[i]+sum[n]-sum[i-1]-(n-i+1)*a[i]-(n-k)</script><p>最终取最小值即可。</p>
+<h4 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const long long maxn=200000+5;
 long long n,k,a[maxn],sum[maxn],cnt[maxn];
@@ -490,15 +498,16 @@ int main()
     }
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p><strong>ps</strong>：ans=1e18，否则要WA</p>
 
-        <div id="aplayer-fNGwURbG" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-yJUvnAkr" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-fNGwURbG"),
+            element: document.getElementById("aplayer-yJUvnAkr"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -552,6 +561,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

@@ -193,7 +193,7 @@
 <p><strong>输出样例</strong></p>
 <p>3</p>
 <h3 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h3><h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>设定dp[i]表示从m到达i最少需要i步。初始化dp[]无穷大，显然dp[m]=0,即到起点的步数为0。对于i来讲可以到达i的只有三种状态：i-1、i/2、sqrt(i)（其中i/2和sqrt(i)需要满足整数条件）。这也是基于i整体单增的条件才满足动态规划。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -219,11 +219,12 @@ int main(){
     }
     cout &lt;&lt; dp[n] &lt;&lt; endl;
     return 0;
-}</code></pre>
-<h3 id="方法2："><a href="#方法2：" class="headerlink" title="方法2："></a>方法2：</h3><h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><p>按照一般的方法进行BFS。一个点i往后搜索，它可以到达三个状态：i+1，i * 2，i * i，并且相应的步数+1.对于一个状态i如果已经到达过了就没必要再进行搜索了，因为第一次到达它的时候所耗步数一定是最小的，因为BFS本身就是层次遍历，一定是步数小的执行，所以只需要处理第一次到达的情况。并且在BFS的同时把到达过的点都标记了，避免重复搜索。一旦到达n就可以直接输出答案了，当然continue继续也没错。</p>
+}
+</code></pre>
+<h3 id="方法2："><a href="#方法2：" class="headerlink" title="方法2："></a>方法2：</h3><h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><p>按照一般的方法进行BFS。一个点i往后搜索，它可以到达三个状态：i+1，i <em> 2，i </em> i，并且相应的步数+1.对于一个状态i如果已经到达过了就没必要再进行搜索了，因为第一次到达它的时候所耗步数一定是最小的，因为BFS本身就是层次遍历，一定是步数小的执行，所以只需要处理第一次到达的情况。并且在BFS的同时把到达过的点都标记了，避免重复搜索。一旦到达n就可以直接输出答案了，当然continue继续也没错。</p>
 <p>网上的代码感觉基本雷同。所以这里写了两个方法，一个递推另一个队列+BFS（一般bfs都是配队列，当然优先队列有时效果更佳）。当然这里显然用递推是最简单的，而且O(n)的时间复杂度明显比bfs快。（测试数据：1 1000000）。</p>
 <p><strong>ps：</strong>if(now.now&gt;=n||vis[now.now])continue;这里顺序不要调换，不然运行错误了找半天错。</p>
-<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -259,14 +260,15 @@ int main(){
     }
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-UlhGlThz" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-oHBssHjS" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-UlhGlThz"),
+            element: document.getElementById("aplayer-oHBssHjS"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -281,7 +283,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -322,6 +323,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

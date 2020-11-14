@@ -183,12 +183,12 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <h1 id="C-Division"><a href="#C-Division" class="headerlink" title="C. Division"></a>C. Division</h1><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h3><p>T组数据，每组给出pi和qi，其中 1≤pi≤10^18, 2≤qi≤10^9,求出最大的xi使得pi%xi==0，xi%qi!=0.</p>
-<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>假设y=p/x，存在质数a，使得y%a==0&amp;&amp;a%q!=0,那么p%(a * x)==0&amp;&amp;(a * x)%q!=0</p>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>假设y=p/x，存在质数a，使得y%a==0&amp;&amp;a%q!=0,那么p%(a <em> x)==0&amp;&amp;(a </em> x)%q!=0</p>
 <p>如果存在两个质数a和b，如果y%a==0&amp;&amp;y%b==0并且q%a==0&amp;&amp;q%b==0.因为x%q!=0，所以存在一个质数c（c可以等于a或者b），并且c在x中出现的次方数小于c在q中出现的次方数。a或b中的一个不等于c，因此将x‘=x * c，那么x‘%q!=0，因此答案要求的最大x不可能是a或者b。</p>
 <p>所以x=p/（q中某个因数的幂次）。所以枚举q的所有因数，时间复杂度sqrt(q),注意因数一大一小对应枚举。然后设t=p，如果t%q==0，则t/=枚举的因数，直到t%q!=0，ans=max{t}.</p>
 <p>以上是p%q==0的情况。</p>
 <p>如果p%q！=0，显然答案就是p本身。</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 typedef long long ll;
 ll T, a, b;
@@ -219,14 +219,15 @@ int main(){
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-adztvZwX" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-GlTnyWrg" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-adztvZwX"),
+            element: document.getElementById("aplayer-GlTnyWrg"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -280,6 +281,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

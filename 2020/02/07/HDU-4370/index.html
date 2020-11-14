@@ -196,7 +196,7 @@
 <p>情况1：结点1最终指向结点n，则dist[n]就是最小值</p>
 <p>情况2：结点1形成自环，那么结点n也必须形成自环。则dist[1]+dist[n]为答案。<br>针对情况2需要跑两次spfa，第一次spfa以1为起点，第二次spfa以n为起点。</p>
 <p>最终答案为min(ans,d1+d2)其中ans=dist[n],d1=dist[1]，d2=dist[n]（这是第二次跑的spfa的结果）</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -259,14 +259,15 @@ int main()
         int d2=dist[n];
         printf(&quot;%d\n&quot;,min(ans,d1+d2));        
     }
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-VZxSPBBW" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-ueeieqfy" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-VZxSPBBW"),
+            element: document.getElementById("aplayer-ueeieqfy"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -320,6 +321,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

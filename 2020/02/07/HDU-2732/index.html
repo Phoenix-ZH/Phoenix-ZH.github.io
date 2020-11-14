@@ -186,12 +186,12 @@
 <h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://vjudge.net/problem/HDU-2732" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-2732</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>题目是说一个n*m的迷宫中，有每个格子有柱子。柱子高度为0~3，高度为0的柱子是不能站的（高度为0就是没有柱子）<br>在一些有柱子的格子上有一些蜥蜴，一次最多跳距离d,相邻格子的距离是1，只要跳出迷宫就是安全的。这个距离是曼哈顿距离（好像是的）<br>。蜥蜴一次最多跳距离d,但是起跳的地方的柱子高度会减一，一个柱子同一时间只能有一个蜥蜴要求最少几个不能逃出迷宫。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>最大流问题，求出dinic跑出的最大流，然后总数-ans就是剩余的数。建图方法：</p>
-<p>1.每个柱子有容纳量，超过了就塌了。u–&gt;u’ 边权为容纳量</p>
-<p>2.有蜥蜴的柱子与起点s相连，即s–&gt;u,边权为1</p>
-<p>3.边界上可以跳出界的与终点相连，条件(x1&lt;=p||y1&lt;=p||n-x1+1&lt;=p||len-y1+1&lt;=p)&amp;&amp;h[x1][y1]，u’–&gt;t,边权0x3f3f3f3f</p>
-<p>4.任意两个有容纳量的柱子，且曼哈顿距离&lt;=d，可以相连，即u’–&gt;v,v’-&gt;u，边权为0x3f3f3f3f.</p>
+<p>1.每个柱子有容纳量，超过了就塌了。u—&gt;u’ 边权为容纳量</p>
+<p>2.有蜥蜴的柱子与起点s相连，即s—&gt;u,边权为1</p>
+<p>3.边界上可以跳出界的与终点相连，条件(x1&lt;=p||y1&lt;=p||n-x1+1&lt;=p||len-y1+1&lt;=p)&amp;&amp;h[x1][y1]，u’—&gt;t,边权0x3f3f3f3f</p>
+<p>4.任意两个有容纳量的柱子，且曼哈顿距离&lt;=d，可以相连，即u’—&gt;v,v’-&gt;u，边权为0x3f3f3f3f.</p>
 <p>ps：1.注意输出时候单复数！<br>2.注意是j+(i-1)*len(len 表示一行的列数！！！）一开始写成了n，WA了一片。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -337,12 +337,12 @@ int main()
 }
 </code></pre>
 
-        <div id="aplayer-tPLIXUWn" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-IjwQupIJ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-tPLIXUWn"),
+            element: document.getElementById("aplayer-IjwQupIJ"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -396,6 +396,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

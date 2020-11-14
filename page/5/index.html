@@ -247,7 +247,9 @@ A：题目名称：Yet Another Tetris Problem
         <div class="index-excerpt" >
           <div class="index-text mb-1">A:题目名称：Contest for Robots
 题目大意：给出长度为1≤n≤100 的两个序列 r,b，且满足 ri, bi∈{0,1}，你需要确定 pi（pi≥1）。
-满足$$\sum_{i=1}^n r_ip_i &gt; \sum_{i=1}^n b_ip_i$$，并且最小化max pi（1&lt;=i&lt;=n）
+满足
+
+\sum_{i=1}^n r_ip_i > \sum_{i=1}^n b_ip_i，并且最小化max pi（1&lt;=i&lt;=n）
 如果不可能，输出 -1 。
 题解：因为序列的数字要么为1，要么为0，那么如果r中没有数字比b中的大，那么显然不可能实现题目的要求。一旦求得r比b大的个数w1，和r比b小的个数w2，就可以求maxpi，但是注意要求是大于，所以ans=(w2+1)/w1;并且要判断是否整除，如果没有则ans++。
 代码：#include&lt;cstdio&gt;
@@ -259,7 +261,7 @@ const int maxn=1000+5;
 int a[maxn],b[maxn],n;
 int main()
 {
-    sc</div>
+    scanf(&</div>
         </div>
       </a>
 
@@ -296,7 +298,7 @@ int main()
 问至少多少次操作可以把 a变成 b。
 多组数据 :T&lt;=10^4,1&lt;=a,b&lt;=10^9
 
-题解：对于a，b关系可分为3种情况：a&gt;b;a==b;a&lt;b;a==b:答案为0；a &gt; b:若a-b为偶数，答案为1；否则为2，先减一个偶数让a=b-1，再加1。a &lt; b:若b-a为奇数，答案为1；否则为2.
+题解：对于a，b关系可分为3种情况：a&gt;b;a==b;a b:若a-b为偶数，答案为1；否则为2，先减一个偶数让a=b-1，再加1。a &lt; b:若b-a为奇数，答案为1；否则为2.
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
@@ -308,7 +310,9 @@ int main()
     scanf(&quot;%d&quot;,&amp;T);
     while(T--)
     {
-        scanf(&quot;%d%d&quot;,&amp;a,&amp;b</div>
+        scanf(&quot;%d%d&quot;,&amp;a,&amp;b);
+        if(b&gt;a)
+</div>
         </div>
       </a>
 
@@ -546,7 +550,8 @@ int main()
     long long maxx=max(abs(x1-x2),abs(y1-y2));
     printf(&quot;%lld\n&quot;,maxx);
     return 0;
-} 
+}
+
 B:题目名称： Gr</div>
         </div>
       </a>

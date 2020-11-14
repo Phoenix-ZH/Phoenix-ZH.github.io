@@ -183,8 +183,8 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <h1 id="1-题目："><a href="#1-题目：" class="headerlink" title="1.题目："></a>1.题目：</h1><h4 id="D-Proud-Merchants"><a href="#D-Proud-Merchants" class="headerlink" title="D - Proud Merchants"></a>D - Proud Merchants</h4><h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>n种商品，m元钱，每种商品都有p,q,v属性，p价格，q表示买这种商品你需要带q元老板才愿意和你交易，v这种商品的实际价值。求问最多可以获得多少价值 。</p>
-<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>如果p=q，那么就是01背包。但是如果p！=q， 如果A:p1 q1, B:p2 q2 ， 假设单独买A或者B的话，都是可以买到的 。 若先买A，则你至少需要p1+q2的钱；若先买B，则至少需要p2+q1的钱。  那肯定是花最少的钱 ，所以如果先买A再买B ， 那么p1+q2&lt;p2+q1  转换一下，就是q1-p1&gt;q2-p2  也就是说qi-pi大的先买。注意：排序的时候，得按照qi-pi从小到大排序，因为你买第n件商品的时候，是在比较你是否要先买第n件商品。 </p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;cstdio&gt;
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>如果p=q，那么就是01背包。但是如果p！=q， 如果A:p1 q1, B:p2 q2 ， 假设单独买A或者B的话，都是可以买到的 。 若先买A，则你至少需要p1+q2的钱；若先买B，则至少需要p2+q1的钱。  那肯定是花最少的钱 ，所以如果先买A再买B ， 那么p1+q2<p2+q1  转换一下，就是q1-p1>q2-p2  也就是说qi-pi大的先买。注意：排序的时候，得按照qi-pi从小到大排序，因为你买第n件商品的时候，是在比较你是否要先买第n件商品。 </p>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -219,7 +219,8 @@ int main()
 
     return 0;
 }
-//Phoenix-ZH</code></pre>
+//Phoenix-ZH
+</code></pre>
 <h1 id="2-题目："><a href="#2-题目：" class="headerlink" title="2.题目："></a>2.题目：</h1><h4 id="G-Knapsack-2"><a href="#G-Knapsack-2" class="headerlink" title="G - Knapsack 2"></a><strong>G - Knapsack 2</strong></h4><h2 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h2><p>现有 <strong>N</strong> 个物品，序号分别为 <strong>1, 2, … , N</strong>。对于每个 <strong>i</strong> (<strong>1 ≤ i ≤ N</strong>)，物品 <strong>i</strong> 有一个体积 <strong>wi</strong> 和一个价值 <strong>vi</strong>。小明想在这 <strong>N</strong> 个物品中选取一些放到背包里带回家。已知背包的容积为 <strong>W</strong>，这意味着所带物品的总体积不能超过 <strong>W</strong>。求出小明可以带回家的物品总价值可能的最大值。</p>
 <ul>
 <li>输入的所有数值均为整数。</li>
@@ -229,7 +230,7 @@ int main()
 <li><strong>1 ≤ vi ≤ 10^3</strong></li>
 </ul>
 <h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>01背包问题，<strong>Knapsack 1</strong>是一个裸的01背包，但是这个题发现<strong>W</strong>的值特别大，直接<strong>N*W</strong>根本跑不掉。所以枚举W是不合理的。在<strong>Knapsack 1</strong>中设dp[i]：i为容量，dp[i]为容量为i时的最大价值。那么在<strong>Knapsack 2</strong>中，不妨反着来，设dp[i]:i指背包的价值为i，dp[i]指背包的价值为i时的最小容量。注意枚举价值（&lt;=100000）时要倒着枚举（01背包）。将dp数组初始化为无限大，dp[0]是下界。当dp[j-v[i]]是可达的或者j-v[i]==0(即下界)时，可以更新dp[j]=min(dp[j],dp[j-v[i]]+w[i])。然后倒着求出最大的可达价值（要保证dp[i]&lt;=m）。</p>
-<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;cstdio&gt;
+<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -262,7 +263,8 @@ int main()
     }
     return 0;
 }
-//Phoenix-ZH</code></pre>
+//Phoenix-ZH
+</code></pre>
 <h1 id="3-题目："><a href="#3-题目：" class="headerlink" title="3.题目："></a>3.题目：</h1><h4 id="I-Longest-Path"><a href="#I-Longest-Path" class="headerlink" title="I - Longest Path"></a>I - Longest Path</h4><h2 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h2><p>有一个有向图 G ，有 N 个顶点和 M 条边。顶点被编号为 1, 2, … , N，第 i 条有向边是从顶点xi 到顶点 yi (1 ≤ i ≤ M)。有向图 G 中 <strong>不包含有向环</strong>。<br>请找出G中最长有向路径的长度。最长有向路径的长度为它包含的边数量。</p>
 <ul>
 <li>所有的输入都是整数</li>
@@ -273,7 +275,7 @@ int main()
 <li>G <strong>不包含有向环</strong>.</li>
 </ul>
 <h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><p>直接用拓扑排序求最长路，先让所有入度为0的进队列，然后每次更新下一节点的路径长度，若入度减为0就入队列。最后线性地查一下最大地路径长度。</p>
-<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;cstdio&gt;
+<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -324,10 +326,11 @@ int  main()
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
 }
-//Phoenix-ZH</code></pre>
+//Phoenix-ZH
+</code></pre>
 <h1 id="4-题目："><a href="#4-题目：" class="headerlink" title="4.题目："></a>4.题目：</h1><h4 id="K-任务安排-1"><a href="#K-任务安排-1" class="headerlink" title="K - 任务安排 1"></a>K - 任务安排 1</h4><h2 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h2><p>有N个任务排成一个序列在一台机器上等待执行，它们的顺序不得改变。机器会把这N个任务分成若干批，每一批包含连续的若干个任务。从时刻0开始，任务被分批加工，执行第i个任务所需的时间是 Ti。另外，在每批任务开始前，机器需要S的启动时间，故执行一批任务所需的时间是启动时间S加上每个任务所需时间之和。<br>一个任务执行后，将在机器中稍作等待，直至该批任务全部执行完毕。也就是说，同一批任务将在同一时刻完成。每个任务的费用是它的完成时刻乘以一个费用系数Ci。<br>请为机器规划一个分组方案，使得总费用最小。</p>
-<h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>首先任务的顺序是不变的，变的是分组的数量，新的批次开始的时候回导致有启动时间。先考虑简单一点的方法设dp[i][j]：前个任务分成j组。那么对于第j组的第一个任务是哪一个是未知的，所以要枚举第j组的左边界，显然这个时间复杂度是O(n^3)，但是可以先写出来，再考虑优化。求出t[i]和c[i]的前缀和sumt[i]和sumc[i].dp[i][j]=min(dp[i][j],dp[k][j-1]+(s*j+sumt[i]) * (sumc[i]-sumc[k])).<br>即：</p>
-<pre><code class="cpp">for(int i=1;i&lt;=n;i++)
+<h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>首先任务的顺序是不变的，变的是分组的数量，新的批次开始的时候回导致有启动时间。先考虑简单一点的方法设dp[i][j]：前个任务分成j组。那么对于第j组的第一个任务是哪一个是未知的，所以要枚举第j组的左边界，显然这个时间复杂度是O(n^3)，但是可以先写出来，再考虑优化。求出t[i]和c[i]的前缀和sumt[i]和sumc[i].dp[i][j]=min(dp[i][j],dp[k][j-1]+(s<em>j+sumt[i]) </em> (sumc[i]-sumc[k])).<br>即：</p>
+<pre><code class="lang-cpp">for(int i=1;i&lt;=n;i++)
     {
         for(int j=1;j&lt;=i;j++)
         {
@@ -336,16 +339,18 @@ int  main()
                 dp[i][j]=min(dp[i][j],dp[k][j-1]+(j*s+sumt[i])*(sumc[i]-sumc[k]));
             }
         }
-    }</code></pre>
-<p>然后我们再考虑对它进行优化：对于组数j它影响的始终是式子中的 (j<em>s+sumt[i]) * (sumc[i]-sumc[k])，如果我们每增加一组新的批次，都对后面的所有任务的代价都加上s</em>c[i]就可以规避这个问题。所以可以优化成一维的：dp[i]表示第i个任务需要的代价，同时枚举最后一组的第一个任务，那么<br>dp[i]=min(dp[i],dp[k-1]+s * (sumc[n]-sumc[k-1])+sumt[i] * (sumc[i]-sumc[k-1])).即：</p>
-<pre><code class="cpp">for(int i=1;i&lt;=n;i++)
+    }
+</code></pre>
+<p>然后我们再考虑对它进行优化：对于组数j它影响的始终是式子中的 (j<em>s+sumt[i]) </em> (sumc[i]-sumc[k])，如果我们每增加一组新的批次，都对后面的所有任务的代价都加上s<em>c[i]就可以规避这个问题。所以可以优化成一维的：dp[i]表示第i个任务需要的代价，同时枚举最后一组的第一个任务，那么<br>dp[i]=min(dp[i],dp[k-1]+s </em> (sumc[n]-sumc[k-1])+sumt[i] * (sumc[i]-sumc[k-1])).即：</p>
+<pre><code class="lang-cpp">for(int i=1;i&lt;=n;i++)
     {
         for(int k=1;k&lt;=i;k++)
         {
             dp[i]=min(dp[i],dp[k-1]+s*(sumc[n]-sumc[k-1])+sumt[i]*(sumc[i]-sumc[k-1]));
         }
-    }</code></pre>
-<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;cstdio&gt;
+    }
+</code></pre>
+<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -384,14 +389,15 @@ int main()
 */
     cout&lt;&lt;dp[n]&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-kSjMoQXp" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-uStPSPXH" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-kSjMoQXp"),
+            element: document.getElementById("aplayer-uStPSPXH"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -445,6 +451,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

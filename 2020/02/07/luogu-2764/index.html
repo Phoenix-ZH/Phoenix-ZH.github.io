@@ -187,9 +187,9 @@
 <p> 从第1 行开始，每行输出一条路径。文件的最后一行是最少路径数。 </p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>要求的是最少路径数将所有的点都覆盖掉。</p>
 <p>由konig定理知：最小点覆盖=最大匹配数；<br>而该题抽出模型就成了：最小路径覆盖；<br>最小路径覆盖=点数-最大匹配数；</p>
-<p>如何理解这个结论呢？(这个解释并不严谨，只是为了帮助理解，请勿喷)<br>    加入1–&gt;2–&gt;3;<br>    可以转化为1–&gt;2’;2–&gt;3’;<br>    1,2,3在X中，1’,2’,3’在Y中；路径数=3-2；符合结论；<br>    再举例1–&gt;2,1–&gt;3,2–&gt;4,3–&gt;4;<br>    可以转化为1–&gt;2’,1–&gt;3’,2–&gt;4’,3–&gt;4’;最大匹配数为2；最少路径数为2.符合结论<br>由上面的例子可以分析一下：<br>    x与x’都处于匹配边中时，说明点x处于一条路径中；而一条路径中的开头点与结尾点的x和x’只能选择其中一个。此时(该路径中的)点个数-边数=1;<br>那么有多少个“1”就说明有多少条路径。就可以说明最小路径覆盖=点数-最大匹配数；</p>
-<p>证明了以上的结论后，就可以考虑建模了：<br>    把一个点拆成x，x’，s向所有的x连边，所有的x’ 向t连边， 如果x1–&gt;y1，就将x1向y1’连边，所有的边容量为1(反边容量为0)；<br>    然后开始跑最大流，实际上跑出来的最大流就是最大匹配数，那么最小边覆盖=n-ans；<br>接着要开始说明每一条路径：<br>    从1-n都枚举一边，每一个点连向的是x’,并且如果最大流流向了x’(流向了x’就说明该边流量为0），然后输出该值，继续dfs。<br>    注意要排除s，t的点；</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt; 
+<p>如何理解这个结论呢？(这个解释并不严谨，只是为了帮助理解，请勿喷)<br>    加入1—&gt;2—&gt;3;<br>    可以转化为1—&gt;2’;2—&gt;3’;<br>    1,2,3在X中，1’,2’,3’在Y中；路径数=3-2；符合结论；<br>    再举例1—&gt;2,1—&gt;3,2—&gt;4,3—&gt;4;<br>    可以转化为1—&gt;2’,1—&gt;3’,2—&gt;4’,3—&gt;4’;最大匹配数为2；最少路径数为2.符合结论<br>由上面的例子可以分析一下：<br>    x与x’都处于匹配边中时，说明点x处于一条路径中；而一条路径中的开头点与结尾点的x和x’只能选择其中一个。此时(该路径中的)点个数-边数=1;<br>那么有多少个“1”就说明有多少条路径。就可以说明最小路径覆盖=点数-最大匹配数；</p>
+<p>证明了以上的结论后，就可以考虑建模了：<br>    把一个点拆成x，x’，s向所有的x连边，所有的x’ 向t连边， 如果x1—&gt;y1，就将x1向y1’连边，所有的边容量为1(反边容量为0)；<br>    然后开始跑最大流，实际上跑出来的最大流就是最大匹配数，那么最小边覆盖=n-ans；<br>接着要开始说明每一条路径：<br>    从1-n都枚举一边，每一个点连向的是x’,并且如果最大流流向了x’(流向了x’就说明该边流量为0），然后输出该值，继续dfs。<br>    注意要排除s，t的点；</p>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt; 
 using namespace std;
 const int maxn=600000+5;
 int n,m,k=1,head[maxn];
@@ -287,14 +287,15 @@ int main()
     }
     cout&lt;&lt;n-ans&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-kWJUfQNA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-rAtSryli" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-kWJUfQNA"),
+            element: document.getElementById("aplayer-rAtSryli"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -348,6 +349,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

@@ -186,7 +186,7 @@
 <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a href="https://vjudge.net/problem/HDU-1045#author=Codeblocksm" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-1045#author=Codeblocksm</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p> 现在有一个N*N的地图，地图上有一些围墙。你的任务是在没有围墙的空白地方建尽可能多的炮台。 假设炮台可以向“上下左右”四个方向发射子弹，子弹可以穿越任何距离并可在途中摧毁一个另一个炮台。而墙壁结构坚固，可以阻止子弹。 问最多可以建设多少个炮台？</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>刚开始做二分图的最大匹配问题，没有什么思路啊，没想到如何将一块区域弄来建图，后来看了一下别人的思路，将同一列的联通区域求出来，当然同一联通区域有且只有一个炮台，否则不合题意；将同一行的联通区域求出来，也只能存在一个炮台。如何将列和行结合起来呢？然后列中第i个连通块与行中第j个连通块有交点，说明交点处可以建炮台，判断方法：y[j].h&gt;=x[i].s&amp;&amp;y[j].h&lt;=x[i].t&amp;&amp;x[i].l&gt;=y[j].s&amp;&amp;x[i].l&lt;=y[j].t。那么可以add(i,j+N)。这样建了图后用匈牙利算法来求最大匹配就可以了。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -287,14 +287,15 @@ int main()
         printf(&quot;%d\n&quot;,ans);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-pQUZebtM" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-HziVIamO" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-pQUZebtM"),
+            element: document.getElementById("aplayer-HziVIamO"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -348,6 +349,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

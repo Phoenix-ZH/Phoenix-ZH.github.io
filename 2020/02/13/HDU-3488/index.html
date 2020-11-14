@@ -188,7 +188,7 @@
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>这里需要提到一下<strong>有向环覆盖问题</strong>： 给一个N个顶点M条边的带权有向图，要你把该图分成一个或多个不相交的有向环。且所有定点都被有向环覆盖。问你该有向环所有权值的总和最小是多少? </p>
 <p>答案就是：有向环最大权值覆盖=最佳匹配。 </p>
 <p>如果，改为无向图，问你无向环最大权值覆盖？答案也是一样的。只是在建图的时候把有向改为无向即可。 </p>
-<p><strong>分析</strong>：把任意一个顶点i分成连个点，即i和i‘，如果原图存在边i–&gt;j，那么二分图就存在i–&gt;j’</p>
+<p><strong>分析</strong>：把任意一个顶点i分成连个点，即i和i‘，如果原图存在边i—&gt;j，那么二分图就存在i—&gt;j’</p>
 <p><strong>引理</strong>： </p>
 <p>①  如果原图能由多个不相交的有向环覆盖，那么二分图必然存在完备匹配。 二者互为充要条件 。即： 二分图存在完备匹配,那么原图必定能由几个不相交的有向环覆盖。</p>
 <p>②  如果 即权值最大的有向环覆盖在数值上等于改图的最佳匹配值。原图存在权值最大的有向环覆盖，那么二分图的<strong>最佳匹配</strong>一定就是这个值。</p>
@@ -196,7 +196,7 @@
 <p>(假设原图的有向环为(1-&gt;2-&gt;3-&gt;1) and(6-&gt;5-&gt;4-&gt;6),那么二分图的完备匹配就是1-&gt;2’ 2-&gt;3’ 3-&gt;1’ 6-&gt;5’ 5-&gt;4’ 4-&gt;6’)</p>
 <p>(假设二分图的完备匹配是1-&gt;2’ 2-&gt;3’ 3-&gt;1’ 6-&gt;5’ 5-&gt;4’ 4-&gt;6’那么原图的有向环为(1-&gt;2-&gt;3-&gt;1) and (6-&gt;5-&gt;4-&gt;6))</p>
 <p>由此，知道了如果一个二分图存在<strong>完备匹配</strong>，那么这个<strong>完备匹配</strong>一定是可以在原图构成有向环，题目既然给出了路径，并且一定可以组成有向环，那么二分图一定存在<strong>完备匹配</strong>，而且是求最小的代价，此时想到了KM是求<strong>最佳匹配</strong>，即边权最大的完备匹配，所以需要转换一下， 将边权转换为负值，初始化为-0x3f3f3f3f，然后wx也初始化为-0x3f3f3f3f，然后其余正常地跑KM，求得ans为最佳匹配，输出-ans即可</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -299,14 +299,15 @@ int main()
         printf(&quot;%d\n&quot;,-ans);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-HavhaRaR" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-ASFwZEom" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-HavhaRaR"),
+            element: document.getElementById("aplayer-ASFwZEom"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -362,6 +363,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

@@ -189,7 +189,7 @@
 <p>每秒钟内横坐标最多变化1（也可以不变化）纵坐标也是</p>
 <p>问最少几秒钟到 x1 和 x2 绝对值在10^9以内 。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>取两者坐标x，y相差的最大值，开longlong保平安。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -201,11 +201,12 @@ int main()
     long long maxx=max(abs(x1-x2),abs(y1-y2));
     printf(&quot;%lld\n&quot;,maxx);
     return 0;
-} </code></pre>
+}
+</code></pre>
 <h1 id="B-题目名称："><a href="#B-题目名称：" class="headerlink" title="B:题目名称："></a>B:题目名称：</h1><p> Grandfather Dovlet’s calculator </p>
 <h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p>从0-9每一个数字由若干个小木棍组成，给定a，b，问搭出a-b的每一个数字需要多少个小木棍。</p>
 <h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>t[i]表示数字i需要的木棍(i∈[0,9]),然后枚举。</p>
-<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -227,7 +228,8 @@ int main()
     }
     printf(&quot;%lld\n&quot;,ans);
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="C：题目名称："><a href="#C：题目名称：" class="headerlink" title="C：题目名称："></a>C：题目名称：</h1><p> Pearls in a Row </p>
 <h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p>现在有N个数，你的任务是将这N个数尽可能切割成多段。每一段必须包括两个相同的数。 </p>
 <p>输出的第一行为尽可能切割的最大段数K。</p>
@@ -237,7 +239,7 @@ int main()
 <p>数据第一行为N(1 ≤ <em>N</em> ≤ 3·105) 。</p>
 <p>数据的第二行包括N个数ai(1 ≤ a[i] ≤ 109) 。</p>
 <h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>看到N&lt;=300000，然后再看到a[i]的数据，由于答案只与二者是否相等有关，那么它的值就无关紧要了，所以直接离散化。离散化之后就是如何分割了，首先就想到了贪心，一旦又符合条件的就直接分割，如何考虑这个分案的合理性呢？假设区间 [x,y]为一段，a[x]==a[y],如果w∈(x,y),z&gt;y,那么我们也必须选择[x,y] ,否则区间(x,w)不符合题意。如果我们遇到有两个相等了而不分割，这样并不能使数量增加，所以每遇到两个相等就立即分割，这样受到影响的只有最后一段，因为最后一段可能无法成立，那它直接与前一段合并，即前一段的l[opt]=n就可以了。</p>
-<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -285,15 +287,16 @@ int main()
         printf(&quot;%lld %lld\n&quot;,l[i],r[i]);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <p><strong>ps</strong>：一开始一直WA，原因使if，else那段写反了，注意每一个vis[a[i]]都需要修改！</p>
 
-        <div id="aplayer-DSilyLsI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-JogxhmFt" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-DSilyLsI"),
+            element: document.getElementById("aplayer-JogxhmFt"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -308,7 +311,6 @@ int main()
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -349,6 +351,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

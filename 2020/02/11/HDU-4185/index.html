@@ -187,7 +187,7 @@
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有K组数据，每组数据是N*N的方阵，每个方格由.或者#组成，问有多少个互相不重叠的##(横着或竖着)。</p>
 <p>  (1 &lt;= K &lt;= 100)  (1 &lt;= N &lt;= 600) </p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>最开始的思路是每个点只判断它下方或者右方是不是#，如果是就连边，但是这个方法存在一个问题：横着的##和竖着的##如果重叠会导致计数重复，又没有一个比较好的办法来规范。于是换了一个想法，一个点若为#就像它上下左右为#的点都连边，最后答案/2就可以避免重复。枚举所有的点，预处理#点的编号temp记录，然后开始跑匈牙利算法，最后ans/2.</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -279,14 +279,15 @@ int main()
         printf(&quot;Case %d: %d\n&quot;,opt,ans/2);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-dhNOucJz" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-uAtBxcDW" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-dhNOucJz"),
+            element: document.getElementById("aplayer-uAtBxcDW"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -340,6 +341,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

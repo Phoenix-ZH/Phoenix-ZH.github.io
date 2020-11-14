@@ -163,7 +163,7 @@
           <div class="index-text mb-1">题目名称：POJ - 2240 Arbitrage
 题目链接：https://vjudge.net/problem/POJ-2240#author=Andy_acmer
 题目大意：有n种货币，m条货币的汇率关系。比如：USDollar 0.5 BritishPound说明1个USDollar货币，可以换成0.5个BritishPound货币，问是否可以通过这种关系来获利。
-题解：由于货币名字使字符串，那么用map比较方便,map&lt;string,int&gt;q，可以将字符串映射成int型。然后跑spfa，看是否存在正环，与判断负环的方法一样。
+题解：由于货币名字使字符串，那么用map比较方便,mapq，可以将字符串映射成int型。然后跑spfa，看是否存在正环，与判断负环的方法一样。
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
@@ -172,7 +172,7 @@
 #include&lt;map&gt;
 using namespace std;
 const int maxn=10000+5;
-int n,m,head[maxn],vis[maxn],used[</div>
+int n,m,head[maxn],vis[maxn],used[maxn],k=1;double d</div>
         </div>
       </a>
 
@@ -248,13 +248,13 @@ int n,m,head[maxn],vis[maxn],used[</div>
           <div class="index-text mb-1">题目名称：POJ - 3159 Candies
 题目链接：https://vjudge.net/problem/POJ-3159#author=2018112767
 题目大意：有n个同学，m条信息，每条信息为a,b,c三个整数表示a相信b的糖果不会比自己多于c。问n同学最多比1同学多多少个糖果？
-题解：这是差分约束的题目，由题知Have[b]-Have[a]&lt;=c;即Have[b]&lt;=c+Have[a]；而最短路的更新条件是dist[edge[i].to]&gt;dist[x]+edge[i].w，就说明了dist[edge[i].to]&lt;=dist[x]+edge[i].w;于是建边就可以a—&gt;b,边权为c，跑最短路。dist[n]就是答案
+题解：这是差分约束的题目，由题知Have[b]-Have[a]&lt;=c;即Have[b]&lt;=c+Have[a]；而最短路的更新条件是dist[edge[i].to]&gt;dist[x]+edge[i].w，就说明了dist[edge[i].to]&lt;=dist[x]+edge[i].w;于是建边就可以a—-&gt;b,边权为c，跑最短路。dist[n]就是答案
 ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保险！
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
-#include&lt;queue&gt</div>
+#include&lt;queue&g</div>
         </div>
       </a>
 
@@ -325,7 +325,7 @@ ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保�
           <div class="index-text mb-1">题目名称：POJ - 1062 昂贵的聘礼
 题目链接：https://vjudge.net/problem/POJ-1062#author=0
 题目大意：一个人要买1号物品，而此物品可以通过直接购买或者到别人的手中买别的东西+一些金币来得到。但是需要注意：如果两人地位等级差距超过了delt，就不可以进行间接交易，即该交易圈的人两两之间等级差异不可大于delt。问要得到1号物品至少要花费多少钱？
-题解：建立一个源点，它与所有物品建边，即s–&gt;i（边权为物品原价），因为每个物品除了直接购买，还可以间接购买，设间接购买物品为j，则建边方式为j–&gt;i（边权为额外金币）然后跑最短路，注意最短路的条件不再是dist[edge[i].to]&gt;dist[x]+edge[i].w，因为当价格相等时也需要进入队列来进行松弛，所以应变为dist[edge[i].to]&gt;dist[x]+edge[i].w;然后就是等级限制的判断了。刚开始的s的等级需要从最低到最高都设置一次，意味着跑n次spfa，s就是这次spfa的最低等级，因此a[edge[i].to].l&gt;=limit&am</div>
+题解：建立一个源点，它与所有物品建边，即s—&gt;i（边权为物品原价），因为每个物品除了直接购买，还可以间接购买，设间接购买物品为j，则建边方式为j—&gt;i（边权为额外金币）然后跑最短路，注意最短路的条件不再是dist[edge[i].to]&gt;dist[x]+edge[i].w，因为当价格相等时也需要进入队列来进行松弛，所以应变为dist[edge[i].to]&gt;dist[x]+edge[i].w;然后就是等级限制的判断了。刚开始的s的等级需要从最低到最高都设置一次，意味着跑n次spfa，s就是这次spfa的最低等级，因此a[edge[i].to].l&gt;=limit&am</div>
         </div>
       </a>
 
@@ -439,7 +439,7 @@ int n,T,a[maxn],head[maxn],v</div>
           <div class="index-text mb-1">题目名称：HDU - 4725 The Shortest Path in Nya Graph
 题目链接：https://vjudge.net/problem/HDU-4725#author=0
 题目大意：现在给你n个点 ，这些点的分布是层型分布的，你可以从第i层走到相邻的层（i+1，i-1）中，这样走的花费是c，接着他会给你m（从u-&gt;v）条小路，从小路走的花费 是w，问你从1-&gt;n所走的最小花费是多少。
-题解：看到数据范围就不敢用spfa了，太过玄学，不想TLE，所以选择dijkstra，这题的难点在于建边。当然，很容易想到将层转化成点，比如第i个点的层数为deep[i],则转化为点deep[i]+n.对于给的小道就直接建边a–&gt;b权值为c,b–&gt;a权值为c（建双向边），将deep数组从小到大排列，对于deep[i] 和 deep[i-1] （i∈[2,n]），首先要判断它们是否刚好相差1，只有刚好相差1才可以建边，建边方式为add(deep[i-1]+n,deep[i]+n,c);add(deep[i]+n,deep[i-1]+n,c)，相邻层数可以相互移动</div>
+题解：看到数据范围就不敢用spfa了，太过玄学，不想TLE，所以选择dijkstra，这题的难点在于建边。当然，很容易想到将层转化成点，比如第i个点的层数为deep[i],则转化为点deep[i]+n.对于给的小道就直接建边a—&gt;b权值为c,b—&gt;a权值为c（建双向边），将deep数组从小到大排列，对于deep[i] 和 deep[i-1] （i∈[2,n]），首先要判断它们是否刚好相差1，只有刚好相差1才可以建边，建边方式为add(deep[i-1]+n,deep[i]+n,c);add(deep[i]+n,deep[i-1]+n,c)，相邻层数可以相互移动</div>
         </div>
       </a>
 
@@ -472,7 +472,7 @@ int n,T,a[maxn],head[maxn],v</div>
           <div class="index-text mb-1">题目名称：POJ - 3169 Layout
 题目链接：https://vjudge.net/problem/POJ-3169#author=634579757
 题目大意：有N头牛排队，多头牛可以在同一点。现有几对相互喜好的牛，他们不能超过一定距离，有几对相互厌恶的牛，他们至少隔开一定距离。求1和N最远相距多少。
-题解：这很显然是差分约束的题目。为了保证图能够联通，需要固定i，j的大小顺序。 对于前m1个a,b,c表示a和b之间的距离不超过c，不妨设a&gt;b，则应满足d[a]-d[b]&lt;=c，最短路的要求就是如此，所以建边：b–&gt;a 边权为c。对于后m2个a，b，c表示a和b之间的距离不小于c，不妨设a&gt;b，则应满足d[a]-d[b]&gt;=c，即d[b]&lt;=d[a]-c，所以建边：a–&gt;b边权为-c。然后开始跑spfa，期间要判断负环，如果有负环存在则说明无解；如果dist[n]==0x3f3f3f3f,说明n号可以无限远。其余的则dist[n]为答案
+题解：这很显然是差分约束的题目。为了保证图能够联通，需要固定i，j的大小顺序。 对于前m1个a,b,c表示a和b之间的距离不超过c，不妨设a&gt;b，则应满足d[a]-d[b]&lt;=c，最短路的要求就是如此，所以建边：b—&gt;a 边权为c。对于后m2个a，b，c表示a和b之间的距离不小于c，不妨设a&gt;b，则应满足d[a]-d[b]&gt;=c，即d[b]&lt;=d[a]-c，所以建边：a—&gt;b边权为-c。然后开始跑spfa，期间要判断负环，如果有负环存在则说明无解；如果dist[n]==0x3f3f3f3f,说明n号可以无限远。其余的则dist[n]为答案
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt</div>
         </div>

@@ -186,7 +186,7 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-3268#author=Demon_de_Laplace" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-3268#author=Demon_de_Laplace</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>N头牛，M条单行道，在s出举行聚会，每头牛出发和返回都是走最短路，问所有牛中走的路程最远的牛走了多远？</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>建边的时候建双向边，k=2开始.<br>当边号为偶数时，说明是正边；<br>当边号为奇数时，说明时反边；<br>从s出发，跑正边，dist[i]存的是从s到i的最短距离；<br>从s出发，跑反边，dist[i]存的是从i到s的最短距离；<br>ans=max(ans,dist1[i]+dist2[i])</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -268,14 +268,15 @@ int main()
     }
     printf(&quot;%d\n&quot;,ans);
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-ynigUeNx" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-sfWIvqZS" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-ynigUeNx"),
+            element: document.getElementById("aplayer-sfWIvqZS"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -329,6 +330,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

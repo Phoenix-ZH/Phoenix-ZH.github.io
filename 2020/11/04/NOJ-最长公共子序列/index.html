@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    594 字
+                    579 字
                   </span>&nbsp;
                 
 
@@ -183,7 +183,7 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <h1 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h1><p>描述</p>
-<p>一个给定序列的子序列是在该序列中删去若干元素后得到的序列。确切地说，若给定序列X=&lt;x1, x2,…, xm&gt;，则另一序列Z=&lt;z1, z2,…, zk&gt;是X的子序列是指存在一个严格递增的下标序列 &lt;i1, i2,…, ik&gt;，使得对于所有j=1,2,…,k有：<br>Xij ＝ Zj<br>如果一个序列S即是A的子序列又是B的子序列，则称S是A、B的公共子序列。<br>求A、B所有公共子序列中最长的序列的长度。</p>
+<p>一个给定序列的子序列是在该序列中删去若干元素后得到的序列。确切地说，若给定序列X=<x1, x2,…, xm>，则另一序列Z=<z1, z2,…, zk>是X的子序列是指存在一个严格递增的下标序列 <i1, i2,…, ik>，使得对于所有j=1,2,…,k有：<br>Xij ＝ Zj<br>如果一个序列S即是A的子序列又是B的子序列，则称S是A、B的公共子序列。<br>求A、B所有公共子序列中最长的序列的长度。</p>
 <p>输入</p>
 <p>输入共两行，每行一个由字母和数字组成的字符串，代表序列A、B。A、B的长度不超过200个字符。</p>
 <p>输出</p>
@@ -199,7 +199,7 @@
 <p>当i,j&gt;0,si!=tj时，dp[i][j]=max{dp[i][j-1],dp[i-1][j]};</p>
 <h3 id="时间复杂度："><a href="#时间复杂度：" class="headerlink" title="时间复杂度："></a><strong>时间复杂度：</strong></h3><p>由于只需要填一个m行n列的二维数组，其中m代表第一个字符串长度，n代表第二个字符串长度</p>
 <p>所以时间复杂度为O（m*n）</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -229,12 +229,12 @@ int main(){
 }
 </code></pre>
 
-        <div id="aplayer-fprefIMH" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-qWKtTyop" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-fprefIMH"),
+            element: document.getElementById("aplayer-qWKtTyop"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -249,7 +249,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -290,6 +289,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

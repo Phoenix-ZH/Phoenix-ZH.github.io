@@ -185,7 +185,7 @@
             <h1 id="A-题目名称："><a href="#A-题目名称：" class="headerlink" title="A.题目名称："></a>A.题目名称：</h1><p>Suborrays</p>
 <h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>求一个长度为n的序列，保证任意区间[i,j]之间a[i]|a[i+1]|…|a[j]&gt;=i-j+1.</p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>直接按序输出1 - n一定是符合的。</p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int T,n;
 int main()
@@ -197,11 +197,12 @@ int main()
         for(int i=1;i&lt;=n;i++)cout&lt;&lt;i&lt;&lt;&#39; &#39;;cout&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="B-题目名称："><a href="#B-题目名称：" class="headerlink" title="B.题目名称："></a>B.题目名称：</h1><p> Fix You </p>
 <h2 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h2><p>一个(n,m)的矩阵，每一个单位格上有‘D’，‘R’，‘D’：向下移动一格，‘R’：向右移动一格。对于任意位置上的物品需要保证它可以运动到(n,m)，一旦出界就失败了。问至少要改变几个单位格？</p>
 <h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>真正有影响的是最后一行和最后一列。若最后一行还有‘D’一定不符合条件，必须改成‘R’；若最后一列还有‘R’一定不符合条件，必须改成‘D’。</p>
-<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=100+50;
 int T,n,m;char s[maxn][maxn];
@@ -220,11 +221,14 @@ int main()
         cout&lt;&lt;ans&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="C-题目名称："><a href="#C-题目名称：" class="headerlink" title="C.题目名称："></a>C.题目名称：</h1><p> Cyclic Permutations </p>
-<h2 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h2><p>长度为n的序列中的数字各不相同。<br>对于每一个i，找到一个最大的j(j&lt;i)使得pj&gt;pi，i与j之间连一条无向边；<br>对于每一个i，找到一个最小的(j&gt;i)使得pj&gt;pi，i与j之间连一条无向边。<br>问当一个序列n存在环的时候，一共有多少种排列组合。</p>
-<h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><p>根据所给的例子知：只要存在一个i，若左边依次递增，右边依次递减，则不符合要求。可以考虑全排列组合的总数-不符合条件的总数。现在求不符合要求的：最大的数字n有n个可选择位置，总数之之和为<br>$$<br>C_n^0+C_n^1+C_n^2+….+C_n^{n-1}<br>$$<br>实际上就是2^(n-1)。答案就是：n！-2^(n-1)</p>
-<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h2><p>长度为n的序列中的数字各不相同。<br>对于每一个i，找到一个最大的j(j<i)使得pj>pi，i与j之间连一条无向边；<br>对于每一个i，找到一个最小的(j&gt;i)使得pj&gt;pi，i与j之间连一条无向边。<br>问当一个序列n存在环的时候，一共有多少种排列组合。</p>
+<h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><p>根据所给的例子知：只要存在一个i，若左边依次递增，右边依次递减，则不符合要求。可以考虑全排列组合的总数-不符合条件的总数。现在求不符合要求的：最大的数字n有n个可选择位置，总数之之和为</p>
+<script type="math/tex; mode=display">
+C_n^0+C_n^1+C_n^2+....+C_n^{n-1}</script><p>实际上就是2^(n-1)。答案就是：n！-2^(n-1)</p>
+<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=1e6+50;
 const int Mod=1e9+7;
@@ -242,13 +246,14 @@ int main()
     ans=(ans-ans1+Mod)%Mod;
     cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="D-题目名称："><a href="#D-题目名称：" class="headerlink" title="D.题目名称："></a>D.题目名称：</h1><p> 505 </p>
 <h2 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h2><p>对于一个二进制矩阵，使得它是一个  <strong>good</strong>  <strong>matrix</strong> （任意的偶数边的正方形内有奇数个1）.问使得它成为<strong>good matrix</strong>需要该边多少次？如果无法称为<strong>good matrix</strong>则输出-1</p>
-<h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>保证n&lt;=m.若n&gt;=4一定不符合，4 * 4的方阵包含4个2 * 2，4个奇数相加一定是偶数。所以不符合。n==1的一定是0，即始终符合。现在主要讨论n==2，n==3的情况。</p>
+<h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>保证n&lt;=m.若n&gt;=4一定不符合，4 <em> 4的方阵包含4个2 </em> 2，4个奇数相加一定是偶数。所以不符合。n==1的一定是0，即始终符合。现在主要讨论n==2，n==3的情况。</p>
 <p>n==2：看每一列的1个数%2，统计奇偶性与列下标不对应的总数，答案就是min（ans，m-ans）</p>
 <p>n==3：dp[l][i][j][k]表示第l列的三行数字依次为k、j、i的时候需要改变的总数。先初始化为1e9，第一列的每种情况进行列举。然后从第二列开始枚举，依次枚举当前列的三行数字，和上一列的三行数字，并且保证任意2*2的都是奇数个1（即((j+k+jj+kk)&amp;1)&amp;&amp;((i+ii+j+jj)&amp;1)），得到当前列数字为i，j，k需要改变的次数，更新方程。</p>
-<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h2><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=1e6+50;
 int n,m;int dp[maxn][2][2][2],a[4][maxn];
@@ -340,14 +345,15 @@ int main()
         cout&lt;&lt;ans&lt;&lt;endl;
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-POfowswc" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-KbGqJKuz" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-POfowswc"),
+            element: document.getElementById("aplayer-KbGqJKuz"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -402,6 +408,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

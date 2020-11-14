@@ -186,7 +186,7 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/POJ-1797#author=0" target="_blank" rel="noopener">https://vjudge.net/problem/POJ-1797#author=0</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>求1-n路径上边权最小值最大。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>最短路径的变形题，用spfa来实现<br>原本的dist[edge[i].to]=min(dist[edge[i].to],dist[x]+edge[i].w)<br>修改为dist[edge[i].to]=max(dist[edge[i].to],min(dist[x],edge[i].w)<br>注意初始化dist全为0，由于收缩，dist[1] =0x3f3f3f3f;</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -245,14 +245,15 @@ int main()
         printf(&quot;Scenario #%d:\n&quot;,opt);
         printf(&quot;%d\n\n&quot;,dist[n]);
     }
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-DmsHiKgb" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-egSiCWWx" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-DmsHiKgb"),
+            element: document.getElementById("aplayer-egSiCWWx"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -306,6 +307,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

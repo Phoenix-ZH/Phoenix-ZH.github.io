@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    2k 字
+                    406 字
                   </span>&nbsp;
                 
 
@@ -149,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      9 分钟
+                      1 分钟
                   </span>&nbsp;
                 
 
@@ -185,7 +185,7 @@
             <h1 id="A-题目名称："><a href="#A-题目名称：" class="headerlink" title="A:题目名称："></a>A:题目名称：</h1><p> Cow and Haybales </p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>t组数据，每组数据n堆，有d天，每天可以相邻的堆直接移动物品，每次移动物品数质可以为1，或者不移动。问d天后，第一堆最多有多少个物品。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>每天只能再相邻堆移动1个物品。直接考虑模拟，从最近的地方往前移动，并且一直移动同一个物品，直到它移动到第一堆的地方。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -223,11 +223,12 @@ int main()
         printf(&quot;%d\n&quot;,a[1]);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="B：题目名称："><a href="#B：题目名称：" class="headerlink" title="B：题目名称："></a>B：题目名称：</h1><p> Cow and Friend</p>
 <h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有t只兔子，每只兔子有n个喜欢的数字，并且它想一共跳x的距离(即从 (0，0)跳到(x，0))。每次跳跃都跳的距离只能是自己喜欢的数字。问至少跳几次？</p>
-<h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>看了一下样例，感觉很像是贪心，于是模拟了一下，首先找到最大的喜欢的数字，假设maxx&lt;x，并且2 * maxx&gt;x，那么最多跳两次就够了，成等腰三角形，中间的倾角视情况而定，但是一定是可以的，原因：maxx+maxx&gt;x符合三角形的定义。假设maxx&lt;x，并且2 * maxx&lt;x(等于的情况必然是2)，如果x%maxx==0，那么直接沿着x轴跳x/maxx次就可以了，否则跳x/maxx+1次，(起点和终点相连接的边做调整，使得剩余长度是maxx的倍数就可以了)。如果maxx&gt;x，如果有喜欢的数字==x，就跳1次，否则就2次。</p>
-<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h4><p>看了一下样例，感觉很像是贪心，于是模拟了一下，首先找到最大的喜欢的数字，假设maxx<x，并且2 * maxx>x，那么最多跳两次就够了，成等腰三角形，中间的倾角视情况而定，但是一定是可以的，原因：maxx+maxx&gt;x符合三角形的定义。假设maxx<x，并且2 * maxx<x(等于的情况必然是2)，如果x%maxx==0，那么直接沿着x轴跳x/maxx次就可以了，否则跳x/maxx+1次，(起点和终点相连接的边做调整，使得剩余长度是maxx的倍数就可以了)。如果maxx>x，如果有喜欢的数字==x，就跳1次，否则就2次。</p>
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -265,11 +266,12 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="C：题目名称："><a href="#C：题目名称：" class="headerlink" title="C：题目名称："></a>C：题目名称：</h1><p>Cow and Message</p>
 <h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p>求串s中出现次数最多的子序列t的出现次数。其中子序列在s中所对应的下标必须构成等差数列。</p>
 <h4 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h4><p>英语差的锅。一开始被题意神奇迷惑。以为只有某个子串的下标构成了等差数列那么这一类都可以了。这就是一开始觉得方法始终不对的原因。设想子串长度都为1或者2，那么它必然符合题意。如果子串长度为3呢？那么中间只有1个可以符合。这样数量就大大减少了。于是猜测子串长度都为1或者2。都为1即统计每种字母出现的次数然后取max。对于子串长度为2，枚举当前字母i，然后枚举匹配字母j(i!=j)，再枚举起点，并且预处理每个结点之后26个字母每个字母的个数，然后计算。最后还需要求同种字母的情况，即w[i]*(w[i]-1)/2,最后取max就是答案。</p>
-<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -315,11 +317,12 @@ int main()
     }
     printf(&quot;%lld\n&quot;,ans);
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="D：题目名称："><a href="#D：题目名称：" class="headerlink" title="D：题目名称："></a>D：题目名称：</h1><p>Cow and Fields</p>
 <h4 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h4><p>有n个点，m条道路(双向)，k个特殊点，给定m条边，每条边长度为1，在k个特殊点种选取两个点连接，使得从1到n最短路径要尽量长。</p>
 <h4 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h4><p>首先要得到每个点到起点1的距离和到终点n的距离，直接以1为起点跑一次dijksta+堆优化，再以n为起点跑依次dijkstra+堆优化。设最短路径长度为minn，则要求min(minn,min(dist1[i]+dist2[j]+1,dist1[j]+dist2[i]+1)),假设再i和j之间连边，可能是i更靠近1，也可能是j更靠近1，所以求1-n的最短路径长度时取min(dist1[a[i]]+dist2[a[j]]+1,dist1[a[j]]+dist2[a[i]]+1);但是这样的时间复杂度是k * k显然不符合，需要优化，优化的切入点就是a[i]和a[j]之间的关系。假如a[i]始终比a[j]更靠近起点1，那么答案就是min(minn,dist1[a[i]]+dist2[a[j]]+1);并且假设i是最靠近j的并且比j更靠近起点1的特殊点。那么答案就是min(minn,dist1[a[i]]+dist2[a[i]+1]+1);那要如何让a数组种的元素按照到起点的距离进行递增呢？按照前面的假设可得dist1[a[i]]+dist2[a[j]]+1&lt;dist1[a[j]]+dist2[a[i]]+1(i比j更靠近起点1)，即dist1[a[i]]-dist2[a[i]]&lt;dist1[a[j]]-dist2[a[j]];所以直接sort(要求dist1[a[i]]-dist2[a[i]]&lt;dist1[a[j]]-dist2[a[j]])，排序之后就是按照距离起点的距离递增排列了。那么就可以线性找到答案了。</p>
-<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -416,14 +419,15 @@ int main()
     ans=min(ans,minn);
     printf(&quot;%d\n&quot;,ans);
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-wZqVREWC" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-CuuzNQXI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-wZqVREWC"),
+            element: document.getElementById("aplayer-CuuzNQXI"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -477,6 +481,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

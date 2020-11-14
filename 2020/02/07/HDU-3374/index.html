@@ -186,7 +186,7 @@
 <h4 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h4><p><a href="https://vjudge.net/problem/HDU-3374" target="_blank" rel="noopener">https://vjudge.net/problem/HDU-3374</a></p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>对于一个字符串，它可以每次左移一次，得到一个新的字符串，因此一个长度为n的字符串，可以得到n个字符串。问，字典序最小的字符串排第几位，一共有多少个，字典序最大的字符串排第几位，一共有多少个<br>ps:如果最大和最小的有多个，输出最先出现的那个。</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>求有多少个相同的字符串相对简单，并且运用到了kmp的知识，只有内部循环的字符串才可能会重复，对于这种字符串来讲它的循环节T= n-Next[n]，出现次数times=n/T。如何求最大字符串和最小字符串呢？这个就需要用到字符串的最小表示法和最大表示法。这里简单描述一下字符串的最小表示法，至于字符串的最大表示法，可以将最小表示法照搬修改即可。<br>字符串的最小表示法：<br>设定一个opt1和一个opt2与k。初始opt1=0，opt2=1，k=0，一开始指向s[0],s[1]<br>如果s[opt1+k]==s[opt2+k]，则k++.注意opt2+k可能越界，所以要对len取模。当k==len时，说明每一个字符串都恰好等于，没有字符串比当前的小。就直接返回min(opt1,opt2)<br>如果s[opt1+k]&gt;s[opt2+k],说明s[opt1…..opt1+k]之间的每个字符都不可能作为最小字符串的起始点.于是opt1滑至opt1+k+1，k=0.<br>如果s[opt1+k]&lt;s[opt2+k],说明s[opt2…..opt2+k]之间的每个字符都不可能作为最小字符串的起始点.于是opt2滑至opt2+k+1，k=0.<br>如果opt1==opt2，则让刚才修改过的opt++；<br>最后返回min(opt1,opt2)就可以了。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -264,14 +264,15 @@ int main()
         printf(&quot;%d %d %d %d\n&quot;,x1+1,times,x2+1,times);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-EqaZdSbb" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-jQxiDhaL" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-EqaZdSbb"),
+            element: document.getElementById("aplayer-jQxiDhaL"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -286,7 +287,6 @@ int main()
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -329,6 +329,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

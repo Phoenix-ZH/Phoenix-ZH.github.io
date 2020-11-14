@@ -192,11 +192,11 @@
 <p> <strong>①</strong> <strong>最小顶点覆盖数&gt;=最大匹配数</strong>：</p>
 <p>假设最大匹配数为n，那么我们就得到了n条互不相邻的边，光覆盖这些边就至少需要n个顶点。由于最大匹配数为n，那么就可能存在一些边不在最大匹配的集合中，这样的话要覆盖这些边就还需要顶点，因此<strong>最小顶点覆盖数&gt;=最大匹配数</strong>。</p>
 <p> <strong>②</strong> <strong>最大匹配数&gt;=最小顶点覆盖数</strong>：</p>
-<p>假设匹配边a–&gt;b在最大匹配的集合中，如果a相连的边有未匹配点x，b相连的边有未匹配点y，那么x-a<strong>-</strong>b-y是一条增广路，而这就与M是<strong>最大匹配数</strong>矛盾了。所以a,b不可能同时相连为匹配点。</p>
+<p>假设匹配边a—&gt;b在最大匹配的集合中，如果a相连的边有未匹配点x，b相连的边有未匹配点y，那么x-a<strong>-</strong>b-y是一条增广路，而这就与M是<strong>最大匹配数</strong>矛盾了。所以a,b不可能同时相连为匹配点。</p>
 <p>因此a，b中有非匹配边相连的点假设是a，那么选择a就可以覆盖a-b以及a-？(非匹配边)。并且M中没有孤立的非匹配边，每一条边一定会跟一个匹配点相连。这就意味着，每一个非匹配边的出发点一定同时连接了一条匹配边，这样非匹配边不可能单独存在。那么，从最大匹配边中选择M个点一定可以覆盖所有的边。所以<strong>最大匹配数&gt;=最小顶点覆盖数</strong>。</p>
 <p>综上所述：<strong>最大匹配数==最小顶点覆盖数</strong>。</p>
 <p>而此题就是要求最少的点将所有的边覆盖，就是<strong>最小点覆盖</strong>的模板题了。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -256,14 +256,15 @@ int main()
         printf(&quot;%d\n&quot;,ans);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-XIvIDTdg" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-ZDECHCxs" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-XIvIDTdg"),
+            element: document.getElementById("aplayer-ZDECHCxs"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -319,6 +320,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

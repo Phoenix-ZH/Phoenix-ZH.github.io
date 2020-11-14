@@ -187,7 +187,7 @@
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>免费送房子，m表示人，H表示房子，每个房子只能进一个人，房子数等于人数。<br>黄弘毅为了方便起见决定要让所有人到自己的房子的距离和最小，请问这个距离和是多少？</p>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><p>距离和，这个问题一看显然就是费用流问题，而此题就是最小费用流的裸题，将人和房子统计出来，然后s与人连边，边权为1，费用dis为0，房子与t连边，边权为0，费用dis为0，人与房子连边，边权为1，费用dis为曼哈顿距离。然后跑MCMF就可以了。</p>
 <p>ps：我麻烦了一点，对房子进行了拆点，其实可以不拆，毕竟与t相连，流量固定了。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -301,14 +301,15 @@ int main()
         printf(&quot;%d\n&quot;,mincost);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-KQJXwPqB" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-ORQnwjWX" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-KQJXwPqB"),
+            element: document.getElementById("aplayer-ORQnwjWX"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -364,6 +365,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

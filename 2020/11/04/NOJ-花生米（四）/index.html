@@ -200,10 +200,10 @@
 <p>3.如果存在花生数量&gt;1的花生堆：</p>
 <p>​        (1)如果总共就两堆花生：如果两堆数目一样，后手只要按照先手的取法跟着取就好了。后手必胜，输出0；否则先手必胜，输出1；</p>
 <p>​        (2)如果花生堆数&gt;2:这时候需要判断含1个花生米的堆数，和含&gt;1个花生米的堆数。sign1=0表示只含一个花生米的堆数为偶数，sign2=0表示含&gt;1个花生米的堆数为偶数。（这里偶数不含0，为0就表示不存在这种类型的花生堆，应该认为这时的sign=1）</p>
-<p>​        当sign1==1&amp;&amp;sign2==1的时候： 全奇数堆先手必胜，所以Jerry必须先手：比如1 1 1 3 3 3–&gt;1 3 3 3先手必胜 （后手无法赢）  </p>
-<p>​        当存在偶数堆，则让对手取成全奇，在此之前，Jerry保持非全奇  ：比如1 1 1 1 3 3 3 3 .如果先手选3，后手跟着选3，直到3用完，先手选择1，后手到达必胜态 。 如果 先手选3中的2，–&gt;1 1 1 1 1 3 3 3 后手选 1–&gt;1 1 1 1 3 3 3,直到3用完，先手选择1，后手到达必胜态。 同理1 1 1 3 3 3 3类型和1 1 1 1 3 3 3类型。  </p>
+<p>​        当sign1==1&amp;&amp;sign2==1的时候： 全奇数堆先手必胜，所以Jerry必须先手：比如1 1 1 3 3 3—&gt;1 3 3 3先手必胜 （后手无法赢）  </p>
+<p>​        当存在偶数堆，则让对手取成全奇，在此之前，Jerry保持非全奇  ：比如1 1 1 1 3 3 3 3 .如果先手选3，后手跟着选3，直到3用完，先手选择1，后手到达必胜态 。 如果 先手选3中的2，—&gt;1 1 1 1 1 3 3 3 后手选 1—&gt;1 1 1 1 3 3 3,直到3用完，先手选择1，后手到达必胜态。 同理1 1 1 3 3 3 3类型和1 1 1 1 3 3 3类型。  </p>
 <p><strong>ps</strong>： 注意 7 3 3 3 3 3 3 3 这种类型即含1个花生米的堆数=0，这个时候sign1=1，sign2=1，就是指只存在奇数堆，先手必胜。  </p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="cpp">#include&lt;cstdio&gt;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -251,14 +251,15 @@ int main(){
 /*7
 3 3 3 3 3 3 3
 */
-//Jerry 后手必胜的条件：后手且吃掉最后的花生米，则Jerry无法后手胜利。</code></pre>
+//Jerry 后手必胜的条件：后手且吃掉最后的花生米，则Jerry无法后手胜利。
+</code></pre>
 
-        <div id="aplayer-IuSwxlCS" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-QuhpkGpH" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-IuSwxlCS"),
+            element: document.getElementById("aplayer-QuhpkGpH"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -273,7 +274,6 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -314,6 +314,11 @@ int main(){
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

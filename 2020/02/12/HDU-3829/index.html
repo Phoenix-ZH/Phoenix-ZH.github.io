@@ -194,7 +194,7 @@
 <p> <img src="https://img2018.cnblogs.com/blog/1502540/201810/1502540-20181003114344925-207551823.png" srcset="/img/loading.gif" alt="img"> </p>
 <p>红点的选择：显然每一条非匹配边一定和匹配边有公共点，所以这样的公共点一定会被选出来，不可能作为最大独立集的元素。</p>
 <p>这样就了解了<strong>最大独立集</strong>，将每一个人喜欢的动物和不喜欢的动物保存下来，1-C为猫，1+N-D+N为狗，如果一个人i喜欢的动物是人j讨厌的动物，那么i与j连双向边。显然如果甲喜欢的动物是乙讨厌的动物，那么甲、乙最多能有一个人高兴。最后求出最大匹配ans，注意ans/=2，这样ans代表的是有多少个人不可以高兴，n-ans就是高兴的人数。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;cstdio&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
@@ -265,14 +265,15 @@ int main()
         printf(&quot;%d\n&quot;,n-ans);
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-JrTVtdSi" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-HESUuvWj" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-JrTVtdSi"),
+            element: document.getElementById("aplayer-HESUuvWj"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -328,6 +329,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>

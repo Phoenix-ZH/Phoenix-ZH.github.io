@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.5k 字
+                    677 字
                   </span>&nbsp;
                 
 
@@ -149,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      7 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -185,7 +185,7 @@
             <h1 id="A-题目名称："><a href="#A-题目名称：" class="headerlink" title="A.题目名称："></a>A.题目名称：</h1><p> Captain Flint and Crew Recruitment </p>
 <h4 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h4><p>如果一个数 x能够表示成两个不同质数的乘积，那我们就称 x是 <strong>nearly prime</strong> 。给出n，求n能否分成4个不同正整数的和，其中至少三个是 <strong>nearly prime</strong> </p>
 <h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>首先可以取得最小的三个 <strong>nearly prime</strong>：6，10，14。如果n&lt;=30那么肯定无法得到符合要求的组合。如果n&gt;=45则至少都有6，10，14，所以一定可以得到符合要求的组合。问题就是30&lt;n&lt;45之间的情况，只需要单独分析x=6/10/14（x=n-30）的情况。</p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 int T,n;
 int main()
@@ -224,11 +224,12 @@ int main()
         }
     }
     return 0;
-}</code></pre>
+}
+</code></pre>
 <h1 id="B-题目名称："><a href="#B-题目名称：" class="headerlink" title="B.题目名称："></a>B.题目名称：</h1><p> Captain Flint and a Long Voyage </p>
 <h4 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给一个n，求得一个n位的十进制数x，将x转换成二进制数，并且去掉最后n位，要求这个去掉n位的二进制的数最大，问x的最小可能值。</p>
 <h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><p>所有数字都为9，4个二进制位为一组，若一组中全为0则十进制写为8，其余正常转换。</p>
-<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=500000+1000;
 int T,n,a[maxn];
@@ -258,11 +259,12 @@ int main()
         }
         cout&lt;&lt;endl;
     }
-}</code></pre>
+}
+</code></pre>
 <h1 id="C-题目名称："><a href="#C-题目名称：" class="headerlink" title="C.题目名称："></a>C.题目名称：</h1><p> Uncle Bogdan and Country Happiness </p>
 <h4 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给出一棵树，每个节点给出最终的人数、最终的心情值。每个人从1号节点出发，在路上可能有些人心情会从good变成bad。每个人沿着最短路径回到自己的节点，求每个节点给出的心情值是否可能都是准确的。（心情值=good人数-bad人数） </p>
-<h4 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h4><p>先dfs求得每一个结点经过的总的人数。再dfs求每一个结点所有经过这个结点的人中good的人数和bad的人数。即：good[]+bad[]=p[]，good[]-bad[]=h[]。所以good[]=（p[]+h[])/2,bad[]=(p[]-good[]).如果一个结点的good[]+bad[]!=p[]||good[]-bad[]!=h[]||good[]&lt;0|bad[]&lt;0那么这个结点的心情值就是错误的。然后更新子节点，注意要统计子节点的总的bad的人数。如果当前结点的bad[]-t[] (最终节点的人数)&gt;tot(子节点的bad总数)说明这个组合是错的。</p>
-<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+<h4 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h4><p>先dfs求得每一个结点经过的总的人数。再dfs求每一个结点所有经过这个结点的人中good的人数和bad的人数。即：good[]+bad[]=p[]，good[]-bad[]=h[]。所以good[]=（p[]+h[])/2,bad[]=(p[]-good[]).如果一个结点的good[]+bad[]!=p[]||good[]-bad[]!=h[]||good[]<0|bad[]<0那么这个结点的心情值就是错误的。然后更新子节点，注意要统计子节点的总的bad的人数。如果当前结点的bad[]-t[] (最终节点的人数)>tot(子节点的bad总数)说明这个组合是错的。</p>
+<h4 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 const int maxn=1e5+50;
 struct node
@@ -320,11 +322,12 @@ int main()
         if(sign)printf(&quot;NO\n&quot;);
         else printf(&quot;YES\n&quot;);
     }
-}</code></pre>
+}
+</code></pre>
 <h1 id="D-题目名称："><a href="#D-题目名称：" class="headerlink" title="D.题目名称："></a>D.题目名称：</h1><p> Captain Flint and Treasure </p>
 <h4 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a>题目大意：</h4><p>给出长度为n的a数组和b数组，一共操作n次（每个位置必须操作一次），若第i次选定位置i，则<code>ans+=a[i]</code>，并且如果<code>b[i]!=-1</code> <code>a[b[i]]+=a[i]</code>，确定一个操作顺序使得取出的ans最大，并输出操作顺序。 </p>
-<h4 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h4><p>对于b[i]!=-1的则可以i—&gt;b[i]引一条边。然后进行拓扑排序，如果当前节点的值大于0，则加到下一个节点中，否则就不加入（加了反而使得答案更小），最后按照拓扑排序的顺序输出。（节点值&lt;0的倒序输出防止叠加）</p>
-<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="cpp">#include&lt;bits/stdc++.h&gt; 
+<h4 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h4><p>对于b[i]!=-1的则可以i—-&gt;b[i]引一条边。然后进行拓扑排序，如果当前节点的值大于0，则加到下一个节点中，否则就不加入（加了反而使得答案更小），最后按照拓扑排序的顺序输出。（节点值&lt;0的倒序输出防止叠加）</p>
+<h4 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h4><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt; 
 using namespace std;
 const int maxn=2e5+50;
 struct node
@@ -374,14 +377,15 @@ int main()
     cout&lt;&lt;ans&lt;&lt;endl;
     for(long long i=1;i&lt;=n;i++)if(dp[f[i]]&gt;0)cout&lt;&lt;f[i]&lt;&lt;&#39; &#39;;
     for(long long i=n;i&gt;=1;i--)if(dp[f[i]]&lt;=0)cout&lt;&lt;f[i]&lt;&lt;&#39; &#39;;cout&lt;&lt;endl;
-}</code></pre>
+}
+</code></pre>
 
-        <div id="aplayer-mswapueW" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-neWvzxWP" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-mswapueW"),
+            element: document.getElementById("aplayer-neWvzxWP"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -396,7 +400,6 @@ int main()
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
-
 
             <hr>
           </div>
@@ -437,6 +440,11 @@ int main()
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
     
   </div>
 </div>
