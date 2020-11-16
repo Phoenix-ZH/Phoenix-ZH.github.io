@@ -153,6 +153,55 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/13/CodeForces-1394/">
+        <p class="h4 index-header">CodeForces-1394</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A.题目名称 Boboniu Likes to Color Balls 
+题目大意：r个红球，g个绿球，b个蓝球，w个白球。可以任意次将一个红球和一个绿球和一个蓝球都转化成白球。是否可以组成回文色？
+思路：当偶数色的数目&gt;=3则一定可以。若只有一个偶数色，则红绿蓝都至少有一个就可以。其余的都是不可以的。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+long long T,a,b,c,d;
+int main()
+{
+    cin&gt;&gt;T;
+    while(T--)
+    {
+        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d;
+        int tot=0;
+        if(a%2==0)tot++;
+        if(b%2==0)tot++;
+        if(c%2==0)tot++;
+        if(d%2==0)tot++;
+        if(tot&gt;=3||tot==0)
+        {
+         </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-13&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/08/10/CodeForces-1391/">
         <p class="h4 index-header">CodeForces-1391</p>
         
@@ -533,55 +582,6 @@ int main()
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-28&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/21/CodeForces-1326/">
-        <p class="h4 index-header">CodeForces-1326</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A 题目名称：A Bad Ugly Numbers
-题目大意： 构造一个 n位十进制数，保证不被该数的任意一位整除。 
-题解：由于只需要求一组即可，那么就猜测一下一个数字一定要么是奇数要么是偶数，若为奇数则个位不为偶数，若为偶数则个位为偶数。这么不妨用2来替换。假如剩余全为3，那么3*x+2一定无法被3整除。所以就全用2，3表示。偶数不能被2整除。那么开头数字为2，其余全为3就可以了。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int T,n;
-int main()
-{
-    scanf(&quot;%d&quot;,&amp;T);
-    while(T--)
-    {
-        scanf(&quot;%d&quot;,&amp;n);
-        if(n==1)
-        {
-            printf(&quot;-1\n&quot;);
-        }
-        else 
-        {
-            printf(&quot;2&quot;);
-  </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-21&nbsp;&nbsp;
         
         
         

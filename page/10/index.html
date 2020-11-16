@@ -153,6 +153,43 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3660/">
+        <p class="h4 index-header">POJ-3660</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3660 Cow Contest
+题目链接：https://vjudge.net/problem/POJ-3660#author=arasHi_
+题目大意：有n头牛，m条比赛结果，每行两个数字，第一个数字表示的是胜利者。问有几头牛的排名可以确定？
+题解：排名可以确定，这该如何理解？对于结点i，如果箭头指向i所包含的结点数为ans1，i箭头指出所包含的结点数为ans2，若ans1+ans2==n-1就说明结点i的排名可以确定。问题在于如何确定ans1，ans2的值。举个例子：若a可以到b，b可以到c，那么a就可以到c。这就是传递闭包了。如何进行传递闭包呢？以上例子，a可以到b，b可以到c，则dist[a][b]=1,dist[b][c]=1,则a可以到c，即dist[a][c]=1；用floyd进行收缩即可。然后每个结点是否可以到达剩余的n-1个结点，或者剩余n-1个结点能否到达该结点，即ans1+ans2==n。判断条件就是dist[i][j]==1||dist[j][i]==1;
+代码：#include&lt;cstdio&gt;
+#include&lt;cst</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92">闭包传递</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-2240/">
         <p class="h4 index-header">POJ-2240</p>
         
@@ -489,47 +526,6 @@ int n,T,a[maxn],head[maxn],v</div>
             <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
             <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F">差分约束</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4370/">
-        <p class="h4 index-header">HDU-4370</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4370 0 or 1
-题目链接：https://vjudge.net/problem/HDU-4370#author=cjyl
-题目大意：给出一个n×n的矩阵，求一个符合题意的n×n的只含有0和1的矩阵，使得两个矩阵位置对应的元素相乘后和最小。
-题意要求01矩阵：
-
-X12+X13+…+X1n=1
-2.X14+X24+…+X(n-1)n=1
-3.∑Xki (1&lt;=k&lt;=n)=∑Xij (1&lt;=j&lt;=n).（1&lt;i&lt;n）
-
-
-题解：对于条件1，可以说明1结点一定有且仅有一个出度，并且不是指向自己。对于条件2，可以说明n结点一定有且仅有一个入度，并且该入度的发出者不是自己。对于条件3，可以说明每个2-n-1的每一个结点的出度等于入度。而题目要求求ΣCij * X ij最小值，即求最短路。但是要分2种情况：原因：结点1一定会指向结点i(i∈[2,n])，然后结点i一定指向别的结点，注意结点i不可以直接指向它自己，因为这样出度就不等于入读。最终会指向结点n，或者指向结点1形成自环。对于结点n来讲也是一样。
-情况1：结点1最终指向结点n</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
         
       </div>

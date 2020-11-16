@@ -153,6 +153,47 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3416/">
+        <p class="h4 index-header">HDU-3416</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-3416 Marriage Match IV
+题目链接：https://vjudge.net/problem/HDU-3416
+题目大意： n 个点 m 条边带权有向图，问每条边最多只能走一次时从 A 到 B 的最短路径数量。 
+题解：问题是问从s—&gt;t有多少种完全不同的最短路径。首先要想办法找到哪些边属于最短路径里面的边，于是先正向跑一遍spfa，再反向跑一遍spfa，设smin为s—&gt;t的最短路的长度，那如果一条边属于最短路，那它一定满足dist1[x[i]]+dist2[y[i]]+w[i]==smin&amp;&amp;x[i]!=y[i]。这样就可以找到最短路径的所有边，然后建边时注意，x[i]—&gt;y[i],边权为1，跑dinic，得到的最大流ans就是答案。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/luogu-2764/">
         <p class="h4 index-header">luogu-2764</p>
         
@@ -485,45 +526,6 @@ int T,len1,len2,Next[maxn],Exten</div>
 题解：讲解一下Manacher算法首先该算法的时间复杂度为O(N)，一个长度为len的字符串，len可能为奇数，也可能是偶数，那么中间点就不一样了，那对于长度L=2len+1呢？显然它一定是奇数。具体操作为：t[0]=’$’;for(int i=1;i&lt;=len;i++)t[++len]=’#’,t[++len]=s[i-1];t[++len]=’#’;比如字符串 abccba 就转换成了 $#a#b#c#c#b#a#;
 以上是初始化的过程，接下来是具体的操作过程：对于p[i]，如果i&lt;mx，设j是i关于id对称点，如图所示，则基于以下三种情况，可以求出p[i]的值：
 （1）以j为中心的回文串有一部分在以id为中心的回文串之外。因为mx是以id为中心的最长回文的右边界，所以以i为中心的回文串不可能会有字符在以id为中心的回文串之外；否则mx就不是以id为中心的最长回文的右边界。所以，在</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Manacher">Manacher</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4513/">
-        <p class="h4 index-header">HDU-4513</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4513 吉哥系列故事——完美队形II
-题目链接：https://vjudge.net/problem/HDU-4513#author=hzoi2017_wty
-题目大意：假设有n个人按顺序的身高分别是h[1], h[2] … h[n]，从中挑出一些人形成一个新的队形，新的队形若满足以下要求，则就是新的完美队形：　　1、连续的　　2、形成回文串　　3、从左到中间那个人，身高需保证不下降
-　　　问有组成完美队形的最多人数
-题解：要求连续的并且是回文串，这很明显就是回文串的题，应该用Manacher算法，但是又要求从左到中间，身高不下降，就需要修改一下判定条件：    while(t[i+p[i]]==t[i-p[i]]&amp;&amp;(t[i-p[i]]==0||t[i-p[i]]&lt;=t[i-p[i]+2]))p[i]++;
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace </div>
         </div>
       </a>
 

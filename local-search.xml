@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>CodeForces-1446B-Catching Cheaters</title>
+    <link href="/2020/11/16/CodeForces-1446B-Catching%20Cheaters/"/>
+    <url>/2020/11/16/CodeForces-1446B-Catching%20Cheaters/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p> <img src="https://img-blog.csdnimg.cn/20201116101838941.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>定义DP[i][j]为以Ai和Bi作为结尾点的最大的答案（LCS(C,D)*4-|C|-|D|）,显然允许公共子序列为空，这样DP[i][j]=0.</p><p>有两种转移方式：<br>1.Ai==Bj，则DP[i][j]=min(DP[i][j],DP[i-1][j-1]+2),因为以Ai和Bj结尾的两个连续子串C和D的公共子序列的长度+1，同时两个连续子串C和D的长度+1，因此对答案的贡献就+2.<br>2.Ai!=Bj,DP[i][j]=max(DP[i][j],max(dp[i][j-1],DP[i-1][j])-1),因为以Ai和Bj结尾的两个连续子串C和D的公共子序列的长度不变，但是连续子串C或者D的长度+1，因此对答案的贡献-1</p><p><strong>PS：</strong>为什么情况2不会影响最优答案的形成？</p><p>由于情况2永远不会获得更大的LCS，它对答案的贡献也是越来越少。并且我们得到的答案一定是由情况1形成的。情况二只是针对部分C、D之间一段不存在公共子序列的情况，当到达情况一的时候并结合之前的贡献总和从而使得答案增大。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn=5000+50;int dp[maxn][maxn],n,m;char A[maxn],B[maxn];int main(){    cin&gt;&gt;n&gt;&gt;m&gt;&gt;A+1&gt;&gt;B+1;int len1=strlen(A+1),len2=strlen(B+1);    int ans=0;    for(int i=1;i&lt;=len1;i++){        for(int j=1;j&lt;=len2;j++){            if(A[i]==B[j]){                dp[i][j]=max(dp[i][j],max(dp[i-1][j-1]+2,2));            }            else{                dp[i][j]=max(dp[i][j],max(dp[i-1][j]-1,dp[i][j-1]-1));            }            ans=max(ans,dp[i][j]);        }    }    cout&lt;&lt;ans&lt;&lt;endl;    return 0;}</code></pre>        <div id="aplayer-CJvunVhd" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-CJvunVhd"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CodeForces</tag>
+      
+      <tag>DP</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CodeForces-1438D-Powerful Ksenia</title>
     <link href="/2020/11/14/CodeForces-1438D-Powerful%20Ksenia/"/>
     <url>/2020/11/14/CodeForces-1438D-Powerful%20Ksenia/</url>
