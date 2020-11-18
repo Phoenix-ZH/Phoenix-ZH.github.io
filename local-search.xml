@@ -4,11 +4,372 @@
   
   
   <entry>
+    <title>NOJ-1579-三阶幻方</title>
+    <link href="/2020/11/18/NOJ-1579-%E4%B8%89%E9%98%B6%E5%B9%BB%E6%96%B9/"/>
+    <url>/2020/11/18/NOJ-1579-%E4%B8%89%E9%98%B6%E5%B9%BB%E6%96%B9/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="三阶幻方"><a href="#三阶幻方" class="headerlink" title="三阶幻方"></a>三阶幻方</h1><p><img src="https://img-blog.csdnimg.cn/2020111822501232.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;int vis[15],a[5][5];void dfs(int x,int y){    int i;    if(x==4&amp;&amp;y==1){        for(i=1;i&lt;=3;i++){            if(a[i][3]+a[i][2]+a[i][1]!=15)return ;            if(a[1][i]+a[2][i]+a[3][i]!=15)return ;        }        if(a[1][1]+a[2][2]+a[3][3]!=15||a[1][3]+a[2][2]+a[3][1]!=15)return ;        for(i=1;i&lt;=3;i++){            cout&lt;&lt;a[i][1]&lt;&lt;&#39; &#39;&lt;&lt;a[i][2]&lt;&lt;&#39; &#39;&lt;&lt;a[i][3]&lt;&lt;endl;        }        cout&lt;&lt;endl;        return;    }    for(i=1;i&lt;=9;i++){        if(vis[i])continue;        vis[i]=1;        a[x][y]=i;        if(y==3)        dfs(x+1,1);        else         dfs(x,y+1);        vis[i]=0;    }}int main(){    dfs(1,1);    return 0;}</code></pre>        <div id="aplayer-DxjhgUrV" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-DxjhgUrV"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1575-图的m着色问题</title>
+    <link href="/2020/11/18/NOJ-1575-%E5%9B%BE%E7%9A%84m%E7%9D%80%E8%89%B2%E9%97%AE%E9%A2%98/"/>
+    <url>/2020/11/18/NOJ-1575-%E5%9B%BE%E7%9A%84m%E7%9D%80%E8%89%B2%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="图的m着色问题"><a href="#图的m着色问题" class="headerlink" title="图的m着色问题"></a>图的m着色问题</h1><p><img src="https://img-blog.csdnimg.cn/20201118224855520.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=200+5;int n,m,r,a[maxn][maxn],ans,vis[maxn];void dfs(int cnt){    int i,j;    if(cnt==n){        ans++;        return ;    }    for(i=1;i&lt;=r;i++){        for(j=0;j&lt;cnt;j++){            if(a[cnt][j]&amp;&amp;vis[j]!=i){                vis[cnt]=i;                dfs(cnt+1);                vis[cnt]=0;            }        }    }}int main(){    int i;    cin&gt;&gt;n&gt;&gt;m&gt;&gt;r;    for(i=1;i&lt;=m;i++){        int x,y;        cin&gt;&gt;x&gt;&gt;y;        a[x][y]=a[y][x]=1;    }    for(i=1;i&lt;=r;i++){        vis[0]=i;        dfs(1);    }    cout&lt;&lt;ans&lt;&lt;endl;    return 0;}</code></pre>        <div id="aplayer-MyKqcDtp" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-MyKqcDtp"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1145-求图像的周长</title>
+    <link href="/2020/11/18/NOJ-1145-%E6%B1%82%E5%9B%BE%E5%83%8F%E7%9A%84%E5%91%A8%E9%95%BF/"/>
+    <url>/2020/11/18/NOJ-1145-%E6%B1%82%E5%9B%BE%E5%83%8F%E7%9A%84%E5%91%A8%E9%95%BF/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="求图像的周长"><a href="#求图像的周长" class="headerlink" title="求图像的周长"></a>求图像的周长</h1><p><img src="https://img-blog.csdnimg.cn/2020111822474183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=100+50;int n,m,x,y,ans,vis[maxn][maxn],d[8][2]={{1,0},{-1,0},{0,1},{0,-1},{1,1},{1,-1},{-1,1},{-1,-1}};char s[maxn][maxn];void dfs(int x,int y){    int i;    if(vis[x][y])return ;    vis[x][y]=1;    for(i=0;i&lt;8;i++){        int nx=x+d[i][0],ny=y+d[i][1];        if(i&lt;=3&amp;&amp;s[nx][ny]!=&#39;X&#39;)ans++;        if(nx&gt;=1&amp;&amp;nx&lt;=n&amp;&amp;ny&gt;=1&amp;&amp;ny&lt;=m&amp;&amp;s[nx][ny]==&#39;X&#39;)dfs(nx,ny);    }}int main(){    int i;    while(1){        cin&gt;&gt;n&gt;&gt;m&gt;&gt;x&gt;&gt;y;        ans=0;        memset(vis,0,sizeof(vis));        if(n==0&amp;&amp;m==0&amp;&amp;x==0&amp;&amp;y==0)break;        for(i=1;i&lt;=n;i++)cin&gt;&gt;s[i]+1;        dfs(x,y);        cout&lt;&lt;ans&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-aflOKNZO" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-aflOKNZO"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1144-农场灌溉问题</title>
+    <link href="/2020/11/18/NOJ-1144-%E5%86%9C%E5%9C%BA%E7%81%8C%E6%BA%89%E9%97%AE%E9%A2%98/"/>
+    <url>/2020/11/18/NOJ-1144-%E5%86%9C%E5%9C%BA%E7%81%8C%E6%BA%89%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="农场灌溉问题"><a href="#农场灌溉问题" class="headerlink" title="农场灌溉问题"></a>农场灌溉问题</h1><p><img src="https://img-blog.csdnimg.cn/20201118224613235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=100+5;struct Node{    int l,r,u,d;}t[maxn],a[maxn][maxn];int n,m,vis[maxn][maxn]; void dfs(int x,int y){    if(vis[x][y])return ;    vis[x][y]=1;    if(a[x][y].l&amp;&amp;y-1&gt;=1&amp;&amp;a[x][y-1].r)dfs(x,y-1);    if(a[x][y].r&amp;&amp;y+1&lt;=m&amp;&amp;a[x][y+1].l)dfs(x,y+1);    if(a[x][y].d&amp;&amp;x+1&lt;=n&amp;&amp;a[x+1][y].u)dfs(x+1,y);    if(a[x][y].u&amp;&amp;x-1&gt;=1&amp;&amp;a[x-1][y].d)dfs(x-1,y);}int main(){    int i,j;    t[1].l=t[1].u=1;    t[2].r=t[2].u=1;    t[3].l=t[3].d=1;    t[4].r=t[4].d=1;    t[5].u=t[5].d=1;    t[6].l=t[6].r=1;    t[7].u=t[7].l=t[7].r=1;    t[8].l=t[8].u=t[8].d=1;    t[9].l=t[9].r=t[9].d=1;    t[10].u=t[10].d=t[10].r=1;    t[11].l=t[11].r=t[11].u=t[11].d=1;    while(1){        memset(vis,0,sizeof(vis));        cin&gt;&gt;n&gt;&gt;m;        if(n==-1&amp;&amp;m==-1)break;        for(i=1;i&lt;=n;i++){            for(j=1;j&lt;=m;j++){                char x;cin&gt;&gt;x;                a[i][j]=t[x-&#39;A&#39;+1];            }        }        int ans=0;        for(i=1;i&lt;=n;i++){            for(j=1;j&lt;=m;j++){                if(vis[i][j])continue;                ans++;                dfs(i,j);            }        }        cout&lt;&lt;ans&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-XVNBDnPD" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-XVNBDnPD"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1143-字母转换</title>
+    <link href="/2020/11/18/NOJ-1143-%E5%AD%97%E6%AF%8D%E8%BD%AC%E6%8D%A2/"/>
+    <url>/2020/11/18/NOJ-1143-%E5%AD%97%E6%AF%8D%E8%BD%AC%E6%8D%A2/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="字母转换"><a href="#字母转换" class="headerlink" title="字母转换"></a>字母转换</h1><p><img src="https://img-blog.csdnimg.cn/20201118224440693.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=1000+5;char s[maxn],t[maxn],p[maxn],s1[maxn],t1[maxn],st[maxn];int lens,lent,opti,opto;void dfs(int now){    int i;    if(opti+opto==lens*2){        for(i=1;i&lt;=lent;i++)t1[i]=s[i];        int opt1=0,opt2=1,opt3=0;        for(i=1;i&lt;=lens*2;i++){            if(p[i]==&#39;i&#39;)s1[++opt1]=t1[opt2++];            else st[++opt3]=s1[opt1--];        }        int sign=0;        for(i=1;i&lt;=lens;i++)            if(st[i]!=t[i]){                sign=1;break;            }        if(!sign){            for(i=1;i&lt;=lens*2-1;i++)cout&lt;&lt;p[i]&lt;&lt;&#39; &#39;;cout&lt;&lt;p[i]&lt;&lt;endl;        }        return ;    }    if(opti&lt;lens){        opti++;p[now+1]=&#39;i&#39;;        dfs(now+1);        opti--;    }    if(opto&lt;opti){        opto++;p[now+1]=&#39;o&#39;;        dfs(now+1);        opto--;    }}int main(){    while(cin&gt;&gt;s+1&gt;&gt;t+1){        lens=strlen(s+1);lent=strlen(t+1);        cout&lt;&lt;&#39;[&#39;&lt;&lt;endl;;        opti=opto=0;        p[1]=&#39;i&#39;;opti++;        dfs(1);        cout&lt;&lt;&#39;]&#39;&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-GUDvTfiN" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-GUDvTfiN"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1142-踩气球</title>
+    <link href="/2020/11/18/NOJ-1142-%E8%B8%A9%E6%B0%94%E7%90%83/"/>
+    <url>/2020/11/18/NOJ-1142-%E8%B8%A9%E6%B0%94%E7%90%83/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="踩气球"><a href="#踩气球" class="headerlink" title="踩气球"></a>踩气球</h1><p><img src="https://img-blog.csdnimg.cn/20201118224300227.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><p>感觉题意说明不够全，好像是POJ的原题。</p><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=1000+50;int  sign1,sign2,n,m,x1=1,x2=1;void dfs(int x){    if(x==101){        if(x1==n&amp;&amp;x2==m)sign1=sign2=1;        if(x1==n)sign1=1;        return ;    }    dfs(x+1);    if(n%x==0&amp;&amp;x1*x&lt;=n){        x1*=x;        dfs(x+1);        x1/=x;    }    if(m%x==0&amp;&amp;x2*x&lt;=m){        x2*=x;        dfs(x+1);        x2/=x;    }}int main(){    while(1){        cin&gt;&gt;n&gt;&gt;m;        sign1=sign2=0;x1=x2=1;        if(n==0&amp;&amp;m==0)break;        if(n&gt;m){            int t=n;n=m;m=t;        }        dfs(2);        if(sign1==sign2)cout&lt;&lt;m&lt;&lt;endl;        else cout&lt;&lt;n&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-ASOYUizh" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-ASOYUizh"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1009-迷宫问题</title>
+    <link href="/2020/11/18/NOJ-1009-%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/"/>
+    <url>/2020/11/18/NOJ-1009-%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="迷宫问题"><a href="#迷宫问题" class="headerlink" title="迷宫问题"></a>迷宫问题</h1><p><img src="https://img-blog.csdnimg.cn/20201118224130867.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img">  </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;using namespace std;const int maxn=20+5;int T,sx,sy,tx,ty,vis[maxn][maxn],d[4][2]={{1,0},{-1,0},{0,1},{0,-1}};char s[maxn][maxn];struct Node{    int x,y;};int main(){    int i;    cin&gt;&gt;T;    while(T--){        memset(vis,0,sizeof(vis));        cin&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;        for(i=0;i&lt;20;i++)cin&gt;&gt;s[i];        queue&lt;Node&gt;q;        Node now;now.x=sx;now.y=sy;        q.push(now);        while(!q.empty()){            now=q.front();q.pop();            if(vis[now.x][now.y])continue;            vis[now.x][now.y]=1;            for(i=0;i&lt;4;i++){                Node nex;nex.x=now.x+d[i][0];nex.y=now.y+d[i][1];                if(nex.x&gt;=0&amp;&amp;nex.x&lt;20&amp;&amp;nex.y&gt;=0&amp;&amp;nex.y&lt;20&amp;&amp;!vis[nex.x][nex.y]&amp;&amp;s[nex.x][nex.y]==&#39;.&#39;)q.push(nex);                 }        }        if(vis[tx][ty])cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;        else cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-ufNZkvdz" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-ufNZkvdz"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1008-素数环问题</title>
+    <link href="/2020/11/18/NOJ-1008-%E7%B4%A0%E6%95%B0%E7%8E%AF%E9%97%AE%E9%A2%98/"/>
+    <url>/2020/11/18/NOJ-1008-%E7%B4%A0%E6%95%B0%E7%8E%AF%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="素数环问题"><a href="#素数环问题" class="headerlink" title="素数环问题"></a>素数环问题</h1><p><img src="https://img-blog.csdnimg.cn/20201118223538578.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;using namespace std;const int maxn=105;int n=20,vis[maxn],a[maxn],cnt;void swap(int x,int y){    int t=a[x];    a[x]=a[y];    a[y]=t;}void dfs(int now){    int i;    if(now==n+1){        if(vis[a[1]+a[20]])return;        for(i=1;i&lt;=n-1;i++){            if(vis[a[i]+a[i+1]]){                return ;            }        }        cnt++;        if(cnt==2){            for(i=1;i&lt;=n-1;i++){                cout&lt;&lt;a[i]&lt;&lt;&#39; &#39;;            }            cout&lt;&lt;a[n]&lt;&lt;endl;                exit(0);        }        return ;    }    for(i=now;i&lt;=n;i++){        swap(i,now);        if(!vis[a[now]+a[now-1]])        dfs(now+1);        swap(i,now);    }}int main(){    int i,j;    for(i=1;i&lt;=n;i++)a[i]=i;    for(i=2;i&lt;=50;i++){        for(j=2;j&lt;=sqrt(i);j++){            if(i%j==0){                vis[i]=1;                break;            }        }    }    dfs(1);    return 0;}</code></pre>        <div id="aplayer-QKudYQga" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-QKudYQga"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1007-8皇后问题</title>
+    <link href="/2020/11/18/NOJ-1007-8%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/"/>
+    <url>/2020/11/18/NOJ-1007-8%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="8皇后问题"><a href="#8皇后问题" class="headerlink" title="8皇后问题"></a>8皇后问题</h1><p><img src="https://img-blog.csdnimg.cn/20201118223256841.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=25;int vis[maxn][maxn],used[maxn][maxn],n,cnt=0;void dfs(int tot){    int i,j;    if(tot==n+1){        cnt++;printf(&quot;No %d:\n&quot;,cnt);        for(i=1;i&lt;=8;i++){            for(j=1;j&lt;=8;j++){                if(!used[i][j]){                    cout&lt;&lt;&#39;.&#39;;                }                else{                    cout&lt;&lt;&#39;A&#39;;                }            }            cout&lt;&lt;endl;        }        return ;    }    for(i=1;i&lt;=8;i++){        if(vis[0][i]||vis[1][tot+i-1]||vis[2][tot-i+n])continue;        used[tot][i]=1;vis[0][i]=vis[1][tot+i-1]=vis[2][tot-i+n]=1;        dfs(tot+1);        used[tot][i]=0;vis[0][i]=vis[1][tot+i-1]=vis[2][tot-i+n]=0;    }}int main(){    n=8;    dfs(1);    return 0;}</code></pre>        <div id="aplayer-bDbfyLXG" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-bDbfyLXG"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1006-堡垒问题</title>
+    <link href="/2020/11/18/NOJ-1006-%E5%A0%A1%E5%9E%92%E9%97%AE%E9%A2%98/"/>
+    <url>/2020/11/18/NOJ-1006-%E5%A0%A1%E5%9E%92%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="堡垒问题"><a href="#堡垒问题" class="headerlink" title="堡垒问题"></a>堡垒问题</h1><p><img src="https://img-blog.csdnimg.cn/20201118222928852.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;using namespace std;const int maxn=20+5;int n,vis[maxn][maxn],ans;char a[maxn][maxn];int max(int x,int y){    if(x&gt;=y)return x;    return y;}void dfs(int now,int cnt){    if(now==n*n){        ans=max(ans,cnt);        return ;    }    int r=now/n,c=now%n,i;    if(a[r][c]!=&#39;X&#39;&amp;&amp;vis[r][c]==0){        vis[r][c]=1;        for(i=r+1;i&lt;=n;i++){            if(a[i][c]!=&#39;X&#39;)vis[i][c]=1;            else break;        }        for(i=c+1;i&lt;=n;i++){            if(a[r][i]!=&#39;X&#39;)vis[r][i]=1;            else break;        }        dfs(now+1,cnt+1);        vis[r][c]=0;        for(i=r+1;i&lt;=n;i++){            if(a[i][c]!=&#39;X&#39;)vis[i][c]=0;            else break;        }        for(i=c+1;i&lt;=n;i++){            if(a[r][i]!=&#39;X&#39;)vis[r][i]=0;            else break;        }    }    dfs(now+1,cnt);}int main(){    int i,j;    while(1){        cin&gt;&gt;n;        if(n==0)break;        ans=0;        memset(vis,0,sizeof(vis));        for(i=0;i&lt;n;i++){            for(j=0;j&lt;n;j++){                cin&gt;&gt;a[i][j];            }        }        dfs(0,0);        cout&lt;&lt;ans&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-LmmZCGNE" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-LmmZCGNE"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1005-装载问题</title>
+    <link href="/2020/11/18/NOJ-1005-%E8%A3%85%E8%BD%BD%E9%97%AE%E9%A2%98/"/>
+    <url>/2020/11/18/NOJ-1005-%E8%A3%85%E8%BD%BD%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="装载问题"><a href="#装载问题" class="headerlink" title="装载问题"></a>装载问题</h1><p><img src="https://img-blog.csdnimg.cn/20201118222742789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;using namespace std;const int maxn=1000+50;int c1,c2,n,w[maxn],sign;void dfs(int now){    if(now==n+1){        sign=1;        return ;    }    if(c1&gt;=w[now]){        c1-=w[now];        dfs(now+1);        c1+=w[now];    }    if(c2&gt;=w[now]){        c2-=w[now];        dfs(now+1);        c2+=w[now];    }}int main(){    int i;    while(1){        cin&gt;&gt;c1&gt;&gt;c2&gt;&gt;n;sign=0;        if(c1==0&amp;&amp;c2==0&amp;&amp;n==0)break;        for(i=1;i&lt;=n;i++)cin&gt;&gt;w[i];        dfs(1);        if(sign)cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;        else cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-ORpowBlP" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-ORpowBlP"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1004-01背包问题</title>
+    <link href="/2020/11/18/NOJ-1004-01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"/>
+    <url>/2020/11/18/NOJ-1004-01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="0-1背包问题"><a href="#0-1背包问题" class="headerlink" title="0-1背包问题"></a>0-1背包问题</h1><p><img src="https://img-blog.csdnimg.cn/20201118222503261.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;using namespace std;const int maxn=10000+50;int n,m,w[maxn],p[maxn],dp[maxn];int max(int x,int y){    if(x&gt;=y)return x;    return y;}int main(){    int i,j;    while(1){        memset(dp,0,sizeof(dp));        cin&gt;&gt;n&gt;&gt;m;        if(n==0&amp;&amp;m==0)break;        for(i=1;i&lt;=n;i++)cin&gt;&gt;w[i];        for(i=1;i&lt;=n;i++)cin&gt;&gt;p[i];        for(i=1;i&lt;=n;i++){            for(j=m;j&gt;=w[i];j--){                dp[j]=max(dp[j],dp[j-w[i]]+p[i]);            }        }        int ans=0;        for(i=1;i&lt;=m;i++)ans=max(ans,dp[i]);        cout&lt;&lt;ans&lt;&lt;endl;    }}</code></pre>        <div id="aplayer-EidPCEHA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-EidPCEHA"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1324-穷举所有排列</title>
+    <link href="/2020/11/18/NOJ-1324-%E7%A9%B7%E4%B8%BE%E6%89%80%E6%9C%89%E6%8E%92%E5%88%97/"/>
+    <url>/2020/11/18/NOJ-1324-%E7%A9%B7%E4%B8%BE%E6%89%80%E6%9C%89%E6%8E%92%E5%88%97/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="穷举所有排列"><a href="#穷举所有排列" class="headerlink" title="穷举所有排列"></a>穷举所有排列</h1><p><img src="https://img-blog.csdnimg.cn/20201118222334286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=25;int n;char a[maxn];void dfs(int t){    int i;    if(t==n+1){        for(i=1;i&lt;=n;i++)cout&lt;&lt;a[i];cout&lt;&lt;endl;        return ;    }    for(i=t;i&lt;=n;i++){        swap(a[i],a[t]);        dfs(t+1);        swap(a[i],a[t]);    }}int main(){    int i;    cin&gt;&gt;n;    for(i=1;i&lt;=n;i++)a[i]=&#39;a&#39;+i-1;    dfs(1);    return 0;}</code></pre>        <div id="aplayer-EMcdnpmX" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-EMcdnpmX"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1243-循环赛日程表</title>
+    <link href="/2020/11/18/NOJ-1243-%E5%BE%AA%E7%8E%AF%E8%B5%9B%E6%97%A5%E7%A8%8B%E8%A1%A8/"/>
+    <url>/2020/11/18/NOJ-1243-%E5%BE%AA%E7%8E%AF%E8%B5%9B%E6%97%A5%E7%A8%8B%E8%A1%A8/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="循环赛日程表"><a href="#循环赛日程表" class="headerlink" title="循环赛日程表"></a>循环赛日程表</h1><p><img src="https://img-blog.csdnimg.cn/20201118222155565.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;using namespace std;const int maxn=500+50;int n,a[maxn][maxn];void dfs(int r,int c,int h){    if(h==1)return ;    h/=2;    a[r+h][c+h]=a[r][c];    a[r][c+h]=a[r][c]+h;    a[r+h][c]=a[r][c]+h;    dfs(r,c,h);    dfs(r+h,c+h,h);    dfs(r,c+h,h);    dfs(r+h,c,h);}int main(){    int i,j;    cin&gt;&gt;n;    n=pow(2,n);    a[1][1]=1;    dfs(1,1,n);    for(i=1;i&lt;=n;i++){        for(j=1;j&lt;n;j++){            cout&lt;&lt;a[i][j]&lt;&lt;&#39; &#39;;        }        cout&lt;&lt;a[i][n]&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-wzMbMSpr" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-wzMbMSpr"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1574-求第k小数</title>
+    <link href="/2020/11/18/NOJ-1574-%E6%B1%82%E7%AC%ACk%E5%B0%8F%E6%95%B0/"/>
+    <url>/2020/11/18/NOJ-1574-%E6%B1%82%E7%AC%ACk%E5%B0%8F%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="求第k小数"><a href="#求第k小数" class="headerlink" title="求第k小数"></a>求第k小数</h1><p><img src="https://img-blog.csdnimg.cn/20201118222028150.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=10000+50;int n,a[maxn],k;int main(){    int i;    cin&gt;&gt;n;    for(i=1;i&lt;=n;i++)cin&gt;&gt;a[i];    cin&gt;&gt;k;    sort(a+1,a+1+n);    cout&lt;&lt;a[k]&lt;&lt;endl;    return 0;}</code></pre>        <div id="aplayer-LCcXOOEq" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-LCcXOOEq"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1323-穷举n位二进制数</title>
+    <link href="/2020/11/18/NOJ-1323-%E7%A9%B7%E4%B8%BEn%E4%BD%8D%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0/"/>
+    <url>/2020/11/18/NOJ-1323-%E7%A9%B7%E4%B8%BEn%E4%BD%8D%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="穷举n位二进制数"><a href="#穷举n位二进制数" class="headerlink" title="穷举n位二进制数"></a>穷举n位二进制数</h1><p> <img src="https://img-blog.csdnimg.cn/20201118221834375.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;using namespace std;const int maxn=100+50;int a[maxn],n;int main(){    int i,x;    cin&gt;&gt;n;    for(i=n;i&gt;=1;i--)cout&lt;&lt;a[i];cout&lt;&lt;endl;    for(x=1;x&lt;=pow(2,n)-1;x++){        a[1]++;        for(i=1;i&lt;=n;i++){            if(a[i]&gt;=2)a[i]=0,a[i+1]++;        }        for(i=n;i&gt;=1;i--)cout&lt;&lt;a[i];cout&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-mRjtkegz" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-mRjtkegz"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1141-走迷宫</title>
+    <link href="/2020/11/18/NOJ-1141-%E8%B5%B0%E8%BF%B7%E5%AE%AB/"/>
+    <url>/2020/11/18/NOJ-1141-%E8%B5%B0%E8%BF%B7%E5%AE%AB/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="走迷宫"><a href="#走迷宫" class="headerlink" title="走迷宫"></a>走迷宫</h1><p> <img src="https://img-blog.csdnimg.cn/20201118221630766.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;using namespace std;const int maxn=20+50;int n,m,sx,sy,tx,ty,a[maxn][maxn],vis[maxn][maxn],d[4][2]={{1,0},{-1,0},{0,1},{0,-1}};struct Node{    int x,y;};int main(){    int i,j;    cin&gt;&gt;n&gt;&gt;m&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;    for(i=0;i&lt;n;i++){        for(j=0;j&lt;m;j++){            cin&gt;&gt;a[i][j];        }    }    queue&lt;Node&gt;q;    Node now;now.x=sx;now.y=sy;    q.push(now);    while(!q.empty()){        now=q.front();q.pop();        if(vis[now.x][now.y])continue ;        vis[now.x][now.y]=1;        for(i=0;i&lt;4;i++){            Node nex;nex.x=now.x+d[i][0];nex.y=now.y+d[i][1];            if(nex.x&gt;=0&amp;&amp;nex.x&lt;=n-1&amp;&amp;nex.y&gt;=0&amp;&amp;nex.y&lt;=m-1&amp;&amp;!a[nex.x][nex.y])q.push(nex);        }    }    if(vis[tx][ty])cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;    else cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;    return 0;}</code></pre>        <div id="aplayer-gOXuAUkL" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-gOXuAUkL"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1003-快速排序</title>
+    <link href="/2020/11/18/NOJ-1003-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"/>
+    <url>/2020/11/18/NOJ-1003-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p> <img src="https://img-blog.csdnimg.cn/20201118220841435.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=10000+50;int n,a[maxn];void QuickSort(int l,int r){    if(l&gt;=r)return ;    int i=l,j=r,x=a[l];    while(i&lt;j){        while(x&lt;=a[j]&amp;&amp;i&lt;j)j--;        if(i&lt;j)a[i++]=a[j];        while(a[i]&lt;=x&amp;&amp;i&lt;j)i++;        if(i&lt;j)a[j--]=a[i];    }    a[i]=x;    QuickSort(l,i-1);QuickSort(i+1,r);}int main(){    int i;    cin&gt;&gt;n;    for(i=1;i&lt;=n;i++)cin&gt;&gt;a[i];    QuickSort(1,n);    for(i=1;i&lt;=n;i++)cout&lt;&lt;a[i]&lt;&lt;endl;    return 0;}</code></pre>        <div id="aplayer-oOsskAQM" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-oOsskAQM"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NOJ-1002-归并排序</title>
+    <link href="/2020/11/18/NOJ-1002-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
+    <url>/2020/11/18/NOJ-1002-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p><img src="https://img-blog.csdnimg.cn/20201118220648400.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn=10000+50;int n,a[maxn],t[maxn];void Sort(int l,int r,int mid){    int i=l,j=mid+1,k=0;    while(i&lt;=mid&amp;&amp;j&lt;=r){        if(a[i]&lt;=a[j])t[++k]=a[i++];        else t[++k]=a[j++];    }    if(i==mid+1){        while(j&lt;=r)t[++k]=a[j++];    }    if(j==r+1){        while(i&lt;=mid)t[++k]=a[i++];    }    for(i=l,k=1;i&lt;=r;i++,k++)a[i]=t[k];}void MergeSort(int l,int r){    int mid=(l+r)/2;    if(l&gt;=r)return ;    MergeSort(l,mid);MergeSort(mid+1,r);    Sort(l,r,mid);}int main(){    int i;    cin&gt;&gt;n;    for(i=1;i&lt;=n;i++)cin&gt;&gt;a[i];    MergeSort(1,n);    for(i=1;i&lt;=n;i++)cout&lt;&lt;a[i]&lt;&lt;endl;    return 0;}</code></pre>        <div id="aplayer-kYWzIVIf" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-kYWzIVIf"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NOJ</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CodeForces-1439A-Binary Table</title>
     <link href="/2020/11/18/CodeForces-1439A-Binary%20Table/"/>
     <url>/2020/11/18/CodeForces-1439A-Binary%20Table/</url>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h1><p> <img src="https://img-blog.csdnimg.cn/20201118105034340.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><p>对于任意的2*2的正方形，可以选择其中的任意三个（0—&gt;1,1—&gt;0），使得进行若干次操作之后让所有的元素变成0.</p><p><strong>Easy版本</strong>：操作次数不超过3nm</p><p><strong>Hard版本</strong>：操作次数不超过nm</p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>直接写nm的方法吧（比赛的时候觉得不可能麻烦到去讨论2 <em> 2的内部单独情况，于是就换思路了，结果今早还是换成了一开始的办法）。从上到下，从左到右（不包括最后两行，和最后一列），一旦当前的a[i][j]==1,那么就选择(i,j),(i,j+1),(i+1,j+1)进行变化。对于最后一列的选择(i,m),(i+1,m),(i+1,m-1)进行变化。对于最后两行的，从左到右，如果a[n-1]][j]==1就选择(n-1,j),(n-1,j+1),(n,j+1)；如果a[n][j]==1就选择(n,j),(n,j+1),(n-1,j+1),这样就只剩下右下角的 2 </em> 2的小方格了，比赛的时候就这里出问题了。今天早上想的方法是分别讨论1的个数为0，1，2，3，4的情况：</p><p>0：不需要变换，直接输出；</p><p>3：变换那3个1的位置，操作次数为1；</p><p>2：变换2个0的位置+任意一个1的位置，转换成了1的个数为3的情况，操作次数共为2；</p><p>1：变换1的位置+任意2个0的位置，转换成了1的个数为2个情况，操作次数为3；</p><p>4：变换任意3个1的位置，操作次数为4.</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn=200+5;int a[maxn][maxn],T,n,m;char s[maxn][maxn];struct Node{    int x1,Y1,x2,Y2,x3,Y3;}ans[maxn*maxn];int main(){    cin&gt;&gt;T;    while(T--){        cin&gt;&gt;n&gt;&gt;m;int tot=0;        for(int i=1;i&lt;=n;i++)cin&gt;&gt;s[i]+1;        for(int i=1;i&lt;=n;i++)            for(int j=1;j&lt;=m;j++)a[i][j]=s[i][j]-&#39;0&#39;;        for(int i=1;i&lt;=n-2;i++){            for(int j=1;j&lt;=m-1;j++){                if(a[i][j]==0)continue;                tot++;                ans[tot].x1=i;ans[tot].Y1=j;ans[tot].x2=i;ans[tot].Y2=j+1;ans[tot].x3=i+1;ans[tot].Y3=j+1;                a[i][j]=0;a[i][j+1]=1-a[i][j+1];a[i+1][j+1]=1-a[i+1][j+1];            }            if(a[i][m]){                tot++;                ans[tot].x1=i;ans[tot].Y1=m;ans[tot].x2=i+1;ans[tot].Y2=m;ans[tot].x3=i+1;ans[tot].Y3=m-1;                a[i][m]=0;a[i+1][m]=1-a[i+1][m];a[i+1][m-1]=1-a[i+1][m-1];            }        }        for(int i=1;i&lt;=m-2;i++){            if(a[n-1][i]){                tot++;                ans[tot].x1=n-1;ans[tot].Y1=i;ans[tot].x2=n-1;ans[tot].Y2=i+1;ans[tot].x3=n;ans[tot].Y3=i+1;                a[n-1][i]=0;a[n-1][i+1]=1-a[n-1][i+1];a[n][i+1]=1-a[n][i+1];            }            if(a[n][i]){                tot++;                ans[tot].x1=n;ans[tot].Y1=i;ans[tot].x2=n;ans[tot].Y2=i+1;ans[tot].x3=n-1;ans[tot].Y3=i+1;                a[n][i]=0;a[n][i+1]=1-a[n][i+1];a[n-1][i+1]=1-a[n-1][i+1];            }        }        int cnt=a[n][m]+a[n-1][m-1]+a[n-1][m]+a[n][m-1];        int t[6][10]={0};        if(cnt==1){            tot++;int cnt=0,sign=0;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(a[i][j]){                        t[1][++cnt]=i;t[1][++cnt]=j;a[i][j]=0;                    }                    else{                        if(sign&gt;=2)continue;                        sign++;                        t[1][++cnt]=i;t[1][++cnt]=j;a[i][j]=1;                    }                    if(cnt==6)break;                }            }            sign=0;cnt=0;tot++;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(a[i][j]){                        if(!sign){                            sign=1;t[2][++cnt]=i;t[2][++cnt]=j;a[i][j]=0;                        }                        continue;                    }                    t[2][++cnt]=i;t[2][++cnt]=j;a[i][j]=1;                    if(cnt==6)break;                }            }            tot++;cnt=0;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(!a[i][j])continue;                    t[3][++cnt]=i;t[3][++cnt]=j;                }            }            cout&lt;&lt;tot&lt;&lt;endl;            for(int i=1;i&lt;=tot-3;i++)cout&lt;&lt;ans[i].x1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x3&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y3&lt;&lt;endl;            for(int i=1;i&lt;=3;i++)cout&lt;&lt;t[i][1]&lt;&lt;&#39; &#39;&lt;&lt;t[i][2]&lt;&lt;&#39; &#39;&lt;&lt;t[i][3]&lt;&lt;&#39; &#39;&lt;&lt;t[i][4]&lt;&lt;&#39; &#39;&lt;&lt;t[i][5]&lt;&lt;&#39; &#39;&lt;&lt;t[i][6]&lt;&lt;endl;         }        else if(cnt==2){            tot++;int sign=0,cnt=0;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(a[i][j]){                        if(!sign){                            sign=1;t[1][++cnt]=i;t[1][++cnt]=j;a[i][j]=0;                        }                        continue;                    }                    t[1][++cnt]=i;t[1][++cnt]=j;a[i][j]=1;                    if(cnt==6)break;                }            }            tot++;cnt=0;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(!a[i][j])continue;                    t[2][++cnt]=i;t[2][++cnt]=j;                }            }            cout&lt;&lt;tot&lt;&lt;endl;            for(int i=1;i&lt;=tot-2;i++)cout&lt;&lt;ans[i].x1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x3&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y3&lt;&lt;endl;            for(int i=1;i&lt;=2;i++)cout&lt;&lt;t[i][1]&lt;&lt;&#39; &#39;&lt;&lt;t[i][2]&lt;&lt;&#39; &#39;&lt;&lt;t[i][3]&lt;&lt;&#39; &#39;&lt;&lt;t[i][4]&lt;&lt;&#39; &#39;&lt;&lt;t[i][5]&lt;&lt;&#39; &#39;&lt;&lt;t[i][6]&lt;&lt;endl;         }        else if(cnt==3){            tot++;int cnt=0;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(!a[i][j])continue;                    t[1][++cnt]=i;t[1][++cnt]=j;                }            }            cout&lt;&lt;tot&lt;&lt;endl;            for(int i=1;i&lt;=tot-1;i++)cout&lt;&lt;ans[i].x1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x3&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y3&lt;&lt;endl;            for(int i=1;i&lt;=1;i++)cout&lt;&lt;t[i][1]&lt;&lt;&#39; &#39;&lt;&lt;t[i][2]&lt;&lt;&#39; &#39;&lt;&lt;t[i][3]&lt;&lt;&#39; &#39;&lt;&lt;t[i][4]&lt;&lt;&#39; &#39;&lt;&lt;t[i][5]&lt;&lt;&#39; &#39;&lt;&lt;t[i][6]&lt;&lt;endl;         }        else if(cnt==4){            cout&lt;&lt;tot+4&lt;&lt;endl;            for(int i=1;i&lt;=tot;i++)cout&lt;&lt;ans[i].x1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x3&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y3&lt;&lt;endl;            cout&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;endl;            cout&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;&#39; &#39;&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;endl;            cout&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;&#39; &#39;&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;endl;            cout&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;endl;        }        else{            cout&lt;&lt;tot&lt;&lt;endl;            for(int i=1;i&lt;=tot;i++)cout&lt;&lt;ans[i].x1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x3&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y3&lt;&lt;endl;        }    }    return 0;}</code></pre>        <div id="aplayer-cQmJgrkN" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-cQmJgrkN"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h1><p> <img src="https://img-blog.csdnimg.cn/20201118105034340.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p><p>对于任意的2 * 2的正方形，可以选择其中的任意三个（0—&gt;1,1—&gt;0），使得进行若干次操作之后让所有的元素变成0.</p><p><strong>Easy版本</strong>：操作次数不超过3nm</p><p><strong>Hard版本</strong>：操作次数不超过nm</p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>直接写nm的方法吧（比赛的时候觉得不可能麻烦到去讨论2 <em> 2的内部单独情况，于是就换思路了，结果今早还是换成了一开始的办法）。从上到下，从左到右（不包括最后两行，和最后一列），一旦当前的a[i][j]==1,那么就选择(i,j),(i,j+1),(i+1,j+1)进行变化。对于最后一列的选择(i,m),(i+1,m),(i+1,m-1)进行变化。对于最后两行的，从左到右，如果a[n-1]][j]==1就选择(n-1,j),(n-1,j+1),(n,j+1)；如果a[n][j]==1就选择(n,j),(n,j+1),(n-1,j+1),这样就只剩下右下角的 2 </em> 2的小方格了，比赛的时候就这里出问题了。今天早上想的方法是分别讨论1的个数为0，1，2，3，4的情况：</p><p>0：不需要变换，直接输出；</p><p>3：变换那3个1的位置，操作次数为1；</p><p>2：变换2个0的位置+任意一个1的位置，转换成了1的个数为3的情况，操作次数共为2；</p><p>1：变换1的位置+任意2个0的位置，转换成了1的个数为2个情况，操作次数为3；</p><p>4：变换任意3个1的位置，操作次数为4.</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn=200+5;int a[maxn][maxn],T,n,m;char s[maxn][maxn];struct Node{    int x1,Y1,x2,Y2,x3,Y3;}ans[maxn*maxn];int main(){    cin&gt;&gt;T;    while(T--){        cin&gt;&gt;n&gt;&gt;m;int tot=0;        for(int i=1;i&lt;=n;i++)cin&gt;&gt;s[i]+1;        for(int i=1;i&lt;=n;i++)            for(int j=1;j&lt;=m;j++)a[i][j]=s[i][j]-&#39;0&#39;;        for(int i=1;i&lt;=n-2;i++){            for(int j=1;j&lt;=m-1;j++){                if(a[i][j]==0)continue;                tot++;                ans[tot].x1=i;ans[tot].Y1=j;ans[tot].x2=i;ans[tot].Y2=j+1;ans[tot].x3=i+1;ans[tot].Y3=j+1;                a[i][j]=0;a[i][j+1]=1-a[i][j+1];a[i+1][j+1]=1-a[i+1][j+1];            }            if(a[i][m]){                tot++;                ans[tot].x1=i;ans[tot].Y1=m;ans[tot].x2=i+1;ans[tot].Y2=m;ans[tot].x3=i+1;ans[tot].Y3=m-1;                a[i][m]=0;a[i+1][m]=1-a[i+1][m];a[i+1][m-1]=1-a[i+1][m-1];            }        }        for(int i=1;i&lt;=m-2;i++){            if(a[n-1][i]){                tot++;                ans[tot].x1=n-1;ans[tot].Y1=i;ans[tot].x2=n-1;ans[tot].Y2=i+1;ans[tot].x3=n;ans[tot].Y3=i+1;                a[n-1][i]=0;a[n-1][i+1]=1-a[n-1][i+1];a[n][i+1]=1-a[n][i+1];            }            if(a[n][i]){                tot++;                ans[tot].x1=n;ans[tot].Y1=i;ans[tot].x2=n;ans[tot].Y2=i+1;ans[tot].x3=n-1;ans[tot].Y3=i+1;                a[n][i]=0;a[n][i+1]=1-a[n][i+1];a[n-1][i+1]=1-a[n-1][i+1];            }        }        int cnt=a[n][m]+a[n-1][m-1]+a[n-1][m]+a[n][m-1];        int t[6][10]={0};        if(cnt==1){            tot++;int cnt=0,sign=0;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(a[i][j]){                        t[1][++cnt]=i;t[1][++cnt]=j;a[i][j]=0;                    }                    else{                        if(sign&gt;=2)continue;                        sign++;                        t[1][++cnt]=i;t[1][++cnt]=j;a[i][j]=1;                    }                    if(cnt==6)break;                }            }            sign=0;cnt=0;tot++;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(a[i][j]){                        if(!sign){                            sign=1;t[2][++cnt]=i;t[2][++cnt]=j;a[i][j]=0;                        }                        continue;                    }                    t[2][++cnt]=i;t[2][++cnt]=j;a[i][j]=1;                    if(cnt==6)break;                }            }            tot++;cnt=0;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(!a[i][j])continue;                    t[3][++cnt]=i;t[3][++cnt]=j;                }            }            cout&lt;&lt;tot&lt;&lt;endl;            for(int i=1;i&lt;=tot-3;i++)cout&lt;&lt;ans[i].x1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x3&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y3&lt;&lt;endl;            for(int i=1;i&lt;=3;i++)cout&lt;&lt;t[i][1]&lt;&lt;&#39; &#39;&lt;&lt;t[i][2]&lt;&lt;&#39; &#39;&lt;&lt;t[i][3]&lt;&lt;&#39; &#39;&lt;&lt;t[i][4]&lt;&lt;&#39; &#39;&lt;&lt;t[i][5]&lt;&lt;&#39; &#39;&lt;&lt;t[i][6]&lt;&lt;endl;         }        else if(cnt==2){            tot++;int sign=0,cnt=0;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(a[i][j]){                        if(!sign){                            sign=1;t[1][++cnt]=i;t[1][++cnt]=j;a[i][j]=0;                        }                        continue;                    }                    t[1][++cnt]=i;t[1][++cnt]=j;a[i][j]=1;                    if(cnt==6)break;                }            }            tot++;cnt=0;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(!a[i][j])continue;                    t[2][++cnt]=i;t[2][++cnt]=j;                }            }            cout&lt;&lt;tot&lt;&lt;endl;            for(int i=1;i&lt;=tot-2;i++)cout&lt;&lt;ans[i].x1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x3&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y3&lt;&lt;endl;            for(int i=1;i&lt;=2;i++)cout&lt;&lt;t[i][1]&lt;&lt;&#39; &#39;&lt;&lt;t[i][2]&lt;&lt;&#39; &#39;&lt;&lt;t[i][3]&lt;&lt;&#39; &#39;&lt;&lt;t[i][4]&lt;&lt;&#39; &#39;&lt;&lt;t[i][5]&lt;&lt;&#39; &#39;&lt;&lt;t[i][6]&lt;&lt;endl;         }        else if(cnt==3){            tot++;int cnt=0;            for(int i=n-1;i&lt;=n;i++){                for(int j=m-1;j&lt;=m;j++){                    if(!a[i][j])continue;                    t[1][++cnt]=i;t[1][++cnt]=j;                }            }            cout&lt;&lt;tot&lt;&lt;endl;            for(int i=1;i&lt;=tot-1;i++)cout&lt;&lt;ans[i].x1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x3&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y3&lt;&lt;endl;            for(int i=1;i&lt;=1;i++)cout&lt;&lt;t[i][1]&lt;&lt;&#39; &#39;&lt;&lt;t[i][2]&lt;&lt;&#39; &#39;&lt;&lt;t[i][3]&lt;&lt;&#39; &#39;&lt;&lt;t[i][4]&lt;&lt;&#39; &#39;&lt;&lt;t[i][5]&lt;&lt;&#39; &#39;&lt;&lt;t[i][6]&lt;&lt;endl;         }        else if(cnt==4){            cout&lt;&lt;tot+4&lt;&lt;endl;            for(int i=1;i&lt;=tot;i++)cout&lt;&lt;ans[i].x1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x3&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y3&lt;&lt;endl;            cout&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;endl;            cout&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;&#39; &#39;&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;endl;            cout&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;&#39; &#39;&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;endl;            cout&lt;&lt;n-1&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m-1&lt;&lt;&#39; &#39;&lt;&lt;n&lt;&lt;&#39; &#39;&lt;&lt;m&lt;&lt;endl;        }        else{            cout&lt;&lt;tot&lt;&lt;endl;            for(int i=1;i&lt;=tot;i++)cout&lt;&lt;ans[i].x1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y1&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y2&lt;&lt;&#39; &#39;&lt;&lt;ans[i].x3&lt;&lt;&#39; &#39;&lt;&lt;ans[i].Y3&lt;&lt;endl;        }    }    return 0;}</code></pre>        <div id="aplayer-VCBQHbBN" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-VCBQHbBN"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
     
     
     

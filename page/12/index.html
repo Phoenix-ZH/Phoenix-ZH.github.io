@@ -153,17 +153,19 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4289/">
-        <p class="h4 index-header">HDU-4289</p>
+      <a href="/2020/02/07/POJ-3660/">
+        <p class="h4 index-header">POJ-3660</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4289 Control
-题目链接：https://vjudge.net/problem/HDU-4289
-题目大意：给一个无向图，有些不法分子要从S点T点，现在要抓住所有的不法分子阻止他们去T，那么就要控制某一些城市等待他们，控制每个城市花费不同，问最少花费是多少。第一行是两个整数N，M（2&lt;=N&lt;=200，1&lt;=M&lt;=20000）,分别表示城市数量和道路数量，城市的编号为1到N。 第二行是两个整数S，T（1&lt;=S,T&lt;=N）,分别表示起点和终点的位置。 接下来以下N行，分别表示控制第每一个城市的成本costi（cost&lt;10^7）。 接下来M行，每行有两个整数A，B表示城市A和B之间存在一条双向道路。
-题解：根据题意，要设法将S，T分割开，求最小花费，显然是求图的最小割，即求最大流。一开始想着单独将S，T隔开，无向边u，v建边：u+N—&gt;v,边权0x3f3f3f3f，v+N-&gt;u，边权0x3f3f3f3f，当然回路也要建立。然后跑dinic，然后将跑出来的最大流和单独隔离s、单独隔离t三者取最小。但是这样跑</div>
+          <div class="index-text mb-1">题目名称：POJ - 3660 Cow Contest
+题目链接：https://vjudge.net/problem/POJ-3660#author=arasHi_
+题目大意：有n头牛，m条比赛结果，每行两个数字，第一个数字表示的是胜利者。问有几头牛的排名可以确定？
+题解：排名可以确定，这该如何理解？对于结点i，如果箭头指向i所包含的结点数为ans1，i箭头指出所包含的结点数为ans2，若ans1+ans2==n-1就说明结点i的排名可以确定。问题在于如何确定ans1，ans2的值。举个例子：若a可以到b，b可以到c，那么a就可以到c。这就是传递闭包了。如何进行传递闭包呢？以上例子，a可以到b，b可以到c，则dist[a][b]=1,dist[b][c]=1,则a可以到c，即dist[a][c]=1；用floyd进行收缩即可。然后每个结点是否可以到达剩余的n-1个结点，或者剩余n-1个结点能否到达该结点，即ans1+ans2==n。判断条件就是dist[i][j]==1||dist[j][i]==1;
+代码：#include&lt;cstdio&gt;
+#include&lt;cst</div>
         </div>
       </a>
 
@@ -175,9 +177,9 @@
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92">闭包传递</a>&nbsp;
           
-            <a href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2">最小割</a>&nbsp;
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
         
       </div>
@@ -188,26 +190,260 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4280/">
-        <p class="h4 index-header">HDU-4280</p>
+      <a href="/2020/02/07/POJ-2240/">
+        <p class="h4 index-header">POJ-2240</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4280 Island Transport
-题目链接：https://vjudge.net/problem/HDU-4280#author=smilestruggler
-题目大意：在n个岛屿中，有m条双向航线，航线有单位时间内的运输上限，现在求从最左侧到最右侧的最大运输
-题解：题意含明显它是最大流的模板题，直接建边，然后找到起点s和终点t就可以了，然后直接跑dinic。但是n=100000，m=100000，数据规模大，dinic容易超时，但是我们可以做优化。
-优化1：bfs只要跑到t就返回1，开始dfs。
-优化2；dfs内每次min(F-f,edge[i].w），f表示之前已经流过的流量，F-f表示剩余可流的流量，一旦F==f就break，表示满流了！
+          <div class="index-text mb-1">题目名称：POJ - 2240 Arbitrage
+题目链接：https://vjudge.net/problem/POJ-2240#author=Andy_acmer
+题目大意：有n种货币，m条货币的汇率关系。比如：USDollar 0.5 BritishPound说明1个USDollar货币，可以换成0.5个BritishPound货币，问是否可以通过这种关系来获利。
+题解：由于货币名字使字符串，那么用map比较方便,mapq，可以将字符串映射成int型。然后跑spfa，看是否存在正环，与判断负环的方法一样。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;map&gt;
+using namespace std;
+const int maxn=10000+5;
+int n,m,head[maxn],vis[maxn],used[maxn],k=1;double d</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1511/">
+        <p class="h4 index-header">POJ-1511</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1511 Invitation Cards
+题目链接：https://vjudge.net/problem/POJ-1511#author=0
+题目大意：n-1个人从1号点出发，到剩余n-1个宣传点，然后再回到1号点汇报结果，求所有人往返路径和的最小值。
+题解：m条边，边号为偶数的表示正方向，边号为奇数的表示反方向。spfa1()沿着正方向跑，起点为1，则dist[i]表示的是从1到i的最短距离。spfa2()沿着反方向跑，起点为1，则dist2[i]表示的是从i到1的最短距离。最终答案就是dist1[i]+dist2[i]的总和，i∈[2,n]。
+代码：    #include&lt;cstdio&gt;
+    #include&lt;cstring&gt;
+    #include&lt;iostream&gt;
+    #include&lt;algorithm&gt;
+    #include&lt;queue&gt;
+    using namespace std;
+    const long long maxn=1000000+5;
+    str</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3159/">
+        <p class="h4 index-header">POJ-3159</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3159 Candies
+题目链接：https://vjudge.net/problem/POJ-3159#author=2018112767
+题目大意：有n个同学，m条信息，每条信息为a,b,c三个整数表示a相信b的糖果不会比自己多于c。问n同学最多比1同学多多少个糖果？
+题解：这是差分约束的题目，由题知Have[b]-Have[a]&lt;=c;即Have[b]&lt;=c+Have[a]；而最短路的更新条件是dist[edge[i].to]&gt;dist[x]+edge[i].w，就说明了dist[edge[i].to]&lt;=dist[x]+edge[i].w;于是建边就可以a—-&gt;b,边权为c，跑最短路。dist[n]就是答案
+ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保险！
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&g</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F">差分约束</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-2502/">
+        <p class="h4 index-header">POJ-2502</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 2502 Subway
+题目链接：https://vjudge.net/problem/POJ-2502#author=1738160864
+题目大意：小k要从家去学校，他可以选择步行或者地铁，步行的速度是10km/h，地铁的速度是40km/h。假设小k非常的幸运，每次他到地铁站就立刻会有地铁。小k可以随意上下地铁，并且可以在地铁线路之间转换。所有的地铁运行都是双向的。注意地铁站不会重复出现。
+题解：n&lt;=200，所以可以用Floyd。每次出现的新地铁站，先与起点更新时间花费，此时速度为v1，然后输入地铁线，此时速度为v2，可以更新相邻地铁站之间的时间花费，并且更新起点与地铁站之间的时间花费，此时速度为v1。最后地铁站输入完之后，tot++，这就是终点编号，所有结点与终点的时间花费需要更新。然后开始跑Floyd。最后dist[0][tot]储存答案，需要四舍五入，即int ans=dist[0][tot]+0.5;ans为最终答案
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;io</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1062/">
+        <p class="h4 index-header">POJ-1062</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1062 昂贵的聘礼
+题目链接：https://vjudge.net/problem/POJ-1062#author=0
+题目大意：一个人要买1号物品，而此物品可以通过直接购买或者到别人的手中买别的东西+一些金币来得到。但是需要注意：如果两人地位等级差距超过了delt，就不可以进行间接交易，即该交易圈的人两两之间等级差异不可大于delt。问要得到1号物品至少要花费多少钱？
+题解：建立一个源点，它与所有物品建边，即s—&gt;i（边权为物品原价），因为每个物品除了直接购买，还可以间接购买，设间接购买物品为j，则建边方式为j—&gt;i（边权为额外金币）然后跑最短路，注意最短路的条件不再是dist[edge[i].to]&gt;dist[x]+edge[i].w，因为当价格相等时也需要进入队列来进行松弛，所以应变为dist[edge[i].to]&gt;dist[x]+edge[i].w;然后就是等级限制的判断了。刚开始的s的等级需要从最低到最高都设置一次，意味着跑n次spfa，s就是这次spfa的最低等级，因此a[edge[i].to].l&gt;=limit&am</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1847/">
+        <p class="h4 index-header">POJ-1847</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1847 Tram
+题目链接：https://vjudge.net/problem/POJ-1847
+题目大意：输入n,a,b三个数，表示有n个点(1-n)，起点是a，终点是b，然后接下来有n行，每一行的第一个数m表示后面将会有m个数，输入结构是这样的，然后我再具体的解释一下。
+3 2 1     3表示共有n个点，接下来有n行，2表示起点，1表示终点2 2 3     第一个数2表示后面有2个数，因为这是第1行，所以后面两个数表示从1到2和从1到3的边2 3 1     表示从2到3和从2到1的边2 1 2     表示从3到1和从3到2的边
+题解：n&lt;=100，可以跑Floyd，dist初始化无穷大，每个结点所连接的第一个结点与它的距离为0，其余相连的为1，然后跑Floyd。dist[s][t]为最终的结果。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+co</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/LightOJ-1074/">
+        <p class="h4 index-header">LightOJ1074</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：LightOJ - 1074 Extended Traffic
+题目链接：https://vjudge.net/problem/LightOJ-1074#author=bbisnouse
+题目大意：在一个堵车的城市中, 每个路口都有一个拥挤程度a[i], 从u驶向v得到一个数量, 值为(a[v]-a[u])^3, 给出Q组查询, 每组给出一个数, 求1到这个数的点的最小数量, 如果不可达输出 ？
+题解：一开始觉得n很小，可以直接跑floyd，但是后来WA了两发，发现可能存在负环，所以需要判断负环，因此选择spfa，一旦判断出了负环就dfs，找到负环可以达到的所有点。对于查询一一输出结果即可。
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;queue&gt;
 using namespace std;
-const int max</div>
+const int maxn=200005;
+int n,T,a[maxn],head[maxn],v</div>
         </div>
       </a>
 
@@ -219,7 +455,7 @@ const int max</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
         
       </div>
@@ -230,20 +466,52 @@ const int max</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3605/">
-        <p class="h4 index-header">HDU-3605</p>
+      <a href="/2020/02/07/HDU-4725/">
+        <p class="h4 index-header">HDU-4725</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3605 Escape
-题目链接：https://vjudge.net/problem/HDU-3605
-题目大意：有n个人，m个星球，前n行，每一行有m个数字，分别表示第i个星球是否适合这个人。最后一行有m个，表示每个星球的最多居住人数。n (1 &lt;= n &lt;= 100000), m (1 &lt;= m &lt;= 10)
-题解：一开始想多没想就开始建裸图，心里想：别看着图稠密，边多，实际上一跑就出结果了。事实证明自己太天真，nnm的数据量早就TLE！正确做法有点意思：由于m很小，就可以考虑状态压缩。对于第i个人，m个星球的居住情况已知，转换为二进制储存，所有的状态也不过才2^10而已，起点s连向状态，边权为这种状态的总人数，然后10个星球与这种状态匹配，若星球属于这个状态，则状态连向星球，边权为无穷大，然后星球与终点t连接，边权为星球的最大居住人数。然后就可以跑dinic了，若ans==n，就YES，否则就NO。
+          <div class="index-text mb-1">题目名称：HDU - 4725 The Shortest Path in Nya Graph
+题目链接：https://vjudge.net/problem/HDU-4725#author=0
+题目大意：现在给你n个点 ，这些点的分布是层型分布的，你可以从第i层走到相邻的层（i+1，i-1）中，这样走的花费是c，接着他会给你m（从u-&gt;v）条小路，从小路走的花费 是w，问你从1-&gt;n所走的最小花费是多少。
+题解：看到数据范围就不敢用spfa了，太过玄学，不想TLE，所以选择dijkstra，这题的难点在于建边。当然，很容易想到将层转化成点，比如第i个点的层数为deep[i],则转化为点deep[i]+n.对于给的小道就直接建边a—&gt;b权值为c,b—&gt;a权值为c（建双向边），将deep数组从小到大排列，对于deep[i] 和 deep[i-1] （i∈[2,n]），首先要判断它们是否刚好相差1，只有刚好相差1才可以建边，建边方式为add(deep[i-1]+n,deep[i]+n,c);add(deep[i]+n,deep[i-1]+n,c)，相邻层数可以相互移动</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3169/">
+        <p class="h4 index-header">POJ-3169</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3169 Layout
+题目链接：https://vjudge.net/problem/POJ-3169#author=634579757
+题目大意：有N头牛排队，多头牛可以在同一点。现有几对相互喜好的牛，他们不能超过一定距离，有几对相互厌恶的牛，他们至少隔开一定距离。求1和N最远相距多少。
+题解：这很显然是差分约束的题目。为了保证图能够联通，需要固定i，j的大小顺序。 对于前m1个a,b,c表示a和b之间的距离不超过c，不妨设a&gt;b，则应满足d[a]-d[b]&lt;=c，最短路的要求就是如此，所以建边：b—&gt;a 边权为c。对于后m2个a，b，c表示a和b之间的距离不小于c，不妨设a&gt;b，则应满足d[a]-d[b]&gt;=c，即d[b]&lt;=d[a]-c，所以建边：a—&gt;b边权为-c。然后开始跑spfa，期间要判断负环，如果有负环存在则说明无解；如果dist[n]==0x3f3f3f3f,说明n号可以无限远。其余的则dist[n]为答案
 代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostr</div>
+#include&lt;cstring&gt</div>
         </div>
       </a>
 
@@ -255,86 +523,9 @@ const int max</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
-            <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9">状态压缩</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3081/">
-        <p class="h4 index-header">HDU-3081</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3081 Marriage Match II
-题目链接：https://vjudge.net/problem/HDU-3081
-题目大意：有N个女孩要与N个男孩玩配对游戏.每个女孩有一个可选男孩的集合(即该女孩可以选自己集合中的任意一个男孩作为该轮的搭档).然后从第一轮开始,每个女孩都要和一个不同的男孩配对.如果第一轮N个女孩都配对成功,那么就开始第二轮配对,女孩依然从自己的备选男孩集合中选择,但是不能选那些已经被该女孩在前几轮选择中选过的男孩了(比如i女孩在第一轮选了j男孩,那么i在第二轮就不能选j男孩了). 问你游戏最多能进行多少轮?
-题解：女生:1~n;男生:(n+1)~(n*2)。对于女生u，她可以直接连向不讨厌的男生，边权为1。
-假设我们当前二分尝试的轮数为K(即能够进行K轮匹配):首先如果女孩i可能选择男孩j,那么就有边(i, j+n, 1).且源点到每个女孩i有边(s,i,K),每个男孩j到汇点t有边(j+n,t,K).
-如果最大流==K*n,那么就表示可以进行最少K轮匹配.
-证明：如果满流,那么每个女生肯定选择了K个不同的男孩,每个男孩肯定被K个不</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
-          
-            <a href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92">闭包传递</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-2732/">
-        <p class="h4 index-header">HDU-2732</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 2732 Leapin’ Lizards
-题目链接：https://vjudge.net/problem/HDU-2732
-题目大意：题目是说一个n*m的迷宫中，有每个格子有柱子。柱子高度为0~3，高度为0的柱子是不能站的（高度为0就是没有柱子）在一些有柱子的格子上有一些蜥蜴，一次最多跳距离d,相邻格子的距离是1，只要跳出迷宫就是安全的。这个距离是曼哈顿距离（好像是的）。蜥蜴一次最多跳距离d,但是起跳的地方的柱子高度会减一，一个柱子同一时间只能有一个蜥蜴要求最少几个不能逃出迷宫。
-题解：最大流问题，求出dinic跑出的最大流，然后总数-ans就是剩余的数。建图方法：
-1.每个柱子有容纳量，超过了就塌了。u—&gt;u’ 边权为容纳量
-2.有蜥蜴的柱子与起点s相连，即s—&gt;u,边权为1
-3.边界上可以跳出界的与终点相连，条件(x1&lt;=p||y1&lt;=p||n-x1+1&lt;=p||len-y1+1&lt;=p)&amp;&amp;h[x1][y1]，u’—&gt;t,边权0x3f3f3f3f
-4.任意两个有容纳量的柱子，且曼哈顿距离&lt;=d，可</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F">差分约束</a>&nbsp;
           
         
       </div>
@@ -345,7 +536,7 @@ const int max</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/11/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span>
+      <a class="extend prev" rel="prev" href="/page/11/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/13/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

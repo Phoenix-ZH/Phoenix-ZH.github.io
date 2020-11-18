@@ -153,38 +153,28 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/08/luogu-3386/">
-        <p class="h4 index-header">luogu-3386</p>
+      <a href="/2020/02/13/luogu-1640/">
+        <p class="h4 index-header">luogu-1640</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：luogu-P3386 二分图匹配模板
-题目链接：https://www.luogu.com.cn/problem/P3386
-题目大意： 给定一个二分图，结点个数分别为n,m，边数为e，求二分图最大匹配数 
- 因为数据有坑，可能会遇到 v&gt;m 或者 u&gt;n的情况。请把 v&gt;m 或者 u&gt;n的数据自觉过滤掉。
-题解：这是二分图最大匹配匹配的模板题。
-这里简述一下二分图的匈牙利算法：
-给出下图，要求最大匹配数
-  
- 匈牙利算法的工作模式 如下：
- 一： 先试着给1号男生找妹子，发现第一个和他相连的1号女生还名花无主，got it，连上一条蓝线 
-  
- 二：接着给2号男生找妹子，发现第一个和他相连的2号女生名花无主，got it   
- 三：接下来是3号男生，很遗憾1号女生已经有主了，怎么办呢？ 
- 我们试着给之前1号女生匹配的男生（也就是1号男生）另外分配一个妹子。 
- (黄色表示这条边被临时拆掉) 
-  
- 与1号男生相连的第二个女生是2号女生，但是2号女生也有主了，怎么办呢？我们再试着给2号女生的原配  重新找个妹子 
-  
- 此时发现2号男生还</div>
+          <div class="index-text mb-1">题目名称：luogu1640-[SCOI2010]连续攻击游戏
+题目链接：https://www.luogu.com.cn/problem/P1640
+题目大意：有n个装备，每个装备有两个攻击值，每个装备只能用1次，问从1开始可以连续攻击几次？
+题解：虽然有很多并查集的方法，但是最近一直在练习二分图匹配，发现这个题可以用二分图来做，主要是因为每个装备只有两个攻击值这样的话可以大大减少时间复杂度，很显然这个地方就是突破点，设想每个攻击值x，y对装备i建单向边，然后从1开始跑匈牙利算法，一旦找不到匹配说明攻击中断，当前的最大匹配ans就是最多能连续攻击的次数，但是注意一下不可以memset(vis,0,sizeof(vis))，处理方法很简单，vis只是防止当前dfs不能重复点，于是vis[edge[i].to]=x，相当于一个时间戳，就可以完美避免初始化了。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-08&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-13&nbsp;&nbsp;
         
         
         
@@ -201,38 +191,113 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3416/">
-        <p class="h4 index-header">HDU-3416</p>
+      <a href="/2020/02/13/HDU-3488/">
+        <p class="h4 index-header">HDU-3488</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-3416 Marriage Match IV
-题目链接：https://vjudge.net/problem/HDU-3416
-题目大意： n 个点 m 条边带权有向图，问每条边最多只能走一次时从 A 到 B 的最短路径数量。 
-题解：问题是问从s—&gt;t有多少种完全不同的最短路径。首先要想办法找到哪些边属于最短路径里面的边，于是先正向跑一遍spfa，再反向跑一遍spfa，设smin为s—&gt;t的最短路的长度，那如果一条边属于最短路，那它一定满足dist1[x[i]]+dist2[y[i]]+w[i]==smin&amp;&amp;x[i]!=y[i]。这样就可以找到最短路径的所有边，然后建边时注意，x[i]—&gt;y[i],边权为1，跑dinic，得到的最大流ans就是答案。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std</div>
+          <div class="index-text mb-1">题目名称：HDU-3488 Tour
+题目链接：https://vjudge.net/problem/HDU-3488
+题目大意：有T组数据，n个点，m条有向边边(可能有重边)， 现在问将图中的每一个点都划分到一个环中的最少代价是多少？每条边都有一个代价 。即选择边，使得图是若干个有向环，除出发点(即终点)外每个点都只可以经过一次，如何选择花费最小？
+题解：这里需要提到一下有向环覆盖问题： 给一个N个顶点M条边的带权有向图，要你把该图分成一个或多个不相交的有向环。且所有定点都被有向环覆盖。问你该有向环所有权值的总和最小是多少? 
+答案就是：有向环最大权值覆盖=最佳匹配。 
+如果，改为无向图，问你无向环最大权值覆盖？答案也是一样的。只是在建图的时候把有向改为无向即可。 
+分析：把任意一个顶点i分成连个点，即i和i‘，如果原图存在边i—&gt;j，那么二分图就存在i—&gt;j’
+引理： 
+①  如果原图能由多个不相交的有向环覆盖，那么二分图必然存在完备匹配。 二者互为充要条件 。即： 二分图存在完备匹配,那么原图必定能由几个不相交的有向环覆盖。
+②  如果 即权值最大的有向环覆盖在数值上</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-13&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/KM">KM</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%89%E5%90%91%E7%8E%AF%E8%A6%86%E7%9B%96">有向环覆盖</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/13/POJ-3189/">
+        <p class="h4 index-header">POJ-3189</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-3189 Steady Cow Assignment
+题目链接：https://vjudge.net/problem/POJ-3189
+题目大意：这道题的题意是真的很坑人啊，首先答案是求所有牛对居住的牛棚最大喜欢度-最小喜欢度+1，就是求区间长度，不是让求最大值-最小值。然后矩阵i，j不是表示第i头牛对第j个牛棚的喜欢度，而是表示第i头牛心中排名第j的牛棚是map[i][j]，喜欢度就是指牛棚在牛心中的排名。
+题解：每个牛棚是有容纳量的，所以会用到多重匹配，而如何找到最小的区间长度呢？区间长度=所有牛对居住的牛棚最大喜欢度-最小喜欢度+1，那么求出最大值-最小值就可以了，求最值问题，很容易就想到二分了，但是光二分又不够，这时候枚举最小值就可以了，二分最大值-最小值的值，然后跑匈牙利算法的多重匹配，对每一条边的边权要判断：edge[i].w&gt;=minn&amp;&amp;edge[i].w&lt;-=maxx，并且注意容纳量。跑出的最大匹配如果==n，就说明所有的牛都又牛棚，就符合题意，于是右边界就可以缩小，否则左边界增大，直到找到ans，注意在枚举最小值的时候要</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-13&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/12/POJ-2112/">
+        <p class="h4 index-header">POJ-2112</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-2112 Optimal Milking
+题目链接：https://vjudge.net/problem/POJ-2112#author=0
+题目大意：FJ有K台挤奶机和C只奶牛。机器编号1~K，奶牛编号K+1~K+C。机器一天工作M只奶牛。如何把奶牛分配给机器，使得奶牛到机器的最远距离最小。奶牛可以进过某些机器，但不在那台机器上挤奶。奶牛也可以经过其他奶牛所在的位置。                     输出一个整数，表示走最远的奶牛的需要行走的最小距离。  
+题解：“最远的行走的最小距离”确认是二分，每一个机器一天可以工作M只奶牛显然是多重匹配。首先用Floyd跑出任意两点之间的最小距离，然后建图，奶牛—&gt;机器，边权为dist[奶牛][机器],当然建单向边，二分距离，跑匈牙利算法的时候，一旦edge[i].w&gt;Max(Max就是二分的距离)那么奶牛就不可以去edge[i].to机器，注意这是多重匹配。
+ps：WA了一次，比较奇怪r=200这样是错的，所以r=0x3f3f3f3f靠谱点。
+代码：#include&lt;cstdio&gt;
+#incl</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
           
             <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
+          
         
       </div>
     </div>
@@ -242,31 +307,37 @@ using namespace std</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/luogu-2764/">
-        <p class="h4 index-header">luogu-2764</p>
+      <a href="/2020/02/12/POJ-2289/">
+        <p class="h4 index-header">POJ-2289</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：luogu2764-最小路径覆盖问题
-题目大意： 给定有向图 G=(V,E)G=(V,E) 。设 P是 G 的一个简单路(顶点不相交)的集合。如果 V 中每个定点恰好在PP的一条路上，则称 P 是 G的一个路径覆盖。PP中路径可以从 V 的任何一个定点开始，长度也是任意的，特别地，可以为 0 。G 的最小路径覆盖是 G所含路径条数最少的路径覆盖。设计一个有效算法求一个 GAP (有向无环图) G的最小路径覆盖 
- 从第1 行开始，每行输出一条路径。文件的最后一行是最少路径数。 
-题解：要求的是最少路径数将所有的点都覆盖掉。
-由konig定理知：最小点覆盖=最大匹配数；而该题抽出模型就成了：最小路径覆盖；最小路径覆盖=点数-最大匹配数；
-如何理解这个结论呢？(这个解释并不严谨，只是为了帮助理解，请勿喷)    加入1—&gt;2—&gt;3;    可以转化为1—&gt;2’;2—&gt;3’;    1,2,3在X中，1’,2’,3’在Y中；路径数=3-2；符合结论；    再举例1—&gt;2,1—&gt;3,2—&gt;4,3—&gt;4;    可以转化为1—&gt;2</div>
+          <div class="index-text mb-1">题目名称：POJ-2289  Jamie’s Contact Groups 
+题目链接：https://vjudge.net/problem/POJ-2289
+题目大意： n个人，m个社交团体，一个人可能对应多个社交团体，但只能参加一个社交团体，问所有社交团体中人数最多的团体最少有多少人。 (N&lt;=1000,M&lt;=500)
+题解：“最多的最少“这是典型的二分的套路，由题可知：一个人可能对于多个社交团体。可以二分最多的团体的人数，每一个人向自己可参加的团体连一条有向边。
+然后在跑匈牙利算法的时候，需要注意：
+要记录这个团体对应了多少的成员了，以cy[edge[i].to][0]记录团体edge[i].to的人数，Max表示本次团队最多容纳人数，如果cy[edge[i].to][0]&lt;Max，直接加入这个团队即可，否则就从第一个成员到最后一个成员都找一次增广路。
+每一次二分时，如果跑完匈牙利算法后，最大匹配==n，就缩小r，否则增大l。
+ps：题目给的团队从0开始，我自己对它+1了，所以从1开始。
+代码：#include&lt;cstdio&gt;
+#include&lt</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95-%E5%A4%9A%E9%87%8D%E5%8C%B9%E9%85%8D)">二分图(匈牙利算法-多重匹配)</a>&nbsp;
           
         
       </div>
@@ -277,38 +348,82 @@ using namespace std</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3336/">
-        <p class="h4 index-header">HDU-3336</p>
+      <a href="/2020/02/12/HDU-3829/">
+        <p class="h4 index-header">HDU-3829</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3336 Count the string
-题目链接：https://vjudge.net/problem/HDU-3336#author=cust_acm
-题目大意：给一个字符串，求它所有子串(包括自身)出现的总次数之
-题解：该题目需要比较完善地理解Next数组地含义与作用。当匹配到i失败时，就会返回到Next[i]。则匹配到i时，应该记录了子串s[0…i]，以及与子串s[0…Next[i]]。于是就可以得到动态转移方程dp[i]=dp[Next[i]]+1.然后求和dp数组，同时取模。
+          <div class="index-text mb-1">题目名称：HDU-3829 Cat VS Dog
+题目链接：https://vjudge.net/problem/HDU-3829
+题目大意：一群小朋友去动物园，如果每个小朋友喜欢的动物是猫，那么不喜欢的动物一定是狗，反之也是。现在动物园的管理者要拿走一些动物，如果拿走的是某个小朋友不喜欢的动物，那这个小朋友就非常开心，反之，如果是某个小朋友喜欢的动物，这个小朋友就非常的不开心，问那完后最多有几个小朋友会非常开心。 
+题解：这是最大独立集的问题。这里需要讲解一样最大独立集。
+最小顶点覆盖：
+定义:假如选了一个点就相当于覆盖了以它为端点的所有边 。最小顶点覆盖就是选择最少的点来覆盖所有的边。 结论： 最小顶点覆盖等于最大匹配。 
+  
+最大独立集： 
+定义: 选出一些顶点使得这些顶点两两不相邻，则这些点构成的集合称为独立集。  找出一个包含顶点数最多的独立集称为最大独立集。 结论： 最大独立集 = 顶点个数 - 最小覆盖 。
+  
+红点的选择：显然每一条非匹配边一定和匹配边有公共点，所以这样的公共点一定会被选出来，不可能作为最大独立集的元素。
+这样就了解了最大独立集，将每一个人喜欢的动物</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86">最大独立集</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/12/POJ-2594/">
+        <p class="h4 index-header">POJ-2594</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-2594  Treasure Exploration 
+题目链接：https://vjudge.net/problem/POJ-2594
+题目大意：在外星上有n个点需要机器人去探险，有m条单向路径。问至少需要几个机器人才能遍历完所有的点，一个点可以被多个机器人经过（这就是和单纯的最小路径覆盖的区别）。
+题解：这也是最小路径覆盖问题，但是这与最小不相交路径覆盖问题不同，这是最小相交路径覆盖问题，每个顶点可以经过多次。算法和最小不相交路径覆盖问题基本相同，但是需要用闭包传递预处理一下再建图。
+闭包传递的原因：
+  
+如图，如果不进行闭包传递，最终需要三条路径，但实际上3可以经过多次，只需要两条路径，如果1-&gt;2-&gt;3这条路径走了，4-&gt;2-&gt;5也是可以走的，于是就需要（1，3）合并，（4，5）合并，这就要用到闭包传递。
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
-using namespace std;
-const int maxn=200000+5;
-const int Mod=10007;
-int T,len1,len2,Next[maxn],dp[maxn];char s1[maxn],s2[maxn];
-void next_pre</div>
+using namespace</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-12&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/kmp">kmp</a>&nbsp;
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E8%A6%86%E7%9B%96">最小路径覆盖</a>&nbsp;
           
         
       </div>
@@ -319,29 +434,36 @@ void next_pre</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4300/">
-        <p class="h4 index-header">HDU-4300</p>
+      <a href="/2020/02/11/HDU-1151/">
+        <p class="h4 index-header">HDU-1151</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-4300 Clairewd’s message
-题目链接：https://vjudge.net/problem/HDU-4300
-题目大意：第一行给的是26个字母对应的翻译密码，而第二行给的是文本串，该文本串前面部分为加密后的内容，而后部分(可能不完整)为未加密的内容。求：一行字符串前一半为加密后的内容，后一半为未加密的内容。一一对应的关系。
-题解：由题意可知，文本串前一部分是加密过后的内容，后一部分是未加密的内容，而这一部分可能是不完整的。则可理解为s=stringA+stringB。可以根据第一行给的加密方式将s整体当作加密内容，将其转化为整体未加密的内容，即字符串s转化成了t。这时候将原s的所有后缀与t匹配，这个过程实际上就是ex-kmp，将t作为子串，s作为母串，求t与s的所有后缀的公共前缀的长度extend[]。如果extend[i]+i==len(s)&amp;&amp;i&gt;=extend[i].即以i为分界点，s[0…i-1]作为stringA，s[i…len-1]作为stringB，即stringB就是原文本内容。(i&gt;=extend[i]</div>
+          <div class="index-text mb-1">题目名称：HDU-1151 Air Raid
+题目链接：https://vjudge.net/problem/HDU-1151#author=0
+题目大意：一个城镇有n个路口，由一些单向马路连接。现在要安排一些伞兵降落在某些路口上，清查所有的路口。一个伞兵可以沿着马路一路清查过去。清查过程中不能有两个伞兵同时清查一个路口（应该是为了防止暴露）。给定城镇的线路，求最少需要几个人伞兵就能清查所有的路口。 
+题解：一开始看到这题，猜想入度为0则ans++，实则不对，出度大于1时就不对了。然后又猜想：建单向边，跑匈牙利算法求出最大匹配，n-ans就是最后的答案。事实证明这个思路是正确的。AC之后即去找了一份题解，这题就是最小路径覆盖问题。
+DAG的最小路径覆盖的定义： 在一个有向图中，找出最少的路径，使得这些路径经过了所有的点。 
+最小路径覆盖分为最小不相交路径覆盖和最小可相交路径覆盖。 
+最小不相交路径覆盖：每一条路径经过的顶点各不相同。
+最小可相交路径覆盖：每一条路径经过的顶点可以相同。
+DAG的最小不相交路径覆盖的算法： 把原图的每个点V拆成两个点Vx和Vy，如果有一条有向边A-&gt;</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E8%A6%86%E7%9B%96">最小路径覆盖</a>&nbsp;
           
         
       </div>
@@ -352,205 +474,73 @@ void next_pre</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-1238/">
-        <p class="h4 index-header">HDU-1238</p>
+      <a href="/2020/02/11/HDU-1054/">
+        <p class="h4 index-header">HDU-1054</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-1238 Substrings
-题目链接：https://vjudge.net/problem/HDU-1238#author=organicsalt
-题目大意：给n个字符串，问是否存在一个子串(或将该子串reverse)为所有字符串的子串。
-题解：将第一个字符串的所有子串与其余子串匹配一遍，如果有一个匹配失败，就将该子串reverse再匹配。这里使用reverse会更快，用kmp加速。
+          <div class="index-text mb-1">题目名称：HDU-1054 Strategic Game
+题目链接：https://vjudge.net/problem/HDU-1054#author=0
+题目大意：Bob非常享受玩电脑游戏的过程，尤其是策略游戏，但是在有些时候，他因为不能在第一时间找到最佳的策略而十分伤心。 现在，他遇到了一个问题。他必须保卫一个中世纪的城市，有很多道路将整个城市连起来，整体上看上去像一棵树。Bob需要放置尽可能少的士兵，保卫树上所有的边。士兵只能放在节点上，但是却可以保卫所有与这个节点相邻的边。 
+题解：题目要求很明确，就是要最少的点覆盖所有的边，即最小定点覆盖问题。 最小顶点覆盖要求用最少的点，让每条边都至少和其中一个点关联。即点集里面的点能覆盖所有的边 。
+knoig定理： 二分图的最小顶点覆盖数=二分图的最大匹配数。 
+证明：
+要证明最小顶点覆盖数==最大匹配数，即证明最小顶点覆盖数&gt;=最大匹配数，并且最大匹配数&gt;=最小顶点覆盖数。设最小顶点覆盖数为S，最大匹配数为M。
+ ① 最小顶点覆盖数&gt;=最大匹配数：
+假设最大匹配数为n，那么我们就得到了n条互不相邻的边，光覆盖这些边</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%B0%8F%E9%A1%B6%E7%82%B9%E8%A6%86%E7%9B%96">最小顶点覆盖</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/11/POJ-3020/">
+        <p class="h4 index-header">POJ-3020</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ-3020  Antenna Placement 
+题目链接：https://vjudge.net/problem/POJ-3020
+题目大意：有T组数据，每一组数据是hxw的矩阵，矩阵中的每一个方格有o或者组成,问用1x2的矩阵 (横着或竖着都可以)来覆盖所有的  ，问至少需要多少个这样的矩阵？
+题解：这个题和HDU4185 Oil Skimming 很相似。观察之后发现，将所有的  先预处理出它的编号，然后对于  的上下左右若为  就可以建边，然后跑匈牙利算法，求出最大匹配，对于这样求出来的最大匹配ans应该要÷2，即ans/=2，因为我们建的双向边。ans  2表示的是已经覆盖了的点，temp-ans  2就是剩余的美誉覆盖的点，这些点只能单独覆盖了，所以最终答案是 temp-ans  2+ans。
+ps：WA了几次，注意  的数量&lt;=40  10=400，边就是400  400  4，数组要够，不然就是TLE或者WA。
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1005;
-int n,T,Next[maxn],len1,len2;string s[105],s2;
-void next_pre(int len)
-{
-    int i=0,j=1;Next[0]=-1;
-    while(j&lt;len)
-    {
-        while(Next[i]!=-1&</div>
+#include&lt;iostrea</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/kmp">kmp</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-2328/">
-        <p class="h4 index-header">HDU-2328</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 2328 Corporate Identity
-题目链接：https://vjudge.net/problem/HDU-2328
-题目大意：求n个字符串的最长公共子串，若有多个则输出字典序最小的，若没有就输出“IDENTITY LOST”。
-题解：这道题就相当简单了，直接暴力枚举第一个字符串的所有子串，用kmp与所有别的字符串匹配，看它们是否都包含了这个子串，将符合条件的子串存进数组，在排序sort一下，输出第一个字符串即可。用到substr函数。不过数据可能比较水，理论上时间复杂度是不够的，以为会TLE，结果可以过，甚至暴力都可以过。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=4000+5;
-int len1,len2,Next[maxn],n,ans;string s1[maxn],s2,Ans[maxn];
-void next_p</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/kmp">kmp</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3374/">
-        <p class="h4 index-header">HDU-3374</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3374 String Problem
-题目链接：https://vjudge.net/problem/HDU-3374
-题目大意：对于一个字符串，它可以每次左移一次，得到一个新的字符串，因此一个长度为n的字符串，可以得到n个字符串。问，字典序最小的字符串排第几位，一共有多少个，字典序最大的字符串排第几位，一共有多少个ps:如果最大和最小的有多个，输出最先出现的那个。
-题解：求有多少个相同的字符串相对简单，并且运用到了kmp的知识，只有内部循环的字符串才可能会重复，对于这种字符串来讲它的循环节T= n-Next[n]，出现次数times=n/T。如何求最大字符串和最小字符串呢？这个就需要用到字符串的最小表示法和最大表示法。这里简单描述一下字符串的最小表示法，至于字符串的最大表示法，可以将最小表示法照搬修改即可。字符串的最小表示法：设定一个opt1和一个opt2与k。初始opt1=0，opt2=1，k=0，一开始指向s[0],s[1]如果s[opt1+k]==s[opt2+k]，则k++.注意opt2+k可能越界，所以要对len取模。当k==len时，说明每一个字符</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/kmp">kmp</a>&nbsp;
-          
-            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E8%A1%A8%E7%A4%BA%E6%B3%95">字符串的最小(大)表示法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-2609/">
-        <p class="h4 index-header">HDU-2609</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 2609 How many
-题目链接：https://vjudge.net/problem/HDU-2609
-题目大意：给n个字符串，每个字符串可以滑动形成新的字符串，问有多少个不同的字符串。ps：若一个字符串滑动后与另一个字符串相同，则这两个字符串相同。
-题解：先将每个字符串的最小表示法找到，然后用string数组储存字符串的最小表示法，然后sort排序，匹配找到总数
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=10000+5;
-const int maxm=100+5;
-int len2,Next[maxn],len1,n;string s[maxn];char a[maxn][maxm];
-int cmp(string x,string y)
-{
-    return x&lt;y;
-}
-int get_min(int opt)
-{</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E8%A1%A8%E7%A4%BA%E6%B3%95">字符串的最小(大)表示法</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/FZU-1901/">
-        <p class="h4 index-header">FZU-1901</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：FZU - 1901 Period II
-题目链接：https://vjudge.net/problem/FZU-1901
-题目大意：对于一个正整数p，p&lt;=字符串的长度，使得任意的s[i]==s[i+p]，求出所有符合要求的p。
-题解：这个题和之前的某个题意很迷的密码题有点相似，那个题当时就是用的ex-kmp，做这个题开始时题意不理解，百度了一下题意。一开始想的就是用kmp，似乎网上用kmp的很多，但我一下子不知道如何运行Next，不过，我突然发现，令s2=s1，用s1的所有后缀匹配s2的结果让我意外，所有符合Extend[i]+i&gt;=len的都是p，当然len本身也是。很显然这个题可以用ex-kmp来做。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1000000+5;
-int T,len1,len2,Next[maxn],Exten</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
           
         
       </div>
@@ -561,7 +551,7 @@ int T,len1,len2,Next[maxn],Exten</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/9/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

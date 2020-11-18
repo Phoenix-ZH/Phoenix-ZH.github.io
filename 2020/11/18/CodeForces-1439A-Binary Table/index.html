@@ -183,7 +183,7 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <h1 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h1><p> <img src="https://img-blog.csdnimg.cn/20201118105034340.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p>
-<p>对于任意的2*2的正方形，可以选择其中的任意三个（0—&gt;1,1—&gt;0），使得进行若干次操作之后让所有的元素变成0.</p>
+<p>对于任意的2 * 2的正方形，可以选择其中的任意三个（0—&gt;1,1—&gt;0），使得进行若干次操作之后让所有的元素变成0.</p>
 <p><strong>Easy版本</strong>：操作次数不超过3nm</p>
 <p><strong>Hard版本</strong>：操作次数不超过nm</p>
 <h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>直接写nm的方法吧（比赛的时候觉得不可能麻烦到去讨论2 <em> 2的内部单独情况，于是就换思路了，结果今早还是换成了一开始的办法）。从上到下，从左到右（不包括最后两行，和最后一列），一旦当前的a[i][j]==1,那么就选择(i,j),(i,j+1),(i+1,j+1)进行变化。对于最后一列的选择(i,m),(i+1,m),(i+1,m-1)进行变化。对于最后两行的，从左到右，如果a[n-1]][j]==1就选择(n-1,j),(n-1,j+1),(n,j+1)；如果a[n][j]==1就选择(n,j),(n,j+1),(n-1,j+1),这样就只剩下右下角的 2 </em> 2的小方格了，比赛的时候就这里出问题了。今天早上想的方法是分别讨论1的个数为0，1，2，3，4的情况：</p>
@@ -326,12 +326,12 @@ int main(){
 }
 </code></pre>
 
-        <div id="aplayer-cQmJgrkN" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-VCBQHbBN" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-cQmJgrkN"),
+            element: document.getElementById("aplayer-VCBQHbBN"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -346,6 +346,7 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
+
             <hr>
           </div>
           <br>

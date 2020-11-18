@@ -153,112 +153,501 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/05/NOJ-%E6%BB%91%E9%9B%AA/">
-        <p class="h4 index-header">NOJ-滑雪</p>
+      <a href="/2020/11/18/NOJ-1005-%E8%A3%85%E8%BD%BD%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">NOJ-1005-装载问题</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">滑雪描述
-Michael喜欢滑雪这并不奇怪，因为滑雪的确很刺激。可是为了获得速度，滑的区域必须向下倾斜，而且当你滑到坡底，你不得不再次走上坡或者等待升降机来载你。Michael想知道载一个区域中最长底滑坡。区域由一个二维数组给出。数组的每个数字代表点的高度。下面是一个例子1 2 3 4 516 17 18 19 615 24 25 20 714 23 22 21 813 12 11 10 9一个人可以从某个点滑向上下左右相邻四个点之一，当且仅当高度减小。在上面的例子中，一条可滑行的滑坡为24-17-16-1。当然25-24-23-…-3-2-1更长。事实上，这是最长的一条。
-输入
-输入的第一行表示区域的行数R和列数C(1 &lt;= R,C &lt;= 100)。下面是R行，每行有C个整数，代表高度h，0&lt;=h&lt;=10000。
-输出
-输出最长区域的长度。 
-输入样例
-5 51 2 3 4 516 17 18 19 615 24 25 20 714 23 22 21 813 12 11 10 9
-输出样例
-25
-输出提示printf(“%d\n,num”);
-思路问题问的是最</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-05&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/05/NOJ-%E8%A3%85%E7%9B%98%E5%AD%90/">
-        <p class="h4 index-header">NOJ-装盘子</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">装盘子描述
-N人为了大快朵颐，行至云餐二楼，取了N个盘子，打了M个饺子。现欲将M个饺子装入N个盘子中，试问共有多少种不同的装法？假设盘子足够大，并且盘子里可以什么都不放。注意像2 5 0和5 0 2之类的属于同一种放法。
-输入
-两个整数M、N(1=&lt; M,N &lt;=100)以空格隔开。
-输出
-单独一行输出共有几种装法。
-输入样例
-7 3
-输出样例
-8
-提示
-注意输出要以“\n”结尾。
-思路问m个饺子放到n个盘子的方法，这个题直接写动态转移方程不好写，那就换成写记忆化搜索就行了。考虑m&gt;=n和m</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-05&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/CodeForces-1442-B/">
-        <p class="h4 index-header">CodeForces-1442-B</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：Identify the Operations
-题目大意：一个数组a长度为n，一个数组b长度为m，a数组中的元素各不相同，b数组中的元素各不相同。在a数组中要将ai加入到bi中，可以将ai-1,ai+1划去，然后ai加入到b数组的右侧。问得到b数组的总方案数，答案对998244353取模。
-思路：Div2的最后一题居然是水题，这是我没想到的，错过了大好的上分时机。要依次将a数组的一些元素加入到b数组中来得到b数组。这里有三种情况：
-1）如果ai-1和ai+1都在b数组中。此时他们都还在数组a中，ai想加入b数组中，必须划去ai-1或者ai+1，但是显然无法划去。对于这种情况的选择方案为0.
-2）ai-1和ai+1中有一个在b中，而另外一个不在。可以划去那个不在b数组中的。方案数为1.
-3）ai-1和ai+1两个数字都不在b中，则有两种方案。
-用vis数组来标记ai是否在b数组中。用pos数组表示一个值w在a数组中对应的位置。
-代码：#include&lt;bits/stdc++.h&gt;
+          <div class="index-text mb-1">装载问题 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
 using namespace std;
-const int maxn = 20000</div>
+const int maxn=1000+50;
+int c1,c2,n,w[maxn],sign;
+void dfs(int now){
+    if(now==n+1){
+        sign=1;
+        return ;
+    }
+    if(c1&gt;=w[now]){
+        c1-=w[now];
+        dfs(now+1);
+        c1+=w[now];
+    }
+    if(c2&gt;=w[now]){
+        c2-=w[now];
+        dfs(now+1);
+        c2+=w[now];
+    }
+}
+int main(){
+    int i;
+    while(1){
+        cin&gt;&gt;c1&gt;&gt;c2&gt;&gt;n;sign=0;
+      </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1004-01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">NOJ-1004-01背包问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">0-1背包问题 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=10000+50;
+int n,m,w[maxn],p[maxn],dp[maxn];
+int max(int x,int y){
+    if(x&gt;=y)return x;
+    return y;
+}
+int main(){
+    int i,j;
+    while(1){
+        memset(dp,0,sizeof(dp));
+        cin&gt;&gt;n&gt;&gt;m;
+        if(n==0&amp;&amp;m==0)break;
+        for(i=1;i&lt;=n;i++)cin&gt;&gt;w[i];
+        for(i=1;i&lt;=n;i++)cin&gt;&gt;p[i];
+        for(i=1;i&lt;=n;i++){
+            f</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1324-%E7%A9%B7%E4%B8%BE%E6%89%80%E6%9C%89%E6%8E%92%E5%88%97/">
+        <p class="h4 index-header">NOJ-1324-穷举所有排列</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">穷举所有排列 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=25;
+int n;
+char a[maxn];
+void dfs(int t){
+    int i;
+    if(t==n+1){
+        for(i=1;i&lt;=n;i++)cout&lt;&lt;a[i];cout&lt;&lt;endl;
+        return ;
+    }
+    for(i=t;i&lt;=n;i++){
+        swap(a[i],a[t]);
+        dfs(t+1);
+        swap(a[i],a[t]);
+    }
+}
+int main(){
+    int i;
+    cin&gt;&gt;n;
+    for(i=1;i&lt;=n;i++)a[i]=&#39;a&#39;+i-1;
+    dfs(1);</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1243-%E5%BE%AA%E7%8E%AF%E8%B5%9B%E6%97%A5%E7%A8%8B%E8%A1%A8/">
+        <p class="h4 index-header">NOJ-1243-循环赛日程表</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">循环赛日程表 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=500+50;
+int n,a[maxn][maxn];
+void dfs(int r,int c,int h){
+    if(h==1)return ;
+    h/=2;
+    a[r+h][c+h]=a[r][c];
+    a[r][c+h]=a[r][c]+h;
+    a[r+h][c]=a[r][c]+h;
+    dfs(r,c,h);
+    dfs(r+h,c+h,h);
+    dfs(r,c+h,h);
+    dfs(r+h,c,h);
+}
+int main(){
+    int i,j;
+    cin&gt;&gt;n;
+    n=pow(2,n);
+    a[1][1]=1;
+    dfs(1,1,n);
+    f</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1574-%E6%B1%82%E7%AC%ACk%E5%B0%8F%E6%95%B0/">
+        <p class="h4 index-header">NOJ-1574-求第k小数</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">求第k小数 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+50;
+int n,a[maxn],k;
+int main(){
+    int i;
+    cin&gt;&gt;n;
+    for(i=1;i&lt;=n;i++)cin&gt;&gt;a[i];
+    cin&gt;&gt;k;
+    sort(a+1,a+1+n);
+    cout&lt;&lt;a[k]&lt;&lt;endl;
+    return 0;
+}
+
+
+        
+            
+        
+        
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-LCcXOOEq"),
+            narro</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1323-%E7%A9%B7%E4%B8%BEn%E4%BD%8D%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0/">
+        <p class="h4 index-header">NOJ-1323-穷举n位二进制数</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">穷举n位二进制数  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=100+50;
+int a[maxn],n;
+int main(){
+    int i,x;
+    cin&gt;&gt;n;
+    for(i=n;i&gt;=1;i--)cout&lt;&lt;a[i];cout&lt;&lt;endl;
+    for(x=1;x&lt;=pow(2,n)-1;x++){
+        a[1]++;
+        for(i=1;i&lt;=n;i++){
+            if(a[i]&gt;=2)a[i]=0,a[i+1]++;
+        }
+        for(i=n;i&gt;=1;i--)cout&lt;&lt;a[i];cout&lt;&lt;endl;
+    }
+  </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1141-%E8%B5%B0%E8%BF%B7%E5%AE%AB/">
+        <p class="h4 index-header">NOJ-1141-走迷宫</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">走迷宫  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=20+50;
+int n,m,sx,sy,tx,ty,a[maxn][maxn],vis[maxn][maxn],d[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
+struct Node{
+    int x,y;
+};
+int main(){
+    int i,j;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;
+    for(i=0;i&lt;n;i++){
+        for(j=0;j&lt;m;j++){
+            cin&gt;&gt;a[i][j];
+        }
+    }
+    queue&lt;Node&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1003-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
+        <p class="h4 index-header">NOJ-1003-快速排序</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">快速排序  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+50;
+int n,a[maxn];
+void QuickSort(int l,int r){
+    if(l&gt;=r)return ;
+    int i=l,j=r,x=a[l];
+    while(i&lt;j){
+        while(x&lt;=a[j]&amp;&amp;i&lt;j)j--;
+        if(i&lt;j)a[i++]=a[j];
+        while(a[i]&lt;=x&amp;&amp;i&lt;j)i++;
+        if(i&lt;j)a[j--]=a[i];
+    }
+    a[i]=x;
+    QuickSort(l,i-1);QuickSort(i+1,r);
+}
+int main(){
+    int i;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1002-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
+        <p class="h4 index-header">NOJ-1002-归并排序</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">归并排序 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+50;
+int n,a[maxn],t[maxn];
+void Sort(int l,int r,int mid){
+    int i=l,j=mid+1,k=0;
+    while(i&lt;=mid&amp;&amp;j&lt;=r){
+        if(a[i]&lt;=a[j])t[++k]=a[i++];
+        else t[++k]=a[j++];
+    }
+    if(i==mid+1){
+        while(j&lt;=r)t[++k]=a[j++];
+    }
+    if(j==r+1){
+        while(i&lt;=mid)t[++k]=a[i++];
+    }
+    for(i=l,k=1;i&lt;=r;i++,k++)</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/CodeForces-1439A-Binary%20Table/">
+        <p class="h4 index-header">CodeForces-1439A-Binary Table</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：  
+对于任意的2 * 2的正方形，可以选择其中的任意三个（0—&gt;1,1—&gt;0），使得进行若干次操作之后让所有的元素变成0.
+Easy版本：操作次数不超过3nm
+Hard版本：操作次数不超过nm
+思路：直接写nm的方法吧（比赛的时候觉得不可能麻烦到去讨论2  2的内部单独情况，于是就换思路了，结果今早还是换成了一开始的办法）。从上到下，从左到右（不包括最后两行，和最后一列），一旦当前的a[i][j]==1,那么就选择(i,j),(i,j+1),(i+1,j+1)进行变化。对于最后一列的选择(i,m),(i+1,m),(i+1,m-1)进行变化。对于最后两行的，从左到右，如果a[n-1]][j]==1就选择(n-1,j),(n-1,j+1),(n,j+1)；如果a[n][j]==1就选择(n,j),(n,j+1),(n-1,j+1),这样就只剩下右下角的 2  2的小方格了，比赛的时候就这里出问题了。今天早上想的方法是分别讨论1的个数为0，1，2，3，4的情况：
+0：不需要变换，直接输出；
+3：变换那3个1的位置，操作次数为1；
+2：变换2个0的位置+任意一个1的位</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
         
         
         
@@ -266,270 +655,7 @@ const int maxn = 20000</div>
           
             <a href="/tags/CodeForces">CodeForces</a>&nbsp;
           
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%94%EF%BC%89/">
-        <p class="h4 index-header">NOJ-花生米（五）</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">花生米（五）描述
-五一长假第六天，Tom在QQ上遇到了Kitty。呵呵，Kitty，在离散数学课上认识的PPMM……等等！Tom恍然大悟：自己这一生除了看帖不回之外最大的错误就是离散数学没学好！五一长假第七天，Tom和Jerry在仓库散步的时候发现了一堆花生米（仓库，呵呵，仓库…）。这次Tom制定分花生米规则如下：1、首先选出最苦的一粒花生米，放到一个瓶子里；2、把剩下的花生米做成花生酱，Tom和Jerry轮流取一些花生酱吃掉；3、第一个取的人只能取1.0克，以后取花生酱的数量不能少于两个人已经取过的总数量且不能超过两个人已经取过的总数量的三倍；4、不能按规则3取花生酱的人必须吃掉瓶子里的花生米；5、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然希望瓶子里的花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
-输入
-本题有多个测例，每个测例的输入是一个浮点数w，w大于1.0小于等于1000.0，w最多只有一位小数，代表花生酱的数量，单位为克。w小于0表示输入结束，不需要处理。
-输出
-每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E5%9B%9B%EF%BC%89/">
-        <p class="h4 index-header">NOJ-花生米（四）</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">花生米（四）描述
-五一长假第四天，Tom逛了N个bbs，做了N^2个脑筋急转弯题，终于发现了每次吃完花生米嘴里都是苦味的原因：自己总会吃到最后一粒花生米。五一长假第五天，Tom和Jerry在仓库散步的时候发现了n堆花生米（这是什么仓库啊？！）。这次Tom制定分花生米规则如下：1、首先选出最苦的一粒花生米，放到一个瓶子里；2、Tom和Jerry轮流从任意一堆花生米中取出任意粒吃掉；3、如果Tom吃到最后一粒花生米（瓶子里的花生米除外），Jerry必须吃掉瓶子里的花生米；如果Jerry吃到最后一粒花生米（瓶子里的花生米除外），Tom自愿吃掉瓶子里的花生米；4、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然希望瓶子里的花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
-输入
-本题有多个测例。每个测例的输入第一行是一个整数n，n大于零小于等于10，代表花生米的堆数（取出最苦花生米后）；接下来n行每行一个不超过100的正整数，分别代表一堆花生米的粒数（取出最苦花生米后）。n等于0表示输入结束，不需要处理。
-输出
-每个测例在单独的一行内输出一个整数：Jerry</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%B8%89%EF%BC%89/">
-        <p class="h4 index-header">NOJ-花生米（三）</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">花生米（三）描述
-五一长假第三天，Tom和Jerry在仓库散步的时候又发现了一堆花生米（仓库，又见仓库……）。这次Tom制定分花生米规则如下：1、Tom和Jerry轮流从堆中取出k粒花生米吃掉；2、第一次取花生米的人只能取一粒，以后取花生米的数量不能超过前一个人取花生米数量的两倍；3、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然还是希望最后一粒花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
-输入
-本题有多个测例，每个测例的输入是一个整数n，n大于零小于等于1000，代表花生米的数量。n等于0表示输入结束，不需要处理。
-输出
-每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取输出0。
-输入样例
-123450
-输出样例
-01001
-思路这个题与花生米（二）https://blog.csdn.net/Phoenix_ZengHao/article/details/109495057  相比，状态变多了。之前对于状态i，它只能由状态i-1，i-5，i-10进行推导。显然直接枚举状态并且对每一个状态做三个dp转移方程是行不通的。我们需</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%8C%EF%BC%89/">
-        <p class="h4 index-header">NOJ-花生米（二）</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">花生米（二）描述
-五一长假第二天，Tom和Jerry在仓库散步的时候又发现了一堆花生米（这个仓库还真奇怪）。这次Tom制定分花生米规则如下：    1、Tom和Jerry轮流从堆中取出k粒花生米吃掉，k可以是1，5，10中的任意一个数字；    2、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然还是希望最后一粒花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
-输入
-本题有多个测例，每个测例的输入是一个整数n，n大于零小于等于1000，代表花生米的数量。n等于0表示输入结束，不需要处理。
-输出
-每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取输出0。
-输入样例
-12340
-输出样例
-0101
-思路博弈论：定义： jerry后手胜利 为必胜态。（即：Tom拿了最后一颗并且初始Jerry后手）10以内的必胜状态：1,3,5,7,9.由于可以一次拿10个，我们需要考虑10周围的情况:11为必胜 。什么才是必败态？当前面i-1,i-5,i-10这10个状态都是必胜态的时候， i一定是必败态。否则 i就有机会成为必胜态。必胜状态推导出的下</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E6%97%85%E6%B8%B8%E9%A2%84%E7%AE%97/">
-        <p class="h4 index-header">NOJ-旅游预算</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">旅游预算描述
-一个旅行社需要估算乘汽车从某城市到另一城市的最小费用，沿路有若干加油站，每个加油站收费不一定相同。旅游预算有如下规则： 若油箱的油过半，不停车加油，除非油箱中的油不可支持到下一站；每次加油时都加满；在一个加油站加油时，司机要花费2元买东西吃；司机不必为其他意外情况而准备额外的油；汽车开出时在起点加满油箱；计算精确到分（1元=100分）。编写程序估计实际行驶在某路线所需的最小费用。
-输入
-第一行为起点到终点的距离（实数） 第二行为三个实数，后跟一个整数，每两个数据间用一个空格隔开。其中第一个数为汽车油箱的容量（升），第二个数是每升汽油行驶的公里数，第三个数是在起点加满油箱的费用（精确到分），第四个数是加油站的数量。（〈=50）。接下去的每行包括两个实数，每个数据之间用一个空格分隔，其中第一个数是该加油站离起点的距离，第二个数是该加油站每升汽油的价格（元/升）。加油站按它们与起点的距离升序排列。所有的输入都有一定有解。
-输出
-共两行，每行都有换行 第一行为一个实数和一个整数，实数为旅行的最小费用，以元为单位，精确到分，整数表示途中加油的站的N。第二行是N个整数，表示N个加油的</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">
-        <p class="h4 index-header">NOJ-石子合并</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">石子合并描述
-在一个圆形操场的四周摆放着n堆石子(n&lt;= 100)，现要将石子有次序地合并成一堆。规定每次只能选取相邻的两堆合并成新的一堆,并将新的一堆的石子数,记为该次合并的得分。编一程序，读入石子堆数n及每堆的石子数(&lt;=20)。选择一种合并石子的方案,使得做n－1次合并,得分的总和最小； 比如有4堆石子：4 4 5 9 则最佳合并方案如下：4 4 5 9 score: 08 5 9 score: 813 9 score: 8 + 13 = 2122 score: 8 + 13 + 22 = 43
-输入
-可能有多组测试数据。 当输入n=0时结束! 第一行为石子堆数n(1&lt;=n&lt;=100)； 第二行为n堆的石子每堆的石子数,每两个数之间用一个空格分隔。
-输出
-合并的最小得分，每个结果一行。
-输入样例
-4 4 4 5 9 0
-输出样例
-43
-思路一开始以为这个题和合并果子一样是个贪心的题，拿着优先队列就开始一波贪心，WA了。才发现是合并相邻的石子。那这个题就和上一个计算矩阵连乘积的题几乎一样了。但是也有不一样的。这个题的序列是循环序列，并且为了记录每一次合并对答</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E8%AE%A1%E7%AE%97%E7%9F%A9%E9%98%B5%E8%BF%9E%E4%B9%98%E7%A7%AF/">
-        <p class="h4 index-header">NOJ-计算矩阵连乘积</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">计算矩阵连乘积描述
-在科学计算中经常要计算矩阵的乘积。矩阵A和B可乘的条件是矩阵A的列数等于矩阵B的行数。若A是一个p×q的矩阵，B是一个q×r的矩阵，则其乘积C=AB是一个p×r的矩阵。计算C=AB总共需要p×q×r次乘法。现在的问题是，给定n个矩阵{A1,A2,…,An}。其中Ai与Ai+1是可乘的，i=1,2,…,n-1。要求计算出这n个矩阵的连乘积A1A2…An最少需要多少次乘法。
-输入
-输入数据的第一行是一个整树n（0 &lt; n &lt;= 10），表示矩阵的个数。接下来的n行每行两个整数p,q( 0 &lt; p,q &lt; 100)，分别表示一个矩阵的行数和列数。
-输出
-输出一个整数：计算连乘积最少需要乘法的次数。
-输入样例
-101 22 33 44 55 66 77 88 99 1010 11
-输出样例
-438
-思路设dp[i][j]表示合并第i个矩阵到第j个矩阵所需要的最少的乘法次数。初始化dp为0x3f3f3f3f（即初始化为无穷大）。dp[i][i]=0(所有的i-i的合并的乘法次数为0).然后就开始考虑动态规划的转移方程：先枚举长度len （len fro</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
+            <a href="/tags/constructive">constructive</a>&nbsp;
           
         
       </div>
@@ -540,7 +666,7 @@ const int maxn = 20000</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

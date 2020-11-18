@@ -153,110 +153,37 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3068/">
-        <p class="h4 index-header">HDU-3068</p>
+      <a href="/2020/02/11/HDU-4185/">
+        <p class="h4 index-header">HDU-4185</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3068 最长回文
-题目链接：https://vjudge.net/problem/HDU-3068
-题目大意：求多组数据的最长回文的长度，就是Manacher的模板题
-题解：讲解一下Manacher算法首先该算法的时间复杂度为O(N)，一个长度为len的字符串，len可能为奇数，也可能是偶数，那么中间点就不一样了，那对于长度L=2len+1呢？显然它一定是奇数。具体操作为：t[0]=’$’;for(int i=1;i&lt;=len;i++)t[++len]=’#’,t[++len]=s[i-1];t[++len]=’#’;比如字符串 abccba 就转换成了 $#a#b#c#c#b#a#;
-以上是初始化的过程，接下来是具体的操作过程：对于p[i]，如果i&lt;mx，设j是i关于id对称点，如图所示，则基于以下三种情况，可以求出p[i]的值：
-（1）以j为中心的回文串有一部分在以id为中心的回文串之外。因为mx是以id为中心的最长回文的右边界，所以以i为中心的回文串不可能会有字符在以id为中心的回文串之外；否则mx就不是以id为中心的最长回文的右边界。所以，在</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Manacher">Manacher</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4513/">
-        <p class="h4 index-header">HDU-4513</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4513 吉哥系列故事——完美队形II
-题目链接：https://vjudge.net/problem/HDU-4513#author=hzoi2017_wty
-题目大意：假设有n个人按顺序的身高分别是h[1], h[2] … h[n]，从中挑出一些人形成一个新的队形，新的队形若满足以下要求，则就是新的完美队形：　　1、连续的　　2、形成回文串　　3、从左到中间那个人，身高需保证不下降
-　　　问有组成完美队形的最多人数
-题解：要求连续的并且是回文串，这很明显就是回文串的题，应该用Manacher算法，但是又要求从左到中间，身高不下降，就需要修改一下判定条件：    while(t[i+p[i]]==t[i-p[i]]&amp;&amp;(t[i-p[i]]==0||t[i-p[i]]&lt;=t[i-p[i]+2]))p[i]++;
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Manacher">Manacher</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3294/">
-        <p class="h4 index-header">HDU-3294</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3294 Girls’ research
-题目链接：https://vjudge.net/problem/HDU-3294#author=asasas5d
-题目大意：先给一个字符x，然后给一个 字符串，表示字符串中所有字符x变成’a’，其余的字符依次往前变换。例如b babad就转换成azazc。让寻找第一个最长回文串，长度若小于2，则输出No solution!，否则输出起点，终点和转换后的最长回文串。
-题解：最长回文串问题，当然就是用Manacher，先计算出字符x与‘a’的差值，然后将字符串进行转换。然后直接跑Manacher，更新ans时注意更新储存一下终点和起点
+          <div class="index-text mb-1">题目名称： HDU - 4185  Oil Skimming 
+题目链接：https://vjudge.net/problem/HDU-4185
+题目大意：有K组数据，每组数据是N*N的方阵，每个方格由.或者#组成，问有多少个互相不重叠的##(横着或竖着)。
+  (1 &lt;= K &lt;= 100)  (1 &lt;= N &lt;= 600) 
+题解：最开始的思路是每个点只判断它下方或者右方是不是#，如果是就连边，但是这个方法存在一个问题：横着的##和竖着的##如果重叠会导致计数重复，又没有一个比较好的办法来规范。于是换了一个想法，一个点若为#就像它上下左右为#的点都连边，最后答案/2就可以避免重复。枚举所有的点，预处理#点的编号temp记录，然后开始跑匈牙利算法，最后ans/2.
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 using namespace std;
-const int maxn=200000*2+105;
-int p[maxn],len,a[maxn],S,T;char s[maxn],t[maxn]</div>
+const int maxn=1200+5;
+const</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/Manacher">Manacher</a>&nbsp;
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
           
         
       </div>
@@ -267,86 +194,262 @@ int p[maxn],len,a[maxn],S,T;char s[maxn],t[maxn]</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4763/">
-        <p class="h4 index-header">HDU-4763</p>
+      <a href="/2020/02/10/HDU-2389/">
+        <p class="h4 index-header">HDU-2389</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4763 Theme Section
-题目链接：https://vjudge.net/problem/HDU-4763#author=0
-题目大意：字符串E是字符串S的前缀和后缀，同时也出现在字符串S的中间，不与前缀后缀重合，问字符串S中符合要求的字符串E的最大长度。
-题解：这题显示是kmp问题，kmp中Next[i]表示字符串s从0…..i-1中前缀与后缀的最大公共子串，而问题就是求EAEBE，A，B长度任意(可以为0)，显然E最长为Next[len]，于是可以从len-Next[len]开始往前看Next[now]与E的大小关系，now&gt;=2*E，因为不可以重叠，如果找不到呢，E就应该缩小，理论是E—，所以E=Next[E]，继续寻找，直到找到或者无法继续。
+          <div class="index-text mb-1">题目名称：HDU-2389  Rain on your Parade 
+题目链接：https://vjudge.net/problem/HDU-2389
+题目大意：有T组数据，每组数据第一行是t，表示到t时下雨，第二行是m，表示有m个客人，接下来m行，每行3个数字，依次为x,y,v(速度)，然后是n，表示有n把伞，接下来n行，每行2个数字，依次为x，y，每一把伞只能由一个人使用，从开始每个客人出发拿伞，到t时间结束，问最多有几个人拿到了伞。   (1 &lt;= m，n &lt;= 3000) 
+题解：1-m客人，N+1-N+n伞
+依次枚举客人和伞，在规定时间内t*v&gt;=距离就可能拿到这把伞，就可以建边客人—&gt;伞。
+一开始跑匈牙利算法，但是匈牙利算法时间复杂度较大，要TLE。
+这时候需要用hopcroft-karp来优化，这里介绍一下hopcroft-karp：
+hopcroft-karp的时间复杂度为 O（n^0.5*m）。
+思路：
+ HK算法分为三步 ：假设我们将集合分为两个，一个是左边的x集合，右面的y集合； 
+ 1） ：首先x集合中没有匹配的元素入队列； 
+ 2） </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(hopcroft-karp)">二分图(hopcroft-karp)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/10/HDU-2819/">
+        <p class="h4 index-header">HDU-2819</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-2819 Swap
+题目链接：https://vjudge.net/problem/HDU-2819
+题目大意：给一个n*n的方阵，每一个格子(i,j)由0/1组成，问能否使得斜对角线即i==j,（i∈[1,n]），如果不能就输出-1，否则请输出方案。R表示交换行，C表示交换列。
+
+这里有一点需要说明，就是说题目的交换，其实是将原来图的某一行移到最后图的某一行，而不是指先交换两行，得到一个新图，再交换新图的两行。 
+题解：首先是关于能否得到斜对角线全为1的方阵，假如一个方阵的斜对角线全为1，那么这个方阵的秩为n，那么如果一个方阵的秩小于n那一定就不可以。那么如何得到方阵的秩呢？受到前面几个二分图的题的影响，凡是方格类的题目都可以将行和列分开，将数字为1的方格就行连边，即行i—&gt;列j，最后求最大匹配，一旦最大匹配为n那就可以，否则输出-1。由矩阵的运算性质可以知道，所有的列变换都可以用行变换来替代，所有的行变换都可以用列变换来替代，于是我们不妨全部都用列变换来替换，已知cy[i]表示第i列和cy[i]行来配对，从1-n列开始枚举，然后枚举得到第一个cy[j]==i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/10/HDU-1281/">
+        <p class="h4 index-header">HDU-1281</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-1281 棋盘游戏
+题目链接：https://vjudge.net/problem/HDU-1281
+题目大意：在N*M的棋盘上，在p个位置上允许放车，每一行每一列最多放一个车，并且在不允许放车的位置并不会影响车的攻击。重要点：要使车的数量最大，该点必须放车。问最多有多少个重要点、最多允许放多少个车？
+题解：这道题和Fire Net的区别在于，Fire Net不允许放置的点是一堵墙，会隔离攻击，而这道题不会影响攻击。所以Fire Net那道题需要进行分区域块，这样就可以分离开。但是这道题不会影响攻击，因此直接按点分，X集合为行，Y集合为列，只要当a[i][j]==1才可以让i行与j列连边，相当于点(i,j)可以放车。这样跑匈牙利算法可以得到最大匹配即最大的车的放置量。对于重要点的求解需要暴力求解，对于每一个可放置车的点需要去除它，然后跑匈牙利算法，如果最大匹配变小了，说明这是重要点，当然对于前向星链表，要记录出发点u，这样就可以进行标记了，vis数组不可以开大了，容易TLE。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/09/HDU-1083/">
+        <p class="h4 index-header">HDU-1083</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称： HDU - 1083Courses
+题目链接：https://vjudge.net/problem/HDU-1083#author=0
+题目大意： 一共有N个学生跟P门课程,一个学生可以任意选一 门或多门课,问是否达成:
+1.每个学生选的都是不同的课(即不能有两个学生选同一门课)
+2.每门课都有一个代表(即P门课都被成功选过)
+ 若能满足上面两个要求这输出”YES”,否则为”NO”  注意：是课程匹配的学生，学生没课上没事….. 
+题解：最终问题就是问能否所有的课程都被人选，并且没有两个及以上的人选同一门课。换言之，二分图的最大匹配数是否==p。建图时课程—&gt;学生，课程(1-P)，学生(N+1-N+n)，跑匈牙利算法。
+ps：数组开小了不会RE，它会TLE！因为一开始只开了10000的边，实际上时100*300，然后TLE了。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/09/HDU-2444/">
+        <p class="h4 index-header">HDU-2444</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称： HDU - 2444 The Accomodation of Students
+题目链接：https://vjudge.net/problem/HDU-2444#author=0
+题目大意：有n个关系，他们之间某些人相互认识。这样的人有m对。你需要把人分成2组，使得每组人内部之间是相互不认识的。如果可以，就可以安排他们住宿了。安排住宿时，住在一个房间的两个人应该相互认识。最多的能有多少个房间住宿的两个相互认识。 
+题解：这个题分为两个问题，第一个问题就是问是否可以分成两组，每一组内部任意两人都互相不认识；第二个问题是最多有几组两人之间相互认识，注意一人只能选择一次。第一个问题很显然就是判断这个图是否可以形成一个二分图，第二个问题是在该图是二分图的条件下的最大匹配数。二分图的判断方法就染色法，用bfs，将相邻的点全部染成相反的颜色，一旦该点与相邻点颜色相同就说明不能形成二分图，最后如果无矛盾就说明可以形成二分图。注意我们建图全部小—&gt;大，而条件给的数据也是如此，这样一定是从小的点出发，bfs起点就为1。求最大匹配时候，我们注意这图是单向的所以直接跑匈牙利。当然保险的是建</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/09/HDU-1045/">
+        <p class="h4 index-header">HDU-1045</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称： HDU - 1045 Fire Net
+题目链接https://vjudge.net/problem/HDU-1045#author=Codeblocksm
+题目大意： 现在有一个N*N的地图，地图上有一些围墙。你的任务是在没有围墙的空白地方建尽可能多的炮台。 假设炮台可以向“上下左右”四个方向发射子弹，子弹可以穿越任何距离并可在途中摧毁一个另一个炮台。而墙壁结构坚固，可以阻止子弹。 问最多可以建设多少个炮台？
+题解：刚开始做二分图的最大匹配问题，没有什么思路啊，没想到如何将一块区域弄来建图，后来看了一下别人的思路，将同一列的联通区域求出来，当然同一联通区域有且只有一个炮台，否则不合题意；将同一行的联通区域求出来，也只能存在一个炮台。如何将列和行结合起来呢？然后列中第i个连通块与行中第j个连通块有交点，说明交点处可以建炮台，判断方法：y[j].h&gt;=x[i].s&amp;&amp;y[j].h&lt;=x[i].t&amp;&amp;x[i].l&gt;=y[j].s&amp;&amp;x[i].l&lt;=y[j].t。那么可以add(i,j+N)。这样建了图后用匈</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/09/HDU-2255/">
+        <p class="h4 index-header">HDU-2255</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-2255  奔小康赚大钱 
+题目链接：https://vjudge.net/problem/HDU-2255#author=0
+题目大意：n个居民n个房子，每个居民会给不同的房子不同的钱，问如何分配使得钱最多？
+题解：KM的模板题，KM的具体介绍由blog的KM讲解中提供
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 using namespace std;
-const int maxn=1000000+5;
-in</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/kmp">kmp</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2387/">
-        <p class="h4 index-header">POJ-2387</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2387 Til the Cows Come Home
-题目链接：https://vjudge.net/problem/POJ-2387#author=ght5160
-题目大意：求从1到n的最短距离
-题解：最短路模板，spfa或者dijkstra+堆优化。朴素Dijkstra：时间复杂度o(n^2)堆优化Dijkstra：时间复杂度o(（V+E）logV）
-spfa在稀疏图O（E），稠密图O（VE）
-dijkstra+堆优化的代码：
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=2000+5;
-int n,m,k=1,dist[maxn],vis[maxn],head[maxn];
-struct node
+const int maxn=300+5;
+int Map[maxn][maxn],visx[maxn],visy[maxn],cx[maxn],cy[maxn],n,wx[maxn],wy[maxn],minn;
+int dfs(int x)
 {
-    int to,next,w;
-}edge[maxn*2];
-struct N
-{
-  </div>
+    visx[x]=1;
+    for(int i=1;i&lt;=n;i++)
+    {
+        if(!visy[i]&amp;&amp;Map[x][i]!=0x3f3f3f3f)
+     </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+            <a href="/tags/KM">KM</a>&nbsp;
           
         
       </div>
@@ -357,38 +460,40 @@ struct N
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2253/">
-        <p class="h4 index-header">POJ-2253</p>
+      <a href="/2020/02/09/KM%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">
+        <p class="h4 index-header">KM算法详解</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2253 Frogger
-题目链接：https://vjudge.net/problem/POJ-2253#author=dusenlin
-题目大意：两块石头之间的青蛙距离被定义为两块石头之间所有可能路径上的最小必要跳跃距离，某条路径的必要跳跃距离即这条路径中单次跳跃的最远跳跃距离。求1到2的最小必要跳跃距离。
-题解：数据很小，符合Floyd算法。每一次更新的时候需要调整一下：dist[i][j]=min(dist[i][j],max(dist[i][k],dist[k][j]));因为必要跳跃距离是指整个路径单次跳跃的最远距离，所以取max
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-using namespace std;
-const int maxn=200+5;
-int n;double dist[maxn][maxn],x[maxn],y[maxn];
-i</div>
+          <div class="index-text mb-1">介绍：以匈牙利算法为基础，改善后用于求解带权二分图的最佳匹配问题
+完备匹配：如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，或者Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。 
+完美匹配：若二分图X部的每一个顶点都与Y中的一个顶点匹配，并且Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完美匹配。 
+即： 一个二分图，X部和Y部的顶点数相等，存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。  
+最大权匹配：带权二分图的边权重和最大的匹配，如图，最大和为102
+  
+最佳匹配：带权二分图的边权重和最大的完备匹配，如图
+  
+显然最大权匹配和最佳匹配不完全相同，最大权匹配由于不一定是最大匹配，所以无法等同于最佳匹配。
+但是如果把剩余的边补上，并且设置边权为0，那么二者可以统一起来。如图
+  
+KM算法km算法用于求最佳匹配，而不是最大权匹配。换言之，km算法用来求完备匹配下的最大权匹配。
+如果不存在完备匹配，km算法会求最大匹配，如果最大匹配存在多种，那么结果就是最大匹配中权重和最大的。
+
+在一个二分图中，左顶点为X，右顶点为Y，现在对于每组左右连</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+            <a href="/tags/KM">KM</a>&nbsp;
           
         
       </div>
@@ -399,172 +504,44 @@ i</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1797/">
-        <p class="h4 index-header">POJ-1797</p>
+      <a href="/2020/02/08/luogu-3386/">
+        <p class="h4 index-header">luogu-3386</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1797 Heavy Transportation
-题目链接：https://vjudge.net/problem/POJ-1797#author=0
-题目大意：求1-n路径上边权最小值最大。
-题解：最短路径的变形题，用spfa来实现原本的dist[edge[i].to]=min(dist[edge[i].to],dist[x]+edge[i].w)修改为dist[edge[i].to]=max(dist[edge[i].to],min(dist[x],edge[i].w)注意初始化dist全为0，由于收缩，dist[1] =0x3f3f3f3f;
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=1000000+5;
-const int maxm=1000+5;
-int k=1,T,n,m,head</div>
+          <div class="index-text mb-1">题目名称：luogu-P3386 二分图匹配模板
+题目链接：https://www.luogu.com.cn/problem/P3386
+题目大意： 给定一个二分图，结点个数分别为n,m，边数为e，求二分图最大匹配数 
+ 因为数据有坑，可能会遇到 v&gt;m 或者 u&gt;n的情况。请把 v&gt;m 或者 u&gt;n的数据自觉过滤掉。
+题解：这是二分图最大匹配匹配的模板题。
+这里简述一下二分图的匈牙利算法：
+给出下图，要求最大匹配数
+  
+ 匈牙利算法的工作模式 如下：
+ 一： 先试着给1号男生找妹子，发现第一个和他相连的1号女生还名花无主，got it，连上一条蓝线 
+  
+ 二：接着给2号男生找妹子，发现第一个和他相连的2号女生名花无主，got it   
+ 三：接下来是3号男生，很遗憾1号女生已经有主了，怎么办呢？ 
+ 我们试着给之前1号女生匹配的男生（也就是1号男生）另外分配一个妹子。 
+ (黄色表示这条边被临时拆掉) 
+  
+ 与1号男生相连的第二个女生是2号女生，但是2号女生也有主了，怎么办呢？我们再试着给2号女生的原配  重新找个妹子 
+  
+ 此时发现2号男生还</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-08&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3268/">
-        <p class="h4 index-header">POJ-3268</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3268 Silver Cow Party
-题目链接：https://vjudge.net/problem/POJ-3268#author=Demon_de_Laplace
-题目大意：N头牛，M条单行道，在s出举行聚会，每头牛出发和返回都是走最短路，问所有牛中走的路程最远的牛走了多远？
-题解：建边的时候建双向边，k=2开始.当边号为偶数时，说明是正边；当边号为奇数时，说明时反边；从s出发，跑正边，dist[i]存的是从s到i的最短距离；从s出发，跑反边，dist[i]存的是从i到s的最短距离；ans=max(ans,dist1[i]+dist2[i])
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=100000+5;
-int n,m,t,k=1,head[maxn],vis[maxn],dist1</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1860/">
-        <p class="h4 index-header">POJ-1860</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1860 Currency Exchange
-题目链接：https://vjudge.net/problem/POJ-1860#author=riba2534
-题目大意：给出每两种货币之间交换的手续费和汇率，求出从当前货币s开始交换，能否赚。能赚输出YES，否则输出NO
-题解：运用spfa判断是否存在存在正环(类似于判负环)。和判负环一样，记录一下点出现的次数，一旦出现此次数&gt;n就可以作出判断。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=10000+5;
-int n,m,s,k=1,head[maxn],vis[maxn],used[maxn];double w,dist[maxn];
-struct node
-{
-    int to,next;double w,q;
-}edge[max</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3259/">
-        <p class="h4 index-header">POJ-3259</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3259 Wormholes
-题目链接：https://vjudge.net/problem/POJ-3259#author=chen_zhe_
-题目大意：有n个教室，m条走廊(双向)，w条密道(单向)。走廊耗时&gt;0，密道可耗时&lt;0，问是否可以回到过去。
-题解：密道耗时&lt;0，再根据题目要求，就是问该图是否存在负环。由于这是一个连通图，从哪个点出发效果都一样，不妨从1开始出发，判断是否存在负环，判断方法：每次进行收缩时记录次数++，一旦超过了n就可以作出判断。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=50000+5;
-int k=1,T,n,m,w,head[maxn],vis[maxn],dist[maxn],used[maxn];
-struct node
-{
-    in</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
           
         
       </div>
@@ -575,7 +552,7 @@ struct node
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/8/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/8/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/10/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

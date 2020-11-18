@@ -153,106 +153,304 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1502/">
-        <p class="h4 index-header">POJ-1502</p>
+      <a href="/2020/02/07/HDU-3416/">
+        <p class="h4 index-header">HDU-3416</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1502 MPI Maelstrom
-题目链接：https://vjudge.net/problem/POJ-1502#author=20175101008
-题目大意：给出a[i][j]之间的值，若a[i][j]==’x’说明i，j之间不通，问从1开始同时向2…..n传递信息，需要多久全部结点都收到？
-题解：n&lt;=100，显然可以用Floyd算法，读入时字符串读入，加以处理，得到a[i][j]之间的距离，i，j不通则将长度设为无穷大，然后开始跑Floyd，最后统计dist[1][i],i∈[2,n]的最大值，该值为答案
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=200+5;
-int n,a[maxn][maxn],dist[maxn][maxn];
-int main()
-{
-    memset(dist,0x3f3f3f3f,s</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3660/">
-        <p class="h4 index-header">POJ-3660</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3660 Cow Contest
-题目链接：https://vjudge.net/problem/POJ-3660#author=arasHi_
-题目大意：有n头牛，m条比赛结果，每行两个数字，第一个数字表示的是胜利者。问有几头牛的排名可以确定？
-题解：排名可以确定，这该如何理解？对于结点i，如果箭头指向i所包含的结点数为ans1，i箭头指出所包含的结点数为ans2，若ans1+ans2==n-1就说明结点i的排名可以确定。问题在于如何确定ans1，ans2的值。举个例子：若a可以到b，b可以到c，那么a就可以到c。这就是传递闭包了。如何进行传递闭包呢？以上例子，a可以到b，b可以到c，则dist[a][b]=1,dist[b][c]=1,则a可以到c，即dist[a][c]=1；用floyd进行收缩即可。然后每个结点是否可以到达剩余的n-1个结点，或者剩余n-1个结点能否到达该结点，即ans1+ans2==n。判断条件就是dist[i][j]==1||dist[j][i]==1;
-代码：#include&lt;cstdio&gt;
-#include&lt;cst</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92">闭包传递</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2240/">
-        <p class="h4 index-header">POJ-2240</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2240 Arbitrage
-题目链接：https://vjudge.net/problem/POJ-2240#author=Andy_acmer
-题目大意：有n种货币，m条货币的汇率关系。比如：USDollar 0.5 BritishPound说明1个USDollar货币，可以换成0.5个BritishPound货币，问是否可以通过这种关系来获利。
-题解：由于货币名字使字符串，那么用map比较方便,mapq，可以将字符串映射成int型。然后跑spfa，看是否存在正环，与判断负环的方法一样。
+          <div class="index-text mb-1">题目名称：HDU-3416 Marriage Match IV
+题目链接：https://vjudge.net/problem/HDU-3416
+题目大意： n 个点 m 条边带权有向图，问每条边最多只能走一次时从 A 到 B 的最短路径数量。 
+题解：问题是问从s—&gt;t有多少种完全不同的最短路径。首先要想办法找到哪些边属于最短路径里面的边，于是先正向跑一遍spfa，再反向跑一遍spfa，设smin为s—&gt;t的最短路的长度，那如果一条边属于最短路，那它一定满足dist1[x[i]]+dist2[y[i]]+w[i]==smin&amp;&amp;x[i]!=y[i]。这样就可以找到最短路径的所有边，然后建边时注意，x[i]—&gt;y[i],边权为1，跑dinic，得到的最大流ans就是答案。
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;queue&gt;
-#include&lt;map&gt;
+using namespace std</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/luogu-2764/">
+        <p class="h4 index-header">luogu-2764</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：luogu2764-最小路径覆盖问题
+题目大意： 给定有向图 G=(V,E)G=(V,E) 。设 P是 G 的一个简单路(顶点不相交)的集合。如果 V 中每个定点恰好在PP的一条路上，则称 P 是 G的一个路径覆盖。PP中路径可以从 V 的任何一个定点开始，长度也是任意的，特别地，可以为 0 。G 的最小路径覆盖是 G所含路径条数最少的路径覆盖。设计一个有效算法求一个 GAP (有向无环图) G的最小路径覆盖 
+ 从第1 行开始，每行输出一条路径。文件的最后一行是最少路径数。 
+题解：要求的是最少路径数将所有的点都覆盖掉。
+由konig定理知：最小点覆盖=最大匹配数；而该题抽出模型就成了：最小路径覆盖；最小路径覆盖=点数-最大匹配数；
+如何理解这个结论呢？(这个解释并不严谨，只是为了帮助理解，请勿喷)    加入1—&gt;2—&gt;3;    可以转化为1—&gt;2’;2—&gt;3’;    1,2,3在X中，1’,2’,3’在Y中；路径数=3-2；符合结论；    再举例1—&gt;2,1—&gt;3,2—&gt;4,3—&gt;4;    可以转化为1—&gt;2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3336/">
+        <p class="h4 index-header">HDU-3336</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 3336 Count the string
+题目链接：https://vjudge.net/problem/HDU-3336#author=cust_acm
+题目大意：给一个字符串，求它所有子串(包括自身)出现的总次数之
+题解：该题目需要比较完善地理解Next数组地含义与作用。当匹配到i失败时，就会返回到Next[i]。则匹配到i时，应该记录了子串s[0…i]，以及与子串s[0…Next[i]]。于是就可以得到动态转移方程dp[i]=dp[Next[i]]+1.然后求和dp数组，同时取模。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200000+5;
+const int Mod=10007;
+int T,len1,len2,Next[maxn],dp[maxn];char s1[maxn],s2[maxn];
+void next_pre</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4300/">
+        <p class="h4 index-header">HDU-4300</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-4300 Clairewd’s message
+题目链接：https://vjudge.net/problem/HDU-4300
+题目大意：第一行给的是26个字母对应的翻译密码，而第二行给的是文本串，该文本串前面部分为加密后的内容，而后部分(可能不完整)为未加密的内容。求：一行字符串前一半为加密后的内容，后一半为未加密的内容。一一对应的关系。
+题解：由题意可知，文本串前一部分是加密过后的内容，后一部分是未加密的内容，而这一部分可能是不完整的。则可理解为s=stringA+stringB。可以根据第一行给的加密方式将s整体当作加密内容，将其转化为整体未加密的内容，即字符串s转化成了t。这时候将原s的所有后缀与t匹配，这个过程实际上就是ex-kmp，将t作为子串，s作为母串，求t与s的所有后缀的公共前缀的长度extend[]。如果extend[i]+i==len(s)&amp;&amp;i&gt;=extend[i].即以i为分界点，s[0…i-1]作为stringA，s[i…len-1]作为stringB，即stringB就是原文本内容。(i&gt;=extend[i]</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-1238/">
+        <p class="h4 index-header">HDU-1238</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-1238 Substrings
+题目链接：https://vjudge.net/problem/HDU-1238#author=organicsalt
+题目大意：给n个字符串，问是否存在一个子串(或将该子串reverse)为所有字符串的子串。
+题解：将第一个字符串的所有子串与其余子串匹配一遍，如果有一个匹配失败，就将该子串reverse再匹配。这里使用reverse会更快，用kmp加速。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1005;
+int n,T,Next[maxn],len1,len2;string s[105],s2;
+void next_pre(int len)
+{
+    int i=0,j=1;Next[0]=-1;
+    while(j&lt;len)
+    {
+        while(Next[i]!=-1&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-2328/">
+        <p class="h4 index-header">HDU-2328</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 2328 Corporate Identity
+题目链接：https://vjudge.net/problem/HDU-2328
+题目大意：求n个字符串的最长公共子串，若有多个则输出字典序最小的，若没有就输出“IDENTITY LOST”。
+题解：这道题就相当简单了，直接暴力枚举第一个字符串的所有子串，用kmp与所有别的字符串匹配，看它们是否都包含了这个子串，将符合条件的子串存进数组，在排序sort一下，输出第一个字符串即可。用到substr函数。不过数据可能比较水，理论上时间复杂度是不够的，以为会TLE，结果可以过，甚至暴力都可以过。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=4000+5;
+int len1,len2,Next[maxn],n,ans;string s1[maxn],s2,Ans[maxn];
+void next_p</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3374/">
+        <p class="h4 index-header">HDU-3374</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 3374 String Problem
+题目链接：https://vjudge.net/problem/HDU-3374
+题目大意：对于一个字符串，它可以每次左移一次，得到一个新的字符串，因此一个长度为n的字符串，可以得到n个字符串。问，字典序最小的字符串排第几位，一共有多少个，字典序最大的字符串排第几位，一共有多少个ps:如果最大和最小的有多个，输出最先出现的那个。
+题解：求有多少个相同的字符串相对简单，并且运用到了kmp的知识，只有内部循环的字符串才可能会重复，对于这种字符串来讲它的循环节T= n-Next[n]，出现次数times=n/T。如何求最大字符串和最小字符串呢？这个就需要用到字符串的最小表示法和最大表示法。这里简单描述一下字符串的最小表示法，至于字符串的最大表示法，可以将最小表示法照搬修改即可。字符串的最小表示法：设定一个opt1和一个opt2与k。初始opt1=0，opt2=1，k=0，一开始指向s[0],s[1]如果s[opt1+k]==s[opt2+k]，则k++.注意opt2+k可能越界，所以要对len取模。当k==len时，说明每一个字符</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E8%A1%A8%E7%A4%BA%E6%B3%95">字符串的最小(大)表示法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-2609/">
+        <p class="h4 index-header">HDU-2609</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 2609 How many
+题目链接：https://vjudge.net/problem/HDU-2609
+题目大意：给n个字符串，每个字符串可以滑动形成新的字符串，问有多少个不同的字符串。ps：若一个字符串滑动后与另一个字符串相同，则这两个字符串相同。
+题解：先将每个字符串的最小表示法找到，然后用string数组储存字符串的最小表示法，然后sort排序，匹配找到总数
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
 using namespace std;
 const int maxn=10000+5;
-int n,m,head[maxn],vis[maxn],used[maxn],k=1;double d</div>
+const int maxm=100+5;
+int len2,Next[maxn],len1,n;string s[maxn];char a[maxn][maxm];
+int cmp(string x,string y)
+{
+    return x&lt;y;
+}
+int get_min(int opt)
+{</div>
         </div>
       </a>
 
@@ -264,9 +462,7 @@ int n,m,head[maxn],vis[maxn],used[maxn],k=1;double d</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
+            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E8%A1%A8%E7%A4%BA%E6%B3%95">字符串的最小(大)表示法</a>&nbsp;
           
         
       </div>
@@ -277,175 +473,24 @@ int n,m,head[maxn],vis[maxn],used[maxn],k=1;double d</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1511/">
-        <p class="h4 index-header">POJ-1511</p>
+      <a href="/2020/02/07/FZU-1901/">
+        <p class="h4 index-header">FZU-1901</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1511 Invitation Cards
-题目链接：https://vjudge.net/problem/POJ-1511#author=0
-题目大意：n-1个人从1号点出发，到剩余n-1个宣传点，然后再回到1号点汇报结果，求所有人往返路径和的最小值。
-题解：m条边，边号为偶数的表示正方向，边号为奇数的表示反方向。spfa1()沿着正方向跑，起点为1，则dist[i]表示的是从1到i的最短距离。spfa2()沿着反方向跑，起点为1，则dist2[i]表示的是从i到1的最短距离。最终答案就是dist1[i]+dist2[i]的总和，i∈[2,n]。
-代码：    #include&lt;cstdio&gt;
-    #include&lt;cstring&gt;
-    #include&lt;iostream&gt;
-    #include&lt;algorithm&gt;
-    #include&lt;queue&gt;
-    using namespace std;
-    const long long maxn=1000000+5;
-    str</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3159/">
-        <p class="h4 index-header">POJ-3159</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3159 Candies
-题目链接：https://vjudge.net/problem/POJ-3159#author=2018112767
-题目大意：有n个同学，m条信息，每条信息为a,b,c三个整数表示a相信b的糖果不会比自己多于c。问n同学最多比1同学多多少个糖果？
-题解：这是差分约束的题目，由题知Have[b]-Have[a]&lt;=c;即Have[b]&lt;=c+Have[a]；而最短路的更新条件是dist[edge[i].to]&gt;dist[x]+edge[i].w，就说明了dist[edge[i].to]&lt;=dist[x]+edge[i].w;于是建边就可以a—-&gt;b,边权为c，跑最短路。dist[n]就是答案
-ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保险！
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&g</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-            <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F">差分约束</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2502/">
-        <p class="h4 index-header">POJ-2502</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2502 Subway
-题目链接：https://vjudge.net/problem/POJ-2502#author=1738160864
-题目大意：小k要从家去学校，他可以选择步行或者地铁，步行的速度是10km/h，地铁的速度是40km/h。假设小k非常的幸运，每次他到地铁站就立刻会有地铁。小k可以随意上下地铁，并且可以在地铁线路之间转换。所有的地铁运行都是双向的。注意地铁站不会重复出现。
-题解：n&lt;=200，所以可以用Floyd。每次出现的新地铁站，先与起点更新时间花费，此时速度为v1，然后输入地铁线，此时速度为v2，可以更新相邻地铁站之间的时间花费，并且更新起点与地铁站之间的时间花费，此时速度为v1。最后地铁站输入完之后，tot++，这就是终点编号，所有结点与终点的时间花费需要更新。然后开始跑Floyd。最后dist[0][tot]储存答案，需要四舍五入，即int ans=dist[0][tot]+0.5;ans为最终答案
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;io</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1062/">
-        <p class="h4 index-header">POJ-1062</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1062 昂贵的聘礼
-题目链接：https://vjudge.net/problem/POJ-1062#author=0
-题目大意：一个人要买1号物品，而此物品可以通过直接购买或者到别人的手中买别的东西+一些金币来得到。但是需要注意：如果两人地位等级差距超过了delt，就不可以进行间接交易，即该交易圈的人两两之间等级差异不可大于delt。问要得到1号物品至少要花费多少钱？
-题解：建立一个源点，它与所有物品建边，即s—&gt;i（边权为物品原价），因为每个物品除了直接购买，还可以间接购买，设间接购买物品为j，则建边方式为j—&gt;i（边权为额外金币）然后跑最短路，注意最短路的条件不再是dist[edge[i].to]&gt;dist[x]+edge[i].w，因为当价格相等时也需要进入队列来进行松弛，所以应变为dist[edge[i].to]&gt;dist[x]+edge[i].w;然后就是等级限制的判断了。刚开始的s的等级需要从最低到最高都设置一次，意味着跑n次spfa，s就是这次spfa的最低等级，因此a[edge[i].to].l&gt;=limit&am</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1847/">
-        <p class="h4 index-header">POJ-1847</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1847 Tram
-题目链接：https://vjudge.net/problem/POJ-1847
-题目大意：输入n,a,b三个数，表示有n个点(1-n)，起点是a，终点是b，然后接下来有n行，每一行的第一个数m表示后面将会有m个数，输入结构是这样的，然后我再具体的解释一下。
-3 2 1     3表示共有n个点，接下来有n行，2表示起点，1表示终点2 2 3     第一个数2表示后面有2个数，因为这是第1行，所以后面两个数表示从1到2和从1到3的边2 3 1     表示从2到3和从2到1的边2 1 2     表示从3到1和从3到2的边
-题解：n&lt;=100，可以跑Floyd，dist初始化无穷大，每个结点所连接的第一个结点与它的距离为0，其余相连的为1，然后跑Floyd。dist[s][t]为最终的结果。
+          <div class="index-text mb-1">题目名称：FZU - 1901 Period II
+题目链接：https://vjudge.net/problem/FZU-1901
+题目大意：对于一个正整数p，p&lt;=字符串的长度，使得任意的s[i]==s[i+p]，求出所有符合要求的p。
+题解：这个题和之前的某个题意很迷的密码题有点相似，那个题当时就是用的ex-kmp，做这个题开始时题意不理解，百度了一下题意。一开始想的就是用kmp，似乎网上用kmp的很多，但我一下子不知道如何运行Next，不过，我突然发现，令s2=s1，用s1的所有后缀匹配s2的结果让我意外，所有符合Extend[i]+i&gt;=len的都是p，当然len本身也是。很显然这个题可以用ex-kmp来做。
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 using namespace std;
-co</div>
+const int maxn=1000000+5;
+int T,len1,len2,Next[maxn],Exten</div>
         </div>
       </a>
 
@@ -457,7 +502,7 @@ co</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+            <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
           
         
       </div>
@@ -468,25 +513,19 @@ co</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/LightOJ-1074/">
-        <p class="h4 index-header">LightOJ1074</p>
+      <a href="/2020/02/07/HDU-3068/">
+        <p class="h4 index-header">HDU-3068</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：LightOJ - 1074 Extended Traffic
-题目链接：https://vjudge.net/problem/LightOJ-1074#author=bbisnouse
-题目大意：在一个堵车的城市中, 每个路口都有一个拥挤程度a[i], 从u驶向v得到一个数量, 值为(a[v]-a[u])^3, 给出Q组查询, 每组给出一个数, 求1到这个数的点的最小数量, 如果不可达输出 ？
-题解：一开始觉得n很小，可以直接跑floyd，但是后来WA了两发，发现可能存在负环，所以需要判断负环，因此选择spfa，一旦判断出了负环就dfs，找到负环可以达到的所有点。对于查询一一输出结果即可。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=200005;
-int n,T,a[maxn],head[maxn],v</div>
+          <div class="index-text mb-1">题目名称：HDU - 3068 最长回文
+题目链接：https://vjudge.net/problem/HDU-3068
+题目大意：求多组数据的最长回文的长度，就是Manacher的模板题
+题解：讲解一下Manacher算法首先该算法的时间复杂度为O(N)，一个长度为len的字符串，len可能为奇数，也可能是偶数，那么中间点就不一样了，那对于长度L=2len+1呢？显然它一定是奇数。具体操作为：t[0]=’$’;for(int i=1;i&lt;=len;i++)t[++len]=’#’,t[++len]=s[i-1];t[++len]=’#’;比如字符串 abccba 就转换成了 $#a#b#c#c#b#a#;
+以上是初始化的过程，接下来是具体的操作过程：对于p[i]，如果i&lt;mx，设j是i关于id对称点，如图所示，则基于以下三种情况，可以求出p[i]的值：
+（1）以j为中心的回文串有一部分在以id为中心的回文串之外。因为mx是以id为中心的最长回文的右边界，所以以i为中心的回文串不可能会有字符在以id为中心的回文串之外；否则mx就不是以id为中心的最长回文的右边界。所以，在</div>
         </div>
       </a>
 
@@ -498,40 +537,7 @@ int n,T,a[maxn],head[maxn],v</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4725/">
-        <p class="h4 index-header">HDU-4725</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4725 The Shortest Path in Nya Graph
-题目链接：https://vjudge.net/problem/HDU-4725#author=0
-题目大意：现在给你n个点 ，这些点的分布是层型分布的，你可以从第i层走到相邻的层（i+1，i-1）中，这样走的花费是c，接着他会给你m（从u-&gt;v）条小路，从小路走的花费 是w，问你从1-&gt;n所走的最小花费是多少。
-题解：看到数据范围就不敢用spfa了，太过玄学，不想TLE，所以选择dijkstra，这题的难点在于建边。当然，很容易想到将层转化成点，比如第i个点的层数为deep[i],则转化为点deep[i]+n.对于给的小道就直接建边a—&gt;b权值为c,b—&gt;a权值为c（建双向边），将deep数组从小到大排列，对于deep[i] 和 deep[i-1] （i∈[2,n]），首先要判断它们是否刚好相差1，只有刚好相差1才可以建边，建边方式为add(deep[i-1]+n,deep[i]+n,c);add(deep[i]+n,deep[i-1]+n,c)，相邻层数可以相互移动</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+            <a href="/tags/Manacher">Manacher</a>&nbsp;
           
         
       </div>
@@ -542,7 +548,7 @@ int n,T,a[maxn],head[maxn],v</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/11/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/9/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

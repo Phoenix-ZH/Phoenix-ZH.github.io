@@ -153,340 +153,45 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/11/POJ-3020/">
-        <p class="h4 index-header">POJ-3020</p>
+      <a href="/2020/03/21/CodeForces-1326/">
+        <p class="h4 index-header">CodeForces-1326</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ-3020  Antenna Placement 
-题目链接：https://vjudge.net/problem/POJ-3020
-题目大意：有T组数据，每一组数据是hxw的矩阵，矩阵中的每一个方格有o或者组成,问用1x2的矩阵 (横着或竖着都可以)来覆盖所有的  ，问至少需要多少个这样的矩阵？
-题解：这个题和HDU4185 Oil Skimming 很相似。观察之后发现，将所有的  先预处理出它的编号，然后对于  的上下左右若为  就可以建边，然后跑匈牙利算法，求出最大匹配，对于这样求出来的最大匹配ans应该要÷2，即ans/=2，因为我们建的双向边。ans  2表示的是已经覆盖了的点，temp-ans  2就是剩余的美誉覆盖的点，这些点只能单独覆盖了，所以最终答案是 temp-ans  2+ans。
-ps：WA了几次，注意  的数量&lt;=40  10=400，边就是400  400  4，数组要够，不然就是TLE或者WA。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostrea</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/11/HDU-4185/">
-        <p class="h4 index-header">HDU-4185</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称： HDU - 4185  Oil Skimming 
-题目链接：https://vjudge.net/problem/HDU-4185
-题目大意：有K组数据，每组数据是N*N的方阵，每个方格由.或者#组成，问有多少个互相不重叠的##(横着或竖着)。
-  (1 &lt;= K &lt;= 100)  (1 &lt;= N &lt;= 600) 
-题解：最开始的思路是每个点只判断它下方或者右方是不是#，如果是就连边，但是这个方法存在一个问题：横着的##和竖着的##如果重叠会导致计数重复，又没有一个比较好的办法来规范。于是换了一个想法，一个点若为#就像它上下左右为#的点都连边，最后答案/2就可以避免重复。枚举所有的点，预处理#点的编号temp记录，然后开始跑匈牙利算法，最后ans/2.
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
+          <div class="index-text mb-1">A 题目名称：A Bad Ugly Numbers
+题目大意： 构造一个 n位十进制数，保证不被该数的任意一位整除。 
+题解：由于只需要求一组即可，那么就猜测一下一个数字一定要么是奇数要么是偶数，若为奇数则个位不为偶数，若为偶数则个位为偶数。这么不妨用2来替换。假如剩余全为3，那么3*x+2一定无法被3整除。所以就全用2，3表示。偶数不能被2整除。那么开头数字为2，其余全为3就可以了。
+代码：#include&lt;bits/stdc++.h&gt;
 using namespace std;
-const int maxn=1200+5;
-const</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-11&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/10/HDU-2389/">
-        <p class="h4 index-header">HDU-2389</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-2389  Rain on your Parade 
-题目链接：https://vjudge.net/problem/HDU-2389
-题目大意：有T组数据，每组数据第一行是t，表示到t时下雨，第二行是m，表示有m个客人，接下来m行，每行3个数字，依次为x,y,v(速度)，然后是n，表示有n把伞，接下来n行，每行2个数字，依次为x，y，每一把伞只能由一个人使用，从开始每个客人出发拿伞，到t时间结束，问最多有几个人拿到了伞。   (1 &lt;= m，n &lt;= 3000) 
-题解：1-m客人，N+1-N+n伞
-依次枚举客人和伞，在规定时间内t*v&gt;=距离就可能拿到这把伞，就可以建边客人—&gt;伞。
-一开始跑匈牙利算法，但是匈牙利算法时间复杂度较大，要TLE。
-这时候需要用hopcroft-karp来优化，这里介绍一下hopcroft-karp：
-hopcroft-karp的时间复杂度为 O（n^0.5*m）。
-思路：
- HK算法分为三步 ：假设我们将集合分为两个，一个是左边的x集合，右面的y集合； 
- 1） ：首先x集合中没有匹配的元素入队列； 
- 2） </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(hopcroft-karp)">二分图(hopcroft-karp)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/10/HDU-2819/">
-        <p class="h4 index-header">HDU-2819</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-2819 Swap
-题目链接：https://vjudge.net/problem/HDU-2819
-题目大意：给一个n*n的方阵，每一个格子(i,j)由0/1组成，问能否使得斜对角线即i==j,（i∈[1,n]），如果不能就输出-1，否则请输出方案。R表示交换行，C表示交换列。
-
-这里有一点需要说明，就是说题目的交换，其实是将原来图的某一行移到最后图的某一行，而不是指先交换两行，得到一个新图，再交换新图的两行。 
-题解：首先是关于能否得到斜对角线全为1的方阵，假如一个方阵的斜对角线全为1，那么这个方阵的秩为n，那么如果一个方阵的秩小于n那一定就不可以。那么如何得到方阵的秩呢？受到前面几个二分图的题的影响，凡是方格类的题目都可以将行和列分开，将数字为1的方格就行连边，即行i—&gt;列j，最后求最大匹配，一旦最大匹配为n那就可以，否则输出-1。由矩阵的运算性质可以知道，所有的列变换都可以用行变换来替代，所有的行变换都可以用列变换来替代，于是我们不妨全部都用列变换来替换，已知cy[i]表示第i列和cy[i]行来配对，从1-n列开始枚举，然后枚举得到第一个cy[j]==i</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/10/HDU-1281/">
-        <p class="h4 index-header">HDU-1281</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-1281 棋盘游戏
-题目链接：https://vjudge.net/problem/HDU-1281
-题目大意：在N*M的棋盘上，在p个位置上允许放车，每一行每一列最多放一个车，并且在不允许放车的位置并不会影响车的攻击。重要点：要使车的数量最大，该点必须放车。问最多有多少个重要点、最多允许放多少个车？
-题解：这道题和Fire Net的区别在于，Fire Net不允许放置的点是一堵墙，会隔离攻击，而这道题不会影响攻击。所以Fire Net那道题需要进行分区域块，这样就可以分离开。但是这道题不会影响攻击，因此直接按点分，X集合为行，Y集合为列，只要当a[i][j]==1才可以让i行与j列连边，相当于点(i,j)可以放车。这样跑匈牙利算法可以得到最大匹配即最大的车的放置量。对于重要点的求解需要暴力求解，对于每一个可放置车的点需要去除它，然后跑匈牙利算法，如果最大匹配变小了，说明这是重要点，当然对于前向星链表，要记录出发点u，这样就可以进行标记了，vis数组不可以开大了，容易TLE。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/09/HDU-1083/">
-        <p class="h4 index-header">HDU-1083</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称： HDU - 1083Courses
-题目链接：https://vjudge.net/problem/HDU-1083#author=0
-题目大意： 一共有N个学生跟P门课程,一个学生可以任意选一 门或多门课,问是否达成:
-1.每个学生选的都是不同的课(即不能有两个学生选同一门课)
-2.每门课都有一个代表(即P门课都被成功选过)
- 若能满足上面两个要求这输出”YES”,否则为”NO”  注意：是课程匹配的学生，学生没课上没事….. 
-题解：最终问题就是问能否所有的课程都被人选，并且没有两个及以上的人选同一门课。换言之，二分图的最大匹配数是否==p。建图时课程—&gt;学生，课程(1-P)，学生(N+1-N+n)，跑匈牙利算法。
-ps：数组开小了不会RE，它会TLE！因为一开始只开了10000的边，实际上时100*300，然后TLE了。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/09/HDU-2444/">
-        <p class="h4 index-header">HDU-2444</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称： HDU - 2444 The Accomodation of Students
-题目链接：https://vjudge.net/problem/HDU-2444#author=0
-题目大意：有n个关系，他们之间某些人相互认识。这样的人有m对。你需要把人分成2组，使得每组人内部之间是相互不认识的。如果可以，就可以安排他们住宿了。安排住宿时，住在一个房间的两个人应该相互认识。最多的能有多少个房间住宿的两个相互认识。 
-题解：这个题分为两个问题，第一个问题就是问是否可以分成两组，每一组内部任意两人都互相不认识；第二个问题是最多有几组两人之间相互认识，注意一人只能选择一次。第一个问题很显然就是判断这个图是否可以形成一个二分图，第二个问题是在该图是二分图的条件下的最大匹配数。二分图的判断方法就染色法，用bfs，将相邻的点全部染成相反的颜色，一旦该点与相邻点颜色相同就说明不能形成二分图，最后如果无矛盾就说明可以形成二分图。注意我们建图全部小—&gt;大，而条件给的数据也是如此，这样一定是从小的点出发，bfs起点就为1。求最大匹配时候，我们注意这图是单向的所以直接跑匈牙利。当然保险的是建</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/09/HDU-1045/">
-        <p class="h4 index-header">HDU-1045</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称： HDU - 1045 Fire Net
-题目链接https://vjudge.net/problem/HDU-1045#author=Codeblocksm
-题目大意： 现在有一个N*N的地图，地图上有一些围墙。你的任务是在没有围墙的空白地方建尽可能多的炮台。 假设炮台可以向“上下左右”四个方向发射子弹，子弹可以穿越任何距离并可在途中摧毁一个另一个炮台。而墙壁结构坚固，可以阻止子弹。 问最多可以建设多少个炮台？
-题解：刚开始做二分图的最大匹配问题，没有什么思路啊，没想到如何将一块区域弄来建图，后来看了一下别人的思路，将同一列的联通区域求出来，当然同一联通区域有且只有一个炮台，否则不合题意；将同一行的联通区域求出来，也只能存在一个炮台。如何将列和行结合起来呢？然后列中第i个连通块与行中第j个连通块有交点，说明交点处可以建炮台，判断方法：y[j].h&gt;=x[i].s&amp;&amp;y[j].h&lt;=x[i].t&amp;&amp;x[i].l&gt;=y[j].s&amp;&amp;x[i].l&lt;=y[j].t。那么可以add(i,j+N)。这样建了图后用匈</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95)">二分图(匈牙利算法)</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/09/HDU-2255/">
-        <p class="h4 index-header">HDU-2255</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU-2255  奔小康赚大钱 
-题目链接：https://vjudge.net/problem/HDU-2255#author=0
-题目大意：n个居民n个房子，每个居民会给不同的房子不同的钱，问如何分配使得钱最多？
-题解：KM的模板题，KM的具体介绍由blog的KM讲解中提供
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=300+5;
-int Map[maxn][maxn],visx[maxn],visy[maxn],cx[maxn],cy[maxn],n,wx[maxn],wy[maxn],minn;
-int dfs(int x)
+int T,n;
+int main()
 {
-    visx[x]=1;
-    for(int i=1;i&lt;=n;i++)
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
     {
-        if(!visy[i]&amp;&amp;Map[x][i]!=0x3f3f3f3f)
-     </div>
+        scanf(&quot;%d&quot;,&amp;n);
+        if(n==1)
+        {
+            printf(&quot;-1\n&quot;);
+        }
+        else 
+        {
+            printf(&quot;2&quot;);
+  </div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-21&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/KM">KM</a>&nbsp;
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
           
         
       </div>
@@ -497,40 +202,418 @@ int dfs(int x)
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/09/KM%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/">
-        <p class="h4 index-header">KM算法详解</p>
+      <a href="/2020/03/18/CodeForces-1325/">
+        <p class="h4 index-header">CodeForces-1325</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">介绍：以匈牙利算法为基础，改善后用于求解带权二分图的最佳匹配问题
-完备匹配：如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，或者Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。 
-完美匹配：若二分图X部的每一个顶点都与Y中的一个顶点匹配，并且Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完美匹配。 
-即： 一个二分图，X部和Y部的顶点数相等，存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。  
-最大权匹配：带权二分图的边权重和最大的匹配，如图，最大和为102
-  
-最佳匹配：带权二分图的边权重和最大的完备匹配，如图
-  
-显然最大权匹配和最佳匹配不完全相同，最大权匹配由于不一定是最大匹配，所以无法等同于最佳匹配。
-但是如果把剩余的边补上，并且设置边权为0，那么二者可以统一起来。如图
-  
-KM算法km算法用于求最佳匹配，而不是最大权匹配。换言之，km算法用来求完备匹配下的最大权匹配。
-如果不存在完备匹配，km算法会求最大匹配，如果最大匹配存在多种，那么结果就是最大匹配中权重和最大的。
-
-在一个二分图中，左顶点为X，右顶点为Y，现在对于每组左右连</div>
+          <div class="index-text mb-1">A 题目名称：EhAb AnD gCd
+题目大意给你一个数x，输出一组 (a,b)使得 a和 b的最大公约数和最小公倍数的和为 x，若有多种答案，输出任意一种即可。第一行输入一个 t，有 t组数据，之后每组数据输入一个数 x。对于每组数据，输出两个用一个空格隔开的数 a,b。若有多种答案，输出任意一种即可。
+题解1是任意一个数的公约数，任意数是它和1的倍数，那么x=1+y。1，y就是答案
+代码#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+int n;int T;
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%d&quot;,&amp;n);
+        if(n==2)
+        {
+            printf(&quot;1 1\n&quot;);
+        }
+        e</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-09&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-18&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/KM">KM</a>&nbsp;
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/13/CodeForces-1324/">
+        <p class="h4 index-header">CodeForces-1324</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">第一次参加Div3，结果就翻车了，本来前三题都很顺利，半个小时AC之后，进入T4，结果T4WA了4发，当场崩溃，结果就是minn，maxx的位置有歧义。导致T6只剩下10min，即使有思路也没办法调试出来。第二天花了15minAC了，WA了一发。果然还是细节很不到位。
+A：题目名称：Yet Another Tetris Problem
+题目大意：第一行一个t，表示有t组数据。每组数据的第一行是一个数n，接下来一行是一个长度为n的数组a。 分别表示每一列的方块的高度。现在有两个操作：1.当至少一个ai&gt;0时，选择一些i(1&lt;=i&lt;=n)，将ai加2.2.当所有的ai&gt;0时，将所有的ai减1。问最后可不可以将所有的ai都变成0. 如果能，输出”YES”(没有引号)，不然输出”NO”(没有引号) 
+题解：问题转化过来就是，可以在任意一列上+2，问最后可不可以等高。那就看highmax与其余各列的高度差是否都为偶数即可。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-13&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/07/CodeForces-1321/">
+        <p class="h4 index-header">CodeForces-1321</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A:题目名称：Contest for Robots
+题目大意：给出长度为1≤n≤100 的两个序列 r,b，且满足 ri, bi∈{0,1}，你需要确定 pi（pi≥1）。
+满足
+
+\sum_{i=1}^n r_ip_i > \sum_{i=1}^n b_ip_i，并且最小化max pi（1&lt;=i&lt;=n）
+如果不可能，输出 -1 。
+题解：因为序列的数字要么为1，要么为0，那么如果r中没有数字比b中的大，那么显然不可能实现题目的要求。一旦求得r比b大的个数w1，和r比b小的个数w2，就可以求maxpi，但是注意要求是大于，所以ans=(w2+1)/w1;并且要判断是否整除，如果没有则ans++。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000+5;
+int a[maxn],b[maxn],n;
+int main()
+{
+    scanf(&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/29/CodeForces-1311/">
+        <p class="h4 index-header">CodeForces-1311</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A：题目名称： Add Odd or Subtract Even
+题目大意：
+给定两个正整数a,b。
+每次操作你可以把 a加上某个正奇数，或者减去某个正偶数。
+问至少多少次操作可以把 a变成 b。
+多组数据 :T&lt;=10^4,1&lt;=a,b&lt;=10^9
+
+题解：对于a，b关系可分为3种情况：a&gt;b;a==b;a b:若a-b为偶数，答案为1；否则为2，先减一个偶数让a=b-1，再加1。a &lt; b:若b-a为奇数，答案为1；否则为2.
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int T,a,b;
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%d%d&quot;,&amp;a,&amp;b);
+        if(b&gt;a)
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-29&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/19/CodeForces-1300/">
+        <p class="h4 index-header">CodeForces-1300</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A:题目名称： Non-zero
+题目大意：给定一个含有 n个整数的数列。每次可以将其中的一个数加一，记为一次操作。问使得数列所有数之和与数列所有数的乘积都不为0的操作次数。
+题解：乘积不可以为0，要就让所有为0的数字变成1，那么统计一下有多少个0就可以了。然后所有数之和不为0，只需要将0变成1之后a[1]-a[n]全部加起来，若不等于0则输出结果，若为0就将次数+1再输出结果。(a1+…+an=0，且不存在ai=0，那么必然存在aj&gt;0，则将aj++即可)
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+5;
+int T,n,a[maxn];
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%d&quot;,&amp;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-19&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/18/CodeForces-1307/">
+        <p class="h4 index-header">CodeForces-1307</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A:题目名称： Cow and Haybales 
+题目大意：t组数据，每组数据n堆，有d天，每天可以相邻的堆直接移动物品，每次移动物品数质可以为1，或者不移动。问d天后，第一堆最多有多少个物品。
+题解：每天只能再相邻堆移动1个物品。直接考虑模拟，从最近的地方往前移动，并且一直移动同一个物品，直到它移动到第一堆的地方。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200+5;
+int T,n,m,a[maxn];
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+        for(int i=1;i&lt;=n;i++)scanf(&quot;%d&quot;,&amp;a[i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/16/CodeForces-1304/">
+        <p class="h4 index-header">CodeForces-1304</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A: 题目名称： Two Rabbits 
+题目大意：有T组数据，给定x，y，a，b。其中x，y分别为两兔子的坐标(x&lt;y),a，b分别为对应兔子的速度，左边的兔子向右跳，右边的兔子向左跳，问能否相遇，若能请输出时间t，否则输出-1.
+题解：设delt=y-x，若delt%(a+b)则t=delt/(a+b),否则输出-1.
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+long long t,x,y,a,b;
+int main()
+{
+    scanf(&quot;%lld&quot;,&amp;t);
+    while(t--)
+    {
+        scanf(&quot;%lld%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;a,&amp;b);
+        long long delt=abs(y-x);
+        if(del</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-16&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/15/CodeForces-1303/">
+        <p class="h4 index-header">CodeForces-1303</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A：题目名称：  Erasing Zeroes 
+题目大意：删除最少的0，使所有的1连续，问删除多少个0？
+题解：找到最后一个1的位置，和开头1的位置，枚举中间0的个数
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int T;char s[105];
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;T);
+    while(T--)
+    {
+        scanf(&quot;%s&quot;,s);
+        int sign=0,ans=0,t=0;
+        for(int i=strlen(s);i&gt;=0;i--)
+        {
+            if(s[i]==&#39;1&#39;)
+            {
+                t=i;
+                break;
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-15&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/14/CodeForces-620/">
+        <p class="h4 index-header">CodeForces-620</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A：题目名称：Professor GukiZ’s Robot 
+题目大意：机器人很好玩
+一开始在(x1,y1)
+最后在(x2,y2)
+每秒钟内横坐标最多变化1（也可以不变化）纵坐标也是
+问最少几秒钟到 x1 和 x2 绝对值在10^9以内 。
+题解：取两者坐标x，y相差的最大值，开longlong保平安。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int main()
+{
+    long long x1,x2,y1,y2;
+    scanf(&quot;%lld%lld%lld%lld&quot;,&amp;x1,&amp;y1,&amp;x2,&amp;y2);
+    long long maxx=max(abs(x1-x2),abs(y1-y2));
+    printf(&quot;%lld\n&quot;,maxx);
+    return 0;
+}
+
+B:题目名称： Gr</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-14&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
           
         
       </div>
@@ -541,7 +624,7 @@ KM算法km算法用于求最佳匹配，而不是最大权匹配。换言之，k
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/6/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/8/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/6/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

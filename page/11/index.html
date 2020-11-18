@@ -153,19 +153,153 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3169/">
-        <p class="h4 index-header">POJ-3169</p>
+      <a href="/2020/02/07/HDU-4513/">
+        <p class="h4 index-header">HDU-4513</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3169 Layout
-题目链接：https://vjudge.net/problem/POJ-3169#author=634579757
-题目大意：有N头牛排队，多头牛可以在同一点。现有几对相互喜好的牛，他们不能超过一定距离，有几对相互厌恶的牛，他们至少隔开一定距离。求1和N最远相距多少。
-题解：这很显然是差分约束的题目。为了保证图能够联通，需要固定i，j的大小顺序。 对于前m1个a,b,c表示a和b之间的距离不超过c，不妨设a&gt;b，则应满足d[a]-d[b]&lt;=c，最短路的要求就是如此，所以建边：b—&gt;a 边权为c。对于后m2个a，b，c表示a和b之间的距离不小于c，不妨设a&gt;b，则应满足d[a]-d[b]&gt;=c，即d[b]&lt;=d[a]-c，所以建边：a—&gt;b边权为-c。然后开始跑spfa，期间要判断负环，如果有负环存在则说明无解；如果dist[n]==0x3f3f3f3f,说明n号可以无限远。其余的则dist[n]为答案
+          <div class="index-text mb-1">题目名称：HDU - 4513 吉哥系列故事——完美队形II
+题目链接：https://vjudge.net/problem/HDU-4513#author=hzoi2017_wty
+题目大意：假设有n个人按顺序的身高分别是h[1], h[2] … h[n]，从中挑出一些人形成一个新的队形，新的队形若满足以下要求，则就是新的完美队形：　　1、连续的　　2、形成回文串　　3、从左到中间那个人，身高需保证不下降
+　　　问有组成完美队形的最多人数
+题解：要求连续的并且是回文串，这很明显就是回文串的题，应该用Manacher算法，但是又要求从左到中间，身高不下降，就需要修改一下判定条件：    while(t[i+p[i]]==t[i-p[i]]&amp;&amp;(t[i-p[i]]==0||t[i-p[i]]&lt;=t[i-p[i]+2]))p[i]++;
 代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt</div>
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Manacher">Manacher</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3294/">
+        <p class="h4 index-header">HDU-3294</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 3294 Girls’ research
+题目链接：https://vjudge.net/problem/HDU-3294#author=asasas5d
+题目大意：先给一个字符x，然后给一个 字符串，表示字符串中所有字符x变成’a’，其余的字符依次往前变换。例如b babad就转换成azazc。让寻找第一个最长回文串，长度若小于2，则输出No solution!，否则输出起点，终点和转换后的最长回文串。
+题解：最长回文串问题，当然就是用Manacher，先计算出字符x与‘a’的差值，然后将字符串进行转换。然后直接跑Manacher，更新ans时注意更新储存一下终点和起点
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200000*2+105;
+int p[maxn],len,a[maxn],S,T;char s[maxn],t[maxn]</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Manacher">Manacher</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4763/">
+        <p class="h4 index-header">HDU-4763</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 4763 Theme Section
+题目链接：https://vjudge.net/problem/HDU-4763#author=0
+题目大意：字符串E是字符串S的前缀和后缀，同时也出现在字符串S的中间，不与前缀后缀重合，问字符串S中符合要求的字符串E的最大长度。
+题解：这题显示是kmp问题，kmp中Next[i]表示字符串s从0…..i-1中前缀与后缀的最大公共子串，而问题就是求EAEBE，A，B长度任意(可以为0)，显然E最长为Next[len]，于是可以从len-Next[len]开始往前看Next[now]与E的大小关系，now&gt;=2*E，因为不可以重叠，如果找不到呢，E就应该缩小，理论是E—，所以E=Next[E]，继续寻找，直到找到或者无法继续。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000000+5;
+in</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-2387/">
+        <p class="h4 index-header">POJ-2387</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 2387 Til the Cows Come Home
+题目链接：https://vjudge.net/problem/POJ-2387#author=ght5160
+题目大意：求从1到n的最短距离
+题解：最短路模板，spfa或者dijkstra+堆优化。朴素Dijkstra：时间复杂度o(n^2)堆优化Dijkstra：时间复杂度o(（V+E）logV）
+spfa在稀疏图O（E），稠密图O（VE）
+dijkstra+堆优化的代码：
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=2000+5;
+int n,m,k=1,dist[maxn],vis[maxn],head[maxn];
+struct node
+{
+    int to,next,w;
+}edge[maxn*2];
+struct N
+{
+  </div>
         </div>
       </a>
 
@@ -179,8 +313,6 @@
           
             <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
-            <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F">差分约束</a>&nbsp;
-          
         
       </div>
     </div>
@@ -190,25 +322,26 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4370/">
-        <p class="h4 index-header">HDU-4370</p>
+      <a href="/2020/02/07/POJ-2253/">
+        <p class="h4 index-header">POJ-2253</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4370 0 or 1
-题目链接：https://vjudge.net/problem/HDU-4370#author=cjyl
-题目大意：给出一个n×n的矩阵，求一个符合题意的n×n的只含有0和1的矩阵，使得两个矩阵位置对应的元素相乘后和最小。
-题意要求01矩阵：
-
-X12+X13+…+X1n=1
-2.X14+X24+…+X(n-1)n=1
-3.∑Xki (1&lt;=k&lt;=n)=∑Xij (1&lt;=j&lt;=n).（1&lt;i&lt;n）
-
-
-题解：对于条件1，可以说明1结点一定有且仅有一个出度，并且不是指向自己。对于条件2，可以说明n结点一定有且仅有一个入度，并且该入度的发出者不是自己。对于条件3，可以说明每个2-n-1的每一个结点的出度等于入度。而题目要求求ΣCij * X ij最小值，即求最短路。但是要分2种情况：原因：结点1一定会指向结点i(i∈[2,n])，然后结点i一定指向别的结点，注意结点i不可以直接指向它自己，因为这样出度就不等于入读。最终会指向结点n，或者指向结点1形成自环。对于结点n来讲也是一样。
-情况1：结点1最终指向结点n</div>
+          <div class="index-text mb-1">题目名称：POJ - 2253 Frogger
+题目链接：https://vjudge.net/problem/POJ-2253#author=dusenlin
+题目大意：两块石头之间的青蛙距离被定义为两块石头之间所有可能路径上的最小必要跳跃距离，某条路径的必要跳跃距离即这条路径中单次跳跃的最远跳跃距离。求1到2的最小必要跳跃距离。
+题解：数据很小，符合Floyd算法。每一次更新的时候需要调整一下：dist[i][j]=min(dist[i][j],max(dist[i][k],dist[k][j]));因为必要跳跃距离是指整个路径单次跳跃的最远距离，所以取max
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=200+5;
+int n;double dist[maxn][maxn],x[maxn],y[maxn];
+i</div>
         </div>
       </a>
 
@@ -231,164 +364,26 @@ X12+X13+…+X1n=1
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/UVA-10480/">
-        <p class="h4 index-header">UVA-10480</p>
+      <a href="/2020/02/07/POJ-1797/">
+        <p class="h4 index-header">POJ-1797</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：UVA - 10480 Sabotage
-题目链接：https://vjudge.net/problem/UVA-10480
-题目大意：有n个点，m条无向边，权值为wi。问从1到2，要割断的最小代价。
-题解：1—&gt;2要进行割断并且要消耗最小，显然这是最小割问题。建边的时候要注意是双向边，起点s=1，终点t=2，跑dinic，最小割=最大流。然后从s开始dfs，要edge[i].w&gt;0才开始继续，即s可到达的为一个集合，其余则为t可到达的。然后对于所有正向边，看是否u为s集合，v为t集合，如果是就输出。一开始想着这题和HDU - 4289 Control差不多，以为要拆点，结果就WA了。HDU - 4289 Control这道题由于是点权，将点转换成边，所以需要拆点连边，而这道题说明了m条边的边权，所以不必拆点！为什么割边的判断条件不是edge[i].w==0呢？原因是可能流量流过该边，并且最后该边edge[i].w==0但是实际上并没有割去这条边，只是由于前面的流量影响了这条边！
-代码：#include&lt;cstdio&gt;
-#include&lt;cstr</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2">最小割</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3436/">
-        <p class="h4 index-header">POJ-3436</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3436 ACM Computer Factory
-题目链接：https://vjudge.net/problem/POJ-3436#author=yupengju
-题目大意：有p种零件，n个工厂加工，第i个工厂一小时可以加工Qi个电脑，对于每一个工厂第一个数字表示一小时加工数量Qi，然后有p个数字，若为0则表示不能有这个零件，1则表示必须有这个零件，2表示有没有都无所谓。最后p个数字，表示加工后电脑零件的存在情况，只有p个零件都为1才表示电脑加工完成。问一小时最多生产多少电脑？生产线有几条？如何设计？（special judge）（1 ≤ P ≤ 10, 1 ≤ N ≤ 50, 1 ≤ Qi ≤ 10000）
-题解：如果一开始直接想以零件为个体来建图就相当复杂，感觉无从下手，于是就从略大一点的个体出发，从工厂出发，s为起点，t为终点，如果一开始工厂要求的零件都没有，即p个数字都是0或者2，则s—&gt;i，边权为工厂容量或者无穷大。由于工厂自身一小时生产力有限，因此要对工厂进行拆点，i—&gt;i+N，边权为工厂容量。如果一个工厂生产后电脑的零件情况与另一个工厂</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3281/">
-        <p class="h4 index-header">POJ-3281</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3281 Dining or  P2891 [USACO07OPEN]吃饭Dining
-题目链接：https://vjudge.net/problem/POJ-3281
-题目大意：有F种食物和D种饮料，每种食物或饮料只能供一头牛享用，且每头牛只享用一种食物和一种饮料。现在有n头牛，每头牛都有自己喜欢的食物种类列表和饮料种类列表，问最多能使几头牛同时享用到自己喜欢的食物和饮料。（1 &lt;= f &lt;= 100, 1 &lt;= d &lt;= 100, 1 &lt;= n &lt;= 100）
-题解：我一开始想到的办法稍微有点复杂。首先着很明显是最大流问题，难点就只有建图，最开始我想到的建图是一个超级源点，指向牛，然后牛指向食物，由于食物只有一次使用机会，所以食物—&gt;食物’（流量为1）表示的是，该食物的数量为1，然后食物’指向牛’，牛’指向饮料，饮料—&gt;饮料’（流量为1），然后饮料’指向超级汇点。但是这种方法有问题。至于问题，我现在没找到，之后再想想。
-ps:后面想通了，由于牛—&gt;食物，食物—&gt;食物’，食物’—&gt;牛’；这样单次经</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2516/">
-        <p class="h4 index-header">POJ-2516</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2516 Minimum Cost
-题目链接：https://vjudge.net/problem/POJ-2516
-题目大意：有 n 个商店，k种物品和 m 个供货商，让你求进满足商店需求的货物的最小花费？有必要说一下输入数据。首先n ，k ，m。然后是一个nm的矩阵，n个商店对每种货物的需求，表示第 i 个商店需要第 j 种货物 x个?然后是m  k 的矩阵，m个供货商可以供k种货物的数量，表示第 i 个供货商 提供第 j 中货物 x 个接下来是 k 个 n * m 的矩阵，表示第 i 个货物，由 k 供应商发货给 j 商店的价格x（注意如果供不应求的或输出-1）
-题解：一开始将商店分成很多，对于商品1有1-n商店，对于商品2有n+1-2n商店，对于商品k有n（k-1）-nk商店。对于供货商也是同理，s为起点，与商店连接，边权为商店对该物品的需求，费用为0，t为终点，供货商与t连接，边权为供货商能提供的量，费用为0，然后有后面k个矩阵可以建图，商店与供货商连接，注意要一一对应，因为商店和供货商相当于拆了点了，边权为无穷大，费用为价格。但是最后跑费用流就凉了，T</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81">费用流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2195/">
-        <p class="h4 index-header">POJ-2195</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2195 Going Home
-题目链接：https://vjudge.net/problem/POJ-2195#author=hrbustacm
-题目大意：免费送房子，m表示人，H表示房子，每个房子只能进一个人，房子数等于人数。黄弘毅为了方便起见决定要让所有人到自己的房子的距离和最小，请问这个距离和是多少？
-题解：距离和，这个问题一看显然就是费用流问题，而此题就是最小费用流的裸题，将人和房子统计出来，然后s与人连边，边权为1，费用dis为0，房子与t连边，边权为0，费用dis为0，人与房子连边，边权为1，费用dis为曼哈顿距离。然后跑MCMF就可以了。
-ps：我麻烦了一点，对房子进行了拆点，其实可以不拆，毕竟与t相连，流量固定了。
+          <div class="index-text mb-1">题目名称：POJ - 1797 Heavy Transportation
+题目链接：https://vjudge.net/problem/POJ-1797#author=0
+题目大意：求1-n路径上边权最小值最大。
+题解：最短路径的变形题，用spfa来实现原本的dist[edge[i].to]=min(dist[edge[i].to],dist[x]+edge[i].w)修改为dist[edge[i].to]=max(dist[edge[i].to],min(dist[x],edge[i].w)注意初始化dist全为0，由于收缩，dist[1] =0x3f3f3f3f;
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 #include&lt;queue&gt;
 using namespace std;
-const int maxn=200000+5;</div>
+const int maxn=1000000+5;
+const int maxm=1000+5;
+int k=1,T,n,m,head</div>
         </div>
       </a>
 
@@ -400,9 +395,7 @@ const int maxn=200000+5;</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81">费用流</a>&nbsp;
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
         
       </div>
@@ -413,22 +406,25 @@ const int maxn=200000+5;</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1459/">
-        <p class="h4 index-header">POJ-1459</p>
+      <a href="/2020/02/07/POJ-3268/">
+        <p class="h4 index-header">POJ-3268</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1459 Power Network
-题目链接：https://vjudge.net/problem/POJ-1459#author=alexandleo
-题目大意：每组测试数据给出N，Np，Nc，M。N代表结点数量，M代表边的数量，Np代表结点中电站的数量（只产电，不耗电），Nc代表消费者数量（只耗电，不产电），其他结点代表中转站（不产电，不耗电）。接着M组（u，v）w数据，代表u到v容量为w，接着Np组（u）w，代表结点u产电w，接着Nc组（u）w，代表结点u耗电w。求电网中能消耗的最大电能值。
-题解：求最大电能，显然这是最大流问题，s与所有的电站连接，边权为产电量，t与所有的消费者连接，边权为耗电量，然后根据m条边的信息，如果u，v属于电站，则值不变，如果不是电站，那么需要+N，成为另一个集合，再建边，边权为容量w，然后跑网络流dinic。
+          <div class="index-text mb-1">题目名称：POJ - 3268 Silver Cow Party
+题目链接：https://vjudge.net/problem/POJ-3268#author=Demon_de_Laplace
+题目大意：N头牛，M条单行道，在s出举行聚会，每头牛出发和返回都是走最短路，问所有牛中走的路程最远的牛走了多远？
+题解：建边的时候建双向边，k=2开始.当边号为偶数时，说明是正边；当边号为奇数时，说明时反边；从s出发，跑正边，dist[i]存的是从s到i的最短距离；从s出发，跑反边，dist[i]存的是从i到s的最短距离；ans=max(ans,dist1[i]+dist2[i])
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
-#include&</div>
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=100000+5;
+int n,m,t,k=1,head[maxn],vis[maxn],dist1</div>
         </div>
       </a>
 
@@ -440,7 +436,7 @@ const int maxn=200000+5;</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
         
       </div>
@@ -451,17 +447,29 @@ const int maxn=200000+5;</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1087/">
-        <p class="h4 index-header">POJ-1087</p>
+      <a href="/2020/02/07/POJ-1860/">
+        <p class="h4 index-header">POJ-1860</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1087 A Plug for UNIX
-题目链接：https://vjudge.net/problem/POJ-1087#author=cjyl
-题目大意：宾馆里有几种插座，分别有其对应型号，你携带了几种用电器（手机，电脑一类的），也有其对应型号；可是不一定用电器就能和插座匹配上，于是宾馆的商店里提供了一些转换器，这些转换器可以将某一型号电源转换成另一型号的。问，你的用电器最少会有多少种无法充电 。注意插座型号是字符串形式，长度小于24，用电器名称也是字符串。
-题解：这是最大流问题。先说一下细节，插座和用电器的数量肯定都只有一个，但是转换器的数量是无限的。建图：设起点为s，终点为t，首先s与所有的用电器相连，边权为1，（一开始还想着拆点，我怕是个哈批啊，对于两边的点，边权就是容量，不需要去拆点！），t与所有的插座相连。如果型号相同，就可以二者之间进行连边。然后对于转换器，转换器之间可以相连，并且转换可以实现A—&gt;B，也可以实现B—&gt;A。所以，对于用电器型号=A||B的都可以连边，对于插座型号=A||B的都可以连边，边权为1，对于转换器之间可以相连的，</div>
+          <div class="index-text mb-1">题目名称：POJ - 1860 Currency Exchange
+题目链接：https://vjudge.net/problem/POJ-1860#author=riba2534
+题目大意：给出每两种货币之间交换的手续费和汇率，求出从当前货币s开始交换，能否赚。能赚输出YES，否则输出NO
+题解：运用spfa判断是否存在存在正环(类似于判负环)。和判负环一样，记录一下点出现的次数，一旦出现此次数&gt;n就可以作出判断。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=10000+5;
+int n,m,s,k=1,head[maxn],vis[maxn],used[maxn];double w,dist[maxn];
+struct node
+{
+    int to,next;double w,q;
+}edge[max</div>
         </div>
       </a>
 
@@ -473,7 +481,9 @@ const int maxn=200000+5;</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
           
         
       </div>
@@ -484,18 +494,28 @@ const int maxn=200000+5;</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4292/">
-        <p class="h4 index-header">HDU-4292</p>
+      <a href="/2020/02/07/POJ-3259/">
+        <p class="h4 index-header">POJ-3259</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4292 Food
-题目链接：https://vjudge.net/problem/HDU-4292#author=yupengju
-题目大意：昊妈决定只给每个人一种食物和一种饮料，而且每种饮料和食物都只能提供有限次。现在给出每个人喜欢的食物种类和饮料种类，昊妈可以最多让多少人得到满足呢？第一行给出N F D表示人数，食物种类数，饮料种类数第二行给出F个数字表示第i种食物有几个第三行给出D个数字表示第i种饮料有几个接下来N行分别给出第i个人对第j种食物的喜爱情况，Y是喜欢N是不喜欢，再来N行对饮料的
-题解：这道题是最大流问题，重点自然就是建图，一个人要满足，必须同时拥有食物和饮料。而一个人也最多可以满足一次，而且饮料和食物的容量也是有限的。最简单的自然是食物连向起点，边权为食物的容量；饮料连向中点，边权为饮料的容量；如果某人i喜欢食物j，那么二者就要连边，即j—&gt;i+N，边权为1，并且人位于中间必须拆点，即i+N—&gt;i+2N,边权为1。如果某人i喜欢饮料j，那么i+2N—&gt;j+3*N，边权为1建好后跑dinic。
-代码：#include&lt;c</div>
+          <div class="index-text mb-1">题目名称：POJ - 3259 Wormholes
+题目链接：https://vjudge.net/problem/POJ-3259#author=chen_zhe_
+题目大意：有n个教室，m条走廊(双向)，w条密道(单向)。走廊耗时&gt;0，密道可耗时&lt;0，问是否可以回到过去。
+题解：密道耗时&lt;0，再根据题目要求，就是问该图是否存在负环。由于这是一个连通图，从哪个点出发效果都一样，不妨从1开始出发，判断是否存在负环，判断方法：每次进行收缩时记录次数++，一旦超过了n就可以作出判断。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=50000+5;
+int k=1,T,n,m,w,head[maxn],vis[maxn],dist[maxn],used[maxn];
+struct node
+{
+    in</div>
         </div>
       </a>
 
@@ -507,7 +527,52 @@ const int maxn=200000+5;</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1502/">
+        <p class="h4 index-header">POJ-1502</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1502 MPI Maelstrom
+题目链接：https://vjudge.net/problem/POJ-1502#author=20175101008
+题目大意：给出a[i][j]之间的值，若a[i][j]==’x’说明i，j之间不通，问从1开始同时向2…..n传递信息，需要多久全部结点都收到？
+题解：n&lt;=100，显然可以用Floyd算法，读入时字符串读入，加以处理，得到a[i][j]之间的距离，i，j不通则将长度设为无穷大，然后开始跑Floyd，最后统计dist[1][i],i∈[2,n]的最大值，该值为答案
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200+5;
+int n,a[maxn][maxn],dist[maxn][maxn];
+int main()
+{
+    memset(dist,0x3f3f3f3f,s</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
         
       </div>
@@ -518,7 +583,7 @@ const int maxn=200000+5;</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/10/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/10/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/12/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

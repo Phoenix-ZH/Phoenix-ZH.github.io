@@ -153,43 +153,71 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/17/CodeForces-1392/">
-        <p class="h4 index-header">CodeForces-1392</p>
+      <a href="/2020/11/05/NOJ-%E8%A3%85%E7%9B%98%E5%AD%90/">
+        <p class="h4 index-header">NOJ-装盘子</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称Omkar and Password 
-题目大意：将任意两个相邻的大小不同的数字合并，问数组长度最小可以为多少？
-思路：每次将最大的和别的合并。如果所有都相同，长度为n；否则长度为1.
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=2e5+60;
-int T,n,a[maxn];
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--)
-    {
-        cin&gt;&gt;n;
-        for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i];
-        int sign=0;
-        for(int i=2;i&lt;=n;i++)
-        {
-            if(a[i]!=a[i-1])
-            {
-                sign=1;
-                break;
-            }
-        }
-       </div>
+          <div class="index-text mb-1">装盘子描述
+N人为了大快朵颐，行至云餐二楼，取了N个盘子，打了M个饺子。现欲将M个饺子装入N个盘子中，试问共有多少种不同的装法？假设盘子足够大，并且盘子里可以什么都不放。注意像2 5 0和5 0 2之类的属于同一种放法。
+输入
+两个整数M、N(1=&lt; M,N &lt;=100)以空格隔开。
+输出
+单独一行输出共有几种装法。
+输入样例
+7 3
+输出样例
+8
+提示
+注意输出要以“\n”结尾。
+思路问m个饺子放到n个盘子的方法，这个题直接写动态转移方程不好写，那就换成写记忆化搜索就行了。考虑m&gt;=n和m</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-17&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-05&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/04/CodeForces-1442-B/">
+        <p class="h4 index-header">CodeForces-1442-B</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：Identify the Operations
+题目大意：一个数组a长度为n，一个数组b长度为m，a数组中的元素各不相同，b数组中的元素各不相同。在a数组中要将ai加入到bi中，可以将ai-1,ai+1划去，然后ai加入到b数组的右侧。问得到b数组的总方案数，答案对998244353取模。
+思路：Div2的最后一题居然是水题，这是我没想到的，错过了大好的上分时机。要依次将a数组的一些元素加入到b数组中来得到b数组。这里有三种情况：
+1）如果ai-1和ai+1都在b数组中。此时他们都还在数组a中，ai想加入b数组中，必须划去ai-1或者ai+1，但是显然无法划去。对于这种情况的选择方案为0.
+2）ai-1和ai+1中有一个在b中，而另外一个不在。可以划去那个不在b数组中的。方案数为1.
+3）ai-1和ai+1两个数字都不在b中，则有两种方案。
+用vis数组来标记ai是否在b数组中。用pos数组表示一个值w在a数组中对应的位置。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn = 20000</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
         
         
         
@@ -206,45 +234,31 @@ int main()
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/13/CodeForces-1394/">
-        <p class="h4 index-header">CodeForces-1394</p>
+      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%94%EF%BC%89/">
+        <p class="h4 index-header">NOJ-花生米（五）</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称 Boboniu Likes to Color Balls 
-题目大意：r个红球，g个绿球，b个蓝球，w个白球。可以任意次将一个红球和一个绿球和一个蓝球都转化成白球。是否可以组成回文色？
-思路：当偶数色的数目&gt;=3则一定可以。若只有一个偶数色，则红绿蓝都至少有一个就可以。其余的都是不可以的。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-long long T,a,b,c,d;
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--)
-    {
-        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d;
-        int tot=0;
-        if(a%2==0)tot++;
-        if(b%2==0)tot++;
-        if(c%2==0)tot++;
-        if(d%2==0)tot++;
-        if(tot&gt;=3||tot==0)
-        {
-         </div>
+          <div class="index-text mb-1">花生米（五）描述
+五一长假第六天，Tom在QQ上遇到了Kitty。呵呵，Kitty，在离散数学课上认识的PPMM……等等！Tom恍然大悟：自己这一生除了看帖不回之外最大的错误就是离散数学没学好！五一长假第七天，Tom和Jerry在仓库散步的时候发现了一堆花生米（仓库，呵呵，仓库…）。这次Tom制定分花生米规则如下：1、首先选出最苦的一粒花生米，放到一个瓶子里；2、把剩下的花生米做成花生酱，Tom和Jerry轮流取一些花生酱吃掉；3、第一个取的人只能取1.0克，以后取花生酱的数量不能少于两个人已经取过的总数量且不能超过两个人已经取过的总数量的三倍；4、不能按规则3取花生酱的人必须吃掉瓶子里的花生米；5、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然希望瓶子里的花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
+输入
+本题有多个测例，每个测例的输入是一个浮点数w，w大于1.0小于等于1000.0，w最多只有一位小数，代表花生酱的数量，单位为克。w小于0表示输入结束，不需要处理。
+输出
+每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-13&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
           
         
       </div>
@@ -255,45 +269,31 @@ int main()
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/10/CodeForces-1391/">
-        <p class="h4 index-header">CodeForces-1391</p>
+      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E5%9B%9B%EF%BC%89/">
+        <p class="h4 index-header">NOJ-花生米（四）</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称：Suborrays
-题目大意：求一个长度为n的序列，保证任意区间[i,j]之间a[i]|a[i+1]|…|a[j]&gt;=i-j+1.
-思路：直接按序输出1 - n一定是符合的。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int T,n;
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--)
-    {
-        cin&gt;&gt;n;
-        for(int i=1;i&lt;=n;i++)cout&lt;&lt;i&lt;&lt;&#39; &#39;;cout&lt;&lt;endl;
-    }
-    return 0;
-}
-
-B.题目名称： Fix You 
-题目大意：一个(n,m)的矩阵，每一个单位格上有‘D’，‘R’，‘D’：向下移动一格，‘R’：向右移动一格。对于任意位置上的物品需要保证它可以运动到(n,m)，一旦出界就失败了。问至少要改变几个单位格？
-思路：真正有影响的是最后一行和最后一列。若最后一行还有‘D’一定不符合条件，必须</div>
+          <div class="index-text mb-1">花生米（四）描述
+五一长假第四天，Tom逛了N个bbs，做了N^2个脑筋急转弯题，终于发现了每次吃完花生米嘴里都是苦味的原因：自己总会吃到最后一粒花生米。五一长假第五天，Tom和Jerry在仓库散步的时候发现了n堆花生米（这是什么仓库啊？！）。这次Tom制定分花生米规则如下：1、首先选出最苦的一粒花生米，放到一个瓶子里；2、Tom和Jerry轮流从任意一堆花生米中取出任意粒吃掉；3、如果Tom吃到最后一粒花生米（瓶子里的花生米除外），Jerry必须吃掉瓶子里的花生米；如果Jerry吃到最后一粒花生米（瓶子里的花生米除外），Tom自愿吃掉瓶子里的花生米；4、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然希望瓶子里的花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
+输入
+本题有多个测例。每个测例的输入第一行是一个整数n，n大于零小于等于10，代表花生米的堆数（取出最苦花生米后）；接下来n行每行一个不超过100的正整数，分别代表一堆花生米的粒数（取出最苦花生米后）。n等于0表示输入结束，不需要处理。
+输出
+每个测例在单独的一行内输出一个整数：Jerry</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-10&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
           
         
       </div>
@@ -304,39 +304,36 @@ B.题目名称： Fix You
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/08/CodeForces-1393/">
-        <p class="h4 index-header">CodeForces-1393</p>
+      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%B8%89%EF%BC%89/">
+        <p class="h4 index-header">NOJ-花生米（三）</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称Rainbow Dash, Fluttershy and Chess Coloring
-题目大意：给定一个正方形区域上色，要求上色的块相邻之间不能相同，也就是我们会在每回合上不同的颜色，要求上色的块邻边是边界或是上一个以上色的块。求至少要多少个回合才能把这个正方形区域完。 
-思路：第一个回合，我们只能在边界的块上上色，且 要间隔开一格子上色，那么我们至少可以把边界的一半给上完，那么在下个回合，我们用不同的颜色上色自然可以把最外面的边界给上完。依次这样， 所以我们还是按着之前的块相邻来填，我们发现，进行完这个回合我们的区域和上个回合的是一样的，只不过长度减了2，我们每次进行这种回合都会这样子，那么我们对边长n/2即可，最后再加1.
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-long long T,n;
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--)
-    {
-        cin&gt;&gt;n;
-        long long ans=n/2+1;
-   </div>
+          <div class="index-text mb-1">花生米（三）描述
+五一长假第三天，Tom和Jerry在仓库散步的时候又发现了一堆花生米（仓库，又见仓库……）。这次Tom制定分花生米规则如下：1、Tom和Jerry轮流从堆中取出k粒花生米吃掉；2、第一次取花生米的人只能取一粒，以后取花生米的数量不能超过前一个人取花生米数量的两倍；3、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然还是希望最后一粒花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
+输入
+本题有多个测例，每个测例的输入是一个整数n，n大于零小于等于1000，代表花生米的数量。n等于0表示输入结束，不需要处理。
+输出
+每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取输出0。
+输入样例
+123450
+输出样例
+01001
+思路这个题与花生米（二）https://blog.csdn.net/Phoenix_ZengHao/article/details/109495057  相比，状态变多了。之前对于状态i，它只能由状态i-1，i-5，i-10进行推导。显然直接枚举状态并且对每一个状态做三个dp转移方程是行不通的。我们需</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-08&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
           
         
       </div>
@@ -347,40 +344,36 @@ int main()
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/31/CodeForces-1388/">
-        <p class="h4 index-header">CodeForces-1388</p>
+      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%8C%EF%BC%89/">
+        <p class="h4 index-header">NOJ-花生米（二）</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称： Captain Flint and Crew Recruitment 
-题目大意：如果一个数 x能够表示成两个不同质数的乘积，那我们就称 x是 nearly prime 。给出n，求n能否分成4个不同正整数的和，其中至少三个是 nearly prime 
-思路：首先可以取得最小的三个 nearly prime：6，10，14。如果n&lt;=30那么肯定无法得到符合要求的组合。如果n&gt;=45则至少都有6，10，14，所以一定可以得到符合要求的组合。问题就是30&lt;n&lt;45之间的情况，只需要单独分析x=6/10/14（x=n-30）的情况。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int T,n;
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--){
-        cin&gt;&gt;n;
-        if(n&lt;=30)
-        {
-            printf(&quot;NO\n&quot;);
-          </div>
+          <div class="index-text mb-1">花生米（二）描述
+五一长假第二天，Tom和Jerry在仓库散步的时候又发现了一堆花生米（这个仓库还真奇怪）。这次Tom制定分花生米规则如下：    1、Tom和Jerry轮流从堆中取出k粒花生米吃掉，k可以是1，5，10中的任意一个数字；    2、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然还是希望最后一粒花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
+输入
+本题有多个测例，每个测例的输入是一个整数n，n大于零小于等于1000，代表花生米的数量。n等于0表示输入结束，不需要处理。
+输出
+每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取输出0。
+输入样例
+12340
+输出样例
+0101
+思路博弈论：定义： jerry后手胜利 为必胜态。（即：Tom拿了最后一颗并且初始Jerry后手）10以内的必胜状态：1,3,5,7,9.由于可以一次拿10个，我们需要考虑10周围的情况:11为必胜 。什么才是必败态？当前面i-1,i-5,i-10这10个状态都是必胜态的时候， i一定是必败态。否则 i就有机会成为必胜态。必胜状态推导出的下</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-31&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
           
         
       </div>
@@ -391,41 +384,31 @@ int main()
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/29/kuangbin%E4%B8%93%E9%A2%9814-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/">
-        <p class="h4 index-header">kuangbin专题14-数论基础</p>
+      <a href="/2020/11/04/NOJ-%E6%97%85%E6%B8%B8%E9%A2%84%E7%AE%97/">
+        <p class="h4 index-header">NOJ-旅游预算</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.题目名称：LightOJ 1370 Bi-shoe and Phi-shoe
-题目大意：给出n个数字的序列a[]，对于每个数字ai找到一个欧拉函数值大于等于ai的数bi，求找到的所有数bi的最小值之和sum 
-思路：已知a[]&lt;=1000000,要求得phi[]，则应当线性求phi。
-1.phi(p) == p-1 因为素数p除了1以外的因子只有p，所以与 p 互素的个数是 p - 1个 
-2.phi(p^k) == p^k - p^(k-1) == (p-1) * p^(k-1) 
-3.如果i mod p == 0, 那么 phi(i  p) == p  phi(i)  
-4.如果i mod p != 0, 那么 phi(i  p) == phi(i)  (p-1)  
-求得phi[]之后，就寻找大于等于a[i]的最小的phi[]的下标，求和。
-PS：WA了很多次：a[]&lt;=1000000,但是phi[]可能&gt;1000000
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=</div>
+          <div class="index-text mb-1">旅游预算描述
+一个旅行社需要估算乘汽车从某城市到另一城市的最小费用，沿路有若干加油站，每个加油站收费不一定相同。旅游预算有如下规则： 若油箱的油过半，不停车加油，除非油箱中的油不可支持到下一站；每次加油时都加满；在一个加油站加油时，司机要花费2元买东西吃；司机不必为其他意外情况而准备额外的油；汽车开出时在起点加满油箱；计算精确到分（1元=100分）。编写程序估计实际行驶在某路线所需的最小费用。
+输入
+第一行为起点到终点的距离（实数） 第二行为三个实数，后跟一个整数，每两个数据间用一个空格隔开。其中第一个数为汽车油箱的容量（升），第二个数是每升汽油行驶的公里数，第三个数是在起点加满油箱的费用（精确到分），第四个数是加油站的数量。（〈=50）。接下去的每行包括两个实数，每个数据之间用一个空格分隔，其中第一个数是该加油站离起点的距离，第二个数是该加油站每升汽油的价格（元/升）。加油站按它们与起点的距离升序排列。所有的输入都有一定有解。
+输出
+共两行，每行都有换行 第一行为一个实数和一个整数，实数为旅行的最小费用，以元为单位，精确到分，整数表示途中加油的站的N。第二行是N个整数，表示N个加油的</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-29&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B%E7%B4%A0%E6%95%B0">线性筛素数</a>&nbsp;
-          
-            <a href="/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">欧拉函数</a>&nbsp;
-          
-            <a href="/tags/hopcroft-karp">hopcroft-karp</a>&nbsp;
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
           
         
       </div>
@@ -436,30 +419,36 @@ const int maxn=</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/24/NWPU-%E7%BA%BF%E6%AE%B5%E6%A0%91/">
-        <p class="h4 index-header">NWPU-线段树</p>
+      <a href="/2020/11/04/NOJ-%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">
+        <p class="h4 index-header">NOJ-石子合并</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">一.综述假设有编号从1到n的n个点，每个点都存了一些信息，用[L,R]表示下标从L到R的这些点。线段树的用处就是，对编号连续的一些点进行修改或者统计操作，修改和统计的复杂度都是O(log2(n)).
-线段树的原理，就是，将[1,n]分解成若干特定的子区间(数量不超过4*n),然后，将每个区间[L,R]都分解为少量特定的子区间，通过对这些少量子区间的修改或者统计，来实现快速对[L,R]的修改或者统计。
-由此看出，用线段树统计的东西，必须符合区间加法，否则，不可能通过分成的子区间来得到[L,R]的统计结果。
-符合区间加法的例子：1.数字之和——总数字之和 = 左区间数字之和 + 右区间数字之和2.最大公因数(GCD)——总GCD = gcd( 左区间GCD , 右区间GCD );3.最大值——总最大值=max(左区间最大值，右区间最大值)不符合区间加法的例子：1.众数——只知道左右区间的众数，没法求总区间的众数2.01序列的最长连续零——只知道左右区间的最长连续零，没法知道总的最长连续零
-一个问题，只要能化成对一些连续点的修改和统计问题，基本就可以用线段树来解决了，具体怎么转化在第六节会讲</div>
+          <div class="index-text mb-1">石子合并描述
+在一个圆形操场的四周摆放着n堆石子(n&lt;= 100)，现要将石子有次序地合并成一堆。规定每次只能选取相邻的两堆合并成新的一堆,并将新的一堆的石子数,记为该次合并的得分。编一程序，读入石子堆数n及每堆的石子数(&lt;=20)。选择一种合并石子的方案,使得做n－1次合并,得分的总和最小； 比如有4堆石子：4 4 5 9 则最佳合并方案如下：4 4 5 9 score: 08 5 9 score: 813 9 score: 8 + 13 = 2122 score: 8 + 13 + 22 = 43
+输入
+可能有多组测试数据。 当输入n=0时结束! 第一行为石子堆数n(1&lt;=n&lt;=100)； 第二行为n堆的石子每堆的石子数,每两个数之间用一个空格分隔。
+输出
+合并的最小得分，每个结果一行。
+输入样例
+4 4 4 5 9 0
+输出样例
+43
+思路一开始以为这个题和合并果子一样是个贪心的题，拿着优先队列就开始一波贪心，WA了。才发现是合并相邻的石子。那这个题就和上一个计算矩阵连乘积的题几乎一样了。但是也有不一样的。这个题的序列是循环序列，并且为了记录每一次合并对答</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-24&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91">线段树</a>&nbsp;
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
           
         
       </div>
@@ -470,37 +459,36 @@ const int maxn=</div>
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/22/NWPU-DP/">
-        <p class="h4 index-header">NWPU-DP</p>
+      <a href="/2020/11/04/NOJ-%E8%AE%A1%E7%AE%97%E7%9F%A9%E9%98%B5%E8%BF%9E%E4%B9%98%E7%A7%AF/">
+        <p class="h4 index-header">NOJ-计算矩阵连乘积</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.题目：D - Proud Merchants题目大意：n种商品，m元钱，每种商品都有p,q,v属性，p价格，q表示买这种商品你需要带q元老板才愿意和你交易，v这种商品的实际价值。求问最多可以获得多少价值 。
-思路：如果p=q，那么就是01背包。但是如果p！=q， 如果A:p1 q1, B:p2 q2 ， 假设单独买A或者B的话，都是可以买到的 。 若先买A，则你至少需要p1+q2的钱；若先买B，则至少需要p2+q1的钱。  那肯定是花最少的钱 ，所以如果先买A再买B ， 那么p1+q2q2-p2  也就是说qi-pi大的先买。注意：排序的时候，得按照qi-pi从小到大排序，因为你买第n件商品的时候，是在比较你是否要先买第n件商品。 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=5000+10;
-struct N
-{
-    int p,q,v;
-}a[ma</div>
+          <div class="index-text mb-1">计算矩阵连乘积描述
+在科学计算中经常要计算矩阵的乘积。矩阵A和B可乘的条件是矩阵A的列数等于矩阵B的行数。若A是一个p×q的矩阵，B是一个q×r的矩阵，则其乘积C=AB是一个p×r的矩阵。计算C=AB总共需要p×q×r次乘法。现在的问题是，给定n个矩阵{A1,A2,…,An}。其中Ai与Ai+1是可乘的，i=1,2,…,n-1。要求计算出这n个矩阵的连乘积A1A2…An最少需要多少次乘法。
+输入
+输入数据的第一行是一个整树n（0 &lt; n &lt;= 10），表示矩阵的个数。接下来的n行每行两个整数p,q( 0 &lt; p,q &lt; 100)，分别表示一个矩阵的行数和列数。
+输出
+输出一个整数：计算连乘积最少需要乘法的次数。
+输入样例
+101 22 33 44 55 66 77 88 99 1010 11
+输出样例
+438
+思路设dp[i][j]表示合并第i个矩阵到第j个矩阵所需要的最少的乘法次数。初始化dp为0x3f3f3f3f（即初始化为无穷大）。dp[i][i]=0(所有的i-i的合并的乘法次数为0).然后就开始考虑动态规划的转移方程：先枚举长度len （len fro</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-22&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/DP">DP</a>&nbsp;
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
           
         
       </div>
@@ -511,87 +499,35 @@ struct N
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/20/kuangbin%E4%B8%93%E9%A2%98-%E4%BA%8C%E5%8D%81%E5%9B%9B/">
-        <p class="h4 index-header">kuangbin专题-二十四</p>
+      <a href="/2020/11/04/NOJ-%E9%98%B2%E5%8D%AB%E5%AF%BC%E5%BC%B9/">
+        <p class="h4 index-header">NOJ-防卫导弹</p>
         
         
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">1.题目：CodeForces - 371C  A-Hamburgers题目大意：做汉堡包，需要的材料用字符串给出了。
-已有的材料数在第二行。（顺序：B,S,C）
-商店卖的材料的需要的钱数在第三行。（顺序：B,S,C）
-第四行是你有的钱数。
-问最多做多少汉堡。
-思路：看到（1&lt;=r&lt;=10^12)和“最多”就觉得是二分。二分汉堡的数量，已知已经拥有的汉堡B，S，C材料的数量，也可以得到需要的总数量，由此知道需要购买的数量。然后计算总钱数，就可以进行判断了。ps：WA了两次：第一次：注意ans1，ans2，ans3，可能是负的，一旦为负就要定为0，不然结果偏大。第二次：注意最多数量可能比10^12更大，所以右边界要大一点。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=10000+10;
-long long n1,n2,n3,h1,h2,h3,m1,m2,m3,r;
-bool check(long long mid)
-{
-    long long N1=n1*mid-h1,N2=n2</div>
+          <div class="index-text mb-1">防卫导弹描述一种新型的防卫导弹可截击多个攻击导弹。它可以向前飞行，也可以用很快的速度向下飞行，可以毫无损伤地截击进攻导弹，但不可以向后或向上飞行。但有一个缺点，尽管它发射时可以达到任意高度，但它只能截击比它上次截击导弹时所处高度低或者高度相同的导弹。现对这种新型防卫导弹进行测试，在每一次测试中，发射一系列的测试导弹（这些导弹发射的间隔时间固定，飞行速度相同），该防卫导弹所能获得的信息包括各进攻导弹的高度，以及它们发射次序。现要求编一程序，求在每次测试中，该防卫导弹最多能截击的进攻导弹数量，一个导弹能被截击应满足下列两个条件之一：a)它是该次测试中第一个被防卫导弹截击的导弹；b)它是在上一次被截击导弹的发射后发射，且高度不大于上一次被截击导弹的高度的导弹。
+输入
+多个测例。每个测例第一行是一个整数n（n不超过100），第二行n个整数表示导弹的高度（数字的顺序即发射的顺序）。n＝0表示输入结束。
+输出
+每个测例在单独的一行内输出截击导弹的最大数目。
+输入样例：
+55 6 100 6 610
+输出样例：
+2
+思路：枚举每一个导弹i（i from 1 to n），这个导弹一定是由之前更高的导弹</div>
         </div>
       </a>
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-20&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
         
         
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
-          
-            <a href="/tags/%E5%B0%BA%E5%8F%96">尺取</a>&nbsp;
-          
-            <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88%E9%98%9F%E5%88%97">单调栈队列</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/06/21/NOJ/">
-        <p class="h4 index-header">NOJ</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">实验4.1：求赋权图中一个结点到所有结点的最短路径的长度#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=10000+10;
-//---------------------------------------------邻接矩阵-------------------------------------------------------------------------------//
-struct AdjMatrix
-{
-    int V,E;
-    char Vexs[maxn];
-    int Edge[maxn][maxn];
-};
-int vis[maxn],path[maxn],dist[maxn];
-//----------创建、初始化图----引用图G，节点数V，边数E---------------//
-void CreateAdjMatrix(A</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-06-21&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">NOJ-数据结构</a>&nbsp;
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
           
         
       </div>
@@ -602,7 +538,7 @@ void CreateAdjMatrix(A</div>
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
