@@ -153,6 +153,45 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/CodeForces-1439A-Binary%20Table/">
+        <p class="h4 index-header">CodeForces-1439A-Binary Table</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：  
+对于任意的2*2的正方形，可以选择其中的任意三个（0—&gt;1,1—&gt;0），使得进行若干次操作之后让所有的元素变成0.
+Easy版本：操作次数不超过3nm
+Hard版本：操作次数不超过nm
+思路：直接写nm的方法吧（比赛的时候觉得不可能麻烦到去讨论2  2的内部单独情况，于是就换思路了，结果今早还是换成了一开始的办法）。从上到下，从左到右（不包括最后两行，和最后一列），一旦当前的a[i][j]==1,那么就选择(i,j),(i,j+1),(i+1,j+1)进行变化。对于最后一列的选择(i,m),(i+1,m),(i+1,m-1)进行变化。对于最后两行的，从左到右，如果a[n-1]][j]==1就选择(n-1,j),(n-1,j+1),(n,j+1)；如果a[n][j]==1就选择(n,j),(n,j+1),(n-1,j+1),这样就只剩下右下角的 2  2的小方格了，比赛的时候就这里出问题了。今天早上想的方法是分别讨论1的个数为0，1，2，3，4的情况：
+0：不需要变换，直接输出；
+3：变换那3个1的位置，操作次数为1；
+2：变换2个0的位置+任意一个1的位置，</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/constructive">constructive</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/16/CodeForces-1446B-Catching%20Cheaters/">
         <p class="h4 index-header">CodeForces-1446B-Catching Cheaters</p>
         
@@ -514,47 +553,6 @@ ps：0-1背包也可以写成二维dp[][]，只是这样写成滚动数组可以
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-06&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/05/NOJ-%E6%BB%91%E9%9B%AA/">
-        <p class="h4 index-header">NOJ-滑雪</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">滑雪描述
-Michael喜欢滑雪这并不奇怪，因为滑雪的确很刺激。可是为了获得速度，滑的区域必须向下倾斜，而且当你滑到坡底，你不得不再次走上坡或者等待升降机来载你。Michael想知道载一个区域中最长底滑坡。区域由一个二维数组给出。数组的每个数字代表点的高度。下面是一个例子1 2 3 4 516 17 18 19 615 24 25 20 714 23 22 21 813 12 11 10 9一个人可以从某个点滑向上下左右相邻四个点之一，当且仅当高度减小。在上面的例子中，一条可滑行的滑坡为24-17-16-1。当然25-24-23-…-3-2-1更长。事实上，这是最长的一条。
-输入
-输入的第一行表示区域的行数R和列数C(1 &lt;= R,C &lt;= 100)。下面是R行，每行有C个整数，代表高度h，0&lt;=h&lt;=10000。
-输出
-输出最长区域的长度。 
-输入样例
-5 51 2 3 4 516 17 18 19 615 24 25 20 714 23 22 21 813 12 11 10 9
-输出样例
-25
-输出提示printf(“%d\n,num”);
-思路问题问的是最</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-05&nbsp;&nbsp;
         
         
         
