@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Phoenix_ZH&#39;Blog</title>
+  <title>程序星编程之路 ~ Phoenix_ZH&#39;Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -35,11 +35,13 @@
   <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -126,12 +128,43 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 十一月 21日 2020, 11:37 中午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
-            </div>
           
         </div>
       </div>
@@ -140,228 +173,192 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4289/">
-        <p class="h4 index-header">HDU-4289</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4289 Control
-题目链接：https://vjudge.net/problem/HDU-4289
-题目大意：给一个无向图，有些不法分子要从S点T点，现在要抓住所有的不法分子阻止他们去T，那么就要控制某一些城市等待他们，控制每个城市花费不同，问最少花费是多少。第一行是两个整数N，M（2&lt;=N&lt;=200，1&lt;=M&lt;=20000）,分别表示城市数量和道路数量，城市的编号为1到N。 第二行是两个整数S，T（1&lt;=S,T&lt;=N）,分别表示起点和终点的位置。 接下来以下N行，分别表示控制第每一个城市的成本costi（cost&lt;10^7）。 接下来M行，每行有两个整数A，B表示城市A和B之间存在一条双向道路。
-题解：根据题意，要设法将S，T分割开，求最小花费，显然是求图的最小割，即求最大流。一开始想着单独将S，T隔开，无向边u，v建边：u+N—&gt;v,边权0x3f3f3f3f，v+N-&gt;u，边权0x3f3f3f3f，当然回路也要建立。然后跑dinic，然后将跑出来的最大流和单独隔离s、单独隔离t三者取最小。但是这样跑</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2">最小割</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4280/">
-        <p class="h4 index-header">HDU-4280</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4280 Island Transport
-题目链接：https://vjudge.net/problem/HDU-4280#author=smilestruggler
-题目大意：在n个岛屿中，有m条双向航线，航线有单位时间内的运输上限，现在求从最左侧到最右侧的最大运输
-题解：题意含明显它是最大流的模板题，直接建边，然后找到起点s和终点t就可以了，然后直接跑dinic。但是n=100000，m=100000，数据规模大，dinic容易超时，但是我们可以做优化。
-优化1：bfs只要跑到t就返回1，开始dfs。
-优化2；dfs内每次min(F-f,edge[i].w），f表示之前已经流过的流量，F-f表示剩余可流的流量，一旦F==f就break，表示满流了！
-代码：#include&lt;cstdio&gt;
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="A-Love-“A”"><a href="#A-Love-“A”" class="headerlink" title="A.Love “A”"></a>A.Love “A”</h1><p><img src="https://img-blog.csdnimg.cn/20201121113843192.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>题意很明确：希望字符串有一半是’a’，显然我们没有必要删除’a’,只需要删除非’a’的字母，因此统计’a’的数量即可，同时也统计一下不是’a’的字母的数量，把多余的不是’a’的字母去掉即可。答案显然就是a的数量<strong>min(n,cnta+cnta-1)</strong></p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
-#include&lt;queue&gt;
 using namespace std;
-const int max</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3605/">
-        <p class="h4 index-header">HDU-3605</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3605 Escape
-题目链接：https://vjudge.net/problem/HDU-3605
-题目大意：有n个人，m个星球，前n行，每一行有m个数字，分别表示第i个星球是否适合这个人。最后一行有m个，表示每个星球的最多居住人数。n (1 &lt;= n &lt;= 100000), m (1 &lt;= m &lt;= 10)
-题解：一开始想多没想就开始建裸图，心里想：别看着图稠密，边多，实际上一跑就出结果了。事实证明自己太天真，nnm的数据量早就TLE！正确做法有点意思：由于m很小，就可以考虑状态压缩。对于第i个人，m个星球的居住情况已知，转换为二进制储存，所有的状态也不过才2^10而已，起点s连向状态，边权为这种状态的总人数，然后10个星球与这种状态匹配，若星球属于这个状态，则状态连向星球，边权为无穷大，然后星球与终点t连接，边权为星球的最大居住人数。然后就可以跑dinic了，若ans==n，就YES，否则就NO。
-代码：#include&lt;cstdio&gt;
+const int maxn=1000+50;
+int n;char s[maxn];
+int main(){
+    cin&gt;&gt;s;
+    n=strlen(s);
+    int cnta=0;
+    for(int i=0;i&lt;n;i++)
+        if(s[i]==&#39;a&#39;)
+            cnta++;
+    cout&lt;&lt;min(n,cnta+cnta-1)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h1 id="B-谁拿了最多奖学金"><a href="#B-谁拿了最多奖学金" class="headerlink" title="B.谁拿了最多奖学金"></a>B.谁拿了最多奖学金</h1><p>  <img src="https://img-blog.csdnimg.cn/20201121115249515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img">  </p>
+<h3 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h3><p>这里使用结构体，里面存学生姓名name，期末分数final， 班级评议成绩other，判断是否是学生干部f1(f1=1表示是，否则f1=0)，判断是否是西部省份学生(f2=1表示是，否则f2=0)，，发表的论文数量sci，获得的奖学金money.然后就是5个奖项的判断条件：</p>
+<ol>
+<li>院士奖学金:final&gt;80&amp;&amp;sci&gt;=1，得到8000元</li>
+<li>五四奖学金:t[i].final&gt;85&amp;&amp;t[i].other&gt;80,得到4000元</li>
+<li>成绩优秀奖:t[i].final&gt;90,得到2000元</li>
+<li>西部贡献奖:t[i].final&gt;85&amp;&amp;t[i].f2,得到1000元</li>
+<li>班级贡献奖:t[i].other&gt;80&amp;&amp;t[i].f1,得到850元。</li>
+</ol>
+<p>ans记录所有人的总奖学金，maxx记录最高的奖学金。然后从头开始再枚举一下看谁是第一个得到最高奖学金的输出他的姓名。</p>
+<h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
-#include&lt;iostr</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9">状态压缩</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3081/">
-        <p class="h4 index-header">HDU-3081</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3081 Marriage Match II
-题目链接：https://vjudge.net/problem/HDU-3081
-题目大意：有N个女孩要与N个男孩玩配对游戏.每个女孩有一个可选男孩的集合(即该女孩可以选自己集合中的任意一个男孩作为该轮的搭档).然后从第一轮开始,每个女孩都要和一个不同的男孩配对.如果第一轮N个女孩都配对成功,那么就开始第二轮配对,女孩依然从自己的备选男孩集合中选择,但是不能选那些已经被该女孩在前几轮选择中选过的男孩了(比如i女孩在第一轮选了j男孩,那么i在第二轮就不能选j男孩了). 问你游戏最多能进行多少轮?
-题解：女生:1~n;男生:(n+1)~(n*2)。对于女生u，她可以直接连向不讨厌的男生，边权为1。
-假设我们当前二分尝试的轮数为K(即能够进行K轮匹配):首先如果女孩i可能选择男孩j,那么就有边(i, j+n, 1).且源点到每个女孩i有边(s,i,K),每个男孩j到汇点t有边(j+n,t,K).
-如果最大流==K*n,那么就表示可以进行最少K轮匹配.
-证明：如果满流,那么每个女生肯定选择了K个不同的男孩,每个男孩肯定被K个不</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
-          
-            <a href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92">闭包传递</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-2732/">
-        <p class="h4 index-header">HDU-2732</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 2732 Leapin’ Lizards
-题目链接：https://vjudge.net/problem/HDU-2732
-题目大意：题目是说一个n*m的迷宫中，有每个格子有柱子。柱子高度为0~3，高度为0的柱子是不能站的（高度为0就是没有柱子）在一些有柱子的格子上有一些蜥蜴，一次最多跳距离d,相邻格子的距离是1，只要跳出迷宫就是安全的。这个距离是曼哈顿距离（好像是的）。蜥蜴一次最多跳距离d,但是起跳的地方的柱子高度会减一，一个柱子同一时间只能有一个蜥蜴要求最少几个不能逃出迷宫。
-题解：最大流问题，求出dinic跑出的最大流，然后总数-ans就是剩余的数。建图方法：
-1.每个柱子有容纳量，超过了就塌了。u—&gt;u’ 边权为容纳量
-2.有蜥蜴的柱子与起点s相连，即s—&gt;u,边权为1
-3.边界上可以跳出界的与终点相连，条件(x1&lt;=p||y1&lt;=p||n-x1+1&lt;=p||len-y1+1&lt;=p)&amp;&amp;h[x1][y1]，u’—&gt;t,边权0x3f3f3f3f
-4.任意两个有容纳量的柱子，且曼哈顿距离&lt;=d，可</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-
-
-  <nav aria-label="index posts navigation">
-    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/13/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
-      ele.href += '#board';
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=100+50;
+struct Node{
+    char name[25];int final,other,f1,f2,sci,money;
+}t[maxn];
+int n;
+int main(){
+    scanf(&quot;%d&quot;,&amp;n);
+    int maxx=0,ans=0;
+    for(int i=1;i&lt;=n;i++){
+        char x,y;
+        scanf(&quot;%s%d%d %c %c%d&quot;,&amp;t[i].name,&amp;t[i].final,&amp;t[i].other,&amp;x,&amp;y,&amp;t[i].sci);//注意scanf和cin的区别，如果scanf读入不好，不妨设一下cin  
+        if(x==&#39;Y&#39;)t[i].f1=1;
+        else t[i].f1=0;
+        if(y==&#39;Y&#39;)t[i].f2=1;
+        else t[i].f2=0;
+        if(t[i].final&gt;80&amp;&amp;t[i].sci&gt;=1)t[i].money+=8000;
+        if(t[i].final&gt;85&amp;&amp;t[i].other&gt;80)t[i].money+=4000;
+        if(t[i].final&gt;90)t[i].money+=2000;
+        if(t[i].final&gt;85&amp;&amp;t[i].f2)t[i].money+=1000;
+        if(t[i].other&gt;80&amp;&amp;t[i].f1)t[i].money+=850;
+        maxx=max(maxx,t[i].money);
+        ans+=t[i].money;
     }
-  </script>
+    for(int i=1;i&lt;=n;i++){
+        if(t[i].money==maxx){
+            printf(&quot;%s\n&quot;,t[i].name);
+            break;
+        }
+    }
+    printf(&quot;%d\n%d\n&quot;,maxx,ans); 
+    return 0 ;
+}
+</code></pre>
+<h1 id="C-玩具谜题"><a href="#C-玩具谜题" class="headerlink" title="C.玩具谜题"></a>C.玩具谜题</h1><p><img src="https://img-blog.csdnimg.cn/2020112111591167.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="img"> </p>
+<h3 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h3><p>结构体记录人的状态（sta=0表示向内，sta=1表示向外）以及姓名。有n个人，从0~n-1记录所有人的状态和姓名。有m次操作，每次操作有a和s，a表示顺逆，s表示距离步数。当人朝内，a=0，表示顺时针，对应的人的编号-s，a=1，表示逆时针，对应的人编号+s，注意当编号<0，则编号要加+n（因为这是一个环，和取模类似）；当编号>=n，则编号要-n。当人朝外，a=0，表示逆时针，对应的人的编号+=s，a=1，表示顺时针，对应的人的编号-=s。朝外的操作和朝内刚好相反（可画图辅助思考）</p>
+<h3 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1e5+50;
+struct Node{
+    char name[30];int sta;
+}t[maxn];
+int n,m;
+int main(){
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    for(int i=0;i&lt;=n-1;i++){
+        scanf(&quot;%d%s&quot;,&amp;t[i].sta,t[i].name);
+    }
+    int now=0;
+    while(m--){
+        int s,a;
+        cin&gt;&gt;a&gt;&gt;s;
+        if(t[now].sta==0){
+            //朝内
+            if(a==0)now-=s;
+            else now+=s;
+            if(now&lt;0)now+=n;
+            if(now&gt;=n)now-=n;
+        }
+        else{
+            if(a==0)now+=s;
+            else now-=s;
+            if(now&lt;0)now+=n;
+            if(now&gt;=n)now-=n;
+        }
+    }
+    printf(&quot;%s&quot;,t[now].name);
+    return 0;
+}
+</code></pre>
 
+        <div id="aplayer-qlAauqlV" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-qlAauqlV"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "那年",
+              author: "枯木逢春",
+              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
 
-
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%B0%B4%E9%A2%98">水题</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -440,6 +437,11 @@ const int max</div>
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -491,7 +493,7 @@ const int max</div>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "人生本无止境，前行何须彷徨。&nbsp;",
+        "程序星编程之路&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

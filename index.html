@@ -153,6 +153,53 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/21/%E7%A8%8B%E5%BA%8F%E6%98%9F%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">
+        <p class="h4 index-header">程序星编程之路</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A.Love “A” 
+思路：题意很明确：希望字符串有一半是’a’，显然我们没有必要删除’a’,只需要删除非’a’的字母，因此统计’a’的数量即可，同时也统计一下不是’a’的字母的数量，把多余的不是’a’的字母去掉即可。答案显然就是a的数量min(n,cnta+cnta-1)
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000+50;
+int n;char s[maxn];
+int main(){
+    cin&gt;&gt;s;
+    n=strlen(s);
+    int cnta=0;
+    for(int i=0;i&lt;n;i++)
+        if(s[i]==&#39;a&#39;)
+            cnta++;
+    cout&lt;&lt;min(n,cnta+cnta-1)&lt;&lt;endl;
+    re</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-21&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%B0%B4%E9%A2%98">水题</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/18/NOJ-1579-%E4%B8%89%E9%98%B6%E5%B9%BB%E6%96%B9/">
         <p class="h4 index-header">NOJ-1579-三阶幻方</p>
         
@@ -573,56 +620,6 @@ void dfs(int tot){
                 }
                 else{
                     cout&l</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1006-%E5%A0%A1%E5%9E%92%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">NOJ-1006-堡垒问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">堡垒问题 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-using namespace std;
-const int maxn=20+5;
-int n,vis[maxn][maxn],ans;char a[maxn][maxn];
-int max(int x,int y){
-    if(x&gt;=y)return x;
-    return y;
-}
-void dfs(int now,int cnt){
-    if(now==n*n){
-        ans=max(ans,cnt);
-        return ;
-    }
-    int r=now/n,c=now%n,i;
-    if(a[r][c]!=&#39;X&#39;&amp;&amp;vis[r][c]==0){
-        vis[r][c]=1;
-        for(i=r+1;i&lt;=n;i++){
-            if(a[i][c]!=&#39;X&#39;)vis[i]</div>
         </div>
       </a>
 
