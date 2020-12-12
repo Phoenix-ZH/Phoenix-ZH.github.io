@@ -4,6 +4,90 @@
   
   
   <entry>
+    <title>CodeForces-1461B-Find the Spruce</title>
+    <link href="/2020/12/12/CodeForces-1461B-Find%20the%20Spruce/"/>
+    <url>/2020/12/12/CodeForces-1461B-Find%20the%20Spruce/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h1><p> <img src="https://img-blog.csdnimg.cn/20201212171832411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"> </p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>求出所有符合要求的图形。一开始想着枚举所有的点(i,j)，以点(i,j)为起点，向下不断寻找符合条件的图形，但是觉得太麻烦了。然后发现每一个点是否可以继续向下寻找符合条件的图形完全取决于点(i+1,j-1)、(i+1,j)、(i+1,j+1)这三个点是否都是<strong>*</strong>,并且点(i,j)可以向下找到几个符合条件的图形，也是取决于这三个点中最小的符合条件的图形的数量。这样完全可以从最后一行向上进行动态转移。一开始初始化所有为*的点(i,j),令它们dp[i][j]=1，然后从最后一行向上更新 dp[i][j]+=min(dp[i+1][j-1],min(dp[i+1][j],dp[i+1][j+1])); 最后答案就是所有dp[i][j]之和。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn=500+50;typedef long long ll;ll T,n,m,dp[maxn][maxn];char s[maxn][maxn];int main(){    cin&gt;&gt;T;    while(T--){        cin&gt;&gt;n&gt;&gt;m;        for(int i=1;i&lt;=n;i++)cin&gt;&gt;s[i]+1;        for(int i=1;i&lt;=n;i++){            for(int j=1;j&lt;=m;j++){                if(s[i][j]==&#39;*&#39;){                    dp[i][j]=1;                }                else{                    dp[i][j]=0;                }            }        }        ll tot=0;        for(int i=n-1;i&gt;=1;i--){            for(int j=1;j&lt;=m;j++){                if(j-1&gt;=1&amp;&amp;j+1&lt;=m&amp;&amp;dp[i][j]==1&amp;&amp;dp[i+1][j-1]&amp;&amp;dp[i+1][j]&amp;&amp;dp[i+1][j+1]){                    dp[i][j]+=min(dp[i+1][j-1],min(dp[i+1][j],dp[i+1][j+1]));                }            }        }        for(int i=1;i&lt;=n;i++){            for(int j=1;j&lt;=m;j++){                tot+=dp[i][j];            }        }        cout&lt;&lt;tot&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-oNRmZlJk" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-oNRmZlJk"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CodeForces</tag>
+      
+      <tag>DP</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CodeForces-1461C-Random Events</title>
+    <link href="/2020/12/12/CodeForces-1461C-Random%20Events/"/>
+    <url>/2020/12/12/CodeForces-1461C-Random%20Events/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：<img src="https://img-blog.csdnimg.cn/20201212203328807.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"></h1><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>对于后缀序ai,ai+1,…,an如果该序列已经全部满足ai=i，那么对于任意的r∈[i,n]，他们是否排序都不会影响最终答案。但是如果不是这种序列就必须保证最后一个ai!=i必须有r=i，并且进行概率为p的操作。而后面的操作是否进行实际上都不影响答案，如果不进行刚才的操作，就必须保证r&gt;i的操作至少进行一次。因此答案需要累加r&gt;i的每钟操作一次。特判一下整个序列都已经从小到大排好的情况，此时答案为1.</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn=1e5+50;int T,n,m,a[maxn];struct Node{    int f;double q;}t[maxn];int cmp(Node x,Node y){    return x.f&lt;y.f;}int main(){    cin&gt;&gt;T;    while(T--){        cin&gt;&gt;n&gt;&gt;m;        for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i];        for(int i=1;i&lt;=m;i++)cin&gt;&gt;t[i].f&gt;&gt;t[i].q;        sort(t+1,t+1+m,cmp);        int s=0;        for(int i=n;i&gt;=1;i--){            if(a[i]!=i){                s=i;                break;            }         }        double ans=0,sum=1.0;        for(int i=m;i&gt;=1;i--){            if(t[i].f&gt;=s){                ans=ans+sum*t[i].q;                sum*=(1-t[i].q);            }            else{                break;            }        }        if(s==0)ans=1.0;        printf(&quot;%.7lf\n&quot;,ans);    }    return 0;}</code></pre>        <div id="aplayer-oLjagOun" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-oLjagOun"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CodeForces</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CodeForces-1461D-Divide and Summarize</title>
+    <link href="/2020/12/12/CodeForces-1461D-Divide%20and%20Summarize/"/>
+    <url>/2020/12/12/CodeForces-1461D-Divide%20and%20Summarize/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h1><p> <img src="https://img-blog.csdnimg.cn/2020121220503433.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"> </p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>直接模拟这个二分的过程，然后标记查询区间元素总和，用map标记。dfs进行二分模拟的上界是a[]的最大值，下界是a[]的最小值。用树状数组储存答案，查询区间内元素总和。对于dfs模拟中要判断mid是否存在于a[]中，如果不存在就需要再二分找到最接近mid的。（a[]从小到大排序）把所有可以得到的答案都用map标记后，再进行后面的查询，直接输出答案。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn=1e6+50;typedef long long ll;ll T,n,m,a[maxn],sum[maxn],minn,maxx;map&lt;ll,int&gt;mp;ll lowbit(ll x){    return x&amp;(-x);}ll query(ll x){    ll res=0;    while(x){        res+=sum[x];        x-=lowbit(x);    }    return res;}void add(ll x,ll w){    while(x&lt;=maxx){        sum[x]+=w;        x+=lowbit(x);    }}void dfs(ll l,ll r){    mp[query(r)-query(l-1)]=1;    if(l&gt;=r)return ;    ll mid=(l+r)/2;    ll t1=lower_bound(a+1,a+1+n,mid)-a;    ll t2=lower_bound(a+1,a+1+n,mid+1)-a;    ll midl,midr;    if(a[t1]==mid)midl=mid;    else midl=a[t1-1];    midr=a[t2];    dfs(l,midl);dfs(midr,r);}int main(){    cin&gt;&gt;T;    while(T--){        cin&gt;&gt;n&gt;&gt;m;        maxx=0;minn=1e18;        for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i],maxx=max(maxx,a[i]),minn=min(minn,a[i]);        sort(a+1,a+1+n);        for(int i=0;i&lt;=maxx;i++)sum[i]=0;        for(int i=1;i&lt;=n;i++){            add(a[i],a[i]);        }        mp.clear();        dfs(minn,maxx);        while(m--){            ll x;cin&gt;&gt;x;            if(mp[x])cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;            else cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;        }    }    return 0;}</code></pre>        <div id="aplayer-XEYborJP" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-XEYborJP"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CodeForces</tag>
+      
+      <tag>二分</tag>
+      
+      <tag>树状数组</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CodeForces-1461E-Water Level</title>
+    <link href="/2020/12/12/CodeForces-1461E-Water%20Level/"/>
+    <url>/2020/12/12/CodeForces-1461E-Water%20Level/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h1><p> <img src="https://img-blog.csdnimg.cn/20201212170552244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"> </p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>每一天的开始，可以加y升的水，每一天一定会用x升的水，需要保证每时每刻水量都在[l,r]。</p><p>如果x=y：那么只要k-x&gt;=l||k+x&lt;=r，可以让水量一直维持在k(k∈[l,r])。</p><p>如果x<y：那么k一定会不断减小。对于第一天，需要考虑是否可以加y升水。而之后第i天一定会减少x升水，第i+1天一定可以加入y升水，相当于一天减少delt=x-y升水。然后计算出维持的天数tot，如果tot>=t就输出Yes</p><p>如果x&gt;y：那么就可以模拟这个过程，并且记录变量k是否到达过当前的值，一旦到达说明存在一个循环且该循环所有位置都处于[l,r]中，可以直接输出Yes。对于k，可以不断减少x，直到无法减少，此后一定可以再加y，再次减少x。每一次t-=(k-l)/x，k=k-(k-l)/x。一旦t&lt;=0就输出Yes。用mp[]来记录k的轨迹，一旦出现mp[k]=1就到达了上述的循环。k减到无法再减x时候，k就应该加y，注意此时当天k一定要减少x。</p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;ll k,l,r,t,x,y;map&lt;ll,int&gt;mp;int main(){    cin&gt;&gt;k&gt;&gt;l&gt;&gt;r&gt;&gt;t&gt;&gt;x&gt;&gt;y;    if(x==y){        if(k+y&lt;=r||k-y&gt;=l)cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;        else cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;        return 0;    }    else if(x&gt;y){        ll delt=x-y,tot=0;        if(k+y&lt;=r)k+=y;        if(k-x&gt;=l){            k-=x,tot++;            tot=tot+(k-l)/delt;        }        if(tot&gt;=t)cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;        else cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;        return 0;    }    else{        ll sign=0;        while(1){            t-=(k-l)/x;            k=k-(k-l)/x*x;            if(t&lt;=0){                cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;                return 0;            }            if(mp[k]){                sign=1;                cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;                return 0;            }            mp[k]=1;            if(k+y&lt;=r)k+=y;            k-=x;t--;            if(k&lt;l||k&gt;r)break;        }        cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-LQsKJUyX" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-LQsKJUyX"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CodeForces</tag>
+      
+      <tag>数论</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>程序星编程之路</title>
     <link href="/2020/11/21/%E7%A8%8B%E5%BA%8F%E6%98%9F%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/"/>
     <url>/2020/11/21/%E7%A8%8B%E5%BA%8F%E6%98%9F%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/</url>

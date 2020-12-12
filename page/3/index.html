@@ -153,6 +153,207 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1323-%E7%A9%B7%E4%B8%BEn%E4%BD%8D%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0/">
+        <p class="h4 index-header">NOJ-1323-穷举n位二进制数</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">穷举n位二进制数  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=100+50;
+int a[maxn],n;
+int main(){
+    int i,x;
+    cin&gt;&gt;n;
+    for(i=n;i&gt;=1;i--)cout&lt;&lt;a[i];cout&lt;&lt;endl;
+    for(x=1;x&lt;=pow(2,n)-1;x++){
+        a[1]++;
+        for(i=1;i&lt;=n;i++){
+            if(a[i]&gt;=2)a[i]=0,a[i+1]++;
+        }
+        for(i=n;i&gt;=1;i--)cout&lt;&lt;a[i];cout&lt;&lt;endl;
+    }
+  </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1141-%E8%B5%B0%E8%BF%B7%E5%AE%AB/">
+        <p class="h4 index-header">NOJ-1141-走迷宫</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">走迷宫  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=20+50;
+int n,m,sx,sy,tx,ty,a[maxn][maxn],vis[maxn][maxn],d[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
+struct Node{
+    int x,y;
+};
+int main(){
+    int i,j;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;
+    for(i=0;i&lt;n;i++){
+        for(j=0;j&lt;m;j++){
+            cin&gt;&gt;a[i][j];
+        }
+    }
+    queue&lt;Node&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1003-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
+        <p class="h4 index-header">NOJ-1003-快速排序</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">快速排序  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+50;
+int n,a[maxn];
+void QuickSort(int l,int r){
+    if(l&gt;=r)return ;
+    int i=l,j=r,x=a[l];
+    while(i&lt;j){
+        while(x&lt;=a[j]&amp;&amp;i&lt;j)j--;
+        if(i&lt;j)a[i++]=a[j];
+        while(a[i]&lt;=x&amp;&amp;i&lt;j)i++;
+        if(i&lt;j)a[j--]=a[i];
+    }
+    a[i]=x;
+    QuickSort(l,i-1);QuickSort(i+1,r);
+}
+int main(){
+    int i;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1002-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
+        <p class="h4 index-header">NOJ-1002-归并排序</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">归并排序 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+50;
+int n,a[maxn],t[maxn];
+void Sort(int l,int r,int mid){
+    int i=l,j=mid+1,k=0;
+    while(i&lt;=mid&amp;&amp;j&lt;=r){
+        if(a[i]&lt;=a[j])t[++k]=a[i++];
+        else t[++k]=a[j++];
+    }
+    if(i==mid+1){
+        while(j&lt;=r)t[++k]=a[j++];
+    }
+    if(j==r+1){
+        while(i&lt;=mid)t[++k]=a[i++];
+    }
+    for(i=l,k=1;i&lt;=r;i++,k++)</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/18/CodeForces-1439A-Binary%20Table/">
         <p class="h4 index-header">CodeForces-1439A-Binary Table</p>
         
@@ -380,179 +581,6 @@ YesNoNo
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/08/NOJ-1541-%E5%8A%A01%E4%B9%982%E5%B9%B3%E6%96%B9/">
-        <p class="h4 index-header">NOJ-1541-加1乘2平方</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">加1乘2平方描述
-给定两个正整数m、n，问只能做加1、乘2和平方这三种变化，从m变化到n最少需要几次
-输入
-输入两个10000以内的正整数m和n，且m小于n
-输出
-输出从m变化到n的最少次数
-输入样例
-1 16
-输出样例
-3
-方法1：思路：设定dp[i]表示从m到达i最少需要i步。初始化dp[]无穷大，显然dp[m]=0,即到起点的步数为0。对于i来讲可以到达i的只有三种状态：i-1、i/2、sqrt(i)（其中i/2和sqrt(i)需要满足整数条件）。这也是基于i整体单增的条件才满足动态规划。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-using namespace std;
-const int maxn = 10000 + 50;
-int dp[maxn], n,m;
-int min(int x,int y){
-    if(x&lt;=y)return x;
-    return</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/08/%E7%AC%AC45%E5%B1%8A%E5%9B%BD%E9%99%85%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B(ICPC)%E4%BA%9A%E6%B4%B2%E7%BD%91%E4%B8%8A%E5%8C%BA%E5%9F%9F%E8%B5%9B%E6%A8%A1%E6%8B%9F%E8%B5%9B%20E%20Eat%20Walnuts/">
-        <p class="h4 index-header">第45届国际大学生程序设计竞赛(ICPC)亚洲网上区域赛模拟赛 E Eat Walnuts</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">E Eat Walnuts题目描述As we all know, in the ACM ICPC held in 2017, the organizer of Xinjiang University presented a box of walnuts to each coach. Our coach is happy to share with the team members except Mr.Watermelon. He is going to test Mr.Watermelon with a game when Mr.Watermelon want to eat some walnuts.
-He put some walnuts in a row and let Mr.Watermelon pick one of them. And this walnut is not the ﬁrst or last in the queue. The price Mr.Watermelon need to pay is : the walnut, the walnut in front</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%8C%BA%E9%97%B4DP">区间DP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/06/NOJ-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">NOJ-最大连续子序列和问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">最大连续子序列和问题描述：
-给定一整数序列A0，A1， A2，… An-1 （可能有负数），求A0~An-1的一个连续子序列Ai~Aj，使得Ai到Aj的和最大。
-输入：
-先输入一个正整数n(1&lt;n&lt;1000)，再输入n个整数。
-输出：
-输出最大连续子序列的和。
-输入样例：
-102 -1 5 -7 2 -1 4 -2 4 -5
-输出样例：
-7
-思路代码还没有AC，NOJ评测机炸了，但是这个O(n)的思路大概是对的：sum[i]为前i个数字的连续子序列的最大和。如果sum[i-1]0,则sum[i]=sum[i-1]+a[i].ans=max(ans,sum[i]);
-代码#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=10000+50;
-int n,a[maxn],sum[maxn];
-int max(int x,int y){
-    if(x&gt;=y)</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-06&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/06/NOJ-0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">NOJ-0-1背包问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">0-1背包问题描述：
-一个背包容量为c ，现有n件物品，求能装入背包的最大重量是多少？
-输入：
-先输入两个正整数n、c（0&lt;n、c&lt;1000），表示物品的件数和背包容量，再输入n个正整数，分别是这n件物品的重量。
-输出：
-输出能装入背包的最大重量。
-输入样例：
-5 5023 18 13 35 24
-输出样例：
-48
-思路方法一：0-1背包的裸题，那就可以直接写一个01背包的动态转移方程：dp[j]=max(dp[j],dp[j-w[i]]+p[i])。dp[j]的意思是：当背包已装j的重量的物品时的最大价值。那么它可以由背包已装j-w[i]时最大的价值进行转移，即由dp[j-w[i]]+p[i]得到。注意每一次要将dp[]设置为0，因为背包此时无价值。当状态方程枚举结束后，我们再从 dp[]数组中找一遍，求得答案maxx=max{dp[i]}(i from 0 to c)，输出答案maxx。这种动态规划的方法的时间复杂度为O(n^2).
-ps：0-1背包也可以写成二维dp[][]，只是这样写成滚动数组可以更加节省空间。
-方法二：除了直接写0-1背包的动态转移方程，还可以直接</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-06&nbsp;&nbsp;
         
         
         

@@ -153,6 +153,182 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1797/">
+        <p class="h4 index-header">POJ-1797</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1797 Heavy Transportation
+题目链接：https://vjudge.net/problem/POJ-1797#author=0
+题目大意：求1-n路径上边权最小值最大。
+题解：最短路径的变形题，用spfa来实现原本的dist[edge[i].to]=min(dist[edge[i].to],dist[x]+edge[i].w)修改为dist[edge[i].to]=max(dist[edge[i].to],min(dist[x],edge[i].w)注意初始化dist全为0，由于收缩，dist[1] =0x3f3f3f3f;
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=1000000+5;
+const int maxm=1000+5;
+int k=1,T,n,m,head</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3268/">
+        <p class="h4 index-header">POJ-3268</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3268 Silver Cow Party
+题目链接：https://vjudge.net/problem/POJ-3268#author=Demon_de_Laplace
+题目大意：N头牛，M条单行道，在s出举行聚会，每头牛出发和返回都是走最短路，问所有牛中走的路程最远的牛走了多远？
+题解：建边的时候建双向边，k=2开始.当边号为偶数时，说明是正边；当边号为奇数时，说明时反边；从s出发，跑正边，dist[i]存的是从s到i的最短距离；从s出发，跑反边，dist[i]存的是从i到s的最短距离；ans=max(ans,dist1[i]+dist2[i])
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=100000+5;
+int n,m,t,k=1,head[maxn],vis[maxn],dist1</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1860/">
+        <p class="h4 index-header">POJ-1860</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1860 Currency Exchange
+题目链接：https://vjudge.net/problem/POJ-1860#author=riba2534
+题目大意：给出每两种货币之间交换的手续费和汇率，求出从当前货币s开始交换，能否赚。能赚输出YES，否则输出NO
+题解：运用spfa判断是否存在存在正环(类似于判负环)。和判负环一样，记录一下点出现的次数，一旦出现此次数&gt;n就可以作出判断。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=10000+5;
+int n,m,s,k=1,head[maxn],vis[maxn],used[maxn];double w,dist[maxn];
+struct node
+{
+    int to,next;double w,q;
+}edge[max</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-3259/">
+        <p class="h4 index-header">POJ-3259</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 3259 Wormholes
+题目链接：https://vjudge.net/problem/POJ-3259#author=chen_zhe_
+题目大意：有n个教室，m条走廊(双向)，w条密道(单向)。走廊耗时&gt;0，密道可耗时&lt;0，问是否可以回到过去。
+题解：密道耗时&lt;0，再根据题目要求，就是问该图是否存在负环。由于这是一个连通图，从哪个点出发效果都一样，不妨从1开始出发，判断是否存在负环，判断方法：每次进行收缩时记录次数++，一旦超过了n就可以作出判断。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=50000+5;
+int k=1,T,n,m,w,head[maxn],vis[maxn],dist[maxn],used[maxn];
+struct node
+{
+    in</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-1502/">
         <p class="h4 index-header">POJ-1502</p>
         
@@ -373,153 +549,6 @@ ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保�
 代码：#include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;io</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1062/">
-        <p class="h4 index-header">POJ-1062</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1062 昂贵的聘礼
-题目链接：https://vjudge.net/problem/POJ-1062#author=0
-题目大意：一个人要买1号物品，而此物品可以通过直接购买或者到别人的手中买别的东西+一些金币来得到。但是需要注意：如果两人地位等级差距超过了delt，就不可以进行间接交易，即该交易圈的人两两之间等级差异不可大于delt。问要得到1号物品至少要花费多少钱？
-题解：建立一个源点，它与所有物品建边，即s—&gt;i（边权为物品原价），因为每个物品除了直接购买，还可以间接购买，设间接购买物品为j，则建边方式为j—&gt;i（边权为额外金币）然后跑最短路，注意最短路的条件不再是dist[edge[i].to]&gt;dist[x]+edge[i].w，因为当价格相等时也需要进入队列来进行松弛，所以应变为dist[edge[i].to]&gt;dist[x]+edge[i].w;然后就是等级限制的判断了。刚开始的s的等级需要从最低到最高都设置一次，意味着跑n次spfa，s就是这次spfa的最低等级，因此a[edge[i].to].l&gt;=limit&am</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1847/">
-        <p class="h4 index-header">POJ-1847</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1847 Tram
-题目链接：https://vjudge.net/problem/POJ-1847
-题目大意：输入n,a,b三个数，表示有n个点(1-n)，起点是a，终点是b，然后接下来有n行，每一行的第一个数m表示后面将会有m个数，输入结构是这样的，然后我再具体的解释一下。
-3 2 1     3表示共有n个点，接下来有n行，2表示起点，1表示终点2 2 3     第一个数2表示后面有2个数，因为这是第1行，所以后面两个数表示从1到2和从1到3的边2 3 1     表示从2到3和从2到1的边2 1 2     表示从3到1和从3到2的边
-题解：n&lt;=100，可以跑Floyd，dist初始化无穷大，每个结点所连接的第一个结点与它的距离为0，其余相连的为1，然后跑Floyd。dist[s][t]为最终的结果。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-co</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/LightOJ-1074/">
-        <p class="h4 index-header">LightOJ1074</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：LightOJ - 1074 Extended Traffic
-题目链接：https://vjudge.net/problem/LightOJ-1074#author=bbisnouse
-题目大意：在一个堵车的城市中, 每个路口都有一个拥挤程度a[i], 从u驶向v得到一个数量, 值为(a[v]-a[u])^3, 给出Q组查询, 每组给出一个数, 求1到这个数的点的最小数量, 如果不可达输出 ？
-题解：一开始觉得n很小，可以直接跑floyd，但是后来WA了两发，发现可能存在负环，所以需要判断负环，因此选择spfa，一旦判断出了负环就dfs，找到负环可以达到的所有点。对于查询一一输出结果即可。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=200005;
-int n,T,a[maxn],head[maxn],v</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-4725/">
-        <p class="h4 index-header">HDU-4725</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 4725 The Shortest Path in Nya Graph
-题目链接：https://vjudge.net/problem/HDU-4725#author=0
-题目大意：现在给你n个点 ，这些点的分布是层型分布的，你可以从第i层走到相邻的层（i+1，i-1）中，这样走的花费是c，接着他会给你m（从u-&gt;v）条小路，从小路走的花费 是w，问你从1-&gt;n所走的最小花费是多少。
-题解：看到数据范围就不敢用spfa了，太过玄学，不想TLE，所以选择dijkstra，这题的难点在于建边。当然，很容易想到将层转化成点，比如第i个点的层数为deep[i],则转化为点deep[i]+n.对于给的小道就直接建边a—&gt;b权值为c,b—&gt;a权值为c（建双向边），将deep数组从小到大排列，对于deep[i] 和 deep[i-1] （i∈[2,n]），首先要判断它们是否刚好相差1，只有刚好相差1才可以建边，建边方式为add(deep[i-1]+n,deep[i]+n,c);add(deep[i]+n,deep[i-1]+n,c)，相邻层数可以相互移动</div>
         </div>
       </a>
 

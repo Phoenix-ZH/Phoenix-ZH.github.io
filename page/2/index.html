@@ -153,6 +153,211 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1142-%E8%B8%A9%E6%B0%94%E7%90%83/">
+        <p class="h4 index-header">NOJ-1142-踩气球</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">踩气球 
+代码：感觉题意说明不够全，好像是POJ的原题。
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000+50;
+int  sign1,sign2,n,m,x1=1,x2=1;
+void dfs(int x){
+    if(x==101){
+        if(x1==n&amp;&amp;x2==m)sign1=sign2=1;
+        if(x1==n)sign1=1;
+        return ;
+    }
+    dfs(x+1);
+    if(n%x==0&amp;&amp;x1*x&lt;=n){
+        x1*=x;
+        dfs(x+1);
+        x1/=x;
+    }
+    if(m%x==0&amp;&amp;x2*x&lt;=m){
+        x2*=x;
+        dfs(</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1009-%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">NOJ-1009-迷宫问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">迷宫问题  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=20+5;
+int T,sx,sy,tx,ty,vis[maxn][maxn],d[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
+char s[maxn][maxn];
+struct Node{
+    int x,y;
+};
+int main(){
+    int i;
+    cin&gt;&gt;T;
+    while(T--){
+        memset(vis,0,sizeof(vis));
+        cin&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;
+        for(i=0;i&lt;20;i++)cin&gt;&gt;s[i];
+        queue&lt;N</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1008-%E7%B4%A0%E6%95%B0%E7%8E%AF%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">NOJ-1008-素数环问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">素数环问题 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=105;
+int n=20,vis[maxn],a[maxn],cnt;
+void swap(int x,int y){
+    int t=a[x];
+    a[x]=a[y];
+    a[y]=t;
+}
+void dfs(int now){
+    int i;
+    if(now==n+1){
+        if(vis[a[1]+a[20]])return;
+        for(i=1;i&lt;=n-1;i++){
+            if(vis[a[i]+a[i+1]]){
+                return ;
+            }
+        }
+        cnt++;
+        if(cnt=</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1007-8%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">NOJ-1007-8皇后问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">8皇后问题 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=25;
+int vis[maxn][maxn],used[maxn][maxn],n,cnt=0;
+void dfs(int tot){
+    int i,j;
+    if(tot==n+1){
+        cnt++;printf(&quot;No %d:\n&quot;,cnt);
+        for(i=1;i&lt;=8;i++){
+            for(j=1;j&lt;=8;j++){
+                if(!used[i][j]){
+                    cout&lt;&lt;&#39;.&#39;;
+                }
+                else{
+                    cout&l</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/18/NOJ-1006-%E5%A0%A1%E5%9E%92%E9%97%AE%E9%A2%98/">
         <p class="h4 index-header">NOJ-1006-堡垒问题</p>
         
@@ -454,207 +659,6 @@ int main(){
           var ap = new APlayer({
             element: document.getElementById("aplayer-LCcXOOEq"),
             narro</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1323-%E7%A9%B7%E4%B8%BEn%E4%BD%8D%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0/">
-        <p class="h4 index-header">NOJ-1323-穷举n位二进制数</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">穷举n位二进制数  
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-using namespace std;
-const int maxn=100+50;
-int a[maxn],n;
-int main(){
-    int i,x;
-    cin&gt;&gt;n;
-    for(i=n;i&gt;=1;i--)cout&lt;&lt;a[i];cout&lt;&lt;endl;
-    for(x=1;x&lt;=pow(2,n)-1;x++){
-        a[1]++;
-        for(i=1;i&lt;=n;i++){
-            if(a[i]&gt;=2)a[i]=0,a[i+1]++;
-        }
-        for(i=n;i&gt;=1;i--)cout&lt;&lt;a[i];cout&lt;&lt;endl;
-    }
-  </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1141-%E8%B5%B0%E8%BF%B7%E5%AE%AB/">
-        <p class="h4 index-header">NOJ-1141-走迷宫</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">走迷宫  
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=20+50;
-int n,m,sx,sy,tx,ty,a[maxn][maxn],vis[maxn][maxn],d[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
-struct Node{
-    int x,y;
-};
-int main(){
-    int i,j;
-    cin&gt;&gt;n&gt;&gt;m&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;
-    for(i=0;i&lt;n;i++){
-        for(j=0;j&lt;m;j++){
-            cin&gt;&gt;a[i][j];
-        }
-    }
-    queue&lt;Node&</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1003-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
-        <p class="h4 index-header">NOJ-1003-快速排序</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">快速排序  
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=10000+50;
-int n,a[maxn];
-void QuickSort(int l,int r){
-    if(l&gt;=r)return ;
-    int i=l,j=r,x=a[l];
-    while(i&lt;j){
-        while(x&lt;=a[j]&amp;&amp;i&lt;j)j--;
-        if(i&lt;j)a[i++]=a[j];
-        while(a[i]&lt;=x&amp;&amp;i&lt;j)i++;
-        if(i&lt;j)a[j--]=a[i];
-    }
-    a[i]=x;
-    QuickSort(l,i-1);QuickSort(i+1,r);
-}
-int main(){
-    int i;</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1002-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
-        <p class="h4 index-header">NOJ-1002-归并排序</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">归并排序 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=10000+50;
-int n,a[maxn],t[maxn];
-void Sort(int l,int r,int mid){
-    int i=l,j=mid+1,k=0;
-    while(i&lt;=mid&amp;&amp;j&lt;=r){
-        if(a[i]&lt;=a[j])t[++k]=a[i++];
-        else t[++k]=a[j++];
-    }
-    if(i==mid+1){
-        while(j&lt;=r)t[++k]=a[j++];
-    }
-    if(j==r+1){
-        while(i&lt;=mid)t[++k]=a[i++];
-    }
-    for(i=l,k=1;i&lt;=r;i++,k++)</div>
         </div>
       </a>
 

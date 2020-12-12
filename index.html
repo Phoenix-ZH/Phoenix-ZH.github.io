@@ -153,6 +153,187 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/12/CodeForces-1461B-Find%20the%20Spruce/">
+        <p class="h4 index-header">CodeForces-1461B-Find the Spruce</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：  
+思路：求出所有符合要求的图形。一开始想着枚举所有的点(i,j)，以点(i,j)为起点，向下不断寻找符合条件的图形，但是觉得太麻烦了。然后发现每一个点是否可以继续向下寻找符合条件的图形完全取决于点(i+1,j-1)、(i+1,j)、(i+1,j+1)这三个点是否都是*,并且点(i,j)可以向下找到几个符合条件的图形，也是取决于这三个点中最小的符合条件的图形的数量。这样完全可以从最后一行向上进行动态转移。一开始初始化所有为*的点(i,j),令它们dp[i][j]=1，然后从最后一行向上更新 dp[i][j]+=min(dp[i+1][j-1],min(dp[i+1][j],dp[i+1][j+1])); 最后答案就是所有dp[i][j]之和。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=500+50;
+typedef long long ll;
+ll T,n,m,dp[maxn][maxn];char s[maxn][maxn];
+int main(){
+    cin&gt;&g</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/DP">DP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/12/CodeForces-1461C-Random%20Events/">
+        <p class="h4 index-header">CodeForces-1461C-Random Events</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：思路：对于后缀序ai,ai+1,…,an如果该序列已经全部满足ai=i，那么对于任意的r∈[i,n]，他们是否排序都不会影响最终答案。但是如果不是这种序列就必须保证最后一个ai!=i必须有r=i，并且进行概率为p的操作。而后面的操作是否进行实际上都不影响答案，如果不进行刚才的操作，就必须保证r&gt;i的操作至少进行一次。因此答案需要累加r&gt;i的每钟操作一次。特判一下整个序列都已经从小到大排好的情况，此时答案为1.
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1e5+50;
+int T,n,m,a[maxn];
+struct Node{
+    int f;double q;
+}t[maxn];
+int cmp(Node x,Node y){
+    return x.f&lt;y.f;
+}
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;n&gt;&gt;m;
+        for(int i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/12/CodeForces-1461D-Divide%20and%20Summarize/">
+        <p class="h4 index-header">CodeForces-1461D-Divide and Summarize</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：  
+思路：直接模拟这个二分的过程，然后标记查询区间元素总和，用map标记。dfs进行二分模拟的上界是a[]的最大值，下界是a[]的最小值。用树状数组储存答案，查询区间内元素总和。对于dfs模拟中要判断mid是否存在于a[]中，如果不存在就需要再二分找到最接近mid的。（a[]从小到大排序）把所有可以得到的答案都用map标记后，再进行后面的查询，直接输出答案。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1e6+50;
+typedef long long ll;
+ll T,n,m,a[maxn],sum[maxn],minn,maxx;
+map&lt;ll,int&gt;mp;
+ll lowbit(ll x){
+    return x&amp;(-x);
+}
+ll query(ll x){
+    ll res=0;
+    while(x){
+        res+=sum[x];
+        x-=lowbit(x);
+    }
+    return res;
+}
+vo</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">树状数组</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/12/CodeForces-1461E-Water%20Level/">
+        <p class="h4 index-header">CodeForces-1461E-Water Level</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：  
+思路：每一天的开始，可以加y升的水，每一天一定会用x升的水，需要保证每时每刻水量都在[l,r]。
+如果x=y：那么只要k-x&gt;=l||k+x&lt;=r，可以让水量一直维持在k(k∈[l,r])。
+如果x=t就输出Yes
+如果x&gt;y：那么就可以模拟这个过程，并且记录变量k是否到达过当前的值，一旦到达说明存在一个循环且该循环所有位置都处于[l,r]中，可以直接输出Yes。对于k，可以不断减少x，直到无法减少，此后一定可以再加y，再次减少x。每一次t-=(k-l)/x，k=k-(k-l)/x。一旦t&lt;=0就输出Yes。用mp[]来记录k的轨迹，一旦出现mp[k]=1就到达了上述的循环。k减到无法再减x时候，k就应该加y，注意此时当天k一定要减少x。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+ll k,l,r,t,x,y;
+map&lt;ll,int&gt;mp;
+int main(){
+    cin&gt;&gt;k&gt;&gt;l&gt;&g</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/%E6%95%B0%E8%AE%BA">数论</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/21/%E7%A8%8B%E5%BA%8F%E6%98%9F%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">
         <p class="h4 index-header">程序星编程之路</p>
         
@@ -415,211 +596,6 @@ void dfs(int now){
             if(p[i]==&#39;i&#39;)s1[++opt1]=t1[opt2++];
             else st[++opt3]=s1[opt1--];
    </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1142-%E8%B8%A9%E6%B0%94%E7%90%83/">
-        <p class="h4 index-header">NOJ-1142-踩气球</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">踩气球 
-代码：感觉题意说明不够全，好像是POJ的原题。
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1000+50;
-int  sign1,sign2,n,m,x1=1,x2=1;
-void dfs(int x){
-    if(x==101){
-        if(x1==n&amp;&amp;x2==m)sign1=sign2=1;
-        if(x1==n)sign1=1;
-        return ;
-    }
-    dfs(x+1);
-    if(n%x==0&amp;&amp;x1*x&lt;=n){
-        x1*=x;
-        dfs(x+1);
-        x1/=x;
-    }
-    if(m%x==0&amp;&amp;x2*x&lt;=m){
-        x2*=x;
-        dfs(</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1009-%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">NOJ-1009-迷宫问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">迷宫问题  
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=20+5;
-int T,sx,sy,tx,ty,vis[maxn][maxn],d[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
-char s[maxn][maxn];
-struct Node{
-    int x,y;
-};
-int main(){
-    int i;
-    cin&gt;&gt;T;
-    while(T--){
-        memset(vis,0,sizeof(vis));
-        cin&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;
-        for(i=0;i&lt;20;i++)cin&gt;&gt;s[i];
-        queue&lt;N</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1008-%E7%B4%A0%E6%95%B0%E7%8E%AF%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">NOJ-1008-素数环问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">素数环问题 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-using namespace std;
-const int maxn=105;
-int n=20,vis[maxn],a[maxn],cnt;
-void swap(int x,int y){
-    int t=a[x];
-    a[x]=a[y];
-    a[y]=t;
-}
-void dfs(int now){
-    int i;
-    if(now==n+1){
-        if(vis[a[1]+a[20]])return;
-        for(i=1;i&lt;=n-1;i++){
-            if(vis[a[i]+a[i+1]]){
-                return ;
-            }
-        }
-        cnt++;
-        if(cnt=</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1007-8%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">NOJ-1007-8皇后问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">8皇后问题 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=25;
-int vis[maxn][maxn],used[maxn][maxn],n,cnt=0;
-void dfs(int tot){
-    int i,j;
-    if(tot==n+1){
-        cnt++;printf(&quot;No %d:\n&quot;,cnt);
-        for(i=1;i&lt;=8;i++){
-            for(j=1;j&lt;=8;j++){
-                if(!used[i][j]){
-                    cout&lt;&lt;&#39;.&#39;;
-                }
-                else{
-                    cout&l</div>
         </div>
       </a>
 
