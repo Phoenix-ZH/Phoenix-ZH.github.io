@@ -153,6 +153,42 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-2502/">
+        <p class="h4 index-header">POJ-2502</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 2502 Subway
+题目链接：https://vjudge.net/problem/POJ-2502#author=1738160864
+题目大意：小k要从家去学校，他可以选择步行或者地铁，步行的速度是10km/h，地铁的速度是40km/h。假设小k非常的幸运，每次他到地铁站就立刻会有地铁。小k可以随意上下地铁，并且可以在地铁线路之间转换。所有的地铁运行都是双向的。注意地铁站不会重复出现。
+题解：n&lt;=200，所以可以用Floyd。每次出现的新地铁站，先与起点更新时间花费，此时速度为v1，然后输入地铁线，此时速度为v2，可以更新相邻地铁站之间的时间花费，并且更新起点与地铁站之间的时间花费，此时速度为v1。最后地铁站输入完之后，tot++，这就是终点编号，所有结点与终点的时间花费需要更新。然后开始跑Floyd。最后dist[0][tot]储存答案，需要四舍五入，即int ans=dist[0][tot]+0.5;ans为最终答案
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;io</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-1062/">
         <p class="h4 index-header">POJ-1062</p>
         
@@ -472,41 +508,6 @@ ps:后面想通了，由于牛—&gt;食物，食物—&gt;食物’，食物’
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2516/">
-        <p class="h4 index-header">POJ-2516</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2516 Minimum Cost
-题目链接：https://vjudge.net/problem/POJ-2516
-题目大意：有 n 个商店，k种物品和 m 个供货商，让你求进满足商店需求的货物的最小花费？有必要说一下输入数据。首先n ，k ，m。然后是一个nm的矩阵，n个商店对每种货物的需求，表示第 i 个商店需要第 j 种货物 x个?然后是m  k 的矩阵，m个供货商可以供k种货物的数量，表示第 i 个供货商 提供第 j 中货物 x 个接下来是 k 个 n * m 的矩阵，表示第 i 个货物，由 k 供应商发货给 j 商店的价格x（注意如果供不应求的或输出-1）
-题解：一开始将商店分成很多，对于商品1有1-n商店，对于商品2有n+1-2n商店，对于商品k有n（k-1）-nk商店。对于供货商也是同理，s为起点，与商店连接，边权为商店对该物品的需求，费用为0，t为终点，供货商与t连接，边权为供货商能提供的量，费用为0，然后有后面k个矩阵可以建图，商店与供货商连接，注意要一一对应，因为商店和供货商相当于拆了点了，边权为无穷大，费用为价格。但是最后跑费用流就凉了，T</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81">费用流</a>&nbsp;
           
         
       </div>

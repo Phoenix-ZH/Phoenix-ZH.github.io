@@ -153,6 +153,46 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%B8%89%EF%BC%89/">
+        <p class="h4 index-header">NOJ-花生米（三）</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">花生米（三）描述
+五一长假第三天，Tom和Jerry在仓库散步的时候又发现了一堆花生米（仓库，又见仓库……）。这次Tom制定分花生米规则如下：1、Tom和Jerry轮流从堆中取出k粒花生米吃掉；2、第一次取花生米的人只能取一粒，以后取花生米的数量不能超过前一个人取花生米数量的两倍；3、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然还是希望最后一粒花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
+输入
+本题有多个测例，每个测例的输入是一个整数n，n大于零小于等于1000，代表花生米的数量。n等于0表示输入结束，不需要处理。
+输出
+每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取输出0。
+输入样例
+123450
+输出样例
+01001
+思路这个题与花生米（二）https://blog.csdn.net/Phoenix_ZengHao/article/details/109495057  相比，状态变多了。之前对于状态i，它只能由状态i-1，i-5，i-10进行推导。显然直接枚举状态并且对每一个状态做三个dp转移方程是行不通的。我们需</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%8C%EF%BC%89/">
         <p class="h4 index-header">NOJ-花生米（二）</p>
         
@@ -504,56 +544,6 @@ YesNoNo
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-29&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/10/23/NOJ-test3/">
-        <p class="h4 index-header">NOJ-test3</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">先占个坑,等什么时候有空了,再补题解,先贴上代码.
-代码都不长,就是简单bfs.vis标记注意状态.除了特殊的二阶魔方是真的恶心!
-A.加1乘2平方#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-#include&lt;cmath&gt;
-using namespace std;
-const int maxn=10000+50; 
-int n,m,vis[maxn];
-int min(int x,int y){
-    return x&lt;=y?x:y;
-}
-int main(){
-    cin&gt;&gt;m&gt;&gt;n;
-    memset(vis,0x3f3f3f3f,sizeof(vis));
-    vis[m]=1;
-    for(int i=m+1;i&lt;=n;i++){
-        int t=sqrt(i);
-        if(vis[i-1])vi</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-23&nbsp;&nbsp;
         
         
         

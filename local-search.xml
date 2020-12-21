@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>2020（ICPC）亚洲区域赛（南京）赛后总结</title>
+    <link href="/2020/12/21/2020%EF%BC%88ICPC%EF%BC%89%E4%BA%9A%E6%B4%B2%E5%8C%BA%E5%9F%9F%E8%B5%9B%EF%BC%88%E5%8D%97%E4%BA%AC%EF%BC%89%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/"/>
+    <url>/2020/12/21/2020%EF%BC%88ICPC%EF%BC%89%E4%BA%9A%E6%B4%B2%E5%8C%BA%E5%9F%9F%E8%B5%9B%EF%BC%88%E5%8D%97%E4%BA%AC%EF%BC%89%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>​    2020年的ICPC基本结束（还剩下济南站），我们队也打完了2020年的最后一场正式比赛。从最开始的<strong>轮流做队（LLZ）</strong>（其实就是我们三个人的第一个字母组合起来的）到后面的<strong>69岁，是acmer队（Mabaoguo）</strong>（队友觉得之前的队名不吉利，每次都轮流改题，场面一度混论，真是队如其名，于是就改名了），从暑假的集训到省赛再到天梯赛最后到ICPC的南京站，我们队2020年的比赛也就全部结束了。</p><p>​    比赛开始前5min，三个人都不知道该选哪个题下手，随便挑了A、B、G题，看了1min。“这都是些什么题啊？”然后就等着看榜做题，顺带再看了一下A题。大概8min后，看到K题有人AC了，然后三人同时看K题（不再轮流做了QAQ），发现是一个构造题：<strong>构造出有且仅有k个gcd（ai，i）=1</strong>的全排列。当时第一反应就是k个之后的数就ai=i，k个前面的数循环后移一位。顺利签到一题。</p><p>​    接着<strong>看榜做题</strong>，lcy翻译了L题的题意，当时感觉这题和这周CF的DIV3的最后一题特别相似，都是问一个区间内点的最大重复个数，lzy思路可能和我的有点类似，但我的略麻烦，需要用树状数组来维护。lzy WA了一次之后，修改了b[]的上下界后AC了L题。这时我们的排名还看得过去。（和我们预想的一样，我们队可能做简单题会很快，但是半银难度的题目就不行了）。</p><p>​    此时比赛过去了1h，lcy先给我解释了F题（这也是本次比赛最让我们崩溃的题目），然后给我看了他的推导公式，接下来的半个小时我们三人都成功地被这个期望公式给误导了。想了很久，发现了里面的一个漏洞“我们似乎总是认为 Kotori 能够知道最后一个是perfect烟花！”至此，公式错误。转战E题。</p><p>​    E题也是构造题，（实际上A题和K<strong>签到</strong>题也是构造题，南京站简直就是<strong>构造专场</strong>），有且只有1个雷在任意一个位置（x，y），当时想的解法就是：全排列LRUD四个方向（最多就24种组合，这似乎就是题解做法）然后把所有给定LRUD串按照组合方式排列起来，一旦按照这种走法不踩到雷就输出答案并且中断程序，如果所有组合都没有正确答案那就说明不存在解。当时构造出这种解法的时候，我感觉很对，于是提交了一发：<strong>WA！</strong>直接就很懵逼，重新检查了一遍代码，发现自己string串从0开始存的，结果遍历却从1开始遍历的，重新提交：<strong>AC！</strong>（直接贡献了20min罚时，非常崩溃）</p><p>​    最后还是来到了F题，lzy开始做M题（树形DP背包），lcy重新给出了新的公式：假设做k次烟花后点然一次，那么前k次可能出现perfect烟花：概率为(1-(1-p)^k)，也可能不出现perfect烟花：概率为(1-p)^k，就分成两部分。最后得出一个差比数列，最后求出公式，其中的N是无穷大，可以把它的式子合并掉，结果正确的式子竟然和我之前盲猜的一个可以过样例的数据是一样的！答案就是：min{(kn+m)/(1-(1-p)^k)}，那么就要三分k来求得最小的答案。这时候才发现我们三人都忘了三分怎么打的了（忘记边界如何处理的），我试着回忆了一下高中用三分做的HDU的一个题，然后跑了一下样例，以为过样例了就交了（其实样例的最后一个点我没过，我和lcy都没有看到），然后：<strong>WA！</strong>lcy试着改了一下才发现我们连样例都没有过，当时心态就很爆炸，我又贡献了20min的罚时。</p><p>​    就这样时间过去了4个小时，比赛进入封榜状态，此时rank199，几乎没戏了。当时内心可谓煎熬极了，想着前2个小时都挺不错的，结果被一个三分搞得心态爆炸。从焦虑、急躁逐渐释然，也许本身自己实力就不怎么样，也许比赛就这样打铁了。我也被逼的没办法了，想了一个偏方”我们三分模板虽然不对，但是总体上是正确的，那么我们可以再枚举一下最后的 [l,r]这个区间的答案，这个复杂度并不高，就常数级别。“然后lcy觉得可能也就只能这样了，就在志愿者举着手机监控下去上厕所了（差评！网络赛就是特别复杂，而且上厕所还要监控着去，上次天梯赛竟然就站在我后面录像，还说什么”我们一定保护你的隐私！“，woc，我上个厕所，还有监考人员围观，我真是服了！），然后蹭lcy上厕所，lzy在想M题，我告诉lzy”要不再交一发吧，我实在没有办法了！“ “交吧！<strong>”激动的心，颤抖的手</strong>，提交之后1s、2s、3s（居然3s了都没WA？），4s“恭喜通过此题，Accepted！” “woc！过了！！！这都能AC？”</p><p>​    最后半个小时两人Debug M题，我想H计数题，可能我们队本身就不会计数题吧，几乎从没有AC过计数类型的题目，M题一开始lzy 想的是贪心，正着贪不对，反着贪也不对，于是正反各贪一次，终于过了样例，在我们三人的注视下提交了上去，1s之后<strong>WA</strong>。我们怎么也没有想到这是一个DP背包。</p><p>​    比赛结束。没有什么奇迹，也没有什么意外，带了一堆模板，唯独没有三分的格式模板，感觉自己很菜，世人皆会的三分，我却不会，差点坑死队友。</p><p>​    2020年的ICPC就这么结束了，没有取得什么值得炫耀的成绩，但终归没有浪费掉2020下半年的时间。我们队也只是很普通的一个ACM队，没有多么拔尖的个人实力，也没有多么完美的团队配合，但是我们也在2020下半年打了大大小小的比赛，虽然没有什么奇迹发生，但是也算对得起我们平时的努力。比赛没有想象中的那么美好，但也没有想象中的那么糟糕。没能拿到金牌、银牌，但短暂地经历了区域赛，感受到了比赛的紧张氛围，也感受到了劫后余生的幸运。2020再见，也愿2021自己不再像2020这般菜！</p>        <div id="aplayer-xVIcjEjZ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-xVIcjEjZ"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>总结与游记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CodeForces-1461B-Find the Spruce</title>
     <link href="/2020/12/12/CodeForces-1461B-Find%20the%20Spruce/"/>
     <url>/2020/12/12/CodeForces-1461B-Find%20the%20Spruce/</url>
