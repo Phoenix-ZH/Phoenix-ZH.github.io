@@ -153,6 +153,62 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1243-%E5%BE%AA%E7%8E%AF%E8%B5%9B%E6%97%A5%E7%A8%8B%E8%A1%A8/">
+        <p class="h4 index-header">NOJ-1243-循环赛日程表</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">循环赛日程表 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=500+50;
+int n,a[maxn][maxn];
+void dfs(int r,int c,int h){
+    if(h==1)return ;
+    h/=2;
+    a[r+h][c+h]=a[r][c];
+    a[r][c+h]=a[r][c]+h;
+    a[r+h][c]=a[r][c]+h;
+    dfs(r,c,h);
+    dfs(r+h,c+h,h);
+    dfs(r,c+h,h);
+    dfs(r+h,c,h);
+}
+int main(){
+    int i,j;
+    cin&gt;&gt;n;
+    n=pow(2,n);
+    a[1][1]=1;
+    dfs(1,1,n);
+    f</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/18/NOJ-1574-%E6%B1%82%E7%AC%ACk%E5%B0%8F%E6%95%B0/">
         <p class="h4 index-header">NOJ-1574-求第k小数</p>
         
@@ -560,55 +616,11 @@ int main(){
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/08/NOJ-1205-%E6%B4%BB%E5%8A%A8%E5%AE%89%E6%8E%92/">
-        <p class="h4 index-header">NOJ-1205-活动安排</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">活动安排问题描述
-Jack是一名nwpu的大一新生，对学校举办的各种活动都十分的好奇，想尽可能多的参加这些活动。Npwu每天共有N项活动，其开始结束时间分别为B[i],E[i],(i = 1,2,……N)请问Jack一天最多能参加几项活动。当然，Jack在同一时间内只能参加一项活动，即jack参加的活动时间上不能重叠，但时间为[t1,t2],[t2,t3]的两个活动是可以同时参加的。
-输入
-第一行 一个整数N(1&lt;=n&lt;=1000)表示活动总数。接下来N行表示各活动的起始，结束时间0&lt;=B[i]&lt;E[i]&lt;24
-输出
-一个整数表示Jack最多能参加的活动数目。
-输入样例
-410 112 38 100 2
-输出样例
-4
-提示printf(“%d\n,num”);
-思路方法一：题意很明显希望参加的活动数目尽量多。对于活动安排问题可以采取动态规划的策略：
-首先将活动的结束时间按照第一关键字排序（由小到大），再将活动的开始时间作为第二关键字排序（由小到大）
-定义dp[i]表示在前i场比赛中最多可以参加几场比赛，
-由此得出方程：dp[i]=max(dp[i-1],d</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
