@@ -153,6 +153,46 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3081/">
+        <p class="h4 index-header">HDU-3081</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 3081 Marriage Match II
+题目链接：https://vjudge.net/problem/HDU-3081
+题目大意：有N个女孩要与N个男孩玩配对游戏.每个女孩有一个可选男孩的集合(即该女孩可以选自己集合中的任意一个男孩作为该轮的搭档).然后从第一轮开始,每个女孩都要和一个不同的男孩配对.如果第一轮N个女孩都配对成功,那么就开始第二轮配对,女孩依然从自己的备选男孩集合中选择,但是不能选那些已经被该女孩在前几轮选择中选过的男孩了(比如i女孩在第一轮选了j男孩,那么i在第二轮就不能选j男孩了). 问你游戏最多能进行多少轮?
+题解：女生:1~n;男生:(n+1)~(n*2)。对于女生u，她可以直接连向不讨厌的男生，边权为1。
+假设我们当前二分尝试的轮数为K(即能够进行K轮匹配):首先如果女孩i可能选择男孩j,那么就有边(i, j+n, 1).且源点到每个女孩i有边(s,i,K),每个男孩j到汇点t有边(j+n,t,K).
+如果最大流==K*n,那么就表示可以进行最少K轮匹配.
+证明：如果满流,那么每个女生肯定选择了K个不同的男孩,每个男孩肯定被K个不</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92">闭包传递</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-2732/">
         <p class="h4 index-header">HDU-2732</p>
         

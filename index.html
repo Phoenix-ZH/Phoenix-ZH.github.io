@@ -153,6 +153,44 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/14/CodeForces-1485E-Move%20and%20Swap/">
+        <p class="h4 index-header">CodeForces-1485E-Move and Swap</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意 
+n个节点的树，每个节点(2~n)有值a[i],一开始红色点和蓝色点都在头节点1，移动d步求最大的|a[i]-a[j]|之和。
+每一步：红色点只能移动到r的子节点蓝色点可以移动到下一层的任意一点每次可以选择交换红色点和蓝色点的位置(也可以不交换)
+思路一开始想着贪心：每次选择每层最大的和最小的，但是这样贪心显然不对，样例都过不了。
+于是想树形DP：
+假设红色点和蓝色点不可以交换，dp[i]表示红色点当前走到i点时最大的总和,fa[i]表示节点i的父亲节点。那么dp[i]=max(dp[i],dp[fa[i]]+|a[i]-a[j]|)(j就是蓝色点，即与i同层的节点)，这里可以依靠预处理出同一层最大的a[i]的值和最小的a[i]的值。如果红色点和蓝色点可以交换，那么dp[i]=max(dp[i],dp[fa[j]]+abs(a[i]-a[j]))，即dp[i]=max(dp[i],dp[fa[j]]+a[j]-a[i],dp[fa[j]]-a[j]+a[i])，这里可以预处理出dp[fa[j]]+a[j]和dp[fa[j]]-a[j].
+首先用dfs求出深度，将同一深度的放到</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-14&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/%E6%A0%91%E5%BD%A2DP">树形DP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2021/02/13/CodeForces-1485/">
         <p class="h4 index-header">CodeForces-1485</p>
         
@@ -533,51 +571,6 @@ void dfs(int cnt){
     }
 }
 int</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1145-%E6%B1%82%E5%9B%BE%E5%83%8F%E7%9A%84%E5%91%A8%E9%95%BF/">
-        <p class="h4 index-header">NOJ-1145-求图像的周长</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">求图像的周长 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=100+50;
-int n,m,x,y,ans,vis[maxn][maxn],d[8][2]={{1,0},{-1,0},{0,1},{0,-1},{1,1},{1,-1},{-1,1},{-1,-1}};char s[maxn][maxn];
-void dfs(int x,int y){
-    int i;
-    if(vis[x][y])return ;
-    vis[x][y]=1;
-    for(i=0;i&lt;8;i++){
-        int nx=x+d[i][0],ny=y+d[i][1];
-        if(i&lt;=3&amp;&amp;s[nx][ny]!=&#39;X&#39;)ans++;
-        if(nx&gt;=1&amp;&amp;nx&</div>
         </div>
       </a>
 
