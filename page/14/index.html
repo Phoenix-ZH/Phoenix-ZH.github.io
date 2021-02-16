@@ -153,6 +153,43 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/UVA-10480/">
+        <p class="h4 index-header">UVA-10480</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：UVA - 10480 Sabotage
+题目链接：https://vjudge.net/problem/UVA-10480
+题目大意：有n个点，m条无向边，权值为wi。问从1到2，要割断的最小代价。
+题解：1—&gt;2要进行割断并且要消耗最小，显然这是最小割问题。建边的时候要注意是双向边，起点s=1，终点t=2，跑dinic，最小割=最大流。然后从s开始dfs，要edge[i].w&gt;0才开始继续，即s可到达的为一个集合，其余则为t可到达的。然后对于所有正向边，看是否u为s集合，v为t集合，如果是就输出。一开始想着这题和HDU - 4289 Control差不多，以为要拆点，结果就WA了。HDU - 4289 Control这道题由于是点权，将点转换成边，所以需要拆点连边，而这道题说明了m条边的边权，所以不必拆点！为什么割边的判断条件不是edge[i].w==0呢？原因是可能流量流过该边，并且最后该边edge[i].w==0但是实际上并没有割去这条边，只是由于前面的流量影响了这条边！
+代码：#include&lt;cstdio&gt;
+#include&lt;cstr</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+            <a href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2">最小割</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-3436/">
         <p class="h4 index-header">POJ-3436</p>
         
@@ -470,44 +507,6 @@ const int max</div>
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3605/">
-        <p class="h4 index-header">HDU-3605</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3605 Escape
-题目链接：https://vjudge.net/problem/HDU-3605
-题目大意：有n个人，m个星球，前n行，每一行有m个数字，分别表示第i个星球是否适合这个人。最后一行有m个，表示每个星球的最多居住人数。n (1 &lt;= n &lt;= 100000), m (1 &lt;= m &lt;= 10)
-题解：一开始想多没想就开始建裸图，心里想：别看着图稠密，边多，实际上一跑就出结果了。事实证明自己太天真，nnm的数据量早就TLE！正确做法有点意思：由于m很小，就可以考虑状态压缩。对于第i个人，m个星球的居住情况已知，转换为二进制储存，所有的状态也不过才2^10而已，起点s连向状态，边权为这种状态的总人数，然后10个星球与这种状态匹配，若星球属于这个状态，则状态连向星球，边权为无穷大，然后星球与终点t连接，边权为星球的最大居住人数。然后就可以跑dinic了，若ans==n，就YES，否则就NO。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostr</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-            <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9">状态压缩</a>&nbsp;
           
         
       </div>

@@ -153,6 +153,47 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/10/HDU-2389/">
+        <p class="h4 index-header">HDU-2389</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-2389  Rain on your Parade 
+题目链接：https://vjudge.net/problem/HDU-2389
+题目大意：有T组数据，每组数据第一行是t，表示到t时下雨，第二行是m，表示有m个客人，接下来m行，每行3个数字，依次为x,y,v(速度)，然后是n，表示有n把伞，接下来n行，每行2个数字，依次为x，y，每一把伞只能由一个人使用，从开始每个客人出发拿伞，到t时间结束，问最多有几个人拿到了伞。   (1 &lt;= m，n &lt;= 3000) 
+题解：1-m客人，N+1-N+n伞
+依次枚举客人和伞，在规定时间内t*v&gt;=距离就可能拿到这把伞，就可以建边客人—&gt;伞。
+一开始跑匈牙利算法，但是匈牙利算法时间复杂度较大，要TLE。
+这时候需要用hopcroft-karp来优化，这里介绍一下hopcroft-karp：
+hopcroft-karp的时间复杂度为 O（n^0.5*m）。
+思路：
+ HK算法分为三步 ：假设我们将集合分为两个，一个是左边的x集合，右面的y集合； 
+ 1） ：首先x集合中没有匹配的元素入队列； 
+ 2） </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-10&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE(hopcroft-karp)">二分图(hopcroft-karp)</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/10/HDU-2819/">
         <p class="h4 index-header">HDU-2819</p>
         
@@ -501,41 +542,6 @@ using namespace std</div>
             <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
           
             <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/luogu-2764/">
-        <p class="h4 index-header">luogu-2764</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：luogu2764-最小路径覆盖问题
-题目大意： 给定有向图 G=(V,E)G=(V,E) 。设 P是 G 的一个简单路(顶点不相交)的集合。如果 V 中每个定点恰好在PP的一条路上，则称 P 是 G的一个路径覆盖。PP中路径可以从 V 的任何一个定点开始，长度也是任意的，特别地，可以为 0 。G 的最小路径覆盖是 G所含路径条数最少的路径覆盖。设计一个有效算法求一个 GAP (有向无环图) G的最小路径覆盖 
- 从第1 行开始，每行输出一条路径。文件的最后一行是最少路径数。 
-题解：要求的是最少路径数将所有的点都覆盖掉。
-由konig定理知：最小点覆盖=最大匹配数；而该题抽出模型就成了：最小路径覆盖；最小路径覆盖=点数-最大匹配数；
-如何理解这个结论呢？(这个解释并不严谨，只是为了帮助理解，请勿喷)    加入1—&gt;2—&gt;3;    可以转化为1—&gt;2’;2—&gt;3’;    1,2,3在X中，1’,2’,3’在Y中；路径数=3-2；符合结论；    再举例1—&gt;2,1—&gt;3,2—&gt;4,3—&gt;4;    可以转化为1—&gt;2</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
           
         
       </div>

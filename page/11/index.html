@@ -153,6 +153,41 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/luogu-2764/">
+        <p class="h4 index-header">luogu-2764</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：luogu2764-最小路径覆盖问题
+题目大意： 给定有向图 G=(V,E)G=(V,E) 。设 P是 G 的一个简单路(顶点不相交)的集合。如果 V 中每个定点恰好在PP的一条路上，则称 P 是 G的一个路径覆盖。PP中路径可以从 V 的任何一个定点开始，长度也是任意的，特别地，可以为 0 。G 的最小路径覆盖是 G所含路径条数最少的路径覆盖。设计一个有效算法求一个 GAP (有向无环图) G的最小路径覆盖 
+ 从第1 行开始，每行输出一条路径。文件的最后一行是最少路径数。 
+题解：要求的是最少路径数将所有的点都覆盖掉。
+由konig定理知：最小点覆盖=最大匹配数；而该题抽出模型就成了：最小路径覆盖；最小路径覆盖=点数-最大匹配数；
+如何理解这个结论呢？(这个解释并不严谨，只是为了帮助理解，请勿喷)    加入1—&gt;2—&gt;3;    可以转化为1—&gt;2’;2—&gt;3’;    1,2,3在X中，1’,2’,3’在Y中；路径数=3-2；符合结论；    再举例1—&gt;2,1—&gt;3,2—&gt;4,3—&gt;4;    可以转化为1—&gt;2</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-3336/">
         <p class="h4 index-header">HDU-3336</p>
         
@@ -489,46 +524,6 @@ int T,len1,len2,Next[maxn],Exten</div>
 #include&lt;iostream&gt;
 #include&lt;algorithm&gt;
 using namespace </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Manacher">Manacher</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/HDU-3294/">
-        <p class="h4 index-header">HDU-3294</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：HDU - 3294 Girls’ research
-题目链接：https://vjudge.net/problem/HDU-3294#author=asasas5d
-题目大意：先给一个字符x，然后给一个 字符串，表示字符串中所有字符x变成’a’，其余的字符依次往前变换。例如b babad就转换成azazc。让寻找第一个最长回文串，长度若小于2，则输出No solution!，否则输出起点，终点和转换后的最长回文串。
-题解：最长回文串问题，当然就是用Manacher，先计算出字符x与‘a’的差值，然后将字符串进行转换。然后直接跑Manacher，更新ans时注意更新储存一下终点和起点
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=200000*2+105;
-int p[maxn],len,a[maxn],S,T;char s[maxn],t[maxn]</div>
         </div>
       </a>
 

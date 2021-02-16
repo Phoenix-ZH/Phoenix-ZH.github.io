@@ -153,6 +153,60 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1575-%E5%9B%BE%E7%9A%84m%E7%9D%80%E8%89%B2%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">NOJ-1575-图的m着色问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">图的m着色问题 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=200+5;
+int n,m,r,a[maxn][maxn],ans,vis[maxn];
+void dfs(int cnt){
+    int i,j;
+    if(cnt==n){
+        ans++;
+        return ;
+    }
+    for(i=1;i&lt;=r;i++){
+        for(j=0;j&lt;cnt;j++){
+            if(a[cnt][j]&amp;&amp;vis[j]!=i){
+                vis[cnt]=i;
+                dfs(cnt+1);
+                vis[cnt]=0;
+            }
+        }
+    }
+}
+int</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/18/NOJ-1145-%E6%B1%82%E5%9B%BE%E5%83%8F%E7%9A%84%E5%91%A8%E9%95%BF/">
         <p class="h4 index-header">NOJ-1145-求图像的周长</p>
         
@@ -580,56 +634,6 @@ int main(){
     while(1){
         cin&gt;&gt;c1&gt;&gt;c2&gt;&gt;n;sign=0;
       </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1004-01%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">NOJ-1004-01背包问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">0-1背包问题 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-using namespace std;
-const int maxn=10000+50;
-int n,m,w[maxn],p[maxn],dp[maxn];
-int max(int x,int y){
-    if(x&gt;=y)return x;
-    return y;
-}
-int main(){
-    int i,j;
-    while(1){
-        memset(dp,0,sizeof(dp));
-        cin&gt;&gt;n&gt;&gt;m;
-        if(n==0&amp;&amp;m==0)break;
-        for(i=1;i&lt;=n;i++)cin&gt;&gt;w[i];
-        for(i=1;i&lt;=n;i++)cin&gt;&gt;p[i];
-        for(i=1;i&lt;=n;i++){
-            f</div>
         </div>
       </a>
 

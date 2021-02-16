@@ -153,6 +153,55 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/10/CodeForces-1391/">
+        <p class="h4 index-header">CodeForces-1391</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A.题目名称：Suborrays
+题目大意：求一个长度为n的序列，保证任意区间[i,j]之间a[i]|a[i+1]|…|a[j]&gt;=i-j+1.
+思路：直接按序输出1 - n一定是符合的。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int T,n;
+int main()
+{
+    cin&gt;&gt;T;
+    while(T--)
+    {
+        cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++)cout&lt;&lt;i&lt;&lt;&#39; &#39;;cout&lt;&lt;endl;
+    }
+    return 0;
+}
+
+B.题目名称： Fix You 
+题目大意：一个(n,m)的矩阵，每一个单位格上有‘D’，‘R’，‘D’：向下移动一格，‘R’：向右移动一格。对于任意位置上的物品需要保证它可以运动到(n,m)，一旦出界就失败了。问至少要改变几个单位格？
+思路：真正有影响的是最后一行和最后一列。若最后一行还有‘D’一定不符合条件，必须</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-10&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/08/08/CodeForces-1393/">
         <p class="h4 index-header">CodeForces-1393</p>
         
@@ -533,54 +582,6 @@ int main()
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-21&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/18/CodeForces-1325/">
-        <p class="h4 index-header">CodeForces-1325</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A 题目名称：EhAb AnD gCd
-题目大意给你一个数x，输出一组 (a,b)使得 a和 b的最大公约数和最小公倍数的和为 x，若有多种答案，输出任意一种即可。第一行输入一个 t，有 t组数据，之后每组数据输入一个数 x。对于每组数据，输出两个用一个空格隔开的数 a,b。若有多种答案，输出任意一种即可。
-题解1是任意一个数的公约数，任意数是它和1的倍数，那么x=1+y。1，y就是答案
-代码#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-int n;int T;
-int main()
-{
-    scanf(&quot;%d&quot;,&amp;T);
-    while(T--)
-    {
-        scanf(&quot;%d&quot;,&amp;n);
-        if(n==2)
-        {
-            printf(&quot;1 1\n&quot;);
-        }
-        e</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-18&nbsp;&nbsp;
         
         
         
