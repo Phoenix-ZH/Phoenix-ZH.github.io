@@ -153,6 +153,45 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/17/2-SAT%E4%B8%93%E9%A2%98/">
+        <p class="h4 index-header">2-SAT专题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2-SAT概念介绍2-SAT训练题目1. AcWing 370. 卡图难题2.[HNOI2010] 平面图判定 
+思路根据题意，对于一个无向图G=(V,E)需要判断它是否为平面图，并且除了给定图的m条边的信息，还会给定一个哈密顿回路（包含所有顶点）。
+首先根据平面图性质（离散数学的图论部分有提到）m(图的边数)&lt;=3*n-6(n是顶点数). 这样对于所有m&gt;3n-6的情况直接输出“NO”，m的范围也缩小到600以内。
+根据给定的哈密顿回路，可以确定所有顶点的顺序。
+
+如图，就是样例种的哈密顿回路，绿色代表顶点顺序，而这个顶点顺序也是后面需要用到的。设id[i]表示顶点i出现的顺序是id[i] (以哈密顿回路中第一个出现的点为起点)
+假如对于某两条边（都不在哈密顿回路上）， 
+比如边(1,2)和边(4,5)显然顶点顺序满足  id[4]&lt;id[2]&lt;id[5].显然如果给定两条边(x,y)和(u,v)它们满足条件：id[u]&lt;id[y]&lt;id[v]&amp;&amp;id[x]&lt;id[u]或者id[x]&lt;id[v]&lt;id[y]&amp</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-17&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/2-SAT">2-SAT</a>&nbsp;
+          
+            <a href="/tags/tarjan">tarjan</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2021/02/17/CodeForces-1490E-Accidental%20Victory/">
         <p class="h4 index-header">CodeForces-1490E-Accidental Victory</p>
         
@@ -509,59 +548,6 @@ int main(){
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/12/12/CodeForces-1461D-Divide%20and%20Summarize/">
-        <p class="h4 index-header">CodeForces-1461D-Divide and Summarize</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目大意：  
-思路：直接模拟这个二分的过程，然后标记查询区间元素总和，用map标记。dfs进行二分模拟的上界是a[]的最大值，下界是a[]的最小值。用树状数组储存答案，查询区间内元素总和。对于dfs模拟中要判断mid是否存在于a[]中，如果不存在就需要再二分找到最接近mid的。（a[]从小到大排序）把所有可以得到的答案都用map标记后，再进行后面的查询，直接输出答案。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=1e6+50;
-typedef long long ll;
-ll T,n,m,a[maxn],sum[maxn],minn,maxx;
-map&lt;ll,int&gt;mp;
-ll lowbit(ll x){
-    return x&amp;(-x);
-}
-ll query(ll x){
-    ll res=0;
-    while(x){
-        res+=sum[x];
-        x-=lowbit(x);
-    }
-    return res;
-}
-vo</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-            <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">树状数组</a>&nbsp;
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
           
         
       </div>

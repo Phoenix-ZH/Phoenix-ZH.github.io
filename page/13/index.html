@@ -153,6 +153,53 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/POJ-1860/">
+        <p class="h4 index-header">POJ-1860</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：POJ - 1860 Currency Exchange
+题目链接：https://vjudge.net/problem/POJ-1860#author=riba2534
+题目大意：给出每两种货币之间交换的手续费和汇率，求出从当前货币s开始交换，能否赚。能赚输出YES，否则输出NO
+题解：运用spfa判断是否存在存在正环(类似于判负环)。和判负环一样，记录一下点出现的次数，一旦出现此次数&gt;n就可以作出判断。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=10000+5;
+int n,m,s,k=1,head[maxn],vis[maxn],used[maxn];double w,dist[maxn];
+struct node
+{
+    int to,next;double w,q;
+}edge[max</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
+          
+            <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-3259/">
         <p class="h4 index-header">POJ-3259</p>
         
@@ -492,47 +539,6 @@ ps：一开始跑spfa，TLE，此图有点稠密，用dijkstra+堆优化更保�
 #include&lt;algorithm&gt;
 using namespace std;
 co</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/LightOJ-1074/">
-        <p class="h4 index-header">LightOJ1074</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：LightOJ - 1074 Extended Traffic
-题目链接：https://vjudge.net/problem/LightOJ-1074#author=bbisnouse
-题目大意：在一个堵车的城市中, 每个路口都有一个拥挤程度a[i], 从u驶向v得到一个数量, 值为(a[v]-a[u])^3, 给出Q组查询, 每组给出一个数, 求1到这个数的点的最小数量, 如果不可达输出 ？
-题解：一开始觉得n很小，可以直接跑floyd，但是后来WA了两发，发现可能存在负环，所以需要判断负环，因此选择spfa，一旦判断出了负环就dfs，找到负环可以达到的所有点。对于查询一一输出结果即可。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=200005;
-int n,T,a[maxn],head[maxn],v</div>
         </div>
       </a>
 

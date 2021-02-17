@@ -153,6 +153,46 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/04/NOJ-%E7%9F%B3%E5%AD%90%E5%90%88%E5%B9%B6/">
+        <p class="h4 index-header">NOJ-石子合并</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">石子合并描述
+在一个圆形操场的四周摆放着n堆石子(n&lt;= 100)，现要将石子有次序地合并成一堆。规定每次只能选取相邻的两堆合并成新的一堆,并将新的一堆的石子数,记为该次合并的得分。编一程序，读入石子堆数n及每堆的石子数(&lt;=20)。选择一种合并石子的方案,使得做n－1次合并,得分的总和最小； 比如有4堆石子：4 4 5 9 则最佳合并方案如下：4 4 5 9 score: 08 5 9 score: 813 9 score: 8 + 13 = 2122 score: 8 + 13 + 22 = 43
+输入
+可能有多组测试数据。 当输入n=0时结束! 第一行为石子堆数n(1&lt;=n&lt;=100)； 第二行为n堆的石子每堆的石子数,每两个数之间用一个空格分隔。
+输出
+合并的最小得分，每个结果一行。
+输入样例
+4 4 4 5 9 0
+输出样例
+43
+思路一开始以为这个题和合并果子一样是个贪心的题，拿着优先队列就开始一波贪心，WA了。才发现是合并相邻的石子。那这个题就和上一个计算矩阵连乘积的题几乎一样了。但是也有不一样的。这个题的序列是循环序列，并且为了记录每一次合并对答</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/04/NOJ-%E8%AE%A1%E7%AE%97%E7%9F%A9%E9%98%B5%E8%BF%9E%E4%B9%98%E7%A7%AF/">
         <p class="h4 index-header">NOJ-计算矩阵连乘积</p>
         
@@ -534,54 +574,6 @@ B.题目名称：Minimum Product
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-05&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/08/31/CodeForces-1397/">
-        <p class="h4 index-header">CodeForces-1397</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称： Juggling Letters 
-题目大意：n个字符串，每次操作可以选择两个字符串（可以相同）选择其中一个字符串中某一字符插入到另一字符串。问：操作任意次，能否使得所有字符串都相同？ 
-思路：统计n个字符串中26个小写字母的数量是否是n的倍数，是则YES，否则NO
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=1e3+40;
-int T,n,cnt[100];char s[maxn][maxn];
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--)
-    {
-        cin&gt;&gt;n;
-        for(int i=1;i&lt;=n;i++)cin&gt;&gt;s[i]+1;
-        memset(cnt,0,sizeof(cnt));
-        for(int i=1;i&lt;=n;i++)
-        {
-            int len=strlen(s[i]+1);
-     </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-31&nbsp;&nbsp;
         
         
         

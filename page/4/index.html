@@ -153,6 +153,57 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1003-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
+        <p class="h4 index-header">NOJ-1003-快速排序</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">快速排序  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+50;
+int n,a[maxn];
+void QuickSort(int l,int r){
+    if(l&gt;=r)return ;
+    int i=l,j=r,x=a[l];
+    while(i&lt;j){
+        while(x&lt;=a[j]&amp;&amp;i&lt;j)j--;
+        if(i&lt;j)a[i++]=a[j];
+        while(a[i]&lt;=x&amp;&amp;i&lt;j)i++;
+        if(i&lt;j)a[j--]=a[i];
+    }
+    a[i]=x;
+    QuickSort(l,i-1);QuickSort(i+1,r);
+}
+int main(){
+    int i;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/18/NOJ-1002-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
         <p class="h4 index-header">NOJ-1002-归并排序</p>
         
@@ -518,55 +569,6 @@ He put some walnuts in a row and let Mr.Watermelon pick one of them. And this wa
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/%E5%8C%BA%E9%97%B4DP">区间DP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/06/NOJ-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">NOJ-最大连续子序列和问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">最大连续子序列和问题描述：
-给定一整数序列A0，A1， A2，… An-1 （可能有负数），求A0~An-1的一个连续子序列Ai~Aj，使得Ai到Aj的和最大。
-输入：
-先输入一个正整数n(1&lt;n&lt;1000)，再输入n个整数。
-输出：
-输出最大连续子序列的和。
-输入样例：
-102 -1 5 -7 2 -1 4 -2 4 -5
-输出样例：
-7
-思路代码还没有AC，NOJ评测机炸了，但是这个O(n)的思路大概是对的：sum[i]为前i个数字的连续子序列的最大和。如果sum[i-1]0,则sum[i]=sum[i-1]+a[i].ans=max(ans,sum[i]);
-代码#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=10000+50;
-int n,a[maxn],sum[maxn];
-int max(int x,int y){
-    if(x&gt;=y)</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-06&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
           
         
       </div>
