@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1003-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
+        <p class="h4 index-header">NOJ-1003-快速排序</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">快速排序  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+50;
+int n,a[maxn];
+void QuickSort(int l,int r){
+    if(l&gt;=r)return ;
+    int i=l,j=r,x=a[l];
+    while(i&lt;j){
+        while(x&lt;=a[j]&amp;&amp;i&lt;j)j--;
+        if(i&lt;j)a[i++]=a[j];
+        while(a[i]&lt;=x&amp;&amp;i&lt;j)i++;
+        if(i&lt;j)a[j--]=a[i];
+    }
+    a[i]=x;
+    QuickSort(l,i-1);QuickSort(i+1,r);
+}
+int main(){
+    int i;</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1002-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
+        <p class="h4 index-header">NOJ-1002-归并排序</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">归并排序 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+50;
+int n,a[maxn],t[maxn];
+void Sort(int l,int r,int mid){
+    int i=l,j=mid+1,k=0;
+    while(i&lt;=mid&amp;&amp;j&lt;=r){
+        if(a[i]&lt;=a[j])t[++k]=a[i++];
+        else t[++k]=a[j++];
+    }
+    if(i==mid+1){
+        while(j&lt;=r)t[++k]=a[j++];
+    }
+    if(j==r+1){
+        while(i&lt;=mid)t[++k]=a[i++];
+    }
+    for(i=l,k=1;i&lt;=r;i++,k++)</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/CodeForces-1439A-Binary%20Table/">
+        <p class="h4 index-header">CodeForces-1439A-Binary Table</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：  
+对于任意的2 * 2的正方形，可以选择其中的任意三个（0—&gt;1,1—&gt;0），使得进行若干次操作之后让所有的元素变成0.
+Easy版本：操作次数不超过3nm
+Hard版本：操作次数不超过nm
+思路：直接写nm的方法吧（比赛的时候觉得不可能麻烦到去讨论2  2的内部单独情况，于是就换思路了，结果今早还是换成了一开始的办法）。从上到下，从左到右（不包括最后两行，和最后一列），一旦当前的a[i][j]==1,那么就选择(i,j),(i,j+1),(i+1,j+1)进行变化。对于最后一列的选择(i,m),(i+1,m),(i+1,m-1)进行变化。对于最后两行的，从左到右，如果a[n-1]][j]==1就选择(n-1,j),(n-1,j+1),(n,j+1)；如果a[n][j]==1就选择(n,j),(n,j+1),(n-1,j+1),这样就只剩下右下角的 2  2的小方格了，比赛的时候就这里出问题了。今天早上想的方法是分别讨论1的个数为0，1，2，3，4的情况：
+0：不需要变换，直接输出；
+3：变换那3个1的位置，操作次数为1；
+2：变换2个0的位置+任意一个1的位</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/constructive">constructive</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/16/CodeForces-1446B-Catching%20Cheaters/">
+        <p class="h4 index-header">CodeForces-1446B-Catching Cheaters</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意  
+思路：定义DP[i][j]为以Ai和Bi作为结尾点的最大的答案（LCS(C,D)*4-|C|-|D|）,显然允许公共子序列为空，这样DP[i][j]=0.
+有两种转移方式：1.Ai==Bj，则DP[i][j]=min(DP[i][j],DP[i-1][j-1]+2),因为以Ai和Bj结尾的两个连续子串C和D的公共子序列的长度+1，同时两个连续子串C和D的长度+1，因此对答案的贡献就+2.2.Ai!=Bj,DP[i][j]=max(DP[i][j],max(dp[i][j-1],DP[i-1][j])-1),因为以Ai和Bj结尾的两个连续子串C和D的公共子序列的长度不变，但是连续子串C或者D的长度+1，因此对答案的贡献-1
+PS：为什么情况2不会影响最优答案的形成？
+由于情况2永远不会获得更大的LCS，它对答案的贡献也是越来越少。并且我们得到的答案一定是由情况1形成的。情况二只是针对部分C、D之间一段不存在公共子序列的情况，当到达情况一的时候并结合之前的贡献总和从而使得答案增大。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespac</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-16&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/DP">DP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/14/CodeForces-1438D-Powerful%20Ksenia/">
+        <p class="h4 index-header">CodeForces-1438D-Powerful Ksenia</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：​     
+有一个长度为n的数组a，每次选择三个数字ai^aj^ak，使得最后n个数字都相等。如果存在就输出“YES”，并且输出操作次数m，再输出m行，每行是操作的数的下标；否则就输出“NO”
+思路：先考虑n为奇数的情况。假设n-1个数字两两相等，那么就剩余一个数字未配对，每次将这个数字（假设下标为i）ai与那n-1个数字中的任意两个进行异或，最后都可以变成ai。如何将这n-1个数字两两相等？假设那个未配对的数字是an，那么之间的1~n-1个数字可以三个为一组进行异或，前一组将ai,ai-1,ai-2进行异或，当前这组将ai+2,ai+1,ai进行异或.这样操作就可以将前n-1个数字两两配对相等。最后两两配对的数字再都与最后一个数字an进行异或就可以将n个数字都变成an。
+那如何考虑n为偶数的情况？
+n为偶数的时候，将数组a全部进行异或之后，假设可以实现最后全部相等，那么异或的结果就是0.假设当前对ai,aj,ak异或，那么ai=aj=ak=ai^aj^ak.那么此时再对ai,aj,ak异或，ai’^aj’^ak’=(ai^aj^ak)(ai^aj^ak)(ai^aj^ak</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-14&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/14/CodeForces-1438C-Engineer%20Artem/">
+        <p class="h4 index-header">CodeForces-1438C-Engineer Artem</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：Engineer Artem 
+题目大意：  
+有T组数据，每组数据有一个n行m列的矩阵，希望通过一种操作使得矩阵任意相邻的数字不同，这个操作只能让某一个数字加1，可以操作无限次，但是每一个方格只能操作一次。
+思路：一个数字一定可以由奇数变成偶数或者由偶数变成奇数，我们可以让坐标x+y为偶数的格子放偶数，x+y为奇数的格子放奇数。即：如果x+y为偶数的格子上的数为奇数，就让它+1；如果x+y为奇数的格子上的数为偶数，就让它+1，这样就实现的奇偶相间，也保证了相邻不等。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1005;
+int a[maxn][maxn],T,n,m;
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;n&gt;&gt;m;
+        for(int i=1;i&lt;=n;i++){
+            for(int j=1;j&lt;=m;j++){
+         </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-14&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/08/NOJ-1205-%E6%B4%BB%E5%8A%A8%E5%AE%89%E6%8E%92/">
+        <p class="h4 index-header">NOJ-1205-活动安排</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">活动安排问题描述
+Jack是一名nwpu的大一新生，对学校举办的各种活动都十分的好奇，想尽可能多的参加这些活动。Npwu每天共有N项活动，其开始结束时间分别为B[i],E[i],(i = 1,2,……N)请问Jack一天最多能参加几项活动。当然，Jack在同一时间内只能参加一项活动，即jack参加的活动时间上不能重叠，但时间为[t1,t2],[t2,t3]的两个活动是可以同时参加的。
+输入
+第一行 一个整数N(1&lt;=n&lt;=1000)表示活动总数。接下来N行表示各活动的起始，结束时间0&lt;=B[i]&lt;E[i]&lt;24
+输出
+一个整数表示Jack最多能参加的活动数目。
+输入样例
+410 112 38 100 2
+输出样例
+4
+提示printf(“%d\n,num”);
+思路方法一：题意很明显希望参加的活动数目尽量多。对于活动安排问题可以采取动态规划的策略：
+首先将活动的结束时间按照第一关键字排序（由小到大），再将活动的开始时间作为第二关键字排序（由小到大）
+定义dp[i]表示在前i场比赛中最多可以参加几场比赛，
+由此得出方程：dp[i]=max(dp[i-1],d</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/08/NOJ-1001-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+        <p class="h4 index-header">NOJ-1001-二分查找</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">二分查找描述
+给定一个单调递增的整数序列，问某个整数是否在序列中。
+输入
+第一行为一个整数n，表示序列中整数的个数；第二行为n（n不超过10000）个整数；第三行为一个整数m（m不超过50000），表示查询的个数；接下来m行每行一个整数k。
+输出
+每个查询的输出占一行，如果k在序列中，输出Yes，否则输出No。
+输入样例
+51 3 4 7 113369
+输出样例
+YesNoNo
+思路：方法一：按照题目要求进行二分查找，由于a[]是单增数列，所以对于每一个输入查询x，我们先设置左边界l=1，有边界r=n，ans储存可能的位置，进行二分查找，每一次二分查找时mid=(l+r)/2。如果a[mid]&gt;=x，说明如果存在x，那么x一定在左边界（包括mid），那么此时r=mid-1，ans=mid；如果a[mid]&lt;x，则说明x一定在有边界。二分查找完之后，要验证a[ans]是否等于x，因为二分只是由于它是有序序列进行二分，不断查找与x最接近的数字，但它不一定能够是x。
+这个方法时间复杂度为O(nlogn).
+代码：
+#include&lt;cstdio&gt;
+#include&l</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/08/NOJ-1541-%E5%8A%A01%E4%B9%982%E5%B9%B3%E6%96%B9/">
+        <p class="h4 index-header">NOJ-1541-加1乘2平方</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">加1乘2平方描述
+给定两个正整数m、n，问只能做加1、乘2和平方这三种变化，从m变化到n最少需要几次
+输入
+输入两个10000以内的正整数m和n，且m小于n
+输出
+输出从m变化到n的最少次数
+输入样例
+1 16
+输出样例
+3
+方法1：思路：设定dp[i]表示从m到达i最少需要i步。初始化dp[]无穷大，显然dp[m]=0,即到起点的步数为0。对于i来讲可以到达i的只有三种状态：i-1、i/2、sqrt(i)（其中i/2和sqrt(i)需要满足整数条件）。这也是基于i整体单增的条件才满足动态规划。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn = 10000 + 50;
+int dp[maxn], n,m;
+int min(int x,int y){
+    if(x&lt;=y)return x;
+    return</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/08/%E7%AC%AC45%E5%B1%8A%E5%9B%BD%E9%99%85%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B(ICPC)%E4%BA%9A%E6%B4%B2%E7%BD%91%E4%B8%8A%E5%8C%BA%E5%9F%9F%E8%B5%9B%E6%A8%A1%E6%8B%9F%E8%B5%9B%20E%20Eat%20Walnuts/">
+        <p class="h4 index-header">第45届国际大学生程序设计竞赛(ICPC)亚洲网上区域赛模拟赛 E Eat Walnuts</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">E Eat Walnuts题目描述As we all know, in the ACM ICPC held in 2017, the organizer of Xinjiang University presented a box of walnuts to each coach. Our coach is happy to share with the team members except Mr.Watermelon. He is going to test Mr.Watermelon with a game when Mr.Watermelon want to eat some walnuts.
+He put some walnuts in a row and let Mr.Watermelon pick one of them. And this walnut is not the ﬁrst or last in the queue. The price Mr.Watermelon need to pay is : the walnut, the walnut in front</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%8C%BA%E9%97%B4DP">区间DP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?MC7rf8QP3x";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "人生本无止境，前行何须彷徨。&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>

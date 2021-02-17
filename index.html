@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Phoenix_ZH&#39;Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Phoenix_ZH'Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN@1.0/example.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/17/c/">
+        <p class="h4 index-header">c</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">撒旦撒旦
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-17&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/sadsadas">sadsadas</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/17/CodeForces-1490E-Accidental%20Victory/">
+        <p class="h4 index-header">CodeForces-1490E-Accidental Victory</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意
+  每个人有一个数值a[i]，每一个玩家可以任意选取一个玩家j对战，如果a[i]&gt;a[j],那么i胜利并得到j的数值a[j],每两人之间只交战一次，如果a[i]=a[j]，那么i和j都有一半的机会胜利。问有多少人能成为最后的冠军？（打赢剩下的n-1个对手）
+思路假设a[i]从小到大排列：
+dp[i]表示前i个玩家累积的数值a[i]总和，那么dp[i]-a[i]就表示前i-1个玩家累积的数值总和，亦可以理解为第i-1个玩家打赢了他前面的所有玩家最终获得的数值a[i]总和（第i-1个人一定可以打赢前面的i-2个人,因为a[i]从小到大排列），如果dp[i]-a[i]</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-17&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/%E8%B4%AA%E5%BF%83">贪心</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/17/CodeForces-1490F-Equalize%20the%20Array/">
+        <p class="h4 index-header">CodeForces-1490F-Equalize the Array</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意 
+让序列a[]删除部分使得每种数字出现次数相等（可以将某些数字全部删除，这样它的出现次数就为0），求最小的删除次数。
+思路比赛的时候想到的是一个暴力：用map记录数字a[i]出现的次数mp[a[i]]，然后再记录出现的次数的种类数（即不同的mp[a[i]]的种数），然后通过将a[i]从小到大排序并去重。枚举最后的序列中的存在的数字所出现的次数c[i]来决定a[i]是被全部删除还是部分删除（a[i]经过了去重），如果a[i]的数量不足那么它的出现次数永远达不到c[i]必须全部删除，否则的话只需要删除mp[a[i]]-c[i]个a[i].
+代码#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+const int maxn=2e5+50;
+int n,m,T,a[maxn],b[maxn],c[maxn],vis[maxn];
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;n;
+        map&l</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-17&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/17/CodeForces-1490G-Old%20Floppy%20Drive/">
+        <p class="h4 index-header">CodeForces-1490G-Old Floppy Drive</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意 
+给定一个长度为n的数组，有m组查询，每组查询包含一个正整数xi，初始指针指向a[1]，每个一个单位时间指针向后移动，即a[i]移动一个位置到达a[i+1],a[n]移动一个位置后到达a[1],要使得所有数字之和&gt;=xi, 问至少移动多少次？如果无法达到&gt;=x，输出-1
+思路设sum[i] 表示a[1]+a[2]+…+a[i]（即前缀和），maxx[i]表示max{sum[1],sum[2],…,sum[i]}显然maxx是非递减序列.
+如果maxx[n]&gt;=x, 说明答案一定在1 ~ n,根据maxx[i]非递减性质可以使用二分找到第一个下标i满足maxx[i]&gt;=x.
+如果maxx[n]&lt;x:
+​    1）如果sum[n]&lt;=0,并且maxx[n]&lt;x，循环一圈之后答案总和反而减少，说明永远不可能到达x,故输出-1
+​    2）如果sum[n]&gt;0:
+​            sum[i+n]=sum[i]+sum[n];
+​            设d=x-maxx[n],要使得答案&gt;=x,那么至少要循环ceil</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-17&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/16/Educational%20Codeforces%20Round%20104%20(Rated%20for%20Div.%202)/">
+        <p class="h4 index-header">Educational Codeforces Round 104 (Rated for Div. 2)</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A. Arena 
+题目大意比赛次数无限次，赢了的人可以等级+1，问有多少个人可以赢。
+思路枚举a[i]&gt;a1的个数即可
+代码#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+const int maxn=100+50;
+int T,n,m,a[maxn];
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i];
+        sort(a+1,a+1+n);
+        int tot=0;
+        for(int i=2;i&lt;=n;i++){
+            if(a[i]&gt;a[1]){
+                tot++;
+            }
+        }
+        cout&lt;&lt;tot&lt;&lt;endl;
+    }
+    </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-16&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/14/CodeForces-1485E-Move%20and%20Swap/">
+        <p class="h4 index-header">CodeForces-1485E-Move and Swap</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意 
+n个节点的树，每个节点(2~n)有值a[i],一开始红色点和蓝色点都在头节点1，移动d步求最大的|a[i]-a[j]|之和。
+每一步：红色点只能移动到r的子节点蓝色点可以移动到下一层的任意一点每次可以选择交换红色点和蓝色点的位置(也可以不交换)
+思路一开始想着贪心：每次选择每层最大的和最小的，但是这样贪心显然不对，样例都过不了。
+于是想树形DP：
+假设红色点和蓝色点不可以交换，dp[i]表示红色点当前走到i点时最大的总和,fa[i]表示节点i的父亲节点。那么dp[i]=max(dp[i],dp[fa[i]]+|a[i]-a[j]|)(j就是蓝色点，即与i同层的节点)，这里可以依靠预处理出同一层最大的a[i]的值和最小的a[i]的值。如果红色点和蓝色点可以交换，那么dp[i]=max(dp[i],dp[fa[j]]+abs(a[i]-a[j]))，即dp[i]=max(dp[i],dp[fa[j]]+a[j]-a[i],dp[fa[j]]-a[j]+a[i])，这里可以预处理出dp[fa[j]]+a[j]和dp[fa[j]]-a[j].
+首先用dfs求出深度，将同一深度的放到</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-14&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/%E6%A0%91%E5%BD%A2DP">树形DP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/13/CodeForces-1485/">
+        <p class="h4 index-header">CodeForces-1485</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">C. Floor and Mod 
+题目大意1&lt;=a&lt;=x,    1&lt;=b&lt;=y,给定x和y，找出有多少组(x,y)满足  ⌊a/b⌋=a%b
+思路由于 ⌊a/b⌋=a%b，则可设a=k  b+k（1&lt;=k&lt;=b-1）,而1&lt;=k  b+k&lt;=x(1&lt;=k&lt;=b-1),所以可以推出k * k&lt;=x(1&lt;=k&lt;=b-1),得到k&lt;=sqrt(x).这样可以通过枚举k的值，确定b的数量来得到最终的答案。
+由1&lt;=k * b+k&lt;=x可以得到b&lt;=x/k-1.结合1&lt;=k&lt;=b-1和1&lt;=b&lt;=y，可以推导出k&lt;b&lt;=min(x/k-1,y),所以对于任意的k它对应的b的数量就是max(0,min(x/k-1,y)-k).全部加起来就是答案
+代码#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+
+ll T,x,y;
+int main(){
+    cin&gt</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-13&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/Math">Math</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/21/2020%EF%BC%88ICPC%EF%BC%89%E4%BA%9A%E6%B4%B2%E5%8C%BA%E5%9F%9F%E8%B5%9B%EF%BC%88%E5%8D%97%E4%BA%AC%EF%BC%89%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">2020（ICPC）亚洲区域赛（南京）赛后总结</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">​    2020年的ICPC基本结束（还剩下济南站），我们队也打完了2020年的最后一场正式比赛。从最开始的轮流做队（LLZ）（其实就是我们三个人的第一个字母组合起来的）到后面的69岁，是acmer队（Mabaoguo）（队友觉得之前的队名不吉利，每次都轮流改题，场面一度混论，真是队如其名，于是就改名了），从暑假的集训到省赛再到天梯赛最后到ICPC的南京站，我们队2020年的比赛也就全部结束了。
+​    比赛开始前5min，三个人都不知道该选哪个题下手，随便挑了A、B、G题，看了1min。“这都是些什么题啊？”然后就等着看榜做题，顺带再看了一下A题。大概8min后，看到K题有人AC了，然后三人同时看K题（不再轮流做了QAQ），发现是一个构造题：构造出有且仅有k个gcd（ai，i）=1的全排列。当时第一反应就是k个之后的数就ai=i，k个前面的数循环后移一位。顺利签到一题。
+​    接着看榜做题，lcy翻译了L题的题意，当时感觉这题和这周CF的DIV3的最后一题特别相似，都是问一个区间内点的最大重复个数，lzy思路可能和我的有点类似，但我的略麻烦，需要用树状数组来维护。lzy WA</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-21&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%80%BB%E7%BB%93%E4%B8%8E%E6%B8%B8%E8%AE%B0">总结与游记</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/12/CodeForces-1461B-Find%20the%20Spruce/">
+        <p class="h4 index-header">CodeForces-1461B-Find the Spruce</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：  
+思路：求出所有符合要求的图形。一开始想着枚举所有的点(i,j)，以点(i,j)为起点，向下不断寻找符合条件的图形，但是觉得太麻烦了。然后发现每一个点是否可以继续向下寻找符合条件的图形完全取决于点(i+1,j-1)、(i+1,j)、(i+1,j+1)这三个点是否都是*,并且点(i,j)可以向下找到几个符合条件的图形，也是取决于这三个点中最小的符合条件的图形的数量。这样完全可以从最后一行向上进行动态转移。一开始初始化所有为*的点(i,j),令它们dp[i][j]=1，然后从最后一行向上更新 dp[i][j]+=min(dp[i+1][j-1],min(dp[i+1][j],dp[i+1][j+1])); 最后答案就是所有dp[i][j]之和。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=500+50;
+typedef long long ll;
+ll T,n,m,dp[maxn][maxn];char s[maxn][maxn];
+int main(){
+    cin&gt;&g</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/DP">DP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/12/CodeForces-1461C-Random%20Events/">
+        <p class="h4 index-header">CodeForces-1461C-Random Events</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：思路：对于后缀序ai,ai+1,…,an如果该序列已经全部满足ai=i，那么对于任意的r∈[i,n]，他们是否排序都不会影响最终答案。但是如果不是这种序列就必须保证最后一个ai!=i必须有r=i，并且进行概率为p的操作。而后面的操作是否进行实际上都不影响答案，如果不进行刚才的操作，就必须保证r&gt;i的操作至少进行一次。因此答案需要累加r&gt;i的每钟操作一次。特判一下整个序列都已经从小到大排好的情况，此时答案为1.
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1e5+50;
+int T,n,m,a[maxn];
+struct Node{
+    int f;double q;
+}t[maxn];
+int cmp(Node x,Node y){
+    return x.f&lt;y.f;
+}
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;n&gt;&gt;m;
+        for(int i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?MC7rf8QP3x";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "人生本无止境，前行何须彷徨。&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+</body>
+</html>
