@@ -153,39 +153,6 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1087/">
-        <p class="h4 index-header">POJ-1087</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1087 A Plug for UNIX
-题目链接：https://vjudge.net/problem/POJ-1087#author=cjyl
-题目大意：宾馆里有几种插座，分别有其对应型号，你携带了几种用电器（手机，电脑一类的），也有其对应型号；可是不一定用电器就能和插座匹配上，于是宾馆的商店里提供了一些转换器，这些转换器可以将某一型号电源转换成另一型号的。问，你的用电器最少会有多少种无法充电 。注意插座型号是字符串形式，长度小于24，用电器名称也是字符串。
-题解：这是最大流问题。先说一下细节，插座和用电器的数量肯定都只有一个，但是转换器的数量是无限的。建图：设起点为s，终点为t，首先s与所有的用电器相连，边权为1，（一开始还想着拆点，我怕是个哈批啊，对于两边的点，边权就是容量，不需要去拆点！），t与所有的插座相连。如果型号相同，就可以二者之间进行连边。然后对于转换器，转换器之间可以相连，并且转换可以实现A—&gt;B，也可以实现B—&gt;A。所以，对于用电器型号=A||B的都可以连边，对于插座型号=A||B的都可以连边，边权为1，对于转换器之间可以相连的，</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-4292/">
         <p class="h4 index-header">HDU-4292</p>
         
@@ -360,9 +327,9 @@ const int max</div>
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
-          
             <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
           
             <a href="/tags/%E9%97%AD%E5%8C%85%E4%BC%A0%E9%80%92">闭包传递</a>&nbsp;
           

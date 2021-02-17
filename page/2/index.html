@@ -153,59 +153,6 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/12/12/CodeForces-1461D-Divide%20and%20Summarize/">
-        <p class="h4 index-header">CodeForces-1461D-Divide and Summarize</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目大意：  
-思路：直接模拟这个二分的过程，然后标记查询区间元素总和，用map标记。dfs进行二分模拟的上界是a[]的最大值，下界是a[]的最小值。用树状数组储存答案，查询区间内元素总和。对于dfs模拟中要判断mid是否存在于a[]中，如果不存在就需要再二分找到最接近mid的。（a[]从小到大排序）把所有可以得到的答案都用map标记后，再进行后面的查询，直接输出答案。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=1e6+50;
-typedef long long ll;
-ll T,n,m,a[maxn],sum[maxn],minn,maxx;
-map&lt;ll,int&gt;mp;
-ll lowbit(ll x){
-    return x&amp;(-x);
-}
-ll query(ll x){
-    ll res=0;
-    while(x){
-        res+=sum[x];
-        x-=lowbit(x);
-    }
-    return res;
-}
-vo</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
-          
-            <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84">树状数组</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/12/12/CodeForces-1461E-Water%20Level/">
         <p class="h4 index-header">CodeForces-1461E-Water Level</p>
         
@@ -614,6 +561,60 @@ int main(){
         cin&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;
         for(i=0;i&lt;20;i++)cin&gt;&gt;s[i];
         queue&lt;N</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1008-%E7%B4%A0%E6%95%B0%E7%8E%AF%E9%97%AE%E9%A2%98/">
+        <p class="h4 index-header">NOJ-1008-素数环问题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">素数环问题 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=105;
+int n=20,vis[maxn],a[maxn],cnt;
+void swap(int x,int y){
+    int t=a[x];
+    a[x]=a[y];
+    a[y]=t;
+}
+void dfs(int now){
+    int i;
+    if(now==n+1){
+        if(vis[a[1]+a[20]])return;
+        for(i=1;i&lt;=n-1;i++){
+            if(vis[a[i]+a[i+1]]){
+                return ;
+            }
+        }
+        cnt++;
+        if(cnt=</div>
         </div>
       </a>
 

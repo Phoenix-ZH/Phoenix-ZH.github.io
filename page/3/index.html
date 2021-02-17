@@ -153,60 +153,6 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1008-%E7%B4%A0%E6%95%B0%E7%8E%AF%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">NOJ-1008-素数环问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">素数环问题 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-using namespace std;
-const int maxn=105;
-int n=20,vis[maxn],a[maxn],cnt;
-void swap(int x,int y){
-    int t=a[x];
-    a[x]=a[y];
-    a[y]=t;
-}
-void dfs(int now){
-    int i;
-    if(now==n+1){
-        if(vis[a[1]+a[20]])return;
-        for(i=1;i&lt;=n-1;i++){
-            if(vis[a[i]+a[i+1]]){
-                return ;
-            }
-        }
-        cnt++;
-        if(cnt=</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/18/NOJ-1007-8%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/">
         <p class="h4 index-header">NOJ-1007-8皇后问题</p>
         
@@ -554,7 +500,7 @@ int main(){
         
         
           var ap = new APlayer({
-            element: document.getElementById("aplayer-LCcXOOEq"),
+            element: document.getElementById("aplayer-hiKezIfg"),
             narro</div>
         </div>
       </a>
@@ -656,6 +602,57 @@ int main(){
         }
     }
     queue&lt;Node&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1003-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
+        <p class="h4 index-header">NOJ-1003-快速排序</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">快速排序  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+50;
+int n,a[maxn];
+void QuickSort(int l,int r){
+    if(l&gt;=r)return ;
+    int i=l,j=r,x=a[l];
+    while(i&lt;j){
+        while(x&lt;=a[j]&amp;&amp;i&lt;j)j--;
+        if(i&lt;j)a[i++]=a[j];
+        while(a[i]&lt;=x&amp;&amp;i&lt;j)i++;
+        if(i&lt;j)a[j--]=a[i];
+    }
+    a[i]=x;
+    QuickSort(l,i-1);QuickSort(i+1,r);
+}
+int main(){
+    int i;</div>
         </div>
       </a>
 
