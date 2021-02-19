@@ -141,7 +141,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    2.2k 字
+                    4.4k 字
                   </span>&nbsp;
                 
 
@@ -149,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      10 分钟
+                      22 分钟
                   </span>&nbsp;
                 
 
@@ -381,13 +381,281 @@ int main(){
     }
 }
 </code></pre>
+<h2 id="3-洛谷P4782-【模板】2-SAT-问题"><a href="#3-洛谷P4782-【模板】2-SAT-问题" class="headerlink" title="3.洛谷P4782 【模板】2-SAT 问题"></a>3.洛谷P4782 【模板】2-SAT 问题</h2><p><img src="https://img-blog.csdnimg.cn/20210219232439774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"> </p>
+<p>这道题相对于前面两个题的区别在于需要求解具体的方案（即赋值）</p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>这道题本身2-SAT建图很简单：xi=a|xj=b，如果xi=0，那么将让u=i+n；否则u=i；如果xj=0，那么就让v=j+n；否则v=j；xi=a|xj=b就转换成了u|v=1，即(~ u)-&gt;v,(~ v)-&gt;u.</p>
+<p><strong>2-SAT的输出方案：</strong></p>
+<p>在scc缩点之后的DAG图上，取一些点，具备以下条件：</p>
+<p>1）对于所有变量x[i], scc[i]和scc[~ i]必选其一<br>2）若取scc[i],那么它的后代都要选 等价于若不选scc[i]，那么它的前代都不选。</p>
+<p>由于原命题和逆否命题等价，所以缩点后的DAG具备对称性：scc[i]的后代与scc[~i]的前代对称</p>
+<p>即a-&gt;b-&gt;c &lt;==&gt; (~ a)&lt;-(~ b)&lt;-(~ c)</p>
+<p>1.选择scc[i]之后，scc[i]的所有后代必选；而scc[~ i]和scc[i]只能二选一，所以选了scc[i]就不能选scc[~ i]，并且scc[~ i]的所有前代也不能选<br>2.每次找到一个未选的scc[i]，保证不存在scc[i]-&gt;scc[~ i]，即scc[i]!=scc[i+n]（有解的充要条件）。选择scc[i]及其所有后代并且删除scc[~ i]及其所有前代。<br>3.用拓扑排序完成上述过程，每次选择出度为0的scc[i]，scc[i]没有后代 ,scc[~ i] 没有前代.</p>
+<p>有Tarjan算法的性质可以发现：Tarjan求处的就是拓扑排序，它先求出了scc[i]小的点，而scc[i]最小的点同时也是拓扑序最大的。</p>
+<p>如果scc[i]<scc[~ i]，则说明i的拓扑序大，选择i，即x[i]=1;
+如果scc[i]>scc[~ i]，则说明i+n的拓扑序大，选择(~ i)，即x[i]=0;</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=2e6+50;
+struct Node{
+    int to,next;
+}edge[maxn*2];
+int k=1,head[maxn];
+void add(int u,int v){
+    edge[++k].to=v;edge[k].next=head[u];head[u]=k;
+} 
+int dfn[maxn],low[maxn],tot,sta[maxn],Num[maxn],vis[maxn],color[maxn];
+void tarjan(int x){
+    low[x]=dfn[x]=++tot;sta[++sta[0]]=x;vis[x]=1;
+    for(int i=head[x];i;i=edge[i].next){
+        if(!dfn[edge[i].to]){
+            tarjan(edge[i].to);
+            low[x]=min(low[x],low[edge[i].to]);
+        }
+        else if(vis[edge[i].to]){
+            low[x]=min(low[x],dfn[edge[i].to]);
+        }
+    }
+    if(low[x]==dfn[x]){
+        Num[0]++;
+        do{
+            color[sta[sta[0]]]=Num[0];
+            vis[sta[sta[0]--]]=0;
+            Num[Num[0]]++;
+        }while(sta[sta[0]+1]!=x);
+    }
+} 
+int n,m;
+int pd(int x){
+    if(x&gt;n)return x-=n;
+    return x+=n;
+}
+int main(){
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=m;i++){
+        int ai,ax,aj,ay;
+        cin&gt;&gt;ai&gt;&gt;ax&gt;&gt;aj&gt;&gt;ay;
+        //x[ai]=ax||x[aj]=ay
+        if(ax==0)ai+=n;
+        if(ay==0)aj+=n;
+        //ai|aj==1  ~ai-&gt;aj,~aj-&gt;ai 
+        add(pd(ai),aj);
+        add(pd(aj),ai);
+    }
+    for(int i=1;i&lt;=n*2;i++){
+        if(!dfn[i]){
+            tarjan(i);
+        }
+    }
+    for(int i=1;i&lt;=n;i++){
+        if(color[i]==color[i+n]){
+            cout&lt;&lt;&quot;IMPOSSIBLE&quot;&lt;&lt;endl;
+            return 0;
+        }
+    }
+    cout&lt;&lt;&quot;POSSIBLE&quot;&lt;&lt;endl;
+    for(int i=1;i&lt;=n;i++){
+        if(color[i]&lt;color[i+n])cout&lt;&lt;1&lt;&lt;&#39; &#39;;//SCC序越小，表示拓扑序越大，首先选择拓扑序大的,即SCC序小的 
+        else cout&lt;&lt;0&lt;&lt;&#39; &#39;;
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="4-AcWing-404-婚礼"><a href="#4-AcWing-404-婚礼" class="headerlink" title="4.AcWing 404.婚礼"></a>4.AcWing 404.婚礼</h2><p> <img src="https://img-blog.csdnimg.cn/20210219230528659.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"></p>
+<h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p><img src="https://img-blog.csdnimg.cn/20210219230933939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"></p>
+<p>假定：</p>
+<p>i(xi=1)：妻子在新娘同侧，丈夫在新郎同侧；<br>~i(即xi=0)：妻子在新娘异侧，丈夫在新郎异侧；</p>
+<p>根据上述假定，并且设新娘新郎对应x1，所以x1=1，因此(~ i)-&gt;i。</p>
+<p>形如“4h 2w”表示第4对夫妇中的丈夫和第2对夫妇中的妻子通奸，那么就说明h4和w2不可以同时出现在新郎侧，而h4出现在新郎侧就等价于x4=1，w2出现在新郎侧就等价于x2=0，所以h4和w2不可以同时出现在新郎侧就等价于x4&amp;(~ x2)=0，即x4-&gt;~ (~ x2),(~ x2)-&gt;x4</p>
+<p>所以对于形如”xiyi xjyj”的说明xiyi和xjyj不可以同时出现在新郎侧，如果yi=”h”，那么xi出现在新郎侧就等价于xi=1，即u=i；如果yi=”h”，那么xi出现在新郎侧就等价于xi=0，即u=i+n;同理于xj，求出v。xiyi和xjyj不可以同时出现在新郎侧就等价于u&amp;v=0,即u-&gt;(~ v),v-&gt;(~ u).</p>
+<p>上述假定丈夫妻子的编号从2开始（因为新郎新娘为1）</p>
+<p>接下来就是直接跑Tarjan套模板</p>
+<p>输出的时候如果color[i]&lt;color[i+n]就是指xi=1,即妻子和新娘同侧（注意i要减一（因为丈夫妻子的编号对比输入做了改变））否则就是指丈夫和新娘同侧。</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=900+50;
+struct Node{
+    int to,next;
+}edge[maxn*2];
+int k=1,head[maxn];
+void add(int u,int v){
+    edge[++k].to=v;edge[k].next=head[u];head[u]=k;
+} 
+int dfn[maxn],low[maxn],tot,sta[maxn],Num[maxn],vis[maxn],color[maxn];
+void tarjan(int x){
+    low[x]=dfn[x]=++tot;sta[++sta[0]]=x;vis[x]=1;
+    for(int i=head[x];i;i=edge[i].next){
+        if(!dfn[edge[i].to]){
+            tarjan(edge[i].to);
+            low[x]=min(low[x],low[edge[i].to]);
+        }
+        else if(vis[edge[i].to]){
+            low[x]=min(low[x],dfn[edge[i].to]);
+        }
+    }
+    if(low[x]==dfn[x]){
+        Num[0]++;
+        do{
+            color[sta[sta[0]]]=Num[0];
+            vis[sta[sta[0]--]]=0;
+            Num[Num[0]]++;
+        }while(sta[sta[0]+1]!=x);
+    }
+} 
+int n,m;
+int op(int x){
+    if(x&lt;=n)return x+n;
+    return x-n;
+}
+int main(){
+    while(1){
+        k=1;tot=0;
+        memset(head,0,sizeof(head));
+        memset(dfn,0,sizeof(dfn));
+        memset(low,0,sizeof(low));
+        memset(sta,0,sizeof(sta));
+        memset(Num,0,sizeof(Num));
+        memset(vis,0,sizeof(vis));
+        memset(color,0,sizeof(color));
+        cin&gt;&gt;n&gt;&gt;m;
+        if(n==0&amp;&amp;m==0)break;
+        add(1+n,1);
+        for(int i=1;i&lt;=m;i++){
+            int x,y;char cx,cy;
+            cin&gt;&gt;x&gt;&gt;cx&gt;&gt;y&gt;&gt;cy;
+            x++,y++;
+            if(cx==&#39;w&#39;)x=op(x);
+            if(cy==&#39;w&#39;)y=op(y);
+            add(x,op(y));
+            add(y,op(x));
+        }
+        for(int i=1;i&lt;=n*2;i++){
+            if(!dfn[i]){
+                tarjan(i);
+            }
+        }
+        int sign=0;
+        for(int i=1;i&lt;=n;i++){
+            if(color[i]==color[i+n]){
+                sign=1;
+                break;
+            }
+        }
+        if(sign)cout&lt;&lt;&quot;bad luck&quot;&lt;&lt;endl;
+        else{
+            for(int i=2;i&lt;=n;i++){
+                if(color[i]&lt;color[i+n])cout&lt;&lt;i-1&lt;&lt;&quot;w &quot;;
+                else cout&lt;&lt;i-1&lt;&lt;&quot;h &quot;;
+            }
+        }
+        cout&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="5-AcWing-371-牧师约翰最忙碌的一天"><a href="#5-AcWing-371-牧师约翰最忙碌的一天" class="headerlink" title="5. AcWing 371. 牧师约翰最忙碌的一天"></a>5. AcWing 371. 牧师约翰最忙碌的一天</h2><p><img src="https://img-blog.csdnimg.cn/20210219234502313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"> </p>
+<h3 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h3><p>每一个婚礼的主持时间有两种：t[i][0]=s[i],t[i][1]=t[i]-d[i]，这里的s[i]和t[i]需要将string转换成分钟数，方便操作</p>
+<p>要求对于任意两个婚礼i，j要满足t[i][x]和t[j][y]不发生冲突，如果t[i][x]+d[i]&lt;=t[j][y]|t[i][x]&gt;=t[j][y]+d[j]表明不发生冲突。</p>
+<p>假定i表示在婚礼的主持在t[i][0]开始，(~ i)即i+n表示在t[i][1]开始。</p>
+<p>如果t[i][0]和t[j][0] 发生冲突：i-&gt;j+n,j+n-&gt;i;<br>如果t[i][0]和t[j][1] 发生冲突：i-&gt;j,j+n-&gt;i+n;<br>如果t[i][1]和t[j][0] 发生冲突：i+n-&gt;j+n,j-&gt;i;<br>如果t[i][1]和t[j][1] 发生冲突：i+n-&gt;j,j+n-&gt;i;</p>
+<p>剩下的套模板即可，输出方案的时候记得分钟数转换成string。</p>
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=2e3+50;
+struct Node{
+    int to,next;
+}edge[maxn*maxn*2];
+int k=1,head[maxn];
+void add(int u,int v){
+    edge[++k].to=v;edge[k].next=head[u];head[u]=k;
+} 
+int dfn[maxn],low[maxn],tot,sta[maxn],Num[maxn],vis[maxn],color[maxn];
+void tarjan(int x){
+    low[x]=dfn[x]=++tot;sta[++sta[0]]=x;vis[x]=1;
+    for(int i=head[x];i;i=edge[i].next){
+        if(!dfn[edge[i].to]){
+            tarjan(edge[i].to);
+            low[x]=min(low[x],low[edge[i].to]);
+        }
+        else if(vis[edge[i].to]){
+            low[x]=min(low[x],dfn[edge[i].to]);
+        }
+    }
+    if(low[x]==dfn[x]){
+        Num[0]++;
+        do{
+            color[sta[sta[0]]]=Num[0];
+            vis[sta[sta[0]--]]=0;
+            Num[Num[0]]++;
+        }while(sta[sta[0]+1]!=x);
+    }
+} 
+int n,d[maxn],t[maxn][2];
+int str_to_int(string s){
+    int x=(s[0]-&#39;0&#39;)*10+(s[1]-&#39;0&#39;);
+    x*=60;
+    x=x+(s[3]-&#39;0&#39;)*10+(s[4]-&#39;0&#39;);
+    return x;
+}
+string int_to_str(int x){
+    string s;
+    int tot=x/60;
+    s+=tot/10+&#39;0&#39;;
+    s+=tot%10+&#39;0&#39;;
+    x=x-tot*60;
+    s+=&#39;:&#39;;
+    s+=x/10+&#39;0&#39;;
+    s+=x%10+&#39;0&#39;;
+    return s;
+}
+int check(int i,int ci,int j,int cj){
+    if(t[i][ci]+d[i]&lt;=t[j][cj])return 0;
+    if(t[i][ci]&gt;=t[j][cj]+d[j])return 0;
+    return 1;
+}
+int main(){
+    cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++){
+        string x,y;
+        cin&gt;&gt;x&gt;&gt;y&gt;&gt;d[i];
+        t[i][0]=str_to_int(x);
+        t[i][1]=str_to_int(y)-d[i];
+    }
+    for(int i=1;i&lt;=n;i++){
+        for(int j=1;j&lt;=n;j++){
+            if(i==j)continue;
+            if(check(i,0,j,0))add(i,j+n),add(j,i+n);
+            if(check(i,0,j,1))add(i,j),add(j+n,i+n);
+            if(check(i,1,j,0))add(i+n,j+n),add(j,i);
+            if(check(i,1,j,1))add(i+n,j),add(j+n,i);
+        }
+    }
+    for(int i=1;i&lt;=2*n;i++){
+        if(!dfn[i]){
+            tarjan(i);
+        }
+    }
+    for(int i=1;i&lt;=n;i++){
+        if(color[i]==color[i+n]){
+            cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+            return 0;
+        }
+    }
+    cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+    for(int i=1;i&lt;=n;i++){
+        if(color[i]&lt;color[i+n])cout&lt;&lt;int_to_str(t[i][0])&lt;&lt;&#39; &#39;&lt;&lt;int_to_str(t[i][0]+d[i])&lt;&lt;endl;
+        else cout&lt;&lt;int_to_str(t[i][1])&lt;&lt;&#39; &#39;&lt;&lt;int_to_str(t[i][1]+d[i])&lt;&lt;endl;
+    }
+    cout&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
 
-        <div id="aplayer-TyIPZENR" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-uMhdzrIB" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-TyIPZENR"),
+            element: document.getElementById("aplayer-uMhdzrIB"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -402,6 +670,7 @@ int main(){
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
+
             <hr>
           </div>
           <br>
