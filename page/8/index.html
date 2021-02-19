@@ -153,6 +153,170 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/31/CodeForces-1388/">
+        <p class="h4 index-header">CodeForces-1388</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A.题目名称： Captain Flint and Crew Recruitment 
+题目大意：如果一个数 x能够表示成两个不同质数的乘积，那我们就称 x是 nearly prime 。给出n，求n能否分成4个不同正整数的和，其中至少三个是 nearly prime 
+思路：首先可以取得最小的三个 nearly prime：6，10，14。如果n&lt;=30那么肯定无法得到符合要求的组合。如果n&gt;=45则至少都有6，10，14，所以一定可以得到符合要求的组合。问题就是30&lt;n&lt;45之间的情况，只需要单独分析x=6/10/14（x=n-30）的情况。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int T,n;
+int main()
+{
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;n;
+        if(n&lt;=30)
+        {
+            printf(&quot;NO\n&quot;);
+          </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-31&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/29/kuangbin%E4%B8%93%E9%A2%9814-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/">
+        <p class="h4 index-header">kuangbin专题14-数论基础</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.题目名称：LightOJ 1370 Bi-shoe and Phi-shoe
+题目大意：给出n个数字的序列a[]，对于每个数字ai找到一个欧拉函数值大于等于ai的数bi，求找到的所有数bi的最小值之和sum 
+思路：已知a[]&lt;=1000000,要求得phi[]，则应当线性求phi。
+1.phi(p) == p-1 因为素数p除了1以外的因子只有p，所以与 p 互素的个数是 p - 1个 
+2.phi(p^k) == p^k - p^(k-1) == (p-1) * p^(k-1) 
+3.如果i mod p == 0, 那么 phi(i  p) == p  phi(i)  
+4.如果i mod p != 0, 那么 phi(i  p) == phi(i)  (p-1)  
+求得phi[]之后，就寻找大于等于a[i]的最小的phi[]的下标，求和。
+PS：WA了很多次：a[]&lt;=1000000,但是phi[]可能&gt;1000000
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-29&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B%E7%B4%A0%E6%95%B0">线性筛素数</a>&nbsp;
+          
+            <a href="/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">欧拉函数</a>&nbsp;
+          
+            <a href="/tags/hopcroft-karp">hopcroft-karp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/24/NWPU-%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+        <p class="h4 index-header">NWPU-线段树</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">一.综述假设有编号从1到n的n个点，每个点都存了一些信息，用[L,R]表示下标从L到R的这些点。线段树的用处就是，对编号连续的一些点进行修改或者统计操作，修改和统计的复杂度都是O(log2(n)).
+线段树的原理，就是，将[1,n]分解成若干特定的子区间(数量不超过4*n),然后，将每个区间[L,R]都分解为少量特定的子区间，通过对这些少量子区间的修改或者统计，来实现快速对[L,R]的修改或者统计。
+由此看出，用线段树统计的东西，必须符合区间加法，否则，不可能通过分成的子区间来得到[L,R]的统计结果。
+符合区间加法的例子：1.数字之和——总数字之和 = 左区间数字之和 + 右区间数字之和2.最大公因数(GCD)——总GCD = gcd( 左区间GCD , 右区间GCD );3.最大值——总最大值=max(左区间最大值，右区间最大值)不符合区间加法的例子：1.众数——只知道左右区间的众数，没法求总区间的众数2.01序列的最长连续零——只知道左右区间的最长连续零，没法知道总的最长连续零
+一个问题，只要能化成对一些连续点的修改和统计问题，基本就可以用线段树来解决了，具体怎么转化在第六节会讲</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-24&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91">线段树</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/07/22/NWPU-DP/">
+        <p class="h4 index-header">NWPU-DP</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.题目：D - Proud Merchants题目大意：n种商品，m元钱，每种商品都有p,q,v属性，p价格，q表示买这种商品你需要带q元老板才愿意和你交易，v这种商品的实际价值。求问最多可以获得多少价值 。
+思路：如果p=q，那么就是01背包。但是如果p！=q， 如果A:p1 q1, B:p2 q2 ， 假设单独买A或者B的话，都是可以买到的 。 若先买A，则你至少需要p1+q2的钱；若先买B，则至少需要p2+q1的钱。  那肯定是花最少的钱 ，所以如果先买A再买B ， 那么p1+q2q2-p2  也就是说qi-pi大的先买。注意：排序的时候，得按照qi-pi从小到大排序，因为你买第n件商品的时候，是在比较你是否要先买第n件商品。 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=5000+10;
+struct N
+{
+    int p,q,v;
+}a[ma</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-22&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/DP">DP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/07/20/kuangbin%E4%B8%93%E9%A2%98-%E4%BA%8C%E5%8D%81%E5%9B%9B/">
         <p class="h4 index-header">kuangbin专题-二十四</p>
         
@@ -423,199 +587,11 @@ A：题目名称：Yet Another Tetris Problem
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/07/CodeForces-1321/">
-        <p class="h4 index-header">CodeForces-1321</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A:题目名称：Contest for Robots
-题目大意：给出长度为1≤n≤100 的两个序列 r,b，且满足 ri, bi∈{0,1}，你需要确定 pi（pi≥1）。
-满足
-
-\sum_{i=1}^n r_ip_i > \sum_{i=1}^n b_ip_i，并且最小化max pi（1&lt;=i&lt;=n）
-如果不可能，输出 -1 。
-题解：因为序列的数字要么为1，要么为0，那么如果r中没有数字比b中的大，那么显然不可能实现题目的要求。一旦求得r比b大的个数w1，和r比b小的个数w2，就可以求maxpi，但是注意要求是大于，所以ans=(w2+1)/w1;并且要判断是否整除，如果没有则ans++。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1000+5;
-int a[maxn],b[maxn],n;
-int main()
-{
-    scanf(&</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/29/CodeForces-1311/">
-        <p class="h4 index-header">CodeForces-1311</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A：题目名称： Add Odd or Subtract Even
-题目大意：
-给定两个正整数a,b。
-每次操作你可以把 a加上某个正奇数，或者减去某个正偶数。
-问至少多少次操作可以把 a变成 b。
-多组数据 :T&lt;=10^4,1&lt;=a,b&lt;=10^9
-
-题解：对于a，b关系可分为3种情况：a&gt;b;a==b;a b:若a-b为偶数，答案为1；否则为2，先减一个偶数让a=b-1，再加1。a &lt; b:若b-a为奇数，答案为1；否则为2.
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-int T,a,b;
-int main()
-{
-    scanf(&quot;%d&quot;,&amp;T);
-    while(T--)
-    {
-        scanf(&quot;%d%d&quot;,&amp;a,&amp;b);
-        if(b&gt;a)
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-29&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/19/CodeForces-1300/">
-        <p class="h4 index-header">CodeForces-1300</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A:题目名称： Non-zero
-题目大意：给定一个含有 n个整数的数列。每次可以将其中的一个数加一，记为一次操作。问使得数列所有数之和与数列所有数的乘积都不为0的操作次数。
-题解：乘积不可以为0，要就让所有为0的数字变成1，那么统计一下有多少个0就可以了。然后所有数之和不为0，只需要将0变成1之后a[1]-a[n]全部加起来，若不等于0则输出结果，若为0就将次数+1再输出结果。(a1+…+an=0，且不存在ai=0，那么必然存在aj&gt;0，则将aj++即可)
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=10000+5;
-int T,n,a[maxn];
-int main()
-{
-    scanf(&quot;%d&quot;,&amp;T);
-    while(T--)
-    {
-        scanf(&quot;%d&quot;,&amp;</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-19&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/18/CodeForces-1307/">
-        <p class="h4 index-header">CodeForces-1307</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A:题目名称： Cow and Haybales 
-题目大意：t组数据，每组数据n堆，有d天，每天可以相邻的堆直接移动物品，每次移动物品数质可以为1，或者不移动。问d天后，第一堆最多有多少个物品。
-题解：每天只能再相邻堆移动1个物品。直接考虑模拟，从最近的地方往前移动，并且一直移动同一个物品，直到它移动到第一堆的地方。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=200+5;
-int T,n,m,a[maxn];
-int main()
-{
-    scanf(&quot;%d&quot;,&amp;T);
-    while(T--)
-    {
-        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-        for(int i=1;i&lt;=n;i++)scanf(&quot;%d&quot;,&amp;a[i</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/9/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/7/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

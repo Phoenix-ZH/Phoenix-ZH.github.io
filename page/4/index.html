@@ -153,6 +153,217 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1243-%E5%BE%AA%E7%8E%AF%E8%B5%9B%E6%97%A5%E7%A8%8B%E8%A1%A8/">
+        <p class="h4 index-header">NOJ-1243-循环赛日程表</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">循环赛日程表 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=500+50;
+int n,a[maxn][maxn];
+void dfs(int r,int c,int h){
+    if(h==1)return ;
+    h/=2;
+    a[r+h][c+h]=a[r][c];
+    a[r][c+h]=a[r][c]+h;
+    a[r+h][c]=a[r][c]+h;
+    dfs(r,c,h);
+    dfs(r+h,c+h,h);
+    dfs(r,c+h,h);
+    dfs(r+h,c,h);
+}
+int main(){
+    int i,j;
+    cin&gt;&gt;n;
+    n=pow(2,n);
+    a[1][1]=1;
+    dfs(1,1,n);
+    f</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1574-%E6%B1%82%E7%AC%ACk%E5%B0%8F%E6%95%B0/">
+        <p class="h4 index-header">NOJ-1574-求第k小数</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">求第k小数 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=10000+50;
+int n,a[maxn],k;
+int main(){
+    int i;
+    cin&gt;&gt;n;
+    for(i=1;i&lt;=n;i++)cin&gt;&gt;a[i];
+    cin&gt;&gt;k;
+    sort(a+1,a+1+n);
+    cout&lt;&lt;a[k]&lt;&lt;endl;
+    return 0;
+}
+
+
+        
+            
+        
+        
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-hiKezIfg"),
+            narro</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1323-%E7%A9%B7%E4%B8%BEn%E4%BD%8D%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0/">
+        <p class="h4 index-header">NOJ-1323-穷举n位二进制数</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">穷举n位二进制数  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=100+50;
+int a[maxn],n;
+int main(){
+    int i,x;
+    cin&gt;&gt;n;
+    for(i=n;i&gt;=1;i--)cout&lt;&lt;a[i];cout&lt;&lt;endl;
+    for(x=1;x&lt;=pow(2,n)-1;x++){
+        a[1]++;
+        for(i=1;i&lt;=n;i++){
+            if(a[i]&gt;=2)a[i]=0,a[i+1]++;
+        }
+        for(i=n;i&gt;=1;i--)cout&lt;&lt;a[i];cout&lt;&lt;endl;
+    }
+  </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1141-%E8%B5%B0%E8%BF%B7%E5%AE%AB/">
+        <p class="h4 index-header">NOJ-1141-走迷宫</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">走迷宫  
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int maxn=20+50;
+int n,m,sx,sy,tx,ty,a[maxn][maxn],vis[maxn][maxn],d[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
+struct Node{
+    int x,y;
+};
+int main(){
+    int i,j;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;
+    for(i=0;i&lt;n;i++){
+        for(j=0;j&lt;m;j++){
+            cin&gt;&gt;a[i][j];
+        }
+    }
+    queue&lt;Node&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/18/NOJ-1003-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
         <p class="h4 index-header">NOJ-1003-快速排序</p>
         
@@ -405,181 +616,11 @@ int main(){
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/08/NOJ-1205-%E6%B4%BB%E5%8A%A8%E5%AE%89%E6%8E%92/">
-        <p class="h4 index-header">NOJ-1205-活动安排</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">活动安排问题描述
-Jack是一名nwpu的大一新生，对学校举办的各种活动都十分的好奇，想尽可能多的参加这些活动。Npwu每天共有N项活动，其开始结束时间分别为B[i],E[i],(i = 1,2,……N)请问Jack一天最多能参加几项活动。当然，Jack在同一时间内只能参加一项活动，即jack参加的活动时间上不能重叠，但时间为[t1,t2],[t2,t3]的两个活动是可以同时参加的。
-输入
-第一行 一个整数N(1&lt;=n&lt;=1000)表示活动总数。接下来N行表示各活动的起始，结束时间0&lt;=B[i]&lt;E[i]&lt;24
-输出
-一个整数表示Jack最多能参加的活动数目。
-输入样例
-410 112 38 100 2
-输出样例
-4
-提示printf(“%d\n,num”);
-思路方法一：题意很明显希望参加的活动数目尽量多。对于活动安排问题可以采取动态规划的策略：
-首先将活动的结束时间按照第一关键字排序（由小到大），再将活动的开始时间作为第二关键字排序（由小到大）
-定义dp[i]表示在前i场比赛中最多可以参加几场比赛，
-由此得出方程：dp[i]=max(dp[i-1],d</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/08/NOJ-1001-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
-        <p class="h4 index-header">NOJ-1001-二分查找</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">二分查找描述
-给定一个单调递增的整数序列，问某个整数是否在序列中。
-输入
-第一行为一个整数n，表示序列中整数的个数；第二行为n（n不超过10000）个整数；第三行为一个整数m（m不超过50000），表示查询的个数；接下来m行每行一个整数k。
-输出
-每个查询的输出占一行，如果k在序列中，输出Yes，否则输出No。
-输入样例
-51 3 4 7 113369
-输出样例
-YesNoNo
-思路：方法一：按照题目要求进行二分查找，由于a[]是单增数列，所以对于每一个输入查询x，我们先设置左边界l=1，有边界r=n，ans储存可能的位置，进行二分查找，每一次二分查找时mid=(l+r)/2。如果a[mid]&gt;=x，说明如果存在x，那么x一定在左边界（包括mid），那么此时r=mid-1，ans=mid；如果a[mid]&lt;x，则说明x一定在有边界。二分查找完之后，要验证a[ans]是否等于x，因为二分只是由于它是有序序列进行二分，不断查找与x最接近的数字，但它不一定能够是x。
-这个方法时间复杂度为O(nlogn).
-代码：
-#include&lt;cstdio&gt;
-#include&l</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/08/NOJ-1541-%E5%8A%A01%E4%B9%982%E5%B9%B3%E6%96%B9/">
-        <p class="h4 index-header">NOJ-1541-加1乘2平方</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">加1乘2平方描述
-给定两个正整数m、n，问只能做加1、乘2和平方这三种变化，从m变化到n最少需要几次
-输入
-输入两个10000以内的正整数m和n，且m小于n
-输出
-输出从m变化到n的最少次数
-输入样例
-1 16
-输出样例
-3
-方法1：思路：设定dp[i]表示从m到达i最少需要i步。初始化dp[]无穷大，显然dp[m]=0,即到起点的步数为0。对于i来讲可以到达i的只有三种状态：i-1、i/2、sqrt(i)（其中i/2和sqrt(i)需要满足整数条件）。这也是基于i整体单增的条件才满足动态规划。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-using namespace std;
-const int maxn = 10000 + 50;
-int dp[maxn], n,m;
-int min(int x,int y){
-    if(x&lt;=y)return x;
-    return</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/08/%E7%AC%AC45%E5%B1%8A%E5%9B%BD%E9%99%85%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B(ICPC)%E4%BA%9A%E6%B4%B2%E7%BD%91%E4%B8%8A%E5%8C%BA%E5%9F%9F%E8%B5%9B%E6%A8%A1%E6%8B%9F%E8%B5%9B%20E%20Eat%20Walnuts/">
-        <p class="h4 index-header">第45届国际大学生程序设计竞赛(ICPC)亚洲网上区域赛模拟赛 E Eat Walnuts</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">E Eat Walnuts题目描述As we all know, in the ACM ICPC held in 2017, the organizer of Xinjiang University presented a box of walnuts to each coach. Our coach is happy to share with the team members except Mr.Watermelon. He is going to test Mr.Watermelon with a game when Mr.Watermelon want to eat some walnuts.
-He put some walnuts in a row and let Mr.Watermelon pick one of them. And this walnut is not the ﬁrst or last in the queue. The price Mr.Watermelon need to pay is : the walnut, the walnut in front</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E5%8C%BA%E9%97%B4DP">区间DP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

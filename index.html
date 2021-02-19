@@ -153,6 +153,173 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/19/CodeForces-1486D-Max%20Median/">
+        <p class="h4 index-header">CodeForces-1486D-Max Median</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意
+ 给定数组a，求a数组中一段长度&gt;=k的区间，使得区间的中位数最大。（n为偶数，中位数就是a[n/2]，假定该区间从小到大排好）
+思路二分答案。假定当前判断最大中位数是否&gt;=x,替换所有a[i]&gt;=x为1，其余为-1，求前缀和以及前缀最小值，如果能够找到一个长度&gt;=k的区间的前缀和&gt;=1，说明存在某区间的中位数&gt;=x,  否则就不存在。假如i作为区间的右端点，如何找到以i为右端点且长度&gt;=k的区间的最大前缀和呢？显然前缀最小值就可以用上了minn[i-k]就表示i-k以前的所有前缀和的最小值，sum[i]-minn[i-k]就得到了以i为右端点且长度&gt;=k的区间的最大前缀和，如果存在上述的最大前缀和&gt;=1,说明最大中位数 &gt;=x.
+代码#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=2e5+50;
+int n,k,a[maxn],minn[maxn],sum[maxn],b[maxn];
+bool check(int mid){
+  </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-19&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%8C%E5%88%86">二分</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/19/CodeForces-1486C-Guessing%20the%20Greatest/">
+        <p class="h4 index-header">CodeForces-1486C-Guessing the Greatest</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意 
+交互题，每次可以询问一个区间[l,r]中第二大的数字的下标。最多问20次，最后输出最大的数的下标。
+思路设最大数为max，次大数为smax,最大数的下标为max_i,次大数的下标为smax_i，最后的答案为ans
+分两类情况：1）max在smax左边；2）max在smax右边
+1）max在smax左边：需要找到最大的下标m，使得[m,smax_i]的次大数为smax.那么就设定l=1,r=max(smax_i-1,1)，进行二分，mid=(l+r)/2, 如果[mid,smax_i]的次大数为smax，说明mid&lt;=max_i&lt;=x-1,那么就改变l=mid+1,ans=mid，否则就改变r=mid-1.
+2）max在smax右边：
+需要找到最小的下标m，使得[smax_i,m]的次大数为smax.那么就设定l=min(smax_i+1,n),r=n，进行二分，mid=(l+r)/2，如果[smax_i,mid]的次大数为smax，说明x+1&lt;=max_i&lt;=mid,那么就改变r=mid-1,ans=mid，否则就改变l=mid+1.
+二分次数为
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-19&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/%E4%BA%A4%E4%BA%92%E9%A2%98">交互题</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/19/CodeForces-1486B-Eastern%20Exhibition/">
+        <p class="h4 index-header">CodeForces-1486B-Eastern Exhibition</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意
+有n个房子，给定n个房子的二维坐标，需要设定一个展览馆，使得它到所有房子的距离总和相等（允许一个二维坐标点上存在多个房子），点(x1,y1)到点(x2,y2)的距离为|x1-x2|+|y1-y2|
+思路假如这是一个一维坐标，即在一个数轴上要到所有点的距离之和最小。这就是求数轴上所有点的中位数，如果n是奇数，那么就是中间那个点；如果n是偶数，那么x[n/2]和x[n/2+1]之间的所有点到这n个点的距离总和都是相等的。而这个问题是二维坐标：
+
+ans=\sum_{i=1}^n|x_i-x|+\sum_{i=1}^n|y_i-y|答案实际上跟xi和yi的对应顺序无关，可以把它们抽离出来变成两个一维问题进行解决，求出数轴上为xi的答案的数量totx，再求出数轴上为yi的答案的数量toty，这些答案任意组合到达n个坐标的距离总和都是最小的，所以总答案就是totx*toty.
+代码#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+const int maxn=1e4+50;
+ll n,m,T</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-19&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/19/CodeForces-1486A-Shifting%20Stacks/">
+        <p class="h4 index-header">CodeForces-1486A-Shifting Stacks</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意 
+允许从h[i]移动一个方格到h[i+1]上，可以操作若干次，问是否能让h[i]呈严格递增？
+思路让h[i]呈0，1，2，3，…，n-1，n即可。设res表示上一次h[i-1]可以移动的方格数，那么当前h[i]+=res,如果然后更新res=h[i]-(i-1),如果res=n-1即可)输出YES。
+代码#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+const int maxn=1e3+40;
+ll n,m,T,a[maxn];
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;n;
+        ll res=0;int sign=0;
+        for(int i=1;i&lt;=n;i++){
+            cin&gt;&gt;a[i];
+            a[i]+=res;
+            res=0;//contesting忘记置零 
+         </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-19&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2021/02/17/2-SAT%E4%B8%93%E9%A2%98/">
         <p class="h4 index-header">2-SAT专题</p>
         
@@ -397,170 +564,11 @@ n个节点的树，每个节点(2~n)有值a[i],一开始红色点和蓝色点都
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2021/02/13/CodeForces-1485/">
-        <p class="h4 index-header">CodeForces-1485</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">C. Floor and Mod 
-题目大意1&lt;=a&lt;=x,    1&lt;=b&lt;=y,给定x和y，找出有多少组(x,y)满足  ⌊a/b⌋=a%b
-思路由于 ⌊a/b⌋=a%b，则可设a=k  b+k（1&lt;=k&lt;=b-1）,而1&lt;=k  b+k&lt;=x(1&lt;=k&lt;=b-1),所以可以推出k * k&lt;=x(1&lt;=k&lt;=b-1),得到k&lt;=sqrt(x).这样可以通过枚举k的值，确定b的数量来得到最终的答案。
-由1&lt;=k * b+k&lt;=x可以得到b&lt;=x/k-1.结合1&lt;=k&lt;=b-1和1&lt;=b&lt;=y，可以推导出k&lt;b&lt;=min(x/k-1,y),所以对于任意的k它对应的b的数量就是max(0,min(x/k-1,y)-k).全部加起来就是答案
-代码#include&lt;bits/stdc++.h&gt;
-using namespace std;
-typedef long long ll;
-
-ll T,x,y;
-int main(){
-    cin&gt</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-13&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-            <a href="/tags/Math">Math</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/12/21/2020%EF%BC%88ICPC%EF%BC%89%E4%BA%9A%E6%B4%B2%E5%8C%BA%E5%9F%9F%E8%B5%9B%EF%BC%88%E5%8D%97%E4%BA%AC%EF%BC%89%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/">
-        <p class="h4 index-header">2020（ICPC）亚洲区域赛（南京）赛后总结</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">​    2020年的ICPC基本结束（还剩下济南站），我们队也打完了2020年的最后一场正式比赛。从最开始的轮流做队（LLZ）（其实就是我们三个人的第一个字母组合起来的）到后面的69岁，是acmer队（Mabaoguo）（队友觉得之前的队名不吉利，每次都轮流改题，场面一度混论，真是队如其名，于是就改名了），从暑假的集训到省赛再到天梯赛最后到ICPC的南京站，我们队2020年的比赛也就全部结束了。
-​    比赛开始前5min，三个人都不知道该选哪个题下手，随便挑了A、B、G题，看了1min。“这都是些什么题啊？”然后就等着看榜做题，顺带再看了一下A题。大概8min后，看到K题有人AC了，然后三人同时看K题（不再轮流做了QAQ），发现是一个构造题：构造出有且仅有k个gcd（ai，i）=1的全排列。当时第一反应就是k个之后的数就ai=i，k个前面的数循环后移一位。顺利签到一题。
-​    接着看榜做题，lcy翻译了L题的题意，当时感觉这题和这周CF的DIV3的最后一题特别相似，都是问一个区间内点的最大重复个数，lzy思路可能和我的有点类似，但我的略麻烦，需要用树状数组来维护。lzy WA</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-21&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%80%BB%E7%BB%93%E4%B8%8E%E6%B8%B8%E8%AE%B0">总结与游记</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/12/12/CodeForces-1461B-Find%20the%20Spruce/">
-        <p class="h4 index-header">CodeForces-1461B-Find the Spruce</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目大意：  
-思路：求出所有符合要求的图形。一开始想着枚举所有的点(i,j)，以点(i,j)为起点，向下不断寻找符合条件的图形，但是觉得太麻烦了。然后发现每一个点是否可以继续向下寻找符合条件的图形完全取决于点(i+1,j-1)、(i+1,j)、(i+1,j+1)这三个点是否都是*,并且点(i,j)可以向下找到几个符合条件的图形，也是取决于这三个点中最小的符合条件的图形的数量。这样完全可以从最后一行向上进行动态转移。一开始初始化所有为*的点(i,j),令它们dp[i][j]=1，然后从最后一行向上更新 dp[i][j]+=min(dp[i+1][j-1],min(dp[i+1][j],dp[i+1][j+1])); 最后答案就是所有dp[i][j]之和。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=500+50;
-typedef long long ll;
-ll T,n,m,dp[maxn][maxn];char s[maxn][maxn];
-int main(){
-    cin&gt;&g</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-            <a href="/tags/DP">DP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/12/12/CodeForces-1461C-Random%20Events/">
-        <p class="h4 index-header">CodeForces-1461C-Random Events</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目大意：思路：对于后缀序ai,ai+1,…,an如果该序列已经全部满足ai=i，那么对于任意的r∈[i,n]，他们是否排序都不会影响最终答案。但是如果不是这种序列就必须保证最后一个ai!=i必须有r=i，并且进行概率为p的操作。而后面的操作是否进行实际上都不影响答案，如果不进行刚才的操作，就必须保证r&gt;i的操作至少进行一次。因此答案需要累加r&gt;i的每钟操作一次。特判一下整个序列都已经从小到大排好的情况，此时答案为1.
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=1e5+50;
-int T,n,m,a[maxn];
-struct Node{
-    int f;double q;
-}t[maxn];
-int cmp(Node x,Node y){
-    return x.f&lt;y.f;
-}
-int main(){
-    cin&gt;&gt;T;
-    while(T--){
-        cin&gt;&gt;n&gt;&gt;m;
-        for(int i</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

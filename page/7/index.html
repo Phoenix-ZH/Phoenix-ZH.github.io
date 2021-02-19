@@ -153,6 +153,195 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/10/29/NOJ-%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA%E4%BD%9C%E4%B8%9A/">
+        <p class="h4 index-header">NOJ-算法设计理论作业</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1.二分查找描述
+给定一个单调递增的整数序列，问某个整数是否在序列中。
+输入
+第一行为一个整数n，表示序列中整数的个数；第二行为n（n不超过10000）个整数；第三行为一个整数m（m不超过50000），表示查询的个数；接下来m行每行一个整数k。
+输出
+每个查询的输出占一行，如果k在序列中，输出Yes，否则输出No。
+输入样例
+51 3 4 7 113369
+输出样例
+YesNoNo
+思路：方法一：按照题目要求进行二分查找，由于a[]是单增数列，所以对于每一个输入查询x，我们先设置左边界l=1，有边界r=n，ans储存可能的位置，进行二分查找，每一次二分查找时mid=(l+r)/2。如果a[mid]&gt;=x，说明如果存在x，那么x一定在左边界（包括mid），那么此时r=mid-1，ans=mid；如果a[mid]&lt;x，则说明x一定在有边界。二分查找完之后，要验证a[ans]是否等于x，因为二分只是由于它是有序序列进行二分，不断查找与x最接近的数字，但它不一定能够是x。
+这个方法时间复杂度为O(nlogn).
+代码：
+#include&lt;cstdio&gt;
+#include</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-29&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/10/23/NOJ-test3/">
+        <p class="h4 index-header">NOJ-test3</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">先占个坑,等什么时候有空了,再补题解,先贴上代码.
+代码都不长,就是简单bfs.vis标记注意状态.除了特殊的二阶魔方是真的恶心!
+A.加1乘2平方#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn=10000+50; 
+int n,m,vis[maxn];
+int min(int x,int y){
+    return x&lt;=y?x:y;
+}
+int main(){
+    cin&gt;&gt;m&gt;&gt;n;
+    memset(vis,0x3f3f3f3f,sizeof(vis));
+    vis[m]=1;
+    for(int i=m+1;i&lt;=n;i++){
+        int t=sqrt(i);
+        if(vis[i-1])vi</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-23&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/09/09/CodeForces-1407-D/">
+        <p class="h4 index-header">CodeForces-1407-D</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：Discrete Centrifugal Jumps
+题目大意：有n个楼房，给出n个楼房的高度，开始位于1号楼，最后需到达n号楼。当满足一下任一条件则可转移：
+i + 1 = j；
+max(hi+1,…,hj-1)&lt;min(hi,hj);
+max(hi,hj)&lt;min(hi+1,…,hj-1);
+求到达n号楼需要的最少步数。
+思路：根据条件有如下转移:
+1.dp[i]=dp[i-1]+1;
+2.i前面有一个下标假设为j，且这个j满足(a[j]&gt;max(a[j+1]……,a[i-1]); dp[i]=dp[j]+1;
+3.i前面有一个下标假设为j,且这个j满足(a[j]&lt;min(a[j+1]…….a[i-1]);dp[i]=dp[j]+1;
+那么找这个j的过程用单调栈优化。
+具体是什么意思呢？
+比如现在有
+h[i]：4 3 2 5 这样的楼高度
+ i :  1 2 3 4
+设一个down的单调栈，维护栈内的元素是单调递减的。当遍历到i=4的时候，由于h[4]&gt;h[down.top() =(3) ] ,那么此时down栈的单调递减性质破坏，需要不停d</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-09&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88">单调栈</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/09/05/CodeForces-1409/">
+        <p class="h4 index-header">CodeForces-1409</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A.题目名称:Yet Another Two Integers Problem 
+题目大意：每次选择一个k∈[1,10]，a可以a-=k或者a+=k，问需要的最小次数使得a变成b。
+思路：尽量选大，则D=abs(a-b)，D=ceil(D/10)
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+ll T,a,b;
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;a&gt;&gt;b;
+        ll d=abs(a-b);
+        ll ans=ceil(d*1.0/10.0);
+        cout&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}
+
+B.题目名称：Minimum Product 
+题目大意：每次可以对a-=1，或者b-=1，最多操作n次，并且保证a&gt;=x,b&gt;=y.求a * b的最小值。
+思路：先将a变成最小，若</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-05&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/08/31/CodeForces-1397/">
         <p class="h4 index-header">CodeForces-1397</p>
         
@@ -440,175 +629,11 @@ int main()
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/31/CodeForces-1388/">
-        <p class="h4 index-header">CodeForces-1388</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">A.题目名称： Captain Flint and Crew Recruitment 
-题目大意：如果一个数 x能够表示成两个不同质数的乘积，那我们就称 x是 nearly prime 。给出n，求n能否分成4个不同正整数的和，其中至少三个是 nearly prime 
-思路：首先可以取得最小的三个 nearly prime：6，10，14。如果n&lt;=30那么肯定无法得到符合要求的组合。如果n&gt;=45则至少都有6，10，14，所以一定可以得到符合要求的组合。问题就是30&lt;n&lt;45之间的情况，只需要单独分析x=6/10/14（x=n-30）的情况。
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int T,n;
-int main()
-{
-    cin&gt;&gt;T;
-    while(T--){
-        cin&gt;&gt;n;
-        if(n&lt;=30)
-        {
-            printf(&quot;NO\n&quot;);
-          </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-31&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/29/kuangbin%E4%B8%93%E9%A2%9814-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/">
-        <p class="h4 index-header">kuangbin专题14-数论基础</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.题目名称：LightOJ 1370 Bi-shoe and Phi-shoe
-题目大意：给出n个数字的序列a[]，对于每个数字ai找到一个欧拉函数值大于等于ai的数bi，求找到的所有数bi的最小值之和sum 
-思路：已知a[]&lt;=1000000,要求得phi[]，则应当线性求phi。
-1.phi(p) == p-1 因为素数p除了1以外的因子只有p，所以与 p 互素的个数是 p - 1个 
-2.phi(p^k) == p^k - p^(k-1) == (p-1) * p^(k-1) 
-3.如果i mod p == 0, 那么 phi(i  p) == p  phi(i)  
-4.如果i mod p != 0, 那么 phi(i  p) == phi(i)  (p-1)  
-求得phi[]之后，就寻找大于等于a[i]的最小的phi[]的下标，求和。
-PS：WA了很多次：a[]&lt;=1000000,但是phi[]可能&gt;1000000
-代码：#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int maxn=</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-29&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B%E7%B4%A0%E6%95%B0">线性筛素数</a>&nbsp;
-          
-            <a href="/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0">欧拉函数</a>&nbsp;
-          
-            <a href="/tags/hopcroft-karp">hopcroft-karp</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/24/NWPU-%E7%BA%BF%E6%AE%B5%E6%A0%91/">
-        <p class="h4 index-header">NWPU-线段树</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">一.综述假设有编号从1到n的n个点，每个点都存了一些信息，用[L,R]表示下标从L到R的这些点。线段树的用处就是，对编号连续的一些点进行修改或者统计操作，修改和统计的复杂度都是O(log2(n)).
-线段树的原理，就是，将[1,n]分解成若干特定的子区间(数量不超过4*n),然后，将每个区间[L,R]都分解为少量特定的子区间，通过对这些少量子区间的修改或者统计，来实现快速对[L,R]的修改或者统计。
-由此看出，用线段树统计的东西，必须符合区间加法，否则，不可能通过分成的子区间来得到[L,R]的统计结果。
-符合区间加法的例子：1.数字之和——总数字之和 = 左区间数字之和 + 右区间数字之和2.最大公因数(GCD)——总GCD = gcd( 左区间GCD , 右区间GCD );3.最大值——总最大值=max(左区间最大值，右区间最大值)不符合区间加法的例子：1.众数——只知道左右区间的众数，没法求总区间的众数2.01序列的最长连续零——只知道左右区间的最长连续零，没法知道总的最长连续零
-一个问题，只要能化成对一些连续点的修改和统计问题，基本就可以用线段树来解决了，具体怎么转化在第六节会讲</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-24&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91">线段树</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/07/22/NWPU-DP/">
-        <p class="h4 index-header">NWPU-DP</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">1.题目：D - Proud Merchants题目大意：n种商品，m元钱，每种商品都有p,q,v属性，p价格，q表示买这种商品你需要带q元老板才愿意和你交易，v这种商品的实际价值。求问最多可以获得多少价值 。
-思路：如果p=q，那么就是01背包。但是如果p！=q， 如果A:p1 q1, B:p2 q2 ， 假设单独买A或者B的话，都是可以买到的 。 若先买A，则你至少需要p1+q2的钱；若先买B，则至少需要p2+q1的钱。  那肯定是花最少的钱 ，所以如果先买A再买B ， 那么p1+q2q2-p2  也就是说qi-pi大的先买。注意：排序的时候，得按照qi-pi从小到大排序，因为你买第n件商品的时候，是在比较你是否要先买第n件商品。 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=5000+10;
-struct N
-{
-    int p,q,v;
-}a[ma</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-07-22&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/DP">DP</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/6/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/6/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

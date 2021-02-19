@@ -153,6 +153,176 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/08/NOJ-1205-%E6%B4%BB%E5%8A%A8%E5%AE%89%E6%8E%92/">
+        <p class="h4 index-header">NOJ-1205-活动安排</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">活动安排问题描述
+Jack是一名nwpu的大一新生，对学校举办的各种活动都十分的好奇，想尽可能多的参加这些活动。Npwu每天共有N项活动，其开始结束时间分别为B[i],E[i],(i = 1,2,……N)请问Jack一天最多能参加几项活动。当然，Jack在同一时间内只能参加一项活动，即jack参加的活动时间上不能重叠，但时间为[t1,t2],[t2,t3]的两个活动是可以同时参加的。
+输入
+第一行 一个整数N(1&lt;=n&lt;=1000)表示活动总数。接下来N行表示各活动的起始，结束时间0&lt;=B[i]&lt;E[i]&lt;24
+输出
+一个整数表示Jack最多能参加的活动数目。
+输入样例
+410 112 38 100 2
+输出样例
+4
+提示printf(“%d\n,num”);
+思路方法一：题意很明显希望参加的活动数目尽量多。对于活动安排问题可以采取动态规划的策略：
+首先将活动的结束时间按照第一关键字排序（由小到大），再将活动的开始时间作为第二关键字排序（由小到大）
+定义dp[i]表示在前i场比赛中最多可以参加几场比赛，
+由此得出方程：dp[i]=max(dp[i-1],d</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/08/NOJ-1001-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+        <p class="h4 index-header">NOJ-1001-二分查找</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">二分查找描述
+给定一个单调递增的整数序列，问某个整数是否在序列中。
+输入
+第一行为一个整数n，表示序列中整数的个数；第二行为n（n不超过10000）个整数；第三行为一个整数m（m不超过50000），表示查询的个数；接下来m行每行一个整数k。
+输出
+每个查询的输出占一行，如果k在序列中，输出Yes，否则输出No。
+输入样例
+51 3 4 7 113369
+输出样例
+YesNoNo
+思路：方法一：按照题目要求进行二分查找，由于a[]是单增数列，所以对于每一个输入查询x，我们先设置左边界l=1，有边界r=n，ans储存可能的位置，进行二分查找，每一次二分查找时mid=(l+r)/2。如果a[mid]&gt;=x，说明如果存在x，那么x一定在左边界（包括mid），那么此时r=mid-1，ans=mid；如果a[mid]&lt;x，则说明x一定在有边界。二分查找完之后，要验证a[ans]是否等于x，因为二分只是由于它是有序序列进行二分，不断查找与x最接近的数字，但它不一定能够是x。
+这个方法时间复杂度为O(nlogn).
+代码：
+#include&lt;cstdio&gt;
+#include&l</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/08/NOJ-1541-%E5%8A%A01%E4%B9%982%E5%B9%B3%E6%96%B9/">
+        <p class="h4 index-header">NOJ-1541-加1乘2平方</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">加1乘2平方描述
+给定两个正整数m、n，问只能做加1、乘2和平方这三种变化，从m变化到n最少需要几次
+输入
+输入两个10000以内的正整数m和n，且m小于n
+输出
+输出从m变化到n的最少次数
+输入样例
+1 16
+输出样例
+3
+方法1：思路：设定dp[i]表示从m到达i最少需要i步。初始化dp[]无穷大，显然dp[m]=0,即到起点的步数为0。对于i来讲可以到达i的只有三种状态：i-1、i/2、sqrt(i)（其中i/2和sqrt(i)需要满足整数条件）。这也是基于i整体单增的条件才满足动态规划。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int maxn = 10000 + 50;
+int dp[maxn], n,m;
+int min(int x,int y){
+    if(x&lt;=y)return x;
+    return</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/08/%E7%AC%AC45%E5%B1%8A%E5%9B%BD%E9%99%85%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B(ICPC)%E4%BA%9A%E6%B4%B2%E7%BD%91%E4%B8%8A%E5%8C%BA%E5%9F%9F%E8%B5%9B%E6%A8%A1%E6%8B%9F%E8%B5%9B%20E%20Eat%20Walnuts/">
+        <p class="h4 index-header">第45届国际大学生程序设计竞赛(ICPC)亚洲网上区域赛模拟赛 E Eat Walnuts</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">E Eat Walnuts题目描述As we all know, in the ACM ICPC held in 2017, the organizer of Xinjiang University presented a box of walnuts to each coach. Our coach is happy to share with the team members except Mr.Watermelon. He is going to test Mr.Watermelon with a game when Mr.Watermelon want to eat some walnuts.
+He put some walnuts in a row and let Mr.Watermelon pick one of them. And this walnut is not the ﬁrst or last in the queue. The price Mr.Watermelon need to pay is : the walnut, the walnut in front</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-08&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%8C%BA%E9%97%B4DP">区间DP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/06/NOJ-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C%E9%97%AE%E9%A2%98/">
         <p class="h4 index-header">NOJ-最大连续子序列和问题</p>
         
@@ -397,161 +567,11 @@ const int maxn = 20000</div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E5%9B%9B%EF%BC%89/">
-        <p class="h4 index-header">NOJ-花生米（四）</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">花生米（四）描述
-五一长假第四天，Tom逛了N个bbs，做了N^2个脑筋急转弯题，终于发现了每次吃完花生米嘴里都是苦味的原因：自己总会吃到最后一粒花生米。五一长假第五天，Tom和Jerry在仓库散步的时候发现了n堆花生米（这是什么仓库啊？！）。这次Tom制定分花生米规则如下：1、首先选出最苦的一粒花生米，放到一个瓶子里；2、Tom和Jerry轮流从任意一堆花生米中取出任意粒吃掉；3、如果Tom吃到最后一粒花生米（瓶子里的花生米除外），Jerry必须吃掉瓶子里的花生米；如果Jerry吃到最后一粒花生米（瓶子里的花生米除外），Tom自愿吃掉瓶子里的花生米；4、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然希望瓶子里的花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
-输入
-本题有多个测例。每个测例的输入第一行是一个整数n，n大于零小于等于10，代表花生米的堆数（取出最苦花生米后）；接下来n行每行一个不超过100的正整数，分别代表一堆花生米的粒数（取出最苦花生米后）。n等于0表示输入结束，不需要处理。
-输出
-每个测例在单独的一行内输出一个整数：Jerry</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%B8%89%EF%BC%89/">
-        <p class="h4 index-header">NOJ-花生米（三）</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">花生米（三）描述
-五一长假第三天，Tom和Jerry在仓库散步的时候又发现了一堆花生米（仓库，又见仓库……）。这次Tom制定分花生米规则如下：1、Tom和Jerry轮流从堆中取出k粒花生米吃掉；2、第一次取花生米的人只能取一粒，以后取花生米的数量不能超过前一个人取花生米数量的两倍；3、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然还是希望最后一粒花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
-输入
-本题有多个测例，每个测例的输入是一个整数n，n大于零小于等于1000，代表花生米的数量。n等于0表示输入结束，不需要处理。
-输出
-每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取输出0。
-输入样例
-123450
-输出样例
-01001
-思路这个题与花生米（二）https://blog.csdn.net/Phoenix_ZengHao/article/details/109495057  相比，状态变多了。之前对于状态i，它只能由状态i-1，i-5，i-10进行推导。显然直接枚举状态并且对每一个状态做三个dp转移方程是行不通的。我们需</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E8%8A%B1%E7%94%9F%E7%B1%B3%EF%BC%88%E4%BA%8C%EF%BC%89/">
-        <p class="h4 index-header">NOJ-花生米（二）</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">花生米（二）描述
-五一长假第二天，Tom和Jerry在仓库散步的时候又发现了一堆花生米（这个仓库还真奇怪）。这次Tom制定分花生米规则如下：    1、Tom和Jerry轮流从堆中取出k粒花生米吃掉，k可以是1，5，10中的任意一个数字；    2、为显示规则的公平性，Jerry可以选择先取或者后取。Jerry当然还是希望最后一粒花生米被Tom吃掉。请计算，Jerry为了达到目的应该先取还是后取。
-输入
-本题有多个测例，每个测例的输入是一个整数n，n大于零小于等于1000，代表花生米的数量。n等于0表示输入结束，不需要处理。
-输出
-每个测例在单独的一行内输出一个整数：Jerry先取输出1；Tom先取输出0。
-输入样例
-12340
-输出样例
-0101
-思路博弈论：定义： jerry后手胜利 为必胜态。（即：Tom拿了最后一颗并且初始Jerry后手）10以内的必胜状态：1,3,5,7,9.由于可以一次拿10个，我们需要考虑10周围的情况:11为必胜 。什么才是必败态？当前面i-1,i-5,i-10这10个状态都是必胜态的时候， i一定是必败态。否则 i就有机会成为必胜态。必胜状态推导出的下</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/04/NOJ-%E6%97%85%E6%B8%B8%E9%A2%84%E7%AE%97/">
-        <p class="h4 index-header">NOJ-旅游预算</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">旅游预算描述
-一个旅行社需要估算乘汽车从某城市到另一城市的最小费用，沿路有若干加油站，每个加油站收费不一定相同。旅游预算有如下规则： 若油箱的油过半，不停车加油，除非油箱中的油不可支持到下一站；每次加油时都加满；在一个加油站加油时，司机要花费2元买东西吃；司机不必为其他意外情况而准备额外的油；汽车开出时在起点加满油箱；计算精确到分（1元=100分）。编写程序估计实际行驶在某路线所需的最小费用。
-输入
-第一行为起点到终点的距离（实数） 第二行为三个实数，后跟一个整数，每两个数据间用一个空格隔开。其中第一个数为汽车油箱的容量（升），第二个数是每升汽油行驶的公里数，第三个数是在起点加满油箱的费用（精确到分），第四个数是加油站的数量。（〈=50）。接下去的每行包括两个实数，每个数据之间用一个空格分隔，其中第一个数是该加油站离起点的距离，第二个数是该加油站每升汽油的价格（元/升）。加油站按它们与起点的距离升序排列。所有的输入都有一定有解。
-输出
-共两行，每行都有换行 第一行为一个实数和一个整数，实数为旅行的最小费用，以元为单位，精确到分，整数表示途中加油的站的N。第二行是N个整数，表示N个加油的</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-04&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

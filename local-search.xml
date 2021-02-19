@@ -4,6 +4,86 @@
   
   
   <entry>
+    <title>CodeForces-1486D-Max Median</title>
+    <link href="/2021/02/19/CodeForces-1486D-Max%20Median/"/>
+    <url>/2021/02/19/CodeForces-1486D-Max%20Median/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p><img src="https://img-blog.csdnimg.cn/20210219155552628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"></p><p> 给定数组a，求a数组中一段长度&gt;=k的区间，使得区间的中位数最大。（n为偶数，中位数就是a[n/2]，假定该区间从小到大排好）</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>二分答案。假定当前判断最大中位数是否&gt;=x,替换所有a[i]&gt;=x为1，其余为-1，求前缀和以及前缀最小值，如果能够找到一个长度&gt;=k的区间的前缀和&gt;=1，说明存在某区间的中位数&gt;=x,  否则就不存在。假如i作为区间的右端点，如何找到以i为右端点且长度&gt;=k的区间的最大前缀和呢？显然前缀最小值就可以用上了minn[i-k]就表示i-k以前的所有前缀和的最小值，sum[i]-minn[i-k]就得到了以i为右端点且长度&gt;=k的区间的最大前缀和，如果存在上述的最大前缀和&gt;=1,说明最大中位数 &gt;=x.</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn=2e5+50;int n,k,a[maxn],minn[maxn],sum[maxn],b[maxn];bool check(int mid){    for(int i=1;i&lt;=n;i++){        if(a[i]&gt;=mid)b[i]=1;        else b[i]=-1;    }    for(int i=1;i&lt;=n;i++)sum[i]=sum[i-1]+b[i],minn[i]=min(minn[i-1],sum[i]);    for(int i=k;i&lt;=n;i++){        if(sum[i]-minn[i-k]&gt;=1)return 1;    }    return 0;}int main(){    cin&gt;&gt;n&gt;&gt;k;    for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i];    int l=1,r=n,ans=0;    while(l&lt;=r){        int mid=(l+r)/2;        if(check(mid)){            l=mid+1;            ans=mid;        }        else{            r=mid-1;        }    }    cout&lt;&lt;ans&lt;&lt;endl;    return 0;}</code></pre>        <div id="aplayer-sSkJikBL" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-sSkJikBL"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CodeForces</tag>
+      
+      <tag>二分</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CodeForces-1486C-Guessing the Greatest</title>
+    <link href="/2021/02/19/CodeForces-1486C-Guessing%20the%20Greatest/"/>
+    <url>/2021/02/19/CodeForces-1486C-Guessing%20the%20Greatest/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p><img src="https://img-blog.csdnimg.cn/20210219153228763.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"> </p><p>交互题，每次可以询问一个区间[l,r]中第二大的数字的下标。最多问20次，最后输出最大的数的下标。</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>设最大数为max，次大数为smax,最大数的下标为max_i,次大数的下标为smax_i，最后的答案为ans</p><p>分两类情况：1）max在smax左边；2）max在smax右边</p><p>1）max在smax左边：<br>需要找到最大的下标m，使得[m,smax_i]的次大数为smax.那么就设定l=1,r=max(smax_i-1,1)，进行二分，mid=(l+r)/2, 如果[mid,smax_i]的次大数为smax，说明mid&lt;=max_i&lt;=x-1,那么就改变l=mid+1,ans=mid，否则就改变r=mid-1.</p><p>2）max在smax右边：</p><p>需要找到最小的下标m，使得[smax_i,m]的次大数为smax.那么就设定l=min(smax_i+1,n),r=n，进行二分，mid=(l+r)/2，如果[smax_i,mid]的次大数为smax，说明x+1&lt;=max_i&lt;=mid,那么就改变r=mid-1,ans=mid，否则就改变l=mid+1.</p><p>二分次数为</p><script type="math/tex; mode=display">log_210000=17</script><p>而查询区间[1,n]的次大数需要一次，判断max在s_max左边还是右边需要1次，总共需要19次。</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int maxn=1e4+50;int ask(int l,int r){    int x;    cout&lt;&lt;&quot;? &quot;&lt;&lt;l&lt;&lt;&#39; &#39;&lt;&lt;r&lt;&lt;endl;cout.flush();    cin&gt;&gt;x;    return x;}int n,x;int main(){    cin&gt;&gt;n;    x=ask(1,n);    int ans=0;    if(1!=x&amp;&amp;(x==n||ask(1,x)==x)){        int l=1,r=max(1,x-1);        while(l&lt;=r){            int mid=(l+r)/2;            if(ask(mid,x)==x)l=mid+1,ans=mid;            else r=mid-1;        }        }    else{        int l=min(x+1,n),r=n;        while(l&lt;=r){            int mid=(l+r)/2;            if(ask(x,mid)==x)r=mid-1,ans=mid;            else l=mid+1;        }    }    cout&lt;&lt;&quot;! &quot;&lt;&lt;ans&lt;&lt;endl;    return 0;}</code></pre>        <div id="aplayer-pmpFLnZw" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-pmpFLnZw"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CodeForces</tag>
+      
+      <tag>交互题</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CodeForces-1486B-Eastern Exhibition</title>
+    <link href="/2021/02/19/CodeForces-1486B-Eastern%20Exhibition/"/>
+    <url>/2021/02/19/CodeForces-1486B-Eastern%20Exhibition/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p><img src="https://img-blog.csdnimg.cn/20210219152125485.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p>有n个房子，给定n个房子的二维坐标，需要设定一个展览馆，使得它到所有房子的距离总和相等（允许一个二维坐标点上存在多个房子），点(x1,y1)到点(x2,y2)的距离为|x1-x2|+|y1-y2|</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>假如这是一个一维坐标，即在一个数轴上要到所有点的距离之和最小。这就是求数轴上所有点的中位数，如果n是奇数，那么就是中间那个点；如果n是偶数，那么x[n/2]和x[n/2+1]之间的所有点到这n个点的距离总和都是相等的。而这个问题是二维坐标：</p><script type="math/tex; mode=display">ans=\sum_{i=1}^n|x_i-x|+\sum_{i=1}^n|y_i-y|</script><p>答案实际上跟xi和yi的对应顺序无关，可以把它们抽离出来变成两个一维问题进行解决，求出数轴上为xi的答案的数量totx，再求出数轴上为yi的答案的数量toty，这些答案任意组合到达n个坐标的距离总和都是最小的，所以总答案就是totx*toty.</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int maxn=1e4+50;ll n,m,T,x[maxn],y[maxn];int main(){    cin&gt;&gt;T;    while(T--){        cin&gt;&gt;n;        for(int i=1;i&lt;=n;i++)cin&gt;&gt;x[i]&gt;&gt;y[i];        sort(x+1,x+1+n);sort(y+1,y+1+n);ll ans=0;        if(n%2){            cout&lt;&lt;1&lt;&lt;endl;        }        else{            ll totx=x[n/2+1]-x[n/2]+1;            ll toty=y[n/2+1]-y[n/2]+1;            ans=totx*toty;            cout&lt;&lt;ans&lt;&lt;endl;        }    }    return 0;}</code></pre>        <div id="aplayer-ktkPoBZm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-ktkPoBZm"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CodeForces</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CodeForces-1486A-Shifting Stacks</title>
+    <link href="/2021/02/19/CodeForces-1486A-Shifting%20Stacks/"/>
+    <url>/2021/02/19/CodeForces-1486A-Shifting%20Stacks/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p><img src="https://img-blog.csdnimg.cn/20210219151452314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1Bob2VuaXhfWmVuZ0hhbw==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"> </p><p>允许从h[i]移动一个方格到h[i+1]上，可以操作若干次，问是否能让h[i]呈严格递增？</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>让h[i]呈0，1，2，3，…，n-1，n即可。设res表示上一次h[i-1]可以移动的方格数，那么当前h[i]+=res,如果然后更新res=h[i]-(i-1),如果res<0，说明h[i]无法满足h[i]=i-1,直接输出NO，如果都满足h[i]=i-1(h[n]>=n-1即可)输出YES。</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="lang-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int maxn=1e3+40;ll n,m,T,a[maxn];int main(){    cin&gt;&gt;T;    while(T--){        cin&gt;&gt;n;        ll res=0;int sign=0;        for(int i=1;i&lt;=n;i++){            cin&gt;&gt;a[i];            a[i]+=res;            res=0;//contesting忘记置零             res+=a[i]-(i-1);            if(res&lt;0){                sign=1;                break;            }        }        if(sign)cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;        else cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;    }    return 0;}</code></pre>        <div id="aplayer-vMlpmWUa" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-vMlpmWUa"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CodeForces</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2-SAT专题</title>
     <link href="/2021/02/17/2-SAT%E4%B8%93%E9%A2%98/"/>
     <url>/2021/02/17/2-SAT%E4%B8%93%E9%A2%98/</url>

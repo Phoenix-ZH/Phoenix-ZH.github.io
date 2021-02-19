@@ -153,6 +153,161 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4300/">
+        <p class="h4 index-header">HDU-4300</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-4300 Clairewd’s message
+题目链接：https://vjudge.net/problem/HDU-4300
+题目大意：第一行给的是26个字母对应的翻译密码，而第二行给的是文本串，该文本串前面部分为加密后的内容，而后部分(可能不完整)为未加密的内容。求：一行字符串前一半为加密后的内容，后一半为未加密的内容。一一对应的关系。
+题解：由题意可知，文本串前一部分是加密过后的内容，后一部分是未加密的内容，而这一部分可能是不完整的。则可理解为s=stringA+stringB。可以根据第一行给的加密方式将s整体当作加密内容，将其转化为整体未加密的内容，即字符串s转化成了t。这时候将原s的所有后缀与t匹配，这个过程实际上就是ex-kmp，将t作为子串，s作为母串，求t与s的所有后缀的公共前缀的长度extend[]。如果extend[i]+i==len(s)&amp;&amp;i&gt;=extend[i].即以i为分界点，s[0…i-1]作为stringA，s[i…len-1]作为stringB，即stringB就是原文本内容。(i&gt;=extend[i]</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/ex-kmp">ex-kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-1238/">
+        <p class="h4 index-header">HDU-1238</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU-1238 Substrings
+题目链接：https://vjudge.net/problem/HDU-1238#author=organicsalt
+题目大意：给n个字符串，问是否存在一个子串(或将该子串reverse)为所有字符串的子串。
+题解：将第一个字符串的所有子串与其余子串匹配一遍，如果有一个匹配失败，就将该子串reverse再匹配。这里使用reverse会更快，用kmp加速。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1005;
+int n,T,Next[maxn],len1,len2;string s[105],s2;
+void next_pre(int len)
+{
+    int i=0,j=1;Next[0]=-1;
+    while(j&lt;len)
+    {
+        while(Next[i]!=-1&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-2328/">
+        <p class="h4 index-header">HDU-2328</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 2328 Corporate Identity
+题目链接：https://vjudge.net/problem/HDU-2328
+题目大意：求n个字符串的最长公共子串，若有多个则输出字典序最小的，若没有就输出“IDENTITY LOST”。
+题解：这道题就相当简单了，直接暴力枚举第一个字符串的所有子串，用kmp与所有别的字符串匹配，看它们是否都包含了这个子串，将符合条件的子串存进数组，在排序sort一下，输出第一个字符串即可。用到substr函数。不过数据可能比较水，理论上时间复杂度是不够的，以为会TLE，结果可以过，甚至暴力都可以过。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=4000+5;
+int len1,len2,Next[maxn],n,ans;string s1[maxn],s2,Ans[maxn];
+void next_p</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-3374/">
+        <p class="h4 index-header">HDU-3374</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 3374 String Problem
+题目链接：https://vjudge.net/problem/HDU-3374
+题目大意：对于一个字符串，它可以每次左移一次，得到一个新的字符串，因此一个长度为n的字符串，可以得到n个字符串。问，字典序最小的字符串排第几位，一共有多少个，字典序最大的字符串排第几位，一共有多少个ps:如果最大和最小的有多个，输出最先出现的那个。
+题解：求有多少个相同的字符串相对简单，并且运用到了kmp的知识，只有内部循环的字符串才可能会重复，对于这种字符串来讲它的循环节T= n-Next[n]，出现次数times=n/T。如何求最大字符串和最小字符串呢？这个就需要用到字符串的最小表示法和最大表示法。这里简单描述一下字符串的最小表示法，至于字符串的最大表示法，可以将最小表示法照搬修改即可。字符串的最小表示法：设定一个opt1和一个opt2与k。初始opt1=0，opt2=1，k=0，一开始指向s[0],s[1]如果s[opt1+k]==s[opt2+k]，则k++.注意opt2+k可能越界，所以要对len取模。当k==len时，说明每一个字符</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F(%E5%A4%A7)%E8%A1%A8%E7%A4%BA%E6%B3%95">字符串的最小(大)表示法</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/HDU-2609/">
         <p class="h4 index-header">HDU-2609</p>
         
@@ -390,186 +545,11 @@ in</div>
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2387/">
-        <p class="h4 index-header">POJ-2387</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2387 Til the Cows Come Home
-题目链接：https://vjudge.net/problem/POJ-2387#author=ght5160
-题目大意：求从1到n的最短距离
-题解：最短路模板，spfa或者dijkstra+堆优化。朴素Dijkstra：时间复杂度o(n^2)堆优化Dijkstra：时间复杂度o(（V+E）logV）
-spfa在稀疏图O（E），稠密图O（VE）
-dijkstra+堆优化的代码：
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=2000+5;
-int n,m,k=1,dist[maxn],vis[maxn],head[maxn];
-struct node
-{
-    int to,next,w;
-}edge[maxn*2];
-struct N
-{
-  </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-2253/">
-        <p class="h4 index-header">POJ-2253</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 2253 Frogger
-题目链接：https://vjudge.net/problem/POJ-2253#author=dusenlin
-题目大意：两块石头之间的青蛙距离被定义为两块石头之间所有可能路径上的最小必要跳跃距离，某条路径的必要跳跃距离即这条路径中单次跳跃的最远跳跃距离。求1到2的最小必要跳跃距离。
-题解：数据很小，符合Floyd算法。每一次更新的时候需要调整一下：dist[i][j]=min(dist[i][j],max(dist[i][k],dist[k][j]));因为必要跳跃距离是指整个路径单次跳跃的最远距离，所以取max
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;cmath&gt;
-using namespace std;
-const int maxn=200+5;
-int n;double dist[maxn][maxn],x[maxn],y[maxn];
-i</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1797/">
-        <p class="h4 index-header">POJ-1797</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1797 Heavy Transportation
-题目链接：https://vjudge.net/problem/POJ-1797#author=0
-题目大意：求1-n路径上边权最小值最大。
-题解：最短路径的变形题，用spfa来实现原本的dist[edge[i].to]=min(dist[edge[i].to],dist[x]+edge[i].w)修改为dist[edge[i].to]=max(dist[edge[i].to],min(dist[x],edge[i].w)注意初始化dist全为0，由于收缩，dist[1] =0x3f3f3f3f;
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=1000000+5;
-const int maxm=1000+5;
-int k=1,T,n,m,head</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-3268/">
-        <p class="h4 index-header">POJ-3268</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 3268 Silver Cow Party
-题目链接：https://vjudge.net/problem/POJ-3268#author=Demon_de_Laplace
-题目大意：N头牛，M条单行道，在s出举行聚会，每头牛出发和返回都是走最短路，问所有牛中走的路程最远的牛走了多远？
-题解：建边的时候建双向边，k=2开始.当边号为偶数时，说明是正边；当边号为奇数时，说明时反边；从s出发，跑正边，dist[i]存的是从s到i的最短距离；从s出发，跑反边，dist[i]存的是从i到s的最短距离；ans=max(ans,dist1[i]+dist2[i])
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=100000+5;
-int n,m,t,k=1,head[maxn],vis[maxn],dist1</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/11/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/13/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/page/11/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/13/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

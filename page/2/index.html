@@ -153,6 +153,165 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/02/13/CodeForces-1485/">
+        <p class="h4 index-header">CodeForces-1485</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">C. Floor and Mod 
+题目大意1&lt;=a&lt;=x,    1&lt;=b&lt;=y,给定x和y，找出有多少组(x,y)满足  ⌊a/b⌋=a%b
+思路由于 ⌊a/b⌋=a%b，则可设a=k  b+k（1&lt;=k&lt;=b-1）,而1&lt;=k  b+k&lt;=x(1&lt;=k&lt;=b-1),所以可以推出k * k&lt;=x(1&lt;=k&lt;=b-1),得到k&lt;=sqrt(x).这样可以通过枚举k的值，确定b的数量来得到最终的答案。
+由1&lt;=k * b+k&lt;=x可以得到b&lt;=x/k-1.结合1&lt;=k&lt;=b-1和1&lt;=b&lt;=y，可以推导出k&lt;b&lt;=min(x/k-1,y),所以对于任意的k它对应的b的数量就是max(0,min(x/k-1,y)-k).全部加起来就是答案
+代码#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+
+ll T,x,y;
+int main(){
+    cin&gt</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-13&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/Math">Math</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/21/2020%EF%BC%88ICPC%EF%BC%89%E4%BA%9A%E6%B4%B2%E5%8C%BA%E5%9F%9F%E8%B5%9B%EF%BC%88%E5%8D%97%E4%BA%AC%EF%BC%89%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93/">
+        <p class="h4 index-header">2020（ICPC）亚洲区域赛（南京）赛后总结</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">​    2020年的ICPC基本结束（还剩下济南站），我们队也打完了2020年的最后一场正式比赛。从最开始的轮流做队（LLZ）（其实就是我们三个人的第一个字母组合起来的）到后面的69岁，是acmer队（Mabaoguo）（队友觉得之前的队名不吉利，每次都轮流改题，场面一度混论，真是队如其名，于是就改名了），从暑假的集训到省赛再到天梯赛最后到ICPC的南京站，我们队2020年的比赛也就全部结束了。
+​    比赛开始前5min，三个人都不知道该选哪个题下手，随便挑了A、B、G题，看了1min。“这都是些什么题啊？”然后就等着看榜做题，顺带再看了一下A题。大概8min后，看到K题有人AC了，然后三人同时看K题（不再轮流做了QAQ），发现是一个构造题：构造出有且仅有k个gcd（ai，i）=1的全排列。当时第一反应就是k个之后的数就ai=i，k个前面的数循环后移一位。顺利签到一题。
+​    接着看榜做题，lcy翻译了L题的题意，当时感觉这题和这周CF的DIV3的最后一题特别相似，都是问一个区间内点的最大重复个数，lzy思路可能和我的有点类似，但我的略麻烦，需要用树状数组来维护。lzy WA</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-21&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E6%80%BB%E7%BB%93%E4%B8%8E%E6%B8%B8%E8%AE%B0">总结与游记</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/12/CodeForces-1461B-Find%20the%20Spruce/">
+        <p class="h4 index-header">CodeForces-1461B-Find the Spruce</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：  
+思路：求出所有符合要求的图形。一开始想着枚举所有的点(i,j)，以点(i,j)为起点，向下不断寻找符合条件的图形，但是觉得太麻烦了。然后发现每一个点是否可以继续向下寻找符合条件的图形完全取决于点(i+1,j-1)、(i+1,j)、(i+1,j+1)这三个点是否都是*,并且点(i,j)可以向下找到几个符合条件的图形，也是取决于这三个点中最小的符合条件的图形的数量。这样完全可以从最后一行向上进行动态转移。一开始初始化所有为*的点(i,j),令它们dp[i][j]=1，然后从最后一行向上更新 dp[i][j]+=min(dp[i+1][j-1],min(dp[i+1][j],dp[i+1][j+1])); 最后答案就是所有dp[i][j]之和。
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=500+50;
+typedef long long ll;
+ll T,n,m,dp[maxn][maxn];char s[maxn][maxn];
+int main(){
+    cin&gt;&g</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+            <a href="/tags/DP">DP</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/12/12/CodeForces-1461C-Random%20Events/">
+        <p class="h4 index-header">CodeForces-1461C-Random Events</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目大意：思路：对于后缀序ai,ai+1,…,an如果该序列已经全部满足ai=i，那么对于任意的r∈[i,n]，他们是否排序都不会影响最终答案。但是如果不是这种序列就必须保证最后一个ai!=i必须有r=i，并且进行概率为p的操作。而后面的操作是否进行实际上都不影响答案，如果不进行刚才的操作，就必须保证r&gt;i的操作至少进行一次。因此答案需要累加r&gt;i的每钟操作一次。特判一下整个序列都已经从小到大排好的情况，此时答案为1.
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=1e5+50;
+int T,n,m,a[maxn];
+struct Node{
+    int f;double q;
+}t[maxn];
+int cmp(Node x,Node y){
+    return x.f&lt;y.f;
+}
+int main(){
+    cin&gt;&gt;T;
+    while(T--){
+        cin&gt;&gt;n&gt;&gt;m;
+        for(int i</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-12-12&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/12/12/CodeForces-1461D-Divide%20and%20Summarize/">
         <p class="h4 index-header">CodeForces-1461D-Divide and Summarize</p>
         
@@ -437,206 +596,11 @@ void dfs(int x,int y){
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1144-%E5%86%9C%E5%9C%BA%E7%81%8C%E6%BA%89%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">NOJ-1144-农场灌溉问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">农场灌溉问题 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=100+5;
-struct Node{
-    int l,r,u,d;
-}t[maxn],a[maxn][maxn];
-int n,m,vis[maxn][maxn]; 
-void dfs(int x,int y){
-    if(vis[x][y])return ;
-    vis[x][y]=1;
-    if(a[x][y].l&amp;&amp;y-1&gt;=1&amp;&amp;a[x][y-1].r)dfs(x,y-1);
-    if(a[x][y].r&amp;&amp;y+1&lt;=m&amp;&amp;a[x][y+1].l)dfs(x,y+1);
-    if(a[x][y].d&amp;&amp;x+1&lt;=n&amp;&amp;a[x+1][y].u)dfs(x+1</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1143-%E5%AD%97%E6%AF%8D%E8%BD%AC%E6%8D%A2/">
-        <p class="h4 index-header">NOJ-1143-字母转换</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">字母转换 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1000+5;
-char s[maxn],t[maxn],p[maxn],s1[maxn],t1[maxn],st[maxn];int lens,lent,opti,opto;
-void dfs(int now){
-    int i;
-    if(opti+opto==lens*2){
-        for(i=1;i&lt;=lent;i++)t1[i]=s[i];
-        int opt1=0,opt2=1,opt3=0;
-        for(i=1;i&lt;=lens*2;i++){
-            if(p[i]==&#39;i&#39;)s1[++opt1]=t1[opt2++];
-            else st[++opt3]=s1[opt1--];
-   </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1142-%E8%B8%A9%E6%B0%94%E7%90%83/">
-        <p class="h4 index-header">NOJ-1142-踩气球</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">踩气球 
-代码：感觉题意说明不够全，好像是POJ的原题。
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1000+50;
-int  sign1,sign2,n,m,x1=1,x2=1;
-void dfs(int x){
-    if(x==101){
-        if(x1==n&amp;&amp;x2==m)sign1=sign2=1;
-        if(x1==n)sign1=1;
-        return ;
-    }
-    dfs(x+1);
-    if(n%x==0&amp;&amp;x1*x&lt;=n){
-        x1*=x;
-        dfs(x+1);
-        x1/=x;
-    }
-    if(m%x==0&amp;&amp;x2*x&lt;=m){
-        x2*=x;
-        dfs(</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1009-%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98/">
-        <p class="h4 index-header">NOJ-1009-迷宫问题</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">迷宫问题  
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-using namespace std;
-const int maxn=20+5;
-int T,sx,sy,tx,ty,vis[maxn][maxn],d[4][2]={{1,0},{-1,0},{0,1},{0,-1}};
-char s[maxn][maxn];
-struct Node{
-    int x,y;
-};
-int main(){
-    int i;
-    cin&gt;&gt;T;
-    while(T--){
-        memset(vis,0,sizeof(vis));
-        cin&gt;&gt;sx&gt;&gt;sy&gt;&gt;tx&gt;&gt;ty;
-        for(i=0;i&lt;20;i++)cin&gt;&gt;s[i];
-        queue&lt;N</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   
