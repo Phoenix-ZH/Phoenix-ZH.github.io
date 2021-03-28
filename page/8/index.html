@@ -153,6 +153,49 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/08/08/CodeForces-1393/">
+        <p class="h4 index-header">CodeForces-1393</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">A.题目名称Rainbow Dash, Fluttershy and Chess Coloring
+题目大意：给定一个正方形区域上色，要求上色的块相邻之间不能相同，也就是我们会在每回合上不同的颜色，要求上色的块邻边是边界或是上一个以上色的块。求至少要多少个回合才能把这个正方形区域完。 
+思路：第一个回合，我们只能在边界的块上上色，且 要间隔开一格子上色，那么我们至少可以把边界的一半给上完，那么在下个回合，我们用不同的颜色上色自然可以把最外面的边界给上完。依次这样， 所以我们还是按着之前的块相邻来填，我们发现，进行完这个回合我们的区域和上个回合的是一样的，只不过长度减了2，我们每次进行这种回合都会这样子，那么我们对边长n/2即可，最后再加1.
+代码：#include&lt;bits/stdc++.h&gt;
+using namespace std;
+long long T,n;
+int main()
+{
+    cin&gt;&gt;T;
+    while(T--)
+    {
+        cin&gt;&gt;n;
+        long long ans=n/2+1;
+   </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-08-08&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/07/31/CodeForces-1388/">
         <p class="h4 index-header">CodeForces-1388</p>
         
@@ -538,43 +581,6 @@ int main()
       <div>
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/03/13/CodeForces-1324/">
-        <p class="h4 index-header">CodeForces-1324</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">第一次参加Div3，结果就翻车了，本来前三题都很顺利，半个小时AC之后，进入T4，结果T4WA了4发，当场崩溃，结果就是minn，maxx的位置有歧义。导致T6只剩下10min，即使有思路也没办法调试出来。第二天花了15minAC了，WA了一发。果然还是细节很不到位。
-A：题目名称：Yet Another Tetris Problem
-题目大意：第一行一个t，表示有t组数据。每组数据的第一行是一个数n，接下来一行是一个长度为n的数组a。 分别表示每一列的方块的高度。现在有两个操作：1.当至少一个ai&gt;0时，选择一些i(1&lt;=i&lt;=n)，将ai加2.2.当所有的ai&gt;0时，将所有的ai减1。问最后可不可以将所有的ai都变成0. 如果能，输出”YES”(没有引号)，不然输出”NO”(没有引号) 
-题解：问题转化过来就是，可以在任意一列上+2，问最后可不可以等高。那就看highmax与其余各列的高度差是否都为偶数即可。
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-13&nbsp;&nbsp;
         
         
         

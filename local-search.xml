@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>网络流24题+拓展</title>
+    <link href="/2021/03/05/%E7%BD%91%E7%BB%9C%E6%B5%8124%E9%A2%98-%E6%8B%93%E5%B1%95/"/>
+    <url>/2021/03/05/%E7%BD%91%E7%BB%9C%E6%B5%8124%E9%A2%98-%E6%8B%93%E5%B1%95/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>        <div id="aplayer-EVXtrHvB" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-EVXtrHvB"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "那年",              author: "枯木逢春",              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",              pic: "",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>网络流</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CodeForces-1486D-Max Median</title>
     <link href="/2021/02/19/CodeForces-1486D-Max%20Median/"/>
     <url>/2021/02/19/CodeForces-1486D-Max%20Median/</url>

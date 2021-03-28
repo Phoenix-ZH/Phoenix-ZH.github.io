@@ -153,6 +153,51 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/11/18/NOJ-1145-%E6%B1%82%E5%9B%BE%E5%83%8F%E7%9A%84%E5%91%A8%E9%95%BF/">
+        <p class="h4 index-header">NOJ-1145-求图像的周长</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">求图像的周长 
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=100+50;
+int n,m,x,y,ans,vis[maxn][maxn],d[8][2]={{1,0},{-1,0},{0,1},{0,-1},{1,1},{1,-1},{-1,1},{-1,-1}};char s[maxn][maxn];
+void dfs(int x,int y){
+    int i;
+    if(vis[x][y])return ;
+    vis[x][y]=1;
+    for(i=0;i&lt;8;i++){
+        int nx=x+d[i][0],ny=y+d[i][1];
+        if(i&lt;=3&amp;&amp;s[nx][ny]!=&#39;X&#39;)ans++;
+        if(nx&gt;=1&amp;&amp;nx&</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/NOJ">NOJ</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/11/18/NOJ-1144-%E5%86%9C%E5%9C%BA%E7%81%8C%E6%BA%89%E9%97%AE%E9%A2%98/">
         <p class="h4 index-header">NOJ-1144-农场灌溉问题</p>
         
@@ -585,61 +630,6 @@ int main(){
         for(i=1;i&lt;=n;i++)cin&gt;&gt;p[i];
         for(i=1;i&lt;=n;i++){
             f</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-11-18&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/NOJ">NOJ</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/11/18/NOJ-1324-%E7%A9%B7%E4%B8%BE%E6%89%80%E6%9C%89%E6%8E%92%E5%88%97/">
-        <p class="h4 index-header">NOJ-1324-穷举所有排列</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">穷举所有排列 
-代码：#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=25;
-int n;
-char a[maxn];
-void dfs(int t){
-    int i;
-    if(t==n+1){
-        for(i=1;i&lt;=n;i++)cout&lt;&lt;a[i];cout&lt;&lt;endl;
-        return ;
-    }
-    for(i=t;i&lt;=n;i++){
-        swap(a[i],a[t]);
-        dfs(t+1);
-        swap(a[i],a[t]);
-    }
-}
-int main(){
-    int i;
-    cin&gt;&gt;n;
-    for(i=1;i&lt;=n;i++)a[i]=&#39;a&#39;+i-1;
-    dfs(1);</div>
         </div>
       </a>
 

@@ -153,6 +153,46 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/07/HDU-4763/">
+        <p class="h4 index-header">HDU-4763</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">题目名称：HDU - 4763 Theme Section
+题目链接：https://vjudge.net/problem/HDU-4763#author=0
+题目大意：字符串E是字符串S的前缀和后缀，同时也出现在字符串S的中间，不与前缀后缀重合，问字符串S中符合要求的字符串E的最大长度。
+题解：这题显示是kmp问题，kmp中Next[i]表示字符串s从0…..i-1中前缀与后缀的最大公共子串，而问题就是求EAEBE，A，B长度任意(可以为0)，显然E最长为Next[len]，于是可以从len-Next[len]开始往前看Next[now]与E的大小关系，now&gt;=2*E，因为不可以重叠，如果找不到呢，E就应该缩小，理论是E—，所以E=Next[E]，继续寻找，直到找到或者无法继续。
+代码：#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int maxn=1000000+5;
+in</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/kmp">kmp</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/02/07/POJ-2387/">
         <p class="h4 index-header">POJ-2387</p>
         
@@ -535,47 +575,6 @@ int n,m,head[maxn],vis[maxn],used[maxn],k=1;double d</div>
             <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
             <a href="/tags/%E5%88%A4%E7%8E%AF">判环</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2020/02/07/POJ-1511/">
-        <p class="h4 index-header">POJ-1511</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目名称：POJ - 1511 Invitation Cards
-题目链接：https://vjudge.net/problem/POJ-1511#author=0
-题目大意：n-1个人从1号点出发，到剩余n-1个宣传点，然后再回到1号点汇报结果，求所有人往返路径和的最小值。
-题解：m条边，边号为偶数的表示正方向，边号为奇数的表示反方向。spfa1()沿着正方向跑，起点为1，则dist[i]表示的是从1到i的最短距离。spfa2()沿着反方向跑，起点为1，则dist2[i]表示的是从i到1的最短距离。最终答案就是dist1[i]+dist2[i]的总和，i∈[2,n]。
-代码：    #include&lt;cstdio&gt;
-    #include&lt;cstring&gt;
-    #include&lt;iostream&gt;
-    #include&lt;algorithm&gt;
-    #include&lt;queue&gt;
-    using namespace std;
-    const long long maxn=1000000+5;
-    str</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-07&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a>&nbsp;
           
         
       </div>

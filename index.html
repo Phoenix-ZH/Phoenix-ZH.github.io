@@ -153,6 +153,55 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2021/03/05/%E7%BD%91%E7%BB%9C%E6%B5%8124%E9%A2%98-%E6%8B%93%E5%B1%95/">
+        <p class="h4 index-header">网络流24题+拓展</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+        
+            
+        
+        
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-EVXtrHvB"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "那年",
+              author: "枯木逢春",
+              url: "https://cdn.jsdelivr.net/gh/Phoenix-ZH/CDN/1.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+  </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2021-03-05&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2021/02/19/CodeForces-1486D-Max%20Median/">
         <p class="h4 index-header">CodeForces-1486D-Max Median</p>
         
@@ -520,44 +569,6 @@ int main(){
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2021/02/14/CodeForces-1485E-Move%20and%20Swap/">
-        <p class="h4 index-header">CodeForces-1485E-Move and Swap</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">题目大意 
-n个节点的树，每个节点(2~n)有值a[i],一开始红色点和蓝色点都在头节点1，移动d步求最大的|a[i]-a[j]|之和。
-每一步：红色点只能移动到r的子节点蓝色点可以移动到下一层的任意一点每次可以选择交换红色点和蓝色点的位置(也可以不交换)
-思路一开始想着贪心：每次选择每层最大的和最小的，但是这样贪心显然不对，样例都过不了。
-于是想树形DP：
-假设红色点和蓝色点不可以交换，dp[i]表示红色点当前走到i点时最大的总和,fa[i]表示节点i的父亲节点。那么dp[i]=max(dp[i],dp[fa[i]]+|a[i]-a[j]|)(j就是蓝色点，即与i同层的节点)，这里可以依靠预处理出同一层最大的a[i]的值和最小的a[i]的值。如果红色点和蓝色点可以交换，那么dp[i]=max(dp[i],dp[fa[j]]+abs(a[i]-a[j]))，即dp[i]=max(dp[i],dp[fa[j]]+a[j]-a[i],dp[fa[j]]-a[j]+a[i])，这里可以预处理出dp[fa[j]]+a[j]和dp[fa[j]]-a[j].
-首先用dfs求出深度，将同一深度的放到</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2021-02-14&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/CodeForces">CodeForces</a>&nbsp;
-          
-            <a href="/tags/%E6%A0%91%E5%BD%A2DP">树形DP</a>&nbsp;
           
         
       </div>
